@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAa3//+6I\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 2498
+      },
+      "writtenOn": "2012-11-06T23:13:16Z",
+      "side": 1,
+      "message": "my build seems still broken unless i use ../Camera here",
+      "revId": "62f6755377543f16340170a85ed4446fd48a13d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
