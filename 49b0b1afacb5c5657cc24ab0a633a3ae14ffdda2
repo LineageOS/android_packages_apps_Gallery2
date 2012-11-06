@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAa3//+9o\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T21:04:54Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be ifdef\u0027ed at all. This is here because of libjni_eglfence.",
+      "revId": "49b0b1afacb5c5657cc24ab0a633a3ae14ffdda2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+9k\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T21:04:54Z",
+      "side": 1,
+      "message": "Relative path should be kept here. This is why you had to leave couple of orphan lines to makefile on LegacyCamera side.",
+      "revId": "49b0b1afacb5c5657cc24ab0a633a3ae14ffdda2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+9g\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T21:04:54Z",
+      "side": 1,
+      "message": "Same here - ../Camera",
+      "revId": "49b0b1afacb5c5657cc24ab0a633a3ae14ffdda2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
