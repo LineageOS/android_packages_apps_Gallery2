@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAa3//+4Q\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2012-11-06T23:53:05Z",
+      "side": 1,
+      "message": "If it\u0027s not done this way, it won\u0027t build libjni_legacymosaic.so. I have no idea why, but I\u0027ve tried that before.",
+      "parentUuid": "AAAAa3//+5M\u003d",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAa3//+5I\u003d",
         "filename": "Android.mk",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2012-11-06T23:30:47Z",
       "side": 1,
       "message": "../LegacyCamera",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+4U\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2012-11-06T23:53:05Z",
+      "side": 1,
+      "message": "It won\u0027t work; I\u0027ve tried that already. I have no idea why, but it just won\u0027t generate the libjni_legacymosaic.so file if it\u0027s done that way.",
+      "parentUuid": "AAAAa3//+5I\u003d",
       "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -81,6 +117,24 @@
       "writtenOn": "2012-11-06T23:48:29Z",
       "side": 1,
       "message": "removed from LegacyCamera in my latest patch",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+4Y\u003d",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3962
+      },
+      "writtenOn": "2012-11-06T23:53:05Z",
+      "side": 1,
+      "message": "Ah OK, I\u0027ll push a commit for that ASAP",
+      "parentUuid": "AAAAa3//+5A\u003d",
       "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
