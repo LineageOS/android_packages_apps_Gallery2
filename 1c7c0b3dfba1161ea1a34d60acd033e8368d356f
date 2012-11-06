@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAa3//+5M\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:30:47Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be ifdef\u0027ed at all. This is here because of libjni_eglfence.",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+5I\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:30:47Z",
+      "side": 1,
+      "message": "../LegacyCamera",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+5E\u003d",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:30:47Z",
+      "side": 1,
+      "message": "These...",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+5A\u003d",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:30:47Z",
+      "side": 1,
+      "message": "...shouldn\u0027t be added here if you don\u0027t remove these from LegacyCamera side.",
+      "revId": "1c7c0b3dfba1161ea1a34d60acd033e8368d356f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
