@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAa3//+50\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:26:57Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be ifdef\u0027ed at all. This is here because of libjni_eglfence.",
+      "revId": "62f6755377543f16340170a85ed4446fd48a13d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+5w\u003d",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:26:57Z",
+      "side": 1,
+      "message": "This should also be ../LegacyCamera",
+      "revId": "62f6755377543f16340170a85ed4446fd48a13d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAa3//+6I\u003d",
         "filename": "Android.mk",
         "patchSetId": 2
@@ -13,6 +47,40 @@
       "writtenOn": "2012-11-06T23:13:16Z",
       "side": 1,
       "message": "my build seems still broken unless i use ../Camera here",
+      "revId": "62f6755377543f16340170a85ed4446fd48a13d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+5o\u003d",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:26:57Z",
+      "side": 1,
+      "message": "These...",
+      "revId": "62f6755377543f16340170a85ed4446fd48a13d4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAa3//+5k\u003d",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1391
+      },
+      "writtenOn": "2012-11-06T23:26:57Z",
+      "side": 1,
+      "message": "... shouldn\u0027t be added here if you don\u0027t remove these from LegacyCamera side.",
       "revId": "62f6755377543f16340170a85ed4446fd48a13d4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
