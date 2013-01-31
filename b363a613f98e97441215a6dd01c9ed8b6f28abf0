@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//8fo\u003d",
+        "filename": "src/com/android/gallery3d/filtershow/FilterShowActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2013-01-31T15:19:05Z",
+      "side": 1,
+      "message": "IMO ist the getString() not necessary",
+      "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
