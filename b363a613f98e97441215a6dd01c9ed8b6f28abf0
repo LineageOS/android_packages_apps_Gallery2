@@ -16,6 +16,24 @@
       "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//8ds\u003d",
+        "filename": "src/com/android/gallery3d/filtershow/FilterShowActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-01-31T18:28:57Z",
+      "side": 1,
+      "message": "It is. ImageShow.showToast() expects a string, not an int.\n\nI think it might be a good idea to use separate strings, though. In e.g. the German translation, filtershow_undo is \u0027Rückgängig machen\u0027, which likely won\u0027t fit on the screen when printed with the font the toast thing uses.",
+      "parentUuid": "AAAAc3//8fo\u003d",
+      "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
