@@ -34,6 +34,24 @@
       "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//8Kc\u003d",
+        "filename": "src/com/android/gallery3d/filtershow/FilterShowActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-02-01T06:56:42Z",
+      "side": 1,
+      "message": "Danny, do you think it\u0027s better to use a separate string or just shorten the strings for those specific language cases?",
+      "parentUuid": "AAAAc3//8ds\u003d",
+      "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
