@@ -52,6 +52,24 @@
       "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAc3//8EY\u003d",
+        "filename": "src/com/android/gallery3d/filtershow/FilterShowActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-02-01T16:29:45Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer a separate string, maybe initially populated from the existing strings.\n(For -de, just remove the \u0027machen\u0027 :) ).",
+      "parentUuid": "AAAAc3//8Kc\u003d",
+      "revId": "b363a613f98e97441215a6dd01c9ed8b6f28abf0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
