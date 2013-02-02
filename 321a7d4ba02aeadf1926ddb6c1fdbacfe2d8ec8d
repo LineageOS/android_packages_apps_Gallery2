@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAc3//7sA\u003d",
+        "filename": "res/values-nl/filtershow_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-02-02T17:03:53Z",
+      "side": 1,
+      "message": "Don\u0027t know if this is too long. If it is, I\u0027d prefer \u0027Hersteld\u0027.",
+      "revId": "321a7d4ba02aeadf1926ddb6c1fdbacfe2d8ec8d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
