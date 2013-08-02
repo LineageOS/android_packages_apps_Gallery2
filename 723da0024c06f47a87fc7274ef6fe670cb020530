@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aca2d91_5f1d3e65",
+        "filename": "src/com/android/camera/VideoModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 3304
+      },
+      "writtenOn": "2013-08-02T03:24:25Z",
+      "side": 1,
+      "message": "This needs to be added to implement ignorePreferredPreviewSizeForVideo:\n\nif (mActivity.getResources().getBoolean(R.bool.ignorePreferredPreviewSizeForVideo) || preferred \u003d\u003d null) {\n    preferred \u003d sizes.get(0);\n}\n\nThe size validation code below it show end up being a NOP. With the above modification, video preview works on skyrocket.",
+      "revId": "723da0024c06f47a87fc7274ef6fe670cb020530",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
