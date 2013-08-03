@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aca2d91_f58c2b37",
+        "filename": "src/com/android/camera/Util.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-08-03T02:38:08Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "4024bcd31111c2307f154f2e5dd5a4f874f0ec2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
