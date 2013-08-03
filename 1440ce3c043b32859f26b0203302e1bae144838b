@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aca2d91_15d3273a",
+        "filename": "src/com/android/camera/Util.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-08-03T01:42:44Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "1440ce3c043b32859f26b0203302e1bae144838b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aca2d91_b5e11301",
+        "filename": "src/com/android/camera/VideoModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-08-03T01:42:44Z",
+      "side": 1,
+      "message": "this does not exist",
+      "revId": "1440ce3c043b32859f26b0203302e1bae144838b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aca2d91_95e73712",
+        "filename": "src/com/android/camera/VideoModule.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-08-03T01:42:44Z",
+      "side": 1,
+      "message": "nope",
+      "revId": "1440ce3c043b32859f26b0203302e1bae144838b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
