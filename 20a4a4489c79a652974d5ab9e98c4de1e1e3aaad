@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae975fb_5109d430",
+        "filename": "src/com/android/camera/VideoController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-09T18:53:14Z",
+      "side": 0,
+      "message": "This change can be reverted.",
+      "revId": "20a4a4489c79a652974d5ab9e98c4de1e1e3aaad",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
