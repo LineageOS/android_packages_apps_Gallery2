@@ -16,6 +16,24 @@
       "revId": "20a4a4489c79a652974d5ab9e98c4de1e1e3aaad",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dae975fb_773f2826",
+        "filename": "src/com/android/camera/VideoController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-08-10T15:25:28Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "dae975fb_5109d430",
+      "revId": "20a4a4489c79a652974d5ab9e98c4de1e1e3aaad",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
