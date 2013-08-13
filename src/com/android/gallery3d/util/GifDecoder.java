@@ -7,7 +7,7 @@ import android.util.Log;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-public class GifDecoder {
+public class GifDecoder extends Thread {
 
     public static final int STATUS_PARSING = 0;
     public static final int STATUS_FORMAT_ERROR = 1;
@@ -71,16 +71,14 @@ public class GifDecoder {
     public GifDecoder(byte[] data, GifAction act) {
         mGifData = data;
         mGifAction = act;
-        startDecoder();
     }
 
     public GifDecoder(InputStream is, GifAction act) {
         mIS = is;
         mGifAction = act;
-        startDecoder();
     }
 
-    public void startDecoder() {
+    public void run() {
         if (mIS != null) {
             readStream();
         } else if (mGifData != null) {
@@ -297,14 +295,10 @@ public class GifDecoder {
                 readContents();
                 if (mFrameCount < 0) {
                     mStatus = STATUS_FORMAT_ERROR;
-                    if (mGifAction != null) {
-                        mGifAction.parseOk(false, -1);
-                    }
+                    mGifAction.parseOk(false, -1);
                 } else {
                     mStatus = STATUS_FINISH;
-                    if (mGifAction != null) {
-                        mGifAction.parseOk(true, -1);
-                    }
+                    mGifAction.parseOk(true, -1);
                 }
             }
             try {
@@ -314,9 +308,7 @@ public class GifDecoder {
             }
         } else {
             mStatus = STATUS_OPEN_ERROR;
-            if (mGifAction != null) {
-                mGifAction.parseOk(false, -1);
-            }
+            mGifAction.parseOk(false, -1);
         }
         return mStatus;
     }
@@ -632,9 +624,7 @@ public class GifDecoder {
                 mAct[mTransIndex] = save;
             }
             resetFrame();
-            if (mGifAction != null) {
-                mGifAction.parseOk(true, mFrameCount);
-            }
+            mGifAction.parseOk(true, mFrameCount);
         } catch (OutOfMemoryError e) {
             Log.e("GifDecoder", ">>> log  : " + e.toString());
             e.printStackTrace();
