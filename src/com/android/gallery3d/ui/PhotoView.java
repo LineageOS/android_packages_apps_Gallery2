@@ -734,7 +734,7 @@ public class PhotoView extends GLView {
             canvas.translate((int) (cx + 0.5f), (int) (cy + 0.5f));
             int s = (int) (scale * Math.min(r.width(), r.height()) + 0.5f);
             //Full pic locates at index 0 of the array in PhotoDataAdapter
-            if (mModel.isVideo(0)) {
+            if (mModel.isVideo(0) || mModel.isGif(0)) {
                 drawVideoPlayIcon(canvas, s);
             }
             if (mLoadingState == Model.LOADING_FAIL ) {
@@ -864,7 +864,7 @@ public class PhotoView extends GLView {
                 invalidate();
             }
             int s = Math.min(drawW, drawH);
-            if (mModel.isVideo(mIndex)) {
+            if (mModel.isVideo(mIndex) || mModel.isGif(mIndex)) {
                 drawVideoPlayIcon(canvas, s);
             }
 
