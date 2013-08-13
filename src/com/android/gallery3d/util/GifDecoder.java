@@ -7,7 +7,7 @@ import android.util.Log;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-public class GifDecoder {
+public class GifDecoder extends Thread {
 
     public static final int STATUS_PARSING = 0;
     public static final int STATUS_FORMAT_ERROR = 1;
@@ -71,16 +71,14 @@ public class GifDecoder {
     public GifDecoder(byte[] data, GifAction act) {
         mGifData = data;
         mGifAction = act;
-        startDecoder();
     }
 
     public GifDecoder(InputStream is, GifAction act) {
         mIS = is;
         mGifAction = act;
-        startDecoder();
     }
 
-    public void startDecoder() {
+    public void run() {
         if (mIS != null) {
             readStream();
         } else if (mGifData != null) {
