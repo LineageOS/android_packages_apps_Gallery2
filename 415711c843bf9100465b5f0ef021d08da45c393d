@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae975fb_1a4d9c72",
+        "filename": "src/com/android/camera/CameraSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 2681
+      },
+      "writtenOn": "2013-08-13T03:49:12Z",
+      "side": 1,
+      "message": "Check that the volume is available:\nhttps://github.com/CyanogenMod/android_frameworks_base/blob/cm-10.2/core/java/android/os/storage/StorageManager.java#L555",
+      "revId": "415711c843bf9100465b5f0ef021d08da45c393d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
