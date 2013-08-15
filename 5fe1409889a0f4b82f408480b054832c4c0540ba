@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae975fb_93dbb7ed",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5896
+      },
+      "writtenOn": "2013-08-15T07:12:26Z",
+      "side": 1,
+      "message": "Naskol\u0027ko ya znayu, v russkom yazyke desyatye doly prinyato otdelyat\u0027 zapyatoy.",
+      "revId": "5fe1409889a0f4b82f408480b054832c4c0540ba",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
