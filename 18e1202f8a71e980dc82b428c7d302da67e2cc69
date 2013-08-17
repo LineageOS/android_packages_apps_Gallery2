@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_50f66cd8",
+        "filename": "res/values-el/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-17T18:42:35Z",
+      "side": 1,
+      "message": "Already defined by strings.xml",
+      "revId": "18e1202f8a71e980dc82b428c7d302da67e2cc69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_3003e8ba",
+        "filename": "res/values-el/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-17T18:42:35Z",
+      "side": 1,
+      "message": "Already defined by strings.xml",
+      "revId": "18e1202f8a71e980dc82b428c7d302da67e2cc69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
