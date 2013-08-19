@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_641d320f",
+        "filename": "src/com/android/camera/ActivityBase.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": ") { (space missing)",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_441a2e19",
+        "filename": "src/com/android/camera/ActivityBase.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_24172aef",
+        "filename": "src/com/android/camera/CameraSettings.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "Space missing",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_04d3063a",
+        "filename": "src/com/android/camera/CameraSettings.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "Spaces missing after if and before {",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_e4d7e221",
+        "filename": "src/com/android/camera/PhotoMenu.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "// Storage location",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_c4dcde48",
+        "filename": "src/com/android/camera/PhotoMenu.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "Please wrap to 100 chars, e.g. by doing this:\n\nLayoutInflater inflater \u003d mActivity().getLayoutInflater();\nListPrefSettingPopup popup \u003d (ListPrefSettingPopup) inflater.inflate(\n        R.layout.list_pref_setting_popup, null, false);",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_a4e1da00",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 2048,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "Spaces missing",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_64e4120d",
+        "filename": "src/com/android/camera/Storage.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "getInstance()?",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_44f10ecd",
+        "filename": "src/com/android/gallery3d/app/AbstractGalleryActivity.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "Space missing",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_04bae6e1",
+        "filename": "src/com/android/gallery3d/app/PhotoDataAdapter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "This should become MediaSetUtils.getCameraBucketId()",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_e4bec2d3",
+        "filename": "src/com/android/gallery3d/util/MediaSetUtils.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T23:13:39Z",
+      "side": 1,
+      "message": "getCameraBucketId() {",
+      "revId": "47398f300cc5eae37916fdee162eed2ac30cfe04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
