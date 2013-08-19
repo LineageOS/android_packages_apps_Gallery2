@@ -16,6 +16,24 @@
       "revId": "49ebe1a21a1fe0d588fabe52f8e8c7c1cad85a44",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_64c1b280",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-08-19T19:25:58Z",
+      "side": 1,
+      "message": "good point. it should be removed, managed to reproduce a bug.\nby going to hdr to scene mode directly. it will stay grey.",
+      "parentUuid": "baee8101_64dad27a",
+      "revId": "49ebe1a21a1fe0d588fabe52f8e8c7c1cad85a44",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
