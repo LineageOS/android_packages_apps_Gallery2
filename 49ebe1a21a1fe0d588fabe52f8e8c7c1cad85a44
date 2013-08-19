@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_64dad27a",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-19T19:06:32Z",
+      "side": 1,
+      "message": "I wonder whether this shouldn\u0027t be a straight \u0027} else {\u0027.",
+      "revId": "49ebe1a21a1fe0d588fabe52f8e8c7c1cad85a44",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
