@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_ad9d3a5b",
+        "filename": "res/values-hu/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5393
+      },
+      "writtenOn": "2013-08-21T20:54:43Z",
+      "side": 1,
+      "message": "Bocsika, de csak most vettem eszre:\n\nfuLhallgatot\negy darab L-lel",
+      "revId": "95546f2b2c128c5559ff2bd62026b5b32c42fb62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
