@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_cd1f5e5a",
+        "filename": "res/values-hu/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-08-21T18:49:57Z",
+      "side": 1,
+      "message": "Megneztem, tenyleg vaghato",
+      "revId": "86f0e73301d07bee65670d29ce60ac632b04ed04",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
