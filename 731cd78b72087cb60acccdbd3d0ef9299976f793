@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baee8101_dca4aa09",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-08-23T05:13:03Z",
+      "side": 1,
+      "message": "Haben wir so im DSP-Manager",
+      "parentUuid": "baee8101_2131510c",
+      "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baee8101_01364d03",
         "filename": "res/values-de/strings.xml",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-08-23T00:07:52Z",
       "side": 1,
       "message": "Audioeffekte?",
+      "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_bcb8c6e6",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-08-23T05:13:03Z",
+      "side": 1,
+      "message": "Geht wohl beides aber ich finde es mit Bindestrich irgendwie besser lesbar. Falls sich nicht die Mehrheit gegen den Bindestrich ausspricht lass ich das so.",
+      "parentUuid": "baee8101_01364d03",
       "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -99,6 +135,24 @@
       "writtenOn": "2013-08-23T01:51:21Z",
       "side": 1,
       "message": "same...",
+      "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_bca9e6e1",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-08-23T05:13:03Z",
+      "side": 1,
+      "message": "Ok werde ich umsetzen.",
+      "parentUuid": "baee8101_4155751b",
       "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
