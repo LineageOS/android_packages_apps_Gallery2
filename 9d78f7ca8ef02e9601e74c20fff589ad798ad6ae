@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_624bd8b1",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 2967
+      },
+      "writtenOn": "2013-08-23T18:13:43Z",
+      "side": 1,
+      "message": "Die Hauptkategorie heisst ja \"Video schneiden\" richtig?\n\nWarum dann nicht: \"Zuschneiden der Videodatei nicht moeglich\"\n\nTut mir leid, aber \"beschnitten\" bringe ich nicht mit Videos in Verbindung, eher mit so etwas: http://de.wikipedia.org/wiki/Zirkumzision",
+      "revId": "9d78f7ca8ef02e9601e74c20fff589ad798ad6ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
