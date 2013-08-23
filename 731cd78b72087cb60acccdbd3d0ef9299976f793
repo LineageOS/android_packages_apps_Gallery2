@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "baee8101_e1afc97b",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 2967
+      },
+      "writtenOn": "2013-08-23T01:51:21Z",
+      "side": 1,
+      "message": "waere \"geschnitten\" nicht irgendwie besser?",
+      "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baee8101_4155751b",
         "filename": "res/values-de/strings.xml",
         "patchSetId": 2
@@ -47,6 +64,23 @@
       "writtenOn": "2013-08-23T00:07:52Z",
       "side": 1,
       "message": "MP4-Format?",
+      "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_c1b4c5d2",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 2967
+      },
+      "writtenOn": "2013-08-23T01:51:21Z",
+      "side": 1,
+      "message": "same...",
       "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
