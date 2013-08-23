@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "baee8101_1c4d9272",
+        "filename": "res/values-de/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-23T01:58:31Z",
+      "side": 1,
+      "message": "Es geht hier um Videos, nicht um Brot :-P\n\nIm Ernst: \u0027trim\u0027 ist \u0027beschneiden\u0027, nicht \u0027schneiden\u0027. Siehe z.B. http://www.dict.cc/?s\u003dtrim",
+      "parentUuid": "baee8101_e1afc97b",
+      "revId": "731cd78b72087cb60acccdbd3d0ef9299976f793",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baee8101_4155751b",
         "filename": "res/values-de/strings.xml",
         "patchSetId": 2
