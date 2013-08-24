@@ -16,6 +16,40 @@
       "revId": "503516103af0d0c6fe4f76a89903298bd2a0d47a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_e5afd292",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T02:22:31Z",
+      "side": 1,
+      "message": "I would remove the sorry part. I thought that was removed since gingerbread",
+      "revId": "503516103af0d0c6fe4f76a89903298bd2a0d47a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_c595ee40",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T02:22:31Z",
+      "side": 1,
+      "message": "files (seems more natural to me)",
+      "revId": "503516103af0d0c6fe4f76a89903298bd2a0d47a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
