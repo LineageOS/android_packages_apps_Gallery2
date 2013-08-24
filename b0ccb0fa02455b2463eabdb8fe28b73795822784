@@ -16,6 +16,24 @@
       "revId": "b0ccb0fa02455b2463eabdb8fe28b73795822784",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_88b93d31",
+        "filename": "res/values-fr/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4808
+      },
+      "writtenOn": "2013-08-24T10:23:37Z",
+      "side": 1,
+      "message": "J\u0027ai envie de dire : etre ou ne pas etre ... :)",
+      "parentUuid": "baee8101_e516b254",
+      "revId": "b0ccb0fa02455b2463eabdb8fe28b73795822784",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
