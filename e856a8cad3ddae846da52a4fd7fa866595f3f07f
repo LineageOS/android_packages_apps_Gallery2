@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_4588de22",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T02:24:58Z",
+      "side": 1,
+      "message": "Kan weg dus",
+      "revId": "e856a8cad3ddae846da52a4fd7fa866595f3f07f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_859fe65e",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T02:24:58Z",
+      "side": 1,
+      "message": "Kan deze video niet trimmen",
+      "revId": "e856a8cad3ddae846da52a4fd7fa866595f3f07f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_659c026a",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-24T02:24:58Z",
+      "side": 1,
+      "message": "getrimt (Engelse stam \u003d trim)",
+      "revId": "e856a8cad3ddae846da52a4fd7fa866595f3f07f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
