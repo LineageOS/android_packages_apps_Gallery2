@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_85f24699",
+        "filename": "res/values-fr/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4045
+      },
+      "writtenOn": "2013-08-24T03:42:29Z",
+      "side": 1,
+      "message": "Il manque un accent a la fin de \"desole\".",
+      "revId": "b2c1f1d4ef1f22aeff4b86f1db308b3899a70bca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_65ef62b1",
+        "filename": "res/values-fr/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4045
+      },
+      "writtenOn": "2013-08-24T03:42:29Z",
+      "side": 1,
+      "message": "\"fichiers\" \"egalis(e aigu)s\".",
+      "revId": "b2c1f1d4ef1f22aeff4b86f1db308b3899a70bca",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
