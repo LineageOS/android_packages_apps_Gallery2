@@ -16,6 +16,24 @@
       "revId": "01fea7a864f58c64a6a460201b635d9530fa4409",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_abc75b44",
+        "filename": "res/values-fr/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4808
+      },
+      "writtenOn": "2013-08-25T03:03:19Z",
+      "side": 1,
+      "message": "Je vais rester poli...",
+      "parentUuid": "baee8101_2b8dab31",
+      "revId": "01fea7a864f58c64a6a460201b635d9530fa4409",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
