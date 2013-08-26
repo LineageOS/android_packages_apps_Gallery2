@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_692bb8ec",
+        "filename": "res/values-el/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-26T22:05:22Z",
+      "side": 0,
+      "message": "I\u0027ve just nuked this string: http://review.cyanogenmod.org/#/c/49104/",
+      "revId": "afd0066b30e9641b28c3004e49b9cfeb0d378fc8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
