@@ -16,6 +16,40 @@
       "revId": "802a3a36f6b107a800a29d99e7494699846070ae",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_a9c40040",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-26T21:40:36Z",
+      "side": 1,
+      "message": "In DSPManager schreiben wir es ohne Bindestrich, also sollten wir das hier auch so machen.",
+      "revId": "802a3a36f6b107a800a29d99e7494699846070ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baee8101_69ddf813",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-08-26T21:40:36Z",
+      "side": 1,
+      "message": "Warum wieder hinzufuegen?",
+      "revId": "802a3a36f6b107a800a29d99e7494699846070ae",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
