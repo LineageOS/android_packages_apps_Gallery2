@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baee8101_8cc5ca5c",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-27T06:08:26Z",
+      "side": 1,
+      "message": "https://github.com/CyanogenMod/android_packages_apps_Gallery2/blob/cm-10.2/res/values-nl/strings.xml#L42",
+      "revId": "ffdcdc5c310dbf7d16d82cdfdbe74578748a8abd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
