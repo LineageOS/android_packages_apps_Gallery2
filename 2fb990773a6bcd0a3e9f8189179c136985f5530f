@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ae2911b_eca0eba7",
+        "filename": "res/values-sk/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-08-29T07:53:45Z",
+      "side": 1,
+      "message": "Please remove this string; it\u0027s not used anymore.",
+      "revId": "2fb990773a6bcd0a3e9f8189179c136985f5530f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
