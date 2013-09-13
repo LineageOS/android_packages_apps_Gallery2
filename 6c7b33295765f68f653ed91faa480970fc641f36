@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a016987_a91f795a",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 6259
+      },
+      "writtenOn": "2013-09-13T09:41:16Z",
+      "side": 1,
+      "message": "how about to make it optional? either it takes a photo or it zooms\n\nat least a lot ppl on nexus devices seems to lie the volume button shutter feature from google",
+      "revId": "6c7b33295765f68f653ed91faa480970fc641f36",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
