@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a016987_693aa1cf",
+        "filename": "jni_mosaic/mosaic_renderer_jni.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 6259
+      },
+      "writtenOn": "2013-09-13T09:44:14Z",
+      "side": 1,
+      "message": "gPreview.Clear(0.0, 0.0, 0.0, 1.0);\n\ncoding style....same below....I know very minor nitpick",
+      "revId": "8e1b041f2df9dce4b6462512c4f3972d3350fb49",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
