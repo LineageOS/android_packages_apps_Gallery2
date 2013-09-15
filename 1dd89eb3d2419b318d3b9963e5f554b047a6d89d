@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a016987_d5d48648",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 7204
+      },
+      "writtenOn": "2013-09-15T06:42:01Z",
+      "side": 1,
+      "message": "/* The following exif tags are useful on certain devices like Motorola RAZR which has proprietary camera driver that doesn\u0027t include GPS tags in jpegData */",
+      "revId": "1dd89eb3d2419b318d3b9963e5f554b047a6d89d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
