@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a016987_7596f295",
+        "filename": "src/com/android/gallery3d/util/GalleryUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 7204
+      },
+      "writtenOn": "2013-09-15T05:53:43Z",
+      "side": 1,
+      "message": "String geoUri \u003d formatLatitudeLongitude(\"geo:%f,%f\", latitude, longitude);",
+      "revId": "5ed2855a2bd82424a3fc49e6a08dd641f1dc5f09",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
