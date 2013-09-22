@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5afe65bd_ab43ed6b",
+        "filename": "res/values-zh-rTW/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 6650
+      },
+      "writtenOn": "2013-09-22T14:16:49Z",
+      "side": 1,
+      "message": "????,???DSPManager????sounds(aosp ?sounds????,audio??) ???????,??????????????? ???defy,moto ???????...",
+      "parentUuid": "5afe65bd_6b7cd520",
+      "revId": "8207d6d65a08c3e2ee08b29248d99e6cf49d4be5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5afe65bd_8be15101",
         "filename": "res/values-zh-rTW/cm_strings.xml",
         "patchSetId": 1
