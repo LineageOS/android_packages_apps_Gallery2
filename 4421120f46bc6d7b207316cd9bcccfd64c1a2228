@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5afe65bd_8b3f11d6",
+        "filename": "res/values-zh-rTW/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 7437
+      },
+      "writtenOn": "2013-09-22T15:20:36Z",
+      "side": 1,
+      "message": "????????????????????????Thanks",
+      "revId": "4421120f46bc6d7b207316cd9bcccfd64c1a2228",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5afe65bd_ab3acde5",
+        "filename": "res/values-zh-rTW/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 7437
+      },
+      "writtenOn": "2013-09-22T15:20:36Z",
+      "side": 1,
+      "message": "??????????????? Android Writing Style (https://developer.android.com/design/style/writing.html) ???????Task first??",
+      "revId": "4421120f46bc6d7b207316cd9bcccfd64c1a2228",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
