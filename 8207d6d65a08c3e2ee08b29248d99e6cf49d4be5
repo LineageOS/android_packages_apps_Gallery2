@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5afe65bd_4bcb5973",
+        "filename": "res/values-zh-rTW/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 6650
+      },
+      "writtenOn": "2013-09-22T03:07:54Z",
+      "side": 1,
+      "message": "sounds ?audio ??????? ????????",
+      "revId": "8207d6d65a08c3e2ee08b29248d99e6cf49d4be5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5afe65bd_8be15101",
         "filename": "res/values-zh-rTW/cm_strings.xml",
         "patchSetId": 1
@@ -13,6 +30,41 @@
       "writtenOn": "2013-09-22T02:51:08Z",
       "side": 1,
       "message": "https://github.com/CyanogenMod/android_packages_apps_Gallery2/blob/cm-10.2/res/values-zh-rTW/strings.xml\n\nvideo ??? \"??\"?\n\"?????????\"",
+      "revId": "8207d6d65a08c3e2ee08b29248d99e6cf49d4be5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5afe65bd_eba0c5a7",
+        "filename": "res/values-zh-rTW/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 6650
+      },
+      "writtenOn": "2013-09-22T03:07:54Z",
+      "side": 1,
+      "message": "??????????",
+      "parentUuid": "5afe65bd_8be15101",
+      "revId": "8207d6d65a08c3e2ee08b29248d99e6cf49d4be5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5afe65bd_0bc5615a",
+        "filename": "res/values-zh-rTW/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 6650
+      },
+      "writtenOn": "2013-09-22T03:07:54Z",
+      "side": 1,
+      "message": "?? mp4 ??????",
       "revId": "8207d6d65a08c3e2ee08b29248d99e6cf49d4be5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
