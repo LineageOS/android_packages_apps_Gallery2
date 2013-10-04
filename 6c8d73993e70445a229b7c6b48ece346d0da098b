@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da37b569_9402ad3d",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-10-04T01:49:53Z",
+      "side": 1,
+      "message": "Copy \u0026 Paste-Fehler! Bitte mit Komma.",
+      "revId": "6c8d73993e70445a229b7c6b48ece346d0da098b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
