@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_bcec8190",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2013-10-10T17:50:36Z",
+      "side": 1,
+      "message": "This empty line can be removed.",
+      "revId": "edaa51da57a6f9d81e3b6a9f466091bdd6f94e2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_5c021d40",
+        "filename": "src/com/android/camera/PhotoMenu.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2013-10-10T17:50:36Z",
+      "side": 1,
+      "message": "Please wrap to 100 characters.",
+      "revId": "edaa51da57a6f9d81e3b6a9f466091bdd6f94e2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_7cffd934",
+        "filename": "src/com/android/camera/PhotoMenu.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2013-10-10T17:50:36Z",
+      "side": 1,
+      "message": "Please wrap to 100 characters.",
+      "revId": "edaa51da57a6f9d81e3b6a9f466091bdd6f94e2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
