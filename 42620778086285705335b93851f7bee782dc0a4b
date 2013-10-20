@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a50d1a3_1c2b2a84",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2013-10-20T07:38:58Z",
+      "side": 1,
+      "message": "te lang [CHAR LIMIT\u003d15]\neventueel \"12 Mpixel (4:3)\" of \"12M (4:3)\" en alle andere ook \u0027Mpixel\u0027 of \u0027M\u0027",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_bc1f965a",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7221
+      },
+      "writtenOn": "2013-10-20T07:38:58Z",
+      "side": 1,
+      "message": "te lang [CHAR LIMIT\u003d15]",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_39fcf83d",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
