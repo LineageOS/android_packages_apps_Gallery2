@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_39db981d",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-20T00:48:34Z",
+      "side": 1,
+      "message": "https://github.com/CyanogenMod/android_packages_apps_Gallery2/blob/cm-10.2/res/values/strings.xml\n\nAOSP gebruikt een : en niet een x (16:9)\n\nDus dit moet 4:3 worden\n\nOOK in het Engels",
+      "revId": "efb564cdcfe9fced62eea026e178015c28b44653",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
