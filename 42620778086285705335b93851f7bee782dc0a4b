@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_bc6d56ce",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-20T08:52:19Z",
+      "side": 1,
+      "message": "-1 \n\nAOSP gebruikt zelf ook te lange strings: \nhttps://github.com/CyanogenMod/android_packages_apps_Gallery2/blob/cm-10.2/res/values-nl/strings.xml#L262",
+      "parentUuid": "3a50d1a3_1c2b2a84",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_bc1f965a",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
