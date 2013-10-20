@@ -16,6 +16,24 @@
       "revId": "3200a3ba8c7b68b3d36958cb3ededef19306e504",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_3c906695",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2013-10-20T10:36:09Z",
+      "side": 1,
+      "message": "\"Hohe Bildrate\" finde im am Besten.",
+      "parentUuid": "3a50d1a3_d9ecf491",
+      "revId": "3200a3ba8c7b68b3d36958cb3ededef19306e504",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
