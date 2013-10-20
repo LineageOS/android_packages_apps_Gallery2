@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_d9eb94af",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-20T00:45:15Z",
+      "side": 1,
+      "message": "AOSP uses \"16:9\" so 4x3 should be \"4:3\"\n\nhttps://github.com/CyanogenMod/android_packages_apps_Gallery2/blob/cm-10.2/res/values/strings.xml",
+      "revId": "1d2f602592a4af8e1e88d9c664f924474d3c829b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
