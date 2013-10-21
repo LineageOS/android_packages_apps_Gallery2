@@ -231,6 +231,24 @@
       "revId": "5a5013fcc616deddc740c8c744cdeb6e11f950a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_1cf32a75",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-10-21T01:20:40Z",
+      "side": 1,
+      "message": "??... ??. ??????, ??? ??? ???? «Fast HD (60 fps)», ?? ????, ??? ?? ?? ???? ????????????.",
+      "parentUuid": "3a50d1a3_1c656a44",
+      "revId": "5a5013fcc616deddc740c8c744cdeb6e11f950a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
