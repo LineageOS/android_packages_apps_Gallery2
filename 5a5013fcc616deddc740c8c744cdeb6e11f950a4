@@ -285,6 +285,24 @@
       "revId": "5a5013fcc616deddc740c8c744cdeb6e11f950a4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_37171fa5",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-10-21T18:33:58Z",
+      "side": 1,
+      "message": "? ??? ????:\n\nSteve Kondik has posted comments on this change.\n\nChange subject: camera: Add support for high frame rate video\n\n\nPatch Set 2:\n\nIt\u0027s 120 FPS, so it appears to be slow motion if played in realtime.",
+      "parentUuid": "3a50d1a3_bc9eb605",
+      "revId": "5a5013fcc616deddc740c8c744cdeb6e11f950a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
