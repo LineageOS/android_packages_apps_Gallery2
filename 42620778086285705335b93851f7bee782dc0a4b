@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_d7259b5c",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-21T10:10:02Z",
+      "side": 1,
+      "message": "Apparaten met kleine schermen hebben deze strings niet eens, dit zijn de resoluties van de N1 met 5.9 inch scherm",
+      "parentUuid": "3a50d1a3_17822353",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_bc1f965a",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Dan wordt het iets als\n\n- WVGA-hoge-beeldsnelheid\n\nBeetje lelijk. En net zoals de verhoudingen hierboven staat de \u0027uitgebreide informatie\u0027 tussen haakjes:\n\n- WVGA (hoge beeldsnelheid)\n\nZie het Duits: http://review.cyanogenmod.org/#/c/51997/2/res/values-de/cm_strings.xml",
       "parentUuid": "3a50d1a3_39fcf83d",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_f72a172c",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-21T10:10:02Z",
+      "side": 1,
+      "message": "+1 voor \n\n- WVGA (hoge beeldsnelheid)",
+      "parentUuid": "3a50d1a3_b9b5687f",
       "revId": "42620778086285705335b93851f7bee782dc0a4b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
