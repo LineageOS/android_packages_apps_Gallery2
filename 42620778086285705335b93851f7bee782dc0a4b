@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_17822353",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-21T06:37:53Z",
+      "side": 1,
+      "message": "Zijn deze strings wel (volledig) leesbaar op apparaten met kleine schermen?",
+      "parentUuid": "3a50d1a3_bc6d56ce",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_bc1f965a",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2013-10-20T04:17:56Z",
       "side": 1,
       "message": "waarom tussen haakjes?\nen moet het niet \"beeldsnelheid\" zijn?",
+      "revId": "42620778086285705335b93851f7bee782dc0a4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_b9b5687f",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-21T06:37:53Z",
+      "side": 1,
+      "message": "Dan wordt het iets als\n\n- WVGA-hoge-beeldsnelheid\n\nBeetje lelijk. En net zoals de verhoudingen hierboven staat de \u0027uitgebreide informatie\u0027 tussen haakjes:\n\n- WVGA (hoge beeldsnelheid)\n\nZie het Duits: http://review.cyanogenmod.org/#/c/51997/2/res/values-de/cm_strings.xml",
+      "parentUuid": "3a50d1a3_39fcf83d",
       "revId": "42620778086285705335b93851f7bee782dc0a4b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
