@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_286340b3",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-23T05:13:10Z",
+      "side": 1,
+      "message": "Is it really required to rename these arrays?",
+      "revId": "f8a95d4ced962d1334c04af033063d6e5e89fde5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
