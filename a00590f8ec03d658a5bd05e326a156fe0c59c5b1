@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_08c76413",
+        "filename": "res/values-da/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-10-23T09:15:56Z",
+      "side": 1,
+      "message": "AOSP uses (16:9). I think we should use (4:3) here.",
+      "revId": "a00590f8ec03d658a5bd05e326a156fe0c59c5b1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_684b88b1",
+        "filename": "res/values-da/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-10-23T09:15:56Z",
+      "side": 1,
+      "message": "same as comment above",
+      "revId": "a00590f8ec03d658a5bd05e326a156fe0c59c5b1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
