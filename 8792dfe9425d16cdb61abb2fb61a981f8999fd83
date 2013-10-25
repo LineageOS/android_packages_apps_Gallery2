@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4dcd0f_5ef9b1c7",
+        "filename": "res/values-hu/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-10-25T04:57:56Z",
+      "side": 1,
+      "message": "esetleg 4:3 ahogy a képarányt egyébként szokták",
+      "revId": "8792dfe9425d16cdb61abb2fb61a981f8999fd83",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
