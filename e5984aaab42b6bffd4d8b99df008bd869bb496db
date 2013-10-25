@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4dcd0f_5ee77112",
+        "filename": "src/com/android/camera/PanoramaModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2013-10-25T05:27:53Z",
+      "side": 1,
+      "message": "OK, fix the whitespace above and we\u0027re good to go. I\u0027d also move this whole block earlier to openCamera()",
+      "revId": "e5984aaab42b6bffd4d8b99df008bd869bb496db",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
