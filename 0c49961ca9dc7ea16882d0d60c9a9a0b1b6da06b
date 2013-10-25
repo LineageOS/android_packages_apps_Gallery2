@@ -16,6 +16,24 @@
       "revId": "0c49961ca9dc7ea16882d0d60c9a9a0b1b6da06b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_e4cfd0b1",
+        "filename": "res/values-es/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-10-25T22:50:51Z",
+      "side": 1,
+      "message": "In photography this is the concept \"alta velocidad de obturación\". In video could be \"Alta velocidad de imagenes o cuadros\" but this\u0027s too large to fit in layout so I\u0027ve used a short string.\n\n\"Alto refresco\" could be valid for screens not for video rate. Of course, it\u0027s my humble opinion.",
+      "parentUuid": "1a4dcd0f_0163ceb2",
+      "revId": "0c49961ca9dc7ea16882d0d60c9a9a0b1b6da06b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
