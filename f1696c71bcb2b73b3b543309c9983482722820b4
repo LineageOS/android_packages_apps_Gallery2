@@ -16,6 +16,24 @@
       "revId": "f1696c71bcb2b73b3b543309c9983482722820b4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_6f5e3947",
+        "filename": "res/values-es/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 2134
+      },
+      "writtenOn": "2013-10-26T09:07:24Z",
+      "side": 1,
+      "message": "It\u0027s an adjetive, not a verb. In your case is \"Imagen que continúa\" but this isn\u0027t the case. See: http://lema.rae.es/drae/srv/search?id\u003dimFG0XehhDXX29J1f6CG and http://lema.rae.es/drae/srv/search?id\u003dMSTgFHV0UVcRjVCT0hpl",
+      "parentUuid": "1a4dcd0f_2faa711a",
+      "revId": "f1696c71bcb2b73b3b543309c9983482722820b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
