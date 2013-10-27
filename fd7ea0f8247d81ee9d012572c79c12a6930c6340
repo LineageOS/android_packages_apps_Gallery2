@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4dcd0f_50b67a3e",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-10-27T23:23:03Z",
+      "side": 0,
+      "message": "I implemented those changes fixing the camera issue on hdr when zsl is on.",
+      "revId": "fd7ea0f8247d81ee9d012572c79c12a6930c6340",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_b07b3e7b",
+        "filename": "src/com/android/camera/PhotoModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-10-27T23:23:03Z",
+      "side": 0,
+      "message": "I implemented those changes fixing the camera issue on hdr when zsl is on.",
+      "revId": "fd7ea0f8247d81ee9d012572c79c12a6930c6340",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
