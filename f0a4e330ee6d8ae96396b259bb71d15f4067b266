@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4dcd0f_f09466e9",
+        "filename": "res/values-hu/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-10-28T06:50:05Z",
+      "side": 1,
+      "message": "szerintem fordított sorrend: exponálás bekapcsi gombbal",
+      "revId": "f0a4e330ee6d8ae96396b259bb71d15f4067b266",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_109a3215",
+        "filename": "res/values-hu/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1573
+      },
+      "writtenOn": "2013-10-28T06:50:05Z",
+      "side": 1,
+      "message": "? a name attrib alapján Elmosódottság csökkentés",
+      "revId": "f0a4e330ee6d8ae96396b259bb71d15f4067b266",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
