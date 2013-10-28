@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_a4922356",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T12:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_04a197a9",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0981e6c",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "Ja ben ik het wel mee eens, denk dat mensen Augmented reality wel kennen",
       "parentUuid": "1a4dcd0f_64b65b3f",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_449f9f5f",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T12:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_e4b82be8",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -226,6 +262,24 @@
       "side": 1,
       "message": "Maar ik denk toch dat het hier voornamelijk om het Portret gaat?\n\nPortret (tegenlicht) of Portret met tegenlicht, zoals in 10.1",
       "parentUuid": "1a4dcd0f_50ef5ab0",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_649c1b6a",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T12:14:20Z",
+      "side": 1,
+      "message": "Dan het eerste",
+      "parentUuid": "1a4dcd0f_c4aacf85",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -454,6 +508,24 @@
       "side": 1,
       "message": "Dat ziet er dan ook weer gek uit :-p\n\nAlleen \n\n- Continu\n\n ?\n\nStaat immers onder het kopje Focus",
       "parentUuid": "1a4dcd0f_903c0231",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_0488b721",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T12:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_e4afcb92",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
