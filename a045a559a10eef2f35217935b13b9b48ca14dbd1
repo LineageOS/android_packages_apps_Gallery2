@@ -585,6 +585,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_0460b734",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-10-28T23:59:20Z",
+      "side": 1,
+      "message": "Nee, maar als jij een betere vertaling in het NLs weet, die ook nog past, mag je het zeggen :)\n\nhttp://www.google.com/patents/US20070166020",
+      "parentUuid": "1a4dcd0f_24bb73c6",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0e6dee6",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
