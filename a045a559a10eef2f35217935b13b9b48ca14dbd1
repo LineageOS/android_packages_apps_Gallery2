@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_70f8567d",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Past dit?",
+      "parentUuid": "1a4dcd0f_70a3769f",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0981e6c",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-28T02:35:57Z",
       "side": 1,
       "message": "Wie weet wat AR is?\nIk zou het origineel behouden\n\n- Augmented reality\n\nBij Focal: Toegevoegde realiteit",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_90f5e284",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "- Toegevoegde realiteit",
+      "parentUuid": "1a4dcd0f_b0981e6c",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_30f2ce9b",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "http://review.cyanogenmod.org/#/c/36245/2/res/values-nl/cm_strings.xml",
+      "parentUuid": "1a4dcd0f_30adee88",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_90a08292",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2013-10-28T02:35:57Z",
       "side": 1,
       "message": "Focal: Portret (achtergrondlicht)",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_50ef5ab0",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Ik heb het hier omgedraaid omdat deze optie naast Tegenlicht/Achtergrondlicht staat en niet naast Portret (dit neem ik dan even aan)",
+      "parentUuid": "1a4dcd0f_90a08292",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_f02a26e7",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_d09daa5a",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_50aafa71",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2013-10-28T02:35:57Z",
       "side": 1,
       "message": "Ik weet het niet zeker meer, maar hadden we hier niet bij Focal \"Schemering\" ?",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_1030f255",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Klopt; done.",
+      "parentUuid": "1a4dcd0f_50aafa71",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_b0349e4a",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_10bb12c6",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0afbe7c",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2013-10-28T02:35:57Z",
       "side": 1,
       "message": "Focal: Stabiele foto\n\n10.1: Stilstaand",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_d0392a43",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "- Stabiele foto",
+      "parentUuid": "1a4dcd0f_b0afbe7c",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_703ff625",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Tja...\n\nDone",
+      "parentUuid": "1a4dcd0f_d0b4cad2",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_50c19a2d",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -166,6 +328,24 @@
       "writtenOn": "2013-10-28T02:35:57Z",
       "side": 1,
       "message": "Bj 10.1 hadden we \n\n- Doorlopend (foto)\n\nomdat er ook een versie was voor video. Maar het gaat hier niet om de opname of foto, maar om de FOCUS, die doorlopend is.\n\nDus misschien is het beter om het woord \"continu\" te gebruiken",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_903c0231",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Continue foto?",
+      "parentUuid": "1a4dcd0f_50c19a2d",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_30496ed1",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_10e232d6",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0e6dee6",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_50467ac0",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_b0e6dee6",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_70d136fb",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
@@ -217,6 +433,24 @@
       "writtenOn": "2013-10-28T02:35:57Z",
       "side": 1,
       "message": "in 10.1 haden we \"foto\u0027s\"",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_f011c6b0",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-28T04:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4dcd0f_70d136fb",
       "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
