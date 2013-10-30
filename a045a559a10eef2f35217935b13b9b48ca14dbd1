@@ -603,6 +603,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_9d1df611",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-10-30T23:48:10Z",
+      "side": 1,
+      "message": "Het is dus om de sluitertijd te verlagen, wanneer je te veel met je handen beweegt.\n\n- Auto-stabilisatie?",
+      "parentUuid": "1a4dcd0f_0460b734",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0e6dee6",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
