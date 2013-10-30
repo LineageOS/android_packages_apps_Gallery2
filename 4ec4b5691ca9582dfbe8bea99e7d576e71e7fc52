@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_3a55c8c5",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-10-30T00:08:48Z",
+      "side": 1,
+      "message": "Laut Duden ist Portrait die empfohlene Schreibweise.",
+      "parentUuid": "1a4dcd0f_5ab6943e",
+      "revId": "4ec4b5691ca9582dfbe8bea99e7d576e71e7fc52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_fa81a04e",
         "filename": "res/values-de/cm_strings.xml",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-29T22:07:10Z",
       "side": 1,
       "message": "Hmm, Beauty \u003d Schoenheit ist etwas zu googlish uebersetzt. :-D",
+      "revId": "4ec4b5691ca9582dfbe8bea99e7d576e71e7fc52",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_fa5d20ed",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-10-30T00:08:48Z",
+      "side": 1,
+      "message": "Ja ist mir schon klar, dass das ziemlich seltsam ist, aber mir ist nichts besseres eingefallen.",
+      "parentUuid": "1a4dcd0f_fa81a04e",
       "revId": "4ec4b5691ca9582dfbe8bea99e7d576e71e7fc52",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
