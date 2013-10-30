@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4dcd0f_fa49a08f",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "????? AOSP ????? “_____ ???”",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_1a4fac93",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "??? MP4",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_ba11d85f",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "WVGA ?????",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_7a5ef046",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "??",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_9a5bbc54",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "“??”???????",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_ba3a38e6",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "????\n\n?????????????????????????????????????...",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_da3f04d5",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "????",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_7a2590c0",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "??",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_9a22dcb8",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "???",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_5a2c54ab",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "“??”????",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_fa176052",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "??",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_1a1d6c73",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "??",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4dcd0f_da48648a",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3589
+      },
+      "writtenOn": "2013-10-30T14:14:05Z",
+      "side": 1,
+      "message": "“_ ?” ??????",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
