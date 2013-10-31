@@ -173,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_7d6d8a31",
+        "filename": "res/values-zh-rCN/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7762
+      },
+      "writtenOn": "2013-10-31T03:57:14Z",
+      "side": 1,
+      "message": "???????",
+      "parentUuid": "1a4dcd0f_9a22dcb8",
+      "revId": "16167c1e89be33c2d7536c7d4b8d386fcdaf68cf",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_5a2c54ab",
         "filename": "res/values-zh-rCN/cm_strings.xml",
         "patchSetId": 2
