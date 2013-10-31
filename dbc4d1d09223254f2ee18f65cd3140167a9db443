@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4dcd0f_1d6806f5",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-10-31T08:15:49Z",
+      "side": 1,
+      "message": "Hat jemand für diesen String eine bessere Übersetzung parat?",
+      "revId": "dbc4d1d09223254f2ee18f65cd3140167a9db443",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
