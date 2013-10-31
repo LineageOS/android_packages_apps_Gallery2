@@ -621,6 +621,24 @@
     },
     {
       "key": {
+        "uuid": "1a4dcd0f_3de5c2a7",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7630
+      },
+      "writtenOn": "2013-10-31T04:55:42Z",
+      "side": 1,
+      "message": "Klinkt goed! Geeft functioneel aan wat er gebeurd en je hoeft geen wiki te raadplegen over HJR :-)",
+      "parentUuid": "1a4dcd0f_9d1df611",
+      "revId": "a045a559a10eef2f35217935b13b9b48ca14dbd1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_b0e6dee6",
         "filename": "res/values-nl/cm_strings.xml",
         "patchSetId": 2
