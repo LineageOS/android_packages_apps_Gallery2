@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fa1b9901_80935aa3",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-11-05T02:25:08Z",
+      "side": 1,
+      "message": "??????? ???????? ????, ??? ??? ???????. ???????? ?? ????????.",
+      "parentUuid": "fa1b9901_60af26e4",
+      "revId": "1334bdaece701f42c277c99a87f53834f50e25da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1b9901_dd493f90",
         "filename": "res/values-ru/cm_strings.xml",
         "patchSetId": 1
@@ -175,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "fa1b9901_20904e95",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-11-05T02:25:08Z",
+      "side": 1,
+      "message": "??????? ??????. ? ?? ?????, ??? ???? ????? ????????????.",
+      "parentUuid": "fa1b9901_a07bfe7a",
+      "revId": "1334bdaece701f42c277c99a87f53834f50e25da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1b9901_00874a62",
         "filename": "res/values-ru/cm_strings.xml",
         "patchSetId": 1
@@ -186,6 +222,24 @@
       "writtenOn": "2013-11-05T02:21:31Z",
       "side": 1,
       "message": "\"??. ???. ??????? ????\"",
+      "revId": "1334bdaece701f42c277c99a87f53834f50e25da",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_408d427a",
+        "filename": "res/values-ru/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5574
+      },
+      "writtenOn": "2013-11-05T02:25:08Z",
+      "side": 1,
+      "message": "???.",
+      "parentUuid": "fa1b9901_00874a62",
       "revId": "1334bdaece701f42c277c99a87f53834f50e25da",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
