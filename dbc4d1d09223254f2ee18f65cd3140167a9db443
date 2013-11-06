@@ -16,6 +16,24 @@
       "revId": "dbc4d1d09223254f2ee18f65cd3140167a9db443",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_2ee59fa7",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 4884
+      },
+      "writtenOn": "2013-11-06T11:33:32Z",
+      "side": 1,
+      "message": "Ich würde es dabei belassen, da mir auch nichts besseres einfällt...",
+      "parentUuid": "1a4dcd0f_1d6806f5",
+      "revId": "dbc4d1d09223254f2ee18f65cd3140167a9db443",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
