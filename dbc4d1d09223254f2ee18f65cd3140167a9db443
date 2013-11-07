@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa1b9901_a934494a",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-11-07T06:35:31Z",
+      "side": 1,
+      "message": "Porträt\n\n(siehe http://www.duden.de/rechtschreibung/Portrait -\u003e Bedeutung)",
+      "revId": "dbc4d1d09223254f2ee18f65cd3140167a9db443",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4dcd0f_1d6806f5",
         "filename": "res/values-de/cm_strings.xml",
         "patchSetId": 2
@@ -31,6 +48,23 @@
       "side": 1,
       "message": "Ich würde es dabei belassen, da mir auch nichts besseres einfällt...",
       "parentUuid": "1a4dcd0f_1d6806f5",
+      "revId": "dbc4d1d09223254f2ee18f65cd3140167a9db443",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_0930d555",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2013-11-07T06:35:31Z",
+      "side": 1,
+      "message": "Fokussierdauer",
       "revId": "dbc4d1d09223254f2ee18f65cd3140167a9db443",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
