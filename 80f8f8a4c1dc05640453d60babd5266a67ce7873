@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1b9901_97ff1b34",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2013-11-09T11:07:21Z",
+      "side": 1,
+      "message": "Der Beauty-Mode ist wohl ein Modus, welcher Hautunreinheiten, Pickel unsw. entfernt.",
+      "revId": "80f8f8a4c1dc05640453d60babd5266a67ce7873",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
