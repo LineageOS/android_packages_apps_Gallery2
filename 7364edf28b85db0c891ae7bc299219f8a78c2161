@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1b9901_d5258b5c",
+        "filename": "res/values-sk/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2013-11-10T13:22:29Z",
+      "side": 1,
+      "message": "unneeded string, causes aapt build warnings",
+      "revId": "7364edf28b85db0c891ae7bc299219f8a78c2161",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
