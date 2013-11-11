@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1b9901_eb5c6eef",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 308
+      },
+      "writtenOn": "2013-11-11T23:48:14Z",
+      "side": 1,
+      "message": "Soliarizacija",
+      "revId": "b9e1dd178eb8c74ed8b64bc49b749c12f425c010",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_8b72927b",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 308
+      },
+      "writtenOn": "2013-11-11T23:48:14Z",
+      "side": 1,
+      "message": "Posterizacija",
+      "revId": "b9e1dd178eb8c74ed8b64bc49b749c12f425c010",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_ab6f5691",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 308
+      },
+      "writtenOn": "2013-11-11T23:48:14Z",
+      "side": 1,
+      "message": "atspalvis",
+      "revId": "b9e1dd178eb8c74ed8b64bc49b749c12f425c010",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_4b6c7a9c",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 308
+      },
+      "writtenOn": "2013-11-11T23:48:14Z",
+      "side": 1,
+      "message": "Fokusavimo",
+      "revId": "b9e1dd178eb8c74ed8b64bc49b749c12f425c010",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1b9901_6b693e8b",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 308
+      },
+      "writtenOn": "2013-11-11T23:48:14Z",
+      "side": 1,
+      "message": "I think this should be something about \"raudon? aki? efekto naikinimas\"",
+      "revId": "b9e1dd178eb8c74ed8b64bc49b749c12f425c010",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
