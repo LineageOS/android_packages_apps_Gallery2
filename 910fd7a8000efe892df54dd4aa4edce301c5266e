@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa1b9901_885295dc",
+        "filename": "res/values-da/cm_strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 3386
+      },
+      "writtenOn": "2013-11-12T23:41:54Z",
+      "side": 1,
+      "message": "Translation missing: \"Uendelig\"",
+      "revId": "910fd7a8000efe892df54dd4aa4edce301c5266e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
