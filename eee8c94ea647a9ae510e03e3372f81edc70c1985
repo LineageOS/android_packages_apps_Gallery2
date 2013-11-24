@@ -1,0 +1,361 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a26ad4f_d35ff473",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "Neteisingas pažodinis vertimas. Pasi?lymas? Aišku susitvarkyt. Ar ne lietuvi? mokykloje mokeisi? ?ia net sunkiai suprantama prasm? šio vertimo...",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_f364704a",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "nuo kada lietuvi? kalboje atsirado \"q\" raid??",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_93597c91",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "prajuokinai :)))) gal susipažink su fotografijos subtilyb?mis prieš versdamas tokius reikalus? :) Gali prad?ti nuo štatyvo savokos, šioje vietoje jo dalyvavymas beveik b?tinas, nebent pad?si ir atremsi kur ;)",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_b35ef874",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "pažvengiau, bet teb?nie :)",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_53544453",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Greitas (nepertraukiamas) fotografavimas\"",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_73514062",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "?sp?dingas lietuviškas vertimas",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_134eccc1",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "..matinis\"",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_334bc8b2",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "nu jei tikrai taip ver?iasi tai OK.",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_d3c61416",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Iškodavimo kokyb?\" \" Puikus\"?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_f3cb101d",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Iškodavimo kokyb?\" \" Aukštas\"?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_93d09ccb",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Iškodavimo kokyb?\" \" Vidutinis\"?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_b3d598ba",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Iškodavimo kokyb?\" \" Žemas\"?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_53dbe4ed",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Joks\", \"N?ra\".",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_73d860f0",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "skyryba",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_13e56ca7",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "lietuvi? kalboje \"q\" raid?? tikrai lietuvi? mokykloje mokeisi?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_33e2e8a0",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "\"Vandens ženklai\" kaip dar kitaip vadinasi?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_73ff0035",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "?ia teisingiau b?t? \"Ilgas išlaikymas\" arba \"ilgo išlaikymo režimas\". Tokio termino kaip \"L?tas fotografavimas\" neegzistuoja fotografijos pasaulyje. Jei nori apie tai padiskutuoti, visada prašom. Šioje srityje aš pasikaust?s.",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_f3f2306f",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "..matinis\"",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_93e73cac",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "..sekund?\" -\u003e .. sekund?s\", kitaip sakant \"pus? sekund?s\"",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_33f9884e",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "nes?mon?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_d394d4e9",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-24T10:27:02Z",
+      "side": 1,
+      "message": "gal teisingiau \"Spalvinti\"?",
+      "revId": "eee8c94ea647a9ae510e03e3372f81edc70c1985",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
