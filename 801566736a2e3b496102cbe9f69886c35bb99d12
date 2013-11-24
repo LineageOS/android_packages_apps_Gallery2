@@ -16,6 +16,24 @@
       "revId": "801566736a2e3b496102cbe9f69886c35bb99d12",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_731dc00e",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 7630
+      },
+      "writtenOn": "2013-11-24T05:10:04Z",
+      "side": 1,
+      "message": "Je zou nog \u0027automatische scene detectie\u0027 kunnen overwegen, maar dat zal wel te lang zijn :-)\nIk vind het prima zo.",
+      "parentUuid": "1a26ad4f_b35cb8ee",
+      "revId": "801566736a2e3b496102cbe9f69886c35bb99d12",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
