@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a26ad4f_b35cb8ee",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2013-11-24T04:02:56Z",
+      "side": 1,
+      "message": "Engels: SMART SCENE\n\n\"SLIMME SCENE\" vind ik nergens naar klinken. De optie is ASD \u003d Automatic Scene Detection, dus vond ik \"AUTO-SCENE\" wel te begrijpen voor een leek....",
+      "revId": "801566736a2e3b496102cbe9f69886c35bb99d12",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
