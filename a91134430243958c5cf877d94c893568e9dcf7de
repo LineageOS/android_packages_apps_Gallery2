@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a26ad4f_d6628216",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-11-25T04:46:42Z",
+      "side": 1,
+      "message": "Missing \u003c/string\u003e",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a26ad4f_369c1669",
         "filename": "res/values-lt/cm_strings.xml",
         "patchSetId": 11
