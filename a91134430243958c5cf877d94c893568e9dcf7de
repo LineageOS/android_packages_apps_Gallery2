@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a26ad4f_369c1669",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "HFR - High Frame Rate. Tai nieko bendro neturi su dažniu.\nAklas google translate? v?l?",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_16c47a3e",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "\"Foninis apšvietimas\"",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_16db1a1d",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "Patalpa",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_36d8961d",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "Tamsi patalpa",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_f608de93",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "tikrai ne. Nuotrauka padaryta naudojant ilg? išlaikym?. tai ji nei stabili, nei pastovi.",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_56f8b27c",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "Super naktis",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_16f23a9b",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "Nepertraukiamas fotografavimas/Kadr? serija. Pirmas teisingesnis, antras trumpesnis ir gal net aiškesnis.",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_d62a82e7",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "pametei \"Auto...",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_b6390644",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "HJR is Google\u0027s \"Hand Jitter Reduction.\" It\u0027s pretty simple: it\u0027s an auto-ISO mode that puts its priority on faster shutter speed rather than lower ISO.\nJei lietuviškai, tai lietuviškai ;)",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_563f5225",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "Negatyvas",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a26ad4f_d61122b1",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 7905
+      },
+      "writtenOn": "2013-11-25T03:42:38Z",
+      "side": 1,
+      "message": "Greita kadr? serija",
+      "revId": "a91134430243958c5cf877d94c893568e9dcf7de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
