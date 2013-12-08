@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa80f949_c3f626d7",
+        "filename": "res/values-pl/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5637
+      },
+      "writtenOn": "2013-12-08T13:46:23Z",
+      "side": 1,
+      "message": "something like \"Zmierzch, bez statywu\" will sound better",
+      "revId": "c8c6907abb0ed7e347c5c2e4984365300533ccd2",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
