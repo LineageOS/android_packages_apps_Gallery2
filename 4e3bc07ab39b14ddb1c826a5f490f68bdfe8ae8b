@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a740942_2eb6073e",
+        "filename": "src/com/android/camera/CameraManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2013-12-13T10:19:21Z",
+      "side": 1,
+      "message": "Probably don\u0027t need this here in the final version.",
+      "revId": "4e3bc07ab39b14ddb1c826a5f490f68bdfe8ae8b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
