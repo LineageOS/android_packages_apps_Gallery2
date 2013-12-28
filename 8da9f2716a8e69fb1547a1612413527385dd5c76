@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a68dd71_33f193ce",
+        "filename": "res/values-lt/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-12-28T12:02:22Z",
+      "side": 1,
+      "message": "space before semicolon?",
+      "revId": "8da9f2716a8e69fb1547a1612413527385dd5c76",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
