@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a68dd71_3ae72042",
+        "filename": "res/values-pt-rBR/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2013-12-30T11:16:24Z",
+      "side": 1,
+      "message": "Too long resource line",
+      "revId": "e90a25c498bb0fd6e2a56a87c5721d597ea23950",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
