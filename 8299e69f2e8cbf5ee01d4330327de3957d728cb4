@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5de9d1_6c5baf55",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-01-02T13:43:00Z",
+      "side": 1,
+      "message": "Kleinigheidje: \u0027utf\u0027",
+      "revId": "8299e69f2e8cbf5ee01d4330327de3957d728cb4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_0c58fb55",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-01-02T13:43:00Z",
+      "side": 1,
+      "message": "Ik zou hier maar 2014 The CyanogenMod Project van maken",
+      "revId": "8299e69f2e8cbf5ee01d4330327de3957d728cb4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a5de9d1_2c55b71c",
+        "filename": "res/values-nl/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 2597
+      },
+      "writtenOn": "2014-01-02T13:43:00Z",
+      "side": 1,
+      "message": "\"\u003e te veel..",
+      "revId": "8299e69f2e8cbf5ee01d4330327de3957d728cb4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
