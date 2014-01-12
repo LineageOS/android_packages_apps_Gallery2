@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a5ae5dd_7372a37e",
+        "filename": "res/values-fr/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 2602
+      },
+      "writtenOn": "2014-01-12T08:16:16Z",
+      "side": 1,
+      "message": "Je pense qu\u0027il faut traduire High Frame Rate (fréquence d\u0027images élevée peut-être ?).",
+      "revId": "e7ce03e48887d19af07e4ce5b55a9d6513d3fc1d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
