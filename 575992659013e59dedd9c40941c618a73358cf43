@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fade3982_89319aef",
+        "filename": "res/values-da/cm_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3848
+      },
+      "writtenOn": "2014-02-03T21:54:08Z",
+      "side": 1,
+      "message": "\u003cstring name\u003d\"mute_nosupport\"\u003eKan ikke gøre lydløs: ikke understøttet video\u003c/string\u003e",
+      "revId": "575992659013e59dedd9c40941c618a73358cf43",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
