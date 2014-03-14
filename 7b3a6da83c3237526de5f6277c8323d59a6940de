@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae84128_af72907a",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4977
+      },
+      "writtenOn": "2014-03-14T02:12:21Z",
+      "side": 1,
+      "message": "abgeschnitten, abgetrennt, geschnitten. \u0027beschnitten\u0027 klingt seltsam.",
+      "revId": "7b3a6da83c3237526de5f6277c8323d59a6940de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
