@@ -34,6 +34,24 @@
       "revId": "7b3a6da83c3237526de5f6277c8323d59a6940de",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae84128_3e722ce6",
+        "filename": "res/values-de/cm_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1053
+      },
+      "writtenOn": "2014-03-18T07:11:14Z",
+      "side": 1,
+      "message": "Ich bin mir nicht sicher welche Funktionalität wir hier beschreiben, aber wenn es darum geht vorne oder hinten einen Teil zu entfernen, denke ich ist \"beschnitten\" passend. Selbiges gilt auch wenn es darum geht das Format der Videodatei zu ändern.\n\nScheiden beschreibt meiner Meinung nach eher das Trennen und Zusammenfügen einzelner Videoabschnitte.",
+      "parentUuid": "bae84128_af72907a",
+      "revId": "7b3a6da83c3237526de5f6277c8323d59a6940de",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
