@@ -16,6 +16,24 @@
       "revId": "24e21ea9d5d954203548730ff2b9b37476575a25",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_e7031a0c",
+        "filename": "gallerycommon/src/com/android/gallery3d/exif/ExifTag.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 8616
+      },
+      "writtenOn": "2014-08-26T06:40:42Z",
+      "side": 1,
+      "message": "But that would be bad because in that case the last char would be missing. The old code did not cover the overwriting case at all and just appended. So I\u0027d say use this method, it won\u0027t do any harm, will it? Better than cutting model numbers...",
+      "parentUuid": "7a1b2928_6451c862",
+      "revId": "24e21ea9d5d954203548730ff2b9b37476575a25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
