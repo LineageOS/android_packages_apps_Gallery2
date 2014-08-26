@@ -34,6 +34,24 @@
       "revId": "24e21ea9d5d954203548730ff2b9b37476575a25",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_272512ab",
+        "filename": "gallerycommon/src/com/android/gallery3d/exif/ExifTag.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-08-26T06:53:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure, I don\u0027t understand that code well enough yet. I am pretty sure that the check against mComponentCountActual serves a purpose, and the current patch seems just hacking around it ... IMHO we need to properly understand that code first.",
+      "parentUuid": "7a1b2928_e7031a0c",
+      "revId": "24e21ea9d5d954203548730ff2b9b37476575a25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
