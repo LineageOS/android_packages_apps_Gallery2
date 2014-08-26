@@ -52,6 +52,24 @@
       "revId": "24e21ea9d5d954203548730ff2b9b37476575a25",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_27cfd2b1",
+        "filename": "gallerycommon/src/com/android/gallery3d/exif/ExifTag.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 8616
+      },
+      "writtenOn": "2014-08-26T08:06:00Z",
+      "side": 1,
+      "message": "I think it is ok. In the parser there is one place where they even disable checking the length at all. So we might also do that here.",
+      "parentUuid": "7a1b2928_272512ab",
+      "revId": "24e21ea9d5d954203548730ff2b9b37476575a25",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
