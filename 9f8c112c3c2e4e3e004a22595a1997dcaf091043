@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_e8990d70",
+        "filename": "res/values/codeaurora_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-09-11T07:35:15Z",
+      "side": 1,
+      "message": "- Plug in headset to use this feature",
+      "revId": "9f8c112c3c2e4e3e004a22595a1997dcaf091043",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_6877bd3a",
+        "filename": "res/values/codeaurora_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-09-11T07:35:15Z",
+      "side": 1,
+      "message": "I would just say \n\n- Bookmark added",
+      "revId": "9f8c112c3c2e4e3e004a22595a1997dcaf091043",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_48748134",
+        "filename": "res/values/codeaurora_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-09-11T07:35:15Z",
+      "side": 1,
+      "message": "- Can not mute: video not supported",
+      "revId": "9f8c112c3c2e4e3e004a22595a1997dcaf091043",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_c89ed155",
+        "filename": "res/values/codeaurora_strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-09-11T07:35:15Z",
+      "side": 1,
+      "message": "headset? see line 43",
+      "revId": "9f8c112c3c2e4e3e004a22595a1997dcaf091043",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
