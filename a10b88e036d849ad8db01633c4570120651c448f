@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_639a3316",
+        "filename": "res/values/codeaurora_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 2881
+      },
+      "writtenOn": "2014-09-18T07:17:38Z",
+      "side": 1,
+      "message": "extra space is still there....",
+      "revId": "a10b88e036d849ad8db01633c4570120651c448f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
