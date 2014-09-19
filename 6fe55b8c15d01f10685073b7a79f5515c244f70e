@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_befe2469",
+        "filename": "src/com/android/gallery3d/ui/DialogDetailsView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-19T01:39:35Z",
+      "side": 1,
+      "message": "You want to use the ExifInterface constant here, don\u0027t you? ;)",
+      "revId": "6fe55b8c15d01f10685073b7a79f5515c244f70e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
