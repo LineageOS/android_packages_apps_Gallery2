@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_1e747833",
+        "filename": "res/values/cm_strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-19T00:21:18Z",
+      "side": 1,
+      "message": "Record time",
+      "revId": "530fadaa8dda2b02c2cedece42101b34d4c48163",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_9e9ec854",
+        "filename": "src/com/android/gallery3d/ui/DialogDetailsView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-19T00:21:18Z",
+      "side": 1,
+      "message": "Maybe leverage the format defined in ExifInterface.java? I noticed HH vs. kk as a difference.",
+      "revId": "530fadaa8dda2b02c2cedece42101b34d4c48163",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b2928_fea37c9c",
+        "filename": "src/com/android/gallery3d/ui/DialogDetailsView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2014-09-19T00:21:18Z",
+      "side": 1,
+      "message": "Nit: This would maybe look a little better when written as:\n\ntry {\n    Date date \u003d format.parse(exifDt);\n    return DateFormat.getDateTimeInstance().format(date);\n} catch (ParseException e) {\n    return exifDt;\n}",
+      "revId": "530fadaa8dda2b02c2cedece42101b34d4c48163",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
