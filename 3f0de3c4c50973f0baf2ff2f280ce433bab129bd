@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_eb45a617",
+        "filename": "res/drawable/ic_edit.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1448
+      },
+      "writtenOn": "2014-12-16T12:00:18Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "3f0de3c4c50973f0baf2ff2f280ce433bab129bd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
