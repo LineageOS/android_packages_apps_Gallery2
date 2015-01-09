@@ -153,5 +153,4 @@
     <string name="filtershow_exif_f_stop" msgid="6081797865604483139">"光圈孔徑"</string>
     <string name="filtershow_exif_exposure_time" msgid="4099067062781294115">"曝光時間"</string>
     <string name="filtershow_exif_copyright" msgid="8801875918803737581">"版權"</string>
-    <string name="trueportrait_intro">此功能用於增強人像照。你可以將效果應用於照片背景，例如“模糊”和“速寫”。你也可以將兩張照片拼在一起來給你的人像照創建一個有趣的背景。</string>
 </resources>
