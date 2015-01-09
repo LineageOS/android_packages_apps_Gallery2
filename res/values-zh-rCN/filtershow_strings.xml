@@ -154,89 +154,8 @@
     <string name="filtershow_exif_f_stop" msgid="6081797865604483139">"光圈值"</string>
     <string name="filtershow_exif_exposure_time" msgid="4099067062781294115">"曝光时间"</string>
     <string name="filtershow_exif_copyright" msgid="8801875918803737581">"版权"</string>
-    <!--  Label for the "refocus" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="focus">对焦</string>
-    <!--  Label for the "fusion" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="fusion">背景切换</string>
-    <!--  Label for the "sketch" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="sketch">素描</string>
-    <!--  Label for the "halo" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="halo">光环</string>
-    <!--  Label for the "zoom" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="zoom">缩放模糊</string>
-    <!--  Label for the "motion" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="motion">动态模糊</string>
-    <!--  Label for the "bw" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="bw">去色</string>
-    <!--  Label for the "blackboard" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="blackboard">黑板</string>
-    <!--  Label for the "whiteboard" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="whiteboard">白板</string>
-    <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="posterize">色块化</string>
-    <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="dc_negative">负片</string>
 
-    <string name="blur">"虚化"</string>
-    <string name="motion_blur">"动态虚化"</string>
     <string name="color">滤镜</string>
     <string name="frames">相框</string>
 
-    <string name="dual_camera_effects">双摄像头效果</string>
-    <string name="dual_camera_effects_intro">此功能可将双摄像头效果应用到背景上，如动态模糊和素描。.你可以将两张照片合并到一起来创建一个有趣的效果。这个功能在你的摄像头和照片的主体有一个短距离时效果最好。</string>
-    <string name="trueportrait_intro">此功能用于增强人像照。你可以将效果应用于照片背景，例如“模糊”和“速写”。你也可以将两张照片拼在一起来给你的人像照创建一个有趣的背景。</string>
-    <string name="watermark_location">位置</string>
-    <string name="watermark_time">时间</string>
-    <string name="watermark_weather">天气</string>
-    <string name="watermark_emotions">表情</string>
-    <string name="watermark_food">食物</string>
-    <!--  True Effect button -->
-    <string name="truescanner">镜头校正</string>
-    <string name="trueScanner">"镜头校正"</string>
-    <string name="truescanner_normal">"标准"</string>
-    <string name="truescanner_white">"白板"</string>
-    <string name="truescanner_remove_glare">"去除眩光"</string>
-    <!--  HazeBuster button -->
-    <string name="hazebuster_acts">去雾霾</string>
-    <string name="hazeBuster">"去雾霾"</string>
-    <!--  SeeStraight button -->
-    <string name="seestraight_acts">正视</string>
-    <string name="seeStraight">"正视"</string>
-    <string name="trueportrait">真实肖像</string>
-    <string name="fusion_pick_point">"选择段"</string>
-    <string name="fusion_pick_underlay">"选择垫层"</string>
-    <string name="dualcam_no_segment_toast">"在此处未找到任何段"</string>
-    <string name="dualcam_filter_not_supported">"此图片不支持双相机滤镜"</string>
-    <string name="trueportrait_no_face">"无法对此照片应用真实肖像效果。未检测到面部。"</string>
-    <string name="trueportrait_edit_intro">"使用润色工具，可以编辑前景和背景。您可以使用手指在任何遗漏的前景或背景区域中涂色。"</string>
-    <string name="trueportrait_edit_foreground_toast">"您可以使用手指在任何遗漏的前景区域中涂色。"</string>
-    <string name="trueportrait_edit_background_toast">"您可以使用手指在任何遗漏的背景区域中涂色。"</string>
-    <string name="trueportrait_edit_help">"要进行缩放，请使用双指张合触摸手势。您还可以使用双指拖动图像以重新定位图像。这样可以更轻松地修复任何问题区域。"</string>
-    <string name="trueportrait_fusion_intro">"您的前景肖像可以复制并粘贴到图库中的任意照片上。您可以尝试使用不同的背景照片创建有趣的新肖像照片。"</string>
-    <string name="dualcam_fusion_intro">"可以将您的前景复制并粘贴到图库中的任意照片上。\n\n您可以尝试使用不同的背景照片创建有趣的新肖像照片。"</string>
-    <string name="trueportrait_touch_up">"润色"</string>
-    <string name="fusion_pick_background">"选择背景照片"</string>
-    <string name="ok_continue">"继续"</string>
-    <string name="beautify">"美化"</string>
-    <string name="dualcam">"双摄像头"</string>
-    <string name="foreground">"前景"</string>
-    <string name="background">"背景"</string>
-    <string name="brush_size">"画笔大小"</string>
-    <string name="filtershow_dialog_title">"自定义滤镜"</string>
-    <string name="filtershow_dialog_content">"您可以创建照片滤镜。\n\n选择一张您喜欢的照片，然后将其用作其他照片的滤镜"</string>
-    <string name="filtershow_dialog_original_photo">"原始照片"</string>
-    <string name="filtershow_dialog_apply_photo">"要应用的色彩"</string>
-    <string name="filtershow_dialog_checkbox">"不再显示"</string>
-    <string name="filtershow_preset_title">"自定义"</string>
-    <string name="filtershow_preset_rename">"重命名"</string>
-    <string name="delete_before_exit">"删除滤镜?"</string>
-    <string name="rename_before_exit">"重命名滤镜"</string>
-    <string name="filter_name">"滤镜名称"</string>
-    <string name="filter_name_notification">"名称不能为空。"</string>
-    <string name="filter_name_duplicate">"该名称已存在，请输入其他名称。"</string>
-
-    <!--Filtershow Toast -->
-    <string name="no_faces_found">未能检测到人脸</string>
-    <string name="image_size_too_small">图片尺寸太小</string>
-    <string name="not_support_gif">不支持gif格式的图片，请重新选择</string>
 </resources>

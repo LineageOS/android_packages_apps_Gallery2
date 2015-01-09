@@ -48,9 +48,7 @@
     <string name="set_image" msgid="2331476809308010401">"将照片设置为"</string>
     <string name="set_wallpaper" msgid="8491121226190175017">"设置壁纸"</string>
     <string name="wallpaper" msgid="140165383777262070">"正在设置壁纸..."</string>
-    <string name="share_dialogue_title">分享选择</string>
     <string name="camera_setas_wallpaper" msgid="797463183863414289">"壁纸"</string>
-    <string name="cannot_share_items">分享选择条目最大值为300</string>
     <string name="delete" msgid="2839695998251824487">"删除"</string>
   <plurals name="delete_selection">
     <item quantity="one" msgid="6453379735401083732">"要删除所选内容吗？"</item>
@@ -71,19 +69,19 @@
     <string name="close" msgid="5585646033158453043">"关闭"</string>
     <string name="switch_to_camera" msgid="7280111806675169992">"切换到相机"</string>
   <plurals name="number_of_items_selected">
-    <item quantity="zero" msgid="2142579311530586258">"已选中 %1$d 项"</item>
-    <item quantity="one" msgid="2478365152745637768">"已选中 %1$d 项"</item>
-    <item quantity="other" msgid="754722656147810487">"已选中 %1$d 项"</item>
+    <item quantity="zero" msgid="2142579311530586258">"选中了 %1$d 项"</item>
+    <item quantity="one" msgid="2478365152745637768">"选中了 %1$d 项"</item>
+    <item quantity="other" msgid="754722656147810487">"选中了 %1$d 项"</item>
   </plurals>
   <plurals name="number_of_albums_selected">
-    <item quantity="zero" msgid="749292746814788132">"已选中 %1$d 本相册"</item>
-    <item quantity="one" msgid="6184377003099987825">"已选中 %1$d 本相册"</item>
-    <item quantity="other" msgid="53105607141906130">"已选中 %1$d 本相册"</item>
+    <item quantity="zero" msgid="749292746814788132">"选中了 %1$d 本相册"</item>
+    <item quantity="one" msgid="6184377003099987825">"选中了 %1$d 本相册"</item>
+    <item quantity="other" msgid="53105607141906130">"选中了 %1$d 本相册"</item>
   </plurals>
   <plurals name="number_of_groups_selected">
-    <item quantity="zero" msgid="3466388370310869238">"已选中 %1$d 组"</item>
-    <item quantity="one" msgid="5030162638216034260">"已选中 %1$d 组"</item>
-    <item quantity="other" msgid="3512041363942842738">"已选中 %1$d 组"</item>
+    <item quantity="zero" msgid="3466388370310869238">"选中了 %1$d 组"</item>
+    <item quantity="one" msgid="5030162638216034260">"选中了 %1$d 组"</item>
+    <item quantity="other" msgid="3512041363942842738">"选中了 %1$d 组"</item>
   </plurals>
     <string name="show_on_map" msgid="6157544221201750980">"显示在地图上"</string>
     <string name="rotate_left" msgid="5888273317282539839">"向左旋转"</string>
@@ -96,7 +94,6 @@
     <string name="crop_action" msgid="3427470284074377001">"剪裁"</string>
     <string name="trim_action" msgid="703098114452883524">"修剪"</string>
     <string name="mute_action" msgid="5296241754753306251">"静音"</string>
-    <string name="mute_nosupport">静音失败 : 视频格式不支持</string>
     <string name="set_as" msgid="3636764710790507868">"设置为"</string>
     <string name="video_mute_err" msgid="6392457611270600908">"无法将视频静音。"</string>
     <string name="video_err" msgid="7003051631792271009">"无法播放视频。"</string>
@@ -108,7 +105,6 @@
     <string name="group_by_size" msgid="153766174950394155">"按大小分组"</string>
     <string name="untagged" msgid="7281481064509590402">"未加标签"</string>
     <string name="no_location" msgid="4043624857489331676">"无位置信息"</string>
-    <string name="no_faces">"无人物信息"</string>
     <string name="no_connectivity" msgid="7164037617297293668">"出现网络问题，系统无法识别某些位置。"</string>
     <string name="sync_album_error" msgid="1020688062900977530">"无法下载此相册中的照片，请稍后重试。"</string>
     <string name="show_images_only" msgid="7263218480867672653">"仅限图片"</string>
@@ -215,12 +211,6 @@
     <item quantity="one" msgid="4340019444460561648">"已扫描%1$d项"</item>
     <item quantity="other" msgid="3138021473860555499">"已扫描%1$d项"</item>
   </plurals>
-    <!-- String indicating how many media items from the camera have been selected -->
-    <plurals name="ingest_number_of_items_selected">
-        <item quantity="zero">"已选择 %1$d 个项目"</item>
-        <item quantity="one">"已选择 %1$d 个项目"</item>
-        <item quantity="other">"已选择 %1$d 个项目"</item>
-    </plurals>
     <string name="ingest_sorting" msgid="1028652103472581918">"正在排序..."</string>
     <string name="ingest_scanning_done" msgid="8911916277034483430">"扫描已完成"</string>
     <string name="ingest_importing" msgid="7456633398378527611">"正在导入..."</string>
@@ -436,9 +426,6 @@
     <string name="remember_location_prompt" msgid="724592331305808098">"为您的照片和视频标明拍摄地点。\n\n其他应用在查看您保存的照片和视频时将可以使用这些信息。"</string>
     <string name="remember_location_no" msgid="7541394381714894896">"不用了"</string>
     <string name="remember_location_yes" msgid="862884269285964180">"好"</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-    <string name="map_activity_not_found_err">没有地图应用显示地理位置信息</string>
-
     <string name="menu_camera" msgid="3476709832879398998">"相机"</string>
     <string name="menu_search" msgid="7580008232297437190">"搜索"</string>
     <string name="tab_photos" msgid="9110813680630313419">"照片"</string>
@@ -449,46 +436,4 @@
     <item quantity="one" msgid="6949174783125614798">"%1$d张照片"</item>
     <item quantity="other" msgid="3813306834113858135">"%1$d张照片"</item>
   </plurals>
-
-    <plurals name="number_of_videos">
-      <item quantity="one">%1$d个视频</item>
-      <item quantity="other">%1$d个视频</item>
-    </plurals>
-
-    <string name="bass_boost_strength" msgid="882301530007752270">"低音增强"</string>
-    <string name="virtualizer_strength" msgid="5035111173763913313">"环绕声"</string>
-    <string name="audio_effects" msgid="612896145300512593">"音效"</string>
-    <string name="headset_plug">“插入耳机体验音效”</string>
-    <string name="text_makeup_whiten">美白</string>
-    <string name="text_makeup_Soften">磨皮</string>
-    <string name="text_makeup_trimface">瘦脸</string>
-    <string name="text_makeup_bigeye">大眼</string>
-    <!-- The tips of trimming video -->
-    <string name="fail_trim">抱歉，不能修剪该视频文件</string>
-    <string name="can_not_trim">只有MP4和3GP文件才能修剪</string>
-
-    <string name="no_permission_for_drm">"抱歉，无法共享 DRM 文件"</string>
-    <string name="drm_license_info">"DRM 许可证信息"</string>
-    <string name="mimetype_not_supported">"无法播放此文件"</string>
-    <string name="action_consumes_rights">"播放此媒体需要使用相应权限"</string>
-    <string-array name="title_array_nav_items">
-        <item>@string/timeline_title</item>
-        <item>@string/albums_title</item>
-        <item>@string/videos_title</item>
-    </string-array>
-
-    <!-- Timeline screen title -->
-    <string name="timeline_title">时间轴</string>
-    <!-- Videos screen title -->
-    <string name="videos_title">视频</string>
-    <string name="action_viewtype_list">列表视图</string>
-    <string name="tvEmptyAlbum">没有图片</string>
-    <string name="tvEmptyVideos">没有视频</string>
-
-    <string name="trim_video_exit_title">放弃更改？</string>
-    <string name="trim_video_exit_msg">是否放弃对当前影片的操作？</string>
-    <string name="trim_video_exit_discard">放弃</string>
-    <string name="do_not_show_again">不再显示</string>
-    <string name="seestraight_input_image_is_small">图片太小无法处理</string>
-    <string name="seestraight_process_fail">无法处理图片</string>
 </resources>
