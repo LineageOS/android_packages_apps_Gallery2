@@ -16,6 +16,24 @@
       "revId": "2920748e20b1b273041586d4786574000b6f863e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bacf61ea_4eaae0d5",
+        "filename": "src/org/codeaurora/gallery3d/ext/MovieListLoader.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 11035
+      },
+      "writtenOn": "2015-02-19T14:35:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bacf61ea_cb9c026c",
+      "revId": "2920748e20b1b273041586d4786574000b6f863e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
