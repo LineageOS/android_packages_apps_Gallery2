@@ -28,7 +28,7 @@ LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
 
-LOCAL_SDK_VERSION := current
+#LOCAL_SDK_VERSION := current
 
 LOCAL_JNI_SHARED_LIBRARIES := libjni_eglfence libjni_filtershow_filters libjni_jpegstream
 
