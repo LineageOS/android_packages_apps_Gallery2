@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a89bdaa_a81aba6c",
+        "filename": "src/com/android/gallery3d/app/AbstractGalleryActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-05-09T09:41:27Z",
+      "side": 1,
+      "message": "Stray tab",
+      "revId": "8babc1d8a317331fd10eab2b577c4f644d5c914d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a89bdaa_c8253eaf",
+        "filename": "src/com/android/gallery3d/app/StorageChangeReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-05-09T09:41:27Z",
+      "side": 1,
+      "message": "Stray tab",
+      "revId": "8babc1d8a317331fd10eab2b577c4f644d5c914d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
