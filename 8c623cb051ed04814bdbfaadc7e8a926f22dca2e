@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8ec9b2_0520f19a",
+        "filename": "src/com/android/gallery3d/app/MovieActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-06-01T06:06:42Z",
+      "side": 1,
+      "message": "tabs, also, there should be a better way of determining whether BT is available, rather than reading the system property.",
+      "revId": "8c623cb051ed04814bdbfaadc7e8a926f22dca2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8ec9b2_453af9ce",
+        "filename": "src/com/android/gallery3d/app/MovieActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-06-01T06:06:42Z",
+      "side": 1,
+      "message": "Consider just returning if it\u0027s isBtDisabled.",
+      "revId": "8c623cb051ed04814bdbfaadc7e8a926f22dca2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8ec9b2_6537f5e3",
+        "filename": "src/com/android/gallery3d/app/MovieActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-06-01T06:06:42Z",
+      "side": 1,
+      "message": "Check using adapter.isEnabled() here instead.",
+      "revId": "8c623cb051ed04814bdbfaadc7e8a926f22dca2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8ec9b2_2525edaa",
+        "filename": "src/com/android/gallery3d/app/MovieActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2015-06-01T06:06:42Z",
+      "side": 1,
+      "message": "tabs",
+      "revId": "8c623cb051ed04814bdbfaadc7e8a926f22dca2e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
