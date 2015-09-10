@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f1d235d_c787acd7",
+        "filename": "res/xml/file_paths.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9199
+      },
+      "writtenOn": "2015-09-10T06:37:45Z",
+      "side": 1,
+      "message": "copyright header",
+      "revId": "a604bc80c225fbdddd94a0599300778f8d858a2d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
