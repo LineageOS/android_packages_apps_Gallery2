@@ -70,12 +70,8 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     public long reload() {
         synchronized(this){
             if (mBaseSet.reload() > mDataVersion) {
-                if (mFirstReloadDone) {
-                    updateClustersContents();
-                } else {
-                    updateClusters();
-                    mFirstReloadDone = true;
-                }
+                updateClusters();
+                mFirstReloadDone = true;
                 mDataVersion = nextVersionNumber();
             }
             if (mKind == ClusterSource.CLUSTER_ALBUMSET_TIME) {
@@ -112,7 +108,6 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
                 clustering = new SizeClustering(context);
                 break;
         }
-
         clustering.run(mBaseSet);
         int n = clustering.getNumberOfClusters();
         DataManager dataManager = mApplication.getDataManager();
