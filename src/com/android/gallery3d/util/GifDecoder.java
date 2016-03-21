@@ -7,7 +7,7 @@ import android.util.Log;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-public class GifDecoder extends Thread {
+public class GifDecoder {
 
     public static final int STATUS_PARSING = 0;
     public static final int STATUS_FORMAT_ERROR = 1;
@@ -71,14 +71,16 @@ public class GifDecoder extends Thread {
     public GifDecoder(byte[] data, GifAction act) {
         mGifData = data;
         mGifAction = act;
+        startDecoder();
     }
 
     public GifDecoder(InputStream is, GifAction act) {
         mIS = is;
         mGifAction = act;
+        startDecoder();
     }
 
-    public void run() {
+    public void startDecoder() {
         if (mIS != null) {
             readStream();
         } else if (mGifData != null) {
@@ -295,10 +297,14 @@ public class GifDecoder extends Thread {
                 readContents();
                 if (mFrameCount < 0) {
                     mStatus = STATUS_FORMAT_ERROR;
-                    mGifAction.parseOk(false, -1);
+                    if (mGifAction != null) {
+                        mGifAction.parseOk(false, -1);
+                    }
                 } else {
                     mStatus = STATUS_FINISH;
-                    mGifAction.parseOk(true, -1);
+                    if (mGifAction != null) {
+                        mGifAction.parseOk(true, -1);
+                    }
                 }
             }
             try {
@@ -308,7 +314,9 @@ public class GifDecoder extends Thread {
             }
         } else {
             mStatus = STATUS_OPEN_ERROR;
-            mGifAction.parseOk(false, -1);
+            if (mGifAction != null) {
+                mGifAction.parseOk(false, -1);
+            }
         }
         return mStatus;
     }
@@ -624,7 +632,9 @@ public class GifDecoder extends Thread {
                 mAct[mTransIndex] = save;
             }
             resetFrame();
-            mGifAction.parseOk(true, mFrameCount);
+            if (mGifAction != null) {
+                mGifAction.parseOk(true, mFrameCount);
+            }
         } catch (OutOfMemoryError e) {
             Log.e("GifDecoder", ">>> log  : " + e.toString());
             e.printStackTrace();
