@@ -32,6 +32,7 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     private static final String TAG = "ClusterAlbumSet";
     private GalleryApp mApplication;
     private MediaSet mBaseSet;
+    private long mBaseDataVersion;
     private int mKind;
     private ArrayList<ClusterAlbum> mAlbums = new ArrayList<ClusterAlbum>();
     private boolean mFirstReloadDone;
@@ -47,6 +48,7 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
         super(path, INVALID_DATA_VERSION);
         mApplication = application;
         mBaseSet = baseSet;
+        mBaseDataVersion = mBaseSet.getDataVersion();
         mKind = kind;
         baseSet.addContentListener(this);
     }
@@ -68,11 +70,12 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
 
     @Override
     public long reload() {
-        synchronized(this){
-            if (mBaseSet.reload() > mDataVersion) {
+        synchronized (this) {
+            if (mBaseSet.reload() > mBaseDataVersion) {
                 updateClusters();
                 mFirstReloadDone = true;
                 mDataVersion = nextVersionNumber();
+                mBaseDataVersion = mDataVersion;
             }
             if (mKind == ClusterSource.CLUSTER_ALBUMSET_TIME) {
                 calculateTotalItemsCount();
