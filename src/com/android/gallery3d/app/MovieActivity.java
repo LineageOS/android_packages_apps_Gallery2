@@ -61,6 +61,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ShareActionProvider;
 import android.widget.ToggleButton;
 import android.widget.Toast;
@@ -100,6 +101,7 @@ public class MovieActivity extends Activity {
     private MoviePlayer mPlayer;
     private boolean     mFinishOnCompletion;
     private Uri         mUri;
+    private ImageView   mLiveImg;
 
     private static final short BASSBOOST_MAX_STRENGTH   = 1000;
     private static final short VIRTUALIZER_MAX_STRENGTH = 1000;
@@ -179,6 +181,8 @@ public class MovieActivity extends Activity {
         View rootView = findViewById(R.id.movie_view_root);
 
         setSystemUiVisibility(rootView);
+
+        mLiveImg = (ImageView) findViewById(R.id.img_live);
 
         Intent intent = getIntent();
 
@@ -262,6 +266,10 @@ public class MovieActivity extends Activity {
         }
     }
 
+    public ImageView getLiveImage() {
+        return mLiveImg;
+    }
+
     private void initializeActionBar(Intent intent) {
         mUri = intent.getData();
         final ActionBar actionBar = getActionBar();
@@ -322,6 +330,7 @@ public class MovieActivity extends Activity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.movie, menu);
         MenuItem shareMenu = menu.findItem(R.id.action_share);
+        shareMenu.setVisible(false);
         ShareActionProvider provider = (ShareActionProvider) shareMenu.getActionProvider();
         mShareProvider = provider;
         if (mShareProvider != null) {

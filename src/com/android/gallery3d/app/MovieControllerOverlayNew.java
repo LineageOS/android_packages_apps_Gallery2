@@ -33,11 +33,27 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.android.gallery3d.R;
+
+import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
 
 public class MovieControllerOverlayNew extends MovieControllerOverlay {
 
+    private boolean mIsLive = false;
+    private ImageView mLiveImage;
+    private ImageView mStopBtn;
+
+    private int mLiveMargin;
+
     public MovieControllerOverlayNew(Context context) {
         super(context);
+        mLiveImage = ((MovieActivity) mContext).getLiveImage();
+        mStopBtn = mControllerRewindAndForwardExt.getStopBtn();
+        mLiveMargin = context.getResources().getDimensionPixelSize(
+                R.dimen.livestream_icon_padding);
+        addView(mStopBtn);
     }
 
     @Override
@@ -64,7 +80,7 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         Rect insets = mWindowInsets;
         int pr = insets.right;
         int pb = insets.bottom;
-
+        int pt = insets.top;
         int h = bottom - top;
         int w = right - left;
 
@@ -72,11 +88,50 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
 
         mBackground.layout(0, y - mTimeBar.getPreferredHeight(), w, y);
         mScreenModeExt.onLayout(w, pr, y);
+        if (mIsLive && mState != State.ENDED) {
+            if (mLiveImage != null) {
+                mLiveImage.setVisibility(View.VISIBLE);
+                mLiveImage.layout(width - mLiveImage.getWidth() - mLiveMargin, pt + mLiveMargin,
+                        width - mLiveMargin, pt + mLiveMargin + mLiveImage.getHeight());
+            }
+            if (isPrepared()) {
+                mPlayPauseReplayView.setVisibility(View.GONE);
 
-        mPlayPauseReplayView.layout(0, y - mTimeBar.getPreferredHeight(),
-                mTimeBar.getPreferredHeight(), y);
+                if (mStopBtn != null) {
+                    mStopBtn.setVisibility(View.VISIBLE);
+                    mStopBtn.layout(0, y - mTimeBar.getPreferredHeight(),
+                            mTimeBar.getPreferredHeight(), y);
+                }
+            }
+        } else {
+            mPlayPauseReplayView.setVisibility(View.VISIBLE);
+            if (mLiveImage != null) {
+                mLiveImage.setVisibility(View.GONE);
+            }
+            if (mStopBtn != null) {
+                mStopBtn.setVisibility(View.GONE);
+            }
+            mPlayPauseReplayView.layout(0, y - mTimeBar.getPreferredHeight(),
+                    mTimeBar.getPreferredHeight(), y);
+        }
         mTimeBar.layout(mTimeBar.getPreferredHeight(), y - mTimeBar.getPreferredHeight(),
                 width - mScreenModeExt.getAddedRightPadding(), y);
+    }
+
+    public void setLive(boolean live) {
+        mIsLive = live;
+        mTimeBar.setClickable(!mIsLive);
+    }
+
+    public IControllerRewindAndForward getControllerRewindAndForwardExt() {
+        return mControllerRewindAndForwardExt;
+    }
+
+    private boolean isPrepared() {
+        if ((mState == State.PLAYING || mState == State.BUFFERING || mState == State.LOADING)) {
+            return true;
+        }
+        return false;
     }
 
 }

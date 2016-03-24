@@ -19,9 +19,17 @@
         android:background="@android:color/black"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <org.codeaurora.gallery3d.video.CodeauroraVideoView android:id="@+id/surface_view"
             android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/img_live"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_media_live"/>
 </RelativeLayout>

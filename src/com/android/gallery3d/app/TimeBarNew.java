@@ -30,6 +30,7 @@
 package com.android.gallery3d.app;
 
 import android.content.Context;
+import android.view.MotionEvent;
 
 import com.android.gallery3d.R;
 
@@ -40,6 +41,7 @@ public class TimeBarNew extends TimeBar {
     public TimeBarNew(Context context, Listener listener) {
         super(context, listener);
         mTimeBarHeight = context.getResources().getDimensionPixelSize(R.dimen.timebar_height);
+        this.setClickable(true);
     }
 
     @Override
@@ -50,5 +52,13 @@ public class TimeBarNew extends TimeBar {
     @Override
     public void setInfo(String info) {
         // Do nothing here, show nothing in timeBar's info.
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (!isClickable()) {
+            return true;
+        }
+        return super.dispatchTouchEvent(event);
     }
 }

@@ -66,7 +66,7 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
 
     private ScreenModeManager mScreenModeManager;
     protected ScreenModeExt mScreenModeExt = new ScreenModeExt();
-    private ControllerRewindAndForwardExt mControllerRewindAndForwardExt = new ControllerRewindAndForwardExt();
+    protected ControllerRewindAndForwardExt mControllerRewindAndForwardExt = new ControllerRewindAndForwardExt();
     private OverlayExtension mOverlayExt = new OverlayExtension();
     private boolean hidden;
 
@@ -781,6 +781,10 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
         private static final int BUTTON_PADDING = 40;
         private int mTimeBarHeight = 0;
 
+        public ImageView getStopBtn() {
+            return mStop;
+        }
+
         void init(Context context) {
             Log.v(TAG, "ControllerRewindAndForwardExt init");
             mTimeBarHeight = mTimeBar.getPreferredHeight();
@@ -815,7 +819,6 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
             LinearLayout.LayoutParams stopLayoutParam = new LinearLayout.LayoutParams(
                     mTimeBarHeight, mTimeBarHeight);
             stopLayoutParam.setMargins(BUTTON_PADDING, 0, BUTTON_PADDING, 0);
-            mContollerButtons.addView(mStop, stopLayoutParam);
 
             mForward = new ImageView(context);
             mForward.setImageResource(R.drawable.icn_media_forward);

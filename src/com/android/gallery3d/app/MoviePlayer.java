@@ -121,7 +121,7 @@ public class MoviePlayer implements
     private final Bookmarker mBookmarker;
     private final Handler mHandler = new Handler();
     private final AudioBecomingNoisyReceiver mAudioBecomingNoisyReceiver;
-    private final MovieControllerOverlay mController;
+    private final MovieControllerOverlayNew mController;
 
     private long mResumeableTime = Long.MAX_VALUE;
     private int mVideoPosition = 0;
@@ -617,6 +617,7 @@ public class MoviePlayer implements
         if ("http".equalsIgnoreCase(scheme) || "rtsp".equalsIgnoreCase(scheme)
                 || "https".equalsIgnoreCase(scheme)) {
             mController.showLoading();
+            mController.setLive(isLiveStreaming());
             mOverlayExt.setPlayingInfo(isLiveStreaming());
             mHandler.removeCallbacks(mPlayingChecker);
             mHandler.postDelayed(mPlayingChecker, 250);
