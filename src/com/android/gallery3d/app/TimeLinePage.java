@@ -459,9 +459,6 @@ public class TimeLinePage extends ActivityState implements
         super.onPause();
         mIsActive = false;
 
-        if (mSelectionManager.inSelectionMode()) {
-            mSelectionManager.leaveSelectionMode();
-        }
         mAlbumView.setSlotFilter(null);
         mActionModeHandler.pause();
         mAlbumDataAdapter.pause();
