@@ -34,6 +34,7 @@ import com.android.gallery3d.data.MediaSet;
 import com.android.gallery3d.data.Path;
 import com.android.gallery3d.data.SnailItem;
 import com.android.gallery3d.glrenderer.TiledTexture;
+import com.android.gallery3d.ui.BitmapScreenNail;
 import com.android.gallery3d.ui.PhotoView;
 import com.android.gallery3d.ui.ScreenNail;
 import com.android.gallery3d.ui.SynchronizedHandler;
@@ -41,11 +42,14 @@ import com.android.gallery3d.ui.TileImageViewAdapter;
 import com.android.gallery3d.ui.TiledScreenNail;
 import com.android.gallery3d.util.Future;
 import com.android.gallery3d.util.FutureListener;
+import com.android.gallery3d.util.GifDecoder;
+import com.android.gallery3d.util.GifRequest;
 import com.android.gallery3d.util.MediaSetUtils;
 import com.android.gallery3d.util.ThreadPool;
 import com.android.gallery3d.util.ThreadPool.Job;
 import com.android.gallery3d.util.ThreadPool.JobContext;
 
+import java.lang.Exception;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -71,6 +75,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
 
     private static final int BIT_SCREEN_NAIL = 1;
     private static final int BIT_FULL_IMAGE = 2;
+    private static final int BIT_GIF_ANIMATION = 3;
 
     private static final long NOTIFY_DIRTY_WAIT_TIME = 10;
     // sImageFetchSeq is the fetching sequence for images.
@@ -91,7 +96,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
 
     static {
         int k = 0;
-        sImageFetchSeq = new ImageFetch[1 + (IMAGE_CACHE_SIZE - 1) * 2 + 3];
+        sImageFetchSeq = new ImageFetch[1 + (IMAGE_CACHE_SIZE - 1) * 2 + 4];
         sImageFetchSeq[k++] = new ImageFetch(0, BIT_SCREEN_NAIL);
 
         for (int i = 1; i < IMAGE_CACHE_SIZE; ++i) {
@@ -102,6 +107,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         sImageFetchSeq[k++] = new ImageFetch(0, BIT_FULL_IMAGE);
         sImageFetchSeq[k++] = new ImageFetch(1, BIT_FULL_IMAGE);
         sImageFetchSeq[k++] = new ImageFetch(-1, BIT_FULL_IMAGE);
+        sImageFetchSeq[k++] = new ImageFetch(0, BIT_GIF_ANIMATION);
     }
 
     private final TileImageViewAdapter mTileProvider = new TileImageViewAdapter();
@@ -160,6 +166,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     private boolean mNeedFullImage;
     private int mFocusHintDirection = FOCUS_HINT_NEXT;
     private Path mFocusHintPath = null;
+    private AbstractGalleryActivity mActivity;
 
     // If Bundle is from widget, it's true, otherwise it's false.
     private boolean mIsFromWidget = false;
@@ -181,6 +188,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     public PhotoDataAdapter(AbstractGalleryActivity activity, PhotoView view,
             MediaSet mediaSet, Path itemPath, int indexHint, int cameraIndex,
             boolean isPanorama, boolean isStaticCamera) {
+        mActivity = activity;
         mSource = Utils.checkNotNull(mediaSet);
         mPhotoView = Utils.checkNotNull(view);
         mItemPath = Utils.checkNotNull(itemPath);
@@ -470,6 +478,8 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         ImageEntry entry = mImageCache.get(item.getPath());
         if (entry == null) return null;
 
+        ScreenNail targetScreenNail = getTargetScreenNail(entry);
+        if (targetScreenNail != null) return targetScreenNail;
         // Create a default ScreenNail if the real one is not available yet,
         // except for camera that a black screen is better than a gray tile.
         if (entry.screenNail == null && !isCamera(offset)) {
@@ -631,7 +641,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     }
 
     private void updateTileProvider(ImageEntry entry) {
-        ScreenNail screenNail = entry.screenNail;
+        ScreenNail screenNail = getTargetScreenNail(entry);
         BitmapRegionDecoder fullImage = entry.fullImage;
         if (screenNail != null) {
             if (fullImage != null) {
@@ -646,6 +656,15 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         } else {
             mTileProvider.clear();
         }
+    }
+
+
+    private ScreenNail getTargetScreenNail(ImageEntry entry) {
+        if (null == entry) return null;
+        if (null != entry.currentGifFrame){
+            return entry.currentGifFrame;
+        }
+        return entry.screenNail;
     }
 
     private void updateSlidingWindow() {
@@ -733,6 +752,12 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                 entry.fullImageTask = null;
                 entry.requestedFullImage = MediaObject.INVALID_DATA_VERSION;
             }
+
+            if (entry.gifDecoderTask != null && entry.gifDecoderTask != task) {
+                entry.gifDecoderTask.cancel();
+                entry.gifDecoderTask = null;
+                entry.requestedGif = MediaObject.INVALID_DATA_VERSION;
+            }
         }
     }
 
@@ -779,6 +804,23 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                 return null;
             }
             return mItem.requestLargeImage().run(jc);
+        }
+    }
+
+
+    private class GifDecoderJob implements Job<GifDecoder> {
+        private MediaItem mItem;
+
+        public GifDecoderJob(MediaItem item) {
+            mItem = item;
+        }
+
+        @Override
+        public GifDecoder run(JobContext jc) {
+            if (isTemporaryItem(mItem)) {
+                return null;
+            }
+            return new GifRequest(mItem.getContentUri(), mActivity).run(jc);
         }
     }
 
@@ -830,6 +872,9 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         } else if (which == BIT_FULL_IMAGE && entry.fullImageTask != null
                 && entry.requestedFullImage == version) {
             return entry.fullImageTask;
+        } else if (which == BIT_GIF_ANIMATION && entry.gifDecoderTask != null
+                && entry.requestedGif == version) {
+            return entry.gifDecoderTask;
         }
 
         if (which == BIT_SCREEN_NAIL && entry.requestedScreenNail != version) {
@@ -850,6 +895,18 @@ public class PhotoDataAdapter implements PhotoPage.Model {
             // request full image
             return entry.fullImageTask;
         }
+
+        if (which == BIT_GIF_ANIMATION
+                && (entry.requestedGif != version)
+                && isGif(0)) {
+            entry.requestedGif = version;
+            entry.gifDecoderTask = mThreadPool.submit(
+                    new GifDecoderJob(item),
+                    new GifDecoderListener(item.getPath()));
+            // request gif decoder
+            return entry.gifDecoderTask;
+        }
+
         return null;
     }
 
@@ -877,6 +934,20 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                         TiledScreenNail s = (TiledScreenNail) entry.screenNail;
                         s.updatePlaceholderSize(
                                 item.getWidth(), item.getHeight());
+                    }
+                }
+
+                if (Math.abs(i - mCurrentIndex) > 0) {
+                    if (entry.gifDecoderTask != null) {
+                        entry.gifDecoderTask.cancel();
+                        entry.gifDecoderTask = null;
+                    }
+                    entry.gifDecoder = null;
+                    entry.requestedGif = MediaItem.INVALID_DATA_VERSION;
+                    if (null != entry.currentGifFrame) {
+                        //recycle cached gif frame
+                        entry.currentGifFrame.recycle();
+                        entry.currentGifFrame = null;
                     }
                 }
             } else {
@@ -940,6 +1011,158 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         }
     }
 
+    private class GifDecoderListener
+            implements Runnable, FutureListener<GifDecoder> {
+        private final Path mPath;
+        private Future<GifDecoder> mFuture;
+
+        public GifDecoderListener(Path path) {
+            mPath = path;
+        }
+
+        @Override
+        public void onFutureDone(Future<GifDecoder> future) {
+            mFuture = future;
+            if (null != mFuture.get()) {
+                mMainHandler.sendMessage(
+                        mMainHandler.obtainMessage(MSG_RUN_OBJECT, this));
+            }
+        }
+
+        @Override
+        public void run() {
+            updateGifDecoder(mPath, mFuture);
+        }
+    }
+
+    private void updateGifDecoder(Path path,
+                                  Future<GifDecoder> future) {
+
+        ImageEntry entry = mImageCache.get(path);
+        if (entry == null || entry.gifDecoderTask != future) {
+            return;
+        }
+
+        entry.gifDecoderTask = null;
+        entry.gifDecoder = future.get();
+
+        playGif(path);
+        updateImageRequests();
+
+    }
+
+    private void playGif(Path path) {
+        ImageEntry entry = mImageCache.get(path);
+        if (null == entry) return;
+        if (entry.gifDecoder != null && entry.gifDecoder.getFrameCount() != 0) {
+            if (entry.gifDecoder.mWidth <= 0 || entry.gifDecoder.mHeight <= 0) {
+                return;
+            }
+
+            int currentIndex = mCurrentIndex;
+            if (path == getPath(currentIndex)) {
+                GifEntry gifEntry = new GifEntry();
+                gifEntry.gifDecoder = entry.gifDecoder;
+                gifEntry.animatedIndex = currentIndex;
+                gifEntry.entry = entry;
+
+                mMainHandler.sendMessage(
+                        mMainHandler.obtainMessage(MSG_RUN_OBJECT,
+                                new GifRunnable(path, gifEntry)));
+            }
+        }
+    }
+
+    private class GifRunnable implements Runnable {
+
+        private GifEntry mGifEntry;
+        private Path mPath;
+
+        private void free() {
+            if (null != mGifEntry.gifDecoder) {
+                mGifEntry.gifDecoder.free();
+                mGifEntry.gifDecoder = null;
+            }
+
+            if (null != mGifEntry) {
+                mGifEntry = null;
+            }
+        }
+
+        public GifRunnable(Path path, GifEntry gifEntry) {
+            mPath = path;
+            mGifEntry = gifEntry;
+            if (null == mGifEntry || null == mGifEntry.gifDecoder) {
+                free();
+                return;
+            }
+            boolean imageChanged = mGifEntry.animatedIndex != mCurrentIndex;
+            MediaItem item = getMediaItem(0);
+            Path currentPath = (item != null ? item.getPath() : null);
+            imageChanged |= path != currentPath;
+            if (imageChanged) {
+                free();
+                return;
+            }
+            mGifEntry.currentFrame = 0;
+            mGifEntry.totalFrameCount = mGifEntry.gifDecoder.getFrameCount();
+            if (mGifEntry.totalFrameCount <= 1) {
+                free();
+                return;
+            }
+        }
+
+        @Override
+        public void run() {
+            if (!mIsActive) {
+                free();
+                return;
+            }
+
+            if (null == mGifEntry || null == mGifEntry.gifDecoder) {
+                free();
+                return;
+            }
+
+            boolean imageChanged = mGifEntry.animatedIndex != mCurrentIndex;
+            MediaItem item = getMediaItem(0);
+            Path currentPath = (item != null ? item.getPath() : null);
+            imageChanged |= mPath != currentPath;
+            if (imageChanged) {
+                free();
+                return;
+            }
+
+            Bitmap frameBitmap = mGifEntry.gifDecoder.getFrameImage(mGifEntry.currentFrame);
+            if (null == frameBitmap) {
+                free();
+                return;
+            }
+            long delay = (long) mGifEntry.gifDecoder.getDelay(mGifEntry.currentFrame);
+            mGifEntry.currentFrame = (mGifEntry.currentFrame + 1) % mGifEntry.totalFrameCount;
+
+            ScreenNail gifFrame = new BitmapScreenNail(frameBitmap);
+            if (mGifEntry.entry.currentGifFrame != null) {
+                mGifEntry.entry.currentGifFrame.recycle();
+                mGifEntry.entry.currentGifFrame = null;
+            }
+            mGifEntry.entry.currentGifFrame = gifFrame;
+            updateTileProvider(mGifEntry.entry);
+            mPhotoView.notifyImageChange(0);
+            mMainHandler.sendMessageDelayed(
+                    mMainHandler.obtainMessage(MSG_RUN_OBJECT, this), delay);
+        }
+    }
+
+
+    private static class GifEntry {
+        public ImageEntry entry;
+        public GifDecoder gifDecoder;
+        public int animatedIndex;
+        public int currentFrame;
+        public int totalFrameCount;
+    }
+
     private static class ImageEntry {
         public BitmapRegionDecoder fullImage;
         public ScreenNail screenNail;
@@ -948,6 +1171,11 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         public long requestedScreenNail = MediaObject.INVALID_DATA_VERSION;
         public long requestedFullImage = MediaObject.INVALID_DATA_VERSION;
         public boolean failToLoad = false;
+
+        public GifDecoder gifDecoder;
+        public Future<GifDecoder> gifDecoderTask;
+        public ScreenNail currentGifFrame;
+        public long requestedGif = MediaObject.INVALID_DATA_VERSION;
     }
 
     private class SourceListener implements ContentListener {
