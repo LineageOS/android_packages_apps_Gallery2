@@ -90,7 +90,7 @@
     <!--  Text for the history panel title [CHAR LIMIT=50] -->
     <string name="history">History</string>
     <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
-    <string name="reset">Reset</string>
+    <string name="reset">Back to original</string>
     <!--  Text for the original image[CHAR LIMIT=20]-->
     <string name="history_original">@string/original</string>
 

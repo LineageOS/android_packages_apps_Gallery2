@@ -1355,10 +1355,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         //MenuItem undoItem = mMenu.findItem(R.id.undoButton);
         //MenuItem redoItem = mMenu.findItem(R.id.redoButton);
         MenuItem resetItem = mMenu.findItem(R.id.resetHistoryButton);
-        MenuItem printItem = mMenu.findItem(R.id.printButton);
-        if (!PrintHelper.systemSupportsPrint()) {
-            printItem.setVisible(false);
-        }
         //mMasterImage.getHistory().setMenuItems(undoItem, redoItem, resetItem);
     }
 
@@ -1419,14 +1415,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             }
             case R.id.manageUserPresets: {
                 manageUserPresets();
-                return true;
-            }
-            case R.id.showInfoPanel: {
-                toggleInformationPanel();
-                return true;
-            }
-            case R.id.printButton: {
-                print();
                 return true;
             }
         }
