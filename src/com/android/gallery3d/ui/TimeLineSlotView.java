@@ -107,9 +107,10 @@ public class TimeLineSlotView extends GLView {
             return;
         }
         Rect rect = mLayout.getSlotRect(index);
-        int position = (rect.top + rect.bottom - getHeight()) / 2;
-
-        setScrollPosition(position);
+        if (rect != null) {
+            int position = (rect.top + rect.bottom - getHeight()) / 2;
+            setScrollPosition(position);
+        }
     }
 
     public void makeSlotVisible(int index) {
