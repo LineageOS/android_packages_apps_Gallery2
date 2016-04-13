@@ -20,10 +20,8 @@ import android.content.Context;
 import android.net.Uri;
 
 import com.android.gallery3d.app.GalleryApp;
-import com.android.gallery3d.util.GalleryUtils;
-import com.android.gallery3d.common.Utils;
+
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -32,10 +30,8 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     private static final String TAG = "ClusterAlbumSet";
     private GalleryApp mApplication;
     private MediaSet mBaseSet;
-    private long mBaseDataVersion;
     private int mKind;
     private ArrayList<ClusterAlbum> mAlbums = new ArrayList<ClusterAlbum>();
-    private boolean mFirstReloadDone;
 
     private int mTotalMediaItemCount;
     /** mTotalSelectableMediaItemCount is the count of items
@@ -48,7 +44,6 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
         super(path, INVALID_DATA_VERSION);
         mApplication = application;
         mBaseSet = baseSet;
-        mBaseDataVersion = mBaseSet.getDataVersion();
         mKind = kind;
         baseSet.addContentListener(this);
     }
@@ -71,11 +66,10 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     @Override
     public long reload() {
         synchronized (this) {
-            if (mBaseSet.reload() > mBaseDataVersion) {
+            long version = mBaseSet.reload();
+            if (version > mDataVersion && !mBaseSet.isLoading()) {
                 updateClusters();
-                mFirstReloadDone = true;
                 mDataVersion = nextVersionNumber();
-                mBaseDataVersion = mDataVersion;
             }
             if (mKind == ClusterSource.CLUSTER_ALBUMSET_TIME) {
                 calculateTotalItemsCount();
@@ -231,7 +225,7 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
       int s;
       int lCount;
       if (mAlbums.size() > 0 && mAlbumItemCountList.size() > 0) {
-          s = mAlbums.get(startAlbum).getTotalMediaItemCount() - 
+          s = mAlbums.get(startAlbum).getTotalMediaItemCount() -
                   (mAlbumItemCountList.get(startAlbum) - start);
           for (int i = startAlbum; i <= endAlbum && i < mAlbums.size(); ++i) {
               int albumCount = mAlbums.get(i).getTotalMediaItemCount();
