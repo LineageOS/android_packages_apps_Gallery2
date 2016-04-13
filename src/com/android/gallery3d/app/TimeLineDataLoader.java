@@ -38,14 +38,14 @@ import java.util.concurrent.FutureTask;
 public class TimeLineDataLoader {
     @SuppressWarnings("unused")
     private static final String TAG = "TimeLineDataLoader";
-    private static final int DATA_CACHE_SIZE = 1000;
+    private static final int DATA_CACHE_SIZE = 96 * 2;
 
     private static final int MSG_LOAD_START = 1;
     private static final int MSG_LOAD_FINISH = 2;
     private static final int MSG_RUN_OBJECT = 3;
 
     private static final int MIN_LOAD_COUNT = 32;
-    private static final int MAX_LOAD_COUNT = 64;
+    private static final int MAX_LOAD_COUNT = 96 * 2;
 
     private final MediaItem[] mData;
     private final long[] mItemVersion;
@@ -119,8 +119,7 @@ public class TimeLineDataLoader {
     }
 
     public MediaSet getMediaSet(int index) {
-        MediaSet mediaSet = ((ClusterAlbumSet)mSource).getAlbumFromindex(index);
-        return mediaSet;
+        return ((ClusterAlbumSet) mSource).getAlbumFromindex(index);
     }
 
     public MediaItem get(int index) {
@@ -131,11 +130,7 @@ public class TimeLineDataLoader {
     }
 
     public int getTimeLineTitlesCount() {
-        return ((ClusterAlbumSet) mSource).getSubMediaSetCount();
-    }
-
-    public int getActiveStart() {
-        return mActiveStart;
+        return mSource.getSubMediaSetCount();
     }
 
     public boolean isActive(int index) {
@@ -376,11 +371,7 @@ public class TimeLineDataLoader {
                     if (mActive && !mDirty && updateComplete
                             && version != MediaObject.INVALID_DATA_VERSION) {
                         updateLoading(false);
-                        if (mFailedVersion != MediaObject.INVALID_DATA_VERSION) {
-                        }
                         Utils.waitWithoutInterrupt(this);
-                        if (mActive && (mFailedVersion != MediaObject.INVALID_DATA_VERSION)) {
-                        }
                         continue;
                     }
                     mDirty = false;
@@ -397,9 +388,10 @@ public class TimeLineDataLoader {
                     info.version = version;
                 }
                 if (info.reloadCount > 0) {
-                    info.items = mSource.getMediaItem(info.reloadStart, info.reloadCount);
+                    int start = Math.max(info.reloadStart, mContentStart);
+                    int end = Math.min(info.reloadStart + info.reloadCount, mContentEnd);
+                    info.items = mSource.getMediaItem(start, end - start);
                 }
-
                 executeAndWait(new UpdateContent(info));
             }
             updateLoading(false);
