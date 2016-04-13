@@ -85,6 +85,12 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     }
 
     private void updateClusters() {
+        //save last paths to find the empty albums
+        ArrayList<Path> oldPaths = new ArrayList<Path>();
+        for (ClusterAlbum album : mAlbums) {
+            oldPaths.add(album.getPath());
+        }
+
         mAlbums.clear();
         Clustering clustering;
         Context context = mApplication.getAndroidContext();
@@ -133,6 +139,21 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
             album.setImageItemCount(clustering.getClusterImageCount(i));
             album.setVideoItemCount(clustering.getClusterVideoCount(i));
             mAlbums.add(album);
+
+            int size = oldPaths.size();
+            for (int j = size - 1; j >= 0; j--) {
+                if (oldPaths.get(j) == childPath) {
+                    oldPaths.remove(j);
+                    break;
+                }
+            }
+        }
+        //set the empty path to the albums which don't exist from dataManger
+        for (Path path : oldPaths) {
+            ClusterAlbum album = (ClusterAlbum) dataManager.peekMediaObject(path);
+            if (album != null) {
+                album.setMediaItems(new ArrayList<Path>());
+            }
         }
     }
 
