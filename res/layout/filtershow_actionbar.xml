@@ -14,20 +14,29 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="@dimen/toolbar_height" >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_height"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/filtershow_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cancel"
+        android:layout_gravity="left|center_vertical"
+        android:paddingStart="16dp" />
 
     <TextView
         android:id="@+id/filtershow_done"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:drawablePadding="24dp"
-        android:drawableStart="@drawable/done"
-        android:gravity="center_vertical"
-        android:paddingBottom="15dp"
+        android:layout_height="wrap_content"
+        android:paddingRight="13dp"
+        android:textSize="17sp"
         android:text="@string/save"
-        android:textColor="#ffffff"
-        android:textSize="18sp" />
+        android:layout_gravity="center_vertical|right"
+        android:textColor="#ffffff" />
 
-</LinearLayout>
+</FrameLayout>
