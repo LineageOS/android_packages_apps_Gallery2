@@ -21,17 +21,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
 
 import com.android.gallery3d.R;
+import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.editors.Editor;
 
 public class BasicSlider implements Control {
     private SeekBar mSeekBar;
-    private TextView mFilterValue,mFilterText;
     private ParameterInteger mParameter;
     Editor mEditor;
 
@@ -39,18 +37,38 @@ public class BasicSlider implements Control {
     public void setUp(ViewGroup container, Parameter parameter, Editor editor) {
         container.removeAllViews();
         mEditor = editor;
-        Context context = container.getContext();
+        final Context context = container.getContext();
         mParameter = (ParameterInteger) parameter;
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout lp = (LinearLayout) inflater.inflate(
                 R.layout.filtershow_seekbar, container, true);
-        LinearLayout lpBasicFilterContainer = (LinearLayout) lp.findViewById(R.id.basicFilterContainer);
         mSeekBar = (SeekBar) lp.findViewById(R.id.primarySeekBar);
-        mFilterText = (TextView)lpBasicFilterContainer.findViewById(R.id.tvFilterName);
-        mFilterValue = (TextView)lpBasicFilterContainer.findViewById(R.id.tvFilterValue);
         mSeekBar.setVisibility(View.VISIBLE);
-        mEditor.setBasicFilterUI(mFilterText, mFilterValue);
+        View saveButton = lp.findViewById(R.id.slider_save);
+        if (saveButton != null) {
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FilterShowActivity activity = (FilterShowActivity) context;
+                    mEditor.finalApplyCalled();
+                    activity.backToMain();
+                    activity.setActionBar();
+                }
+            });
+        }
+        View cancelButton = lp.findViewById(R.id.slider_cancel);
+        if (cancelButton != null) {
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FilterShowActivity activity = (FilterShowActivity) context;
+                    activity.cancelCurrentFilter();
+                    activity.backToMain();
+                    activity.setActionBar();
+                }
+            });
+        }
         updateUI();
         mSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 

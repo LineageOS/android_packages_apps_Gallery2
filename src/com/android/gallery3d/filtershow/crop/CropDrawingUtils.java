@@ -16,6 +16,7 @@
 
 package com.android.gallery3d.filtershow.crop;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -25,13 +26,16 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.graphics.drawable.Drawable;
 
+import com.android.gallery3d.R;
+
 public abstract class CropDrawingUtils {
 
-    public static void drawRuleOfThird(Canvas canvas, RectF bounds) {
+    public static void drawRuleOfThird(Canvas canvas, RectF bounds, Context context) {
         Paint p = new Paint();
         p.setStyle(Paint.Style.STROKE);
-        p.setColor(Color.argb(128, 255, 255, 255));
-        p.setStrokeWidth(2);
+        p.setColor(Color.argb(75, 255, 255, 255));
+        p.setStrokeWidth(context.getResources().getDimensionPixelOffset(
+                R.dimen.crop_line_stroke));
         float stepX = bounds.width() / 3.0f;
         float stepY = bounds.height() / 3.0f;
         float x = bounds.left + stepX;
@@ -46,12 +50,40 @@ public abstract class CropDrawingUtils {
         }
     }
 
-    public static void drawCropRect(Canvas canvas, RectF bounds) {
+    public static void drawCropRect(Canvas canvas, RectF bounds, Context context) {
         Paint p = new Paint();
         p.setStyle(Paint.Style.STROKE);
         p.setColor(Color.WHITE);
-        p.setStrokeWidth(3);
+        p.setAlpha(75);
+        p.setStrokeWidth(context.getResources().getDimensionPixelOffset(
+                R.dimen.crop_rect_stroke));
         canvas.drawRect(bounds, p);
+    }
+
+    public static void drawCorner(Canvas canvas, RectF bounds, Context context) {
+        int strokeWidth = context.getResources().getDimensionPixelOffset(
+                R.dimen.crop_rect_stroke);
+        Paint p = new Paint();
+        p.setStyle(Paint.Style.FILL);
+        p.setColor(Color.WHITE);
+        p.setAntiAlias(true);
+        p.setStrokeWidth(strokeWidth);
+        float cornerLength = context.getResources().getDimensionPixelOffset(
+                R.dimen.crop_corner_length);
+        float rectWidth = bounds.right - bounds.left;
+        float rectHeight = bounds.bottom - bounds.top;
+        float x = 0;
+        float y = 0;
+        for (int i = 0; i < 2; i++) {
+            y = i * rectHeight + bounds.top + strokeWidth / 2;
+            canvas.drawLine(bounds.left - strokeWidth / 2, y, cornerLength + bounds.left, y, p);
+            canvas.drawLine(bounds.right - cornerLength, y, bounds.right + strokeWidth / 2, y, p);
+        }
+        for (int j = 0; j < 2; j++) {
+            x = j * rectWidth + bounds.left;
+            canvas.drawLine(x, bounds.top, x, bounds.top + cornerLength, p);
+            canvas.drawLine(x, bounds.bottom - cornerLength, x, bounds.bottom, p);
+        }
     }
 
     public static void drawShade(Canvas canvas, RectF bounds) {

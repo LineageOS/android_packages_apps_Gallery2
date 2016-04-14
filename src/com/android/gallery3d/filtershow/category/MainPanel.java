@@ -228,7 +228,7 @@ public class MainPanel extends Fragment {
         return true;
     }
 
-    private void setCategoryFragment(CategoryPanel category, boolean fromRight) {
+    private void setCategoryFragment(Fragment category, boolean fromRight) {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         FilterShowActivity activity = (FilterShowActivity) getActivity();
         if (fromRight) {
@@ -289,8 +289,7 @@ public class MainPanel extends Fragment {
         }
         boolean fromRight = isRightAnimation(GEOMETRY);
         selection(mCurrentSelected, false);
-        CategoryPanel categoryPanel = new CategoryPanel();
-        categoryPanel.setAdapter(GEOMETRY);
+        GeometryPanel categoryPanel = new GeometryPanel();
         setCategoryFragment(categoryPanel, fromRight);
         mCurrentSelected = GEOMETRY;
         selection(mCurrentSelected, true);

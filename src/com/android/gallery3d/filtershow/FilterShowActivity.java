@@ -86,13 +86,17 @@ import com.android.gallery3d.filtershow.category.Action;
 import com.android.gallery3d.filtershow.category.CategoryAdapter;
 import com.android.gallery3d.filtershow.category.CategorySelected;
 import com.android.gallery3d.filtershow.category.CategoryView;
+import com.android.gallery3d.filtershow.category.EditorCropPanel;
 import com.android.gallery3d.filtershow.category.MainPanel;
+import com.android.gallery3d.filtershow.category.StraightenPanel;
 import com.android.gallery3d.filtershow.category.SwipableView;
 import com.android.gallery3d.filtershow.data.UserPresetsManager;
 import com.android.gallery3d.filtershow.editors.Editor;
+import com.android.gallery3d.filtershow.editors.EditorCrop;
 import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
 import com.android.gallery3d.filtershow.editors.EditorManager;
 import com.android.gallery3d.filtershow.editors.EditorPanel;
+import com.android.gallery3d.filtershow.editors.EditorStraighten;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 import com.android.gallery3d.filtershow.filters.FilterDrawRepresentation;
@@ -332,6 +336,38 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             return;
         }
         final int currentId = currentEditor.getID();
+        if (currentId == EditorCrop.ID) {
+            new Runnable() {
+                @Override
+                public void run() {
+                    EditorCropPanel panel = new EditorCropPanel();
+                    FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
+                    transaction.remove(getSupportFragmentManager().findFragmentByTag(
+                            MainPanel.FRAGMENT_TAG));
+                    transaction.replace(R.id.main_panel_container, panel,
+                            MainPanel.FRAGMENT_TAG);
+                    transaction.commit();
+                }
+            }.run();
+            return;
+        }
+        if (currentId == EditorStraighten.ID) {
+            new Runnable() {
+                @Override
+                public void run() {
+                    StraightenPanel panel = new StraightenPanel();
+                    FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
+                    transaction.remove(getSupportFragmentManager().findFragmentByTag(
+                            MainPanel.FRAGMENT_TAG));
+                    transaction.replace(R.id.main_panel_container, panel,
+                            MainPanel.FRAGMENT_TAG);
+                    transaction.commit();
+                }
+            }.run();
+            return;
+        }
         Runnable showEditor = new Runnable() {
             @Override
             public void run() {

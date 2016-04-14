@@ -124,7 +124,7 @@
     <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
     <string name="aspect9to16_effect">16:9</string>
     <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
-    <string name="aspectNone_effect">None</string>
+    <string name="aspectNone_effect">Free</string>
     <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
     <string name="aspectOriginal_effect">@string/original</string>
     <!-- Label for when the aspect ratio is fixed to a value [CHAR LIMIT=15] -->

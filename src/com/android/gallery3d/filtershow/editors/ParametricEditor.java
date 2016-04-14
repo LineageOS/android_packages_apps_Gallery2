@@ -79,7 +79,7 @@ public class ParametricEditor extends Editor {
         landscapeMap.put(ParameterColor.sParameterType, ColorChooser.class);
 
         portraitMap.put(ParameterInteger.sParameterType, BasicSlider.class);
-        landscapeMap.put(ParameterInteger.sParameterType, TitledSlider.class);
+        landscapeMap.put(ParameterInteger.sParameterType, BasicSlider.class);
         portraitMap.put(ParameterActionAndInt.sParameterType, ActionSlider.class);
         landscapeMap.put(ParameterActionAndInt.sParameterType, ActionSlider.class);
         portraitMap.put(ParameterStyles.sParameterType, StyleChooser.class);

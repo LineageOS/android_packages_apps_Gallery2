@@ -27,7 +27,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/cancel"
         android:layout_gravity="left|center_vertical"
-        android:paddingStart="16dp" />
+        android:paddingStart="6dp" />
 
     <TextView
         android:id="@+id/filtershow_done"
@@ -36,6 +36,7 @@
         android:paddingRight="13dp"
         android:textSize="17sp"
         android:text="@string/save"
+        android:textAllCaps="true"
         android:layout_gravity="center_vertical|right"
         android:textColor="#ffffff" />
 

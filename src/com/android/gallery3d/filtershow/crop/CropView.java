@@ -356,9 +356,10 @@ public class CropView extends View {
             CropDrawingUtils.drawShadows(canvas, p, mScreenCropBounds, mScreenImageBounds);
 
             // Draw crop rect and markers
-            CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds);
+            CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds, getContext());
+            CropDrawingUtils.drawCorner(canvas, mScreenCropBounds, getContext());
             if (!mDoSpot) {
-                CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds);
+                CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds, getContext());
             } else {
                 Paint wpPaint = new Paint();
                 wpPaint.setColor(mWPMarkerColor);
@@ -370,8 +371,6 @@ public class CropView extends View {
                 CropDrawingUtils.drawWallpaperSelectionFrame(canvas, mScreenCropBounds,
                         mSpotX, mSpotY, wpPaint, p);
             }
-            CropDrawingUtils.drawIndicators(canvas, mCropIndicator, mIndicatorSize,
-                    mScreenCropBounds, mCropObj.isFixedAspect(), decode(mCropObj.getSelectState(), mRotation));
         }
 
     }

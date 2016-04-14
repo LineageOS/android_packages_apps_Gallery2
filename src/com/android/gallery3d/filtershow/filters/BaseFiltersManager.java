@@ -388,9 +388,9 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         };
 
         int[] overlayId = {
-                R.drawable.filtershow_button_geometry_crop,
-                R.drawable.filtershow_button_geometry_straighten,
-                R.drawable.filtershow_button_geometry_rotate
+                R.drawable.crop_crop,
+                R.drawable.crop_straighten,
+                R.drawable.crop_rotate
         };
 
         FilterRepresentation[] geometryFilters = {

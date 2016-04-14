@@ -188,6 +188,8 @@ public class ImageCrop extends ImageShow {
             x = y;
             y = tmp;
         }
+        RectF outer = mCropObj.getOuterBounds();
+        mCropObj.resetBoundsTo(outer, outer);
         if (!mCropObj.setInnerAspectRatio(x, y)) {
             Log.w(TAG, "failed to set aspect ratio");
         }
@@ -267,12 +269,17 @@ public class ImageCrop extends ImageShow {
         // If display matrix doesn't exist, create it and its dependencies
         if (mDisplayCropMatrix == null || mDisplayMatrix == null || mDisplayMatrixInverse == null) {
             mCropObj.unsetAspectRatio();
+            Resources res = getContext().getResources();
+            int panelHeight = res.getDimensionPixelOffset(R.dimen.category_panel_height) +
+                    res.getDimensionPixelOffset(R.dimen.category_actionbar_panel_height);
             mDisplayMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
-                    bitmap.getWidth(), bitmap.getHeight(), canvas.getWidth(), canvas.getHeight());
+                    bitmap.getWidth(), bitmap.getHeight(), canvas.getWidth(),
+                    canvas.getHeight() - panelHeight);
             float straighten = mGeometry.straighten;
             mGeometry.straighten = 0;
             mDisplayCropMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
-                    bitmap.getWidth(), bitmap.getHeight(), canvas.getWidth(), canvas.getHeight());
+                    bitmap.getWidth(), bitmap.getHeight(), canvas.getWidth(),
+                    canvas.getHeight() - panelHeight);
             mGeometry.straighten = straighten;
             mDisplayMatrixInverse = new Matrix();
             mDisplayMatrixInverse.reset();
@@ -314,12 +321,10 @@ public class ImageCrop extends ImageShow {
                 bitmap.getHeight());
         if (mDisplayCropMatrix.mapRect(mScreenCropBounds)) {
             // Draw crop rect and markers
-            CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds);
             CropDrawingUtils.drawShade(canvas, mScreenCropBounds);
-            CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds);
-            CropDrawingUtils.drawIndicators(canvas, mCropIndicator, mIndicatorSize,
-                    mScreenCropBounds, mCropObj.isFixedAspect(),
-                    decode(mCropObj.getSelectState(), mGeometry.rotation.value()));
+            CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds, getContext());
+            CropDrawingUtils.drawCorner(canvas, mScreenCropBounds, getContext());
+            CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds, getContext());
         }
     }
 

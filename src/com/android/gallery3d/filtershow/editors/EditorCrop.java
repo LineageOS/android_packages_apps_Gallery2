@@ -114,7 +114,7 @@ public class EditorCrop extends Editor implements EditorInfo {
         });
     }
 
-    private void changeCropAspect(int itemId) {
+    public void changeCropAspect(int itemId) {
         AspectInfo info = sAspects.get(itemId);
         if (info == null) {
             throw new IllegalArgumentException("Invalid resource ID: " + itemId);
