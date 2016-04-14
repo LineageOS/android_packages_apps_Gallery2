@@ -22,16 +22,19 @@
     <dimen name="state_panel_text_size">16dip</dimen>
 
     <!-- Category Panel Height -->
-    <dimen name="category_panel_height">86dip</dimen>
+    <dimen name="category_panel_height">90dip</dimen>
 
     <!-- Category Panel Icon Size -->
-    <dimen name="category_panel_icon_size">64dip</dimen>
+    <dimen name="category_panel_icon_size">80dip</dimen>
 
     <!-- Category Panel Text Size -->
     <dimen name="category_panel_text_size">11dip</dimen>
 
     <!-- Category Panel Text Size -->
-    <dimen name="category_panel_margin">4dip</dimen>
+    <dimen name="category_panel_margin">10dip</dimen>
+
+    <!-- Category Panel height of botton rect -->
+    <dimen name="category_panel_bottom_rect_height">20dip</dimen>
 
     <!-- Grad filter dot size -->
     <dimen name="gradcontrol_dot_size">20dip</dimen>

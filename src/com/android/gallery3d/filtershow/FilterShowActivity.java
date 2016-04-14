@@ -1519,10 +1519,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         for (FilterRepresentation representation : filtersRepresentations) {
             mCategoryLooksAdapter.add(new Action(this, representation, Action.FULL_VIEW));
         }
-        if (mUserPresetsManager.getRepresentations() == null
-            || mUserPresetsManager.getRepresentations().size() == 0) {
-            mCategoryLooksAdapter.add(new Action(this, Action.ADD_ACTION));
-        }
 
         Fragment panel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
         if (panel != null) {
@@ -1855,28 +1851,10 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void startTouchAnimation(View target, float x, float y) {
-        final CategorySelected hint =
-                (CategorySelected) findViewById(R.id.categorySelectedIndicator);
         int location[] = new int[2];
         target.getLocationOnScreen(location);
         mHintTouchPoint.x = (int) (location[0] + x);
         mHintTouchPoint.y = (int) (location[1] + y);
-        int locationHint[] = new int[2];
-        ((View)hint.getParent()).getLocationOnScreen(locationHint);
-        int dx = (int) (x - (hint.getWidth())/2);
-        int dy = (int) (y - (hint.getHeight())/2);
-        hint.setTranslationX(location[0] - locationHint[0] + dx);
-        hint.setTranslationY(location[1] - locationHint[1] + dy);
-        hint.setVisibility(View.VISIBLE);
-        hint.animate().scaleX(2).scaleY(2).alpha(0).withEndAction(new Runnable() {
-            @Override
-            public void run() {
-                hint.setVisibility(View.INVISIBLE);
-                hint.setScaleX(1);
-                hint.setScaleY(1);
-                hint.setAlpha(1);
-            }
-        });
     }
 
     public void setScaleImage(boolean isScaled) {

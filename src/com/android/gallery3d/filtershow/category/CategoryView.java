@@ -28,6 +28,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.ui.SelectionRenderer;
 
 public class CategoryView extends IconView
@@ -121,8 +122,8 @@ public class CategoryView extends IconView
         }
         super.onDraw(canvas);
         if (mAdapter.isSelected(this)) {
-            SelectionRenderer.drawSelection(canvas, 0, 0,
-                    getWidth(), getHeight(),
+            SelectionRenderer.drawSelection(canvas, getMargin() / 2, getMargin(),
+                    getWidth() - getMargin() / 2, getHeight() - getMargin(),
                     mSelectionStroke, mSelectPaint, mBorderStroke, mBorderPaint);
         }
     }
@@ -197,5 +198,25 @@ public class CategoryView extends IconView
     @Override
     public void delete() {
         mAdapter.remove(mAction);
+    }
+
+    @Override
+    protected void drawBottomRect(Canvas canvas) {
+        super.drawBottomRect(canvas);
+        FilterRepresentation filterRepresentation = mAction.getRepresentation();
+        if (filterRepresentation != null) {
+            if (filterRepresentation.getFilterType() == FilterRepresentation.TYPE_FX) {
+                mPaint.setColor(getResources().getColor(filterRepresentation.getColorId()));
+            } else {
+                mPaint.setColor(
+                        getContext().getResources().getColor(R.color.iconview_bottom_color));
+            }
+            mPaint.setStyle(Paint.Style.FILL);
+            canvas.drawRect(getBitmapBounds().left,
+                    getBitmapBounds().bottom - getBottomRectHeight(),
+                    getBitmapBounds().right,
+                    getBitmapBounds().bottom,
+                    mPaint);
+        }
     }
 }

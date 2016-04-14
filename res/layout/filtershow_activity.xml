@@ -64,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
+                android:background="@android:color/transparent"
                 android:orientation="vertical"
                 custom:max_width="650dip" >
 
@@ -71,6 +72,7 @@
                     android:id="@+id/main_panel_container"
                     android:layout_width="match_parent"
                     android:layout_height="0dip"
+                    android:background="@android:color/transparent"
                     android:layout_gravity="center"
                     android:layout_weight="1" />
             </com.android.gallery3d.filtershow.CenteredLinearLayout>

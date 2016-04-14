@@ -20,18 +20,20 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@color/edit_actionbar_background">
+              android:background="@android:color/transparent">
 
     <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:scrollbars="none" >
 
         <com.android.gallery3d.filtershow.category.CategoryTrack
                 android:id="@+id/listItems"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/category_panel_height"
+                android:background="@android:color/transparent"
                 custom:iconSize="@dimen/category_panel_icon_size"
                 android:divider="@android:color/transparent"
                 android:dividerPadding="8dip"
