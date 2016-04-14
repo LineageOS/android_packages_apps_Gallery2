@@ -97,6 +97,11 @@ public class EditorStraighten extends Editor implements EditorInfo {
     }
 
     @Override
+    public boolean showsActionBar() {
+        return false;
+    }
+
+    @Override
     public boolean showsPopupIndicator() {
         return false;
     }

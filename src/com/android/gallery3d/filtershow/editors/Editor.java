@@ -96,6 +96,12 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
         return true;
     }
 
+    public boolean showsActionBar() {
+        // ActionBar is not need if has seek bar in default.
+        // Subclasses should override if need.
+        return !showsSeekBar();
+    }
+
     /*public void setUpEditorUI(View actionButton, View editControl,
                               Button editTitle, Button stateButton) {
         mEditTitle = editTitle;

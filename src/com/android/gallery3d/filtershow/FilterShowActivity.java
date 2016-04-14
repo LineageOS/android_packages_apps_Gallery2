@@ -49,7 +49,6 @@ import android.os.IBinder;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.print.PrintHelper;
 import android.util.DisplayMetrics;
@@ -98,8 +97,6 @@ import com.android.gallery3d.filtershow.editors.EditorManager;
 import com.android.gallery3d.filtershow.editors.EditorPanel;
 import com.android.gallery3d.filtershow.editors.EditorStraighten;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
-import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
-import com.android.gallery3d.filtershow.filters.FilterDrawRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRotateRepresentation;
@@ -107,7 +104,6 @@ import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
 import com.android.gallery3d.filtershow.filters.SimpleMakeupImageFilter;
-import com.android.gallery3d.filtershow.filters.TrueScannerActs;
 import com.android.gallery3d.filtershow.history.HistoryItem;
 import com.android.gallery3d.filtershow.history.HistoryManager;
 import com.android.gallery3d.filtershow.imageshow.ImageShow;
@@ -331,6 +327,13 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
     public void loadEditorPanel(FilterRepresentation representation,
                                 final Editor currentEditor) {
+        if (currentEditor.showsActionBar()) {
+            setActionBar();
+            showActionBar(true);
+        } else {
+            showActionBar(false);
+        }
+
         if (representation.getEditorId() == ImageOnlyEditor.ID) {
             currentEditor.reflectCurrentFilter();
             return;
@@ -465,12 +468,21 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 imgComparison.setVisibility(View.GONE);
     }
 
+    private void showSaveButtonIfNeed() {
+        if (MasterImage.getImage().hasModifications()) {
+            mSaveButton.setVisibility(View.VISIBLE);
+        } else {
+            mSaveButton.setVisibility(View.GONE);
+        }
+    }
+
     public void setActionBar() {
         setActionBar(false);
     }
 
     public void setActionBar(boolean isEffectClicked) {
         ActionBar actionBar = getActionBar();
+        actionBar.setShowHideAnimationEnabled(false);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources()
                 .getColor(R.color.edit_actionbar_background)));
@@ -487,6 +499,9 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 saveImage();
             }
         });
+
+        showSaveButtonIfNeed();
+
         mExitButton = actionBar.getCustomView().findViewById(R.id.filtershow_exit);
         mExitButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -546,6 +561,21 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             currentEditor.reflectCurrentFilter();
             if (currentEditor.useUtilityPanel()) {
                 currentEditor.openUtilityPanel((LinearLayout) actionControl);
+            }
+        }
+    }
+
+    private void showActionBar(boolean show) {
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null ) {
+            if (show) {
+                if (!actionBar.isShowing()) {
+                    actionBar.show();
+                }
+            } else {
+                if (actionBar.isShowing()) {
+                    actionBar.hide();
+                }
             }
         }
     }
@@ -959,6 +989,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 FilterRepresentation filterRepresentation = representation.copy();
                 MasterImage.getImage().setPreset(copy, filterRepresentation, true);
                 MasterImage.getImage().setCurrentFilterRepresentation(null);
+                showSaveButtonIfNeed();
                 return;
             }
         }
@@ -1384,6 +1415,9 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         //MenuItem redoItem = mMenu.findItem(R.id.redoButton);
         MenuItem resetItem = mMenu.findItem(R.id.resetHistoryButton);
         //mMasterImage.getHistory().setMenuItems(undoItem, redoItem, resetItem);
+        if (!mMasterImage.hasModifications()) {
+            mMenu.removeItem(R.id.resetHistoryButton);
+        }
     }
 
     @Override
@@ -1669,6 +1703,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         mMasterImage.setPreset(original, rep, true);
         invalidateViews();
         backToMain();
+        showSaveButtonIfNeed();
     }
 
     public void showDefaultImageView() {
@@ -1683,6 +1718,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void backToMain() {
+        showActionBar(true);
         Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
         if (currentPanel instanceof MainPanel) {
             return;

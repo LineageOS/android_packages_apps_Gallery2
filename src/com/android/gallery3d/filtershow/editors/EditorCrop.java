@@ -156,6 +156,11 @@ public class EditorCrop extends Editor implements EditorInfo {
     }
 
     @Override
+    public boolean showsActionBar() {
+        return false;
+    }
+
+    @Override
     public int getTextId() {
         return R.string.crop;
     }

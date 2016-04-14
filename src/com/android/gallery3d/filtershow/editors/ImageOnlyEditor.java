@@ -37,6 +37,11 @@ public class ImageOnlyEditor extends Editor {
         super(id);
     }
 
+    @Override
+    public boolean showsActionBar() {
+        return true;
+    }
+
     public boolean useUtilityPanel() {
         return false;
     }
