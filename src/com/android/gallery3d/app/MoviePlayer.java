@@ -62,6 +62,7 @@ import org.codeaurora.gallery3d.video.IControllerRewindAndForward.IRewindAndForw
 import org.codeaurora.gallery3d.video.ScreenModeManager;
 import org.codeaurora.gallery3d.video.ScreenModeManager.ScreenModeListener;
 import org.codeaurora.gallery3d.video.CodeauroraVideoView;
+import org.codeaurora.gallery3d.video.VideoSnapshotExt;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -160,6 +161,8 @@ public class MoviePlayer implements
     private TState mTState = TState.PLAYING;
     private IMovieItem mMovieItem;
     private int mVideoLastDuration;//for duration displayed in init state
+
+    private VideoSnapshotExt mVideoSnapshotExt = new VideoSnapshotExt();
 
     private enum TState {
         PLAYING,
@@ -364,6 +367,7 @@ public class MoviePlayer implements
             }
         }
         mScreenModeExt.setScreenMode();
+        mVideoSnapshotExt.init(mController, mVideoView, isLocalFile());
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
