@@ -30,26 +30,18 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.android.gallery3d.R;
-import com.android.gallery3d.app.CommonControllerOverlay.State;
+
 import org.codeaurora.gallery3d.ext.IContrllerOverlayExt;
 import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
-import org.codeaurora.gallery3d.video.IControllerRewindAndForward.IRewindAndForwardListener;
-import org.codeaurora.gallery3d.video.ExtensionHelper;
 import org.codeaurora.gallery3d.video.ScreenModeManager;
 import org.codeaurora.gallery3d.video.ScreenModeManager.ScreenModeListener;
 
@@ -82,7 +74,7 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
         mContext = context;
         handler = new Handler();
         startHidingRunnable = new Runnable() {
-                @Override
+            @Override
             public void run() {
                 startHiding();
             }
@@ -788,10 +780,9 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
         void init(Context context) {
             Log.v(TAG, "ControllerRewindAndForwardExt init");
             mTimeBarHeight = mTimeBar.getPreferredHeight();
-            Bitmap button = BitmapFactory.decodeResource(context.getResources(),
-                    R.drawable.ic_menu_forward);
-            mButtonWidth = button.getWidth();
-            button.recycle();
+            VectorDrawable drawable =
+                    VectorDrawable.create(context.getResources(), R.drawable.ic_menu_forward);
+            mButtonWidth = drawable.getIntrinsicWidth();
 
             mContollerButtons = new LinearLayout(context);
             LinearLayout.LayoutParams wrapContent = new LinearLayout.LayoutParams(

@@ -61,4 +61,16 @@ public class TimeBarNew extends TimeBar {
         }
         return super.dispatchTouchEvent(event);
     }
+
+    public int getTotalTime() {
+        return mTotalTime;
+    }
+
+    public int getCurrentTime() {
+        return mCurrentTime;
+    }
+
+    public boolean seekable() {
+        return mShowScrubber;
+    }
 }

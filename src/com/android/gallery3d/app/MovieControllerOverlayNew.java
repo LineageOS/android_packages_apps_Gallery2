@@ -68,17 +68,13 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         mTimeBar = new TimeBarNew(context, this);
     }
 
+    public TimeBar getTimeBar() {
+        return mTimeBar;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            cancelHiding();
-            return true;
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            maybeStartHiding();
-            return true;
-        } else {
-            return super.onTouchEvent(event);
-        }
+        return false;
     }
 
     @Override
@@ -97,9 +93,9 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         mScreenModeExt.onLayout(w, pr, y);
         if (mIsLive && mState != State.ENDED) {
             if (mLiveImage != null) {
+                mLiveImage.setPadding(mLiveImage.getPaddingLeft(), mLiveMargin + pt,
+                        mLiveMargin + pr, mLiveImage.getPaddingBottom());
                 mLiveImage.setVisibility(View.VISIBLE);
-                mLiveImage.layout(width - mLiveImage.getWidth() - mLiveMargin, pt + mLiveMargin,
-                        width - mLiveMargin, pt + mLiveMargin + mLiveImage.getHeight());
             }
             if (isPrepared()) {
                 mPlayPauseReplayView.setVisibility(View.GONE);
@@ -137,6 +133,7 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         mTimeBar.setClickable(!mIsLive);
     }
 
+    @Override
     public IControllerRewindAndForward getControllerRewindAndForwardExt() {
         return mControllerRewindAndForwardExt;
     }

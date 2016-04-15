@@ -123,6 +123,7 @@ public class MoviePlayer implements
     private final Handler mHandler = new Handler();
     private final AudioBecomingNoisyReceiver mAudioBecomingNoisyReceiver;
     private final MovieControllerOverlayNew mController;
+    private final GestureControllerOverlay mGestureController;
 
     private long mResumeableTime = Long.MAX_VALUE;
     private int mVideoPosition = 0;
@@ -266,7 +267,12 @@ public class MoviePlayer implements
         mBookmarker = new Bookmarker(movieActivity);
 
         mController = new MovieControllerOverlayNew(movieActivity);
-        ((ViewGroup)rootView).addView(mController.getView());
+
+        mGestureController = new GestureControllerOverlay(movieActivity, mController);
+        ((ViewGroup) rootView).addView(mGestureController.getView());
+        mGestureController.setListener(this);
+
+        ((ViewGroup) rootView).addView(mController.getView());
         mController.setListener(this);
         mController.setCanReplay(canReplay);
 
@@ -388,6 +394,13 @@ public class MoviePlayer implements
                         && (visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
                     mController.show();
                     mRootView.setBackgroundColor(Color.BLACK);
+                    if (mGestureController != null) {
+                        mGestureController.setSystemUiVisible(true);
+                    }
+                } else {
+                    if (mGestureController != null) {
+                        mGestureController.setSystemUiVisible(false);
+                    }
                 }
 
                 if (LOG) {
@@ -408,7 +421,8 @@ public class MoviePlayer implements
         if (!visible) {
             // We used the deprecated "STATUS_BAR_HIDDEN" for unbundling
             flag |= View.STATUS_BAR_HIDDEN | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE;
         }
         mVideoView.setSystemUiVisibility(flag);
     }
@@ -514,6 +528,9 @@ public class MoviePlayer implements
         // TODO comments by sunlei
         mOverlayExt.clearBuffering();
         mServerTimeoutExt.recordDisconnectTime();
+        if (mGestureController != null) {
+            mGestureController.doOnPause();
+        }
         if (LOG) {
             Log.v(TAG, "doOnPause() save video info consume:" + (end1 - start));
             Log.v(TAG, "doOnPause() suspend video consume:" + (end2 - end1));
@@ -600,14 +617,15 @@ public class MoviePlayer implements
     // second by mProgressChecker and also from places where the time bar needs
     // to be updated immediately.
     private int setProgress() {
-        if (mDragging || (!mShowing && !mIsOnlyAudio)) {
-            return 0;
-        }
         int position = mVideoView.getCurrentPosition();
         int duration = mVideoView.getDuration();
         mController.setTimes(position, duration, 0, 0);
+
+        if (mDragging || (!mShowing && !mIsOnlyAudio)) {
+            return 0;
+        }
         if (mControllerRewindAndForwardExt != null
-		        && mControllerRewindAndForwardExt.getPlayPauseEanbled()) {
+                && mControllerRewindAndForwardExt.getPlayPauseEanbled()) {
             updateRewindAndForwardUI();
         }
         return position;
