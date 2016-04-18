@@ -209,5 +209,7 @@
     <dimen name="timeline_title_font_size">14sp</dimen>
 
     <dimen name="timebar_height">60dp</dimen>
+    <dimen name="timebar_margin">30dp</dimen>
+    <dimen name="timebar_time_margin">45dp</dimen>
     <dimen name="livestream_icon_padding">12dp</dimen>
 </resources>

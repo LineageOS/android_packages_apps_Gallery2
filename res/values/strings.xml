@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (c) 2014, The Linux Foundation. All rights reserved.
+<!-- Copyright (c) 2014, 2016, The Linux Foundation. All rights reserved.
      Not a Contribution.
 
      Copyright (C) 2007 The Android Open Source Project
@@ -1145,7 +1145,7 @@ CHAR LIMIT = NONE] -->
     <string name="bass_boost_strength">Bass boost</string>
 
     <!-- The label for the 3d effect knob of the audio effects dialog. -->
-    <string name="virtualizer_strength">3D effect</string>
+    <string name="virtualizer_strength">Surround sound</string>
 
     <!-- The label for the audio effects menu. -->
     <string name="audio_effects">Audio effects</string>
@@ -1193,4 +1193,8 @@ CHAR LIMIT = NONE] -->
     <string name="seestraight_acts">See Straight</string>
     <string name="seestraight_input_image_is_small">Input image is too small to process.</string>
     <string name="seestraight_process_fail">Couldn\'t process the image.</string>
+
+    <string name="trim_video_exit_title">Discard changes?</string>
+    <string name="trim_video_exit_msg">Discard the changes made to this video?</string>
+    <string name="trim_video_exit_discard">DISCARD</string>
 </resources>

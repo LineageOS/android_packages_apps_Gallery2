@@ -91,7 +91,7 @@ public class TimeBar extends View {
 
     private ITimeBarSecondaryProgressExt mSecondaryProgressExt = new TimeBarSecondaryProgressExtImpl();
     private ITimeBarInfoExt mInfoExt = new TimeBarInfoExtImpl();
-    private ITimeBarLayoutExt mLayoutExt = new TimeBarLayoutExtImpl();
+    protected ITimeBarLayoutExt mLayoutExt = new TimeBarLayoutExtImpl();
 
     public TimeBar(Context context, Listener listener) {
         super(context);
