@@ -24,6 +24,8 @@ LOCAL_AAPT_FLAGS += --extra-packages android.support.compat
 
 LOCAL_PACKAGE_NAME := Gallery2
 
+LOCAL_PRIVILEGED_MODULE := true
+
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
 
 LOCAL_SDK_VERSION := current
