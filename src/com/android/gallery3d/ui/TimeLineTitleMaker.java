@@ -78,8 +78,6 @@ public class TimeLineTitleMaker {
 
     static void drawText(Canvas canvas,
                          int x, int y, String text, int lengthLimit, TextPaint p) {
-        text = TextUtils.ellipsize(
-                text, p, lengthLimit, TextUtils.TruncateAt.END).toString();
         canvas.drawText(text, x, y - p.getFontMetricsInt().ascent, p);
     }
 
