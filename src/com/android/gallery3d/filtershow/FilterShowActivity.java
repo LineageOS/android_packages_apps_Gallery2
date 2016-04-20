@@ -404,9 +404,8 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
                     HistoryManager adapter = mMasterImage.getHistory();
                     int position = adapter.backToOriginal();// adapter.undo();
-                    mMasterImage.onHistoryItemClick(position);
+                    mMasterImage.onHistoryItemClick(position, false);
                     v.setPressed(true);
-                    backToMain();
                     invalidateViews();
                 }
                 if (action == MotionEvent.ACTION_UP
@@ -415,7 +414,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                     v.setPressed(false);
                     HistoryManager adapter = mMasterImage.getHistory();
                     int position = adapter.backToCurrent();
-                    mMasterImage.onHistoryItemClick(position);
+                    mMasterImage.onHistoryItemClick(position, false);
                     invalidateViews();
 
                 }
@@ -1654,13 +1653,18 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
         loadMainPanel();
         showDefaultImageView();
+        showComparisonButton();
+    }
+
+    private void showComparisonButton() {
+        if (imgComparison != null && imgComparison.getVisibility() == View.GONE) {
+            imgComparison.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        if (imgComparison != null && imgComparison.getVisibility() == View.GONE) {
-            imgComparison.setVisibility(View.VISIBLE);
-        }
+        showComparisonButton();
         Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(
                 MainPanel.FRAGMENT_TAG);
 
