@@ -21,13 +21,10 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
@@ -44,6 +41,7 @@ public class IconView extends View {
     private int mMargin = 16;
     private int mOrientation = HORIZONTAL;
     private int mTextSize = 32;
+    private int mBottomRectHeight;
     private Rect mTextBounds = new Rect();
     private Bitmap mBitmap;
     private Rect mBitmapBounds;
@@ -72,6 +70,7 @@ public class IconView extends View {
         mBackgroundColor = res.getColor(android.R.color.transparent);
         mMargin = res.getDimensionPixelOffset(R.dimen.category_panel_margin);
         mTextSize = res.getDimensionPixelSize(R.dimen.category_panel_text_size);
+        mBottomRectHeight = res.getDimensionPixelOffset(R.dimen.category_panel_bottom_rect_height);
     }
 
     protected void computeTextPosition(String text) {
@@ -108,7 +107,7 @@ public class IconView extends View {
             // justify to the left.
             x = mMargin;
         }
-        int y = canvas.getHeight() - getTextHeight(mPaint) / 2 - mMargin;
+        int y = canvas.getHeight() - mBottomRectHeight / 2 - mMargin / 2;
         canvas.drawText(text, x, y, mPaint);
     }
 
@@ -127,6 +126,13 @@ public class IconView extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(1);
         drawText(canvas, text);
+    }
+
+    protected void drawBottomRect(Canvas canvas) {
+    }
+
+    public int getBottomRectHeight() {
+        return mBottomRectHeight;
     }
 
     public int getOrientation() {
@@ -184,13 +190,14 @@ public class IconView extends View {
 
     public void computeBitmapBounds() {
         if (mUseOnlyDrawable) {
-            mBitmapBounds = new Rect(mMargin/2, mMargin, getWidth() - mMargin/2,
-                    getHeight() - mTextSize - 2*mMargin);
+            mBitmapBounds = new Rect(mMargin / 2, mMargin, getWidth() - mMargin / 2,
+                    getHeight() - mTextSize - 2 * mMargin);
         } else {
             if (getOrientation() == VERTICAL && isHalfImage()) {
-                mBitmapBounds = new Rect(mMargin/2, mMargin, getWidth()/2, getHeight());
+                mBitmapBounds = new Rect(mMargin / 2, mMargin, getWidth() / 2, getHeight());
             } else {
-                mBitmapBounds = new Rect(mMargin/2, mMargin, getWidth() - mMargin/2, getHeight());
+                mBitmapBounds = new Rect(mMargin / 2, mMargin, getWidth() - mMargin / 2,
+                        getHeight() - mMargin);
             }
         }
     }
@@ -226,22 +233,7 @@ public class IconView extends View {
             canvas.drawBitmap(mBitmap, m, mPaint);
             canvas.restore();
         }
-
-        if (!mUseOnlyDrawable) {
-            int startColor = Color.argb(0, 0, 0, 0);
-            int endColor = Color.argb(200, 0, 0, 0);
-            float start = getHeight() - 2 * mMargin - 2 * mTextSize;
-            float end = getHeight();
-            Shader shader = new LinearGradient(0, start, 0, end, startColor,
-                    endColor, Shader.TileMode.CLAMP);
-            mPaint.setShader(shader);
-            float startGradient = 0;
-            if (getOrientation() == VERTICAL && isHalfImage()) {
-                startGradient = getWidth()/2;
-            }
-            canvas.drawRect(new RectF(startGradient, start, getWidth(), end), mPaint);
-            mPaint.setShader(null);
-        }
+        drawBottomRect(canvas);
         drawOutlinedText(canvas, getText());
     }
 }

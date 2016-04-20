@@ -315,19 +315,35 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
                 "LUT3D_XPROCESS"
         };
 
+        int[] colorId = {
+                R.color.filtershow_color_none,
+                R.color.filtershow_color_punch,
+                R.color.filtershow_color_vintage,
+                R.color.filtershow_color_bw,
+                R.color.filtershow_color_bleach,
+                R.color.filtershow_color_instant,
+                R.color.filtershow_color_latte,
+                R.color.filtershow_color_blue,
+                R.color.filtershow_color_litho,
+                R.color.filtershow_color_xprocess
+        };
+
         FilterFxRepresentation nullFx =
                 new FilterFxRepresentation(context.getString(R.string.none),
                         0, R.string.none);
+        nullFx.setColorId(colorId[0]);
         mLooks.add(nullFx);
 
         for (int i = 0; i < drawid.length; i++) {
             FilterFxRepresentation fx = new FilterFxRepresentation(
                     context.getString(fxNameid[i]), drawid[i], fxNameid[i]);
             fx.setSerializationName(serializationNames[i]);
+            fx.setColorId(colorId[i] + 1);
             ImagePreset preset = new ImagePreset();
             preset.addFilter(fx);
             FilterUserPresetRepresentation rep = new FilterUserPresetRepresentation(
                     context.getString(fxNameid[i]), preset, -1);
+            rep.setColorId(colorId[i] + 1);
             mLooks.add(rep);
             addRepresentation(fx);
         }

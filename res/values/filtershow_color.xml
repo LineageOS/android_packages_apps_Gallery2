@@ -52,4 +52,17 @@
     <color name="filtershow_image_mask">#4d000000</color>
     <color name="filtershow_info_text">#DE000000</color>
 
+    <color name="filtershow_color_none">#b5b5b5</color>
+    <color name="filtershow_color_punch">#c6bcc6</color>
+    <color name="filtershow_color_vintage">#bb9e61</color>
+    <color name="filtershow_color_bw">#000000</color>
+    <color name="filtershow_color_bleach">#676f82</color>
+    <color name="filtershow_color_instant">#e1d08b</color>
+    <color name="filtershow_color_latte">#b18f7c</color>
+    <color name="filtershow_color_blue">#5d6299</color>
+    <color name="filtershow_color_litho">#c7c4b7</color>
+    <color name="filtershow_color_xprocess">#409797</color>
+
+    <color name="iconview_bottom_color">#80000000</color>
+    <color name="crop_panel_background_color">#A5000000</color>
 </resources>

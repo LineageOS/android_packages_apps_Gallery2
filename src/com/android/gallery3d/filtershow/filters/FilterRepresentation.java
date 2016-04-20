@@ -36,6 +36,7 @@ public class FilterRepresentation {
     private int mEditorId = BasicEditor.ID;
     private int mButtonId = 0;
     private int mOverlayId = 0;
+    private int mColorId = 0;
     private boolean mOverlayOnly = false;
     private boolean mShowParameterValue = true;
     private boolean mIsBooleanFilter = false;
@@ -91,10 +92,19 @@ public class FilterRepresentation {
                 && representation.mOverlayId == mOverlayId
                 && representation.mOverlayOnly == mOverlayOnly
                 && representation.mShowParameterValue == mShowParameterValue
-                && representation.mIsBooleanFilter == mIsBooleanFilter) {
+                && representation.mIsBooleanFilter == mIsBooleanFilter
+                && representation.mColorId == mColorId) {
             return true;
         }
         return false;
+    }
+
+    public int getColorId() {
+        return mColorId;
+    }
+
+    public void setColorId(int colorId) {
+        mColorId = colorId;
     }
 
     public boolean isBooleanFilter() {

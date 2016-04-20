@@ -166,7 +166,7 @@
 
     <!--  configuration for filtershow UI -->
     <dimen name="thumbnail_size">96dip</dimen>
-    <dimen name="thumbnail_margin">3dip</dimen>
+    <dimen name="thumbnail_margin">2dip</dimen>
     <dimen name="action_item_height">175dip</dimen>
     <dimen name="touch_circle_size">8dp</dimen>
 
