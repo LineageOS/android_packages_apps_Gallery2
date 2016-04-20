@@ -110,11 +110,20 @@ public class CropActivity extends Activity {
             actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
             actionBar.setCustomView(R.layout.filtershow_actionbar);
 
-            View mSaveButton = actionBar.getCustomView();
+            View mSaveButton = actionBar.getCustomView().findViewById(
+                    R.id.filtershow_done);
             mSaveButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startFinishOutput();
+                }
+            });
+            View mExitButton = actionBar.getCustomView().findViewById(
+                    R.id.filtershow_exit);
+            mExitButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
                 }
             });
         }

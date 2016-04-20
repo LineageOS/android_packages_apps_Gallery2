@@ -65,7 +65,6 @@ public class MainPanel extends Fragment {
 
     private int mCurrentSelected = -1;
     private int mPreviousToggleVersions = -1;
-    private boolean isEffectClicked;
 
     private void selection(int position, boolean value) {
         if (value) {
@@ -237,12 +236,7 @@ public class MainPanel extends Fragment {
         } else {
             transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left);
         }
-        if (isEffectClicked) {
-            activity.setActionBar(true);
-            isEffectClicked = false;
-        } else {
-            activity.setActionBar(false);
-        }
+        activity.setActionBar();
         transaction.replace(R.id.category_panel_container, category, CategoryPanel.FRAGMENT_TAG);
         transaction.commitAllowingStateLoss();
     }
@@ -380,7 +374,6 @@ public class MainPanel extends Fragment {
     }
 
     public void showPanel(int currentPanel) {
-        isEffectClicked = true;
         FilterShowActivity activity = (FilterShowActivity) getActivity();
         switch (currentPanel) {
             case LOOKS: {
