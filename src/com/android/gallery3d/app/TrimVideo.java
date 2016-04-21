@@ -18,8 +18,10 @@ package com.android.gallery3d.app;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -50,6 +52,7 @@ public class TrimVideo extends Activity implements
     private TextView mSaveVideoTextView;
     private ImageView mExitImageView;
     private TrimControllerOverlay mController;
+    private AlertDialog mExitDialog;
     private Context mContext;
     private Uri mUri;
     private final Handler mHandler = new Handler();
@@ -89,7 +92,26 @@ public class TrimVideo extends Activity implements
         mExitImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                mExitDialog = new AlertDialog.Builder(TrimVideo.this,
+                        AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).
+                        setTitle(R.string.trim_video_exit_title).
+                        setMessage(R.string.trim_video_exit_msg).
+                        setPositiveButton(R.string.trim_video_exit_discard,
+                                new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        }).
+                        setNegativeButton(R.string.review_cancel,
+                                new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).
+                        create();
+                mExitDialog.show();
             }
         });
 

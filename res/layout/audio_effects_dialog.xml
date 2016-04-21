@@ -54,6 +54,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1">
                 <com.android.gallery3d.ui.Knob
                     android:id="@+id/bBStrengthKnob"
@@ -74,7 +75,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="12dp"
                 android:layout_alignParentRight="true"
                 android:layout_weight="1">
                 <com.android.gallery3d.ui.Knob
