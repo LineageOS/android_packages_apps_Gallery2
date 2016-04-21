@@ -1102,4 +1102,12 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             Log.v(TAG, "setOnBufferingUpdateListener(" + l + ")");
         }
     }
+
+    public MediaPlayer getMediaPlayer() {
+        return mMediaPlayer;
+    }
+
+    public Uri getUri() {
+        return mUri;
+    }
 }

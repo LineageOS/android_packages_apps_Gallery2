@@ -30,16 +30,21 @@
 package com.android.gallery3d.app;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import org.codeaurora.gallery3d.video.IVideoSnapshotListener;
+import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
 
 import com.android.gallery3d.R;
 
-import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
-
 public class MovieControllerOverlayNew extends MovieControllerOverlay {
+    private VideoSnapshotLayout mVideoSnapshotLayout = new VideoSnapshotLayout();
+    private IVideoSnapshotListener mVideoSnapshotListener;
 
     private boolean mIsLive = false;
     private ImageView mLiveImage;
@@ -49,6 +54,8 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
 
     public MovieControllerOverlayNew(Context context) {
         super(context);
+
+        mVideoSnapshotLayout.init(context);
         mLiveImage = ((MovieActivity) mContext).getLiveImage();
         mStopBtn = mControllerRewindAndForwardExt.getStopBtn();
         mLiveMargin = context.getResources().getDimensionPixelSize(
@@ -116,6 +123,13 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         }
         mTimeBar.layout(mTimeBar.getPreferredHeight(), y - mTimeBar.getPreferredHeight(),
                 width - mScreenModeExt.getAddedRightPadding(), y);
+
+        mVideoSnapshotLayout.layoutButton(
+                w - pr - mVideoSnapshotLayout.getButtonWidth(),
+                y - mTimeBar.getPreferredHeight() - mVideoSnapshotLayout.getButtonHeight(),
+                w - pr,
+                y - mTimeBar.getPreferredHeight());
+        mVideoSnapshotLayout.layoutAnim(left, top, right, bottom);
     }
 
     public void setLive(boolean live) {
@@ -134,4 +148,96 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         return false;
     }
 
+    public void setVideoSnapshotListener(IVideoSnapshotListener listener) {
+        mVideoSnapshotListener = listener;
+    }
+
+    public void showVideoSnapshotButton(boolean show) {
+        if (mVideoSnapshotLayout != null) {
+            mVideoSnapshotLayout.showVideoSnapshotButton(show);
+        }
+    }
+
+    class VideoSnapshotLayout implements View.OnClickListener {
+        private ImageView mVideoSnapshotButton;
+        private ImageView mVideoSnapshotAnimView;
+        private Animation mVideoSnapshotAnimation;
+
+        public void init(Context context) {
+            LayoutParams wrapContent =
+                    new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            mVideoSnapshotButton = new ImageView(context);
+            mVideoSnapshotButton.setImageResource(R.drawable.ic_video_snapshot_padding);
+            mVideoSnapshotButton.setScaleType(ImageView.ScaleType.CENTER);
+            mVideoSnapshotButton.setFocusable(true);
+            mVideoSnapshotButton.setClickable(true);
+            mVideoSnapshotButton.setOnClickListener(this);
+            addView(mVideoSnapshotButton, wrapContent);
+
+            LayoutParams matchParent =
+                    new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            mVideoSnapshotAnimView = new ImageView(context);
+            addView(mVideoSnapshotAnimView, matchParent);
+
+            mVideoSnapshotAnimation = AnimationUtils.loadAnimation(context, R.anim.player_out);
+            mVideoSnapshotAnimation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    mVideoSnapshotAnimView.setBackgroundColor(Color.WHITE);
+                    mVideoSnapshotButton.setEnabled(false);
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    mVideoSnapshotAnimView.setBackgroundColor(Color.TRANSPARENT);
+                    mVideoSnapshotButton.setEnabled(true);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+            });
+        }
+
+        public int getButtonWidth() {
+            return mVideoSnapshotButton == null ? 0 : mVideoSnapshotButton.getMeasuredWidth();
+        }
+
+        public int getButtonHeight() {
+            return mVideoSnapshotButton == null ? 0 : mVideoSnapshotButton.getMeasuredHeight();
+        }
+
+        public void layoutButton(int l, int t, int r, int b) {
+            if (mVideoSnapshotButton != null) {
+                mVideoSnapshotButton.layout(l, t, r, b);
+            }
+        }
+
+        public void layoutAnim(int l, int t, int r, int b) {
+            if (mVideoSnapshotAnimView != null) {
+                mVideoSnapshotAnimView.layout(l, t, r, b);
+            }
+        }
+
+        public void showVideoSnapshotButton(boolean show) {
+            if (mVideoSnapshotButton != null) {
+                mVideoSnapshotButton.setVisibility(show ? VISIBLE : GONE);
+            }
+        }
+
+        @Override
+        public void onClick(View v) {
+            maybeStartHiding();
+            if (mVideoSnapshotListener != null && mVideoSnapshotListener.canVideoSnapshot()) {
+                mVideoSnapshotListener.onVideoSnapshot();
+                startAnimation();
+            }
+        }
+
+        private void startAnimation() {
+            if (mVideoSnapshotAnimView != null) {
+                mVideoSnapshotAnimView.startAnimation(mVideoSnapshotAnimation);
+            }
+        }
+    }
 }
