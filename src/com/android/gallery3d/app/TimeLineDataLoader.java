@@ -154,10 +154,23 @@ public class TimeLineDataLoader {
     // Returns the index of the MediaItem with the given path or
     // -1 if the path is not cached
     public int findItem(Path id) {
-        for (int i = mContentStart; i < mContentEnd; i++) {
+        return getIndex(id, true);
+    }
+
+    /**
+     * @param id            given path
+     * @param needTitleItem timeline title items will be filtered out if true.
+     * @return the index of the MediaItem with the given path or -1 if the path is not cached.
+     */
+    public int getIndex(Path id, final boolean needTitleItem) {
+        for (int i = mContentStart, offset = 0; i < mContentEnd; i++) {
             MediaItem item = mData[i % DATA_CACHE_SIZE];
-            if (item != null && id == item.getPath()) {
-                return i;
+            if (item != null) {
+                if (!needTitleItem && !item.isSelectable()) {
+                    offset++;
+                } else if (id == item.getPath()) {
+                    return i - offset;
+                }
             }
         }
         return -1;
