@@ -1079,12 +1079,11 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         private Path mPath;
 
         private void free() {
-            if (null != mGifEntry.gifDecoder) {
-                mGifEntry.gifDecoder.free();
-                mGifEntry.gifDecoder = null;
-            }
-
             if (null != mGifEntry) {
+                if (null != mGifEntry.gifDecoder) {
+                    mGifEntry.gifDecoder.free();
+                    mGifEntry.gifDecoder = null;
+                }
                 mGifEntry = null;
             }
         }
