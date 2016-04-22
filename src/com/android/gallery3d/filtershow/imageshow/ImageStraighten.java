@@ -249,6 +249,7 @@ public class ImageStraighten extends ImageShow {
             MasterImage.getImage().invalidateFiltersOnly();
             return;
         }
+        toggleComparisonButtonVisibility();
         GeometryMathUtils.initializeHolder(mDrawHolder, mLocalRep);
         mDrawHolder.straighten = mAngle;
         int imageWidth = image.getWidth();

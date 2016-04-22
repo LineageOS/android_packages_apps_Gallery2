@@ -334,6 +334,12 @@ public class MasterImage implements RenderingRequestCaller {
     public synchronized void setPreset(ImagePreset preset,
                                        FilterRepresentation change,
                                        boolean addToHistory) {
+        setPreset(preset, change, addToHistory, true);
+    }
+
+    public synchronized void setPreset(ImagePreset preset,
+                                       FilterRepresentation change,
+                                       boolean addToHistory, boolean updateCategory) {
         if (DEBUG) {
             preset.showFilters();
         }
@@ -345,10 +351,16 @@ public class MasterImage implements RenderingRequestCaller {
         }
         updatePresets(true);
         resetGeometryImages(false);
-        mActivity.updateCategories();
+        if (updateCategory) {
+            mActivity.updateCategories();
+        }
     }
 
     public void onHistoryItemClick(int position) {
+        onHistoryItemClick(position, true);
+    }
+
+    public void onHistoryItemClick(int position, boolean updateCategory) {
         HistoryItem historyItem = mHistory.getItem(position);
         // We need a copy from the history
         if (historyItem == null) {
@@ -356,7 +368,7 @@ public class MasterImage implements RenderingRequestCaller {
         }
         ImagePreset newPreset = new ImagePreset(historyItem.getImagePreset());
         // don't need to add it to the history
-        setPreset(newPreset, historyItem.getFilterRepresentation(), false);
+        setPreset(newPreset, historyItem.getFilterRepresentation(), false, updateCategory);
         mHistory.setCurrentPreset(position);
     }
 
