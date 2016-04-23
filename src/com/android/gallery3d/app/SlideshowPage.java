@@ -113,7 +113,7 @@ public class SlideshowPage extends ActivityState {
     @Override
     public void onCreate(Bundle data, Bundle restoreState) {
         super.onCreate(data, restoreState);
-        mFlags |= (FLAG_HIDE_ACTION_BAR | FLAG_HIDE_STATUS_BAR);
+        mFlags |= (FLAG_HIDE_ACTION_BAR | FLAG_HIDE_STATUS_BAR | FLAG_SCREEN_FULL);
         if (data.getBoolean(KEY_DREAM)) {
             // Dream screensaver only keeps screen on for plugged devices.
             mFlags |= FLAG_SCREEN_ON_WHEN_PLUGGED | FLAG_SHOW_WHEN_LOCKED;

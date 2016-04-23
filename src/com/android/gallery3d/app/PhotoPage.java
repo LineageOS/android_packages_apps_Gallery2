@@ -41,6 +41,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
@@ -1470,6 +1471,7 @@ public abstract class PhotoPage extends ActivityState implements
         }
         mActivity.getGLRoot().unfreeze();
         mHandler.removeMessages(MSG_UNFREEZE_GLROOT);
+        showFullScreen(false);
 
         DetailsHelper.pause();
         // Hide the detail dialog on exit
@@ -1488,6 +1490,19 @@ public abstract class PhotoPage extends ActivityState implements
         onCommitDeleteImage();
         mMenuExecutor.pause();
         if (mMediaSet != null) mMediaSet.clearDeletion();
+    }
+
+    private void showFullScreen(boolean show) {
+        Window win = mActivity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        if (show) {
+            //set full screen
+            winParams.flags |= (WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        } else {
+            //cancel full screen
+            winParams.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        win.setAttributes(winParams);
     }
 
     @Override
@@ -1580,6 +1595,9 @@ public abstract class PhotoPage extends ActivityState implements
             mActivity.getStateManager().finishState(this);
             return;
         }
+        //set full screen to hide the status bar
+        showFullScreen(true);
+
         transitionFromAlbumPageIfNeeded();
 
         mActivity.getGLRoot().freeze();
