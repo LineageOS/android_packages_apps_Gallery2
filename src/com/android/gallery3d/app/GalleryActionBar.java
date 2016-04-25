@@ -329,6 +329,17 @@ public class GalleryActionBar {
         mActionBar.setHomeButtonEnabled(displayHomeAsUp);
     }
 
+    public void setDisplayHome(boolean displayHome, boolean showTitle) {
+        if (mActionBar == null) return;
+        int options = 0;
+        if (displayHome) options |= ActionBar.DISPLAY_SHOW_HOME;
+        if (showTitle) options |= ActionBar.DISPLAY_SHOW_TITLE;
+
+        mActionBar.setDisplayOptions(options,
+                ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
+        mActionBar.setHomeButtonEnabled(displayHome);
+    }
+
     public void setTitle(String title) {
         if (mActionBar != null) mActionBar.setTitle(title);
     }

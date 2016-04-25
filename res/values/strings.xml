@@ -1168,9 +1168,9 @@ CHAR LIMIT = NONE] -->
     <string name="text_makeup_Soften">Soften</string>
 
     <string-array name="title_array_nav_items">
-        <item>Timeline</item>
-        <item>Albums</item>
-        <item>Videos</item>
+        <item>@string/timeline_title</item>
+        <item>@string/albums_title</item>
+        <item>@string/videos_title</item>
     </string-array>
 
     <string name="navigation_drawer_title" translatable="false">@string/app_name</string>

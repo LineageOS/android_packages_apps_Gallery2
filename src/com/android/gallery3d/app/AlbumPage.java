@@ -498,8 +498,12 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
         boolean enableHomeButton = (mActivity.getStateManager().getStateCount() > 1) |
                 mParentMediaSetString != null;
         //GalleryActionBar actionBar = mActivity.getGalleryActionBar();
-        mActionBar.setDisplayOptions(enableHomeButton, true);
-
+        if (mIsVideoScreen) {
+            //if from video screen, show display navigation icon as home and title
+            mActionBar.setDisplayHome(true, true);
+        } else {
+            mActionBar.setDisplayOptions(enableHomeButton, true);
+        }
         Toolbar toolBar = mActivity.getToolbar();
         if (enableHomeButton && toolBar != null) {
             toolBar.setNavigationContentDescription("back");
