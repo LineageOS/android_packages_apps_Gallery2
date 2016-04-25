@@ -39,6 +39,7 @@ import com.android.gallery3d.filtershow.state.StatePanel;
 public class EditorPanel extends Fragment {
 
     private static final String LOGTAG = "EditorPanel";
+    public static final String FRAGMENT_TAG = "EditorPanel";
 
     private LinearLayout mMainView;
     private Editor mEditor;
@@ -53,7 +54,11 @@ public class EditorPanel extends Fragment {
         super.onAttach(activity);
         FilterShowActivity filterShowActivity = (FilterShowActivity) activity;
         mEditor = filterShowActivity.getEditor(mEditorID);
-        Log.d(LOGTAG, "EditorPanle.onAttach(): mEditorID is " + mEditorID + ", mEditor is " + mEditor);
+        if (mEditor != null) {
+            mEditor.attach();
+        }
+        Log.d(LOGTAG, "EditorPanel.onAttach(): mEditorID is " + mEditorID +
+                ", mEditor is " + mEditor);
     }
 
     public void cancelCurrentFilter() {

@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 
 import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.editors.EditorPanel;
 import com.android.gallery3d.filtershow.filters.HazeBusterActs;
 import com.android.gallery3d.filtershow.filters.SeeStraightActs;
 import com.android.gallery3d.filtershow.filters.SimpleMakeupImageFilter;
@@ -35,11 +36,12 @@ import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.state.StatePanel;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine.DdmStatus;
 
-public class MainPanel extends Fragment {
+public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelegate {
 
     private static final String LOGTAG = "MainPanel";
 
     private LinearLayout mMainView;
+    private View mBottomPanelView;
     private ImageButton looksButton;
     private ImageButton bordersButton;
     private ImageButton geometryButton;
@@ -124,17 +126,40 @@ public class MainPanel extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         mMainView = (LinearLayout) inflater.inflate(
                 R.layout.filtershow_main_panel, null, false);
 
-        looksButton = (ImageButton) mMainView.findViewById(R.id.fxButton);
-        bordersButton = (ImageButton) mMainView.findViewById(R.id.borderButton);
-        geometryButton = (ImageButton) mMainView.findViewById(R.id.geometryButton);
-        filtersButton = (ImageButton) mMainView.findViewById(R.id.colorsButton);
-        dualCamButton = (ImageButton) mMainView.findViewById(R.id.dualCamButton);
+        getBottomPanelView(inflater);
+        initBottomPanel();
+
+        updateDualCameraButton();
+        FilterShowActivity activity = (FilterShowActivity) getActivity();
+        showPanel(activity.getCurrentPanel());
+        return mMainView;
+    }
+
+    private void initBottomPanel() {
+        BottomPanel panel = new BottomPanel();
+        panel.setBottomPanelDelegate(this);
+        setActionFragment(panel, BottomPanel.FRAGMENT_TAG);
+    }
+
+    @Override
+    public View getBottomPanelView(LayoutInflater inflater) {
+        if (mBottomPanelView != null) {
+            return mBottomPanelView;
+        }
+
+        LinearLayout bottomPanel = (LinearLayout) inflater.inflate(
+                R.layout.filtershow_bottom_panel, null, false);
+
+        looksButton = (ImageButton) bottomPanel.findViewById(R.id.fxButton);
+        bordersButton = (ImageButton) bottomPanel.findViewById(R.id.borderButton);
+        geometryButton = (ImageButton) bottomPanel.findViewById(R.id.geometryButton);
+        filtersButton = (ImageButton) bottomPanel.findViewById(R.id.colorsButton);
+        dualCamButton = (ImageButton) bottomPanel.findViewById(R.id.dualCamButton);
         if (SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
-            makeupButton = (ImageButton) mMainView.findViewById(R.id.makeupButton);
+            makeupButton = (ImageButton) bottomPanel.findViewById(R.id.makeupButton);
             makeupButton.setVisibility(View.VISIBLE);
         }
 
@@ -146,18 +171,18 @@ public class MainPanel extends Fragment {
                 }
             });
         }
-        trueScannerButton = (ImageButton) mMainView.findViewById(R.id.trueScannerButton);
+        trueScannerButton = (ImageButton) bottomPanel.findViewById(R.id.trueScannerButton);
         if (!TrueScannerActs.isTrueScannerEnabled()) {
             trueScannerButton.setVisibility(View.GONE);
         }
 
-        hazeBusterButton = (ImageButton) mMainView.findViewById(R.id.hazeBusterButton);
-        if(!HazeBusterActs.isHazeBusterEnabled()) {
+        hazeBusterButton = (ImageButton) bottomPanel.findViewById(R.id.hazeBusterButton);
+        if (!HazeBusterActs.isHazeBusterEnabled()) {
             hazeBusterButton.setVisibility(View.GONE);
         }
 
-        seeStraightButton = (ImageButton) mMainView.findViewById(R.id.seeStraightButton);
-        if(!SeeStraightActs.isSeeStraightEnabled()) {
+        seeStraightButton = (ImageButton) bottomPanel.findViewById(R.id.seeStraightButton);
+        if (!SeeStraightActs.isSeeStraightEnabled()) {
             seeStraightButton.setVisibility(View.GONE);
         }
 
@@ -192,8 +217,6 @@ public class MainPanel extends Fragment {
             }
         });
 
-        updateDualCameraButton();
-
         trueScannerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -215,10 +238,8 @@ public class MainPanel extends Fragment {
             }
         });
 
-        FilterShowActivity activity = (FilterShowActivity) getActivity();
-//        showImageStatePanel(activity.isShowingImageStatePanel());
-        showPanel(activity.getCurrentPanel());
-        return mMainView;
+        mBottomPanelView = bottomPanel;
+        return bottomPanel;
     }
 
     private boolean isRightAnimation(int newPos) {
@@ -226,6 +247,26 @@ public class MainPanel extends Fragment {
             return false;
         }
         return true;
+    }
+
+    private void setActionFragment(Fragment actionFragment, String tag) {
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.bottom_panel_container, actionFragment, tag);
+        transaction.commitAllowingStateLoss();
+    }
+
+    public boolean hasEditorPanel() {
+        Fragment fragment = getChildFragmentManager().findFragmentByTag(EditorPanel.FRAGMENT_TAG);
+        return (fragment != null);
+    }
+
+    public void setEditorPanelFragment(Fragment editorFragment) {
+        setActionFragment(editorFragment, EditorPanel.FRAGMENT_TAG);
+    }
+
+    public void removeEditorPanelFragment() {
+        // use bottom panel replace editor panel.
+        initBottomPanel();
     }
 
     private void setCategoryFragment(Fragment category, boolean fromRight) {

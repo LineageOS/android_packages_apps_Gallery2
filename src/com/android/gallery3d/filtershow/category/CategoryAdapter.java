@@ -31,6 +31,7 @@ import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 public class CategoryAdapter extends ArrayAdapter<Action> {
 
     private static final String LOGTAG = "CategoryAdapter";
+    private static final int UNKNOWN_INDEX = -1;
     private int mItemHeight;
     private View mContainer;
     private int mItemWidth = ListView.LayoutParams.MATCH_PARENT;
@@ -234,6 +235,8 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
             if (pos != -1) {
                 rep = preset.getFilterRepresentation(pos);
             }
+        } else if (mCategory == MainPanel.FILTERS || mCategory == MainPanel.MAKEUP) {
+            selected = UNKNOWN_INDEX;
         }
         if (rep != null) {
             for (int i = 0; i < getCount(); i++) {

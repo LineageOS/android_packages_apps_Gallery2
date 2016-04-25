@@ -20,6 +20,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bottom_panel_background_color"
     android:visibility="visible" >
 
     <Button
@@ -46,7 +47,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
-            android:background="#000000"
             android:orientation="horizontal"
             android:gravity="center"
             android:visibility="visible" >

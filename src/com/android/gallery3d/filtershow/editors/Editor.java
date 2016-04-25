@@ -369,6 +369,12 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
 
     }
 
+    public void attach() {
+        if (mImageShow != null) {
+            mImageShow.attach();
+        }
+    }
+
     public void detach() {
         if (mImageShow != null) {
             mImageShow.detach();

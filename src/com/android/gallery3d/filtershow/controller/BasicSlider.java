@@ -52,8 +52,7 @@ public class BasicSlider implements Control {
                 public void onClick(View v) {
                     FilterShowActivity activity = (FilterShowActivity) context;
                     mEditor.finalApplyCalled();
-                    activity.backToMain();
-                    activity.setActionBar();
+                    activity.leaveSeekBarPanel();
                 }
             });
         }
@@ -64,8 +63,7 @@ public class BasicSlider implements Control {
                 public void onClick(View v) {
                     FilterShowActivity activity = (FilterShowActivity) context;
                     activity.cancelCurrentFilter();
-                    activity.backToMain();
-                    activity.setActionBar();
+                    activity.leaveSeekBarPanel();
                 }
             });
         }

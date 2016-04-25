@@ -28,7 +28,7 @@
         android:layout_height="60dp"
         android:src="@drawable/cancel"
         android:layout_gravity="center_vertical"
-        android:background="#000000" />
+        android:background="@android:color/transparent" />
 
     <SeekBar
         android:id="@+id/primarySeekBar"
@@ -47,6 +47,6 @@
         android:layout_height="60dp"
         android:src="@drawable/done"
         android:layout_gravity="center_vertical"
-        android:background="#000000" />
+        android:background="@android:color/transparent" />
 
 </LinearLayout>
