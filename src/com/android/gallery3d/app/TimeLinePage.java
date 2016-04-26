@@ -809,7 +809,8 @@ public class TimeLinePage extends ActivityState implements
             if (mSelectionManager.getSelected(false) == null) return -1;
             Path id = mSelectionManager.getSelected(false).get(0);
             mIndex = mAlbumDataAdapter.findItem(id);
-            return mIndex;
+            int indexToDisplay = mAlbumDataAdapter.getIndex(id, false);
+            return indexToDisplay;
         }
 
         @Override
