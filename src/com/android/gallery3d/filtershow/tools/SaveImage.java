@@ -625,7 +625,8 @@ public class SaveImage {
         float scaleFactor = 1f;
 
         Intent processIntent = ProcessingService.getSaveIntent(filterShowActivity, preset,
-                destination, selectedImageUri, sourceImageUri, flatten, 90, scaleFactor, true);
+                destination, selectedImageUri, sourceImageUri, flatten, 90,
+                scaleFactor, true, filterShowActivity.getRequestId());
 
         filterShowActivity.startService(processIntent);
 

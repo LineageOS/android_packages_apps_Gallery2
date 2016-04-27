@@ -26,6 +26,7 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -54,6 +55,12 @@ public class ProcessingService extends Service {
     private static final String FLATTEN = "flatten";
     private static final String SIZE_FACTOR = "sizeFactor";
     private static final String EXIT = "exit";
+    private static final String REQUEST_ID = "request_id";
+
+    public static final String SAVE_IMAGE_COMPLETE_ACTION = "save_image_complete_action";
+    public static final String KEY_URL = "key_url";
+    public static final String KEY_REQUEST_ID = "request_id";
+    public static final String KEY_DUALCAM = "dualCam";
 
     private ProcessingTaskController mProcessingTaskController;
     private ImageSavingTask mImageSavingTask;
@@ -63,14 +70,7 @@ public class ProcessingService extends Service {
     private RenderingRequestTask mRenderingRequestTask;
 
     private final IBinder mBinder = new LocalBinder();
-    private FilterShowActivity mFiltershowActivity;
 
-    private boolean mSaving = false;
-    private boolean mNeedsAlive = false;
-
-    public void setFiltershowActivity(FilterShowActivity filtershowActivity) {
-        mFiltershowActivity = filtershowActivity;
-    }
 
     public void setOriginalBitmap(Bitmap originalBitmap) {
         if (mUpdatePreviewTask == null) {
@@ -143,7 +143,7 @@ public class ProcessingService extends Service {
 
     public static Intent getSaveIntent(Context context, ImagePreset preset, File destination,
             Uri selectedImageUri, Uri sourceImageUri, boolean doFlatten, int quality,
-            float sizeFactor, boolean needsExit) {
+            float sizeFactor, boolean needsExit, long requestId) {
         Intent processIntent = new Intent(context, ProcessingService.class);
         processIntent.putExtra(ProcessingService.SOURCE_URI,
                 sourceImageUri.toString());
@@ -158,6 +158,7 @@ public class ProcessingService extends Service {
                 preset.getJsonString(ImagePreset.JASON_SAVED));
         processIntent.putExtra(ProcessingService.SAVING, true);
         processIntent.putExtra(ProcessingService.EXIT, needsExit);
+        processIntent.putExtra(ProcessingService.REQUEST_ID, requestId);
         if (doFlatten) {
             processIntent.putExtra(ProcessingService.FLATTEN, true);
         }
@@ -186,12 +187,10 @@ public class ProcessingService extends Service {
         tearDownPipeline();
         mProcessingTaskController.quit();
         MasterImage.setMaster(null);
-        mFiltershowActivity = null;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mNeedsAlive = true;
         if (intent != null && intent.getBooleanExtra(SAVING, false)) {
             // we save using an intent to keep the service around after the
             // activity has been destroyed.
@@ -203,6 +202,7 @@ public class ProcessingService extends Service {
             float sizeFactor = intent.getFloatExtra(SIZE_FACTOR, 1);
             boolean flatten = intent.getBooleanExtra(FLATTEN, false);
             boolean exit = intent.getBooleanExtra(EXIT, false);
+            long requestId = intent.getLongExtra(REQUEST_ID, -1);
             Uri sourceUri = Uri.parse(source);
             Uri selectedUri = null;
             if (selected != null) {
@@ -214,11 +214,9 @@ public class ProcessingService extends Service {
             }
             ImagePreset preset = new ImagePreset();
             preset.readJsonFromString(presetJson);
-            mNeedsAlive = false;
-            mSaving = true;
             handleSaveRequest(sourceUri, selectedUri, destinationFile, preset,
                     MasterImage.getImage().getHighresImage(),
-                    flatten, quality, sizeFactor, exit);
+                    flatten, quality, sizeFactor, exit, requestId);
         }
         return START_REDELIVER_INTENT;
     }
@@ -228,16 +226,21 @@ public class ProcessingService extends Service {
         return mBinder;
     }
 
-    public void onStart() {
-        mNeedsAlive = true;
-        if (!mSaving && mFiltershowActivity != null) {
-            mFiltershowActivity.updateUIAfterServiceStarted();
+
+    //a lot of FilterShowActivity 's running instances bind to this service(only one instance)
+    //use broadcast result to notify FilterShowActivity 's instances to update UI
+    private void broadcastState(String action, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setAction(action);
+        if (bundle != null) {
+            intent.putExtras(bundle);
         }
+        sendBroadcast(intent);
     }
 
     public void handleSaveRequest(Uri sourceUri, Uri selectedUri,
             File destinationFile, ImagePreset preset, Bitmap previewImage,
-            boolean flatten, int quality, float sizeFactor, boolean exit) {
+            boolean flatten, int quality, float sizeFactor, boolean exit, long requestId) {
         mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.cancelAll();
 
@@ -254,7 +257,7 @@ public class ProcessingService extends Service {
         // Process the image
 
         mImageSavingTask.saveImage(sourceUri, selectedUri, destinationFile,
-                preset, previewImage, flatten, quality, sizeFactor, exit);
+                preset, previewImage, flatten, quality, sizeFactor, exit, requestId);
     }
 
     public void updateNotificationWithBitmap(Bitmap bitmap) {
@@ -267,13 +270,9 @@ public class ProcessingService extends Service {
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
-    public void completePreviewSaveImage(Uri result, boolean exit) {
-        if (exit && !mNeedsAlive && !mFiltershowActivity.isSimpleEditAction()) {
-            mFiltershowActivity.completeSaveImage(result, false);
-        }
-    }
+    public void completeSaveImage(Uri result, long requestId,
+                                  boolean exit, boolean releaseDualCam) {
 
-    public void completeSaveImage(Uri result, boolean exit, boolean releaseDualCam) {
         if (SHOW_IMAGE) {
             // TODO: we should update the existing image in Gallery instead
             Intent viewImage = new Intent(Intent.ACTION_VIEW, result);
@@ -281,19 +280,15 @@ public class ProcessingService extends Service {
             startActivity(viewImage);
         }
         mNotifyMgr.cancel(mNotificationId);
-        if (!exit) {
-            stopForeground(true);
-            stopSelf();
-            return;
-        }
         stopForeground(true);
         stopSelf();
-        if (mNeedsAlive) {
-            // If the app has been restarted while we were saving...
-            mFiltershowActivity.updateUIAfterServiceStarted();
-        } else if (exit || mFiltershowActivity.isSimpleEditAction()) {
+        if (exit) {
             // terminate now
-            mFiltershowActivity.completeSaveImage(result, releaseDualCam);
+            Bundle bundle = new Bundle();
+            bundle.putString(KEY_URL, result.toString());
+            bundle.putLong(KEY_REQUEST_ID, requestId);
+            bundle.putBoolean(KEY_DUALCAM, releaseDualCam);
+            broadcastState(SAVE_IMAGE_COMPLETE_ACTION, bundle);
         }
     }
 

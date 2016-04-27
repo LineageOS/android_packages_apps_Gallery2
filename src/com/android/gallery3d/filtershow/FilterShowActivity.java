@@ -25,12 +25,14 @@ import java.util.Locale;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -212,6 +214,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     private AlertDialog.Builder mBackAlertDialogBuilder;
 
     private ProgressDialog mLoadingDialog;
+    private long mRequestId = -1;
 
     public ProcessingService getProcessingService() {
         return mBoundService;
@@ -220,6 +223,34 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     public boolean isSimpleEditAction() {
         return !PhotoPage.ACTION_NEXTGEN_EDIT.equalsIgnoreCase(mAction);
     }
+
+    public long getRequestId() {
+        return mRequestId;
+    }
+
+    private void registerFilter() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ProcessingService.SAVE_IMAGE_COMPLETE_ACTION);
+        registerReceiver(mHandlerReceiver, filter);
+    }
+
+    private final BroadcastReceiver mHandlerReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (ProcessingService.SAVE_IMAGE_COMPLETE_ACTION.equals(action) &&
+                    !isSimpleEditAction()) {
+                Bundle bundle = intent.getExtras();
+                long requestId = bundle.getLong(ProcessingService.KEY_REQUEST_ID);
+                //only handle own request
+                if (requestId == mRequestId) {
+                    Uri saveUri = Uri.parse(bundle.getString(ProcessingService.KEY_URL));
+                    boolean releaseDualCam = bundle.getBoolean(ProcessingService.KEY_DUALCAM);
+                    completeSaveImage(saveUri, releaseDualCam);
+                }
+            }
+        }
+    };
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
@@ -232,8 +263,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
              * cast its IBinder to a concrete class and directly access it.
              */
             mBoundService = ((ProcessingService.LocalBinder)service).getService();
-            mBoundService.setFiltershowActivity(FilterShowActivity.this);
-            mBoundService.onStart();
+            updateUIAfterServiceStarted();
         }
 
         @Override
@@ -270,6 +300,9 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void updateUIAfterServiceStarted() {
+        //This activity will have more than one running instances
+        //mRequestId to distinguish the different instance's request
+        mRequestId = System.currentTimeMillis();
         MasterImage.setMaster(mMasterImage);
         ImageFilter.setActivityForMemoryToasts(this);
         mUserPresetsManager = new UserPresetsManager(this);
@@ -296,6 +329,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
 
         clearGalleryBitmapPool();
+        registerFilter();
         doBindService();
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.GRAY));
         setContentView(R.layout.filtershow_splashscreen);
@@ -1333,6 +1367,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
 
         mUserPresetsManager.close();
+        unregisterReceiver(mHandlerReceiver);
         doUnbindService();
         if (mReleaseDualCamOnDestory && DualCameraNativeEngine.getInstance().isLibLoaded())
             DualCameraNativeEngine.getInstance().releaseDepthMap();

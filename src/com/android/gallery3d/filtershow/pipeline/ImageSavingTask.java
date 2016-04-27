@@ -39,6 +39,7 @@ public class ImageSavingTask extends ProcessingTask {
         float sizeFactor;
         Bitmap previewImage;
         boolean exit;
+        long requsetId;
     }
 
     static class UpdateBitmap implements Update {
@@ -58,6 +59,7 @@ public class ImageSavingTask extends ProcessingTask {
     static class URIResult implements Result {
         Uri uri;
         boolean exit;
+        long requestId;
     }
 
     public ImageSavingTask(ProcessingService service) {
@@ -67,7 +69,7 @@ public class ImageSavingTask extends ProcessingTask {
     public void saveImage(Uri sourceUri, Uri selectedUri,
                           File destinationFile, ImagePreset preset,
                           Bitmap previewImage, boolean flatten,
-                          int quality, float sizeFactor, boolean exit) {
+                          int quality, float sizeFactor, boolean exit, long requestId) {
         SaveRequest request = new SaveRequest();
         request.sourceUri = sourceUri;
         request.selectedUri = selectedUri;
@@ -78,6 +80,7 @@ public class ImageSavingTask extends ProcessingTask {
         request.sizeFactor = sizeFactor;
         request.previewImage = previewImage;
         request.exit = exit;
+        request.requsetId = requestId;
         postRequest(request);
     }
 
@@ -119,13 +122,14 @@ public class ImageSavingTask extends ProcessingTask {
         URIResult result = new URIResult();
         result.uri = uri;
         result.exit = request.exit;
+        result.requestId = request.requsetId;
         return result;
     }
 
     @Override
     public void onResult(Result message) {
         URIResult result = (URIResult) message;
-        mProcessingService.completeSaveImage(result.uri, result.exit, true);
+        mProcessingService.completeSaveImage(result.uri, result.requestId, result.exit, true);
     }
 
     @Override
