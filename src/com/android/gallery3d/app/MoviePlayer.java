@@ -32,7 +32,6 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.Metadata;
-import android.media.audiofx.AudioEffect;
 import android.media.audiofx.Virtualizer;
 import android.net.Uri;
 import android.os.Build;
@@ -43,7 +42,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.VideoView;
 import android.widget.Toast;
 
 import com.android.gallery3d.R;
@@ -51,17 +49,17 @@ import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.BlobCache;
 import com.android.gallery3d.util.CacheManager;
 import com.android.gallery3d.util.GalleryUtils;
+
 import org.codeaurora.gallery3d.ext.IContrllerOverlayExt;
-import org.codeaurora.gallery3d.ext.IMoviePlayer;
 import org.codeaurora.gallery3d.ext.IMovieItem;
+import org.codeaurora.gallery3d.ext.IMoviePlayer;
 import org.codeaurora.gallery3d.ext.MovieUtils;
 import org.codeaurora.gallery3d.video.BookmarkEnhance;
-import org.codeaurora.gallery3d.video.ExtensionHelper;
+import org.codeaurora.gallery3d.video.CodeauroraVideoView;
 import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
 import org.codeaurora.gallery3d.video.IControllerRewindAndForward.IRewindAndForwardListener;
 import org.codeaurora.gallery3d.video.ScreenModeManager;
 import org.codeaurora.gallery3d.video.ScreenModeManager.ScreenModeListener;
-import org.codeaurora.gallery3d.video.CodeauroraVideoView;
 import org.codeaurora.gallery3d.video.VideoSnapshotExt;
 
 import java.io.ByteArrayInputStream;
@@ -225,40 +223,6 @@ public class MoviePlayer implements
         }
     };
 
-    private CodeauroraVideoView.AudioFocusChangeListener mAudioFocusListener =
-            new CodeauroraVideoView.AudioFocusChangeListener() {
-                @Override
-                public void onAudioFocusRequestFailed() {
-                    Log.d(TAG, "pause video because onAudioFocusRequestFailed.");
-                    onPauseVideo();
-                }
-
-                @Override
-                public void onAudioFocusChange(int focusChange) {
-                    switch (focusChange) {
-                        case AudioManager.AUDIOFOCUS_GAIN:
-                            boolean isTargetPlaying = (mVideoView != null &&
-                                    mVideoView.isTargetPlaying());
-                            Log.d(TAG, "AUDIOFOCUS_GAIN isTargetPlaying : " + isTargetPlaying);
-                            if (mPausedByTransientLossOfFocus || isTargetPlaying) {
-                                onPlayVideo();
-                                mPausedByTransientLossOfFocus = false;
-                            }
-                            break;
-                        case AudioManager.AUDIOFOCUS_LOSS:
-                        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                            boolean isPlaying = (mVideoView != null && mVideoView.isPlaying());
-                            Log.d(TAG, "AUDIOFOCUS_LOSS isPlaying : " + isPlaying);
-                            if (isPlaying) {
-                                onPauseVideo();
-                                mPausedByTransientLossOfFocus = true;
-                            }
-                            break;
-                        default:
-                    }
-                }
-            };
-
     public MoviePlayer(View rootView, final MovieActivity movieActivity,
             IMovieItem info, Bundle savedInstance, boolean canReplay) {
         mContext = movieActivity.getApplicationContext();
@@ -280,7 +244,6 @@ public class MoviePlayer implements
 
         mVideoView.setOnErrorListener(this);
         mVideoView.setOnCompletionListener(this);
-        mVideoView.setOnAudioFocusChangeListener(mAudioFocusListener);
 
         if (mVirtualizer != null) {
             mVirtualizer.release();
@@ -1650,6 +1613,45 @@ public class MoviePlayer implements
         if (mController != null) {
             mController.cancelHiding();
         }
+    }
+
+    private AudioManager.OnAudioFocusChangeListener mAudioFocusChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+                @Override
+                public void onAudioFocusChange(int focusChange) {
+                    switch (focusChange) {
+                        case AudioManager.AUDIOFOCUS_GAIN:
+                            boolean isTargetPlaying = (mVideoView != null &&
+                                    mVideoView.isTargetPlaying());
+                            Log.d(TAG, "AUDIOFOCUS_GAIN isTargetPlaying : " + isTargetPlaying);
+                            if (mPausedByTransientLossOfFocus || isTargetPlaying) {
+                                onPlayVideo();
+                                mPausedByTransientLossOfFocus = false;
+                            }
+                            break;
+                        case AudioManager.AUDIOFOCUS_LOSS:
+                        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                            boolean isPlaying = (mVideoView != null && mVideoView.isPlaying());
+                            Log.d(TAG, "AUDIOFOCUS_LOSS isPlaying : " + isPlaying);
+                            if (isPlaying) {
+                                onPauseVideo();
+                                mPausedByTransientLossOfFocus = true;
+                            }
+                            break;
+                        default:
+                    }
+                }
+    };
+
+    public int requestAudioFocus() {
+        AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+        return am.requestAudioFocus(mAudioFocusChangeListener, AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+    }
+
+    public int abandonAudioFocus() {
+        AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+        return am.abandonAudioFocus(mAudioFocusChangeListener);
     }
 }
 

@@ -98,11 +98,6 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
     private boolean mIsShowDialog = false;
     private boolean mErrorDialogShowing = false;
     private KeyguardManager mKeyguardManager;
-    private AudioFocusChangeListener mAudioFocusListener;
-
-    public interface AudioFocusChangeListener extends AudioManager.OnAudioFocusChangeListener {
-        public void onAudioFocusRequestFailed();
-    }
 
     private final Handler mHandler = new Handler() {
         public void handleMessage(final Message msg) {
@@ -356,14 +351,14 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
 
         getHolder().removeCallback(mSHCallback);
         mSHCallback = new SurfaceHolder.Callback() {
-            public void surfaceChanged(final SurfaceHolder holder, final int format, 
+            public void surfaceChanged(final SurfaceHolder holder, final int format,
                     final int w, final int h) {
                 if (LOG) {
                     Log.v(TAG, "surfaceChanged(" + holder + ", " + format
                             + ", " + w + ", " + h + ")");
                     Log.v(TAG, "surfaceChanged() mMediaPlayer=" + mMediaPlayer
                             + ", mTargetState=" + mTargetState
-                            + ", mVideoWidth=" + mVideoWidth 
+                            + ", mVideoWidth=" + mVideoWidth
                             + ", mVideoHeight=" + mVideoHeight);
                 }
                 mSurfaceWidth = w;
@@ -454,8 +449,6 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             mMediaPlayer = null;
             mCurrentState = STATE_IDLE;
             mTargetState  = STATE_IDLE;
-            AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-            am.abandonAudioFocus(null);
         }
     }
 
@@ -474,8 +467,6 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             mErrorListener.onError(mMediaPlayer, MediaPlayer.MEDIA_ERROR_UNKNOWN, 0);
             return;
         }
-        AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-        am.requestAudioFocus(mAudioFocusListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
         try {
             mMediaPlayer = new MediaPlayer();
@@ -626,10 +617,6 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
         mOnInfoListener = l;
     }
 
-    public void setOnAudioFocusChangeListener(AudioFocusChangeListener l) {
-        mAudioFocusListener = l;
-    }
-
     SurfaceHolder.Callback mSHCallback = new SurfaceHolder.Callback() {
         public void surfaceChanged(SurfaceHolder holder, int format,
                                     int w, int h) {
@@ -695,8 +682,6 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             if (cleartargetstate) {
                 mTargetState  = STATE_IDLE;
             }
-            AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-            am.abandonAudioFocus(null);
         }
     }
 
@@ -782,18 +767,8 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
     public void start() {
         if (mIsShowDialog) return;
         if (isInPlaybackState()) {
-            AudioManager am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-            int result = am.requestAudioFocus(mAudioFocusListener, AudioManager.STREAM_MUSIC,
-                    AudioManager.AUDIOFOCUS_GAIN);
-            if (result != AudioManager.AUDIOFOCUS_REQUEST_FAILED) {
-                mMediaPlayer.start();
-                mCurrentState = STATE_PLAYING;
-            } else {
-                Log.w(TAG, "requestAudioFocus failed.");
-                if (mAudioFocusListener != null) {
-                    mAudioFocusListener.onAudioFocusRequestFailed();
-                }
-            }
+            mMediaPlayer.start();
+            mCurrentState = STATE_PLAYING;
         }
         mTargetState = STATE_PLAYING;
     }
@@ -826,7 +801,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
     }
 
     public void resume() {
-        // HTTP streaming (with suspended status) will call mMediaPlayer->resume(), 
+        // HTTP streaming (with suspended status) will call mMediaPlayer->resume(),
         // others will call openVideo()
         /*
         if (mCurrentState == STATE_SUSPENDED) {
@@ -846,7 +821,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                      release(false);
                 }
             } else {
-                // The surface has been destroyed, resume operation will be done 
+                // The surface has been destroyed, resume operation will be done
                 // after surface created
                 return;
             }
