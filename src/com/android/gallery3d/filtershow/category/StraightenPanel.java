@@ -61,7 +61,7 @@ public class StraightenPanel extends BasicGeometryPanel {
             public void onClick(View v) {
                 activity.cancelCurrentFilter();
                 activity.backToMain();
-                activity.setActionBar(false);
+                activity.setActionBar();
             }
         });
         mApplyButton.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class StraightenPanel extends BasicGeometryPanel {
             public void onClick(View v) {
                 mEditorStraighten.finalApplyCalled();
                 activity.backToMain();
-                activity.setActionBar(false);
+                activity.setActionBar();
             }
         });
     }

@@ -83,13 +83,13 @@ import com.android.gallery3d.data.LocalAlbum;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.category.Action;
 import com.android.gallery3d.filtershow.category.CategoryAdapter;
-import com.android.gallery3d.filtershow.category.CategorySelected;
 import com.android.gallery3d.filtershow.category.CategoryView;
 import com.android.gallery3d.filtershow.category.EditorCropPanel;
 import com.android.gallery3d.filtershow.category.MainPanel;
 import com.android.gallery3d.filtershow.category.StraightenPanel;
 import com.android.gallery3d.filtershow.category.SwipableView;
 import com.android.gallery3d.filtershow.data.UserPresetsManager;
+import com.android.gallery3d.filtershow.editors.BasicEditor;
 import com.android.gallery3d.filtershow.editors.Editor;
 import com.android.gallery3d.filtershow.editors.EditorCrop;
 import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
@@ -144,7 +144,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     private ImageShow mImageShow = null;
 
     private View mSaveButton = null;
-    private View mExitButton = null, mCancelButton = null;
 
     private EditorPlaceHolder mEditorPlaceHolder = new EditorPlaceHolder(this);
     private Editor mCurrentEditor = null;
@@ -209,7 +208,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     private ImageButton imgComparison;
     private String mPopUpText, mCancel;
     RelativeLayout rlImageContainer;
-    boolean isOrientationChanged;
     private boolean isComingFromEditorScreen;
     private AlertDialog.Builder mBackAlertDialogBuilder;
 
@@ -377,10 +375,11 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 EditorPanel panel = new EditorPanel();
                 panel.setEditor(currentId);
                 setActionBarForEffects(currentEditor);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.remove(getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG));
-                transaction.replace(R.id.main_panel_container, panel, MainPanel.FRAGMENT_TAG);
-                transaction.commit();
+                Fragment main =
+                        getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+                if (main instanceof MainPanel) {
+                    ((MainPanel) main).setEditorPanelFragment(panel);
+                }
             }
         };
         Fragment main = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
@@ -400,6 +399,21 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             handler.postDelayed(showEditor, anim.getDuration());
         } else {
             showEditor.run();
+        }
+    }
+
+    public void leaveSeekBarPanel() {
+        removeSeekBarPanel();
+        showDefaultImageView();
+        setActionBar();
+        showActionBar(true);
+    }
+
+    private void removeSeekBarPanel() {
+        Fragment currentPanel =
+                getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+        if (currentPanel instanceof MainPanel) {
+            ((MainPanel) currentPanel).removeEditorPanelFragment();
         }
     }
 
@@ -477,10 +491,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void setActionBar() {
-        setActionBar(false);
-    }
-
-    public void setActionBar(boolean isEffectClicked) {
         ActionBar actionBar = getActionBar();
         actionBar.setShowHideAnimationEnabled(false);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -502,8 +512,8 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
         showSaveButtonIfNeed();
 
-        mExitButton = actionBar.getCustomView().findViewById(R.id.filtershow_exit);
-        mExitButton.setOnClickListener(new OnClickListener() {
+        View exitButton = actionBar.getCustomView().findViewById(R.id.filtershow_exit);
+        exitButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mImageShow.hasModifications()) {
@@ -967,6 +977,18 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             return;
         }
 
+        Fragment currentPanel =
+                getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+        if (currentPanel instanceof MainPanel && ((MainPanel) currentPanel).hasEditorPanel()) {
+            if (representation.equals(MasterImage.getImage().getCurrentFilterRepresentation())) {
+                return;
+            }
+            // cancel previous filter.
+            cancelCurrentFilter();
+            showDefaultImageView();
+            removeSeekBarPanel();
+        }
+
         if (representation.getFilterType() == FilterRepresentation.TYPE_DUALCAM &&
                 MasterImage.getImage().getDepthMapLoadingStatus() == DdmStatus.DDM_FAILED) {
             Toast.makeText(this, getString(R.string.dualcam_filter_not_supported), Toast.LENGTH_SHORT).show();
@@ -989,7 +1011,9 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 FilterRepresentation filterRepresentation = representation.copy();
                 MasterImage.getImage().setPreset(copy, filterRepresentation, true);
                 MasterImage.getImage().setCurrentFilterRepresentation(null);
-                showSaveButtonIfNeed();
+
+                setActionBar();
+                showActionBar(true);
                 return;
             }
         }
@@ -1027,6 +1051,8 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         ImagePreset preset = mMasterImage.getPreset();
         mCategoryLooksAdapter.reflectImagePreset(preset);
         mCategoryBordersAdapter.reflectImagePreset(preset);
+        mCategoryFiltersAdapter.reflectImagePreset(preset);
+        mCategoryMakeupAdapter.reflectImagePreset(preset);
         mCategoryDualCamAdapter.reflectImagePreset(preset);
     }
 
@@ -1718,6 +1744,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void backToMain() {
+        removeSeekBarPanel();
         showActionBar(true);
         Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
         if (currentPanel instanceof MainPanel) {

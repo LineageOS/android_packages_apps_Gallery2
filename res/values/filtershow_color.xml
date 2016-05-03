@@ -64,6 +64,7 @@
     <color name="filtershow_color_xprocess">#409797</color>
 
     <color name="iconview_bottom_color">#80000000</color>
+    <color name="bottom_panel_background_color">#A5000000</color>
     <color name="crop_panel_background_color">#A5000000</color>
     <color name="crop_text_color">#4f92e9</color>
 </resources>

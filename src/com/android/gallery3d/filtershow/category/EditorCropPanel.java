@@ -100,7 +100,7 @@ public class EditorCropPanel extends BasicGeometryPanel {
             public void onClick(View v) {
                 mEditorCrop.finalApplyCalled();
                 activity.backToMain();
-                activity.setActionBar(false);
+                activity.setActionBar();
             }
         });
         mExitButton.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +108,7 @@ public class EditorCropPanel extends BasicGeometryPanel {
             public void onClick(View v) {
                 activity.cancelCurrentFilter();
                 activity.backToMain();
-                activity.setActionBar(false);
+                activity.setActionBar();
             }
         });
     }
