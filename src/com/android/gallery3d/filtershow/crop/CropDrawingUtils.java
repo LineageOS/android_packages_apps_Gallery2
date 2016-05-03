@@ -75,7 +75,8 @@ public abstract class CropDrawingUtils {
         float x = 0;
         float y = 0;
         for (int i = 0; i < 2; i++) {
-            y = i * rectHeight + bounds.top + strokeWidth / 2;
+            y = i * rectHeight + bounds.top;
+
             canvas.drawLine(bounds.left - strokeWidth / 2, y, cornerLength + bounds.left, y, p);
             canvas.drawLine(bounds.right - cornerLength, y, bounds.right + strokeWidth / 2, y, p);
         }

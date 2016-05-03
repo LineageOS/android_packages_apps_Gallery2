@@ -30,6 +30,7 @@
 package com.android.gallery3d.filtershow.category;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -76,13 +77,19 @@ public class EditorCropPanel extends BasicGeometryPanel {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         FilterShowActivity filterShowActivity = (FilterShowActivity) activity;
+        if (filterShowActivity.isReloadByConfigurationChanged()) {
+            mSelectPosition = filterShowActivity.getEditorCropButtonSelect();
+        }
         mEditorCrop = (EditorCrop) filterShowActivity.getEditor(EditorCrop.ID);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mEditorName.setText(R.string.crop);
+        if (!isLandscape()) {
+            mEditorName.setText(R.string.crop);
+            mBottomPanel.setVisibility(View.VISIBLE);
+        }
         mMainView.setBackgroundColor(getContext().getResources().getColor(
                 R.color.edit_actionbar_background));
 
@@ -165,5 +172,12 @@ public class EditorCropPanel extends BasicGeometryPanel {
             mEditorCrop.detach();
         }
         super.onDetach();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        FilterShowActivity activity = (FilterShowActivity) getActivity();
+        activity.saveEditorCropState(mSelectPosition);
     }
 }
