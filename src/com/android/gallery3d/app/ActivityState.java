@@ -46,6 +46,7 @@ abstract public class ActivityState {
     protected static final int FLAG_SCREEN_ON_ALWAYS = 8;
     protected static final int FLAG_ALLOW_LOCK_WHILE_SCREEN_ON = 16;
     protected static final int FLAG_SHOW_WHEN_LOCKED = 32;
+    protected static final int FLAG_SCREEN_FULL = 64;
 
     protected AbstractGalleryActivity mActivity;
     protected Bundle mData;
@@ -163,6 +164,12 @@ abstract public class ActivityState {
             params.flags |= WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
         } else {
             params.flags &= ~WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+        }
+
+        if (0 != (mFlags & FLAG_SCREEN_FULL)) {
+            params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        } else {
+            params.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
         }
         win.setAttributes(params);
     }
