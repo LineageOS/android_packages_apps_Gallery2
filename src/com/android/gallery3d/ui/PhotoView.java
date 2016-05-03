@@ -205,6 +205,7 @@ public class PhotoView extends GLView {
     private UndoBarView mUndoBar;
     private Texture mVideoPlayIcon;
     private Texture mDrmIcon;
+    private int mVideoPlayIconSize = 0;
 
     private SynchronizedHandler mHandler;
 
@@ -308,6 +309,8 @@ public class PhotoView extends GLView {
             }
         });
         mVideoPlayIcon = new ResourceTexture(mContext, R.drawable.play_detail);
+        mVideoPlayIconSize = mContext.getResources().getDimensionPixelSize(
+                R.dimen.photo_view_video_icon_size);
         mDrmIcon = new ResourceTexture(mContext, R.drawable.drm_image);
         for (int i = -SCREEN_NAIL_MAX; i <= SCREEN_NAIL_MAX; i++) {
             if (i == 0) {
@@ -942,7 +945,7 @@ public class PhotoView extends GLView {
 
     // Draw the video play icon (in the place where the spinner was)
     private void drawVideoPlayIcon(GLCanvas canvas, int side) {
-        int s = side / ICON_RATIO;
+        int s = mVideoPlayIconSize;
         // Draw the video play icon at the center
         mVideoPlayIcon.draw(canvas, -s / 2, -s / 2, s, s);
     }

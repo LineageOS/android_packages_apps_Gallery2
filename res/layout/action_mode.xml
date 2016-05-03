@@ -35,15 +35,10 @@
                 android:textColor="#8A000000"
                 android:textSize="20sp"
                 android:singleLine="true"
-                android:gravity="left|center_vertical"
-                android:paddingEnd="25dip"
+                android:gravity="start|center_vertical"
+                android:paddingEnd="15dip"
+                android:paddingStart="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
     </FrameLayout>
-    <ImageView android:layout_marginStart="16dip"
-            android:layout_marginEnd="8dip"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:src="@drawable/cab_divider_vertical_dark" />
 </LinearLayout>

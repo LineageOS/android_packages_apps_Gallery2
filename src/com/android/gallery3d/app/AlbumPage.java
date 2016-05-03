@@ -657,6 +657,7 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
             menu.findItem(R.id.action_sync_picasa_albums).setVisible(mIsVideoScreen);
             MenuItem item = menu.findItem(R.id.action_view_type);
             updateMenuTitle(item);
+            updateMenuTitle(menu.findItem(R.id.action_select));
 
         }
         //actionBar.setSubtitle(null);
@@ -920,10 +921,13 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
         }
     }
 
-     public void updateMenuTitle(MenuItem item) {
-
-       item.setTitle(mViewType ? R.string.action_viewtype_list
-        : R.string.action_viewtype_grid);
+    public void updateMenuTitle(MenuItem item) {
+        if (item.getItemId() == R.id.action_view_type) {
+            item.setTitle(mViewType ? R.string.action_viewtype_list
+                    : R.string.action_viewtype_grid);
+        } else if (item.getItemId() == R.id.action_select) {
+            item.setTitle(mIsVideoScreen ? R.string.select_video : R.string.select_item);
+        }
     }
 
     private void switchView() {

@@ -157,6 +157,8 @@
     <dimen name="album_padding_left_land">3dp</dimen>
     <dimen name="album_padding_right_land">3dp</dimen>
 
+    <dimen name="photo_view_video_icon_size">48dp</dimen>
+
     <!-- configuration for manage page -->
     <dimen name="cache_pin_size">24dp</dimen>
     <dimen name="cache_pin_margin">8dp</dimen>
@@ -213,6 +215,7 @@
     <dimen name="timeline_port_margin">3dp</dimen>
     <dimen name="timeline_title_height">48dp</dimen>
     <dimen name="timeline_title_font_size">14sp</dimen>
+    <dimen name="timeline_title_margin">16dp</dimen>
 
     <dimen name="timebar_height">60dp</dimen>
     <dimen name="timebar_margin">30dp</dimen>

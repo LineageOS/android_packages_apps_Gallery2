@@ -47,7 +47,7 @@
     <FrameLayout
             android:id="@+id/bottom_panel_container"
             android:layout_width="match_parent"
-            android:layout_height="48dip"
+            android:layout_height="@dimen/bottom_panel_height"
             android:visibility="visible"
             android:layout_gravity="center"/>
 </LinearLayout>
