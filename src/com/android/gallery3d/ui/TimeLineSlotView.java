@@ -459,9 +459,12 @@ public class TimeLineSlotView extends GLView {
         Rect offset = new Rect();
         rootPane.getBoundsOf(this, offset);
         Rect r = getSlotRect(slotIndex);
-        r.offset(offset.left - getScrollX(),
-                offset.top - getScrollY());
-        return r;
+        if (r != null) {
+            r.offset(offset.left - getScrollX(),
+                    offset.top - getScrollY());
+            return r;
+        }
+        return offset;
     }
 
     public int getTitleWidth() {

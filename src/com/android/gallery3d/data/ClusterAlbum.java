@@ -133,7 +133,7 @@ public class ClusterAlbum extends MediaSet implements ContentListener {
     public static ArrayList<MediaItem> getMediaItemFromPath(
             ArrayList<Path> paths, int start, int count,
             DataManager dataManager) {
-        if (start >= paths.size()) {
+        if (start >= paths.size() || start < 0) {
             return new ArrayList<MediaItem>();
         }
         int end = Math.min(start + count, paths.size());
