@@ -48,7 +48,7 @@ public class TimeLineTitleMaker {
     private final Context mContext;
     private final TimeLineSlotView mTimeLineSlotView;
 
-    private final int TIMELINETITLE_START_X = 16;
+    private final int TIMELINETITLE_START_X;
 
     public TimeLineTitleMaker(Context context, TimeLineSlotRenderer.LabelSpec spec, TimeLineSlotView slotView) {
         mContext = context;
@@ -56,6 +56,8 @@ public class TimeLineTitleMaker {
         mTimeLineSlotView = slotView;
         mTitlePaint = getTextPaint(spec.timeLineTitleFontSize, spec.timeLineTitleTextColor , true);
         mCountPaint = getTextPaint(spec.timeLineTitleFontSize, spec.timeLineNumberTextColor, true);
+        TIMELINETITLE_START_X = context.getResources().getDimensionPixelSize(
+                R.dimen.timeline_title_margin);
     }
 
     private static TextPaint getTextPaint(
@@ -164,7 +166,7 @@ public class TimeLineTitleMaker {
                         countString, 0, countString.length(), mediaCountBounds);
                 int w = mediaCountBounds.width();
                 y = (height - spec.timeLineTitleFontSize)/2;
-                x = width - countString.length() -w;
+                x = width - TIMELINETITLE_START_X - w;
                 // re-calculate x for RTL
                 if (View.LAYOUT_DIRECTION_RTL == TextUtils
                         .getLayoutDirectionFromLocale(Locale.getDefault())) {

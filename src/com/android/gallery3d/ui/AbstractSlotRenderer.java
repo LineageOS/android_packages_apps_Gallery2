@@ -131,7 +131,7 @@ public abstract class AbstractSlotRenderer implements SlotView.SlotRenderer {
     }
 
     protected void drawSelectedFrame(GLCanvas canvas, int width, int height) {
-         mSelectionIcon.draw(canvas,15,15);
+        mSelectionIcon.draw(canvas, 5, 5);
         //drawFrame(canvas, mFrameSelected.getPaddings(), mFrameSelected, 0, 0, width, height);
     }
 

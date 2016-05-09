@@ -21,6 +21,9 @@
     <!-- Text size for the state panel -->
     <dimen name="state_panel_text_size">16dip</dimen>
 
+    <!-- Bottom Panel Height -->
+    <dimen name="bottom_panel_height">60dip</dimen>
+
     <!-- Category Panel Height -->
     <dimen name="category_panel_height">90dip</dimen>
 
@@ -35,7 +38,7 @@
     <!-- Category Panel Text Size -->
     <dimen name="category_panel_margin">10dip</dimen>
 
-    <!-- Category Panel height of botton rect -->
+    <!-- Category Panel height of bottom rect -->
     <dimen name="category_panel_bottom_rect_height">20dip</dimen>
 
     <!-- Grad filter dot size -->
@@ -72,7 +75,7 @@
     <dimen name="edge_glow_size">50dip</dimen>
     <dimen name="swap_button_width">168dp</dimen>
     <dimen name="swap_button_height">32dp</dimen>
-    <dimen name="compare_margin_top">104dp</dimen>
+    <dimen name="compare_margin_top">74dp</dimen>
     <dimen name="compare_margin_right">10dp</dimen>
     <dimen name="compare_margin_top_scaled">96dp</dimen>
     <dimen name="compare_margin_right_scaled">60dp</dimen>
