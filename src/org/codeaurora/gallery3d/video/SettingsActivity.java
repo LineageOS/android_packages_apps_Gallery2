@@ -57,8 +57,6 @@ public class SettingsActivity extends PreferenceActivity {
     private static final Uri    PREFERAPN_URI = Uri.parse(PREFERRED_APN_URI);
     private static final int    COLUMN_ID_INDEX = 0;
     private static final int    NAME_INDEX = 1;
-    private static final String RTP_PORTS_PROPERTY_NAME = "persist.env.media.rtp-ports";
-    private static final String CACHE_PROPERTY_NAME = "persist.env.media.cache-params";
 
     private boolean mUseNvOperatorForEhrpd = SystemProperties.getBoolean(
             "persist.radio.use_nv_for_ehrpd", false);
@@ -131,35 +129,6 @@ public class SettingsActivity extends PreferenceActivity {
         return result.toArray(new String[2]);
     }
 
-    private void enableRtpPortSetting() {
-        final String rtpMinPortStr = mPref.getString(PREFERENCE_RTP_MINPORT,
-                Integer.toString(DEFAULT_RTP_MINPORT));
-        final String rtpMaxPortStr = mPref.getString(PREFERENCE_RTP_MAXPORT,
-                Integer.toString(DEFAULT_RTP_MAXPORT));
-        // System property format: "rtpMinPort/rtpMaxPort"
-        final String propertyValue = rtpMinPortStr + "/" + rtpMaxPortStr;
-        Log.v(LOG_TAG, "set system property " + RTP_PORTS_PROPERTY_NAME + " : " + propertyValue);
-        SystemProperties.set(RTP_PORTS_PROPERTY_NAME, propertyValue);
-    }
-
-    private void enableBufferSetting() {
-        final String bufferSizeStr = mPref.getString(PREFERENCE_BUFFER_SIZE,
-                Integer.toString(DEFAULT_CACHE_MAX_SIZE));
-        final int cacheMaxSize;
-        final String ACTION_NAME = "org.codeaurora.gallery3d.video.STREAMING_SETTINGS_ENABLER";
-        try {
-            cacheMaxSize = Integer.valueOf(bufferSizeStr);
-        } catch (NumberFormatException e) {
-            Log.e(LOG_TAG, "Failed to parse cache max size");
-            return;
-        }
-        // System property format: "minCacheSizeKB/maxCacheSizeKB/keepAliveIntervalSeconds"
-        final String propertyValue = (DEFAULT_CACHE_MIN_SIZE / 1024) + "/" +
-                (cacheMaxSize / 1024) + "/" + DEFAULT_KEEP_ALIVE_INTERVAL_SECOND;
-        Log.v(LOG_TAG, "set system property " + CACHE_PROPERTY_NAME + " : " + propertyValue);
-        SystemProperties.set(CACHE_PROPERTY_NAME, propertyValue);
-    }
-
     private void setPreferenceListener(final int which, final EditTextPreference etp) {
 
         final String DIGITS_ACCEPTABLE = "0123456789";
@@ -203,12 +172,6 @@ public class SettingsActivity extends PreferenceActivity {
                 etp.setSummary(summary);
                 etp.setText(summary);
                 Log.d(LOG_TAG, "z66/z82 summary = " + summary);
-                if(which == RTP_MIN_PORT || which == RTP_MAX_PORT) {
-                    System.putString(getContentResolver(), summaryString, summary);
-                    enableRtpPortSetting();
-                } else {
-                    enableBufferSetting();
-                }
                 return true;
             }
         });
