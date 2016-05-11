@@ -323,7 +323,11 @@
         <item name="android:statusBarColor">#ab5810</item>
     </style>
 
-    <style name="ToolbarTheme" parent="android:Theme.Material" />
+    <style name="ToolbarTheme" parent="android:Theme.Material"/>
+
+    <style name="ToolbarTitleStyle" parent="android:TextAppearance.Material.Widget.Toolbar.Title">
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
+    </style>
 
     <style name="ToolbarPopUpTheme" parent="android:Theme.Material.Light" />
 

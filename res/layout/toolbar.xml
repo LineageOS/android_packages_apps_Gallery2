@@ -35,6 +35,7 @@
     android:background="#e53935"
     android:elevation="4dp"
     android:theme="@style/ToolbarTheme"
+    android:titleTextAppearance="@style/ToolbarTitleStyle"
     android:popupTheme="@style/ToolbarPopUpTheme"
     android:navigationIcon="@drawable/drawer" >
 
