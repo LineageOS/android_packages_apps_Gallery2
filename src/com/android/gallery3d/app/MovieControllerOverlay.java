@@ -664,7 +664,7 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
             LayoutParams wrapContent =
                     new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             // add screenView
-            mScreenView = new ImageView(context);
+            mScreenView = new ImageView(context, null, android.R.attr.actionButtonStyle);
             // default next screen mode
             mScreenView.setImageResource(R.drawable.ic_media_fullscreen);
             mScreenView.setScaleType(ScaleType.CENTER);

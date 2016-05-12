@@ -51,7 +51,6 @@ public class GestureControllerOverlay extends FrameLayout implements
 
     private static final int MAX_VIDEO_STEP_TIME = 2 * 60 * 1000;
     private static final int MAX_BRIGHTNESS = 100;
-    private static final int INDICATOR_FADE_OUT_TIME = 200; // millisecond
 
     private float mStartBrightness = -1.0f;
     private double mStartVolumePercent = -1.0f;
@@ -130,6 +129,7 @@ public class GestureControllerOverlay extends FrameLayout implements
         mCurrentIndicator.setPadding(paddingH, paddingV, paddingH, paddingV);
         mCurrentIndicator.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
         mCurrentIndicator.setTextSize(TypedValue.COMPLEX_UNIT_PX, mIndicatorTextSize);
+        mCurrentIndicator.setTextColor(Color.WHITE);
         mCurrentIndicator.setMinWidth(mIndicatorWidth);
         addView(mCurrentIndicator, layoutParams);
         mCurrentIndicator.setVisibility(INVISIBLE);

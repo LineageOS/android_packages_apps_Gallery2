@@ -61,6 +61,7 @@
         <item name="android:thumb">@drawable/adjust</item>
         <item name="android:thumbOffset">0dip</item>
         <item name="android:focusable">true</item>
+        <item name="android:background">@null</item>
     </style>
 
 </resources>

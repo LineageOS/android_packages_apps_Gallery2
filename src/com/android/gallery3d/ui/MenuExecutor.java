@@ -25,6 +25,8 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 //import android.drm.DrmHelper;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
@@ -46,6 +48,7 @@ import com.android.gallery3d.util.ThreadPool.Job;
 import com.android.gallery3d.util.ThreadPool.JobContext;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MenuExecutor {
     private static final String TAG = "MenuExecutor";
@@ -254,7 +257,17 @@ public class MenuExecutor {
                 Intent intent = getIntentBySingleSelectedPath(Intent.ACTION_EDIT);
                 if (intent != null) {
                     intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    ((Activity) mActivity).startActivity(Intent.createChooser(intent, null));
+
+                    List<ResolveInfo> resolveInfoList = mActivity.getPackageManager()
+                            .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                    if (resolveInfoList != null && resolveInfoList.size() > 0) {
+                        if (resolveInfoList.size() == 1) {
+                            // only one app can resolve intent, don't use createChooser.
+                            mActivity.startActivity(intent);
+                        } else {
+                            mActivity.startActivity(Intent.createChooser(intent, null));
+                        }
+                    }
                 }
                 return;
             }

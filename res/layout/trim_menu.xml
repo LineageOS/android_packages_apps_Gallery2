@@ -20,17 +20,19 @@
         android:layout_centerVertical="true">
     <ImageView
         android:id="@+id/exit_trim"
+        android:background="?android:attr/actionBarItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/cancel"/>
     <TextView
         android:id="@+id/start_trim"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:layout_marginStart="8dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/save"
         android:textAllCaps="true"
-        android:layout_gravity="right"
+        android:layout_gravity="end|center_vertical"
         android:textSize="16sp"
         android:textColor="@color/primary_text"
         android:gravity="left|center_vertical"

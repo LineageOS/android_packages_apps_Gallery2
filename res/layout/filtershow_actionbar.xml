@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@android:style/Theme.DeviceDefault"
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
     android:orientation="horizontal">
@@ -23,17 +24,18 @@
         android:id="@+id/filtershow_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="?android:attr/actionBarItemBackground"
         android:scaleType="fitCenter"
         android:src="@drawable/cancel"
         android:layout_gravity="left|center_vertical"
-        android:paddingStart="6dp" />
+        android:layout_marginStart="@dimen/toolbar_exit_padding_left" />
 
     <TextView
         android:id="@+id/filtershow_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="13dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginEnd="13dp"
         android:textSize="17sp"
         android:text="@string/save"
         android:textAllCaps="true"

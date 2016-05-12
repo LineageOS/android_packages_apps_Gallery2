@@ -154,7 +154,7 @@ public class PopupList {
     }
 
     private PopupWindow createPopupWindow() {
-        PopupWindow popup = new PopupWindow(mContext);
+        PopupWindow popup = new PopupWindow(mContext, null, android.R.attr.popupMenuStyle);
         popup.setOnDismissListener(mOnDismissListener);
         popup.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
 

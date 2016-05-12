@@ -30,12 +30,16 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowActionModeOverlay">true</item>
-        <item name="android:actionOverflowButtonStyle">@style/EditOverflow</item>
+        <item name="android:actionOverflowButtonStyle">@style/WhiteOverflow</item>
         <item name="android:logo">@android:color/transparent</item>
     </style>
     <style name="Theme.FilterShow" parent="Theme.Gallery">
         <item name="android:windowBackground">@null</item>
         <item name="android:actionBarStyle">@style/FilterShowActionBar</item>
+        <item name="android:toolbarStyle">@style/FilterShowToolbar</item>
+    </style>
+    <style name="FilterShowToolbar" parent="@android:style/Widget.Toolbar">
+        <item name="android:contentInsetStart">0dp</item>
     </style>
     <style name="Theme.Crop" parent="Theme.GalleryBase">
         <item name="android:displayOptions"></item>
@@ -324,7 +328,9 @@
         <item name="android:statusBarColor">#ab5810</item>
     </style>
 
-    <style name="ToolbarTheme" parent="android:Theme.Material"/>
+    <style name="ToolbarTheme" parent="android:Theme.Material" >
+        <item name="android:actionOverflowButtonStyle">@style/WhiteOverflow</item>
+    </style>
 
     <style name="ToolbarTitleStyle" parent="android:TextAppearance.Material.Widget.Toolbar.Title">
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
@@ -336,7 +342,7 @@
     <style name="MyOverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
         <item name="android:src">@drawable/multiselect_more</item>
     </style>
-    <style name="EditOverflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+    <style name="WhiteOverflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
         <item name="android:src">@drawable/more</item>
     </style>
      <style name="FilterShowActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
