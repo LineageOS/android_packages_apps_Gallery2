@@ -16,6 +16,7 @@
 
 package com.android.gallery3d.filtershow.category;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -26,8 +27,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.editors.EditorPanel;
+import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.HazeBusterActs;
 import com.android.gallery3d.filtershow.filters.SeeStraightActs;
 import com.android.gallery3d.filtershow.filters.SimpleMakeupImageFilter;
@@ -548,9 +552,23 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     public void updateDualCameraButton() {
         if(dualCamButton != null) {
             DdmStatus status = MasterImage.getImage().getDepthMapLoadingStatus();
-            boolean enable = (status == DdmStatus.DDM_LOADING || 
+            boolean enable = (status == DdmStatus.DDM_LOADING ||
                                status == DdmStatus.DDM_LOADED);
             dualCamButton.setVisibility(enable?View.VISIBLE:View.GONE);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (ApiHelper.getBooleanFieldIfExists(newConfig, "userSetLocale", false)) {
+            FiltersManager.reset();
+            FilterShowActivity activity = (FilterShowActivity) getActivity();
+            activity.getProcessingService().setupPipeline();
+            activity.fillCategories();
+            if (mCurrentSelected != -1) {
+                showPanel(mCurrentSelected);
+            }
         }
     }
 }

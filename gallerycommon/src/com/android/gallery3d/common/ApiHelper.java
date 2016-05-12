@@ -207,6 +207,17 @@ public class ApiHelper {
         }
     }
 
+    public static boolean getBooleanFieldIfExists(Object obj, String fieldName,
+            boolean defaultVal) {
+        Class<?> klass = obj.getClass();
+        try {
+            Field f = klass.getDeclaredField(fieldName);
+            return f.getBoolean(obj);
+        } catch (Exception e) {
+            return defaultVal;
+        }
+    }
+
     private static boolean hasField(Class<?> klass, String fieldName) {
         try {
             klass.getDeclaredField(fieldName);

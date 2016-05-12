@@ -292,7 +292,7 @@ public class ProcessingService extends Service {
         }
     }
 
-    private void setupPipeline() {
+    public void setupPipeline() {
         Resources res = getResources();
         FiltersManager.setResources(res);
         CachingPipeline.createRenderscriptContext(this);
