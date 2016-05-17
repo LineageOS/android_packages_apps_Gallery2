@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_ba4b3929",
+        "filename": "src/com/android/camera/CameraActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-05-17T19:55:08Z",
+      "side": 1,
+      "message": "\"this\" should be sufficient.",
+      "range": {
+        "startLine": 31,
+        "startChar": 43,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "a7e054c86dcfc6c080ec548c740ca0cb7b0d6f86",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_da463522",
+        "filename": "src/com/android/camera/CameraActivity.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2016-05-17T19:55:08Z",
+      "side": 1,
+      "message": "likewise",
+      "range": {
+        "startLine": 32,
+        "startChar": 57,
+        "endLine": 32,
+        "endChar": 76
+      },
+      "revId": "a7e054c86dcfc6c080ec548c740ca0cb7b0d6f86",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
