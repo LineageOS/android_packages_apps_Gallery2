@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_91a74850",
+        "filename": "src_pd/com/android/gallery3d/util/IntentHelper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-05-17T12:46:37Z",
+      "side": 1,
+      "message": "intentSnap",
+      "revId": "c9735279dd52dab8dbe6de9bf2cba2a3cc4d59ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_117118e1",
+        "filename": "src_pd/com/android/gallery3d/util/IntentHelper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-05-17T12:46:37Z",
+      "side": 1,
+      "message": "Why not cache this? Something like this:\n\nprivate static final String KNOWN_CAMERA_ACTIVITIES \u003d {\n    { \"\"org.codeaurora.snapcam\", \"com.android.camera.CameraLauncher\" },\n    { \"com.android.camera2\", \"com.android.camera.CameraLauncher\" }\n};\nprivate static Intent sResolvedCameraActivity \u003d null;\n\npublic static Intent getCameraIntent(Context context) {\n    if (sResolvedCameraActivity \u003d\u003d null) {\n        for (String[] activity : KNOWN_CAMERA_ACTIVITIES) {\n            Intent intent \u003d new Intent(Intent.ACTION_MAIN)\n                    .setClassName(activity[0], activity[1]);\n            if (isActivityAvailable(context, intent)) {\n                sResolvedCameraActivity \u003d intent;\n                break;\n            }\n        }\n    }\n\n    return sResolvedCameraActivity;\n}",
+      "revId": "c9735279dd52dab8dbe6de9bf2cba2a3cc4d59ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_51679026",
+        "filename": "src_pd/com/android/gallery3d/util/IntentHelper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-05-17T12:46:37Z",
+      "side": 1,
+      "message": "isActivityAvailable",
+      "revId": "c9735279dd52dab8dbe6de9bf2cba2a3cc4d59ee",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
