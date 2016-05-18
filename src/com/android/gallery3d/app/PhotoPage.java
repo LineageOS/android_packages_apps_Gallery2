@@ -1588,11 +1588,6 @@ public abstract class PhotoPage extends ActivityState implements
     @Override
     protected void onResume() {
         super.onResume();
-
-        if (mModel == null) {
-            mActivity.getStateManager().finishState(this);
-            return;
-        }
         //set full screen to hide the status bar
         showFullScreen(true);
 
@@ -1616,8 +1611,7 @@ public abstract class PhotoPage extends ActivityState implements
         if (mMediaSet != null && mIsFromTimelineScreen) {
             mMediaSet.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
         }
-        mModel.resume();
-        mPhotoView.resume();
+
         mActionBar.setDisplayOptions(
                 ((mSecureAlbum == null) && (mSetPathString != null)), true);
         mActionBar.addOnMenuVisibilityListener(mMenuVisibilityListener);
@@ -1643,6 +1637,12 @@ public abstract class PhotoPage extends ActivityState implements
 
         mRecenterCameraOnResume = true;
         mHandler.sendEmptyMessageDelayed(MSG_UNFREEZE_GLROOT, UNFREEZE_GLROOT_TIMEOUT);
+        if (mModel == null) {
+            onBackPressed();
+            return;
+        }
+        mModel.resume();
+        mPhotoView.resume();
     }
 
     @Override
