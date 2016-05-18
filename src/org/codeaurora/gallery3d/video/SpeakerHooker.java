@@ -28,10 +28,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.codeaurora.gallery3d.video;
 
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -39,10 +35,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import android.media.AudioSystem;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
+import com.android.gallery3d.common.ApiHelper.AudioSystem;
 
 public class SpeakerHooker extends MovieHooker {
 
@@ -197,9 +196,8 @@ public class SpeakerHooker extends MovieHooker {
     }
 
     private boolean isSpeakerOn() {
-        boolean isSpeakerOn = (AudioSystem.FORCE_SPEAKER
-                == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA)) ? true : false;
-        return isSpeakerOn;
+        return (AudioSystem.FORCE_SPEAKER
+                == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA));
     }
 
 }

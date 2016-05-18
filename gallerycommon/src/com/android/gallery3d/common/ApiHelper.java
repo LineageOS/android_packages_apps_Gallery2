@@ -352,4 +352,29 @@ public class ApiHelper {
             return obj == null ? null : new Metadata(obj);
         }
     }
+
+    public static class AudioSystem {
+        public static final int FORCE_NONE = 0;
+        public static final int FORCE_SPEAKER = 1;
+
+        public static final int FOR_MEDIA = 1;
+
+        private static final Method setForceUseMethod;
+        private static final Method getForceUseMethod;
+
+        static {
+            Class<?> klass = getClassForName("android.media.AudioSystem");
+            setForceUseMethod = getMethod(klass, "setForceUse", int.class, int.class);
+            getForceUseMethod = getMethod(klass, "getForceUse", int.class);
+        }
+
+        public static void setForceUse(int usage, int config) {
+            invoke(setForceUseMethod, null, usage, config);
+        }
+
+        public static int getForceUse(int usage) {
+            Object obj = invoke(getForceUseMethod, null, usage);
+            return obj == null ? FORCE_NONE : (Integer) obj;
+        }
+    }
 }
