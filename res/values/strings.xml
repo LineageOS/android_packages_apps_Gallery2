@@ -1189,6 +1189,8 @@ CHAR LIMIT = NONE] -->
     <string name="drawer_desc" translatable="false">drawer</string>
     <string name="truescanner_normal">Normal</string>
     <string name="truescanner_white">WhiteBoard</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Remove Glare</string>
     <string name="hazebuster_acts">Haze Buster</string>
     <string name="seestraight_acts">See Straight</string>
     <string name="seestraight_input_image_is_small">Input image is too small to process.</string>

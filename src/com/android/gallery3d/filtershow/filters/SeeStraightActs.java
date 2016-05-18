@@ -40,7 +40,8 @@ public class SeeStraightActs extends SimpleImageFilter {
     public static final String SERIALIZATION_NAME = "SeeStraightActs";
     private static final int MIN_WIDTH = 512;
     private static final int MIN_HEIGHT = 512;
-    private static final int MIN_INPUT_REQUIREMENT = 640;
+    private static final int MIN_WIDTH_REQUIREMENT = 640;
+    private static final int MIN_HEIGHT_REQUIREMENT = 480;
     private static final boolean DEBUG = true;
     private static boolean isSeeStraightEnabled = true;
 
@@ -75,6 +76,19 @@ public class SeeStraightActs extends SimpleImageFilter {
 
     private native int[] processImage(int width, int height, Bitmap srcBitmap, Bitmap dstBitmap);
 
+    private boolean checkSize(int w, int h) {
+        int t;
+        if(w < h) {
+            t = w;
+            w = h;
+            h = t;
+        }
+        if(w >= MIN_WIDTH_REQUIREMENT && h >= MIN_HEIGHT_REQUIREMENT) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public Bitmap apply(Bitmap bitmap, float not_use, int quality) {
         if(bitmap == null)
@@ -85,7 +99,7 @@ public class SeeStraightActs extends SimpleImageFilter {
         if(width <= MIN_WIDTH && height <= MIN_HEIGHT)
             return bitmap;
 
-        if(width <= MIN_INPUT_REQUIREMENT || height <= MIN_INPUT_REQUIREMENT) {
+        if(!checkSize(width, height)) {
             sActivity.runOnUiThread(new Runnable() {
                 public void run() {
                     Toast.makeText(sActivity, sActivity.getResources().getString(R.string.seestraight_input_image_is_small), Toast.LENGTH_SHORT).show();

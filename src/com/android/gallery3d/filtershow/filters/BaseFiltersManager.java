@@ -163,7 +163,6 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
     protected void addTrueScannerClasses(Vector<Class> filters) {
         filters.add(TrueScannerActs.class);
-        filters.add(TrueScannerWhiteBoardActs.class);
     }
 
     protected void addHazeBusterClasses(Vector<Class> filters) {
@@ -368,7 +367,6 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
     public void addTrueScanner() {
         mTrueScanner.add(getRepresentation(TrueScannerActs.class));
-        mTrueScanner.add(getRepresentation(TrueScannerWhiteBoardActs.class));
     }
 
     public void addHazeBuster() {

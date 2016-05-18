@@ -90,6 +90,7 @@ import com.android.gallery3d.filtershow.category.EditorCropPanel;
 import com.android.gallery3d.filtershow.category.MainPanel;
 import com.android.gallery3d.filtershow.category.StraightenPanel;
 import com.android.gallery3d.filtershow.category.SwipableView;
+import com.android.gallery3d.filtershow.category.TrueScannerPanel;
 import com.android.gallery3d.filtershow.data.UserPresetsManager;
 import com.android.gallery3d.filtershow.editors.BasicEditor;
 import com.android.gallery3d.filtershow.editors.Editor;
@@ -410,6 +411,22 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             }.run();
             return;
         }
+        if (currentId == TrueScannerEditor.ID) {
+            new Runnable() {
+                @Override
+                public void run() {
+                    TrueScannerPanel panel = new TrueScannerPanel();
+                    FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
+                    transaction.remove(getSupportFragmentManager().findFragmentByTag(
+                            MainPanel.FRAGMENT_TAG));
+                    transaction.replace(R.id.main_panel_container, panel,
+                            MainPanel.FRAGMENT_TAG);
+                    transaction.commit();
+                }
+            }.run();
+            return;
+        }
         Runnable showEditor = new Runnable() {
             @Override
             public void run() {
@@ -444,8 +461,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     private boolean useStraightenPanel(int EditorID) {
-        return (EditorID == EditorStraighten.ID || EditorID == TrueScannerEditor.ID
-                || EditorID == HazeBusterEditor.ID || EditorID == SeeStraightEditor.ID);
+        return (EditorID == EditorStraighten.ID || EditorID == HazeBusterEditor.ID || EditorID == SeeStraightEditor.ID);
     }
 
     public void leaveSeekBarPanel() {

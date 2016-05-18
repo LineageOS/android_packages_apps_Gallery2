@@ -34,6 +34,7 @@ import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 
 public class TrueScannerWhiteBoardActs extends TrueScannerActs {
+    public static final String SERIALIZATION_NAME = "TrueScannerWhiteBoardActs";
 
     public TrueScannerWhiteBoardActs() {
         super();

@@ -29,17 +29,21 @@
 
 package com.android.gallery3d.filtershow.filters;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.View;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.GalleryActivity;
 import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.controller.Parameter;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 import com.android.gallery3d.filtershow.imageshow.ImageTrueScanner;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
-
+import com.android.gallery3d.ui.MenuExecutor;
 import static com.android.gallery3d.filtershow.imageshow.ImageTrueScanner.*;
 
 public class TrueScannerActs extends SimpleImageFilter {
@@ -54,8 +58,8 @@ public class TrueScannerActs extends SimpleImageFilter {
     protected boolean isWhiteBoard = false;
     private boolean mLocked = false;
     private Bitmap rectifiedImage = null;
-    private Bitmap whiteboardImage = null;
     private int[] oldPts = new int[POINTS_LEN];
+    private ProgressDialog mProgressDialog;
 
     private void printDebug(String str) {
         if(DEBUG)
@@ -87,14 +91,8 @@ public class TrueScannerActs extends SimpleImageFilter {
         return representation;
     }
 
-    private native int[] processImage(Bitmap orgBitmap, Bitmap rectifiedBitmap, Bitmap whiteboardBitmap, int[] cornerPts);
-    private native int[] getPoints(Bitmap orgBitmap);
-
-    public static int[] getPoints() {
-        if(!isPointsAcquired)
-            return null;
-        return mAcquiredPoints;
-    }
+    private native int[] processImage(Bitmap orgBitmap, Bitmap rectifiedBitmap, int[] cornerPts);
+    private native int enhanceImage(Bitmap orgBitmap, Bitmap rectifiedBitmap);
 
     private synchronized boolean acquireLock(boolean isAcquiring) {
         if(mLocked != isAcquiring) {
@@ -104,28 +102,35 @@ public class TrueScannerActs extends SimpleImageFilter {
         return false;
     }
 
-    private boolean isReNewed(int pts[]) {
-        if(rectifiedImage == null || whiteboardImage == null) {
-            return true;
-        } else {
-            for(int i=0; i<oldPts.length;i++) {
-                if(pts[i] != oldPts[i]) {
-                    return true;
+    private void showProgressDialog() {
+        sActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                mProgressDialog = ProgressDialog.show(sActivity,"", "Processing...", true, false);
+                mProgressDialog.show();
+            }
+        });
+    }
+
+    private void dismissProgressDialog() {
+        sActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                if (mProgressDialog != null && mProgressDialog.isShowing()) {
+                    mProgressDialog.dismiss();
+                    mProgressDialog = null;
                 }
             }
-        }
-
-        return false;
+        });
     }
 
     @Override
     public Bitmap apply(Bitmap bitmap, float not_use, int quality) {
         if(bitmap == null)
             return null;
-
         if(bitmap.getWidth() <= MIN_WIDTH && bitmap.getHeight() <= MIN_HEIGHT)
             return bitmap;
-
+        if(ImageTrueScanner.getCordsUIState()) {
+            return bitmap;
+        }
         if(!acquireLock(true)) {
             sActivity.runOnUiThread(new Runnable() {
                 @Override
@@ -136,17 +141,7 @@ public class TrueScannerActs extends SimpleImageFilter {
 
             return bitmap;
         }
-
-        if(!isPointsAcquired) {
-            int[] recPoints = getPoints(bitmap);
-            for(int i=0; i < POINTS_LEN; i++) {
-                mAcquiredPoints[i] = recPoints[i];
-            }
-            mAcquiredPoints[POINTS_LEN] = bitmap.getWidth();
-            mAcquiredPoints[POINTS_LEN+1] = bitmap.getHeight();
-            isPointsAcquired = true;
-        }
-
+        new Throwable().printStackTrace();
         int[] pts = ImageTrueScanner.getDeterminedPoints();
         int[] resultPts = new int[POINTS_LEN];
         float xScale = ((float)bitmap.getWidth())/pts[POINTS_LEN];
@@ -158,24 +153,24 @@ public class TrueScannerActs extends SimpleImageFilter {
                 resultPts[i] = (int)((pts[i] - pts[POINTS_LEN+3])*yScale);
         }
 
-        if(isReNewed(pts)) {
-            rectifiedImage = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            whiteboardImage = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            int[] outputSize = processImage(bitmap, rectifiedImage, whiteboardImage, resultPts);
-            rectifiedImage = Bitmap.createBitmap(rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
-            whiteboardImage = Bitmap.createBitmap(whiteboardImage, 0, 0, outputSize[2], outputSize[3]);
+        rectifiedImage = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        int[] outputSize = processImage(bitmap, rectifiedImage, resultPts);
+        rectifiedImage = Bitmap.createBitmap(rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
+        if(ImageTrueScanner.getRemoveGlareButtonStatus()) {
+            Bitmap enhancedImage = Bitmap.createBitmap(outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
+            showProgressDialog();
+            enhanceImage(rectifiedImage, enhancedImage);
+            dismissProgressDialog();
+            rectifiedImage = enhancedImage;
         }
-
         acquireLock(false);
-        if(isWhiteBoard)
-            return whiteboardImage;
 
         return rectifiedImage;
     }
 
     static {
         try {
-            System.loadLibrary("jni_truescanner");
+            System.loadLibrary("jni_truescanner_v2");
             isTrueScannerEnabled = true;
         } catch(UnsatisfiedLinkError e) {
             isTrueScannerEnabled = false;
