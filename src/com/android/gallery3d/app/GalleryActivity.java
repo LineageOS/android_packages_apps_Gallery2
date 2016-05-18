@@ -19,8 +19,7 @@
 
 package com.android.gallery3d.app;
 
-import java.util.Locale;
-import android.os.Handler;
+import android.Manifest;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -32,40 +31,34 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.Manifest;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemProperties;
 import android.provider.MediaStore;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.InputDevice;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
-import android.widget.Toolbar.OnMenuItemClickListener;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.DrawerLayout.DrawerListener;
-import android.text.TextUtils;
 
-import java.util.ArrayList;
 import org.codeaurora.gallery.R;
+import com.android.gallery3d.common.ApiHelper.SystemProperties;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;
@@ -79,6 +72,9 @@ import com.android.gallery3d.util.Future;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.ThreadPool.Job;
 import com.android.gallery3d.util.ThreadPool.JobContext;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 public final class GalleryActivity extends AbstractGalleryActivity implements OnCancelListener {
     public static final String EXTRA_SLIDESHOW = "slideshow";

@@ -20,8 +20,6 @@ package com.android.gallery3d.ui;
 
 import android.graphics.Rect;
 import android.text.TextUtils;
-import android.util.Log;
-import android.os.SystemProperties;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,14 +27,10 @@ import android.view.animation.DecelerateInterpolator;
 
 import com.android.gallery3d.anim.Animation;
 import com.android.gallery3d.app.AbstractGalleryActivity;
+import com.android.gallery3d.common.ApiHelper.SystemProperties;
 import com.android.gallery3d.common.Utils;
-import com.android.gallery3d.data.MediaItem;
-import com.android.gallery3d.data.MediaObject;
 import com.android.gallery3d.glrenderer.GLCanvas;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Locale;
 
 public class TimeLineSlotView extends GLView {

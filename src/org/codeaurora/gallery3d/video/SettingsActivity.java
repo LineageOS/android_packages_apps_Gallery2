@@ -1,32 +1,23 @@
 package org.codeaurora.gallery3d.video;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemProperties;
-import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
-import android.preference.RingtonePreference;
 import android.preference.PreferenceScreen;
-import android.provider.ContactsContract;
 import android.provider.Settings;
 import android.provider.Settings.System;
-import android.provider.Telephony;
 import android.telephony.TelephonyManager;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MenuItem;
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.common.ApiHelper.SystemProperties;
 
 import java.util.ArrayList;
 
@@ -48,17 +39,17 @@ public class SettingsActivity extends PreferenceActivity {
     private static final int DEFAULT_CACHE_MIN_SIZE = 4 * 1024 * 1024;
     private static final int DEFAULT_CACHE_MAX_SIZE = 20 * 1024 * 1024;
     private static final int DEFAULT_KEEP_ALIVE_INTERVAL_SECOND = 15;
-    
+
     private static final int RTP_MIN_PORT = 1;
     private static final int RTP_MAX_PORT = 2;
     private static final int BUFFER_SIZE  = 3;
-    
+
     private SharedPreferences  mPref;
     private EditTextPreference mRtpMinPort;
     private EditTextPreference mRtpMaxPort;
     private EditTextPreference mBufferSize;
     private PreferenceScreen   mApn;
-    
+
     private static final int    SELECT_APN = 1;
     public  static final String PREFERRED_APN_URI = "content://telephony/carriers/preferapn";
     private static final Uri    PREFERAPN_URI = Uri.parse(PREFERRED_APN_URI);
@@ -80,7 +71,7 @@ public class SettingsActivity extends PreferenceActivity {
         mRtpMaxPort = (EditTextPreference) findPreference(PREFERENCE_RTP_MAXPORT);
         mBufferSize = (EditTextPreference) findPreference(PREFERENCE_BUFFER_SIZE);
         mApn = (PreferenceScreen) findPreference(PREFERENCE_APN);
-        
+
         setPreferenceListener(RTP_MIN_PORT, mRtpMinPort);
         setPreferenceListener(RTP_MAX_PORT, mRtpMaxPort);
         setPreferenceListener(BUFFER_SIZE, mBufferSize);
@@ -91,7 +82,7 @@ public class SettingsActivity extends PreferenceActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setTitle(R.string.setting);
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SELECT_APN) {
@@ -139,7 +130,7 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     private void enableRtpPortSetting() {
-        final String rtpMinPortStr = mPref.getString(PREFERENCE_RTP_MINPORT, 
+        final String rtpMinPortStr = mPref.getString(PREFERENCE_RTP_MINPORT,
                 Integer.toString(DEFAULT_RTP_MINPORT));
         final String rtpMaxPortStr = mPref.getString(PREFERENCE_RTP_MAXPORT,
                 Integer.toString(DEFAULT_RTP_MAXPORT));
@@ -150,7 +141,7 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     private void enableBufferSetting() {
-        final String bufferSizeStr = mPref.getString(PREFERENCE_BUFFER_SIZE, 
+        final String bufferSizeStr = mPref.getString(PREFERENCE_BUFFER_SIZE,
                 Integer.toString(DEFAULT_CACHE_MAX_SIZE));
         final int cacheMaxSize;
         final String ACTION_NAME = "org.codeaurora.gallery3d.video.STREAMING_SETTINGS_ENABLER";
@@ -166,7 +157,7 @@ public class SettingsActivity extends PreferenceActivity {
         Log.v(LOG_TAG, "set system property " + CACHE_PROPERTY_NAME + " : " + propertyValue);
         SystemProperties.set(CACHE_PROPERTY_NAME, propertyValue);
     }
-    
+
     private void setPreferenceListener(final int which, final EditTextPreference etp) {
 
         final String DIGITS_ACCEPTABLE = "0123456789";
@@ -180,20 +171,20 @@ public class SettingsActivity extends PreferenceActivity {
                 summaryStr = "streaming_min_udp_port";
                 break;
             case RTP_MAX_PORT:
-                preferStr = mPref.getString(PREFERENCE_RTP_MAXPORT, 
+                preferStr = mPref.getString(PREFERENCE_RTP_MAXPORT,
                         Integer.toString(DEFAULT_RTP_MAXPORT));
                 summaryStr = "streaming_max_udp_port";
                 break;
             case BUFFER_SIZE:
-                preferStr = mPref.getString(PREFERENCE_BUFFER_SIZE, 
+                preferStr = mPref.getString(PREFERENCE_BUFFER_SIZE,
                         Integer.toString(DEFAULT_CACHE_MAX_SIZE));
                 break;
             default:
                 return;
-            
+
         }
 
-        final String summaryString = summaryStr; 
+        final String summaryString = summaryStr;
         etp.getEditText().setKeyListener(DigitsKeyListener.getInstance(DIGITS_ACCEPTABLE));
         etp.setSummary(preferStr);
         etp.setText(preferStr);
@@ -221,7 +212,7 @@ public class SettingsActivity extends PreferenceActivity {
         });
 
     }
-    
+
     private void setApnListener() {
         final String SUBSCRIPTION_KEY = "subscription";
         final String SUB_ID = "sub_id";

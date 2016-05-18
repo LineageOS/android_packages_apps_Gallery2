@@ -20,6 +20,7 @@ package com.android.gallery3d.filtershow.filters;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import com.android.gallery3d.common.ApiHelper.SystemProperties;
 import com.thundersoft.hz.selfportrait.detect.FaceDetect;
 import com.thundersoft.hz.selfportrait.detect.FaceInfo;
 
@@ -27,7 +28,7 @@ public abstract class SimpleMakeupImageFilter extends SimpleImageFilter {
     private static final String LOGTAG = "SimpleMakeupImageFilter";
     protected static final int MAKEUP_INTENSITY = 50;
 
-    public static final boolean HAS_TS_MAKEUP = android.os.SystemProperties.getBoolean("persist.ts.postmakeup", true);
+    public static final boolean HAS_TS_MAKEUP = SystemProperties.getBoolean("persist.ts.postmakeup", true);
 
     public SimpleMakeupImageFilter() {
     }

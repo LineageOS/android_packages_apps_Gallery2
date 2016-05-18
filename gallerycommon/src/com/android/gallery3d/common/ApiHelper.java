@@ -25,6 +25,8 @@ import android.view.View;
 import android.view.WindowManager;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ApiHelper {
     public static interface VERSION_CODES {
@@ -229,6 +231,74 @@ public class ApiHelper {
             return true;
         } catch (NoSuchMethodException e) {
             return false;
+        }
+    }
+
+    private static Class<?> getClassForName(String className) {
+        Class<?> klass = null;
+        try {
+            klass = Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return klass;
+    }
+
+    private static Method getMethod(Class<?> klass, String name, Class<?>... parameterTypes) {
+        Method method = null;
+        if (klass != null) {
+            try {
+                method = klass.getMethod(name, parameterTypes);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
+        return method;
+    }
+
+    private static Object invoke(Method method, Object receiver, Object... args) {
+        Object obj = null;
+        if (method != null) {
+            try {
+                obj = method.invoke(receiver, args);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        return obj;
+    }
+
+    public static class SystemProperties {
+        private static final Method getIntMethod;
+        private static final Method getBooleanMethod;
+        private static final Method getMethod;
+        private static final Method setMethod;
+
+        static {
+            Class<?> klass = getClassForName("android.os.SystemProperties");
+            getIntMethod = getMethod(klass, "getInt", String.class, int.class);
+            getBooleanMethod = getMethod(klass, "getBoolean", String.class, boolean.class);
+            getMethod = getMethod(klass, "get", String.class, String.class);
+            setMethod = getMethod(klass, "set", String.class, String.class);
+        }
+
+        public static int getInt(String key, int def) {
+            Object obj = invoke(getIntMethod, null, key, def);
+            return obj == null ? def : (Integer) obj;
+        }
+
+        public static boolean getBoolean(String key, boolean def) {
+            Object obj = invoke(getBooleanMethod, null, key, def);
+            return obj == null ? def : (Boolean) obj;
+        }
+
+        public static String get(String key, String def) {
+            Object obj = invoke(getMethod, null, key, def);
+            return obj == null ? def : (String) obj;
+        }
+
+        public static void set(String key, String val) {
+            invoke(setMethod, null, key, val);
         }
     }
 }
