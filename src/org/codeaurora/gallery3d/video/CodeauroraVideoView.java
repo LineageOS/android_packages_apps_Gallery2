@@ -4,13 +4,11 @@ import android.app.AlertDialog;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnVideoSizeChangedListener;
-import android.media.Metadata;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnInfoListener;
@@ -28,6 +26,9 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
+
+import com.android.gallery3d.common.ApiHelper;
+import com.android.gallery3d.common.ApiHelper.Metadata;
 
 import org.codeaurora.gallery3d.video.ScreenModeManager.ScreenModeListener;
 
@@ -225,8 +226,9 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                 }
                 //Here we can get meta data from mediaplayer.
                 // Get the capabilities of the player for this stream
-                final Metadata data = mp.getMetadata(MediaPlayer.METADATA_ALL,
-                                          MediaPlayer.BYPASS_METADATA_FILTER);
+                final Metadata data = ApiHelper.MediaPlayer.getMetadata(mp,
+                        ApiHelper.MediaPlayer.METADATA_ALL,
+                        ApiHelper.MediaPlayer.BYPASS_METADATA_FILTER);
                 if (data != null) {
                     mCanPause = !data.has(Metadata.PAUSE_AVAILABLE)
                             || data.getBoolean(Metadata.PAUSE_AVAILABLE);

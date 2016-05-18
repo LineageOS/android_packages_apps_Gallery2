@@ -301,4 +301,55 @@ public class ApiHelper {
             invoke(setMethod, null, key, val);
         }
     }
+
+    public static class Metadata {
+        public static final int PAUSE_AVAILABLE = 1;
+        public static final int SEEK_BACKWARD_AVAILABLE = 2;
+        public static final int SEEK_FORWARD_AVAILABLE = 3;
+        public static final int SEEK_AVAILABLE = 4;
+
+        private static final Method hasMethod;
+        private static final Method getIntMethod;
+        private static final Method getBooleanMethod;
+
+        static {
+            Class<?> klass = getClassForName("android.media.Metadata");
+            hasMethod = getMethod(klass, "has", int.class);
+            getIntMethod = getMethod(klass, "getInt", int.class);
+            getBooleanMethod = getMethod(klass, "getBoolean", int.class);
+        }
+
+        private Object mMetadata;
+
+        Metadata(Object obj) {
+            mMetadata = obj;
+        }
+
+        public boolean has(final int metadataId) {
+            Object obj = invoke(hasMethod, mMetadata, metadataId);
+            return obj == null ? false : (Boolean) obj;
+        }
+
+        public int getInt(final int key) {
+            Object obj = invoke(getIntMethod, mMetadata, key);
+            return obj == null ? 0 : (Integer) obj;
+        }
+
+        public boolean getBoolean(final int key) {
+            Object obj = invoke(getBooleanMethod, mMetadata, key);
+            return obj == null ? false : (Boolean) obj;
+        }
+    }
+
+    public static class MediaPlayer {
+        public static final boolean METADATA_ALL = false;
+        public static final boolean BYPASS_METADATA_FILTER = false;
+
+        public static Metadata getMetadata(android.media.MediaPlayer mp,
+                final boolean update_only, final boolean apply_filter) {
+            Method method = getMethod(mp.getClass(), "getMetadata", boolean.class, boolean.class);
+            Object obj = invoke(method, mp, update_only, apply_filter);
+            return obj == null ? null : new Metadata(obj);
+        }
+    }
 }

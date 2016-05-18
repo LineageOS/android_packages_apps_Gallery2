@@ -31,7 +31,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.Metadata;
 import android.media.audiofx.Virtualizer;
 import android.net.Uri;
 import android.os.Build;
@@ -987,10 +986,10 @@ public class MoviePlayer implements
 
     private void getVideoInfo(MediaPlayer mp) {
         if (!MovieUtils.isLocalFile(mMovieItem.getUri(), mMovieItem.getMimeType())) {
-            Metadata data = mp.getMetadata(MediaPlayer.METADATA_ALL,
-                    MediaPlayer.BYPASS_METADATA_FILTER);
+            ApiHelper.Metadata data = ApiHelper.MediaPlayer.getMetadata(mp,
+                    ApiHelper.MediaPlayer.METADATA_ALL,
+                    ApiHelper.MediaPlayer.BYPASS_METADATA_FILTER);
             if (data != null) {
-                // TODO comments by sunlei
                 mServerTimeoutExt.setVideoInfo(data);
             } else {
                 Log.w(TAG, "Metadata is null!");
@@ -1438,7 +1437,7 @@ public class MoviePlayer implements
             return false;
         }
 
-        public void setVideoInfo(Metadata data) {
+        public void setVideoInfo(ApiHelper.Metadata data) {
             mServerTimeout = RESUME_DIALOG_TIMEOUT;
             if (data.has(SERVER_TIMEOUT)) {
                 mServerTimeout = data.getInt(SERVER_TIMEOUT);
