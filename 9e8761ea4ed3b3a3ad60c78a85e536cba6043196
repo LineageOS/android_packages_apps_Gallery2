@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_303525f8",
+        "filename": "src_pd/com/android/gallery3d/util/IntentHelper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-05-20T09:44:01Z",
+      "side": 1,
+      "message": "What\u0027s the point of this caching?",
+      "revId": "9e8761ea4ed3b3a3ad60c78a85e536cba6043196",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
