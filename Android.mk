@@ -43,7 +43,7 @@ LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D Gallery2
 
 LOCAL_PROGUARD_ENABLED := disabled
 
-#LOCAL_SDK_VERSION := current
+LOCAL_SDK_VERSION := current
 
 LOCAL_JNI_SHARED_LIBRARIES := libjni_eglfence libjni_filtershow_filters libjni_jpegstream
 LOCAL_SHARED_LIBRARIES += libjni_dualcamera
