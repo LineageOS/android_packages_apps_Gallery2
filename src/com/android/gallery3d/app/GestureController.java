@@ -159,7 +159,7 @@ public class GestureController {
         // decide which process is needed.
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                mStartEvent = event.copy();
+                mStartEvent = MotionEvent.obtain(event);
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (mType == Type.NONE && mStartEvent != null) {

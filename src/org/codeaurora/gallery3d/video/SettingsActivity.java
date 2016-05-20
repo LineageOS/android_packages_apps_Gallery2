@@ -1,6 +1,7 @@
 package org.codeaurora.gallery3d.video;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import org.codeaurora.gallery.R;
 
+import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.ApiHelper.SystemProperties;
 
 import java.util.ArrayList;
@@ -113,7 +115,6 @@ public class SettingsActivity extends PreferenceActivity {
 
     private String[] getOperatorNumeric() {
         ArrayList<String> result = new ArrayList<String>();
-        String mccMncFromSim = null;
         if (mUseNvOperatorForEhrpd) {
             String mccMncForEhrpd = SystemProperties.get("ro.cdma.home.operator.numeric", null);
             if (mccMncForEhrpd != null && mccMncForEhrpd.length() > 0) {
@@ -121,8 +122,9 @@ public class SettingsActivity extends PreferenceActivity {
             }
         }
 
-        mccMncFromSim = TelephonyManager.getDefault().getSimOperator();
-
+        TelephonyManager manager = (TelephonyManager) getApplicationContext()
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        String mccMncFromSim = manager.getSimOperator();
         if (mccMncFromSim != null && mccMncFromSim.length() > 0) {
             result.add(mccMncFromSim);
         }
@@ -221,8 +223,9 @@ public class SettingsActivity extends PreferenceActivity {
                 Intent intent = new Intent(Settings.ACTION_APN_SETTINGS);
                 int subscription = 0;
                 try {
-                    subscription = Settings.Global.getInt(SettingsActivity.this.getContentResolver(),
-                            Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION);
+                    subscription = Settings.Global.getInt(
+                            SettingsActivity.this.getContentResolver(),
+                            ApiHelper.MULTI_SIM_DATA_CALL_SUBSCRIPTION);
                 } catch (Exception e) {
                     Log.d("SettingActivity", "Can't get subscription for Exception: " + e);
                 } finally {

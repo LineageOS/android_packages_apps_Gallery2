@@ -26,7 +26,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 //import android.drm.DrmHelper;
 import android.graphics.Rect;
-import android.media.MediaFile;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.CreateBeamUrisCallback;
@@ -1204,7 +1203,7 @@ public abstract class PhotoPage extends ActivityState implements
                 Intent intent = new Intent(mActivity, TrimVideo.class);
                 intent.setData(manager.getContentUri(path));
                 // We need the file path to wrap this into a RandomAccessFile.
-                String str = android.media.MediaFile.getMimeTypeForFile(current.getFilePath());
+                String str = current.getMimeType();
                 if("video/mp4".equals(str) || "video/mpeg4".equals(str)
                         || "video/3gpp".equals(str) || "video/3gpp2".equals(str)) {
                     intent.putExtra(KEY_MEDIA_ITEM_PATH, current.getFilePath());
@@ -1388,7 +1387,7 @@ public abstract class PhotoPage extends ActivityState implements
     }
 
     public void playVideo(Activity activity, Uri uri, String title) {
-        if (GalleryUtils.isTelephonyCallInProgress()) {
+        if (GalleryUtils.isTelephonyCallInProgress(mActivity)) {
             Log.w(TAG, "CS/CSVT Call is in progress, can't play video");
             return;
         }

@@ -223,7 +223,7 @@ public class GestureControllerOverlay extends FrameLayout implements
             adjustPercent = 1.0f;
         }
 
-        WindowManager.LayoutParams lp = ((MovieActivity) mContext).getWindow().getAttributes();
+        WindowManager.LayoutParams lp = ((MovieActivity) getContext()).getWindow().getAttributes();
         if (mStartBrightness < 0) {
             mStartBrightness = lp.screenBrightness;
         }
@@ -234,7 +234,7 @@ public class GestureControllerOverlay extends FrameLayout implements
             targetBrightness = 1.0f;
         }
         lp.screenBrightness = targetBrightness;
-        ((MovieActivity) mContext).getWindow().setAttributes(lp);
+        ((MovieActivity) getContext()).getWindow().setAttributes(lp);
 
         if (mCurrentIndicator != null) {
             mCurrentIndicator.setCompoundDrawables(null, mBrightnessDrawable, null, null);
@@ -251,7 +251,7 @@ public class GestureControllerOverlay extends FrameLayout implements
             adjustPercent = 1.0f;
         }
 
-        AudioManager audioManager = (AudioManager) mContext
+        AudioManager audioManager = (AudioManager) getContext()
                 .getSystemService(Context.AUDIO_SERVICE);
         final int STREAM = AudioManager.STREAM_MUSIC;
         int maxVolume = audioManager.getStreamMaxVolume(STREAM);

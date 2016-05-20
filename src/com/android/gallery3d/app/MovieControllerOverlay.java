@@ -17,11 +17,9 @@
 package com.android.gallery3d.app;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.VectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -691,9 +689,11 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
             }
 
             // for screen layout
-            VectorDrawable screenButton = VectorDrawable.create(context.getResources(),
-                    R.drawable.ic_media_bigscreen);
-            mScreenWidth = screenButton.getIntrinsicWidth();
+            Drawable screenButton = context.getResources()
+                    .getDrawable(R.drawable.ic_media_bigscreen, null);
+            if (screenButton != null) {
+                mScreenWidth = screenButton.getIntrinsicWidth();
+            }
             mScreenPadding = (int) (metrics.density * MARGIN);
         }
 
@@ -780,9 +780,12 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
         void init(Context context) {
             Log.v(TAG, "ControllerRewindAndForwardExt init");
             mTimeBarHeight = mTimeBar.getPreferredHeight();
-            VectorDrawable drawable =
-                    VectorDrawable.create(context.getResources(), R.drawable.ic_menu_forward);
-            mButtonWidth = drawable.getIntrinsicWidth();
+
+            Drawable forwardMenu = context.getResources().
+                    getDrawable(R.drawable.ic_menu_forward, null);
+            if (forwardMenu != null) {
+                mButtonWidth = forwardMenu.getIntrinsicWidth();
+            }
 
             mContollerButtons = new LinearLayout(context);
             LinearLayout.LayoutParams wrapContent = new LinearLayout.LayoutParams(

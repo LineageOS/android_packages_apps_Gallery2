@@ -194,6 +194,9 @@ public class ApiHelper {
     public static final boolean HAS_DISPLAY_LISTENER =
             Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1;
 
+    // from android.provider.Settings.Global
+    public static final String MULTI_SIM_DATA_CALL_SUBSCRIPTION = "multi_sim_data_call";
+
     public static int getIntFieldIfExists(Class<?> klass, String fieldName,
             Class<?> obj, int defaultVal) {
         try {

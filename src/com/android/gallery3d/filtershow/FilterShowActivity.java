@@ -526,7 +526,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
     public void setActionBar() {
         ActionBar actionBar = getActionBar();
-        actionBar.setShowHideAnimationEnabled(false);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources()
                 .getColor(R.color.edit_actionbar_background)));

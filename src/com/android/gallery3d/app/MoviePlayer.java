@@ -645,7 +645,7 @@ public class MoviePlayer implements
             Log.v(TAG, "playVideo()");
         }
 
-        if (GalleryUtils.isTelephonyCallInProgress()) {
+        if (GalleryUtils.isTelephonyCallInProgress(mContext)) {
             Log.w(TAG, "CS/CSVT Call is in progress, can't play video");
             return false;
         }

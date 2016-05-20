@@ -284,17 +284,17 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                  * longer have a window, don't bother showing the user an error.
                  */
                 if (getWindowToken() != null && mErrorDialogShowing == false) {
-                    final Resources r = mContext.getResources();
+                    final Resources r = getContext().getResources();
                     int messageId;
 
                     if (frameworkErr == MediaPlayer.MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK) {
-                        messageId = com.android.internal.R.string.VideoView_error_text_invalid_progressive_playback;
+                        messageId = android.R.string.VideoView_error_text_invalid_progressive_playback;
                     } else {
-                        messageId = com.android.internal.R.string.VideoView_error_text_unknown;
+                        messageId = android.R.string.VideoView_error_text_unknown;
                     }
-                     new AlertDialog.Builder(mContext)
+                     new AlertDialog.Builder(getContext())
                         .setMessage(messageId)
-                        .setPositiveButton(com.android.internal.R.string.VideoView_error_button,
+                        .setPositiveButton(android.R.string.VideoView_error_button,
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         /* If we get here, there is no onError listener, so
@@ -484,7 +484,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             mMediaPlayer.setOnInfoListener(mOnInfoListener);
             mMediaPlayer.setOnBufferingUpdateListener(mBufferingUpdateListener);
             mCurrentBufferPercentage = 0;
-            mMediaPlayer.setDataSource(mContext, mUri, mHeaders);
+            mMediaPlayer.setDataSource(getContext(), mUri, mHeaders);
             mMediaPlayer.setDisplay(mSurfaceHolder);
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mMediaPlayer.setScreenOnWhilePlaying(true);
@@ -956,7 +956,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
     private boolean isKeyguardLocked() {
         if (mKeyguardManager == null) {
             mKeyguardManager =
-                    (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                    (KeyguardManager) getContext().getSystemService(Context.KEYGUARD_SERVICE);
         }
         // isKeyguardSecure excludes the slide lock case.
         boolean locked = (mKeyguardManager != null)
