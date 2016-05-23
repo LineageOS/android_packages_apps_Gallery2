@@ -140,7 +140,7 @@
             android:id="@+id/cancel"
             android:layout_width="@dimen/category_actionbar_panel_height"
             android:layout_height="@dimen/category_actionbar_panel_height"
-            android:background="@color/edit_actionbar_background"
+            android:background="?android:attr/actionBarItemBackground"
             android:src="@drawable/cancel" />
 
         <TextView
@@ -155,7 +155,7 @@
             android:id="@+id/done"
             android:layout_width="@dimen/category_actionbar_panel_height"
             android:layout_height="@dimen/category_actionbar_panel_height"
-            android:background="@color/edit_actionbar_background"
+            android:background="?android:attr/actionBarItemBackground"
             android:layout_gravity="right"
             android:src="@drawable/done" />
     </FrameLayout>

@@ -219,6 +219,7 @@ public class ImageTrueScanner extends ImageShow {
     public void onDraw(Canvas canvas) {
         if(mBitmap == null)
             return;
+        toggleComparisonButtonVisibility();
 
         if(mDisplayMatrix == null) {
             mDisplayMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,

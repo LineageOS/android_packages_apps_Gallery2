@@ -27,7 +27,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
@@ -44,7 +43,6 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import org.codeaurora.gallery.R;
@@ -73,13 +71,7 @@ public class ImageShow extends View implements OnGestureListener,
 
     private RectF mFusionBounds = new RectF();
     protected Rect mImageBounds = new Rect();
-    private boolean mOriginalDisabled = false;
     private boolean mTouchShowOriginal = false;
-    private long mTouchShowOriginalDate = 0;
-    private final long mTouchShowOriginalDelayMin = 200; // 200ms
-    private int mShowOriginalDirection = 0;
-    private static final int UNVEIL_HORIZONTAL = 1;
-    private static final int UNVEIL_VERTICAL = 2;
 
     private NinePatchDrawable mShadow = null;
     private Rect mShadowBounds = new Rect();
@@ -90,9 +82,6 @@ public class ImageShow extends View implements OnGestureListener,
     private Point mTouch = new Point();
     private boolean mFinishedScalingOperation = false;
 
-    private int mOriginalTextMargin;
-    private int mOriginalTextSize;
-    private String mOriginalText;
     private boolean mZoomIn = false;
     Point mOriginalTranslation = new Point();
     float mOriginalScale;
@@ -125,7 +114,6 @@ public class ImageShow extends View implements OnGestureListener,
     private Paint mMaskPaint = new Paint();
     private Matrix mShaderMatrix = new Matrix();
     private boolean mDidStartAnimation = false;
-    private boolean isScalingUpAllowed = true;
 
     private static Bitmap convertToAlphaMask(Bitmap b) {
         Bitmap a = Bitmap.createBitmap(b.getWidth(), b.getHeight(), Bitmap.Config.ALPHA_8);
@@ -180,10 +168,7 @@ public class ImageShow extends View implements OnGestureListener,
         Resources res = context.getResources();
         mTextSize = res.getDimensionPixelSize(R.dimen.photoeditor_text_size);
         mTextPadding = res.getDimensionPixelSize(R.dimen.photoeditor_text_padding);
-        mOriginalTextMargin = res.getDimensionPixelSize(R.dimen.photoeditor_original_text_margin);
-        mOriginalTextSize = res.getDimensionPixelSize(R.dimen.photoeditor_original_text_size);
         mBackgroundColor = res.getColor(R.color.background_screen);
-        mOriginalText = res.getString(R.string.original_picture_text);
         mShadow = (NinePatchDrawable) res.getDrawable(R.drawable.geometry_shadow);
         setupGestureDetector(context);
         mActivity = (FilterShowActivity) context;
@@ -312,19 +297,18 @@ public class ImageShow extends View implements OnGestureListener,
 
         mShadowDrawn = false;
 
-        Bitmap highresPreview = MasterImage.getImage().getHighresImage();
-        Bitmap fullHighres = MasterImage.getImage().getPartialImage();
+        if (!drawCompareImage(canvas, MasterImage.getImage().getOriginalBitmapLarge())) {
+            Bitmap highresPreview = MasterImage.getImage().getHighresImage();
+            Bitmap fullHighres = MasterImage.getImage().getPartialImage();
 
-        boolean isDoingNewLookAnimation = MasterImage.getImage().onGoingNewLookAnimation();
+            boolean isDoingNewLookAnimation = MasterImage.getImage().onGoingNewLookAnimation();
 
-        if (highresPreview == null || isDoingNewLookAnimation) {
-            drawImageAndAnimate(canvas, getFilteredImage());
-        } else {
-            drawImageAndAnimate(canvas, highresPreview);
+            if (highresPreview == null || isDoingNewLookAnimation) {
+                drawImageAndAnimate(canvas, getFilteredImage());
+            } else {
+                drawImageAndAnimate(canvas, highresPreview);
+            }
         }
-
-//        drawHighresImage(canvas, fullHighres);
-        //drawCompareImage(canvas, getGeometryOnlyImage());
 
         canvas.restore();
 
@@ -384,8 +368,7 @@ public class ImageShow extends View implements OnGestureListener,
         return MasterImage.getImage().getFilteredImage();
     }
 
-    public void drawImageAndAnimate(Canvas canvas,
-            Bitmap image) {
+    public void drawImageAndAnimate(Canvas canvas, Bitmap image) {
         if (image == null) {
             return;
         }
@@ -558,78 +541,18 @@ public class ImageShow extends View implements OnGestureListener,
         }
     }
 
-    public void drawCompareImage(Canvas canvas, Bitmap image) {
+    public boolean drawCompareImage(Canvas canvas, Bitmap image) {
         MasterImage master = MasterImage.getImage();
         boolean showsOriginal = master.showsOriginal();
         if (!showsOriginal && !mTouchShowOriginal)
-            return;
+            return false;
         canvas.save();
         if (image != null) {
-            if (mShowOriginalDirection == 0) {
-                if (Math.abs(mTouch.y - mTouchDown.y) > Math.abs(mTouch.x - mTouchDown.x)) {
-                    mShowOriginalDirection = UNVEIL_VERTICAL;
-                } else {
-                    mShowOriginalDirection = UNVEIL_HORIZONTAL;
-                }
-            }
-
-            int px = 0;
-            int py = 0;
-            if (mShowOriginalDirection == UNVEIL_VERTICAL) {
-                px = mImageBounds.width();
-                py = mTouch.y - mImageBounds.top;
-            } else {
-                px = mTouch.x - mImageBounds.left;
-                py = mImageBounds.height();
-                if (showsOriginal) {
-                    px = mImageBounds.width();
-                }
-            }
-
-            Rect d = new Rect(mImageBounds.left, mImageBounds.top,
-                    mImageBounds.left + px, mImageBounds.top + py);
-            if (mShowOriginalDirection == UNVEIL_HORIZONTAL) {
-                if (mTouchDown.x - mTouch.x > 0) {
-                    d.set(mImageBounds.left + px, mImageBounds.top,
-                            mImageBounds.right, mImageBounds.top + py);
-                }
-            } else {
-                if (mTouchDown.y - mTouch.y > 0) {
-                    d.set(mImageBounds.left, mImageBounds.top + py,
-                            mImageBounds.left + px, mImageBounds.bottom);
-                }
-            }
-            canvas.clipRect(d);
             Matrix m = master.computeImageToScreen(image, 0, false);
             canvas.drawBitmap(image, m, mPaint);
-            Paint paint = new Paint();
-            paint.setColor(Color.BLACK);
-            paint.setStrokeWidth(3);
-
-            if (mShowOriginalDirection == UNVEIL_VERTICAL) {
-                canvas.drawLine(mImageBounds.left, mTouch.y,
-                        mImageBounds.right, mTouch.y, paint);
-            } else {
-                canvas.drawLine(mTouch.x, mImageBounds.top,
-                        mTouch.x, mImageBounds.bottom, paint);
-            }
-
-            Rect bounds = new Rect();
-            paint.setAntiAlias(true);
-            paint.setTextSize(mOriginalTextSize);
-            paint.getTextBounds(mOriginalText, 0, mOriginalText.length(), bounds);
-            paint.setColor(Color.BLACK);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(3);
-            canvas.drawText(mOriginalText, mImageBounds.left + mOriginalTextMargin,
-                    mImageBounds.top + bounds.height() + mOriginalTextMargin, paint);
-            paint.setStyle(Paint.Style.FILL);
-            paint.setStrokeWidth(1);
-            paint.setColor(Color.WHITE);
-            canvas.drawText(mOriginalText, mImageBounds.left + mOriginalTextMargin,
-                    mImageBounds.top + bounds.height() + mOriginalTextMargin, paint);
         }
         canvas.restore();
+        return true;
     }
 
     public void bindAsImageLoadListener() {
@@ -680,8 +603,6 @@ public class ImageShow extends View implements OnGestureListener,
             mInteractionMode = InteractionMode.MOVE;
             mTouchDown.x = ex;
             mTouchDown.y = ey;
-            mTouchShowOriginalDate = System.currentTimeMillis();
-            mShowOriginalDirection = 0;
             MasterImage.getImage().setOriginalTranslation(MasterImage.getImage().getTranslation());
         }
 
@@ -699,12 +620,6 @@ public class ImageShow extends View implements OnGestureListener,
                 translation.x = (int) (originalTranslation.x + translateX);
                 translation.y = (int) (originalTranslation.y + translateY);
                 MasterImage.getImage().setTranslation(translation);
-                mTouchShowOriginal = false;
-            } else if (enableComparison() && !mOriginalDisabled
-                    && (System.currentTimeMillis() - mTouchShowOriginalDate
-                            > mTouchShowOriginalDelayMin)
-                            && event.getPointerCount() == 1) {
-                mTouchShowOriginal = true;
             }
         }
 
@@ -712,7 +627,6 @@ public class ImageShow extends View implements OnGestureListener,
                 || action == MotionEvent.ACTION_CANCEL
                 || action == MotionEvent.ACTION_OUTSIDE) {
             mInteractionMode = InteractionMode.NONE;
-            mTouchShowOriginal = false;
             mTouchDown.x = 0;
             mTouchDown.y = 0;
             mTouch.x = 0;

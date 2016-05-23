@@ -98,7 +98,10 @@ import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
 import com.android.gallery3d.filtershow.editors.EditorManager;
 import com.android.gallery3d.filtershow.editors.EditorPanel;
 import com.android.gallery3d.filtershow.editors.EditorStraighten;
+import com.android.gallery3d.filtershow.editors.HazeBusterEditor;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
+import com.android.gallery3d.filtershow.editors.SeeStraightEditor;
+import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRotateRepresentation;
@@ -357,7 +360,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         transaction.commitAllowingStateLoss();
     }
 
-    public void loadEditorPanel(FilterRepresentation representation,
+    public void loadEditorPanel(final FilterRepresentation representation,
                                 final Editor currentEditor) {
         if (currentEditor.showsActionBar()) {
             setActionBar();
@@ -387,11 +390,15 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             }.run();
             return;
         }
-        if (currentId == EditorStraighten.ID) {
+        if (useStraightenPanel(currentId)) {
             new Runnable() {
                 @Override
                 public void run() {
                     StraightenPanel panel = new StraightenPanel();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(StraightenPanel.EDITOR_ID, currentId);
+                    bundle.putString(StraightenPanel.EDITOR_NAME, representation.getName());
+                    panel.setArguments(bundle);
                     FragmentTransaction transaction =
                             getSupportFragmentManager().beginTransaction();
                     transaction.remove(getSupportFragmentManager().findFragmentByTag(
@@ -434,6 +441,11 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         } else {
             showEditor.run();
         }
+    }
+
+    private boolean useStraightenPanel(int EditorID) {
+        return (EditorID == EditorStraighten.ID || EditorID == TrueScannerEditor.ID
+                || EditorID == HazeBusterEditor.ID || EditorID == SeeStraightEditor.ID);
     }
 
     public void leaveSeekBarPanel() {
@@ -488,22 +500,14 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 int action = event.getAction();
                 action = action & MotionEvent.ACTION_MASK;
                 if (action == MotionEvent.ACTION_DOWN) {
-
-                    HistoryManager adapter = mMasterImage.getHistory();
-                    int position = adapter.backToOriginal();// adapter.undo();
-                    mMasterImage.onHistoryItemClick(position, false);
+                    MasterImage.getImage().setShowsOriginal(true);
                     v.setPressed(true);
-                    invalidateViews();
                 }
                 if (action == MotionEvent.ACTION_UP
                         || action == MotionEvent.ACTION_CANCEL
                         || action == MotionEvent.ACTION_OUTSIDE) {
                     v.setPressed(false);
-                    HistoryManager adapter = mMasterImage.getHistory();
-                    int position = adapter.backToCurrent();
-                    mMasterImage.onHistoryItemClick(position, false);
-                    invalidateViews();
-
+                    MasterImage.getImage().setShowsOriginal(false);
                 }
 
                 return false;

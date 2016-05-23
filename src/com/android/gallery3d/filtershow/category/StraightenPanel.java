@@ -34,24 +34,50 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.filtershow.editors.EditorStraighten;
+import com.android.gallery3d.filtershow.editors.Editor;
+
+import org.codeaurora.gallery.R;
 
 public class StraightenPanel extends BasicGeometryPanel {
-    private EditorStraighten mEditorStraighten;
+    public static final String EDITOR_ID = "editor_id";
+    public static final String EDITOR_NAME = "editor_name";
+    public static final int NO_EDITOR = -1;
+    private Editor mEditor;
+    private int mEditorID = NO_EDITOR;
+    private String mName;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    private void initArguments(Bundle arguments) {
+        if (arguments != null) {
+            mEditorID = arguments.getInt(EDITOR_ID);
+            mName = arguments.getString(EDITOR_NAME);
+        }
+    }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        FilterShowActivity filterShowActivity = (FilterShowActivity) activity;
-        mEditorStraighten = (EditorStraighten) filterShowActivity.getEditor(EditorStraighten.ID);
+        initArguments(getArguments());
+        if (mEditorID != NO_EDITOR) {
+            FilterShowActivity filterShowActivity = (FilterShowActivity) activity;
+            mEditor = filterShowActivity.getEditor(mEditorID);
+            if (mEditor != null) {
+                mEditor.attach();
+            }
+        }
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mEditorName.setText(R.string.straighten);
+        if (mName != null) {
+            mEditorName.setText(mName);
+        }
 
         mBottomPanel.setVisibility(View.VISIBLE);
 
@@ -67,7 +93,9 @@ public class StraightenPanel extends BasicGeometryPanel {
         mApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEditorStraighten.finalApplyCalled();
+                if (mEditor != null) {
+                    mEditor.finalApplyCalled();
+                }
                 activity.backToMain();
                 activity.setActionBar();
             }
@@ -77,17 +105,15 @@ public class StraightenPanel extends BasicGeometryPanel {
     @Override
     protected void initPanels() {
         super.initPanels();
-        int size = mPanels.length;
-        for (int i = 0; i < size; i++) {
-            View view = mPanels[i];
+        for (View view : mPanels) {
             view.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void onDetach() {
-        if (mEditorStraighten != null) {
-            mEditorStraighten.detach();
+        if (mEditor != null) {
+            mEditor.detach();
         }
         super.onDetach();
     }

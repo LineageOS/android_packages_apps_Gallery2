@@ -101,12 +101,21 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
                 break;
             }
             case TRUESCANNER: {
+                if (trueScannerButton != null) {
+                    trueScannerButton.setSelected(value);
+                }
                 break;
             }
             case HAZEBUSTER: {
+                if (hazeBusterButton != null) {
+                    hazeBusterButton.setSelected(value);
+                }
                 break;
             }
             case SEESTRAIGHT: {
+                if (seeStraightButton != null) {
+                    seeStraightButton.setSelected(value);
+                }
                 break;
             }
         }
@@ -337,33 +346,51 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     }
 
     public void loadCategoryTrueScannerPanel() {
-        boolean fromRight = isRightAnimation(TRUESCANNER);
-        selection(mCurrentSelected, false);
-        CategoryPanel categoryPanel = new CategoryPanel();
-        categoryPanel.setAdapter(TRUESCANNER);
-        setCategoryFragment(categoryPanel, fromRight);
-        mCurrentSelected = TRUESCANNER;
-        selection(mCurrentSelected, true);
+        final FilterShowActivity activity = (FilterShowActivity) getActivity();
+        CategoryAdapter adapter = activity.getCategoryTrueScannerAdapter();
+        if (adapter.getCount() == 1) {
+            activity.showRepresentation(adapter.getItem(0).getRepresentation());
+        } else {
+            boolean fromRight = isRightAnimation(TRUESCANNER);
+            selection(mCurrentSelected, false);
+            CategoryPanel categoryPanel = new CategoryPanel();
+            categoryPanel.setAdapter(TRUESCANNER);
+            setCategoryFragment(categoryPanel, fromRight);
+            mCurrentSelected = TRUESCANNER;
+            selection(mCurrentSelected, true);
+        }
     }
 
     public void loadCategoryHazeBusterPanel() {
-        boolean fromRight = isRightAnimation(HAZEBUSTER);
-        selection(mCurrentSelected, false);
-        CategoryPanel categoryPanel = new CategoryPanel();
-        categoryPanel.setAdapter(HAZEBUSTER);
-        setCategoryFragment(categoryPanel, fromRight);
-        mCurrentSelected = HAZEBUSTER;
-        selection(mCurrentSelected, true);
+        final FilterShowActivity activity = (FilterShowActivity) getActivity();
+        CategoryAdapter adapter = activity.getCategoryHazeBusterAdapter();
+        if (adapter.getCount() == 1) {
+            activity.showRepresentation(adapter.getItem(0).getRepresentation());
+        } else {
+            boolean fromRight = isRightAnimation(HAZEBUSTER);
+            selection(mCurrentSelected, false);
+            CategoryPanel categoryPanel = new CategoryPanel();
+            categoryPanel.setAdapter(HAZEBUSTER);
+            setCategoryFragment(categoryPanel, fromRight);
+            mCurrentSelected = HAZEBUSTER;
+            selection(mCurrentSelected, true);
+        }
     }
 
     public void loadCategorySeeStraightPanel() {
-        boolean fromRight = isRightAnimation(SEESTRAIGHT);
-        selection(mCurrentSelected, false);
-        CategoryPanel categoryPanel = new CategoryPanel();
-        categoryPanel.setAdapter(SEESTRAIGHT);
-        setCategoryFragment(categoryPanel, fromRight);
-        mCurrentSelected = SEESTRAIGHT;
-        selection(mCurrentSelected, true);
+        final FilterShowActivity activity = (FilterShowActivity) getActivity();
+        CategoryAdapter adapter = activity.getCategorySeeStraightAdapter();
+        if (adapter.getCount() == 1) {
+            activity.showRepresentation(adapter.getItem(0).getRepresentation());
+        } else {
+            boolean fromRight = isRightAnimation(SEESTRAIGHT);
+            selection(mCurrentSelected, false);
+            CategoryPanel categoryPanel = new CategoryPanel();
+            categoryPanel.setAdapter(SEESTRAIGHT);
+            setCategoryFragment(categoryPanel, fromRight);
+            mCurrentSelected = SEESTRAIGHT;
+            selection(mCurrentSelected, true);
+        }
     }
 
     public void loadCategoryFiltersPanel() {

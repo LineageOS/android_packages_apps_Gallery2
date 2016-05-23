@@ -67,6 +67,11 @@ public class HazeBusterEditor extends Editor {
     }
 
     @Override
+    public boolean showsActionBar() {
+        return false;
+    }
+
+    @Override
     public boolean showsSeekBar() {
         return false;
     }

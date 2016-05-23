@@ -72,6 +72,11 @@ public class TrueScannerEditor extends Editor {
     }
 
     @Override
+    public boolean showsActionBar() {
+        return false;
+    }
+
+    @Override
     public boolean showsSeekBar() {
         return false;
     }
