@@ -20,7 +20,7 @@ package com.android.gallery3d.filtershow.editors;
 import android.view.View;
 import android.widget.SeekBar;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class EditorMakeup extends BasicEditor {
     public static int ID = R.id.editorMakeup;

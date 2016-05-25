@@ -22,7 +22,7 @@ import android.graphics.Rect;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.glrenderer.GLCanvas;
 import com.android.gallery3d.glrenderer.ResourceTexture;
 

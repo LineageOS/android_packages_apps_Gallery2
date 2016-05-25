@@ -30,7 +30,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public abstract class MultiSelectGridFragment extends Fragment
         implements MultiChoiceManager.Delegate, AdapterView.OnItemClickListener {

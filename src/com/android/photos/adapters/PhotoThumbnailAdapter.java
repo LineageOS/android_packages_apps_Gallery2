@@ -25,7 +25,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.photos.data.PhotoSetLoader;
 import com.android.photos.shims.LoaderCompatShim;
 import com.android.photos.views.GalleryThumbnailView.GalleryThumbnailAdapter;

@@ -18,7 +18,7 @@ package com.android.gallery3d.filtershow.filters;
 
 import android.graphics.RectF;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.EditorRedEye;
 
 import java.util.Vector;

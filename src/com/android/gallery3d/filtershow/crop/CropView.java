@@ -32,7 +32,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 
 public class CropView extends View {

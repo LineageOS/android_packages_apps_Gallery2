@@ -20,7 +20,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class IconUtilities {
     public static final int PUNCH = R.drawable.filtershow_fx_0005_punch;

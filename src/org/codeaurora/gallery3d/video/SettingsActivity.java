@@ -26,7 +26,7 @@ import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 import java.util.ArrayList;
 

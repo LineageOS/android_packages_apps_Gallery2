@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 
 public class PresetManagementDialog extends DialogFragment implements View.OnClickListener {

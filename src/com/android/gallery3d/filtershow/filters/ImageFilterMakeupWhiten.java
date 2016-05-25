@@ -19,7 +19,7 @@ package com.android.gallery3d.filtershow.filters;
 
 import android.graphics.Bitmap;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 import com.thundersoft.hz.selfportrait.detect.FaceInfo;
 import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;

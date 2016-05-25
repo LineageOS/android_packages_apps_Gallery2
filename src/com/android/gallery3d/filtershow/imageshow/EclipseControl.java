@@ -27,7 +27,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.Log;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class EclipseControl {
     private float mCenterX = Float.NaN;

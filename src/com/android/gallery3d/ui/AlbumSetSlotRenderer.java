@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.ui;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.AbstractGalleryActivity;
 import com.android.gallery3d.app.AlbumSetDataLoader;
 import com.android.gallery3d.data.MediaObject;

@@ -30,7 +30,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
@@ -330,6 +330,6 @@ public class ProcessingService extends Service {
     }
 
     static {
-        System.loadLibrary("jni_filtershow_filters");
+        System.loadLibrary("jni_gallery_filters");
     }
 }

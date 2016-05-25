@@ -4,7 +4,7 @@ LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE        := libjni_jpegstream
+LOCAL_MODULE        := libjni_gallery_jpegstream
 
 LOCAL_NDK_STL_VARIANT := stlport_static
 

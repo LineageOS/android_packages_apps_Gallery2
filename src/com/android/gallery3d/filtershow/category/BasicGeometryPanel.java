@@ -38,7 +38,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class BasicGeometryPanel extends Fragment {
     protected View mMainView;

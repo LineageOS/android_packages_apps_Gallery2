@@ -27,7 +27,7 @@ import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.Shader;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class GradControl {
     private float mPoint1X = Float.NaN; // used to flag parameters have not been set

@@ -3,7 +3,7 @@ package com.android.gallery3d.filtershow.data;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;

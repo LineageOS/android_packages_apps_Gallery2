@@ -18,7 +18,7 @@ package com.android.gallery3d.filtershow.filters;
 
 import android.graphics.Bitmap;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class ImageFilterHighlights extends SimpleImageFilter {
     private static final String SERIALIZATION_NAME = "HIGHLIGHTS";

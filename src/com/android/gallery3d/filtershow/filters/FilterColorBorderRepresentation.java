@@ -20,7 +20,7 @@ import android.graphics.Color;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.controller.BasicParameterInt;
 import com.android.gallery3d.filtershow.controller.Parameter;
 import com.android.gallery3d.filtershow.controller.ParameterColor;

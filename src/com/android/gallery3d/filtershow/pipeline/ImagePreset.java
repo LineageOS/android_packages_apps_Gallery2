@@ -30,7 +30,7 @@ import android.util.JsonReader;
 import android.util.JsonWriter;
 import android.util.Log;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.filters.BaseFiltersManager;
 import com.android.gallery3d.filtershow.filters.FilterCropRepresentation;

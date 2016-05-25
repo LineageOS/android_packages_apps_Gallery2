@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.filtershow.filters;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.EditorTinyPlanet;
 
 public class FilterTinyPlanetRepresentation extends FilterBasicRepresentation {

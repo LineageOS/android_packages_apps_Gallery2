@@ -21,7 +21,7 @@ import android.graphics.BitmapFactory;
 import android.renderscript.*;
 import android.util.Log;
 import android.content.res.Resources;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.pipeline.PipelineInterface;
 
 public abstract class ImageFilterRS extends ImageFilter {

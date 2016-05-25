@@ -19,7 +19,7 @@ package com.android.gallery3d.ui;
 import android.graphics.Bitmap;
 import android.os.Message;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.AbstractGalleryActivity;
 import com.android.gallery3d.app.AlbumSetDataLoader;
 import com.android.gallery3d.common.Utils;

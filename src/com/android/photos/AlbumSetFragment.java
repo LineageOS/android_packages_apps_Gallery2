@@ -29,7 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.photos.adapters.AlbumSetCursorAdapter;
 import com.android.photos.data.AlbumSetLoader;
 import com.android.photos.shims.LoaderCompatShim;

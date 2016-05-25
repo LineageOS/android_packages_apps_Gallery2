@@ -40,7 +40,7 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;

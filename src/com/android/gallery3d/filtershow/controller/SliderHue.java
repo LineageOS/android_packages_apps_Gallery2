@@ -31,7 +31,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.Log;
 import com.android.gallery3d.filtershow.colorpicker.ColorHueView;
 import com.android.gallery3d.filtershow.colorpicker.ColorListener;

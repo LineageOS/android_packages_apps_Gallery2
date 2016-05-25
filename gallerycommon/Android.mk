@@ -20,7 +20,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := com.android.gallery3d.common2
+LOCAL_MODULE := org.codeaurora.gallery.common
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_SDK_VERSION := 16
 

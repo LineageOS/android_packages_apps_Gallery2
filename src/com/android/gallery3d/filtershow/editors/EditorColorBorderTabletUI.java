@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.colorpicker.ColorCompareView;
 import com.android.gallery3d.filtershow.colorpicker.ColorHueView;
 import com.android.gallery3d.filtershow.colorpicker.ColorListener;

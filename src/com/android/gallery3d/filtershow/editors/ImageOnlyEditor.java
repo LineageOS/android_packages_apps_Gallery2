@@ -19,7 +19,7 @@ package com.android.gallery3d.filtershow.editors;
 import android.content.Context;
 import android.widget.FrameLayout;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.imageshow.ImageShow;
 
 /**

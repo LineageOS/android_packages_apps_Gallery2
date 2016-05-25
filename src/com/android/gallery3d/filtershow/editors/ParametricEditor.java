@@ -28,7 +28,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.controller.ActionSlider;
 import com.android.gallery3d.filtershow.controller.BasicSlider;
 import com.android.gallery3d.filtershow.controller.ColorChooser;

@@ -25,7 +25,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class FramedTextButton extends ImageButton {
     private static final String LOGTAG = "FramedTextButton";

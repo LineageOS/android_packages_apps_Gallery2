@@ -42,7 +42,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import android.widget.TextView;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.util.GalleryUtils;
 
 public class GestureControllerOverlay extends FrameLayout implements

@@ -19,7 +19,7 @@ package com.android.gallery3d.app;
 import android.content.Context;
 import android.content.res.Resources;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.ui.AlbumSetSlotRenderer;
 import com.android.gallery3d.ui.AlbumSlotRenderer;
 import com.android.gallery3d.ui.SlotView;

@@ -34,7 +34,7 @@ import android.widget.ShareActionProvider;
 import android.widget.Toolbar;
 import android.widget.ShareActionProvider.OnShareTargetSelectedListener;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.AbstractGalleryActivity;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.Utils;

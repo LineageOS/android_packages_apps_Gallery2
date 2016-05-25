@@ -19,7 +19,7 @@ package com.android.gallery3d.ui;
 import android.content.Context;
 import android.graphics.Rect;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.data.MediaObject;
 import com.android.gallery3d.glrenderer.FadeOutTexture;
 import com.android.gallery3d.glrenderer.GLCanvas;

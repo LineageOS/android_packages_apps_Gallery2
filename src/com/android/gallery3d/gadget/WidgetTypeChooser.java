@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class WidgetTypeChooser extends Activity {
 

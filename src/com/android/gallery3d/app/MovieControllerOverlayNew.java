@@ -40,7 +40,7 @@ import android.widget.ImageView;
 import org.codeaurora.gallery3d.video.IVideoSnapshotListener;
 import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class MovieControllerOverlayNew extends MovieControllerOverlay {
     private VideoSnapshotLayout mVideoSnapshotLayout = new VideoSnapshotLayout();

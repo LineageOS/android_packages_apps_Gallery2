@@ -28,7 +28,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.photos.data.AlbumSetLoader;
 import com.android.photos.shims.LoaderCompatShim;
 

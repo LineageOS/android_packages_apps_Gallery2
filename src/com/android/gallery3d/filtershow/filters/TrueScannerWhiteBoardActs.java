@@ -30,7 +30,7 @@
 package com.android.gallery3d.filtershow.filters;
 
 import android.graphics.Bitmap;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 
 public class TrueScannerWhiteBoardActs extends TrueScannerActs {

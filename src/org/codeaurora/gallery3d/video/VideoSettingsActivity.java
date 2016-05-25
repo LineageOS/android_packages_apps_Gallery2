@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class VideoSettingsActivity extends ListActivity {
     private String OPTION_NAME = "option_name";

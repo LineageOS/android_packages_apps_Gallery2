@@ -31,7 +31,7 @@ package org.codeaurora.gallery3d.video;
 import android.content.Context;
 
 import com.android.gallery3d.app.MovieActivity;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 import org.codeaurora.gallery3d.ext.ActivityHookerGroup;
 import org.codeaurora.gallery3d.ext.IActivityHooker;

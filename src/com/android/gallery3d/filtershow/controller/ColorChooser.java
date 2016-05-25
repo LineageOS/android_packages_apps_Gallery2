@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.colorpicker.ColorListener;
 import com.android.gallery3d.filtershow.colorpicker.ColorPickerDialog;
 import com.android.gallery3d.filtershow.editors.Editor;

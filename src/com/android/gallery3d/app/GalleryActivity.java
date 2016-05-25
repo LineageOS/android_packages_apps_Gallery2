@@ -65,7 +65,7 @@ import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;
@@ -359,7 +359,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 LayoutInflater inflater = (LayoutInflater) mContext
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(
-                        com.android.gallery3d.R.layout.drawer_list_item, null);
+                        org.codeaurora.gallery.R.layout.drawer_list_item, null);
             } else {
                 view = convertView;
             }

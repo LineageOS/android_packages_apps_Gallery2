@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class CategorySelected extends View {
     private Paint mPaint = new Paint();

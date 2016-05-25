@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.ingest;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.ingest.adapter.CheckBroker;
 import com.android.gallery3d.ingest.adapter.MtpAdapter;
 import com.android.gallery3d.ingest.adapter.MtpPagerAdapter;

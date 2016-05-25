@@ -28,7 +28,7 @@ import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.ImageButton;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 import java.util.HashMap;
 import java.util.Map;

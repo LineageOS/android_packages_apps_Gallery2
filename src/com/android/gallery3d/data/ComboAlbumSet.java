@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.data;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.GalleryApp;
 import com.android.gallery3d.util.Future;
 

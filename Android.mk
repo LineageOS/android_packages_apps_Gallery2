@@ -7,7 +7,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_JAVA_LIBRARIES := telephony-common
 
 LOCAL_STATIC_JAVA_LIBRARIES := android-support-v13
-LOCAL_STATIC_JAVA_LIBRARIES += com.android.gallery3d.common2
+LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
 LOCAL_STATIC_JAVA_LIBRARIES += xmp_toolkit
 LOCAL_STATIC_JAVA_LIBRARIES += mp4parser
 #LOCAL_STATIC_JAVA_LIBRARIES += android-support-v8-renderscript
@@ -35,11 +35,11 @@ LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay
 
-LOCAL_PACKAGE_NAME := Gallery2
+LOCAL_PACKAGE_NAME := SnapdragonGallery
 
 LOCAL_PRIVILEGED_MODULE := true
 
-LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
+LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D Gallery2
 
 LOCAL_PROGUARD_ENABLED := disabled
 

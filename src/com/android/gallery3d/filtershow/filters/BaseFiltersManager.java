@@ -20,7 +20,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.Log;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 

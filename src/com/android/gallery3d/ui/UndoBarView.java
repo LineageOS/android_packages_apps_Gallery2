@@ -19,7 +19,7 @@ package com.android.gallery3d.ui;
 import android.content.Context;
 import android.view.MotionEvent;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.glrenderer.GLCanvas;
 import com.android.gallery3d.glrenderer.NinePatchTexture;

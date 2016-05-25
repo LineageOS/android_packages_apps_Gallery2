@@ -23,7 +23,7 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.common.ApiHelper;
 
 /**

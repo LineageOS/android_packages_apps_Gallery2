@@ -32,7 +32,7 @@ package com.android.gallery3d.app;
 import android.content.Context;
 import android.view.MotionEvent;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 public class TimeBarNew extends TimeBar {
 

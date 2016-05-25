@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.ingest;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.ingest.data.ImportTask;
 import com.android.gallery3d.ingest.data.IngestObjectInfo;
 import com.android.gallery3d.ingest.data.MtpClient;

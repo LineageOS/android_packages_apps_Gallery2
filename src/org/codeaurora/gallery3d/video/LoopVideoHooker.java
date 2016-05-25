@@ -3,7 +3,7 @@ package org.codeaurora.gallery3d.video;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import org.codeaurora.gallery3d.ext.MovieUtils;
 
 public class LoopVideoHooker extends MovieHooker {

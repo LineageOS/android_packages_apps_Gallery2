@@ -10,7 +10,7 @@ LOCAL_SDK_VERSION := 9
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := libjni_eglfence
+LOCAL_MODULE := libjni_gallery_eglfence
 
 LOCAL_LDLIBS := -llog -lEGL
 
@@ -23,7 +23,7 @@ include $(CLEAR_VARS)
 
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_SDK_VERSION := 9
-LOCAL_MODULE    := libjni_filtershow_filters
+LOCAL_MODULE    := libjni_gallery_filters
 LOCAL_SRC_FILES := filters/gradient.c \
                    filters/saturated.c \
                    filters/exposure.c \

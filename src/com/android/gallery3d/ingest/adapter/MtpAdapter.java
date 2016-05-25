@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.ingest.adapter;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.ingest.data.IngestObjectInfo;
 import com.android.gallery3d.ingest.data.MtpDeviceIndex;
 import com.android.gallery3d.ingest.data.MtpDeviceIndex.SortOrder;

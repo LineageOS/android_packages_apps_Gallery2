@@ -44,7 +44,7 @@ import android.provider.MediaStore.Images.ImageColumns;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.filtershow.FilterShowActivity;

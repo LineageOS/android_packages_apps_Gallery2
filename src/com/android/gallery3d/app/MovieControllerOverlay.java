@@ -38,7 +38,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
-import com.android.gallery3d.R;
+import org.codeaurora.gallery.R;
 
 import org.codeaurora.gallery3d.ext.IContrllerOverlayExt;
 import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
