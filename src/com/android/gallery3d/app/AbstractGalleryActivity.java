@@ -35,7 +35,6 @@ import android.os.IBinder;
 import android.support.v4.print.PrintHelper;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toolbar;
 
@@ -59,7 +58,6 @@ public class AbstractGalleryActivity extends Activity implements GalleryContext 
     private GalleryActionBar mActionBar;
     private OrientationManager mOrientationManager;
     private TransitionStore mTransitionStore = new TransitionStore();
-    private boolean mDisableToggleStatusBar;
     private PanoramaViewHelper mPanoramaViewHelper;
     private Toolbar mToolbar;
 
@@ -285,16 +283,8 @@ public class AbstractGalleryActivity extends Activity implements GalleryContext 
         }
     }
 
-    protected void disableToggleStatusBar() {
-        mDisableToggleStatusBar = true;
-    }
-
     public TransitionStore getTransitionStore() {
         return mTransitionStore;
-    }
-
-    public PanoramaViewHelper getPanoramaViewHelper() {
-        return mPanoramaViewHelper;
     }
 
     protected boolean isFullscreen() {

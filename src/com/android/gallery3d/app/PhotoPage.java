@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-//import android.drm.DrmHelper;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.nfc.NfcAdapter;
@@ -52,7 +51,6 @@ import com.android.gallery3d.data.ComboAlbum;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.FilterDeleteSet;
 import com.android.gallery3d.data.FilterSource;
-import com.android.gallery3d.data.LocalImage;
 import com.android.gallery3d.data.MediaDetails;
 import com.android.gallery3d.data.MediaItem;
 import com.android.gallery3d.data.MediaObject;
@@ -65,8 +63,6 @@ import com.android.gallery3d.data.SnailAlbum;
 import com.android.gallery3d.data.SnailItem;
 import com.android.gallery3d.data.SnailSource;
 import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.filtershow.crop.CropActivity;
-import com.android.gallery3d.picasasource.PicasaSource;
 import com.android.gallery3d.ui.DetailsHelper;
 import com.android.gallery3d.ui.DetailsHelper.CloseListener;
 import com.android.gallery3d.ui.DetailsHelper.DetailsSource;
@@ -79,8 +75,9 @@ import com.android.gallery3d.ui.SynchronizedHandler;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.UsageStatistics;
 
-import java.util.ArrayList;
 import java.util.Locale;
+
+//import android.drm.DrmHelper;
 
 public abstract class PhotoPage extends ActivityState implements
         PhotoView.Listener, AppBridge.Server, ShareActionProvider.OnShareTargetSelectedListener,
@@ -110,9 +107,6 @@ public abstract class PhotoPage extends ActivityState implements
     private static final int REQUEST_EDIT = 4;
     private static final int REQUEST_PLAY_VIDEO = 5;
     private static final int REQUEST_TRIM = 6;
-
-    // Data cache size, equal to AlbumDataLoader.DATA_CACHE_SIZE
-    private static final int DATA_CACHE_SIZE = 256;
 
     public static final String KEY_MEDIA_SET_PATH = "media-set-path";
     public static final String KEY_MEDIA_ITEM_PATH = "media-item-path";
@@ -653,11 +647,6 @@ public abstract class PhotoPage extends ActivityState implements
                     && !mPhotoView.getFilmMode()
                     && (mCurrentPhoto.getSupportedOperations() & MediaItem.SUPPORT_EDIT) != 0
                     && mCurrentPhoto.getMediaType() == MediaObject.MEDIA_TYPE_IMAGE;
-            // case R.id.photopage_bottom_control_panorama:
-            // return mIsPanorama;
-            // case R.id.photopage_bottom_control_tiny_planet:
-            // return mHaveImageEditor && mShowBars
-            // && mIsPanorama360 && !mPhotoView.getFilmMode();
         case R.id.photopage_bottom_control_share:
             mShareIntent = new Intent(Intent.ACTION_SEND);
             return mShowBars;
@@ -700,13 +689,6 @@ public abstract class PhotoPage extends ActivityState implements
                     mConfirmDialogListener);
                  }
                 return;
-            // case R.id.photopage_bottom_control_panorama:
-            // mActivity.getPanoramaViewHelper()
-            // .showPanorama(mCurrentPhoto.getContentUri());
-            // return;
-            // case R.id.photopage_bottom_control_tiny_planet:
-            // launchTinyPlanet();
-            // return;
         default:
             return;
         }
