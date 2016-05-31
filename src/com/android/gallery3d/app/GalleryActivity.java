@@ -31,6 +31,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -601,6 +602,9 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                     data.putString(PhotoPage.KEY_MEDIA_SET_PATH, albumPath.toString());
                 }
                 data.putBoolean("SingleItemOnly", singleItemOnly);
+                // set the cover View to black
+                View cover = findViewById(R.id.gl_root_cover);
+                cover.setBackgroundColor(Color.BLACK);
                 getStateManager().startState(SinglePhotoPage.class, data);
             }
         }
