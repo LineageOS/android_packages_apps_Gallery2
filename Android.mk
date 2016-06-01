@@ -7,6 +7,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_JAVA_LIBRARIES := telephony-common
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
+    $(ANDROID_SUPPORT_DESIGN_TARGETS) \
     androidx.heifwriter_heifwriter \
     android-support-fragment \
     android-support-core-ui \

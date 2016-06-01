@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+     <item android:id="@+id/action_timeline"
+          android:title="@string/timeline_title"
+          android:icon="@drawable/ic_timeline" />
+     <item android:id="@+id/action_album"
+          android:title="@string/albums_title"
+          android:icon="@drawable/ic_album" />
+     <item android:id="@+id/action_videos"
+          android:title="@string/videos_title"
+          android:icon="@drawable/ic_video" />
+</menu>
