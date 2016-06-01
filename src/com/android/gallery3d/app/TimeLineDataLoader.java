@@ -124,7 +124,10 @@ public class TimeLineDataLoader {
 
     public MediaItem get(int index) {
         if (!isActive(index)) {
-            return mSource.getMediaItem(index, 1).get(0);
+            ArrayList<MediaItem> items = mSource.getMediaItem(index, 1);
+            if (items != null && items.size() > 0) {
+                return items.get(0);
+            }
         }
         return mData[index % mData.length];
     }
