@@ -31,11 +31,10 @@
 <Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/actionBarSize"
-    android:background="@color/toolbar_theme"
-    android:elevation="4dp"
+    android:background="@color/primary"
+    android:elevation="8dp"
     android:theme="@style/ToolbarTheme"
     android:titleTextAppearance="@style/ToolbarTitleStyle"
-    android:popupTheme="@style/ToolbarPopUpTheme"
-    android:navigationIcon="@drawable/drawer" >
+    android:popupTheme="@style/ToolbarPopUpTheme" >
 
 </Toolbar>
