@@ -88,4 +88,7 @@
     <color name="timeline_title_text_color">@color/black_transparent_4</color>
     <color name="timeline_title_number_text_color">@color/black_transparent_3</color>
     <color name="timeline_title_background_color">@color/white</color>
+
+    <color name="navigation_accent_disabled">#747474</color>
+    <color name="navigation_accent_enabled">@color/white</color>
 </resources>
