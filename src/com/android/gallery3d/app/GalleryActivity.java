@@ -30,6 +30,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.text.TextUtils;
@@ -37,6 +38,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.InputDevice;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,6 +48,8 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -92,8 +96,12 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     private ListView mDrawerListView;
     private DrawerLayout mDrawerLayout;
     public static boolean mIsparentActivityFInishing;
-    NavigationDrawerListAdapter mNavigationAdapter;
     public Toolbar mToolbar;
+
+    private BottomNavigationView mBottomNavigation;
+    private RelativeLayout mGLParentLayout;
+    private RelativeLayout.LayoutParams params;
+
     /** DrawerLayout is not supported in some entrances.
      * such as Intent.ACTION_VIEW, Intent.ACTION_GET_CONTENT, Intent.PICK. */
     private boolean mDrawerLayoutSupported = true;
@@ -164,76 +172,47 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                     R.string.videos_title, R.drawable.videos) };
 
     public void initView() {
-        mDrawerListView = (ListView) findViewById(R.id.navList);
-        mNavigationAdapter = new NavigationDrawerListAdapter(this);
-        mDrawerListView.setAdapter(mNavigationAdapter);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(mToolbar);
+        setToolbar(mToolbar);
 
-        mDrawerListView
-                .setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,
-                            int position, long id) {
-                        getGLRoot().lockRenderThread();
-                        showScreen(position);
+        mGLParentLayout = (RelativeLayout) findViewById(R.id.gl_parent_layout);
+        params = (RelativeLayout.LayoutParams) mGLParentLayout.getLayoutParams();
 
-                        mNavigationAdapter.setClickPosition(position);
-                        mDrawerListView.invalidateViews();
-                        mDrawerLayout.closeDrawer(Gravity.START);
-                        getGLRoot().unlockRenderThread();
-                    }
-                });
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mDrawerLayout.setDrawerListener(new DrawerListener() {
-                @Override
-                public void onDrawerStateChanged(int arg0) {
-                    toggleNavDrawer(getStateManager().getStateCount() == 1);
-                }
-
-                @Override
-                public void onDrawerSlide(View arg0, float arg1) {
-
-                }
-
-                @Override
-                public void onDrawerOpened(View arg0) {
-
-                }
-
-                @Override
-                public void onDrawerClosed(View arg0) {
-
-                }
-            });
-        mToolbar.setNavigationContentDescription("drawer");
-        mToolbar.setNavigationOnClickListener(new OnClickListener() {
-
+        mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        mBottomNavigation.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                if (mToolbar.getNavigationContentDescription().equals("drawer")) {
-                    mDrawerLayout.openDrawer(Gravity.START);
-
-                } else {
-                    mToolbar.setNavigationContentDescription("drawer");
-                    mToolbar.setNavigationIcon(R.drawable.drawer);
-                    onBackPressed();
+            public boolean onNavigationItemSelected(MenuItem item) {
+                getGLRoot().lockRenderThread();
+                switch (item.getItemId()) {
+                    case R.id.action_timeline:
+                        showScreen(0);
+                        break;
+                    case R.id.action_album:
+                        showScreen(1);
+                        break;
+                    case R.id.action_videos:
+                        showScreen(2);
+                        break;
                 }
+                getGLRoot().unlockRenderThread();
+                return true;
             }
         });
-        setToolbar(mToolbar);
     }
 
-    public void toggleNavDrawer(boolean setDrawerVisibility) {
-        if (mDrawerLayout != null) {
-            if (setDrawerVisibility && mDrawerLayoutSupported) {
-                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                mToolbar.setNavigationIcon(R.drawable.drawer);
-            } else {
-                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                mToolbar.setNavigationIcon(null);
-            }
+    public void toggleNavBar(boolean show) {
+        if (show) {
+            mBottomNavigation.setVisibility(View.VISIBLE);
+        } else {
+            mBottomNavigation.setVisibility(View.INVISIBLE);
         }
+
+        // Convert dp to pixels
+        float dp = getApplicationContext().getResources().getDisplayMetrics().density;
+
+        params.setMargins(0, 0, 0, show ? Math.round(56 * dp) : 0);
     }
 
     public void showScreen(int position) {
@@ -259,75 +238,6 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
         default:
             break;
         }
-
-        mNavigationAdapter.setClickPosition(position);
-
-        mDrawerListView.invalidateViews();
-        mToolbar.setTitle(getResources().getStringArray(
-                R.array.title_array_nav_items)[position]);
-
-        mDrawerListView.setItemChecked(position, true);
-        mDrawerListView.setSelection(position);
-        mToolbar.setNavigationContentDescription("drawer");
-        mToolbar.setNavigationIcon(R.drawable.drawer);
-    }
-
-    private class NavigationDrawerListAdapter extends BaseAdapter {
-
-        private int curTab = 0;
-        Context mContext;
-
-        public NavigationDrawerListAdapter(Context context) {
-            mContext = context;
-
-        }
-
-        @Override
-        public int getCount() {
-            return sActionItems.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return sActionItems[position];
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View view;
-
-            if (convertView == null) {
-                LayoutInflater inflater = (LayoutInflater) mContext
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(
-                        org.codeaurora.gallery.R.layout.drawer_list_item, null);
-            } else {
-                view = convertView;
-            }
-
-            TextView titleView = (TextView) view.findViewById(R.id.itemTitle);
-            ImageView iconView = (ImageView) view.findViewById(R.id.ivItem);
-
-            titleView.setText(sActionItems[position].title);
-            iconView.setImageResource(sActionItems[position].icon);
-
-            if (curTab == position) {
-                view.setBackgroundResource(R.drawable.drawer_item_selected_bg);
-            } else {
-                view.setBackgroundColor(android.R.color.transparent);
-            }
-
-            return view;
-        }
-
-        public void setClickPosition(int position) {
-            curTab = position;
-        }
     }
 
     public static int getActionTitle(Context context, int type) {
@@ -346,6 +256,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
         if (Intent.ACTION_GET_CONTENT.equalsIgnoreCase(action)) {
             mDrawerLayoutSupported = false;
             startGetContent(intent);
+            toggleNavBar(false);
         } else if (Intent.ACTION_PICK.equalsIgnoreCase(action)) {
             mDrawerLayoutSupported = false;
             // We do NOT really support the PICK intent. Handle it as
@@ -358,6 +269,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 if (type.endsWith("/video")) intent.setType("video/*");
             }
             startGetContent(intent);
+            toggleNavBar(false);
         } else if (Intent.ACTION_VIEW.equalsIgnoreCase(action)
                 || ACTION_REVIEW.equalsIgnoreCase(action)){
             mDrawerLayoutSupported = false;
@@ -377,12 +289,13 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 Log.w(TAG, "uri get from intent is null");
             }
             startViewAction(intent);
+            toggleNavBar(false);
         } else {
             mDrawerLayoutSupported = true;
             startTimelinePage();
             mToolbar.setTitle(R.string.albums_title);
         }
-        toggleNavDrawer(mDrawerLayoutSupported);
+        toggleNavBar(mDrawerLayoutSupported);
     }
 
     public void startAlbumPage() {
