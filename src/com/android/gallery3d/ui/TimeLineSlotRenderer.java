@@ -23,12 +23,9 @@ import com.android.gallery3d.data.MediaItem;
 import com.android.gallery3d.data.MediaObject;
 import com.android.gallery3d.data.Path;
 import com.android.gallery3d.glrenderer.ColorTexture;
-import com.android.gallery3d.glrenderer.FadeInTexture;
 import com.android.gallery3d.glrenderer.GLCanvas;
 import com.android.gallery3d.glrenderer.Texture;
 import com.android.gallery3d.glrenderer.TiledTexture;
-
-import java.util.ArrayList;
 
 public class TimeLineSlotRenderer extends AbstractSlotRenderer {
 
@@ -197,14 +194,8 @@ public class TimeLineSlotRenderer extends AbstractSlotRenderer {
                 entry.isWaitDisplayed = true;
             } else if (entry.isWaitDisplayed) {
                 entry.isWaitDisplayed = false;
-                content = new FadeInTexture(mPlaceholderColor, entry.bitmapTexture);
-                entry.content = content;
             }
             drawContent(canvas, content, width, height, entry.rotation);
-            if ((content instanceof FadeInTexture) &&
-                    ((FadeInTexture) content).isAnimating()) {
-                renderRequestFlags |= SlotView.RENDER_MORE_FRAME;
-            }
 
             if (entry.mediaType == MediaObject.MEDIA_TYPE_VIDEO) {
                 drawVideoOverlay(canvas, width, height, true, 0);
