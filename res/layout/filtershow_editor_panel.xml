@@ -57,7 +57,7 @@
 <!--                 android:layout_height="@dimen/swap_button_height" -->
 <!--                 android:text="@string/apply_effect" -->
 <!--                 android:layout_gravity="left" -->
-<!--                 android:textColor="#ffffff" -->
+<!--                 android:textColor="@color/white" -->
 <!--                 android:textSize="20sp"  -->
 <!--                 android:layout_weight="1"/> -->
 
