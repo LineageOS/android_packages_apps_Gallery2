@@ -40,6 +40,6 @@
         android:text="@string/save"
         android:textAllCaps="true"
         android:layout_gravity="center_vertical|right"
-        android:textColor="#ffffff" />
+        android:textColor="@color/white" />
 
 </FrameLayout>
