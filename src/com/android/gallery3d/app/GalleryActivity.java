@@ -32,6 +32,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -47,7 +48,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -157,6 +157,8 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     }
 
     private boolean needRequestStoragePermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
+
         boolean needRequest = false;
         String[] permissions = {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
