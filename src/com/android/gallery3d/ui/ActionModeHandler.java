@@ -30,9 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ShareActionProvider;
 import android.widget.Toolbar;
-import android.widget.ShareActionProvider.OnShareTargetSelectedListener;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.AbstractGalleryActivity;
@@ -76,8 +74,6 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
     private Menu mMenu;
     private MenuItem mSharePanoramaMenuItem;
     private MenuItem mShareMenuItem;
-    private Intent shareIntent;
-    private ShareActionProvider mSharePanoramaActionProvider;
     private SelectionMenu mSelectionMenu;
     private ActionModeListener mListener;
     private Future<?> mMenuTask;
@@ -85,6 +81,8 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
     private ActionMode mActionMode;
     private boolean mShareMaxDialog = false;
     private Toolbar mToolbar;
+    private Intent mShareIntent;
+    private Intent mSharePanoramaIntent;
 
     private static class GetAllPanoramaSupports implements PanoramaSupportCallback {
         private int mNumInfoRequired;
@@ -198,7 +196,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
                 String shareTitle = mActivity.getResources().
                         getString(R.string.share_dialogue_title);
                 mActivity.startActivity(Intent.createChooser(
-                        shareIntent, shareTitle));
+                        mShareIntent, shareTitle));
                 return true;
             }
             mMenuExecutor.onMenuClicked(item, confirmMsg, listener);
@@ -239,15 +237,6 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
         mSelectionMenu.updateSelectAllMode(mSelectionManager.inSelectAllMode());
     }
 
-    private final OnShareTargetSelectedListener mShareTargetSelectedListener =
-            new OnShareTargetSelectedListener() {
-        @Override
-        public boolean onShareTargetSelected(ShareActionProvider source, Intent intent) {
-            mSelectionManager.leaveSelectionMode();
-            return false;
-        }
-    };
-
     @Override
     public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
         return false;
@@ -261,11 +250,19 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
         mMenu = menu;
         mSharePanoramaMenuItem = menu.findItem(R.id.action_share_panorama);
         if (mSharePanoramaMenuItem != null) {
-            mSharePanoramaActionProvider = (ShareActionProvider) mSharePanoramaMenuItem
-                .getActionProvider();
-            mSharePanoramaActionProvider.setOnShareTargetSelectedListener(
-                    mShareTargetSelectedListener);
-            mSharePanoramaActionProvider.setShareHistoryFileName("panorama_share_history.xml");
+            mSharePanoramaMenuItem.setOnMenuItemClickListener(
+                    new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    mSelectionManager.leaveSelectionMode();
+                    if (mSharePanoramaIntent != null) {
+                        Intent intent = Intent.createChooser(mSharePanoramaIntent, null);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        mActivity.startActivity(intent);
+                    }
+                    return true;
+                }
+            });
         }
         mShareMenuItem = menu.findItem(R.id.action_share);
         return true;
@@ -547,14 +544,14 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
                                 mShareMenuItem.setTitle(
                                     mActivity.getResources().getString(R.string.share));
                             }
-                            mSharePanoramaActionProvider.setShareIntent(share_panorama_intent);
+                            mSharePanoramaIntent = share_panorama_intent;
                         }
                         if (mShareMenuItem != null) {
                             showShareMaxDialogIfNeed(canShare);
 
                             mShareMenuItem.setEnabled(canShare);
                             isThreadComplete = true;
-                            shareIntent = share_intent;
+                            mShareIntent = share_intent;
                         }
                     }
                 });
