@@ -81,8 +81,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
-import android.widget.ShareActionProvider;
-import android.widget.ShareActionProvider.OnShareTargetSelectedListener;
 import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
@@ -160,8 +158,8 @@ import com.thundersoft.hz.selfportrait.detect.FaceInfo;
 import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;
 
 public class FilterShowActivity extends AbstractPermissionActivity implements OnItemClickListener,
-OnShareTargetSelectedListener, DialogInterface.OnShowListener,
-DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
+        DialogInterface.OnShowListener,
+        DialogInterface.OnDismissListener, PopupMenu.OnDismissListener {
 
     private String mAction = "";
     MasterImage mMasterImage = null;
@@ -190,7 +188,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     private final Vector<ImageShow> mImageViews = new Vector<ImageShow>();
 
-    private ShareActionProvider mShareActionProvider;
     private File mSharedOutputFile = null;
 
     private boolean mSharingImage = false;
@@ -2032,8 +2029,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         finish();
     }
 
-    @Override
-    public boolean onShareTargetSelected(ShareActionProvider arg0, Intent arg1) {
+    private boolean onShareTargetSelected() {
         // First, let's tell the SharedImageProvider that it will need to wait
         // for the image
         Uri uri = Uri.withAppendedPath(SharedImageProvider.CONTENT_URI,
@@ -2065,10 +2061,20 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
         getMenuInflater().inflate(R.menu.filtershow_activity_menu, menu);
-        mShareActionProvider = (ShareActionProvider) menu.findItem(
-                R.id.menu_share).getActionProvider();
-        mShareActionProvider.setShareIntent(getDefaultShareIntent());
-        mShareActionProvider.setOnShareTargetSelectedListener(this);
+        MenuItem item = menu.findItem(R.id.menu_share);
+        if (item != null) {
+            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    final Intent shareIntent = getDefaultShareIntent();
+                    onShareTargetSelected();
+                    Intent intent = Intent.createChooser(shareIntent, null);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    FilterShowActivity.this.startActivity(intent);
+                    return true;
+                }
+            });
+        }
         mMenu = menu;
         setupMenu();
 
@@ -2085,6 +2091,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         //MenuItem undoItem = mMenu.findItem(R.id.undoButton);
         //MenuItem redoItem = mMenu.findItem(R.id.redoButton);
         MenuItem resetItem = mMenu.findItem(R.id.resetHistoryButton);
+        MenuItem shareItem = mMenu.findItem(R.id.menu_share);
         //mMasterImage.getHistory().setMenuItems(undoItem, redoItem, resetItem);
         if (!mMasterImage.hasModifications()) {
             mMenu.removeItem(R.id.resetHistoryButton);
@@ -2094,17 +2101,11 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     @Override
     public void onPause() {
         super.onPause();
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setOnShareTargetSelectedListener(null);
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (mShareActionProvider != null) {
-            mShareActionProvider.setOnShareTargetSelectedListener(this);
-        }
         if (SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
             MakeupEngine.getMakeupObj();
         }
