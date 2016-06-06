@@ -53,7 +53,7 @@
                 android:id="@+id/resetOperationsButton"
                 style="@style/FilterShowHistoryButton"
                 android:gravity="center"
-                android:text="@string/reset" />
+                android:text="@string/back_to_original" />
 
         <Button
                 android:id="@+id/saveOperationsButton"
