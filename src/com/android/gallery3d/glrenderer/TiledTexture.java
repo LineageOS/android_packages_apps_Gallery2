@@ -59,8 +59,7 @@ public class TiledTexture implements Texture {
     private final RectF mDestRect = new RectF();
 
     public static class Uploader implements OnGLIdleListener {
-        private final ArrayDeque<TiledTexture> mTextures =
-                new ArrayDeque<TiledTexture>(INIT_CAPACITY);
+        private final ArrayDeque<TiledTexture> mTextures = new ArrayDeque<>(INIT_CAPACITY);
 
         private final GLRoot mGlRoot;
         private boolean mIsQueued = false;
@@ -137,7 +136,6 @@ public class TiledTexture implements Texture {
                 int r = localBitmapRef.getWidth() + x;
                 int b = localBitmapRef.getHeight() + y;
                 sCanvas.drawBitmap(localBitmapRef, x, y, sBitmapPaint);
-                localBitmapRef = null;
 
                 // draw borders if need
                 if (x > 0) sCanvas.drawLine(x - 1, 0, x - 1, TILE_SIZE, sPaint);
@@ -199,7 +197,7 @@ public class TiledTexture implements Texture {
     public TiledTexture(Bitmap bitmap) {
         mWidth = bitmap.getWidth();
         mHeight = bitmap.getHeight();
-        ArrayList<Tile> list = new ArrayList<Tile>();
+        ArrayList<Tile> list = new ArrayList<>();
 
         for (int x = 0, w = mWidth; x < w; x += CONTENT_SIZE) {
             for (int y = 0, h = mHeight; y < h; y += CONTENT_SIZE) {
@@ -223,8 +221,8 @@ public class TiledTexture implements Texture {
     // Can be called in UI thread.
     public void recycle() {
         synchronized (mTiles) {
-            for (int i = 0, n = mTiles.length; i < n; ++i) {
-                freeTile(mTiles[i]);
+            for (Tile mTile : mTiles) {
+                freeTile(mTile);
             }
         }
     }
@@ -277,8 +275,7 @@ public class TiledTexture implements Texture {
         float scaleX = (float) width / mWidth;
         float scaleY = (float) height / mHeight;
         synchronized (mTiles) {
-            for (int i = 0, n = mTiles.length; i < n; ++i) {
-                Tile t = mTiles[i];
+            for (Tile t : mTiles) {
                 src.set(0, 0, t.contentWidth, t.contentHeight);
                 src.offset(t.offsetX, t.offsetY);
                 mapRect(dest, src, 0, 0, x, y, scaleX, scaleY);
@@ -296,8 +293,7 @@ public class TiledTexture implements Texture {
         float scaleX = (float) width / mWidth;
         float scaleY = (float) height / mHeight;
         synchronized (mTiles) {
-            for (int i = 0, n = mTiles.length; i < n; ++i) {
-                Tile t = mTiles[i];
+            for (Tile t : mTiles) {
                 src.set(0, 0, t.contentWidth, t.contentHeight);
                 src.offset(t.offsetX, t.offsetY);
                 mapRect(dest, src, 0, 0, x, y, scaleX, scaleY);
@@ -319,8 +315,7 @@ public class TiledTexture implements Texture {
         float scaleY = target.height() / source.height();
 
         synchronized (mTiles) {
-            for (int i = 0, n = mTiles.length; i < n; ++i) {
-                Tile t = mTiles[i];
+            for (Tile t : mTiles) {
                 src.set(0, 0, t.contentWidth, t.contentHeight);
                 src.offset(t.offsetX, t.offsetY);
                 if (!src.intersect(source)) continue;

@@ -130,12 +130,6 @@ public class TimeLineSlotRenderer extends AbstractSlotRenderer {
             mSlotView.setSlotCount(size);
             mSlotView.invalidate();
         }
-
-        @Override
-        public int getTitleWidth() {
-            return mSlotView.getTitleWidth();
-        }
-
     }
 
     public void resume() {
@@ -176,7 +170,7 @@ public class TimeLineSlotRenderer extends AbstractSlotRenderer {
         }
         if (model != null) {
             mDataWindow = new TimeLineSlidingWindow(mActivity, model, CACHE_SIZE, mLabelSpec,
-                    mSelectionManager, mSlotView);
+                    mSlotView);
             mDataWindow.setListener(new MyDataModelListener());
         }
     }

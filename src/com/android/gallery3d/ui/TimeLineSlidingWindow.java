@@ -32,8 +32,6 @@ import com.android.gallery3d.util.Future;
 import com.android.gallery3d.util.FutureListener;
 import com.android.gallery3d.util.JobLimiter;
 
-import java.util.ArrayList;
-
 public class TimeLineSlidingWindow implements TimeLineDataLoader.DataListener {
     @SuppressWarnings("unused")
     private static final String TAG = "TimeLineSlidingWindow";
@@ -41,10 +39,9 @@ public class TimeLineSlidingWindow implements TimeLineDataLoader.DataListener {
     private static final int MSG_UPDATE_ENTRY = 0;
     private static final int JOB_LIMIT = 2;
 
-    public static interface Listener {
-        public void onSizeChanged(int[] size);
-        public void onContentChanged();
-        public int getTitleWidth();
+    public interface Listener {
+        void onSizeChanged(int[] size);
+        void onContentChanged();
     }
 
     public static class AlbumEntry {
@@ -76,16 +73,10 @@ public class TimeLineSlidingWindow implements TimeLineDataLoader.DataListener {
     private int mActiveRequestCount = 0;
     private boolean mIsActive = false;
 
-    private TimeLineTitleMaker mTitleMaker;
-    private int mTitleSize;
-    private int mTitleContentStart = 0;
-    private int mTitleContentEnd = 0;
-    private final int TITLE_CACHE_SIZE = 15;
+    private final TimeLineTitleMaker mTitleMaker;
 
-    public TimeLineSlidingWindow(AbstractGalleryActivity activity,
-            TimeLineDataLoader source,
-                                     int cacheSize, TimeLineSlotRenderer.LabelSpec labelSpec,
-                                     SelectionManager selection, TimeLineSlotView slotView) {
+    public TimeLineSlidingWindow(AbstractGalleryActivity activity, TimeLineDataLoader source,
+            int cacheSize, TimeLineSlotRenderer.LabelSpec labelSpec, TimeLineSlotView slotView) {
         source.setDataListener(this);
         mSource = source;
         mData = new AlbumEntry[cacheSize];
@@ -111,11 +102,10 @@ public class TimeLineSlidingWindow implements TimeLineDataLoader.DataListener {
         if (!isActiveSlot(slotIndex)) {
             return null;
         }
-        AlbumEntry item = mData[slotIndex % mData.length];
-        return item;
+        return mData[slotIndex % mData.length];
     }
 
-    public boolean isActiveSlot(int slotIndex) {
+    private boolean isActiveSlot(int slotIndex) {
         return slotIndex >= mActiveStart && slotIndex < mActiveEnd;
     }
 
