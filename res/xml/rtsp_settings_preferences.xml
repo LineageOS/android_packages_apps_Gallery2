@@ -11,7 +11,7 @@
             android:summary=""
             android:title="@string/rtp_min_port" />
         <EditTextPreference
-            android:dialogTitle="@string/rtp_max_port"
+            android:dialogTitle="@string/set_rtp_max_port"
             android:inputType="number"
             android:key="rtp_max_port"
             android:maxLength="5"
@@ -33,7 +33,7 @@
         android:key="apn_category">
         <PreferenceScreen
             android:key="apn"
-            android:title="@string/apn" >
+            android:title="@string/set_apn" >
         </PreferenceScreen>
     </PreferenceCategory>
 

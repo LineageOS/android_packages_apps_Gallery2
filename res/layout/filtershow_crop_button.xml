@@ -24,4 +24,4 @@
     android:background="@drawable/filtershow_button_background"
     android:scaleType="centerInside"
     android:visibility="gone"
-    android:text="@string/aspectNone_effect" />
+    android:text="@string/aspectFree_effect" />
