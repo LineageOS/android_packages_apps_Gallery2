@@ -16,7 +16,7 @@
 <!--         android:title="@string/filtershow_redo"/> -->
     <item
         android:id="@+id/resetHistoryButton"
-        android:title="@string/reset"/>
+        android:title="@string/back_to_original"/>
 <!--     <item -->
 <!--         android:id="@+id/showImageStateButton" -->
 <!--         android:showAsAction="never" -->
