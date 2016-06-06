@@ -1281,7 +1281,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
         for (int i = 0; i < borders.size(); i++) {
             FilterRepresentation filter = borders.get(i);
-            filter.setName(getString(R.string.borders) + "" + i);
+            filter.setName(getString(R.string.frame, i));
             if (i == 0) {
                 filter.setName(getString(R.string.none));
             }
@@ -2514,8 +2514,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     private void createBackDialog() {
         mBackAlertDialogBuilder = new AlertDialog.Builder(this);
-        mBackAlertDialogBuilder.setMessage(R.string.unsaved).setTitle(
-                R.string.save_before_exit);
+        mBackAlertDialogBuilder.setMessage(R.string.discard_message).setTitle(
+                R.string.discard_title);
         mBackAlertDialogBuilder.setPositiveButton(mPopUpText,
                 new DialogInterface.OnClickListener() {
             @Override
