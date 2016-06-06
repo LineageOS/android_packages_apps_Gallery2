@@ -83,11 +83,11 @@ public class TrimTimeBar extends TimeBar {
     }
 
     private int trimStartScrubberTipOffset() {
-        return mTrimStartScrubber.getWidth() * 3 / 4;
+        return mTrimStartScrubber.getWidth();
     }
 
     private int trimEndScrubberTipOffset() {
-        return mTrimEndScrubber.getWidth() / 4;
+        return 0;
     }
 
     // Based on all the time info (current, total, trimStart, trimEnd), we
@@ -153,9 +153,10 @@ public class TrimTimeBar extends TimeBar {
     }
 
     private boolean inScrubber(float x, float y, int startX, int startY, Bitmap scrubber) {
-        int scrubberRight = startX + scrubber.getWidth();
-        int scrubberBottom = startY + scrubber.getHeight();
-        return startX < x && x < scrubberRight && startY < y && y < scrubberBottom;
+        int scrubberRight = startX + scrubber.getWidth() * 2;
+        int scrubberBottom = startY + scrubber.getHeight() * 2;
+        return startX - mScrubberPadding < x && x < scrubberRight + mScrubberPadding
+                && startY - mScrubberPadding < y && y < scrubberBottom + mScrubberPadding;
     }
 
     private int clampScrubber(int scrubberLeft, int offset, int lowerBound, int upperBound) {
@@ -182,12 +183,12 @@ public class TrimTimeBar extends TimeBar {
             }
             margin = mLayoutExt.getProgressMargin(margin);
             int progressY = (h + mScrubberPadding) / 2;
-            mTrimStartScrubberTop = progressY;
-            mTrimEndScrubberTop = progressY;
             mScrubberTop = progressY - mScrubber.getHeight() / 2 + 1;
             mProgressBar.set(
                     mTimeBarMargin + margin, progressY,
                     w - mTimeBarMargin - margin, progressY + 6);
+            mTrimStartScrubberTop = progressY + mProgressBar.height();
+            mTrimEndScrubberTop = progressY + mProgressBar.height();
         }
         update();
     }
@@ -341,6 +342,6 @@ public class TrimTimeBar extends TimeBar {
                     break;
             }
         }
-        return false;
+        return true;
     }
 }

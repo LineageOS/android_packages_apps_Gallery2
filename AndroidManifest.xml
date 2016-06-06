@@ -66,6 +66,7 @@
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name="com.android.gallery3d.app.MovieActivity"
                 android:label="@string/movie_view_label"
+                android:theme="@style/Theme.MovieActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize|keyboard">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -262,6 +263,7 @@
         </activity>
         <activity android:name="com.android.gallery3d.app.TrimVideo"
                 android:label="@string/trim_label"
+                android:theme="@style/Theme.MovieActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter android:label="@string/crop_label">
                 <action android:name="com.android.camera.action.TRIM" />

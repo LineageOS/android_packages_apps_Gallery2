@@ -164,7 +164,7 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
             LayoutParams wrapContent =
                     new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             mVideoSnapshotButton = new ImageView(context);
-            mVideoSnapshotButton.setImageResource(R.drawable.ic_video_snapshot_padding);
+            mVideoSnapshotButton.setImageResource(R.drawable.ic_video_snapshot_selector);
             mVideoSnapshotButton.setScaleType(ImageView.ScaleType.CENTER);
             mVideoSnapshotButton.setFocusable(true);
             mVideoSnapshotButton.setClickable(true);

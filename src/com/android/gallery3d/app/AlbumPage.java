@@ -529,9 +529,6 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
         super.onPause();
         mIsActive = false;
 
-        if (mSelectionManager.inSelectionMode()) {
-            mSelectionManager.leaveSelectionMode();
-        }
         mAlbumView.setSlotFilter(null);
         mActionModeHandler.pause();
         mAlbumDataAdapter.pause();

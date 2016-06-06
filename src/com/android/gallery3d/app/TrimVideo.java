@@ -122,7 +122,7 @@ public class TrimVideo extends Activity implements
                 trimVideo();
             }
         });
-        mSaveVideoTextView.setEnabled(false);
+        mSaveVideoTextView.setVisibility(View.GONE);
 
         Intent intent = getIntent();
         mUri = intent.getData();
@@ -232,7 +232,7 @@ public class TrimVideo extends Activity implements
         }
         mController.setTimes(mVideoPosition, duration, mTrimStartTime, mTrimEndTime);
         // Enable save if there's modifications
-        mSaveVideoTextView.setEnabled(isModified());
+        mSaveVideoTextView.setVisibility(isModified() ? View.VISIBLE : View.GONE);
         return mVideoPosition;
     }
 

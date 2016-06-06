@@ -41,6 +41,8 @@
     <style name="FilterShowToolbar" parent="@android:style/Widget.Toolbar">
         <item name="android:contentInsetStart">0dp</item>
     </style>
+    <style name="Theme.MovieActivity" parent="android:Theme.DeviceDefault.Light.DarkActionBar">
+    </style>
     <style name="Theme.Crop" parent="Theme.GalleryBase">
         <item name="android:displayOptions"></item>
         <item name="android:windowContentOverlay">@null</item>
@@ -339,13 +341,14 @@
     <style name="ToolbarPopUpTheme" parent="android:Theme.Material.Light" />
 
     <!-- Styles -->
-    <style name="MyOverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+    <style name="MyOverFlow" parent="@android:style/Widget.DeviceDefault.ActionButton">
         <item name="android:src">@drawable/multiselect_more</item>
     </style>
-    <style name="WhiteOverflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+    <style name="WhiteOverflow" parent="@android:style/Widget.DeviceDefault.ActionButton">
         <item name="android:src">@drawable/more</item>
     </style>
-     <style name="FilterShowActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+    <style name="FilterShowActionBar" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">
         <item name="android:background">@color/edit_actionbar_background</item>
+        <item name="android:contentInsetStart">0dp</item>
     </style>
 </resources>

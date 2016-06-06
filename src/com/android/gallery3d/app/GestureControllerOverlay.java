@@ -49,7 +49,7 @@ public class GestureControllerOverlay extends FrameLayout implements
         ControllerOverlay, GestureController.GestureControlListener {
     private GestureController mGestureController;
 
-    private static final int MAX_VIDEO_STEP_TIME = 2 * 60 * 1000;
+    private static final int MAX_VIDEO_STEP_TIME = 60 * 1000;
     private static final int MAX_BRIGHTNESS = 100;
 
     private float mStartBrightness = -1.0f;

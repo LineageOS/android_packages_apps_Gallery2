@@ -29,6 +29,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.crop.CropDrawingUtils;
 import com.android.gallery3d.filtershow.editors.EditorStraighten;
 import com.android.gallery3d.filtershow.filters.FilterCropRepresentation;
@@ -257,9 +258,11 @@ public class ImageStraighten extends ImageShow {
         int viewWidth = canvas.getWidth();
         int viewHeight = canvas.getHeight();
 
+        int panelHeight = getContext().getResources().getDimensionPixelOffset(
+                R.dimen.category_actionbar_panel_height);
         // Get matrix for drawing bitmap
         Matrix m = GeometryMathUtils.getFullGeometryToScreenMatrix(mDrawHolder, imageWidth,
-                imageHeight, viewWidth, viewHeight);
+                imageHeight, viewWidth, viewHeight - panelHeight);
         mPaint.reset();
         mPaint.setAntiAlias(true);
         mPaint.setFilterBitmap(true);
@@ -270,7 +273,7 @@ public class ImageStraighten extends ImageShow {
         mPaint.setStrokeWidth(2);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         updateCurrentCrop(m, mDrawHolder, mDrawRect, imageWidth,
-                imageHeight, viewWidth, viewHeight);
+                imageHeight, viewWidth, viewHeight - panelHeight);
         if (mFirstDrawSinceUp) {
             mPriorCropAtUp.set(mCrop);
             mLocalRep.setStraighten(mAngle);
