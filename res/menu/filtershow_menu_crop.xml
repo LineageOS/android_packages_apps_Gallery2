@@ -26,7 +26,7 @@
             android:title="@string/aspect9to16_effect"/>
         <item
             android:id="@+id/crop_menu_none"
-            android:title="@string/aspectNone_effect"/>
+            android:title="@string/aspectFree_effect"/>
         <item
             android:id="@+id/crop_menu_original"
             android:title="@string/aspectOriginal_effect"/>
