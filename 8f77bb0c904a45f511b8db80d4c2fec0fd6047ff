@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_ec546d00",
+        "filename": "src/com/android/gallery3d/data/ImageCacheService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-06-07T16:49:35Z",
+      "side": 1,
+      "message": "Uh, isn\u0027t synchronizing on something that\u0027s potentially null really weird to do?",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "8f77bb0c904a45f511b8db80d4c2fec0fd6047ff",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
