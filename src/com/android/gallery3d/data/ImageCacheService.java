@@ -56,6 +56,8 @@ public class ImageCacheService {
      * @return true if the image data is found; false if not found.
      */
     public boolean getImageData(Path path, long timeModified, int type, BytesBuffer buffer) {
+        if (mCache == null) return false;
+
         byte[] key = makeKey(path, timeModified, type);
         long cacheKey = Utils.crc64Long(key);
         try {
@@ -81,6 +83,8 @@ public class ImageCacheService {
     }
 
     public void putImageData(Path path, long timeModified, int type, byte[] value) {
+        if (mCache == null) return;
+
         byte[] key = makeKey(path, timeModified, type);
         long cacheKey = Utils.crc64Long(key);
         ByteBuffer buffer = ByteBuffer.allocate(key.length + value.length);
@@ -99,6 +103,8 @@ public class ImageCacheService {
     }
 
     public void clearImageData(Path path, long timeModified, int type) {
+        if (mCache == null) return;
+
         byte[] key = makeKey(path, timeModified, type);
         long cacheKey = Utils.crc64Long(key);
         if (mCache == null) {
