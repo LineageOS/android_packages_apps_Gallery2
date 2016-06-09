@@ -17,15 +17,9 @@
 package com.android.gallery3d.filtershow.editors;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -34,9 +28,7 @@ import android.widget.SeekBar;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.filtershow.controller.BitmapCaller;
 import com.android.gallery3d.filtershow.controller.ColorChooser;
-import com.android.gallery3d.filtershow.controller.FilterView;
 import com.android.gallery3d.filtershow.filters.FilterColorBorderRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.ImageFilterColorBorder;
@@ -187,9 +179,9 @@ public class EditorColorBorder extends ParametricEditor  {
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
+    public void setEditPanelUI(View editControl) {
         if (ParametricEditor.useCompact(mContext)) {
-            super.setUtilityPanelUI(actionButton, editControl);
+            super.setEditPanelUI(editControl);
             return;
         }
         mSeekBar = (SeekBar) editControl.findViewById(R.id.primarySeekBar);

@@ -134,5 +134,15 @@
             android:padding="2dip"
             android:scaleType="centerInside"
             android:src="@drawable/seestraight" />
+
+        <ImageButton
+            android:id="@+id/truePortraitButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:padding="2dip"
+            android:scaleType="centerInside"
+            android:src="@drawable/trueportrait_background" />
     </LinearLayout>
 </com.android.gallery3d.filtershow.CenteredLinearLayout>

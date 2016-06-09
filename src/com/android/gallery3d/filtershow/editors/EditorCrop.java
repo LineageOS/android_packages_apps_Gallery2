@@ -145,8 +145,8 @@ public class EditorCrop extends Editor implements EditorInfo {
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
-        super.setUtilityPanelUI(actionButton,editControl);
+    public void setEditPanelUI(View editControl) {
+        super.setEditPanelUI(editControl);
         setMenuIcon(true);
     }
 

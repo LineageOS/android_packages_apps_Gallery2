@@ -61,8 +61,8 @@ public class EditorCurves extends Editor {
         }
     }
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
-        super.setUtilityPanelUI(actionButton,editControl);
+    public void setEditPanelUI(View editControl) {
+        super.setEditPanelUI(editControl);
         setMenuIcon(true);
     }
 

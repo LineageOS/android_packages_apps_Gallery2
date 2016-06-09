@@ -42,5 +42,9 @@ public class EditorManager {
         editorPlaceHolder.addEditor(new TrueScannerEditor());
         editorPlaceHolder.addEditor(new HazeBusterEditor());
         editorPlaceHolder.addEditor(new SeeStraightEditor());
+        editorPlaceHolder.addEditor(new EditorTruePortraitBasic());
+        editorPlaceHolder.addEditor(new EditorTruePortraitImageOnly());
+        editorPlaceHolder.addEditor(new EditorTruePortraitMask());
+        editorPlaceHolder.addEditor(new EditorTruePortraitFusion());
     }
 }

@@ -50,7 +50,9 @@ import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterTruePortraitFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.CachingPipeline;
@@ -361,35 +363,11 @@ public class SaveImage {
         if (mPreviewImage != null) {
             Bitmap previewBmp;
             // Check for Fusion
-            FilterDualCamFusionRepresentation fusionRep =
-                    (FilterDualCamFusionRepresentation) preset.getFilterWithSerializationName(
-                    FilterDualCamFusionRepresentation.SERIALIZATION_NAME);
+            FilterFusionRepresentation fusionRep = findFusionRepresentation(preset);
             boolean hasFusion = (fusionRep != null && fusionRep.hasUnderlay());
             if(hasFusion) {
-                // fusion. decode underlay image and get dest rect
-                Uri underLayUri = Uri.parse(fusionRep.getUnderlay());
-                Bitmap underlay = ImageLoader.loadConstrainedBitmap(underLayUri, mContext,
-                    Math.max(mPreviewImage.getWidth(), mPreviewImage.getHeight()), null, false);
-                RectF destRect = new RectF();
-                Rect imageBounds = MasterImage.getImage().getImageBounds();
-                Rect underlayBounds = MasterImage.getImage().getFusionBounds();
-                float underlayScaleFactor = (float)underlay.getWidth()
-                    / (float)underlayBounds.width();
-
-                destRect.left = (imageBounds.left - underlayBounds.left) * underlayScaleFactor;
-                destRect.right = (imageBounds.right - underlayBounds.left) * underlayScaleFactor;
-                destRect.top = (imageBounds.top - underlayBounds.top) * underlayScaleFactor;
-                destRect.bottom = (imageBounds.bottom - underlayBounds.top) * underlayScaleFactor;
-
-                Canvas canvas = new Canvas(underlay);
-                Paint paint = new Paint();
-                paint.reset();
-                paint.setAntiAlias(true);
-                paint.setFilterBitmap(true);
-                paint.setDither(true);
-
-                canvas.drawBitmap(mPreviewImage, null, destRect, paint);
-                previewBmp = underlay;
+                previewBmp = flattenFusion(Uri.parse(fusionRep.getUnderlay()), mPreviewImage,
+                        Math.max(mPreviewImage.getWidth(), mPreviewImage.getHeight()), 0);
             } else {
                 previewBmp = mPreviewImage;
             }
@@ -464,31 +442,11 @@ public class SaveImage {
                 bitmap = pipeline.renderFinalImage(bitmap, preset);
 
                 // Check for Fusion
-                FilterDualCamFusionRepresentation fusionRep = (FilterDualCamFusionRepresentation) preset.getFilterWithSerializationName(
-                        FilterDualCamFusionRepresentation.SERIALIZATION_NAME);
-
-                if(fusionRep != null && fusionRep.hasUnderlay()) {
-                    // fusion. decode underlay image and get dest rect
-                    Uri underLayUri = Uri.parse(fusionRep.getUnderlay());
-                    Bitmap underlay = ImageLoader.loadBitmapWithBackouts(mContext, underLayUri, sampleSize);
-                    RectF destRect = new RectF();
-                    Rect imageBounds = MasterImage.getImage().getImageBounds();
-                    Rect underlayBounds = MasterImage.getImage().getFusionBounds();
-                    float underlayScaleFactor = (float)underlay.getWidth() / (float)underlayBounds.width();
-
-                    destRect.left = (imageBounds.left - underlayBounds.left) * underlayScaleFactor;
-                    destRect.right = (imageBounds.right - underlayBounds.left) * underlayScaleFactor;
-                    destRect.top = (imageBounds.top - underlayBounds.top) * underlayScaleFactor;
-                    destRect.bottom = (imageBounds.bottom - underlayBounds.top) * underlayScaleFactor;
-
-                    Canvas canvas = new Canvas(underlay);
-                    Paint paint = new Paint();
-                    paint.reset();
-                    paint.setAntiAlias(true);
-                    paint.setFilterBitmap(true);
-                    paint.setDither(true);
-
-                    canvas.drawBitmap(bitmap, null, destRect, paint);
+                FilterFusionRepresentation fusionRep = findFusionRepresentation(preset);
+                boolean hasFusion = (fusionRep != null && fusionRep.hasUnderlay());
+                if(hasFusion) {
+                    Bitmap underlay = flattenFusion(
+                            Uri.parse(fusionRep.getUnderlay()), bitmap, 0, sampleSize);
 
                     bitmap.recycle();
                     bitmap = underlay;
@@ -832,4 +790,56 @@ public class SaveImage {
         return false;
     }
 
+    private FilterFusionRepresentation findFusionRepresentation(ImagePreset preset) {
+        FilterDualCamFusionRepresentation dcRepresentation =
+                (FilterDualCamFusionRepresentation)preset.getFilterWithSerializationName(
+                        FilterDualCamFusionRepresentation.SERIALIZATION_NAME);
+        FilterTruePortraitFusionRepresentation tpRepresentation =
+                (FilterTruePortraitFusionRepresentation)preset.getFilterWithSerializationName(
+                        FilterTruePortraitFusionRepresentation.SERIALIZATION_NAME);
+
+        FilterFusionRepresentation fusionRep = null;
+
+        if(dcRepresentation != null)
+            fusionRep = (FilterFusionRepresentation) dcRepresentation;
+        else if (tpRepresentation != null)
+            fusionRep = (FilterFusionRepresentation) tpRepresentation;
+
+        return fusionRep;
+    }
+
+    private Bitmap flattenFusion(Uri underlayUri, Bitmap bitmap, int sizeConstraint, int sampleSize) {
+        // fusion. decode underlay image and get dest rect
+
+        Bitmap underlay = null;
+
+        if(sizeConstraint != 0) {
+            underlay = ImageLoader.loadConstrainedBitmap(underlayUri, mContext,
+                    sizeConstraint, null, false);
+        } else if (sampleSize != 0) {
+            underlay = ImageLoader.loadBitmapWithBackouts(mContext, underlayUri, sampleSize);
+        }
+
+        RectF destRect = new RectF();
+        Rect imageBounds = MasterImage.getImage().getImageBounds();
+        Rect underlayBounds = MasterImage.getImage().getFusionBounds();
+        float underlayScaleFactor = (float)underlay.getWidth()
+                / (float)underlayBounds.width();
+
+        destRect.left = (imageBounds.left - underlayBounds.left) * underlayScaleFactor;
+        destRect.right = (imageBounds.right - underlayBounds.left) * underlayScaleFactor;
+        destRect.top = (imageBounds.top - underlayBounds.top) * underlayScaleFactor;
+        destRect.bottom = (imageBounds.bottom - underlayBounds.top) * underlayScaleFactor;
+
+        Canvas canvas = new Canvas(underlay);
+        Paint paint = new Paint();
+        paint.reset();
+        paint.setAntiAlias(true);
+        paint.setFilterBitmap(true);
+        paint.setDither(true);
+
+        canvas.drawBitmap(bitmap, null, destRect, paint);
+
+        return underlay;
+    }
 }

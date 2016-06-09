@@ -22,6 +22,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -68,10 +69,6 @@ public class EditorPanel extends Fragment {
         int position = adapter.undo();
         masterImage.onHistoryItemClick(position);
         ((FilterShowActivity)getActivity()).invalidateViews();
-
-        if(!masterImage.hasFusionApplied()) {
-            masterImage.setFusionUnderlay(null);
-        }
     }
 
     @Override
@@ -97,6 +94,14 @@ public class EditorPanel extends Fragment {
         }
         showImageStatePanel(activity.isShowingImageStatePanel());
         return mMainView;
+    }
+
+    @Override
+    public void onResume() {
+        if (mEditor != null) {
+            mEditor.resume();
+        }
+        super.onResume();
     }
 
     @Override

@@ -187,12 +187,11 @@ public class EditorVignette extends ParametricEditor {
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
+    public void setEditPanelUI(View editControl) {
         if (useCompact(mContext)) {
-            super.setUtilityPanelUI(actionButton, editControl);
+            super.setEditPanelUI(editControl);
             return;
         }
-        mActionButton = actionButton;
         mEditControl = editControl;
         mEditTitle.setCompoundDrawables(null, null, null, null);
         LinearLayout group = (LinearLayout) editControl;

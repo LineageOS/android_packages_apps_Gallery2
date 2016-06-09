@@ -16,17 +16,17 @@
 
 package com.android.gallery3d.filtershow.cache;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.PorterDuff;
+import android.graphics.Color;
 import android.util.Log;
 
 import com.android.gallery3d.filtershow.pipeline.Buffer;
 import com.android.gallery3d.filtershow.pipeline.CacheProcessing;
-
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BitmapCache {
     private static final String LOGTAG = "BitmapCache";
@@ -207,8 +207,8 @@ public class BitmapCache {
 
     public synchronized Bitmap getBitmapCopy(Bitmap source, int type) {
         Bitmap bitmap = getBitmap(source.getWidth(), source.getHeight(), type);
+        bitmap.eraseColor(Color.TRANSPARENT);
         Canvas canvas = new Canvas(bitmap);
-        canvas.drawColor(0, PorterDuff.Mode.CLEAR);
         canvas.drawBitmap(source, 0, 0, null);
         return bitmap;
     }

@@ -307,6 +307,7 @@ public class ProcessingService extends Service {
         filtersManager.addTrueScanner();
         filtersManager.addHazeBuster();
         filtersManager.addSeeStraight();
+        filtersManager.addTruePortrait(this);
 
         FiltersManager highresFiltersManager = FiltersManager.getHighresManager();
         highresFiltersManager.addLooks(this);
@@ -318,6 +319,7 @@ public class ProcessingService extends Service {
         highresFiltersManager.addTrueScanner();
         highresFiltersManager.addHazeBuster();
         highresFiltersManager.addSeeStraight();
+        highresFiltersManager.addTruePortrait(this);
     }
 
     private void tearDownPipeline() {

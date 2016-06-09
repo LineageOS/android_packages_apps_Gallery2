@@ -21,6 +21,8 @@ import android.graphics.Color;
 import android.util.Log;
 
 import org.codeaurora.gallery.R;
+import com.android.gallery3d.filtershow.editors.EditorTruePortraitBasic;
+import com.android.gallery3d.filtershow.editors.EditorTruePortraitImageOnly;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 
@@ -42,6 +44,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     protected ArrayList<FilterRepresentation> mTrueScanner = new ArrayList<FilterRepresentation>();
     protected ArrayList<FilterRepresentation> mHazeBuster = new ArrayList<FilterRepresentation>();
     protected ArrayList<FilterRepresentation> mSeeStraight = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mTruePortrait = new ArrayList<FilterRepresentation>();
     private static int mImageBorderSize = 4; // in percent
 
     protected void init() {
@@ -152,6 +155,8 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         filters.add(ImageFilterDualCamera.class);
         filters.add(ImageFilterDualCamFusion.class);
         filters.add(ImageFilterDualCamSketch.class);
+        filters.add(ImageFilterTruePortrait.class);
+        filters.add(ImageFilterTruePortraitFusion.class);
 
         if(SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
             filters.add(ImageFilterMakeupWhiten.class);
@@ -183,6 +188,10 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
     public ArrayList<FilterRepresentation> getDualCamera() {
         return mDualCam;
+    }
+
+    public ArrayList<FilterRepresentation> getTruePortrait() {
+        return mTruePortrait;
     }
 
     public ArrayList<FilterRepresentation> getTools() {
@@ -460,6 +469,74 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         addRepresentation(sketch);
 
         mDualCam.add(getRepresentation(ImageFilterDualCamFusion.class));
+    }
+
+    public void addTruePortrait(Context context) {
+        int[] textId = {
+                R.string.none,
+                R.string.blur,
+                R.string.motion_blur,
+                R.string.halo,
+                R.string.sketch
+        };
+
+        int[] overlayId = {
+                R.drawable.ic_tp_normal,
+                R.drawable.ic_tp_bokeh,
+                R.drawable.ic_tp_motion_blur,
+                R.drawable.ic_tp_halo,
+                R.drawable.ic_tp_sketch
+        };
+
+        String[] serializationNames = {
+                "TRUE_PORTRAIT_NONE",
+                "TRUE_PORTRAIT_BLUR",
+                "TRUE_PORTRAIT_MOTION_BLUR",
+                "TRUE_PORTRAIT_HALO",
+                "TRUE_PORTRAIT_SKETCH"
+        };
+
+        int[][] minMaxValues = {
+                {0,0,0},
+                {0,3,7},
+                {0,3,7},
+                {0,3,7},
+                {0,0,0}
+        };
+
+        boolean[] showParams = {
+                false,
+                true,
+                true,
+                true,
+                false
+        };
+
+        int[] editorIDs = {
+                ImageOnlyEditor.ID,
+                EditorTruePortraitBasic.ID,
+                EditorTruePortraitBasic.ID,
+                EditorTruePortraitBasic.ID,
+                EditorTruePortraitImageOnly.ID
+        };
+
+        for (int i = 0; i < textId.length; i++) {
+            FilterRepresentation tPortrait =
+                    new FilterBasicRepresentation(context.getString(textId[i]),
+                            minMaxValues[i][0], minMaxValues[i][1], minMaxValues[i][2]);
+            tPortrait.setFilterClass(ImageFilterTruePortrait.class);
+            tPortrait.setFilterType(FilterRepresentation.TYPE_TRUEPORTRAIT);
+            tPortrait.setTextId(textId[i]);
+            tPortrait.setOverlayId(overlayId[i]);
+            tPortrait.setOverlayOnly(true);
+            tPortrait.setSerializationName(serializationNames[i]);
+            tPortrait.setShowParameterValue(showParams[i]);
+            tPortrait.setEditorId(editorIDs[i]);
+            mTruePortrait.add(tPortrait);
+            addRepresentation(tPortrait);
+        }
+
+        mTruePortrait.add(getRepresentation(ImageFilterTruePortraitFusion.class));
     }
 
     public void removeRepresentation(ArrayList<FilterRepresentation> list,

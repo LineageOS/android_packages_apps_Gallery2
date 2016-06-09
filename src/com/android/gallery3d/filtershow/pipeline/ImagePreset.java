@@ -42,6 +42,7 @@ import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRotateRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterStraightenRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterTruePortraitFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
@@ -333,15 +334,19 @@ public class ImagePreset {
 
     public void removeFilter(FilterRepresentation filterRepresentation) {
         if (filterRepresentation.getFilterType() == FilterRepresentation.TYPE_BORDER
-                || filterRepresentation.getFilterType() == FilterRepresentation.TYPE_DUALCAM) {
+                || filterRepresentation.getFilterType() == FilterRepresentation.TYPE_DUALCAM
+                || filterRepresentation.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT) {
             for (int i = 0; i < mFilters.size(); i++) {
                 FilterRepresentation filter = mFilters.elementAt(i);
                 if (filter.getFilterType() == filterRepresentation.getFilterType()) {
                     mFilters.remove(i);
 
                     // reset fusion underlay image.
-                    if(filter instanceof FilterDualCamFusionRepresentation) {
+                    if(filter instanceof FilterDualCamFusionRepresentation ||
+                            filter instanceof FilterTruePortraitFusionRepresentation) {
                         MasterImage.getImage().setFusionUnderlay(null);
+                        MasterImage.getImage().setScaleFactor(1);
+                        MasterImage.getImage().resetTranslation();
                     }
                     break;
                 }
@@ -399,6 +404,11 @@ public class ImagePreset {
             if (!isNoneDualCamFilter(representation)) {
                 mFilters.add(representation);
             }
+        } else if (representation.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT) {
+            removeFilter(representation);
+            if (!isNoneTruePortraitFilter(representation)) {
+                mFilters.add(representation);
+            }
         } else if (representation.getFilterType() == FilterRepresentation.TYPE_FX) {
             boolean replaced = false;
             for (int i = 0; i < mFilters.size(); i++) {
@@ -422,6 +432,7 @@ public class ImagePreset {
         // Enforces Filter type ordering for borders and dual cam
         FilterRepresentation border = null;
         FilterRepresentation dualcam = null;
+        FilterRepresentation trueportrait = null;
         for (int i = 0; i < mFilters.size();) {
             FilterRepresentation rep = mFilters.elementAt(i);
             if (rep.getFilterType() == FilterRepresentation.TYPE_BORDER) {
@@ -430,6 +441,10 @@ public class ImagePreset {
                 continue;
             } else if (rep.getFilterType() == FilterRepresentation.TYPE_DUALCAM) {
                 dualcam = rep;
+                mFilters.remove(i);
+                continue;
+            } else if (rep.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT) {
+                trueportrait = rep;
                 mFilters.remove(i);
                 continue;
             }
@@ -448,6 +463,16 @@ public class ImagePreset {
             }
             mFilters.add(i, dualcam);
         }
+        if (trueportrait != null) {
+            int i = 0;
+            for (; i < mFilters.size(); i++) {
+                FilterRepresentation rep = mFilters.elementAt(i);
+                if (rep.getFilterType() != FilterRepresentation.TYPE_GEOMETRY) {
+                    break;
+                }
+            }
+            mFilters.add(i, trueportrait);
+        }
     }
 
     private boolean isNoneBorderFilter(FilterRepresentation representation) {
@@ -465,6 +490,11 @@ public class ImagePreset {
                 ((FilterDualCamSketchRepresentation) representation).getTextId() == R.string.none;
     }
 
+    private boolean isNoneTruePortraitFilter(FilterRepresentation representation) {
+        return representation.getTextId() == R.string.none &&
+                representation.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT;
+    }
+
     public FilterRepresentation getRepresentation(FilterRepresentation filterRepresentation) {
         for (int i = 0; i < mFilters.size(); i++) {
             FilterRepresentation representation = mFilters.elementAt(i);
@@ -478,6 +508,7 @@ public class ImagePreset {
     public Bitmap apply(Bitmap original, FilterEnvironment environment) {
         Bitmap bitmap = original;
         bitmap = applyDualCamera(bitmap, environment);
+        bitmap = applyTruePortrait(bitmap, environment);
         bitmap = applyFilters(bitmap, -1, -1, environment);
         return applyBorder(bitmap, environment);
     }
@@ -540,6 +571,25 @@ public class ImagePreset {
         return bitmap;
     }
 
+    public Bitmap applyTruePortrait(Bitmap bitmap, FilterEnvironment environment) {
+        // Apply trueportrait filters
+        // Returns a new bitmap.
+        for (FilterRepresentation representation:mFilters) {
+            if (representation.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT) {
+                Bitmap tmp = bitmap;
+                bitmap = environment.applyRepresentation(representation, bitmap);
+                if (tmp != bitmap) {
+                    environment.cache(tmp);
+                }
+                if (environment.needsStop()) {
+                    return bitmap;
+                }
+            }
+        }
+
+        return bitmap;
+    }
+
     public Bitmap applyBorder(Bitmap bitmap, FilterEnvironment environment) {
         // get the border from the list of filters.
         FilterRepresentation border = getFilterRepresentationForType(
@@ -578,6 +628,10 @@ public class ImagePreset {
                 }
                 if (representation.getFilterType() == FilterRepresentation.TYPE_DUALCAM) {
                     // skip the dual cam as it's already applied.
+                    continue;
+                }
+                if (representation.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT) {
+                    // skip the true portrait as it's already applied.
                     continue;
                 }
                 Bitmap tmp = bitmap;

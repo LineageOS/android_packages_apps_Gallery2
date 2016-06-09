@@ -40,6 +40,7 @@ import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentatio
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRotateRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterTruePortraitFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
 import com.android.gallery3d.filtershow.history.HistoryItem;
@@ -442,9 +443,12 @@ public class MasterImage implements RenderingRequestCaller {
     }
 
     public synchronized boolean hasFusionApplied() {
-        FilterRepresentation representation =
+        FilterRepresentation dcRepresentation =
                 mPreset.getFilterWithSerializationName(FilterDualCamFusionRepresentation.SERIALIZATION_NAME);
-        if(representation instanceof FilterDualCamFusionRepresentation) {
+        FilterRepresentation tpRepresentation =
+                mPreset.getFilterWithSerializationName(FilterTruePortraitFusionRepresentation.SERIALIZATION_NAME);
+        if(dcRepresentation instanceof FilterDualCamFusionRepresentation ||
+                tpRepresentation instanceof FilterTruePortraitFusionRepresentation) {
             return true;
         }
         return false;

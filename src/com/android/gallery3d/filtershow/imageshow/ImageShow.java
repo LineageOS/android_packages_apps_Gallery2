@@ -66,8 +66,8 @@ public class ImageShow extends View implements OnGestureListener,
 
     protected int mBackgroundColor;
 
-    private GestureDetector mGestureDetector = null;
-    private ScaleGestureDetector mScaleGestureDetector = null;
+    protected GestureDetector mGestureDetector = null;
+    protected ScaleGestureDetector mScaleGestureDetector = null;
 
     private RectF mFusionBounds = new RectF();
     protected Rect mImageBounds = new Rect();
@@ -78,32 +78,32 @@ public class ImageShow extends View implements OnGestureListener,
     private int mShadowMargin = 15; // not scaled, fixed in the asset
     private boolean mShadowDrawn = false;
 
-    private Point mTouchDown = new Point();
-    private Point mTouch = new Point();
-    private boolean mFinishedScalingOperation = false;
+    protected Point mTouchDown = new Point();
+    protected Point mTouch = new Point();
+    protected boolean mFinishedScalingOperation = false;
 
     private boolean mZoomIn = false;
     Point mOriginalTranslation = new Point();
     float mOriginalScale;
     float mStartFocusX, mStartFocusY;
 
-    private EdgeEffectCompat mEdgeEffect = null;
-    private static final int EDGE_LEFT = 1;
-    private static final int EDGE_TOP = 2;
-    private static final int EDGE_RIGHT = 3;
-    private static final int EDGE_BOTTOM = 4;
-    private int mCurrentEdgeEffect = 0;
-    private int mEdgeSize = 100;
+    protected EdgeEffectCompat mEdgeEffect = null;
+    protected static final int EDGE_LEFT = 1;
+    protected static final int EDGE_TOP = 2;
+    protected static final int EDGE_RIGHT = 3;
+    protected static final int EDGE_BOTTOM = 4;
+    protected int mCurrentEdgeEffect = 0;
+    protected int mEdgeSize = 100;
 
-    private static final int mAnimationSnapDelay = 200;
-    private static final int mAnimationZoomDelay = 400;
-    private ValueAnimator mAnimatorScale = null;
-    private ValueAnimator mAnimatorTranslateX = null;
-    private ValueAnimator mAnimatorTranslateY = null;
+    protected static final int mAnimationSnapDelay = 200;
+    protected static final int mAnimationZoomDelay = 400;
+    protected ValueAnimator mAnimatorScale = null;
+    protected ValueAnimator mAnimatorTranslateX = null;
+    protected ValueAnimator mAnimatorTranslateY = null;
 
     protected boolean mAllowScaleAndTranslate = false;
 
-    private enum InteractionMode {
+    protected enum InteractionMode {
         NONE,
         SCALE,
         MOVE
@@ -298,16 +298,7 @@ public class ImageShow extends View implements OnGestureListener,
         mShadowDrawn = false;
 
         if (!drawCompareImage(canvas, MasterImage.getImage().getOriginalBitmapLarge())) {
-            Bitmap highresPreview = MasterImage.getImage().getHighresImage();
-            Bitmap fullHighres = MasterImage.getImage().getPartialImage();
-
-            boolean isDoingNewLookAnimation = MasterImage.getImage().onGoingNewLookAnimation();
-
-            if (highresPreview == null || isDoingNewLookAnimation) {
-                drawImageAndAnimate(canvas, getFilteredImage());
-            } else {
-                drawImageAndAnimate(canvas, highresPreview);
-            }
+            drawImageAndAnimate(canvas, getImageToDraw());
         }
 
         canvas.restore();
@@ -334,6 +325,17 @@ public class ImageShow extends View implements OnGestureListener,
             invalidate();
         } else {
             mCurrentEdgeEffect = 0;
+        }
+    }
+
+    protected Bitmap getImageToDraw() {
+        Bitmap highresPreview = MasterImage.getImage().getHighresImage();
+        boolean isDoingNewLookAnimation = MasterImage.getImage().onGoingNewLookAnimation();
+
+        if (highresPreview == null || isDoingNewLookAnimation) {
+            return getFilteredImage();
+        } else {
+            return highresPreview;
         }
     }
 
@@ -774,7 +776,7 @@ public class ImageShow extends View implements OnGestureListener,
         return true;
     }
 
-    private void constrainTranslation(Point translation, float scale) {
+    protected void constrainTranslation(Point translation, float scale) {
         int currentEdgeEffect = 0;
         if (mAllowScaleAndTranslate || scale <= 1) {
             mCurrentEdgeEffect = 0;

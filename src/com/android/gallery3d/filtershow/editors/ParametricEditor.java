@@ -135,7 +135,8 @@ public class ParametricEditor extends Editor {
     public void reflectCurrentFilter() {
         super.reflectCurrentFilter();
         if (getLocalRepresentation() != null
-                && getLocalRepresentation() instanceof FilterBasicRepresentation) {
+                && getLocalRepresentation() instanceof FilterBasicRepresentation
+                && mControl != null) {
             FilterBasicRepresentation interval = (FilterBasicRepresentation) getLocalRepresentation();
             mControl.setPrameter(interval);
         }
@@ -164,8 +165,7 @@ public class ParametricEditor extends Editor {
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
-        mActionButton = actionButton;
+    public void setEditPanelUI(View editControl) {
         mEditControl = editControl;
         FilterRepresentation rep = getLocalRepresentation();
         Parameter param = getParameterToEdit(rep);

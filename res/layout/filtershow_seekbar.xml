@@ -15,12 +15,11 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:theme="@android:style/Theme.DeviceDefault"
     android:id="@+id/top"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:visibility="visible" >
 
     <ImageButton
@@ -28,7 +27,17 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/cancel"
-        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:background="?android:attr/actionBarItemBackground" />
+
+    <ImageButton
+        android:id="@+id/slider_save"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/done"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
         android:background="?android:attr/actionBarItemBackground" />
 
     <SeekBar
@@ -36,18 +45,9 @@
         style="@style/FilterShowSlider"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_toRightOf="@+id/tvFilterName"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/slider_cancel"
+        android:layout_toLeftOf="@id/slider_save"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_weight="1" />
-
-    <ImageButton
-        android:id="@+id/slider_save"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/done"
-        android:layout_gravity="center_vertical"
-        android:background="?android:attr/actionBarItemBackground" />
-
-</LinearLayout>
+        android:layout_marginEnd="10dp"/>
+</RelativeLayout>

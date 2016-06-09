@@ -80,13 +80,16 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
             mSelectedPosition = 0;
             mAddButtonText = getContext().getString(R.string.filtershow_add_button_looks);
         }
-//        if (category == MainPanel.MAKEUP) {
-//            mSelectedPosition = 0;
-//        }
+        //        if (category == MainPanel.MAKEUP) {
+        //            mSelectedPosition = 0;
+        //        }
         if (category == MainPanel.BORDERS) {
             mSelectedPosition = 0;
         }
         if (category == MainPanel.DUALCAM) {
+            mSelectedPosition = 0;
+        }
+        if (category == MainPanel.TRUEPORTRAIT) {
             mSelectedPosition = 0;
         }
 
@@ -147,6 +150,10 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
 
     public boolean isSelected(View v) {
         return (Integer) v.getTag() == mSelectedPosition;
+    }
+
+    public int getCurrentSelection() {
+        return mSelectedPosition;
     }
 
     private void invalidateView(int position) {
@@ -232,6 +239,11 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
             }
         } else if (mCategory == MainPanel.DUALCAM) {
             int pos = preset.getPositionForType(FilterRepresentation.TYPE_DUALCAM);
+            if (pos != -1) {
+                rep = preset.getFilterRepresentation(pos);
+            }
+        } else if (mCategory == MainPanel.TRUEPORTRAIT) {
+            int pos = preset.getPositionForType(FilterRepresentation.TYPE_TRUEPORTRAIT);
             if (pos != -1) {
                 rep = preset.getFilterRepresentation(pos);
             }

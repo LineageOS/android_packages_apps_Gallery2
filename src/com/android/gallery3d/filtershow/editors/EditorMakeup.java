@@ -31,8 +31,8 @@ public class EditorMakeup extends BasicEditor {
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
-        super.setUtilityPanelUI(actionButton, editControl);
+    public void setEditPanelUI(View editControl) {
+        super.setEditPanelUI(editControl);
         mSeekBar = (SeekBar) editControl.findViewById(R.id.primarySeekBar);
         if (mSeekBar != null) {
             mSeekBar.setVisibility(View.INVISIBLE);

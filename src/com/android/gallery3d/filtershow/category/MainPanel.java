@@ -17,6 +17,8 @@
 package com.android.gallery3d.filtershow.category;
 
 import android.content.res.Configuration;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -40,6 +42,9 @@ import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.state.StatePanel;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine.DdmStatus;
+import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine;
+import com.android.gallery3d.filtershow.ui.DoNotShowAgainDialog;
+import com.android.gallery3d.util.GalleryUtils;
 
 public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelegate {
 
@@ -56,6 +61,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     private ImageButton trueScannerButton;
     private ImageButton hazeBusterButton;
     private ImageButton seeStraightButton;
+    private ImageButton truePortraitButton;
 
     public static final String FRAGMENT_TAG = "MainPanel";
     public static final String EDITOR_TAG = "coming-from-editor-panel";
@@ -69,6 +75,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     public static final int TRUESCANNER = 7;
     public static final int HAZEBUSTER = 8;
     public static final int SEESTRAIGHT = 9;
+    public static final int TRUEPORTRAIT = 10;
 
     private int mCurrentSelected = -1;
     private int mPreviousToggleVersions = -1;
@@ -105,6 +112,10 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
                 dualCamButton.setSelected(value);
                 break;
             }
+            case TRUEPORTRAIT: {
+                truePortraitButton.setSelected(value);
+                break;
+            }
             case TRUESCANNER: {
                 if (trueScannerButton != null) {
                     trueScannerButton.setSelected(value);
@@ -139,7 +150,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         mMainView = (LinearLayout) inflater.inflate(
                 R.layout.filtershow_main_panel, null, false);
 
@@ -204,6 +215,11 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             seeStraightButton.setVisibility(View.GONE);
         }
 
+        truePortraitButton = (ImageButton) bottomPanel.findViewById(R.id.truePortraitButton);
+        if(!TruePortraitNativeEngine.getInstance().isLibLoaded()) {
+            truePortraitButton.setVisibility(View.GONE);
+        }
+
         looksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,9 +251,42 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             }
         });
 
+        truePortraitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Context context = getActivity();
+                boolean skipIntro = GalleryUtils.getBooleanPref(context,
+                        context.getString(R.string.pref_trueportrait_intro_show_key), false);
+                final boolean facesDetected = TruePortraitNativeEngine.getInstance().facesDetected();
+                if(skipIntro && facesDetected) {
+                    showPanel(TRUEPORTRAIT);
+                } else if(!skipIntro) {
+                    DoNotShowAgainDialog dialog = new DoNotShowAgainDialog(
+                            R.string.trueportrait, R.string.trueportrait_intro,
+                            R.string.pref_trueportrait_intro_show_key) {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            super.onDismiss(dialog);
+                            if(facesDetected) {
+                                showPanel(TRUEPORTRAIT);
+                            } else {
+                                v.setEnabled(false);
+                                TruePortraitNativeEngine.getInstance().showNoFaceDetectedDialog(getFragmentManager());
+                            }
+                        }
+                    };
+                    dialog.show(getFragmentManager(), "trueportrait_intro");
+                } else {
+                    v.setEnabled(false);
+                    TruePortraitNativeEngine.getInstance().showNoFaceDetectedDialog(getFragmentManager());
+                }
+            }
+        });
+
         trueScannerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 showPanel(TRUESCANNER);
             }
         });
@@ -449,6 +498,19 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         }
     }
 
+    public void loadCategoryTruePortraitPanel() {
+        if (mCurrentSelected == TRUEPORTRAIT) {
+            return;
+        }
+        boolean fromRight = isRightAnimation(TRUEPORTRAIT);
+        selection(mCurrentSelected, false);
+        CategoryPanel categoryPanel = new CategoryPanel();
+        categoryPanel.setAdapter(TRUEPORTRAIT);
+        setCategoryFragment(categoryPanel, fromRight);
+        mCurrentSelected = TRUEPORTRAIT;
+        selection(mCurrentSelected, true);
+    }
+
     public void showPanel(int currentPanel) {
         FilterShowActivity activity = (FilterShowActivity) getActivity();
         switch (currentPanel) {
@@ -490,6 +552,10 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             }
             case MAKEUP: {
                 loadCategoryMakeupPanel();
+                break;
+            }
+            case TRUEPORTRAIT: {
+                loadCategoryTruePortraitPanel();
                 break;
             }
         }

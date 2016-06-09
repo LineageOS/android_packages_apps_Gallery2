@@ -57,7 +57,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -90,6 +89,7 @@ import com.android.gallery3d.filtershow.category.EditorCropPanel;
 import com.android.gallery3d.filtershow.category.MainPanel;
 import com.android.gallery3d.filtershow.category.StraightenPanel;
 import com.android.gallery3d.filtershow.category.SwipableView;
+import com.android.gallery3d.filtershow.category.TruePortraitMaskEditorPanel;
 import com.android.gallery3d.filtershow.category.TrueScannerPanel;
 import com.android.gallery3d.filtershow.data.UserPresetsManager;
 import com.android.gallery3d.filtershow.editors.Editor;
@@ -98,6 +98,9 @@ import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
 import com.android.gallery3d.filtershow.editors.EditorManager;
 import com.android.gallery3d.filtershow.editors.EditorPanel;
 import com.android.gallery3d.filtershow.editors.EditorStraighten;
+import com.android.gallery3d.filtershow.editors.EditorTruePortraitFusion;
+import com.android.gallery3d.filtershow.editors.EditorTruePortraitImageOnly;
+import com.android.gallery3d.filtershow.editors.EditorTruePortraitMask;
 import com.android.gallery3d.filtershow.editors.HazeBusterEditor;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
 import com.android.gallery3d.filtershow.editors.SeeStraightEditor;
@@ -125,6 +128,7 @@ import com.android.gallery3d.filtershow.state.StateAdapter;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine.DdmStatus;
 import com.android.gallery3d.filtershow.tools.SaveImage;
+import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine;
 import com.android.gallery3d.filtershow.tools.XmpPresets;
 import com.android.gallery3d.filtershow.tools.XmpPresets.XMresults;
 import com.android.gallery3d.filtershow.ui.ExportDialog;
@@ -132,13 +136,15 @@ import com.android.gallery3d.filtershow.ui.FramedTextButton;
 import com.android.gallery3d.mpo.MpoParser;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.photos.data.GalleryBitmapPool;
+import com.thundersoft.hz.selfportrait.detect.FaceDetect;
+import com.thundersoft.hz.selfportrait.detect.FaceInfo;
 import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;
 
 import static android.app.Activity.RESULT_OK;
 
 public class FilterShowActivity extends FragmentActivity implements OnItemClickListener,
-        OnShareTargetSelectedListener, DialogInterface.OnShowListener,
-        DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
+OnShareTargetSelectedListener, DialogInterface.OnShowListener,
+DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     private String mAction = "";
     MasterImage mMasterImage = null;
@@ -176,6 +182,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     private LoadHighresBitmapTask mHiResBitmapTask;
     private ParseMpoDataTask mParseMpoTask;
     private LoadMpoDataTask mLoadMpoTask;
+    private LoadTruePortraitTask mLoadTruePortraitTask;
 
     private Uri mOriginalImageUri = null;
     private ImagePreset mOriginalPreset = null;
@@ -195,6 +202,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     private CategoryAdapter mCategoryVersionsAdapter = null;
     private CategoryAdapter mCategoryMakeupAdapter = null;
     private CategoryAdapter mCategoryDualCamAdapter = null;
+    private CategoryAdapter mCategoryTruePortraitAdapter = null;
     private int mCurrentPanel = MainPanel.LOOKS;
     private Vector<FilterUserPresetRepresentation> mVersions =
             new Vector<FilterUserPresetRepresentation>();
@@ -365,20 +373,31 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         transaction.commitAllowingStateLoss();
     }
 
-    public void loadEditorPanel(final FilterRepresentation representation,
-                                final Editor currentEditor) {
-        if (currentEditor.showsActionBar()) {
+    public void loadEditorPanel(final FilterRepresentation representation) {
+        final int currentId = representation.getEditorId();
+
+        // show representation
+        if (mCurrentEditor != null) {
+            mCurrentEditor.detach();
+        }
+        mCurrentEditor = mEditorPlaceHolder.showEditor(currentId);
+
+        if (mCurrentEditor.showsActionBar()) {
             setActionBar();
             showActionBar(true);
         } else {
             showActionBar(false);
         }
 
-        if (representation.getEditorId() == ImageOnlyEditor.ID) {
-            currentEditor.reflectCurrentFilter();
+        if (currentId == ImageOnlyEditor.ID) {
+            mCurrentEditor.reflectCurrentFilter();
             return;
         }
-        final int currentId = currentEditor.getID();
+        if (currentId == EditorTruePortraitImageOnly.ID) {
+            mCurrentEditor.reflectCurrentFilter();
+            setActionBarForEffects(mCurrentEditor);
+            return;
+        }
         if (currentId == EditorCrop.ID) {
             loadEditorCropPanel();
             return;
@@ -419,12 +438,30 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             }.run();
             return;
         }
+        if(currentId == EditorTruePortraitMask.ID) {
+            new Runnable() {
+                @Override
+                public void run() {
+                    setActionBarForEffects(mCurrentEditor);
+                    TruePortraitMaskEditorPanel panel = new TruePortraitMaskEditorPanel();
+                    FragmentTransaction transaction =
+                            getSupportFragmentManager().beginTransaction();
+                    transaction.remove(getSupportFragmentManager().findFragmentByTag(
+                            MainPanel.FRAGMENT_TAG));
+                    transaction.replace(R.id.main_panel_container, panel,
+                            MainPanel.FRAGMENT_TAG);
+                    transaction.commit();
+                }
+            }.run();
+            return;
+        }
+
         Runnable showEditor = new Runnable() {
             @Override
             public void run() {
                 EditorPanel panel = new EditorPanel();
                 panel.setEditor(currentId);
-                setActionBarForEffects(currentEditor);
+                setActionBarForEffects(mCurrentEditor);
                 Fragment main =
                         getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
                 if (main instanceof MainPanel) {
@@ -484,6 +521,10 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
         if (currentPanel instanceof MainPanel) {
             ((MainPanel) currentPanel).removeEditorPanelFragment();
+            if (mCurrentEditor != null) {
+                mCurrentEditor.detach();
+            }
+            mCurrentEditor = null;
         }
     }
 
@@ -540,8 +581,8 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void toggleComparisonButtonVisibility() {
-            if (imgComparison.getVisibility() == View.VISIBLE)
-                imgComparison.setVisibility(View.GONE);
+        if (imgComparison.getVisibility() == View.VISIBLE)
+            imgComparison.setVisibility(View.GONE);
     }
 
     private void showSaveButtonIfNeed() {
@@ -592,10 +633,6 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     public void setActionBarForEffects(final Editor currentEditor) {
-        View view;
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.filtershow_editor_panel, null);
-        View editControl = view.findViewById(R.id.controlArea);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources()
@@ -628,7 +665,11 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         });
 
         if (currentEditor != null) {
-            currentEditor.setUpEditorUI(editTitle, actionControl, editControl);
+            if(!currentEditor.showsActionBarControls()) {
+                cancelButton.setVisibility(View.GONE);
+                applyButton.setVisibility(View.GONE);
+            }
+            currentEditor.setEditorTitle(editTitle);
             currentEditor.reflectCurrentFilter();
             if (currentEditor.useUtilityPanel()) {
                 currentEditor.openUtilityPanel((LinearLayout) actionControl);
@@ -658,6 +699,12 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         int position = adapter.undo();
         masterImage.onHistoryItemClick(position);
         invalidateViews();
+
+        if(!masterImage.hasFusionApplied()) {
+            masterImage.setFusionUnderlay(null);
+            masterImage.setScaleFactor(1);
+            masterImage.resetTranslation();
+        }
     }
 
     public void adjustCompareButton(boolean scaled) {
@@ -686,6 +733,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         fillVersions();
         fillMakeup();
         fillDualCamera();
+        fillTruePortrait();
     }
 
     public void setupStatePanel() {
@@ -808,6 +856,21 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
     }
 
+    private void fillTruePortrait() {
+        FiltersManager filtersManager = FiltersManager.getManager();
+        ArrayList<FilterRepresentation> filtersRepresentations = filtersManager.getTruePortrait();
+        if (mCategoryTruePortraitAdapter != null) {
+            mCategoryTruePortraitAdapter.clear();
+        }
+        mCategoryTruePortraitAdapter = new CategoryAdapter(this);
+        for (FilterRepresentation representation : filtersRepresentations) {
+            if (representation.getTextId() != 0) {
+                representation.setName(getString(representation.getTextId()));
+            }
+            mCategoryTruePortraitAdapter.add(new Action(this, representation));
+        }
+    }
+
     private void fillTrueScanner() {
         FiltersManager filtersManager = FiltersManager.getManager();
         ArrayList<FilterRepresentation> trueScannerRepresentations = filtersManager.getTrueScanner();
@@ -926,6 +989,11 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 mainPanel.updateDualCameraButton();
             }
         }
+
+        if(TruePortraitNativeEngine.getInstance().isLibLoaded()) {
+            mLoadTruePortraitTask = new LoadTruePortraitTask();
+            mLoadTruePortraitTask.execute(uri);
+        }
     }
 
     private void fillBorders() {
@@ -987,6 +1055,10 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         return mCategoryDualCamAdapter;
     }
 
+    public CategoryAdapter getCategoryTruePortraitAdapter() {
+        return mCategoryTruePortraitAdapter;
+    }
+
     public void removeFilterRepresentation(FilterRepresentation filterRepresentation) {
         if (filterRepresentation == null) {
             return;
@@ -1006,8 +1078,8 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             return;
         }
         if (!(filterRepresentation instanceof FilterRotateRepresentation)
-            && !(filterRepresentation instanceof FilterMirrorRepresentation)
-            && MasterImage.getImage().getCurrentFilterRepresentation() == filterRepresentation) {
+                && !(filterRepresentation instanceof FilterMirrorRepresentation)
+                && MasterImage.getImage().getCurrentFilterRepresentation() == filterRepresentation) {
             return;
         }
         if (filterRepresentation instanceof FilterUserPresetRepresentation
@@ -1085,12 +1157,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
         useFilterRepresentation(representation);
 
-        // show representation
-        if (mCurrentEditor != null) {
-            mCurrentEditor.detach();
-        }
-        mCurrentEditor = mEditorPlaceHolder.showEditor(representation.getEditorId());
-        loadEditorPanel(representation, mCurrentEditor);
+        loadEditorPanel(representation);
     }
 
     public Editor getEditor(int editorID) {
@@ -1122,6 +1189,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             mCategoryMakeupAdapter.reflectImagePreset(preset);
         }
         mCategoryDualCamAdapter.reflectImagePreset(preset);
+        mCategoryTruePortraitAdapter.reflectImagePreset(preset);
     }
 
     public View getMainStatePanelContainer(int id) {
@@ -1221,15 +1289,14 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                     mAuxImgData == null) {
                 // parse failed
                 MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
+                Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+                if (currentPanel instanceof MainPanel) {
+                    MainPanel mainPanel = (MainPanel) currentPanel;
+                    mainPanel.updateDualCameraButton();
+                }
             } else {
                 mLoadMpoTask = new LoadMpoDataTask();
                 mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
-            }
-
-            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
-            if (currentPanel instanceof MainPanel) {
-                MainPanel mainPanel = (MainPanel) currentPanel;
-                mainPanel.updateDualCameraButton();
             }
         }
     }
@@ -1288,7 +1355,40 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
             mLoadingDialog.dismiss();
         }
-     }
+    }
+
+    private class LoadTruePortraitTask extends AsyncTask<Uri, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Uri... params) {
+            boolean result = false;
+            Bitmap src = ImageLoader.loadBitmap(FilterShowActivity.this, params[0], null);
+            FaceDetect fDetect = new FaceDetect();
+            fDetect.initialize();
+            FaceInfo[] faceInfos = fDetect.dectectFeatures(src);
+            fDetect.uninitialize();
+
+            if(faceInfos != null && faceInfos.length > 0) {
+                Rect[] faces = new Rect[faceInfos.length];
+                for(int i=0; i<faceInfos.length; i++) {
+                    faces[i] = faceInfos[i].face;
+                }
+
+                result = TruePortraitNativeEngine.getInstance().init(FilterShowActivity.this, src, faces);
+            } else {
+                TruePortraitNativeEngine.getInstance().setFacesDetected(false);
+            }
+
+            src.recycle();
+            src = null;
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+        }
+    }
 
     private class LoadBitmapTask extends AsyncTask<Uri, Boolean, Boolean> {
         int mBitmapSize;
@@ -1362,6 +1462,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             mCategoryGeometryAdapter.imageLoaded();
             mCategoryFiltersAdapter.imageLoaded();
             mCategoryDualCamAdapter.imageLoaded();
+            mCategoryTruePortraitAdapter.imageLoaded();
             if(mCategoryMakeupAdapter != null) {
                 mCategoryMakeupAdapter.imageLoaded();
             }
@@ -1419,6 +1520,10 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
         if(mLoadMpoTask != null) {
             mLoadMpoTask.cancel(false);
+        }
+
+        if(mLoadTruePortraitTask != null) {
+            mLoadTruePortraitTask.cancel(false);
         }
 
         mUserPresetsManager.close();
@@ -1515,11 +1620,15 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         menu.clear();
         getMenuInflater().inflate(R.menu.filtershow_activity_menu, menu);
         mShareActionProvider = (ShareActionProvider) menu.findItem(
-                                R.id.menu_share).getActionProvider();
+                R.id.menu_share).getActionProvider();
         mShareActionProvider.setShareIntent(getDefaultShareIntent());
         mShareActionProvider.setOnShareTargetSelectedListener(this);
         mMenu = menu;
         setupMenu();
+
+        if(mCurrentEditor != null) {
+            mCurrentEditor.onPrepareOptionsMenu(menu);
+        }
         return true;
     }
 
@@ -1560,7 +1669,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*case R.id.undoButton: {
+        /*case R.id.undoButton: {
                 HistoryManager adapter = mMasterImage.getHistory();
                 int position = adapter.undo();
                 mMasterImage.onHistoryItemClick(position);
@@ -1575,26 +1684,26 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 invalidateViews();
                 return true;
             }*/
-            case R.id.resetHistoryButton: {
-                resetHistory();
-                return true;
-            }
-            /*case R.id.showImageStateButton: {
+        case R.id.resetHistoryButton: {
+            resetHistory();
+            return true;
+        }
+        /*case R.id.showImageStateButton: {
                 toggleImageStatePanel();
                 return true;
             }*/
-            case R.id.exportFlattenButton: {
-                showExportOptionsDialog();
-                return true;
-            }
-            case android.R.id.home: {
-                saveImage();
-                return true;
-            }
-            case R.id.manageUserPresets: {
-                manageUserPresets();
-                return true;
-            }
+        case R.id.exportFlattenButton: {
+            showExportOptionsDialog();
+            return true;
+        }
+        case android.R.id.home: {
+            saveImage();
+            return true;
+        }
+        case R.id.manageUserPresets: {
+            manageUserPresets();
+            return true;
+        }
         }
         return false;
     }
@@ -1891,18 +2000,18 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 R.string.save_before_exit);
         mBackAlertDialogBuilder.setPositiveButton(mPopUpText,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        done();
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                done();
+            }
+        });
         mBackAlertDialogBuilder.setNegativeButton(mCancel,
                 new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
     }
 
     public void cannotLoadImage() {
@@ -1942,8 +2051,13 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             } else if (requestCode == SELECT_FUSION_UNDERLAY) {
                 Uri underlayImageUri = data.getData();
                 // find fusion representation
-                EditorDualCamFusion editor = (EditorDualCamFusion)getEditor(EditorDualCamFusion.ID);
-                editor.setUnderlayImageUri(underlayImageUri);
+                if(mCurrentEditor instanceof EditorDualCamFusion) {
+                    EditorDualCamFusion editor = (EditorDualCamFusion)mCurrentEditor;
+                    editor.setUnderlayImageUri(underlayImageUri);
+                } else if (mCurrentEditor instanceof EditorTruePortraitFusion) {
+                    EditorTruePortraitFusion editor = (EditorTruePortraitFusion)mCurrentEditor;
+                    editor.setUnderlayImageUri(underlayImageUri);
+                }
             }
         }
     }
