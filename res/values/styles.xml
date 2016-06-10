@@ -316,6 +316,7 @@
     </style>
 
     <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:windowDisablePreview">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
