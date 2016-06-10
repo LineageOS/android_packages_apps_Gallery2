@@ -44,7 +44,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import org.codeaurora.gallery.R;
 
@@ -207,10 +206,6 @@ public abstract class PhotoPage extends ActivityState implements
     private int mLastSystemUiVis = 0;
 
     private Intent mShareIntent;
-
-    //use for saving the original height and padding of toolbar
-    private int originalHeight = 0;
-    private int originalPadding = 0;
 
     private ThreeDButton m3DButton;
     private boolean bShow3DButton;
@@ -951,7 +946,7 @@ public abstract class PhotoPage extends ActivityState implements
         mShowBars = true;
         mOrientationManager.unlockOrientation();
         mActionBar.show();
-        mActivity.getGLRoot().setLightsOutMode(true);
+        mActivity.getGLRoot().setLightsOutMode(false);
         refreshHidingMessage();
         refreshBottomControlsWhenReady();
     }
@@ -1518,14 +1513,6 @@ public abstract class PhotoPage extends ActivityState implements
     public void onPause() {
         super.onPause();
         mIsActive = false;
-        //restore the orginal heigh and padding of toolbar
-        Toolbar toolbar = mActivity.getToolbar();
-        if (toolbar != null) {
-            ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
-            layoutParams.height = originalHeight;
-            toolbar.setLayoutParams(layoutParams);
-            toolbar.setPadding(0, originalPadding, 0, 0);
-        }
         showFullScreen(false);
 
         DetailsHelper.pause();
@@ -1646,16 +1633,6 @@ public abstract class PhotoPage extends ActivityState implements
 
         transitionFromAlbumPageIfNeeded();
 
-        Toolbar toolbar = mActivity.getToolbar();
-        //set the new height and padding to toolbar
-        if (toolbar != null) {
-            ViewGroup.LayoutParams layoutParams = toolbar.getLayoutParams();
-            originalHeight = layoutParams.height;
-            originalPadding = toolbar.getPaddingTop();
-            layoutParams.height = originalHeight - originalPadding;
-            toolbar.setPadding(0, 0, 0, 0);
-            toolbar.setLayoutParams(layoutParams);
-        }
         mIsActive = true;
         setContentPane(mRootPane);
 
@@ -1678,8 +1655,6 @@ public abstract class PhotoPage extends ActivityState implements
         if (!mShowBars) {
             mActionBar.hide();
         }
-        //hide the status bar
-        mActivity.getGLRoot().setLightsOutMode(true);
         boolean haveImageEditor = GalleryUtils.isEditorAvailable(mActivity, "image/*");
         if (haveImageEditor != mHaveImageEditor) {
             mHaveImageEditor = haveImageEditor;
