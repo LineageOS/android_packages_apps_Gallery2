@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_1f0c7f3f",
+        "filename": "src/com/android/gallery3d/data/ImageCacheService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3134
+      },
+      "writtenOn": "2016-06-13T20:04:55Z",
+      "side": 1,
+      "message": "If i read the code correcty, CacheManager cannot return null, but throw a NPE if getExternalCacheDir() \u003d\u003d null, so basically CacheManager should be fixed as well to return null",
+      "range": {
+        "startLine": 43,
+        "startChar": 30,
+        "endLine": 43,
+        "endChar": 38
+      },
+      "revId": "6a336e56a864fa622899c401b1f4e22a86dc070d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
