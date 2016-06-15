@@ -19,8 +19,8 @@ package com.android.gallery3d.filtershow;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Vector;
 import java.util.Locale;
+import java.util.Vector;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -62,10 +62,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewPropertyAnimator;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -917,6 +917,11 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             mParseMpoTask.execute();
         } else {
             MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
+            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+            if (currentPanel instanceof MainPanel) {
+                MainPanel mainPanel = (MainPanel) currentPanel;
+                mainPanel.updateDualCameraButton();
+            }
         }
     }
 
@@ -1190,26 +1195,32 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
     }
 
-    private class ParseMpoDataTask extends AsyncTask<Void, Void, byte[]> {
+    private class ParseMpoDataTask extends AsyncTask<Void, Void, Void> {
+        private byte[] mPrimaryImgData = null;
+        private byte[] mAuxImgData = null;
+
         @Override
         protected void onPreExecute() {
             MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_PARSING);
         }
 
         @Override
-        protected byte[] doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) {
             MpoParser parser = MpoParser.parse(FilterShowActivity.this, MasterImage.getImage().getUri());
-            return parser.readImgData(false);
+            mPrimaryImgData = parser.readImgData(true);
+            mAuxImgData = parser.readImgData(false);
+            return null;
         }
 
         @Override
-        protected void onPostExecute(byte[] result) {
-            if(result == null) {
+        protected void onPostExecute(Void result) {
+            if(mPrimaryImgData == null ||
+                    mAuxImgData == null) {
                 // parse failed
                 MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
             } else {
                 mLoadMpoTask = new LoadMpoDataTask();
-                mLoadMpoTask.execute(result);
+                mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
             }
 
             Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
@@ -1228,12 +1239,17 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
         @Override
         protected Boolean doInBackground(byte[]... params) {
-            return MasterImage.getImage().loadMpo(params[0]);
+            return MasterImage.getImage().loadMpo(params[0], params[1]);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
             MasterImage.getImage().setDepthMapLoadingStatus(result?DdmStatus.DDM_LOADED:DdmStatus.DDM_FAILED);
+            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+            if (currentPanel instanceof MainPanel) {
+                MainPanel mainPanel = (MainPanel) currentPanel;
+                mainPanel.updateDualCameraButton();
+            }
             stopLoadingIndicator();
         }
     }

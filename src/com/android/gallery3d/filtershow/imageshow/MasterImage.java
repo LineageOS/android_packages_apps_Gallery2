@@ -53,7 +53,6 @@ import com.android.gallery3d.filtershow.pipeline.SharedPreset;
 import com.android.gallery3d.filtershow.state.StateAdapter;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine.DdmStatus;
-import com.android.gallery3d.mpo.MpoParser;
 
 public class MasterImage implements RenderingRequestCaller {
 
@@ -957,11 +956,11 @@ public class MasterImage implements RenderingRequestCaller {
         return mPreset.contains(FilterRepresentation.TYPE_TINYPLANET);
     }
 
-    public boolean loadMpo(byte[] auxiliaryMpoData) {
+    public boolean loadMpo(byte[] primaryMpoData, byte[] auxiliaryMpoData) {
         boolean loaded = false;
 
         if(auxiliaryMpoData != null) {
-            Bitmap primaryBm = ImageLoader.loadBitmap(getActivity(), getUri(), null);
+            Bitmap primaryBm = BitmapFactory.decodeByteArray(primaryMpoData, 0, primaryMpoData.length);
 
             if(primaryBm == null) {
                 return false;
