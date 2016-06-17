@@ -286,7 +286,7 @@
             android:writePermission="com.android.gallery3d.filtershow.permission.WRITE" />
 
         <service
-                android:name=".filtershow.pipeline.ProcessingService"
+                android:name="com.android.gallery3d.filtershow.pipeline.ProcessingService"
                 android:exported="false" />
 
         <activity

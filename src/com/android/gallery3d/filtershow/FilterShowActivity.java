@@ -1085,7 +1085,9 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         mCategoryLooksAdapter.reflectImagePreset(preset);
         mCategoryBordersAdapter.reflectImagePreset(preset);
         mCategoryFiltersAdapter.reflectImagePreset(preset);
-        mCategoryMakeupAdapter.reflectImagePreset(preset);
+        if (mCategoryMakeupAdapter != null) {
+            mCategoryMakeupAdapter.reflectImagePreset(preset);
+        }
         mCategoryDualCamAdapter.reflectImagePreset(preset);
     }
 
