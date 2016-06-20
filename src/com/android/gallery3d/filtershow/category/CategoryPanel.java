@@ -88,6 +88,7 @@ public class CategoryPanel extends Fragment implements View.OnClickListener {
                     mAdapter.initializeSelection(MainPanel.DUALCAM);
                 }
                 activity.updateCategories();
+                break;
             }
             case MainPanel.TRUESCANNER: {
                 mAdapter = activity.getCategoryTrueScannerAdapter();
