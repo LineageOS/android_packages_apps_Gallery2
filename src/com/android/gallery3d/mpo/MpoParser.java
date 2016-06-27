@@ -177,6 +177,11 @@ public class MpoParser {
         MpEntry mpEntry = null;
         byte[] data = null;
 
+        if(mMpEntries.size() < 2){
+            // not enough entries were read.
+            return null;
+        }
+
         if(primary) {
             if(mMpEntries.size() > 2) {
                 mpEntry = mMpEntries.get(1);
