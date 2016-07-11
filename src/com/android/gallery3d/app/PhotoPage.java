@@ -23,6 +23,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -75,6 +76,7 @@ import com.android.gallery3d.ui.SynchronizedHandler;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.UsageStatistics;
 
+import java.util.List;
 import java.util.Locale;
 
 //import android.drm.DrmHelper;
@@ -775,9 +777,18 @@ public abstract class PhotoPage extends ActivityState implements
         }
         intent.putExtra(FilterShowActivity.LAUNCH_FULLSCREEN,
                 mActivity.isFullscreen());
-        ((Activity) mActivity).startActivityForResult(Intent.createChooser(intent, null),
-                REQUEST_EDIT);
-        overrideTransitionToEditor();
+
+        List<ResolveInfo> resolveInfoList = mActivity.getPackageManager()
+                .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        if (resolveInfoList != null && resolveInfoList.size() > 0) {
+            if (resolveInfoList.size() == 1) {
+                // only one app can resolve intent, don't use createChooser.
+                mActivity.startActivityForResult(intent, REQUEST_EDIT);
+            } else {
+                mActivity.startActivityForResult(Intent.createChooser(intent, null), REQUEST_EDIT);
+            }
+            overrideTransitionToEditor();
+        }
     }
 
     private void launchSimpleEditor() {

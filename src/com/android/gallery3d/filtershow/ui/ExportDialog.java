@@ -16,6 +16,9 @@
 
 package com.android.gallery3d.filtershow.ui;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -27,7 +30,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -42,8 +44,7 @@ import com.android.gallery3d.filtershow.tools.SaveImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-public class ExportDialog extends DialogFragment implements View.OnClickListener,
-        SeekBar.OnSeekBarChangeListener {
+public class ExportDialog extends DialogFragment implements SeekBar.OnSeekBarChangeListener {
     SeekBar mSeekBar;
     TextView mSeekVal;
     EditText mWidthText;
@@ -90,11 +91,37 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         mHandler = new Handler(getActivity().getMainLooper());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        View view = initCustomLayout();
+        builder.setView(view);
+        builder.setTitle(R.string.export_flattened);
+        builder.setPositiveButton(R.string.done,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        FilterShowActivity activity = (FilterShowActivity) getActivity();
+                        Uri sourceUri = MasterImage.getImage().getUri();
+                        File dest = SaveImage.getNewFile(activity, activity.getSelectedImageUri());
+                        float scaleFactor = mExportWidth / (float) mOriginalBounds.width();
+                        Intent processIntent = ProcessingService.getSaveIntent(activity,
+                                MasterImage.getImage().getPreset(), dest,
+                                activity.getSelectedImageUri(), sourceUri, true,
+                                mSeekBar.getProgress(), scaleFactor, false, -1);
+                        activity.startService(processIntent);
+                    }
+                });
+        builder.setNegativeButton(R.string.cancel, null);
 
-        View view = inflater.inflate(R.layout.filtershow_export_dialog, container);
+        updateCompressionFactor();
+        updateSize();
+        return builder.create();
+    }
+
+    private View initCustomLayout() {
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View view = inflater.inflate(R.layout.filtershow_export_dialog, null);
         mSeekBar = (SeekBar) view.findViewById(R.id.qualitySeekBar);
         mSeekVal = (TextView) view.findViewById(R.id.qualityTextView);
         mSliderLabel = getString(R.string.quality) + ": ";
@@ -124,13 +151,6 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
         mExportHeight = mOriginalBounds.height();
         mWidthText.addTextChangedListener(new Watcher(mWidthText));
         mHeightText.addTextChangedListener(new Watcher(mHeightText));
-
-        view.findViewById(R.id.cancel).setOnClickListener(this);
-        view.findViewById(R.id.done).setOnClickListener(this);
-        getDialog().setTitle(R.string.export_flattened);
-
-        updateCompressionFactor();
-        updateSize();
         return view;
     }
 
@@ -154,26 +174,6 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
     private void scheduleUpdateCompressionFactor() {
         mHandler.removeCallbacks(mUpdateRunnable);
         mHandler.postDelayed(mUpdateRunnable, mUpdateDelay);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.cancel:
-                dismiss();
-                break;
-            case R.id.done:
-                FilterShowActivity activity = (FilterShowActivity) getActivity();
-                Uri sourceUri = MasterImage.getImage().getUri();
-                File dest = SaveImage.getNewFile(activity,  activity.getSelectedImageUri());
-                float scaleFactor = mExportWidth / (float) mOriginalBounds.width();
-                Intent processIntent = ProcessingService.getSaveIntent(activity, MasterImage
-                        .getImage().getPreset(), dest, activity.getSelectedImageUri(), sourceUri,
-                        true, mSeekBar.getProgress(), scaleFactor, false, -1);
-                activity.startService(processIntent);
-                dismiss();
-                break;
-        }
     }
 
     public void updateCompressionFactor() {

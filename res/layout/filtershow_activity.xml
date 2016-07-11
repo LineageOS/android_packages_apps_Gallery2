@@ -54,7 +54,7 @@
                     android:layout_marginRight="@dimen/compare_margin_right"
                     android:layout_marginTop="@dimen/compare_margin_top"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/comparison_before"
+                    android:src="@drawable/comparison"
                     android:visibility="visible" />
             </RelativeLayout>
 

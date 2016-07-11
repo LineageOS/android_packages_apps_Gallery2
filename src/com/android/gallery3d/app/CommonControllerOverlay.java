@@ -18,7 +18,9 @@ package com.android.gallery3d.app;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -108,6 +110,13 @@ public abstract class CommonControllerOverlay extends FrameLayout implements
         mPlayPauseReplayView.setFocusable(true);
         mPlayPauseReplayView.setClickable(true);
         mPlayPauseReplayView.setOnClickListener(this);
+        TypedArray array = context.getTheme().obtainStyledAttributes(new int[] {
+                android.R.attr.actionBarItemBackground
+        });
+        Drawable drawable = array.getDrawable(array.getIndex(0));
+        if (drawable != null) {
+            mPlayPauseReplayView.setBackground(drawable);
+        }
         addView(mPlayPauseReplayView, wrapContent);
 
         mErrorView = createOverlayTextView(context);

@@ -184,7 +184,7 @@
     <dimen name="timeline_grid_vertical_space">3dp</dimen>
     <dimen name="slot_width">174dp</dimen>
     <dimen name="slot_height">174dp</dimen>
-    <dimen name="toolbar_height">84dp</dimen>
+    <dimen name="toolbar_height">80dp</dimen>
     <dimen name="slot_width_album">116dp</dimen>
     <dimen name="slot_height_album">116dp</dimen>
     <dimen name="crop_icon_size">30dp</dimen>
@@ -231,4 +231,5 @@
     <dimen name="controller_indicator_text_size">16sp</dimen>
 
     <dimen name="toolbar_title_text_size">20dp</dimen>
+    <dimen name="toolbar_exit_padding_left">16dp</dimen>
 </resources>

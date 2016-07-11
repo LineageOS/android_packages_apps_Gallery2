@@ -16,6 +16,7 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@android:style/Theme.DeviceDefault"
     android:id="@+id/top"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
         android:layout_height="60dp"
         android:src="@drawable/cancel"
         android:layout_gravity="center_vertical"
-        android:background="@android:color/transparent" />
+        android:background="?android:attr/actionBarItemBackground" />
 
     <SeekBar
         android:id="@+id/primarySeekBar"
@@ -47,6 +48,6 @@
         android:layout_height="60dp"
         android:src="@drawable/done"
         android:layout_gravity="center_vertical"
-        android:background="@android:color/transparent" />
+        android:background="?android:attr/actionBarItemBackground" />
 
 </LinearLayout>
