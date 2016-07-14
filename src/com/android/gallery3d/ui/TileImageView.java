@@ -90,7 +90,6 @@ public class TileImageView extends GLView {
     private int mOffsetX;
     private int mOffsetY;
 
-    private int mUploadQuota;
     private boolean mRenderComplete;
 
     private final RectF mSourceRect = new RectF();
@@ -404,7 +403,6 @@ public class TileImageView extends GLView {
 
     @Override
     protected void render(GLCanvas canvas) {
-        mUploadQuota = UPLOAD_LIMIT;
         mRenderComplete = true;
 
         int level = mLevel;
@@ -560,12 +558,10 @@ public class TileImageView extends GLView {
 
         @Override
         public boolean onGLIdle(GLCanvas canvas, boolean renderRequested, long dueTime) {
-            // Skips uploading if there is a pending rendering request.
-            // Returns true to keep uploading in next rendering loop.
-            if (renderRequested) return true;
-            int quota = UPLOAD_LIMIT;
+            long now = System.nanoTime();
+            long uploadTime = 0;
             Tile tile = null;
-            while (quota > 0) {
+            while (now + uploadTime < dueTime) {
                 synchronized (TileImageView.this) {
                     tile = mUploadQueue.pop();
                 }
@@ -575,8 +571,10 @@ public class TileImageView extends GLView {
                     Utils.assertTrue(tile.mTileState == STATE_DECODED);
                     tile.updateContent(canvas);
                     if (!hasBeenLoaded) tile.draw(canvas, 0, 0);
-                    --quota;
                 }
+                long t1 = System.nanoTime();
+                uploadTime = t1 - now;
+                now = t1;
             }
             if (tile == null) mActive.set(false);
             return tile != null;
@@ -596,13 +594,8 @@ public class TileImageView extends GLView {
         if (tile != null) {
             if (!tile.isContentValid()) {
                 if (tile.mTileState == STATE_DECODED) {
-                    if (mUploadQuota > 0) {
-                        --mUploadQuota;
-                        tile.updateContent(canvas);
-                    } else {
-                        mRenderComplete = false;
-                    }
-                } else if (tile.mTileState != STATE_DECODE_FAIL){
+                    mRenderComplete = false;
+                } else if (tile.mTileState != STATE_DECODE_FAIL) {
                     mRenderComplete = false;
                     queueForDecode(tile);
                 }
