@@ -30,6 +30,7 @@
 package com.android.gallery3d.filtershow.category;
 
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -38,6 +39,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.android.gallery3d.filtershow.FilterShowActivity;
 import org.codeaurora.gallery.R;
 
 public class BasicGeometryPanel extends Fragment {
@@ -54,8 +56,15 @@ public class BasicGeometryPanel extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mMainView = inflater.inflate(R.layout.filtershow_category_geometry_panel, container, false);
-        mEditorName = (TextView) mMainView.findViewById(R.id.editor_name);
+        FilterShowActivity activity = (FilterShowActivity) getActivity();
+        if (isLandscape() && activity.isShowEditCropPanel()) {
+            mMainView = inflater.inflate(R.layout.filtershow_editor_crop_landscape,
+                    container, false);
+        } else {
+            mMainView = inflater.inflate(R.layout.filtershow_category_geometry_panel,
+                    container, false);
+            mEditorName = (TextView) mMainView.findViewById(R.id.editor_name);
+        }
 
         initButtons();
         initTexts();
@@ -90,5 +99,11 @@ public class BasicGeometryPanel extends Fragment {
                 mMainView.findViewById(R.id.centerPanel),
                 mMainView.findViewById(R.id.rightPanel)
         };
+    }
+
+    protected boolean isLandscape() {
+        Configuration mConfiguration = this.getResources().getConfiguration();
+        return mConfiguration.orientation == Configuration.ORIENTATION_LANDSCAPE ?
+                true : false;
     }
 }

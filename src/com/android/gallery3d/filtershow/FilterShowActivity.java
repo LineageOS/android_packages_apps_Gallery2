@@ -92,7 +92,6 @@ import com.android.gallery3d.filtershow.category.StraightenPanel;
 import com.android.gallery3d.filtershow.category.SwipableView;
 import com.android.gallery3d.filtershow.category.TrueScannerPanel;
 import com.android.gallery3d.filtershow.data.UserPresetsManager;
-import com.android.gallery3d.filtershow.editors.BasicEditor;
 import com.android.gallery3d.filtershow.editors.Editor;
 import com.android.gallery3d.filtershow.editors.EditorCrop;
 import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
@@ -214,7 +213,9 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     private ImageButton imgComparison;
     private String mPopUpText, mCancel;
     RelativeLayout rlImageContainer;
+    private int mEditrCropButtonSelect = 0;
     private boolean isComingFromEditorScreen;
+    private boolean mIsReloadByConfigurationChanged;
     private AlertDialog.Builder mBackAlertDialogBuilder;
 
     private ProgressDialog mLoadingDialog;
@@ -376,19 +377,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
         final int currentId = currentEditor.getID();
         if (currentId == EditorCrop.ID) {
-            new Runnable() {
-                @Override
-                public void run() {
-                    EditorCropPanel panel = new EditorCropPanel();
-                    FragmentTransaction transaction =
-                            getSupportFragmentManager().beginTransaction();
-                    transaction.remove(getSupportFragmentManager().findFragmentByTag(
-                            MainPanel.FRAGMENT_TAG));
-                    transaction.replace(R.id.main_panel_container, panel,
-                            MainPanel.FRAGMENT_TAG);
-                    transaction.commit();
-                }
-            }.run();
+            loadEditorCropPanel();
             return;
         }
         if (useStraightenPanel(currentId)) {
@@ -462,6 +451,22 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
 
     private boolean useStraightenPanel(int EditorID) {
         return (EditorID == EditorStraighten.ID || EditorID == HazeBusterEditor.ID || EditorID == SeeStraightEditor.ID);
+    }
+
+    private void loadEditorCropPanel() {
+        new Runnable() {
+            @Override
+            public void run() {
+                EditorCropPanel panel = new EditorCropPanel();
+                FragmentTransaction transaction =
+                        getSupportFragmentManager().beginTransaction();
+                transaction.remove(getSupportFragmentManager().findFragmentByTag(
+                        MainPanel.FRAGMENT_TAG));
+                transaction.replace(R.id.main_panel_container, panel,
+                        MainPanel.FRAGMENT_TAG);
+                transaction.commit();
+            }
+        }.run();
     }
 
     public void leaveSeekBarPanel() {
@@ -1729,6 +1734,10 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         super.onConfigurationChanged(newConfig);
 
         setDefaultValues();
+        if (isShowEditCropPanel()) {
+            mIsReloadByConfigurationChanged = true;
+            loadEditorCropPanel();
+        }
         if (mMasterImage == null) {
             return;
         }
@@ -1809,6 +1818,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         if (currentPanel instanceof MainPanel) {
             return;
         }
+        mIsReloadByConfigurationChanged = false;
         loadMainPanel();
         showDefaultImageView();
         showComparisonButton();
@@ -2021,4 +2031,29 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     public void setScaleImage(boolean isScaled) {
         mImageShow.scaleImage(isScaled, getBaseContext());
     }
+
+    public void saveEditorCropState(int select) {
+        mEditrCropButtonSelect = select;
+    }
+
+    public boolean isReloadByConfigurationChanged() {
+        return mIsReloadByConfigurationChanged;
+    }
+
+    public boolean isShowEditCropPanel() {
+        if (mCurrentEditor == null) {
+            return false;
+        }
+        Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(
+                MainPanel.FRAGMENT_TAG);
+        if (currentPanel instanceof MainPanel) {
+            return false;
+        }
+        return mCurrentEditor.getID() == EditorCrop.ID;
+    }
+
+    public int getEditorCropButtonSelect() {
+        return mEditrCropButtonSelect;
+    }
+
 }

@@ -188,6 +188,8 @@
     <dimen name="slot_width_album">116dp</dimen>
     <dimen name="slot_height_album">116dp</dimen>
     <dimen name="crop_icon_size">30dp</dimen>
+    <dimen name="crop_icon_size_landscape">24dp</dimen>
+    <dimen name="crop_panel_height_lanscape">60dp</dimen>
     <dimen name="crop_icon_margin_padding">20dp</dimen>
     <dimen name="crop_text_margin_padding">6dp</dimen>
     <dimen name="crop_rect_stroke">2dp</dimen>

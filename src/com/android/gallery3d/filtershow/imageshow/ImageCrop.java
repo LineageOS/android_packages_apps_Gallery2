@@ -28,13 +28,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.crop.CropDrawingUtils;
 import com.android.gallery3d.filtershow.crop.CropMath;
 import com.android.gallery3d.filtershow.crop.CropObject;
 import com.android.gallery3d.filtershow.editors.EditorCrop;
 import com.android.gallery3d.filtershow.filters.FilterCropRepresentation;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils.GeometryHolder;
+import org.codeaurora.gallery.R;
 
 public class ImageCrop extends ImageShow {
     private static final String TAG = ImageCrop.class.getSimpleName();
@@ -232,9 +233,11 @@ public class ImageCrop extends ImageShow {
     private void forceStateConsistency() {
         MasterImage master = MasterImage.getImage();
         Bitmap image = master.getFiltersOnlyImage();
+        FilterShowActivity filterShowActivity = (FilterShowActivity) getContext();
+        boolean isReload = filterShowActivity.isReloadByConfigurationChanged();
         int width = image.getWidth();
         int height = image.getHeight();
-        if (mCropObj == null || !mUpdateHolder.equals(mGeometry)
+        if (mCropObj == null || (!mUpdateHolder.equals(mGeometry) && !isReload)
                 || mImageBounds.width() != width || mImageBounds.height() != height
                 || !mLocalRep.getCrop().equals(mUpdateHolder.crop)) {
             mImageBounds.set(0, 0, width, height);
@@ -251,7 +254,12 @@ public class ImageCrop extends ImageShow {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        clearDisplay();
+        FilterShowActivity filterShowActivity = (FilterShowActivity) getContext();
+        if (filterShowActivity.isShowEditCropPanel()) {
+            updateMatrix(w, h);
+        } else {
+            clearDisplay();
+        }
     }
 
     @Override
@@ -270,8 +278,13 @@ public class ImageCrop extends ImageShow {
         if (mDisplayCropMatrix == null || mDisplayMatrix == null || mDisplayMatrixInverse == null) {
             mCropObj.unsetAspectRatio();
             Resources res = getContext().getResources();
-            int panelHeight = res.getDimensionPixelOffset(R.dimen.category_panel_height) +
-                    res.getDimensionPixelOffset(R.dimen.category_actionbar_panel_height);
+            int panelHeight = 0;
+            if (canvas.getWidth() < canvas.getHeight()) {
+                panelHeight = res.getDimensionPixelOffset(R.dimen.category_panel_height) +
+                        res.getDimensionPixelOffset(R.dimen.category_actionbar_panel_height);
+            } else {
+                panelHeight = res.getDimensionPixelOffset(R.dimen.crop_panel_height_lanscape);
+            }
             mDisplayMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
                     bitmap.getWidth(), bitmap.getHeight(), canvas.getWidth(),
                     canvas.getHeight() - panelHeight);
@@ -330,5 +343,33 @@ public class ImageCrop extends ImageShow {
 
     public void setEditor(EditorCrop editorCrop) {
         mEditorCrop = editorCrop;
+    }
+
+    private void updateMatrix(int w, int h) {
+        Bitmap bitmap = MasterImage.getImage().getFiltersOnlyImage();
+        if (bitmap == null) {
+            MasterImage.getImage().invalidateFiltersOnly();
+        }
+        if (!mValidDraw || bitmap == null) {
+            return;
+        }
+        Resources res = getContext().getResources();
+        int panelHeight = 0;
+        if (w < h) {
+            panelHeight = res.getDimensionPixelOffset(R.dimen.category_panel_height) +
+                    res.getDimensionPixelOffset(R.dimen.category_actionbar_panel_height);
+        } else {
+            panelHeight = res.getDimensionPixelOffset(R.dimen.crop_panel_height_lanscape);
+        }
+        mDisplayMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
+                bitmap.getWidth(), bitmap.getHeight(), w, h - panelHeight);
+        mDisplayCropMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
+                bitmap.getWidth(), bitmap.getHeight(), w, h - panelHeight);
+        mDisplayMatrixInverse = new Matrix();
+        mDisplayMatrixInverse.reset();
+        if (!mDisplayCropMatrix.invert(mDisplayMatrixInverse)) {
+            Log.w(TAG, "could not invert display matrix");
+            mDisplayMatrixInverse = null;
+        }
     }
 }
