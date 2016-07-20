@@ -162,6 +162,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     private int mCameraIndex;
     private boolean mIsPanorama;
     private boolean mIsStaticCamera;
+    private boolean mIsFromTimelineScreen;
     private boolean mIsActive;
     private boolean mNeedFullImage;
     private int mFocusHintDirection = FOCUS_HINT_NEXT;
@@ -187,7 +188,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     // preview. If cameraIndex < 0, there is no camera preview.
     public PhotoDataAdapter(AbstractGalleryActivity activity, PhotoView view,
             MediaSet mediaSet, Path itemPath, int indexHint, int cameraIndex,
-            boolean isPanorama, boolean isStaticCamera) {
+            boolean isPanorama, boolean isStaticCamera, boolean isFromTimelineScreen) {
         mActivity = activity;
         mSource = Utils.checkNotNull(mediaSet);
         mPhotoView = Utils.checkNotNull(view);
@@ -196,6 +197,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         mCameraIndex = cameraIndex;
         mIsPanorama = isPanorama;
         mIsStaticCamera = isStaticCamera;
+        mIsFromTimelineScreen = isFromTimelineScreen;
         mThreadPool = activity.getThreadPool();
         mNeedFullImage = true;
 
@@ -1307,6 +1309,9 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                 }
                 mDirty = false;
                 version = mSource.reload();
+                if (mIsFromTimelineScreen) {
+                    mSource.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
+                }
                 //if data is not ready, continue to reload
                 if (version == MediaObject.INVALID_DATA_VERSION) {
                     continue;
