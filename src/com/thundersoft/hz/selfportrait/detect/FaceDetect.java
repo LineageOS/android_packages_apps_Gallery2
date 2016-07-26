@@ -24,7 +24,7 @@ import android.util.Log;
 public class FaceDetect {
     private static final String TAG = "FaceDetect";
 
-    private int mHandle = 0;
+    private long mHandle = 0;
 
     static {
         try {
@@ -71,9 +71,9 @@ public class FaceDetect {
         return res;
     }
 
-    private static native int native_create();
-    private static native void native_destroy(int handle);
-    private static native int native_detect(int handle, Bitmap bmp);
-    private static native int native_face_info(int handle, int index, Rect face, Rect eye1,
+    private static native long native_create();
+    private static native void native_destroy(long handle);
+    private static native int native_detect(long handle, Bitmap bmp);
+    private static native int native_face_info(long handle, int index, Rect face, Rect eye1,
             Rect eye2, Rect mouth);
 }
