@@ -507,7 +507,8 @@ public abstract class PhotoPage extends ActivityState implements
                     mActivity, mPhotoView, mMediaSet, itemPath, mCurrentIndex,
                     mAppBridge == null ? -1 : 0,
                     mAppBridge == null ? false : mAppBridge.isPanorama(),
-                    mAppBridge == null ? false : mAppBridge.isStaticCamera());
+                    mAppBridge == null ? false : mAppBridge.isStaticCamera(),
+                    mIsFromTimelineScreen);
             mModel = pda;
             mPhotoView.setModel(mModel);
 
