@@ -484,6 +484,32 @@ public final class GeometryMathUtils {
         return m;
     }
 
+    public static Matrix getSegMatrix(GeometryHolder holder, int bitmapWidth,
+                                      int bitmapHeight, int viewWidth, int viewHeight
+            , int oldw, int oldh) {
+        int bh = bitmapHeight;
+        int bw = bitmapWidth;
+        if (GeometryMathUtils.needsDimensionSwap(holder.rotation)) {
+            bh = bitmapWidth;
+            bw = bitmapHeight;
+        }
+        float oldScale = GeometryMathUtils.scale(bw, bh, oldw, oldh);
+        if (oldScale > 3.0f) {
+            oldScale = 3.0f;
+        }
+        oldScale *= SHOW_SCALE;
+        float scale = GeometryMathUtils.scale(bw, bh, viewWidth, viewHeight);
+        if (scale > 3.0f) {
+            scale = 3.0f;
+        }
+        scale *= SHOW_SCALE;
+        Matrix m = new Matrix();
+        m.setTranslate(-oldw / 2f, -oldh / 2f);
+        m.postScale(scale / oldScale, scale / oldScale);
+        m.postTranslate(viewWidth / 2f, viewHeight / 2f);
+        return m;
+    }
+
     public static RectF getTrueCropRect(GeometryHolder holder, int bitmapWidth, int bitmapHeight) {
         RectF r = new RectF(holder.crop);
         FilterCropRepresentation.findScaledCrop(r, bitmapWidth, bitmapHeight);
