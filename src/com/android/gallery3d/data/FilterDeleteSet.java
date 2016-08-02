@@ -35,6 +35,8 @@ public class FilterDeleteSet extends MediaSet implements ContentListener {
     private static final int REQUEST_REMOVE = 2;
     private static final int REQUEST_CLEAR = 3;
 
+    private boolean mIsLoading;
+
     private static class Request {
         int type;  // one of the REQUEST_* constants
         Path path;
@@ -141,12 +143,21 @@ public class FilterDeleteSet extends MediaSet implements ContentListener {
         return base;
     }
 
+    @Override
+    public boolean isLoading() {
+        return mIsLoading;
+    }
+
     // We apply the pending requests in the mRequests to construct mCurrent in reload().
     @Override
     public long reload() {
+        mIsLoading = true;
         boolean newData = mBaseSet.reload() > mDataVersion;
         synchronized (mRequests) {
             if (!newData && mRequests.isEmpty()) {
+                if (!mBaseSet.isLoading()) {
+                    mIsLoading = false;
+                }
                 return mDataVersion;
             }
             for (int i = 0; i < mRequests.size(); i++) {
@@ -220,6 +231,9 @@ public class FilterDeleteSet extends MediaSet implements ContentListener {
         }
 
         mDataVersion = nextVersionNumber();
+        if (!mBaseSet.isLoading()) {
+            mIsLoading = false;
+        }
         return mDataVersion;
     }
 
