@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2013 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,93 +13,99 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:padding="?android:attr/dialogPreferredPadding" >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:textSize="16sp"
-        android:textColor="@color/albumset_label_background"
-        android:text="@string/select_output_settings"/>
-
-    <GridLayout
-        android:orientation="horizontal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alignmentMode="alignBounds"
-        android:layout_marginTop="8dp"
-        android:columnOrderPreserved="false"
-        android:columnCount="5">
+        android:orientation="vertical"
+        android:padding="?android:attr/dialogPreferredPadding">
 
         <TextView
-                android:text="@string/size"
-                android:layout_marginEnd="8dp"
-                android:layout_gravity="start|center_vertical"
-                android:textSize="16sp"
-                android:textColor="@color/albumlist_label_title"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="@string/select_output_settings"
+            android:textColor="@color/albumset_label_background"
+            android:textSize="16sp" />
 
-        <EditText
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:alignmentMode="alignBounds"
+            android:columnCount="5"
+            android:columnOrderPreserved="false"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="@string/size"
+                android:textColor="@color/albumlist_label_title"
+                android:textSize="16sp" />
+
+            <EditText
                 android:id="@+id/editableWidth"
+                android:layout_width="70dp"
                 android:layout_gravity="right|center_vertical"
                 android:gravity="center"
-                android:layout_width="70dp"
-                android:inputType="number"/>
-
-        <TextView
-                android:text="@string/x"
-                android:layout_gravity="center"
-                android:textColor="@color/albumlist_label_title"/>
-
-        <EditText
-                android:id="@+id/editableHeight"
-                android:layout_gravity="left|center_vertical"
-                android:layout_width="70dp"
-                android:gravity="center"
-                android:inputType="number"/>
-
-        <TextView
-                android:id="@+id/estimadedSize"
-                android:layout_gravity="end|center_vertical"
-                android:textSize="16sp"
-                android:textColor="@color/albumlist_label_title"/>
-
-        <LinearLayout
-                android:layout_columnSpan="5"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:inputType="number" />
 
             <TextView
-                android:text="@string/quality"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:text="@string/x"
                 android:textColor="@color/albumlist_label_title" />
 
-            <SeekBar
-                android:id="@+id/qualitySeekBar"
-                android:layout_gravity="center"
-                android:max="100"
-                android:progress="100"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_columnSpan="3"
-                android:minWidth="250dp" />
+            <EditText
+                android:id="@+id/editableHeight"
+                android:layout_width="70dp"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="center"
+                android:inputType="number" />
 
             <TextView
-                android:id="@+id/qualityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:id="@+id/estimadedSize"
+                android:layout_gravity="end|center_vertical"
                 android:textColor="@color/albumlist_label_title"
-                android:layout_gravity="end|center_vertical" />
-        </LinearLayout>
-    </GridLayout>
-</LinearLayout>
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="5"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="@string/quality"
+                    android:textColor="@color/albumlist_label_title"
+                    android:textSize="16sp" />
+
+                <SeekBar
+                    android:id="@+id/qualitySeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="3"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:minWidth="250dp"
+                    android:progress="100" />
+
+                <TextView
+                    android:id="@+id/qualityTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:textColor="@color/albumlist_label_title"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+
+</ScrollView>
+
