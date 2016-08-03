@@ -58,7 +58,7 @@ public class ImageTrueScanner extends ImageShow {
     private Matrix mDisplayMatrix;
     private GeometryMathUtils.GeometryHolder mGeometry;
     public final static int POINT_NUMS = 4;
-    private static int[] mSegPoints = new int[POINT_NUMS*2+4];
+    private static float[] mSegPoints = new float[POINT_NUMS*2+4];
     private boolean[] isTouched = new boolean[POINT_NUMS];
     private RectF mBitmapBound = new RectF();
     private Bitmap mBitmap;
@@ -77,6 +77,9 @@ public class ImageTrueScanner extends ImageShow {
     private Paint mGrayPaint;
     private Bitmap mGlareButtonOnBitmap;
     private Bitmap mGlareButtonOffBitmap;
+    private boolean updateGlareRemovalButton = false;
+    private Matrix mDisplaySegPointsMatrix;
+    private Matrix mDisplayMatrixInverse;
 
     public ImageTrueScanner(Context context) {
         super(context);
@@ -94,7 +97,11 @@ public class ImageTrueScanner extends ImageShow {
     }
 
     public static int[] getDeterminedPoints() {
-        return mSegPoints;
+        int[] points = new int[mSegPoints.length];
+        for (int i = 0; i < mSegPoints.length; i++) {
+            points[i] = (int)mSegPoints[i];
+        }
+        return points;
     }
 
     public static boolean getRemoveGlareButtonStatus() {
@@ -219,6 +226,28 @@ public class ImageTrueScanner extends ImageShow {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        updateMatrix(w,h,oldw, oldh);
+        mDisplaySegPointsMatrix.mapPoints(mSegPoints);
+        getBitmapBound();
+        updateGlareRemovalButton = true;
+    }
+
+    private void updateMatrix(int w, int h, int oldw, int oldh) {
+        if (mBitmap == null) {
+            return;
+        }
+        Resources res = getContext().getResources();
+        int panelHeight =  res.getDimensionPixelOffset(R.dimen.category_actionbar_panel_height);
+        mDisplayMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
+                mBitmap.getWidth(), mBitmap.getHeight(), w, h - panelHeight);
+        mDisplaySegPointsMatrix = GeometryMathUtils.getSegMatrix(mGeometry, mBitmap.getWidth(),
+                mBitmap.getHeight(), w, h - panelHeight, oldw, oldh- panelHeight);
+        mDisplayMatrixInverse = new Matrix();
+        mDisplayMatrixInverse.reset();
+        if (!mDisplaySegPointsMatrix.invert(mDisplayMatrixInverse)) {
+            Log.w(TAG, "could not invert display matrix");
+            mDisplayMatrixInverse = null;
+        }
     }
 
     private void getBitmapBound() {
@@ -283,9 +312,20 @@ public class ImageTrueScanner extends ImageShow {
             return;
         toggleComparisonButtonVisibility();
 
-        if(mDisplayMatrix == null) {
+        if(mDisplayMatrix == null || mDisplaySegPointsMatrix == null
+                || mDisplayMatrixInverse == null) {
             mDisplayMatrix = GeometryMathUtils.getFullGeometryToScreenMatrix(mGeometry,
                     mBitmap.getWidth(), mBitmap.getHeight(), canvas.getWidth(), canvas.getHeight());
+            mDisplaySegPointsMatrix = GeometryMathUtils.getSegMatrix(mGeometry,
+                    mBitmap.getWidth(), mBitmap.getHeight(), canvas.getWidth(),
+                    canvas.getHeight(),canvas.getWidth(), canvas.getHeight());
+            mDisplayMatrixInverse = new Matrix();
+            mDisplayMatrixInverse.reset();
+            if (!mDisplaySegPointsMatrix.invert(mDisplayMatrixInverse)) {
+                Log.w(TAG, "could not invert display matrix");
+                mDisplayMatrixInverse = null;
+                return;
+            }
             getBitmapBound();
         }
         if(!isDetectedPointsApplied) {
@@ -308,9 +348,10 @@ public class ImageTrueScanner extends ImageShow {
     }
 
     private void drawGlareRemovalButton(Canvas canvas) {
-        if(mGlareButtonX == -1000 && mGlareButtonY == -1000) {
+        if(mGlareButtonX == -1000 && mGlareButtonY == -1000 || updateGlareRemovalButton) {
             mGlareButtonX = canvas.getWidth()/2;
             mGlareButtonY = canvas.getHeight()*1/5;
+            updateGlareRemovalButton = false;
         }
         RectF rectF = new RectF();
         Bitmap bitmap;
