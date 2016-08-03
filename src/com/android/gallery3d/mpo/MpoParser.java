@@ -37,6 +37,8 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -62,12 +64,13 @@ public class MpoParser {
     private int mMpHeaderOffset;
     private int mIfd1Offset;
     private int mMpEntryOffset;
-    private MpEntry mPrimaryEntry;
-    private MpEntry mSecondaryEntry;
+    private HashMap<Short, MpoTag> mTags = new HashMap<Short, MpoTag>();
+    private ArrayList<MpEntry> mMpEntries = new ArrayList<MpEntry>();
 
     private MpoParser(Context context, Uri uri) {
         mContentResolver = context.getContentResolver();
         mUri = uri;
+        mTags.clear();
 
         InputStream is = null;
         try {
@@ -136,41 +139,61 @@ public class MpoParser {
         mDataStream.skipTo(mIfd1Offset);
         int count = mDataStream.readShort();
         // add 6 (2 for count, 4 for offset to next IFD)
+        for(int i=0; i<count; i++) {
+            MpoTag tag = readMpoTag();
+            mTags.put(tag.mId, tag);
+        }
+
         mMpEntryOffset = mIfd1Offset + (count*MP_INDEX_FIELD_SIZE_BYTES) + 6;
     }
 
-    private MpEntry readMpEntryData() {
-        try {
-            mDataStream.skipTo(mMpEntryOffset);
+    private MpoTag readMpoTag() throws IOException {
+        MpoTag tag = new MpoTag();
+        tag.mId = mDataStream.readShort();
+        tag.mType = mDataStream.readShort();
+        tag.mCount = mDataStream.readInt();
+        tag.mData = mDataStream.readInt();
+        return tag;
+    }
 
-            mPrimaryEntry = new MpEntry();
-            mPrimaryEntry.mImgAttribute = mDataStream.readInt();
-            mPrimaryEntry.mImgSize = mDataStream.readInt();
-            mPrimaryEntry.mImgDataOffset = mDataStream.readInt();
-            mPrimaryEntry.mDepImg1Entry = mDataStream.readShort();
-            mPrimaryEntry.mDepImg2Entry = mDataStream.readShort();
+    private void readMpEntryData() throws IOException {
+        MpoTag numImagesTag = mTags.get((short)0xB001);
+        int numImages = numImagesTag.mData;
 
-            mSecondaryEntry = new MpEntry();
-            mSecondaryEntry.mImgAttribute = mDataStream.readInt();
-            mSecondaryEntry.mImgSize = mDataStream.readInt();
-            mSecondaryEntry.mImgDataOffset = mDataStream.readInt();
-            mSecondaryEntry.mDepImg1Entry = mDataStream.readShort();
-            mSecondaryEntry.mDepImg2Entry = mDataStream.readShort();
-        } catch (IOException e) {
-            e.printStackTrace();
+        mDataStream.skipTo(mMpEntryOffset);
+
+        for(int i=0; i<numImages; i++) {
+            MpEntry mpEntry = new MpEntry();
+            mpEntry.mImgAttribute = mDataStream.readInt();
+            mpEntry.mImgSize = mDataStream.readInt();
+            mpEntry.mImgDataOffset = mDataStream.readInt();
+            mpEntry.mDepImg1Entry = mDataStream.readShort();
+            mpEntry.mDepImg2Entry = mDataStream.readShort();
+            mMpEntries.add(mpEntry);
         }
-
-        return mPrimaryEntry;
     }
 
     public byte[] readImgData(boolean primary) {
         MpEntry mpEntry = null;
         byte[] data = null;
 
+        if(mMpEntries.size() < 2){
+            // not enough entries were read.
+            return null;
+        }
+
         if(primary) {
-            mpEntry = mPrimaryEntry;
+            if(mMpEntries.size() > 2) {
+                mpEntry = mMpEntries.get(1);
+            } else {
+                mpEntry = mMpEntries.get(0);
+            }
         } else {
-            mpEntry = mSecondaryEntry;
+            if(mMpEntries.size() > 2) {
+                mpEntry = mMpEntries.get(2);
+            } else {
+                mpEntry = mMpEntries.get(1);
+            }
         }
 
         if(mpEntry == null)
@@ -288,4 +311,12 @@ public class MpoParser {
         short mDepImg1Entry;
         short mDepImg2Entry;
     }
+
+    class MpoTag {
+        short mId;
+        short mType;
+        int mCount;
+        int mData;
+    }
 }
+
