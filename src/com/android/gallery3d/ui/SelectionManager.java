@@ -17,6 +17,9 @@
 package com.android.gallery3d.ui;
 
 import com.android.gallery3d.app.AbstractGalleryActivity;
+import com.android.gallery3d.app.AlbumSetDataLoader;
+import com.android.gallery3d.app.TimeLineDataLoader;
+import com.android.gallery3d.data.ContentListener;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;
 import com.android.gallery3d.data.MediaObject;
@@ -27,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SelectionManager {
+public class SelectionManager implements TimeLineDataLoader.DataListener, AlbumSetDataLoader.DataListener{
     @SuppressWarnings("unused")
     private static final String TAG = "SelectionManager";
 
@@ -47,6 +50,26 @@ public class SelectionManager {
     /** mTotalSelectable is the count of items
      * exclude not selectable such as Title item in TimeLine. */
     private int mTotalSelectable;
+    private TimeLineDataLoader mTimeLineDataLoader;
+    private AlbumSetDataLoader mAlbumSetDataLoader;
+
+    @Override
+    public void onContentChanged(int index) {
+    }
+
+    @Override
+    public void onSizeChanged(int size) {
+        if (mInverseSelection) {
+            selectAll();
+        }
+    }
+
+    @Override
+    public void onSizeChanged() {
+        if (mInverseSelection) {
+            selectAll();
+        }
+    }
 
     public interface SelectionListener {
         public void onSelectionModeChange(int mode);
@@ -99,6 +122,12 @@ public class SelectionManager {
 
         mInSelectionMode = true;
         if (mListener != null) mListener.onSelectionModeChange(ENTER_SELECTION_MODE);
+        if (mAlbumSetDataLoader != null) {
+            mAlbumSetDataLoader.setModelListener(this);
+        }
+        if (mTimeLineDataLoader != null) {
+            mTimeLineDataLoader.setDataListener(this);
+        }
     }
 
     public void leaveSelectionMode() {
@@ -108,6 +137,12 @@ public class SelectionManager {
         mInverseSelection = false;
         mClickedSet.clear();
         if (mListener != null) mListener.onSelectionModeChange(LEAVE_SELECTION_MODE);
+        if (mAlbumSetDataLoader != null) {
+            mAlbumSetDataLoader.removeModelListener(this);
+        }
+        if (mTimeLineDataLoader != null) {
+            mTimeLineDataLoader.removeDataListener(this);
+        }
     }
 
     public boolean isItemSelected(Path itemId) {
@@ -292,5 +327,13 @@ public class SelectionManager {
     public void setSourceMediaSet(MediaSet set) {
         mSourceMediaSet = set;
         mTotal = -1;
+    }
+
+    public void setTimeLineDataLoader(TimeLineDataLoader loader) {
+        mTimeLineDataLoader = loader;
+    }
+
+    public void setAlbumSetDataLoader(AlbumSetDataLoader loader) {
+        mAlbumSetDataLoader = loader;
     }
 }

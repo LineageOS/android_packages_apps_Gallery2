@@ -544,6 +544,7 @@ public class TimeLinePage extends ActivityState implements
         }
         mAlbumDataAdapter = new TimeLineDataLoader(mActivity, mMediaSet);
         mSelectionManager.setSourceMediaSet(mMediaSet);
+        mSelectionManager.setTimeLineDataLoader(mAlbumDataAdapter);
         //mSelectionManager.setAlbumDataAdapter(mAlbumDataAdapter);
         mAlbumDataAdapter.setLoadingListener(new MyLoadingListener());
         mAlbumView.setModel(mAlbumDataAdapter);

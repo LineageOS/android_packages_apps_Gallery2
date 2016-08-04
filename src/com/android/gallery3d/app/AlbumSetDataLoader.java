@@ -28,6 +28,7 @@ import com.android.gallery3d.data.MediaSet;
 import com.android.gallery3d.data.Path;
 import com.android.gallery3d.ui.SynchronizedHandler;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -66,7 +67,7 @@ public class AlbumSetDataLoader {
     private long mSourceVersion = MediaObject.INVALID_DATA_VERSION;
     private int mSize;
 
-    private DataListener mDataListener;
+    private ArrayList<DataListener> mDataListener = new ArrayList<>();
     private LoadingListener mLoadingListener;
     private ReloadTask mReloadTask;
 
@@ -224,7 +225,11 @@ public class AlbumSetDataLoader {
     }
 
     public void setModelListener(DataListener listener) {
-        mDataListener = listener;
+        mDataListener.add(listener);
+    }
+
+    public void removeModelListener(DataListener listener) {
+        mDataListener.remove(listener);
     }
 
     public void setLoadingListener(LoadingListener listener) {
@@ -287,7 +292,10 @@ public class AlbumSetDataLoader {
             mSourceVersion = info.version;
             if (mSize != info.size) {
                 mSize = info.size;
-                if (mDataListener != null) mDataListener.onSizeChanged(mSize);
+                if (mDataListener != null)
+                    for (DataListener l : mDataListener) {
+                        l.onSizeChanged(mSize);
+                    }
                 if (mContentEnd > mSize) mContentEnd = mSize;
                 if (mActiveEnd > mSize) mActiveEnd = mSize;
             }
@@ -303,7 +311,9 @@ public class AlbumSetDataLoader {
                 mTotalCount[pos] = info.totalCount;
                 if (mDataListener != null
                         && info.index >= mActiveStart && info.index < mActiveEnd) {
-                    mDataListener.onContentChanged(info.index);
+                    for (DataListener l : mDataListener) {
+                        l.onContentChanged(info.index);
+                    }
                 }
             }
             return null;

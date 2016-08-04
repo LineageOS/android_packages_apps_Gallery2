@@ -68,7 +68,7 @@ public class TimeLineDataLoader {
     private final Handler mMainHandler;
     private int mSize = 0;
 
-    private DataListener mDataListener;
+    private ArrayList<DataListener> mDataListener = new ArrayList<>();
     private MySourceListener mSourceListener = new MySourceListener();
     private LoadingListener mLoadingListener;
 
@@ -240,7 +240,11 @@ public class TimeLineDataLoader {
     }
 
     public void setDataListener(DataListener listener) {
-        mDataListener = listener;
+        mDataListener.add(listener);
+    }
+
+    public void removeDataListener(DataListener listener) {
+        mDataListener.remove(listener);
     }
 
     public void setLoadingListener(LoadingListener listener) {
@@ -313,7 +317,10 @@ public class TimeLineDataLoader {
             mSourceVersion = info.version;
             if (mSize != info.size) {
                 mSize = info.size;
-                if (mDataListener != null) mDataListener.onSizeChanged();
+                if (mDataListener != null)
+                    for (DataListener l : mDataListener) {
+                        l.onSizeChanged();
+                    }
                 if (mContentEnd > mSize) mContentEnd = mSize;
                 if (mActiveEnd > mSize) mActiveEnd = mSize;
             }
@@ -341,7 +348,9 @@ public class TimeLineDataLoader {
                         mItemVersion[index] = itemVersion;
                         mData[index] = updateItem;
                         if (mDataListener != null && i >= mActiveStart && i < mActiveEnd) {
-                            mDataListener.onContentChanged(i);
+                            for (DataListener l : mDataListener) {
+                                l.onContentChanged(i);
+                            }
                         }
                     }
                }
