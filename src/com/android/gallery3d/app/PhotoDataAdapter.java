@@ -1308,6 +1308,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                     }
                 }
                 mDirty = false;
+
                 version = mSource.reload();
                 if (mIsFromTimelineScreen) {
                     mSource.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
@@ -1315,6 +1316,12 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                 //if data is not ready, continue to reload
                 if (version == MediaObject.INVALID_DATA_VERSION) {
                     continue;
+                }
+                if (mSource.isLoading()) {
+                    mDirty = true;
+                    continue;
+                } else {
+                    mSourceVersion = version;
                 }
                 UpdateInfo info = executeAndWait(new GetUpdateInfo());
                 updateLoading(true);
@@ -1331,9 +1338,9 @@ public class PhotoDataAdapter implements PhotoPage.Model {
 
                 if (info.version != version) {
                     info.reloadContent = true;
-                    info.size = mSource.getMediaItemCount();
                 }
                 if (!info.reloadContent) continue;
+                info.size = mSource.getMediaItemCount();
 
                 // Check it is from camera or not
                 boolean isCameraFlag = false;
@@ -1436,7 +1443,10 @@ public class PhotoDataAdapter implements PhotoPage.Model {
 
                 // Don't change index if mSize == 0
                 if (mSize > 0) {
-                    if (index >= mSize) index = mSize - 1;
+                    // Due to the set identification and new photo, photos
+                    // in the last two positions disappear in the temp info.items.
+                    // Don't change index in such a situation.
+                    if (index >= mSize + 2) index = mSize - 1;
                 }
 
                 info.indexHint = index;

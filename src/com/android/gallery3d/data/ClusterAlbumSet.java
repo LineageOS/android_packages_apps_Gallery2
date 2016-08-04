@@ -32,6 +32,7 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     private MediaSet mBaseSet;
     private int mKind;
     private ArrayList<ClusterAlbum> mAlbums = new ArrayList<ClusterAlbum>();
+    private boolean mIsLoading;
 
     private int mTotalMediaItemCount;
     /** mTotalSelectableMediaItemCount is the count of items
@@ -64,11 +65,18 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     }
 
     @Override
+    public synchronized boolean isLoading() {
+        return mIsLoading;
+    }
+
+    @Override
     public long reload() {
         synchronized (this) {
             long version = mBaseSet.reload();
-            if (version > mDataVersion && !mBaseSet.isLoading()) {
+            mIsLoading = mBaseSet.isLoading();
+            if (version > mDataVersion && !mIsLoading) {
                 updateClusters();
+                mIsLoading = false;
                 mDataVersion = nextVersionNumber();
             }
             if (mKind == ClusterSource.CLUSTER_ALBUMSET_TIME) {
