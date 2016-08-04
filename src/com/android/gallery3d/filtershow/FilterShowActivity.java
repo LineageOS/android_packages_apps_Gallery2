@@ -134,6 +134,8 @@ import com.android.gallery3d.util.GalleryUtils;
 import com.android.photos.data.GalleryBitmapPool;
 import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;
 
+import static android.app.Activity.RESULT_OK;
+
 public class FilterShowActivity extends FragmentActivity implements OnItemClickListener,
         OnShareTargetSelectedListener, DialogInterface.OnShowListener,
         DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
@@ -249,7 +251,8 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 long requestId = bundle.getLong(ProcessingService.KEY_REQUEST_ID);
                 //only handle own request
                 if (requestId == mRequestId) {
-                    Uri saveUri = Uri.parse(bundle.getString(ProcessingService.KEY_URL));
+                    String url = bundle.getString(ProcessingService.KEY_URL);
+                    Uri saveUri = url == null ? null : Uri.parse(url);
                     boolean releaseDualCam = bundle.getBoolean(ProcessingService.KEY_DUALCAM);
                     completeSaveImage(saveUri, releaseDualCam);
                 }

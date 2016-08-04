@@ -1434,7 +1434,11 @@ public abstract class PhotoPage extends ActivityState implements
         mRecenterCameraOnResume = false;
         switch (requestCode) {
             case REQUEST_EDIT:
-                setCurrentPhotoByIntent(data);
+                if (data.getData() == null) {
+                    onUpPressed();
+                } else {
+                    setCurrentPhotoByIntent(data);
+                }
                 break;
          /*case REQUEST_CROP:
                 if (resultCode == Activity.RESULT_OK) {

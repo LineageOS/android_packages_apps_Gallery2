@@ -285,7 +285,7 @@ public class ProcessingService extends Service {
         if (exit) {
             // terminate now
             Bundle bundle = new Bundle();
-            bundle.putString(KEY_URL, result.toString());
+            bundle.putString(KEY_URL, result == null ? null : result.toString());
             bundle.putLong(KEY_REQUEST_ID, requestId);
             bundle.putBoolean(KEY_DUALCAM, releaseDualCam);
             broadcastState(SAVE_IMAGE_COMPLETE_ACTION, bundle);
