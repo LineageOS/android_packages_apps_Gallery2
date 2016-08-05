@@ -1336,10 +1336,6 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                     info = executeAndWait(new GetUpdateInfo());
                 }
 
-                if (info.version != version) {
-                    info.reloadContent = true;
-                }
-                if (!info.reloadContent) continue;
                 info.size = mSource.getMediaItemCount();
 
                 // Check it is from camera or not
