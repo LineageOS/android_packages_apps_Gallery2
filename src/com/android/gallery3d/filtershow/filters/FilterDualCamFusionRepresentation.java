@@ -40,7 +40,7 @@ import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
 
 
-public class FilterDualCamFusionRepresentation extends FilterRepresentation {
+public class FilterDualCamFusionRepresentation extends FilterRepresentation implements FilterFusionRepresentation {
     private static final String LOGTAG = "FilterFusionRepresentation";
     public static final String SERIALIZATION_NAME = "FUSION";
 
@@ -112,6 +112,7 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation {
         return mPoint;
     }
 
+    @Override
     public void setUnderlay(Uri uri) {
         if(uri != null) {
             mUri = uri.toString();
@@ -120,6 +121,7 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation {
         }
     }
 
+    @Override
     public void setUnderlay(String uri) {
         if(uri != null)
             mUri = uri;
@@ -127,10 +129,12 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation {
             mUri = "";
     }
 
+    @Override
     public boolean hasUnderlay() {
         return (mUri != null) && (mUri.isEmpty() == false);
     }
 
+    @Override
     public String getUnderlay() {
         return mUri;
     }

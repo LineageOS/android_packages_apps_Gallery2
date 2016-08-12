@@ -20,7 +20,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
@@ -41,7 +40,7 @@ public class BasicSlider implements Control {
         mParameter = (ParameterInteger) parameter;
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout lp = (LinearLayout) inflater.inflate(
+        View lp = inflater.inflate(
                 R.layout.filtershow_seekbar, container, true);
         mSeekBar = (SeekBar) lp.findViewById(R.id.primarySeekBar);
         mSeekBar.setVisibility(View.VISIBLE);

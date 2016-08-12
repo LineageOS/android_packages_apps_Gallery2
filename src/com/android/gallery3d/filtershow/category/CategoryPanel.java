@@ -90,6 +90,14 @@ public class CategoryPanel extends Fragment implements View.OnClickListener {
                 activity.updateCategories();
                 break;
             }
+            case MainPanel.TRUEPORTRAIT: {
+                mAdapter = activity.getCategoryTruePortraitAdapter();
+                if (mAdapter != null) {
+                    mAdapter.initializeSelection(MainPanel.TRUEPORTRAIT);
+                }
+                activity.updateCategories();
+                break;
+            }
             case MainPanel.TRUESCANNER: {
                 mAdapter = activity.getCategoryTrueScannerAdapter();
                 if (mAdapter != null) {

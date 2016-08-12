@@ -140,9 +140,9 @@ public class EditorGrad extends ParametricEditor
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
+    public void setEditPanelUI(View editControl) {
         if (ParametricEditor.useCompact(mContext)) {
-            super.setUtilityPanelUI(actionButton, editControl);
+            super.setEditPanelUI(editControl);
             return;
         }
         mSeekBar = (SeekBar) editControl.findViewById(R.id.primarySeekBar);

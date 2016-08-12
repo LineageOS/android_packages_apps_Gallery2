@@ -30,6 +30,7 @@ import android.widget.ListAdapter;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.filters.FilterDrawRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.pipeline.RenderingRequest;
@@ -121,6 +122,16 @@ public class Action implements RenderingRequestCaller {
         if (getType() == Action.ADD_ACTION) {
             return;
         }
+
+        if(mRepresentation.getOverlayOnly()) {
+            mImageFrame = imageFrame;
+            int w = mImageFrame.width();
+            int h = mImageFrame.height();
+            mImage = MasterImage.getImage().getBitmapCache().getBitmap(w, h, BitmapCache.ICON);
+            drawOverlay(true);
+            return;
+        }
+
         Bitmap temp = MasterImage.getImage().getTemporaryThumbnailBitmap();
         if (temp != null) {
             mImage = temp;
@@ -175,14 +186,7 @@ public class Action implements RenderingRequestCaller {
         canvas.drawBitmap(source, m, new Paint(Paint.FILTER_BITMAP_FLAG));
     }
 
-    @Override
-    public void available(RenderingRequest request) {
-        clearBitmap();
-        mImage = request.getBitmap();
-        if (mImage == null) {
-            mImageFrame = null;
-            return;
-        }
+    private void drawOverlay(boolean scale) {
         if (mRepresentation.getOverlayId() != 0 && mOverlayBitmap == null) {
             mOverlayBitmap = BitmapFactory.decodeResource(
                     mContext.getResources(),
@@ -196,9 +200,22 @@ public class Action implements RenderingRequestCaller {
             } else {
                 Canvas canvas = new Canvas(mImage);
                 canvas.drawARGB(128, 0, 0, 0);
-                drawCenteredImage(mOverlayBitmap, mImage, false);
+                drawCenteredImage(mOverlayBitmap, mImage, scale);
             }
         }
+    }
+
+    @Override
+    public void available(RenderingRequest request) {
+        clearBitmap();
+        mImage = request.getBitmap();
+        if (mImage == null) {
+            mImageFrame = null;
+            return;
+        }
+
+        drawOverlay(false);
+
         if (mAdapter != null) {
             mAdapter.notifyDataSetChanged();
         }

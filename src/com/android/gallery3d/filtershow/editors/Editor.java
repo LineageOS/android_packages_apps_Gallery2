@@ -16,10 +16,11 @@
 
 package com.android.gallery3d.filtershow.editors;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import android.content.Context;
 import android.content.res.Configuration;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,9 +41,6 @@ import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.ImageShow;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Base class for Editors Must contain a mImageShow and a top level view
@@ -102,6 +100,10 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
         return !showsSeekBar();
     }
 
+    public boolean showsActionBarControls() {
+        return showsActionBar();
+    }
+
     /*public void setUpEditorUI(View actionButton, View editControl,
                               Button editTitle, Button stateButton) {
         mEditTitle = editTitle;
@@ -116,14 +118,12 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
         mFilterTitle = stateButton;
         MasterImage.getImage().resetGeometryImages(false);
         mEditControl = editControl;
-        setUtilityPanelUI(null, editControl);
+        setEditPanelUI(editControl);
     }
 
-    public void setUpEditorUI(Button editTitle, View actionButton,
-            View editControl) {
+    public void setEditorTitle(Button editTitle) {
         mEditTitle = editTitle;
         mButton = editTitle;
-        setUtilityPanelUI(actionButton, editControl);
     }
 
     public void setBasicFilterUI(TextView textFilterName,
@@ -132,21 +132,18 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
         mBasicFilterValue = textFilterValue;
     }
 
-     public boolean showsPopupIndicator() {
+    public boolean showsPopupIndicator() {
         return false;
     }
 
     /**
-     * @param actionButton the would be the area for menu etc
      * @param editControl this is the black area for sliders etc
      */
-    public void setUtilityPanelUI(View actionButton, View editControl) {
-
-        AttributeSet aset;
+    public void setEditPanelUI(View editControl) {
         Context context = editControl.getContext();
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout lp = (LinearLayout) inflater.inflate(
+        View lp = inflater.inflate(
                 R.layout.filtershow_seekbar, (ViewGroup) editControl, true);
         mSeekBar = (SeekBar) lp.findViewById(R.id.primarySeekBar);
         mSeekBar.setOnSeekBarChangeListener(this);
@@ -298,7 +295,7 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
             String[] split = text.split("[+-]");
             int length = split.length;
             if (length == 2)
-            mBasicFilterValue.setText(split[1] != null ? split[1] : "");
+                mBasicFilterValue.setText(split[1] != null ? split[1] : "");
             mBasicFilterText.setVisibility(View.VISIBLE);
             mBasicFilterValue.setVisibility(View.VISIBLE);
             mButton.setVisibility(View.INVISIBLE);
@@ -379,5 +376,13 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
         if (mImageShow != null) {
             mImageShow.detach();
         }
+    }
+
+    public void resume() {
+
+    }
+
+    public void onPrepareOptionsMenu(Menu menu) {
+
     }
 }

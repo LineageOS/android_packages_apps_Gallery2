@@ -76,7 +76,7 @@ public class EditorDualCamFusion extends ImageOnlyEditor {
     }
 
     @Override
-    public void setUtilityPanelUI(View actionButton, View editControl) {
+    public void setEditPanelUI(View editControl) {
         editControl.setVisibility(View.GONE);
     }
 
