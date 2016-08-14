@@ -523,6 +523,7 @@ public class AlbumSetPage extends ActivityState implements
         mSelectionManager.setSourceMediaSet(mMediaSet);
         mAlbumSetDataAdapter = new AlbumSetDataLoader(
                 mActivity, mMediaSet, DATA_CACHE_SIZE);
+        mSelectionManager.setAlbumSetDataLoader(mAlbumSetDataAdapter);
         mAlbumSetDataAdapter.setLoadingListener(new MyLoadingListener());
         mAlbumSetView.setModel(mAlbumSetDataAdapter);
     }
