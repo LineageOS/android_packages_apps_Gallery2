@@ -504,7 +504,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                         MainPanel.FRAGMENT_TAG));
                 transaction.replace(R.id.main_panel_container, panel,
                         MainPanel.FRAGMENT_TAG);
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
             }
         }.run();
     }
