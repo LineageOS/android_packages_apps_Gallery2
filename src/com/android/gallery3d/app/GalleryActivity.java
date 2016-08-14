@@ -282,8 +282,10 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
         if (mDrawerLayout != null) {
             if (setDrawerVisibility && mDrawerLayoutSupported) {
                 mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                mToolbar.setNavigationIcon(R.drawable.drawer);
             } else {
                 mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                mToolbar.setNavigationIcon(null);
             }
         }
     }
@@ -419,6 +421,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
             startTimelinePage();
             mToolbar.setTitle(R.string.albums_title);
         }
+        toggleNavDrawer(mDrawerLayoutSupported);
     }
 
     public void startAlbumPage() {
