@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  * Not a Contribution
  *
  * Copyright (C) 2009 The Android Open Source Project
@@ -123,8 +123,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
         initView();
 
         mSavedInstanceState = savedInstanceState;
-
-        if (!needRequestStoragePermission()) {
+        if (isPermissionGranted()) {
             init();
         }
     }
@@ -144,57 +143,13 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[],
-            int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_STORAGE: {
-                if (checkPermissionGrantResults(grantResults)) {
-                    init();
-                } else {
-                    finish();
-                }
-            }
-        }
+    protected void onGetPermissionsSuccess() {
+        init();
     }
 
-    private boolean needRequestStoragePermission() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
-
-        boolean needRequest = false;
-        String[] permissions = {
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-        };
-        ArrayList<String> permissionList = new ArrayList<String>();
-        for (String permission : permissions) {
-            if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                permissionList.add(permission);
-                needRequest = true;
-            }
-        }
-
-        if (needRequest) {
-            int count = permissionList.size();
-            if (count > 0) {
-                String[] permissionArray = new String[count];
-                for (int i = 0; i < count; i++) {
-                    permissionArray[i] = permissionList.get(i);
-                }
-
-                requestPermissions(permissionArray, PERMISSION_REQUEST_STORAGE);
-            }
-        }
-
-        return needRequest;
-    }
-
-    private boolean checkPermissionGrantResults(int[] grantResults) {
-        for (int result : grantResults) {
-            if (result != PackageManager.PERMISSION_GRANTED) {
-                return false;
-            }
-        }
-        return true;
+    @Override
+    protected void onGetPermissionsFailure() {
+        finish();
     }
 
     private static class ActionItem {
