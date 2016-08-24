@@ -51,7 +51,6 @@ import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 
 public class ImageFilterDualCamSketch extends ImageFilter {
     private static final String TAG = ImageFilterDualCamSketch.class.getSimpleName();
-    private static Toast sSegmentToast;
 
     private FilterDualCamSketchRepresentation mParameters;
     private Paint mPaint = new Paint();
@@ -122,15 +121,7 @@ public class ImageFilterDualCamSketch extends ImageFilter {
 
             if(result == false) {
                 Log.e(TAG, "Imagelib API failed");
-                sActivity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(sSegmentToast == null) {
-                            sSegmentToast = Toast.makeText(sActivity, R.string.dualcam_no_segment_toast, Toast.LENGTH_SHORT);
-                        }
-                        sSegmentToast.show();
-                    }
-                });
+                showToast(R.string.dualcam_no_segment_toast, Toast.LENGTH_SHORT);
                 return bitmap;
             } else {
                 mPaint.reset();
