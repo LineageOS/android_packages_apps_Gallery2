@@ -171,6 +171,7 @@
     <dimen name="thumbnail_margin">2dip</dimen>
     <dimen name="action_item_height">175dip</dimen>
     <dimen name="touch_circle_size">8dp</dimen>
+    <dimen name="crop_indicator_size">40dp</dimen>
 
     <!-- configuration for album set page -->
     <dimen name="album_set_item_image_height">120dp</dimen>
