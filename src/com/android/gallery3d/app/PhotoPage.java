@@ -89,7 +89,6 @@ public abstract class PhotoPage extends ActivityState implements
     private static final int MSG_HIDE_BARS = 1;
     private static final int MSG_ON_FULL_SCREEN_CHANGED = 4;
     private static final int MSG_UPDATE_ACTION_BAR = 5;
-    private static final int MSG_UNFREEZE_GLROOT = 6;
     private static final int MSG_WANT_BARS = 7;
     private static final int MSG_REFRESH_BOTTOM_CONTROLS = 8;
     private static final int MSG_ON_CAMERA_CENTER = 9;
@@ -101,7 +100,6 @@ public abstract class PhotoPage extends ActivityState implements
     private static final int MSG_UPDATE_PANORAMA_UI = 16;
 
     private static final int HIDE_BARS_TIMEOUT = 3500;
-    private static final int UNFREEZE_GLROOT_TIMEOUT = 250;
 
     private static final int REQUEST_SLIDESHOW = 1;
     private static final int REQUEST_CROP = 2;
@@ -319,10 +317,6 @@ public abstract class PhotoPage extends ActivityState implements
                     }
                     case MSG_WANT_BARS: {
                         wantBars();
-                        break;
-                    }
-                    case MSG_UNFREEZE_GLROOT: {
-                        mActivity.getGLRoot().unfreeze();
                         break;
                     }
                     case MSG_UPDATE_DEFERRED: {
@@ -1483,8 +1477,6 @@ public abstract class PhotoPage extends ActivityState implements
             toolbar.setLayoutParams(layoutParams);
             toolbar.setPadding(0, originalPadding, 0, 0);
         }
-        mActivity.getGLRoot().unfreeze();
-        mHandler.removeMessages(MSG_UNFREEZE_GLROOT);
         showFullScreen(false);
 
         DetailsHelper.pause();
@@ -1519,10 +1511,6 @@ public abstract class PhotoPage extends ActivityState implements
         win.setAttributes(winParams);
     }
 
-    @Override
-    public void onCurrentImageUpdated() {
-        mActivity.getGLRoot().unfreeze();
-    }
 
     @Override
     public void onFilmModeChanged(boolean enabled) {
@@ -1609,7 +1597,6 @@ public abstract class PhotoPage extends ActivityState implements
 
         transitionFromAlbumPageIfNeeded();
 
-        mActivity.getGLRoot().freeze();
         Toolbar toolbar = mActivity.getToolbar();
         //set the new height and padding to toolbar
         if (toolbar != null) {
@@ -1652,7 +1639,6 @@ public abstract class PhotoPage extends ActivityState implements
         }
 
         mRecenterCameraOnResume = true;
-        mHandler.sendEmptyMessageDelayed(MSG_UNFREEZE_GLROOT, UNFREEZE_GLROOT_TIMEOUT);
         if (mModel == null) {
             onBackPressed();
             return;

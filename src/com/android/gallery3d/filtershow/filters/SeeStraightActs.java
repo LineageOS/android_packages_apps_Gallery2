@@ -100,22 +100,14 @@ public class SeeStraightActs extends SimpleImageFilter {
             return bitmap;
 
         if(!checkSize(width, height)) {
-            sActivity.runOnUiThread(new Runnable() {
-                public void run() {
-                    Toast.makeText(sActivity, sActivity.getResources().getString(R.string.seestraight_input_image_is_small), Toast.LENGTH_SHORT).show();
-                }
-            });
+            showToast(R.string.seestraight_input_image_is_small, Toast.LENGTH_SHORT);
             return bitmap;
         }
 
         Bitmap dstBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         int[] outputRoi = processImage(width, height, bitmap, dstBitmap);
         if(outputRoi == null) {
-            sActivity.runOnUiThread(new Runnable() {
-                public void run() {
-                    Toast.makeText(sActivity, sActivity.getResources().getString(R.string.seestraight_process_fail), Toast.LENGTH_SHORT).show();
-                }
-            });
+            showToast(R.string.seestraight_process_fail, Toast.LENGTH_SHORT);
             return bitmap;
         }
         dstBitmap = Bitmap.createBitmap(dstBitmap, outputRoi[0], outputRoi[1], outputRoi[2], outputRoi[3]);

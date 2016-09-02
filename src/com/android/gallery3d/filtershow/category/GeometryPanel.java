@@ -79,7 +79,9 @@ public class GeometryPanel extends BasicGeometryPanel {
         int size = mButtons.length;
         for (int i = 0; i < size; i++) {
             ImageButton view = mButtons[i];
-            view.setImageDrawable(res.getDrawable(mFiltersRepresentations.get(i).getOverlayId()));
+            if (mFiltersRepresentations.size() > 0) {
+                view.setImageDrawable(res.getDrawable(mFiltersRepresentations.get(i).getOverlayId()));
+            }
             // ues tag to store index.
             view.setTag(i);
             view.setOnClickListener(mOnClickListener);
@@ -93,7 +95,9 @@ public class GeometryPanel extends BasicGeometryPanel {
         int size = mTextViews.length;
         for (int i = 0; i < size; i++) {
             TextView view = mTextViews[i];
-            view.setText(res.getString(mFiltersRepresentations.get(i).getTextId()));
+            if (mFiltersRepresentations.size() > 0) {
+                view.setText(res.getString(mFiltersRepresentations.get(i).getTextId()));
+            }
         }
     }
 }

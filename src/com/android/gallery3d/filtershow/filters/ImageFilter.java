@@ -36,6 +36,8 @@ public abstract class ImageFilter implements Cloneable {
     // feedback. Remove this when filters actually work in low memory
     // situations.
     protected static Activity sActivity = null;
+    private static Toast sToast = null;
+    private String lastMsg;
 
     public static void setActivityForMemoryToasts(Activity activity) {
         sActivity = activity;
@@ -43,19 +45,40 @@ public abstract class ImageFilter implements Cloneable {
 
     public static void resetStatics() {
         sActivity = null;
+        if (null != sToast) {
+            sToast.cancel();
+        }
+        sToast = null;
+    }
+
+    void showToast(String msg, int duration) {
+        if (sActivity != null) {
+            sActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (sActivity != null && (!msg.equals(lastMsg) || sToast == null)) {
+                        sToast = Toast.makeText(sActivity.getApplicationContext(), msg, duration);
+                        lastMsg = msg;
+                    }
+                    if (sToast != null) {
+                        sToast.show();
+                    }
+                }
+            });
+        }
+    }
+
+    void showToast(int resID, int duration) {
+        if (sActivity != null) {
+            showToast(sActivity.getResources().getString(resID), duration);
+        }
     }
 
     public void freeResources() {}
 
     public void displayLowMemoryToast() {
-        if (sActivity != null) {
-            sActivity.runOnUiThread(new Runnable() {
-                public void run() {
-                    Toast.makeText(sActivity, "Memory too low for filter " + getName() +
-                            ", please file a bug report", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+        showToast("Memory too low for filter " + getName() +
+                ", please file a bug report", Toast.LENGTH_SHORT);
     }
 
     public void setName(String name) {

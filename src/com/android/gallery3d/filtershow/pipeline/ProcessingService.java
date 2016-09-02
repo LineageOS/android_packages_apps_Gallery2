@@ -184,8 +184,8 @@ public class ProcessingService extends Service {
 
     @Override
     public void onDestroy() {
-        tearDownPipeline();
         mProcessingTaskController.quit();
+        tearDownPipeline();
         MasterImage.setMaster(null);
     }
 

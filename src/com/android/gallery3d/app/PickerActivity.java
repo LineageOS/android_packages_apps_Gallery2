@@ -80,4 +80,14 @@ public class PickerActivity extends AbstractGalleryActivity
     public void onClick(View v) {
         if (v.getId() == R.id.cancel) finish();
     }
+
+    @Override
+    protected void onGetPermissionsSuccess() {
+
+    }
+
+    @Override
+    protected void onGetPermissionsFailure() {
+
+    }
 }

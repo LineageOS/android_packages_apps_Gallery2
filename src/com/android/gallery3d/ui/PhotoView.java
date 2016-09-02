@@ -128,7 +128,6 @@ public class PhotoView extends GLView {
         public void onFullScreenChanged(boolean full);
         public void onActionBarAllowed(boolean allowed);
         public void onActionBarWanted();
-        public void onCurrentImageUpdated();
         public void onDeleteImage(Path path, int offset);
         public void onUndoDeleteImage();
         public void onCommitDeleteImage();
@@ -469,9 +468,6 @@ public class PhotoView extends GLView {
     }
 
     public void notifyImageChange(int index) {
-        if (index == 0) {
-            mListener.onCurrentImageUpdated();
-        }
         mPictures.get(index).reload();
         setPictureSize(index);
         invalidate();

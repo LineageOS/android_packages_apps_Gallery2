@@ -51,7 +51,8 @@ import com.android.photos.data.GalleryBitmapPool;
 
 import java.io.FileNotFoundException;
 
-public class AbstractGalleryActivity extends Activity implements GalleryContext {
+public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
+        implements GalleryContext {
     private static final String TAG = "AbstractGalleryActivity";
     private GLRootView mGLRootView;
     private StateManager mStateManager;

@@ -103,23 +103,27 @@ public class TrueScannerActs extends SimpleImageFilter {
     }
 
     private void showProgressDialog() {
-        sActivity.runOnUiThread(new Runnable() {
-            public void run() {
-                mProgressDialog = ProgressDialog.show(sActivity,"", "Processing...", true, false);
-                mProgressDialog.show();
-            }
-        });
+        if (null != sActivity) {
+            sActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    mProgressDialog = ProgressDialog.show(sActivity, "", "Processing...", true, false);
+                    mProgressDialog.show();
+                }
+            });
+        }
     }
 
     private void dismissProgressDialog() {
-        sActivity.runOnUiThread(new Runnable() {
-            public void run() {
-                if (mProgressDialog != null && mProgressDialog.isShowing()) {
-                    mProgressDialog.dismiss();
-                    mProgressDialog = null;
+        if (null != sActivity) {
+            sActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    if (mProgressDialog != null && mProgressDialog.isShowing()) {
+                        mProgressDialog.dismiss();
+                        mProgressDialog = null;
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
@@ -132,13 +136,7 @@ public class TrueScannerActs extends SimpleImageFilter {
             return bitmap;
         }
         if(!acquireLock(true)) {
-            sActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(sActivity, "Still processing the previous request... ", Toast.LENGTH_LONG).show();
-                }
-            });
-
+            showToast("Still processing the previous request... ", Toast.LENGTH_LONG);
             return bitmap;
         }
         new Throwable().printStackTrace();
