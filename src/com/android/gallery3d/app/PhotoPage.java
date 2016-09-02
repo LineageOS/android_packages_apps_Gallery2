@@ -1415,7 +1415,9 @@ public abstract class PhotoPage extends ActivityState implements
                 mActivity.getStateManager().startState(SinglePhotoPage.class, data);
                 return;
             }
-            mModel.setCurrentPhoto(path, mCurrentIndex);
+            if (null != mModel) {
+                mModel.setCurrentPhoto(path, mCurrentIndex);
+            }
         }
     }
 
