@@ -1371,6 +1371,7 @@ public class MoviePlayer implements
                                     Log.v(TAG, "PositiveButton.onClick() mIsShowDialog="
                                             + mIsShowDialog);
                                 }
+                                mVideoView.setDialogShowState(false);
                                 doStartVideo(true, mVideoPosition, mVideoLastDuration);
                             }
 
