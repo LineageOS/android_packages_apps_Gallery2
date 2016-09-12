@@ -31,6 +31,7 @@ public class SelectionMenu implements OnClickListener {
     private final Context mContext;
     private final Button mButton;
     private final PopupList mPopupList;
+    private boolean isLeaving = false;
 
     public SelectionMenu(Context context, Button button, OnPopupItemClickListener listener) {
         mContext = context;
@@ -44,6 +45,7 @@ public class SelectionMenu implements OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if (isLeaving) return;
         mPopupList.show();
     }
 
@@ -57,5 +59,9 @@ public class SelectionMenu implements OnClickListener {
 
     public void setTitle(CharSequence title) {
         mButton.setText(title);
+    }
+
+    public void setLeaving(boolean leaving) {
+        isLeaving = leaving;
     }
 }
