@@ -1309,10 +1309,10 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                 }
                 mDirty = false;
 
-                version = mSource.reload();
                 if (mIsFromTimelineScreen) {
                     mSource.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
                 }
+                version = mSource.reload();
                 //if data is not ready, continue to reload
                 if (version == MediaObject.INVALID_DATA_VERSION) {
                     continue;

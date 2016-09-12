@@ -52,7 +52,6 @@ import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine.EffectTyp
 
 public class ImageFilterTruePortrait extends ImageFilter {
     private static final String TAG = "ImageFilterTruePortrait";
-    private static Toast sSegmentToast;
 
     private FilterRepresentation mParameters;
     private Paint mPaint = new Paint();
@@ -115,16 +114,7 @@ public class ImageFilterTruePortrait extends ImageFilter {
 
         if(result == false) {
             Log.e(TAG, "Imagelib API failed");
-            sActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if(sSegmentToast == null) {
-                        sSegmentToast = Toast.makeText(sActivity, "No Faces Found", Toast.LENGTH_SHORT);
-                    }
-                    sSegmentToast.show();
-                }
-            });
-
+            showToast("No Faces Found", Toast.LENGTH_SHORT);
             return bitmap;
         } else {
 

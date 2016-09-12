@@ -19,7 +19,6 @@ package com.android.gallery3d.app;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.ActionBar.OnMenuVisibilityListener;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.KeyguardManager;
 import android.bluetooth.BluetoothClass;
@@ -86,7 +85,7 @@ import android.bluetooth.BluetoothProfile;
  * to set the action bar logo so the playback process looks more seamlessly integrated with
  * the original activity.
  */
-public class MovieActivity extends Activity {
+public class MovieActivity extends AbstractPermissionActivity {
     @SuppressWarnings("unused")
     private static final String  TAG = "MovieActivity";
     private static final boolean LOG = true;
@@ -126,6 +125,7 @@ public class MovieActivity extends Activity {
     private IMovieItem          mMovieItem;
     private IActivityHooker     mMovieHooker;
     private KeyguardManager     mKeyguardManager;
+    private Bundle mSavedInstanceState;
 
     private boolean mResumed        = false;
     private boolean mControlResumed = false;
@@ -186,14 +186,29 @@ public class MovieActivity extends Activity {
 
         Intent intent = getIntent();
 
-        mMovieHooker = ExtensionHelper.getHooker(this);
-        initMovieInfo(intent);
-
         initializeActionBar(intent);
         mFinishOnCompletion = intent.getBooleanExtra(
                 MediaStore.EXTRA_FINISH_ON_COMPLETION, true);
         mPrefs = getSharedPreferences(getApplicationContext().getPackageName(),
                 Context.MODE_PRIVATE);
+        mSavedInstanceState = savedInstanceState;
+        if (isPermissionGranted()) {
+            init(intent, rootView, savedInstanceState);
+        }
+
+        // DRM validation
+//        Uri original = intent.getData();
+//        String mimeType = intent.getType();
+//        String filepath = DrmHelper.getFilePath(this, original);
+//        if (DrmHelper.isDrmFile(filepath)) {
+//            if (!DrmHelper.validateLicense(this, filepath, mimeType)) {
+//                finish();
+//            }
+//        }
+    }
+
+    private void init(Intent intent, View rootView, Bundle savedInstanceState) {
+        initMovieInfo(intent);
         mPlayer = new MoviePlayer(rootView, this, mMovieItem, savedInstanceState,
                 !mFinishOnCompletion) {
             @Override
@@ -223,12 +238,7 @@ public class MovieActivity extends Activity {
         // We set the background in the theme to have the launching animation.
         // But for the performance (and battery), we remove the background here.
         win.setBackgroundDrawable(null);
-        mMovieHooker.init(this, intent);
-        mMovieHooker.setParameter(null, mPlayer.getMoviePlayerExt());
-        mMovieHooker.setParameter(null, mMovieItem);
-        mMovieHooker.setParameter(null, mPlayer.getVideoSurface());
-        mMovieHooker.onCreate(savedInstanceState);
-
+        initMovieHooker(intent, savedInstanceState);
         // Determine available/supported effects
         final Descriptor[] effects = AudioEffect.queryEffects();
         for (final Descriptor effect : effects) {
@@ -246,16 +256,29 @@ public class MovieActivity extends Activity {
                 initEffects(mp.getAudioSessionId());
             }
         });
+    }
 
-        // DRM validation
-//        Uri original = intent.getData();
-//        String mimeType = intent.getType();
-//        String filepath = DrmHelper.getFilePath(this, original);
-//        if (DrmHelper.isDrmFile(filepath)) {
-//            if (!DrmHelper.validateLicense(this, filepath, mimeType)) {
-//                finish();
-//            }
-//        }
+    private void initMovieHooker(Intent intent, Bundle savedInstanceState) {
+        mMovieHooker = ExtensionHelper.getHooker(this);
+        mMovieHooker.init(this, intent);
+        mMovieHooker.setParameter(null, mPlayer.getMoviePlayerExt());
+        mMovieHooker.setParameter(null, mMovieItem);
+        mMovieHooker.setParameter(null, mPlayer.getVideoSurface());
+        mMovieHooker.onCreate(savedInstanceState);
+    }
+
+
+    @Override
+    protected void onGetPermissionsSuccess() {
+        init(getIntent(), findViewById(R.id.movie_view_root), mSavedInstanceState);
+        mPlayer.requestAudioFocus();
+        mMovieHooker.onStart();
+        registerScreenReceiver();
+    }
+
+    @Override
+    protected void onGetPermissionsFailure() {
+        finish();
     }
 
     private void setActionBarLogoFromIntent(Intent intent) {
@@ -337,7 +360,6 @@ public class MovieActivity extends Activity {
             // share provider is singleton, we should refresh our history file.
             mShareProvider.setShareHistoryFileName(SHARE_HISTORY_FILE);
         }
-        refreshShareProvider(mMovieItem);
 
         final MenuItem mi = menu.add(R.string.audio_effects);
         mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -347,14 +369,19 @@ public class MovieActivity extends Activity {
                 return true;
             }
         });
-        mMovieHooker.onCreateOptionsMenu(menu);
+        if (isPermissionGranted()) {
+            refreshShareProvider(mMovieItem);
+            mMovieHooker.onCreateOptionsMenu(menu);
+        }
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        mMovieHooker.onPrepareOptionsMenu(menu);
+        if (mMovieHooker != null) {
+            mMovieHooker.onPrepareOptionsMenu(menu);
+        }
 
 //        if (mMovieItem != null
 //                && !DrmHelper.isShareableDrmFile(DrmHelper.getFilePath(this,
@@ -550,6 +577,10 @@ public class MovieActivity extends Activity {
 
     @Override
     public void onStart() {
+        if (!isPermissionGranted()) {
+            super.onStart();
+            return;
+        }
         mPlayer.requestAudioFocus();
         super.onStart();
         mMovieHooker.onStart();
@@ -558,6 +589,10 @@ public class MovieActivity extends Activity {
 
     @Override
     protected void onStop() {
+        if (!isPermissionGranted()) {
+            super.onStop();
+            return;
+        }
         mPlayer.abandonAudioFocus();
         super.onStop();
         if (mControlResumed && mPlayer != null) {
@@ -570,6 +605,10 @@ public class MovieActivity extends Activity {
 
     @Override
     public void onPause() {
+        if (!isPermissionGranted()) {
+            super.onPause();
+            return;
+        }
         // Audio track will be deallocated for local video playback,
         // thus recycle effect here.
         releaseEffects();
@@ -588,8 +627,6 @@ public class MovieActivity extends Activity {
 
     @Override
     public void onResume() {
-        invalidateOptionsMenu();
-
         if ((mVirtualizerSupported) || (mBassBoostSupported)) {
             final IntentFilter intentFilter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
             intentFilter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
@@ -599,14 +636,19 @@ public class MovieActivity extends Activity {
         }
 
         mResumed = true;
-        if (!isKeyguardLocked() && !mControlResumed && mPlayer != null) {
-            mPlayer.onResume();
-            mControlResumed = true;
-            //initEffects(mPlayer.getAudioSessionId());
+        if (isPermissionGranted()) {
+            invalidateOptionsMenu();
+            if (!isKeyguardLocked() && !mControlResumed && mPlayer != null) {
+                mPlayer.onResume();
+                mControlResumed = true;
+                //initEffects(mPlayer.getAudioSessionId());
+            }
+            enhanceActionBar();
+            super.onResume();
+            mMovieHooker.onResume();
+        } else {
+            super.onResume();
         }
-        enhanceActionBar();
-        super.onResume();
-        mMovieHooker.onResume();
     }
 
     @Override
@@ -614,7 +656,9 @@ public class MovieActivity extends Activity {
         super.onConfigurationChanged(newConfig);
         if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE ||
             this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            mPlayer.setDefaultScreenMode();
+            if(mPlayer != null) {
+                mPlayer.setDefaultScreenMode();
+            }
         }
     }
 
@@ -635,6 +679,10 @@ public class MovieActivity extends Activity {
 
     @Override
     public void onDestroy() {
+        if (!isPermissionGranted()) {
+            super.onDestroy();
+            return;
+        }
         releaseEffects();
         mPlayer.onDestroy();
         super.onDestroy();
