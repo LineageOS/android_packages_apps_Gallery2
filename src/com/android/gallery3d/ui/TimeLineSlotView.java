@@ -589,7 +589,9 @@ public class TimeLineSlotView extends GLView {
             if (mSlotCount != null) {
                 Slot begin = getSlotByPosition(0, mScrollPosition, true, false),
                         end = getSlotByPosition(0, mScrollPosition + mHeight, true, true);
-                if (begin != null && end != null) {
+                if (begin == null && end != null && end.index == 0) {
+                    setVisibleRange(0, 0);
+                } else if (begin != null && end != null) {
                     setVisibleRange(begin.index, end.index);
                 }
             }
