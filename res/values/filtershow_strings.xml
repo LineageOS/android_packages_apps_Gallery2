@@ -352,7 +352,7 @@
     <string name="fusion_pick_underlay">Pick Underlay</string>
     <string name="dualcam_no_segment_toast">No segment found at this point</string>
     <string name="dualcam_filter_not_supported">Dual camera filters not supported for this image</string>
-    <string name="trueportrait_intro">Allows you to enhance photos of people. You can apply effects to the background, such "blur" and "sketch". You can also merge two photos together to create interesting backgrounds for your portrait photos.</string>
+    <string name="trueportrait_intro">Allows you to enhance photos of people. You can apply effects to the background, such as \"blur\" and \"sketch\". You can also merge two photos together to create interesting backgrounds for your portrait photos.</string>
     <string name="trueportrait_no_face">True Portrait effects cannot be applied to this photo. Face not detected.</string>
     <string name="trueportrait_edit_intro">With the Touch-Up tool, you can edit the foreground and the background. You can user your finger to paint in any areas of the foreground or background that were missed.</string>
     <string name="trueportrait_edit_foreground_toast">Use your finger to paint in any areas of the foreground that were missed.</string>

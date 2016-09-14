@@ -52,15 +52,23 @@
             android:id="@+id/maskForeground"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/tp_mask_toggle"
+            android:textColor="@color/primary_text"
             android:paddingEnd="16dp"
             android:paddingStart="16dp"
             android:textOff="@string/foreground"
             android:textOn="@string/foreground" />
 
+        <Space
+	        android:layout_width="5dp"
+	        android:layout_height="0dp"/>
+
         <ToggleButton
             android:id="@+id/maskBackground"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@drawable/tp_mask_toggle"
+            android:textColor="@color/primary_text"
             android:paddingEnd="16dp"
             android:paddingStart="16dp"
             android:textOff="@string/background"

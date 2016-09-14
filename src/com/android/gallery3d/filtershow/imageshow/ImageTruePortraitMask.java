@@ -97,21 +97,25 @@ public class ImageTruePortraitMask extends ImageShow {
 
     private void setup() {
         mMaskPaintForeground.setAntiAlias(true);
-        mMaskPaintForeground.setColor(Color.RED);
-        mMaskPaintForeground.setColorFilter(new LightingColorFilter(Color.RED, 1));
-        mMaskPaintForeground.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SCREEN));
+        mMaskPaintForeground.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
+        mMaskPaintForeground.setColorFilter(new ColorMatrixColorFilter(new float[] {
+                // Set color to GREEN
+                0,0,0,0,0,
+                0,0,0,0,191,
+                0,0,0,0,0,
+                0,0,0,.5f,0
+        }));
 
         mMaskPaintBackground.setAntiAlias(true);
-        mMaskPaintBackground.setColor(Color.GREEN);
+        mMaskPaintBackground.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
         mMaskPaintBackground.setColorFilter(new ColorMatrixColorFilter(new float[] {
-                // Set color to GREEN and inverse ALPHA channel
+                // Set color to RED and inverse ALPHA channel
                 // of original mask to get background
+                0,0,0,0,191,
                 0,0,0,0,0,
-                0,0,0,0,255,
                 0,0,0,0,0,
-                0,0,0,-1,255
+                0,0,0,-.5f,127
         }));
-        mMaskPaintBackground.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SCREEN));
 
         mMaskEditPaint.setAntiAlias(true);
         mMaskEditPaint.setStyle(Style.STROKE);
