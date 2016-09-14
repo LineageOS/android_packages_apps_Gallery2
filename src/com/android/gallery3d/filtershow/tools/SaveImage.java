@@ -368,6 +368,11 @@ public class SaveImage {
             if(hasFusion) {
                 previewBmp = flattenFusion(Uri.parse(fusionRep.getUnderlay()), mPreviewImage,
                         Math.max(mPreviewImage.getWidth(), mPreviewImage.getHeight()), 0);
+                // If we fail to flatten, save original image
+                if(previewBmp == null) {
+                    previewBmp = mPreviewImage;
+                    hasFusion = false;
+                }
             } else {
                 previewBmp = mPreviewImage;
             }
@@ -447,9 +452,10 @@ public class SaveImage {
                 if(hasFusion) {
                     Bitmap underlay = flattenFusion(
                             Uri.parse(fusionRep.getUnderlay()), bitmap, 0, sampleSize);
-
-                    bitmap.recycle();
-                    bitmap = underlay;
+                    if(underlay != null) {
+                        bitmap.recycle();
+                        bitmap = underlay;
+                    }
                 }
 
                 updateProgress();
@@ -820,26 +826,27 @@ public class SaveImage {
             underlay = ImageLoader.loadBitmapWithBackouts(mContext, underlayUri, sampleSize);
         }
 
-        RectF destRect = new RectF();
-        Rect imageBounds = MasterImage.getImage().getImageBounds();
-        Rect underlayBounds = MasterImage.getImage().getFusionBounds();
-        float underlayScaleFactor = (float)underlay.getWidth()
-                / (float)underlayBounds.width();
+        if(underlay != null) {
+            RectF destRect = new RectF();
+            Rect imageBounds = MasterImage.getImage().getImageBounds();
+            Rect underlayBounds = MasterImage.getImage().getFusionBounds();
+            float underlayScaleFactor = (float)underlay.getWidth()
+                    / (float)underlayBounds.width();
 
-        destRect.left = (imageBounds.left - underlayBounds.left) * underlayScaleFactor;
-        destRect.right = (imageBounds.right - underlayBounds.left) * underlayScaleFactor;
-        destRect.top = (imageBounds.top - underlayBounds.top) * underlayScaleFactor;
-        destRect.bottom = (imageBounds.bottom - underlayBounds.top) * underlayScaleFactor;
+            destRect.left = (imageBounds.left - underlayBounds.left) * underlayScaleFactor;
+            destRect.right = (imageBounds.right - underlayBounds.left) * underlayScaleFactor;
+            destRect.top = (imageBounds.top - underlayBounds.top) * underlayScaleFactor;
+            destRect.bottom = (imageBounds.bottom - underlayBounds.top) * underlayScaleFactor;
 
-        Canvas canvas = new Canvas(underlay);
-        Paint paint = new Paint();
-        paint.reset();
-        paint.setAntiAlias(true);
-        paint.setFilterBitmap(true);
-        paint.setDither(true);
+            Canvas canvas = new Canvas(underlay);
+            Paint paint = new Paint();
+            paint.reset();
+            paint.setAntiAlias(true);
+            paint.setFilterBitmap(true);
+            paint.setDither(true);
 
-        canvas.drawBitmap(bitmap, null, destRect, paint);
-
+            canvas.drawBitmap(bitmap, null, destRect, paint);
+        }
         return underlay;
     }
 }
