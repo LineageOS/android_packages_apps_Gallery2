@@ -193,9 +193,9 @@ public class EditorTruePortraitMask extends Editor  {
     private void showToast() {
         Toast toast;
         if(isBackgroundMode()) {
-            toast = Toast.makeText(mContext, R.string.trueportrait_edit_background_toast, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(mContext, R.string.trueportrait_edit_background_toast, Toast.LENGTH_LONG);
         } else {
-            toast = Toast.makeText(mContext, R.string.trueportrait_edit_foreground_toast, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(mContext, R.string.trueportrait_edit_foreground_toast, Toast.LENGTH_LONG);
         }
 
         toast.show();
