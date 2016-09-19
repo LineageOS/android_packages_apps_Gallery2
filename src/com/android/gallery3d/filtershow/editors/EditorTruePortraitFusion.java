@@ -37,6 +37,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -46,6 +47,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import org.codeaurora.gallery.R;
+
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterTruePortraitFusionRepresentation;
@@ -171,18 +173,38 @@ public class EditorTruePortraitFusion extends Editor {
             boolean skipIntro = GalleryUtils.getBooleanPref(mContext,
                     mContext.getString(R.string.pref_trueportrait_fusion_intro_show_key), false);
             if(!skipIntro) {
-                DoNotShowAgainDialog dialog = new DoNotShowAgainDialog(
-                        R.string.fusion_pick_background, R.string.trueportrait_fusion_intro,
-                        R.string.pref_trueportrait_fusion_intro_show_key) {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        super.onDismiss(dialog);
-                        MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
-                    }
-                };
                 FragmentManager fm = ((FilterShowActivity)mContext).getSupportFragmentManager();
-                dialog.setCancelable(false);
-                dialog.show(fm, "trueportrait_fusion_intro");
+                DoNotShowAgainDialog dialog =
+                        (DoNotShowAgainDialog) fm.findFragmentByTag("trueportrait_fusion_intro");
+                if(dialog == null) {
+                    dialog = new DoNotShowAgainDialog(
+                            R.string.fusion_pick_background, R.string.trueportrait_fusion_intro,
+                            R.string.pref_trueportrait_fusion_intro_show_key) {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            super.onCancel(dialog);
+                            FilterShowActivity activity = (FilterShowActivity) mContext;
+                            activity.cancelCurrentFilter();
+                            activity.leaveSeekBarPanel();
+                        }
+                    };
+                    dialog.setOnOkButtonClickListener(new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
+                        }
+                    });
+                    dialog.setCancelable(true);
+                    dialog.show(fm, "trueportrait_fusion_intro");
+                } else if (dialog.isDetached()) {
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.attach(dialog);
+                    ft.commit();
+                } else if (dialog.isHidden()) {
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.show(dialog);
+                    ft.commit();
+                }
             }
         }
     }

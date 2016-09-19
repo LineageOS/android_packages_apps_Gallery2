@@ -66,7 +66,7 @@ public class ImageFilterTruePortrait extends ImageFilter {
 
     @Override
     public Bitmap apply(Bitmap bitmap, float scaleFactor, int quality) {
-        if (getParameters() == null) {
+        if (getParameters() == null || quality == FilterEnvironment.QUALITY_ICON) {
             return bitmap;
         }
 
