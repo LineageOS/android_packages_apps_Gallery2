@@ -33,6 +33,8 @@ package com.android.gallery3d.filtershow.category;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,11 +71,24 @@ public class TruePortraitMaskEditorPanel extends Fragment {
         boolean skipIntro = GalleryUtils.getBooleanPref(context,
                 context.getString(R.string.pref_trueportrait_edit_intro_show_key), false);
         if(!skipIntro) {
-            DoNotShowAgainDialog dialog = new DoNotShowAgainDialog(
-                    R.string.trueportrait_touch_up, R.string.trueportrait_edit_intro,
-                    R.string.pref_trueportrait_edit_intro_show_key);
-            dialog.setCancelable(false);
-            dialog.show(getFragmentManager(), "trueportrait_edit_intro");
+            FragmentManager fm = getFragmentManager();
+            DoNotShowAgainDialog dialog =
+                    (DoNotShowAgainDialog) fm.findFragmentByTag("trueportrait_edit_intro");
+            if(dialog == null) {
+                dialog = new DoNotShowAgainDialog(
+                        R.string.trueportrait_touch_up, R.string.trueportrait_edit_intro,
+                        R.string.pref_trueportrait_edit_intro_show_key);
+                dialog.setCancelable(false);
+                dialog.show(fm, "trueportrait_edit_intro");
+            } else if (dialog.isDetached()) {
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.attach(dialog);
+                ft.commit();
+            } else if (dialog.isHidden()) {
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.show(dialog);
+                ft.commit();
+            }
         }
     }
 

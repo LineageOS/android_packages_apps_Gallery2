@@ -138,6 +138,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
     }
 
     public void startActionMode() {
+        mMenuExecutor.setLeaving(false);
         Activity a = mActivity;
 //      mActionMode = a.startActionMode(this);
         mActionMode = mActivity.getToolbar().startActionMode(this);
@@ -213,6 +214,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
             if (itemId == R.id.action_select_all) {
                 updateSupportedOperation();
                 mMenuExecutor.onMenuClicked(itemId, null, false, true);
+                mSelectionMenu.setLeaving(mMenuExecutor.isLeaving());
             }
             return true;
         } finally {

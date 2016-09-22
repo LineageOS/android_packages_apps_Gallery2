@@ -48,11 +48,13 @@ public class DoNotShowAgainDialog extends DialogFragment {
     private int mTitleId;
     private int mMessageId;
     private CheckBox mDoNotShowAgainChk;
+    private DialogInterface.OnClickListener mButtonClickListener;
 
     public DoNotShowAgainDialog(int titleId, int msgId, int sharedPrefKeyId) {
         mTitleId = titleId;
         mMessageId = msgId;
         mSharedPrefKeyId = sharedPrefKeyId;
+        mButtonClickListener = null;
     }
 
     @Override
@@ -67,13 +69,18 @@ public class DoNotShowAgainDialog extends DialogFragment {
         ab.setTitle(mTitleId);
         ab.setView(view);
         ab.setCancelable(false);
-        ab.setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+        ab.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Context context = getActivity();
                 GalleryUtils.setBooleanPref(context,
                         context.getString(mSharedPrefKeyId), mDoNotShowAgainChk.isChecked());
+                if(mButtonClickListener != null) mButtonClickListener.onClick(dialog, id);
             }
         });
         return ab.create();
+    }
+
+    public void setOnOkButtonClickListener(DialogInterface.OnClickListener listener) {
+        mButtonClickListener = listener;
     }
 }

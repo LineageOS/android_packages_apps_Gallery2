@@ -157,4 +157,6 @@
 
     <string name="color">滤镜</string>
     <string name="frames">相框</string>
+
+    <string name="trueportrait_intro">此功能用于增强人像照。你可以将效果应用于照片背景，例如“模糊”和“速写”。你也可以将两张照片拼在一起来给你的人像照创建一个有趣的背景。</string>
 </resources>

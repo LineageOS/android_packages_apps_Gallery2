@@ -454,4 +454,5 @@
     <string name="action_viewtype_list">列表视图</string>
     <string name="tvEmptyAlbum">O 個可用的圖片</string>
     <string name="tvEmptyVideos">O 個可用的影片</string>
+    <string name="do_not_show_again">不再顯示</string>
 </resources>

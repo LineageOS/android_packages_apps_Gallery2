@@ -51,7 +51,7 @@ public class AlertMsgDialog extends DialogFragment {
         ab.setTitle(mTitleId);
         ab.setMessage(mMessageId);
         ab.setCancelable(false);
-        ab.setNeutralButton(R.string.ok, null);
+        ab.setPositiveButton(R.string.ok, null);
         return ab.create();
     }
 }

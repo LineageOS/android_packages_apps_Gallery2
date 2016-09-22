@@ -183,20 +183,6 @@ public class TruePortraitNativeEngine {
         for(StrokeData sd:edits) {
             drawEdit(canvas, sd);
         }
-
-        // DEBUG
-        for(int i = 0; i<mPreviewSize.y; i++) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("[ ");
-            for(int j = 0; j<mPreviewSize.x; j++) {
-                int pixel = mUpdateBm.getPixel(j, i);
-                sb.append(Color.alpha(pixel));
-                sb.append(" ");
-            }
-            sb.append("]");
-            Log.e(TAG, sb.toString());
-        }
-        //
         return nativeUpdatePreviewMask(mUpdateBm);
     }
 

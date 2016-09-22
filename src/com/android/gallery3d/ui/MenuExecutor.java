@@ -67,6 +67,7 @@ public class MenuExecutor {
     // wait the operation to finish when we want to stop it.
     private boolean mWaitOnStop;
     private boolean mPaused;
+    private boolean isLeaving = false;
 
     private final AbstractGalleryActivity mActivity;
     private final SelectionManager mSelectionManager;
@@ -233,6 +234,14 @@ public class MenuExecutor {
         return new Intent(action).setDataAndType(manager.getContentUri(path), mimeType);
     }
 
+    public void setLeaving(boolean leaving) {
+        isLeaving = leaving;
+    }
+
+    public boolean isLeaving() {
+        return isLeaving;
+    }
+
     private void onMenuClicked(int action, ProgressListener listener) {
         onMenuClicked(action, listener, false, true);
     }
@@ -243,6 +252,7 @@ public class MenuExecutor {
         switch (action) {
             case R.id.action_select_all:
                 if (mSelectionManager.inSelectAllMode()) {
+                    isLeaving = true;
                     mSelectionManager.deSelectAll();
                 } else {
                     mSelectionManager.selectAll();
