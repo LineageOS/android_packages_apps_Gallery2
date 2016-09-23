@@ -513,6 +513,9 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
 
     public void showPanel(int currentPanel) {
         FilterShowActivity activity = (FilterShowActivity) getActivity();
+        if (null == activity) {
+            return;
+        }
         switch (currentPanel) {
             case LOOKS: {
                 loadCategoryLookPanel(false);
