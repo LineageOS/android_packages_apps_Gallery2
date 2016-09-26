@@ -1660,7 +1660,8 @@ public abstract class PhotoPage extends ActivityState implements
         }
         mActivity.getGLRoot().setOrientationSource(null);
         if (mBottomControls != null) mBottomControls.cleanup();
-
+        mPhotoView.destroy();
+        mPhotoView = null;
         // Remove all pending messages.
         mHandler.removeCallbacksAndMessages(null);
         super.onDestroy();

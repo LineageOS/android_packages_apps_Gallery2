@@ -49,6 +49,10 @@ public class EdgeView extends GLView {
         }
     }
 
+    public void release () {
+        mEffect = null;
+    }
+
     @Override
     protected void onLayout(
             boolean changeSize, int left, int top, int right, int bottom) {
