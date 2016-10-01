@@ -22,6 +22,7 @@ import android.graphics.Matrix;
 import android.renderscript.Allocation;
 import android.widget.Toast;
 
+import com.android.gallery3d.app.GalleryAppImpl;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
@@ -57,7 +58,7 @@ public abstract class ImageFilter implements Cloneable {
                 @Override
                 public void run() {
                     if (sActivity != null && (!msg.equals(lastMsg) || sToast == null)) {
-                        sToast = Toast.makeText(sActivity.getApplicationContext(), msg, duration);
+                        sToast = Toast.makeText(GalleryAppImpl.getContext(), msg, duration);
                         lastMsg = msg;
                     }
                     if (sToast != null) {
@@ -69,9 +70,7 @@ public abstract class ImageFilter implements Cloneable {
     }
 
     void showToast(int resID, int duration) {
-        if (sActivity != null) {
-            showToast(sActivity.getResources().getString(resID), duration);
-        }
+        showToast(GalleryAppImpl.getContext().getString(resID), duration);
     }
 
     public void freeResources() {}

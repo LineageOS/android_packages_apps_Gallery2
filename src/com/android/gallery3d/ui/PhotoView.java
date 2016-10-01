@@ -1384,6 +1384,11 @@ public class PhotoView extends GLView {
         hideUndoBar();
     }
 
+    public void destroy() {
+        mEdgeView.release();
+        mEdgeView = null;
+    }
+
     public void resume() {
         mTileView.prepareTextures();
         mPositionController.skipToFinalPosition();
