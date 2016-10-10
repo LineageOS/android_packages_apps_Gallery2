@@ -291,6 +291,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
              * see this happen.
              */
             mBoundService = null;
+            ImageFilter.resetStatics();
             MasterImage.setMaster(null);
         }
     };

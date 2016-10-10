@@ -162,7 +162,6 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     private int mCameraIndex;
     private boolean mIsPanorama;
     private boolean mIsStaticCamera;
-    private boolean mIsFromTimelineScreen;
     private boolean mIsActive;
     private boolean mNeedFullImage;
     private int mFocusHintDirection = FOCUS_HINT_NEXT;
@@ -188,7 +187,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     // preview. If cameraIndex < 0, there is no camera preview.
     public PhotoDataAdapter(AbstractGalleryActivity activity, PhotoView view,
             MediaSet mediaSet, Path itemPath, int indexHint, int cameraIndex,
-            boolean isPanorama, boolean isStaticCamera, boolean isFromTimelineScreen) {
+            boolean isPanorama, boolean isStaticCamera) {
         mActivity = activity;
         mSource = Utils.checkNotNull(mediaSet);
         mPhotoView = Utils.checkNotNull(view);
@@ -197,7 +196,6 @@ public class PhotoDataAdapter implements PhotoPage.Model {
         mCameraIndex = cameraIndex;
         mIsPanorama = isPanorama;
         mIsStaticCamera = isStaticCamera;
-        mIsFromTimelineScreen = isFromTimelineScreen;
         mThreadPool = activity.getThreadPool();
         mNeedFullImage = true;
 
@@ -1309,9 +1307,6 @@ public class PhotoDataAdapter implements PhotoPage.Model {
                 }
                 mDirty = false;
 
-                if (mIsFromTimelineScreen) {
-                    mSource.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
-                }
                 version = mSource.reload();
                 //if data is not ready, continue to reload
                 if (version == MediaObject.INVALID_DATA_VERSION) {
@@ -1439,10 +1434,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
 
                 // Don't change index if mSize == 0
                 if (mSize > 0) {
-                    // Due to the set identification and new photo, photos
-                    // in the last two positions disappear in the temp info.items.
-                    // Don't change index in such a situation.
-                    if (index >= mSize + 2) index = mSize - 1;
+                    if (index >= mSize) index = mSize - 1;
                 }
 
                 info.indexHint = index;
