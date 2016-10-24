@@ -281,6 +281,7 @@ public class TimeLinePage extends ActivityState implements
                 } else {
                     MediaItem item = mAlbumDataAdapter.get(slotIndex);
                     if (item == null) return; // Item not ready yet, ignore the click
+                    if (!ActionModeHandler.isThreadComplete) return;
                     mSelectionManager.toggle(item.getPath());
                     mSlotView.invalidate();
                 }
