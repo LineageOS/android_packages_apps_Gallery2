@@ -481,7 +481,7 @@ public abstract class PhotoPage extends ActivityState implements
             mMediaSet = (FilterDeleteSet) mActivity.getDataManager()
                     .getMediaSet(mSetPathString);
             if (mMediaSet != null && mIsFromTimelineScreen) {
-                mMediaSet.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
+                mMediaSet.setShowAlbumsetTimeTitle(false);
             }
             if (mMediaSet == null) {
                 Log.w(TAG, "failed to restore " + mSetPathString);
@@ -987,7 +987,7 @@ public abstract class PhotoPage extends ActivityState implements
             } else {
                 if (mMediaSet != null && mIsFromTimelineScreen) {
                     //if back to TimeLinePage, need show timeline title
-                    mMediaSet.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_TIME_TITLE);
+                    mMediaSet.setShowAlbumsetTimeTitle(true);
                 }
                 super.onBackPressed();
                 mActionBar.setBackGroundDefault();
@@ -1613,7 +1613,7 @@ public abstract class PhotoPage extends ActivityState implements
 
         //if from TimeLinePage, don't show the timeline title
         if (mMediaSet != null && mIsFromTimelineScreen) {
-            mMediaSet.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_NO_TITLE);
+            mMediaSet.setShowAlbumsetTimeTitle(false);
         }
 
         mActionBar.setDisplayOptions(
