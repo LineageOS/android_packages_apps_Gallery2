@@ -27,7 +27,7 @@
 
     <!-- configuration for album page -->
     <color name="album_background">#fafafa</color>
-    <color name="album_placeholder">#fafafa</color>
+    <color name="album_placeholder">#75000000</color>
 
     <!-- configuration for photo page -->
     <color name="photo_background">#1A1A1A</color>
