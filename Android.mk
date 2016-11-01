@@ -44,7 +44,9 @@ LOCAL_SDK_VERSION := current
 LOCAL_JNI_SHARED_LIBRARIES := libjni_gallery_eglfence libjni_gallery_filters libjni_gallery_jpegstream
 LOCAL_SHARED_LIBRARIES += libjni_dualcamera libjni_trueportrait
 
-LOCAL_REQUIRED_MODULES := libts_detected_face_jni libts_face_beautify_jni
+ifeq ($(TARGET_TS_MAKEUP), true)
+  LOCAL_REQUIRED_MODULES := libts_detected_face_jni libts_face_beautify_jni
+endif
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
