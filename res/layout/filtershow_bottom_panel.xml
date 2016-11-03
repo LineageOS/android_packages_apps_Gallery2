@@ -54,14 +54,13 @@
 
         <ImageButton
             android:id="@+id/borderButton"
-            android:layout_width="@dimen/thumbnail_size"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/actionBarItemBackground"
             android:padding="2dip"
             android:scaleType="centerInside"
-            android:src="@drawable/frames_background"
-            android:visibility="gone" />
+            android:src="@drawable/frames_background" />
 
         <ImageButton
             android:id="@+id/geometryButton"
