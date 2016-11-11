@@ -23,6 +23,7 @@ import android.opengl.GLUtils;
 import android.opengl.Matrix;
 import android.util.Log;
 
+import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.util.IntArray;
 
 import java.nio.Buffer;
@@ -291,6 +292,12 @@ public class GLES20Canvas implements GLCanvas {
         mMeshProgram = assembleProgram(meshVertexShader, textureFragmentShader, mMeshParameters);
         GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_ONE_MINUS_SRC_ALPHA);
         checkError();
+
+        if (ApiHelper.USE_888_PIXEL_FORMAT) {
+            GLES20.glPixelStorei(GLES20.GL_UNPACK_ALIGNMENT, 2);
+        } else {
+            GLES20.glPixelStorei(GLES20.GL_UNPACK_ALIGNMENT, 1);
+        }
     }
 
     private static FloatBuffer createBuffer(float[] values) {
