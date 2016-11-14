@@ -658,10 +658,6 @@ public class TimeLineSlotView extends GLView {
                     }
                     if (!rowStart) {
                         col = ((int) x) / (mSlotWidth + mSlotGap);
-                        if (TextUtils.getLayoutDirectionFromLocale(Locale.getDefault())
-                                == View.LAYOUT_DIRECTION_RTL) {
-                            col = mUnitCount - col;
-                        }
                         if (row * mUnitCount + col >= count) {
                             break;
                         }
