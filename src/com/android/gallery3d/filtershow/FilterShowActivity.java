@@ -39,6 +39,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
@@ -105,6 +106,9 @@ import com.android.gallery3d.filtershow.editors.HazeBusterEditor;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
 import com.android.gallery3d.filtershow.editors.SeeStraightEditor;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
+import com.android.gallery3d.filtershow.filters.FilterDualCamBasicRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterDualCamSketchRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRotateRepresentation;
@@ -1156,6 +1160,23 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                 return;
             }
         }
+        if (representation.getFilterType() == FilterRepresentation.TYPE_DUALCAM) {
+            DisplayMetrics dm = getResources().getDisplayMetrics();
+            float[] mTmpPoint = new float[2];
+            mTmpPoint[0] = dm.widthPixels/2;
+            mTmpPoint[1] = dm.heightPixels/2;
+            Matrix m = MasterImage.getImage().getScreenToImageMatrix(true);
+            m.mapPoints(mTmpPoint);
+            if (representation instanceof FilterDualCamBasicRepresentation) {
+                ((FilterDualCamBasicRepresentation)representation).setPoint((int)mTmpPoint[0],(int)mTmpPoint[1]);
+            }
+            if (representation instanceof FilterDualCamFusionRepresentation) {
+                ((FilterDualCamFusionRepresentation)representation).setPoint((int)mTmpPoint[0],(int)mTmpPoint[1]);
+            }
+            if (representation instanceof FilterDualCamSketchRepresentation) {
+                ((FilterDualCamSketchRepresentation)representation).setPoint((int)mTmpPoint[0],(int)mTmpPoint[1]);
+            }
+        }
         useFilterRepresentation(representation);
 
         loadEditorPanel(representation);
@@ -1290,23 +1311,20 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                     mAuxImgData == null) {
                 // parse failed
                 MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
-                Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
-                if (currentPanel instanceof MainPanel) {
-                    MainPanel mainPanel = (MainPanel) currentPanel;
-                    mainPanel.updateDualCameraButton();
-                }
             } else {
+                MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_LOADING);
                 mLoadMpoTask = new LoadMpoDataTask();
                 mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
+            }
+            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
+            if (currentPanel instanceof MainPanel) {
+                MainPanel mainPanel = (MainPanel) currentPanel;
+                mainPanel.updateDualCameraButton();
             }
         }
     }
 
     private class LoadMpoDataTask extends AsyncTask<byte[], Void, Boolean> {
-        @Override
-        protected void onPreExecute() {
-            MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_LOADING);
-        }
 
         @Override
         protected Boolean doInBackground(byte[]... params) {

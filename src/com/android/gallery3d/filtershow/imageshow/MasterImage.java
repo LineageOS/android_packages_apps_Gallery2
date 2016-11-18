@@ -21,6 +21,7 @@ import java.util.Vector;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -767,7 +768,7 @@ public class MasterImage implements RenderingRequestCaller {
         return m;
     }
 
-    private Matrix getScreenToImageMatrix(boolean reflectRotation) {
+    public Matrix getScreenToImageMatrix(boolean reflectRotation) {
         Matrix m = getImageToScreenMatrix(reflectRotation);
         Matrix invert = new Matrix();
         m.invert(invert);
@@ -960,7 +961,7 @@ public class MasterImage implements RenderingRequestCaller {
         return mPreset.contains(FilterRepresentation.TYPE_TINYPLANET);
     }
 
-    public boolean loadMpo(byte[] primaryMpoData, byte[] auxiliaryMpoData) {
+    public boolean loadMpo(Context context, byte[] primaryMpoData, byte[] auxiliaryMpoData, Uri uri){
         boolean loaded = false;
 
         if(auxiliaryMpoData != null) {
@@ -971,7 +972,7 @@ public class MasterImage implements RenderingRequestCaller {
             }
 
             // check for pre-generated dm file
-            String mpoFilepath = ImageLoader.getLocalPathFromUri(getActivity(), getUri());
+            String mpoFilepath = ImageLoader.getLocalPathFromUri(context, uri);
             // read auxiliary image and generate depth map.
             Bitmap auxiliaryBm = BitmapFactory.decodeByteArray(auxiliaryMpoData, 0, auxiliaryMpoData.length);
 
@@ -983,7 +984,7 @@ public class MasterImage implements RenderingRequestCaller {
 
             DualCameraNativeEngine.getInstance().initDepthMap(
                     primaryBm, auxiliaryBm, mpoFilepath,
-                    DualCameraNativeEngine.getInstance().getCalibFilepath(mActivity));
+                    DualCameraNativeEngine.getInstance().getCalibFilepath(context),1.0f);
 
             primaryBm.recycle();
             primaryBm = null;
@@ -1015,6 +1016,10 @@ public class MasterImage implements RenderingRequestCaller {
         }
 
         return loaded;
+    }
+
+    public boolean loadMpo(byte[] primaryMpoData, byte[] auxiliaryMpoData) {
+        return loadMpo(getActivity(), primaryMpoData, auxiliaryMpoData, getUri());
     }
 
     public void setFusionUnderlay(Bitmap underlay) {
