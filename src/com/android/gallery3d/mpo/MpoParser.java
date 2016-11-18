@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -302,6 +302,75 @@ public class MpoParser {
             }
         }
         return depthMap;
+    }
+
+    public byte[] readImgData(int index) {
+        if (mMpEntries.isEmpty()) return null;
+        MpEntry mpEntry = mMpEntries.get(index);
+        if (mpEntry == null) return null;
+
+        InputStream is = null;
+        ByteArrayOutputStream os = null;
+        byte[] data = null;
+        try {
+            is = mContentResolver.openInputStream(mUri);
+            data = new byte[mpEntry.mImgSize];
+
+            is.skip((mpEntry.mImgDataOffset > 0) ? mpEntry.mImgDataOffset + mMpHeaderOffset :
+                    mpEntry.mImgDataOffset);
+            if (is.read(data) == -1) {
+                Log.d(LOGTAG, "read EOF. invalid offset/size");
+                data = null;
+            } else {
+                // verify we have well formed jpeg data
+                ByteBuffer buffer = ByteBuffer.wrap(data);
+                if (buffer.getShort(0) != MpoHeader.SOI) {
+                    Log.d(LOGTAG, "non valid SOI. offset incorrect.");
+                    data = null;
+                } else if (buffer.getShort(buffer.limit() - 2) != MpoHeader.EOI) {
+                    Log.d(LOGTAG, "non valid EOI. size incorrect. attempting to read further till " +
+                            "EOI");
+                    os = new ByteArrayOutputStream(data.length);
+                    os.write(data);
+
+                    byte[] readArray = new byte[2];
+                    ByteBuffer readBuf = ByteBuffer.wrap(readArray);
+
+                    readArray[0] = data[data.length - 2];
+                    readArray[1] = data[data.length - 1];
+
+                    data = null;
+
+                    boolean validJpg = true;
+                    while (readBuf.getShort(0) != MpoHeader.EOI) {
+                        int read = is.read();
+                        if (read == -1) {
+                            Log.d(LOGTAG, "reached EOF before EOI. invalid file");
+                            validJpg = false;
+                            break;
+                        }
+                        readArray[0] = readArray[1];
+                        readArray[1] = (byte) (read & 0xFF);
+
+                        os.write(read);
+                    }
+
+                    if (validJpg)
+                        data = os.toByteArray();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            Utils.closeSilently(is);
+            Utils.closeSilently(os);
+        }
+
+        return data;
+    }
+
+    public boolean isPrimaryForDisplay() {
+        return mMpEntries.size() == 2;
     }
 
     class MpEntry {

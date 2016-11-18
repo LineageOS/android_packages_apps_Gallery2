@@ -750,7 +750,8 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
                 DualCameraNativeEngine.getInstance().initDepthMap(
                         primaryBm, auxiliaryBm, mpoFilepath,
-                        DualCameraNativeEngine.getInstance().getCalibFilepath(context));
+                        DualCameraNativeEngine.getInstance().getCalibFilepath(context),
+                        DualCameraNativeEngine.DEFAULT_BRIGHTNESS_INTENSITY);
 
                 primaryBm.recycle();
                 primaryBm = null;

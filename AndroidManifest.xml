@@ -399,5 +399,6 @@
                 android:theme="@android:style/Theme.Material.Light"
                 android:configChanges="orientation|keyboardHidden|screenSize|mnc|mcc">
         </activity>
+        <activity android:name="com.android.gallery3d.app.dualcam3d.ThreeDimensionalActivity"/>
     </application>
 </manifest>

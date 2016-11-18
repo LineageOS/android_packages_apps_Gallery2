@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -121,15 +121,24 @@ public class ImageFilterDualCamera extends ImageFilter {
 
             filteredBitmap = MasterImage.getImage().getBitmapCache().getBitmap(filteredW, filteredH, BitmapCache.FILTERS);
 
-            switch(mParameters.getTextId()) {
-            case R.string.focus:
-                result = DualCameraNativeEngine.getInstance().applyFocus(point.x, point.y, intensity,
-                        roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                break;
-            case R.string.halo:
-                result = DualCameraNativeEngine.getInstance().applyHalo(point.x, point.y, intensity,
-                        roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                break;
+            switch (mParameters.getTextId()) {
+                case R.string.focus:
+                    result = DualCameraNativeEngine.getInstance().applyFocus(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.halo:
+                    result = DualCameraNativeEngine.getInstance().applyHalo(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.motion:
+                    result = DualCameraNativeEngine.getInstance().applyMotion(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.posterize:
+                    result = DualCameraNativeEngine.getInstance().applyPosterize(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+
             }
 
             if(result == false) {
