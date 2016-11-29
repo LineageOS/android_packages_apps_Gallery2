@@ -257,8 +257,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (ProcessingService.SAVE_IMAGE_COMPLETE_ACTION.equals(action) &&
-                    !isSimpleEditAction()) {
+            if (ProcessingService.SAVE_IMAGE_COMPLETE_ACTION.equals(action)) {
                 Bundle bundle = intent.getExtras();
                 long requestId = bundle.getLong(ProcessingService.KEY_REQUEST_ID);
                 //only handle own request
