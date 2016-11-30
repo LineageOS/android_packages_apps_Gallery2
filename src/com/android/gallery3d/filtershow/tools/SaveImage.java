@@ -827,6 +827,10 @@ public class SaveImage {
         }
 
         if(underlay != null) {
+            int ori = ImageLoader.getMetadataOrientation(mContext, underlayUri);
+            if (ori != ImageLoader.ORI_NORMAL) {
+                underlay = ImageLoader.orientBitmap(underlay, ori);
+            }
             RectF destRect = new RectF();
             Rect imageBounds = MasterImage.getImage().getImageBounds();
             Rect underlayBounds = MasterImage.getImage().getFusionBounds();
