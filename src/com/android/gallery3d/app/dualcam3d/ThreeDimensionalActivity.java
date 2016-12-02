@@ -46,7 +46,7 @@ import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 import org.codeaurora.gallery.R;
 
 public class ThreeDimensionalActivity extends Activity {
-    private static final String TAG = "DualCamDemo";
+    private static final String TAG = ThreeDimensionalActivity.class.getSimpleName();
 
     final static int MSG_UPDATE_IMAGE = 1;
     final static int MSG_UPDATE_3D_DEPTH_MAP = 2;
