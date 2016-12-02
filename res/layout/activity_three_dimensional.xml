@@ -34,8 +34,6 @@
     android:orientation="vertical"
     tools:context="com.android.gallery3d.app.dualcam3d.ThreeDimensionalActivity">
 
-    <include layout="@layout/three_d_button" />
-
     <com.android.gallery3d.app.dualcam3d.GLView
         android:id="@+id/image"
         android:layout_width="match_parent"
@@ -46,29 +44,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:paddingTop="130dp"
+        android:paddingRight="50dp"
+        android:orientation="vertical">
 
-        <Button
+        <ImageButton
+            android:id="@+id/three_dimensional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?android:attr/actionBarItemBackground"
+            android:src="@drawable/three_d"/>
+
+        <ImageButton
             android:id="@+id/mode_gyro"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="@string/grad"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="gone" />
 
-        <Button
+        <ImageButton
             android:id="@+id/mode_auto"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="@string/auto"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="gone" />
 
-        <Button
+        <ImageButton
             android:id="@+id/mode_touch"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="@string/trueportrait_touch_up"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="gone" />
     </LinearLayout>
 
 </merge>
