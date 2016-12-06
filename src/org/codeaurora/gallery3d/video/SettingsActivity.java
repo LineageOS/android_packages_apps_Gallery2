@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.System;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
@@ -22,8 +26,9 @@ import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.ApiHelper.SystemProperties;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends AbstractPermissionPreferenceActivity {
 
     private static final String LOG_TAG = "SettingsActivity";
 
@@ -33,6 +38,7 @@ public class SettingsActivity extends PreferenceActivity {
     private static final String PREFERENCE_CACHE_MIN_SIZE = "cache_min_size";
     private static final String PREFERENCE_CACHE_MAX_SIZE = "cache_max_size";
     public  static final String PREFERENCE_BUFFER_SIZE = "buffer_size";
+    public  static final String PREFERENCE_APN_CATEGORY = "apn_category";
     public  static final String PREFERENCE_APN = "apn";
     private static final String PACKAGE_NAME  = "com.android.settings";
 
@@ -45,11 +51,14 @@ public class SettingsActivity extends PreferenceActivity {
     private static final int RTP_MIN_PORT = 1;
     private static final int RTP_MAX_PORT = 2;
     private static final int BUFFER_SIZE  = 3;
+    private static final boolean DBG = true;
+    private static final String TAG = SettingsActivity.class.getSimpleName();
 
     private SharedPreferences  mPref;
     private EditTextPreference mRtpMinPort;
     private EditTextPreference mRtpMaxPort;
     private EditTextPreference mBufferSize;
+    private PreferenceCategory mApnCategory;
     private PreferenceScreen   mApn;
 
     private static final int    SELECT_APN = 1;
@@ -61,6 +70,19 @@ public class SettingsActivity extends PreferenceActivity {
     private boolean mUseNvOperatorForEhrpd = SystemProperties.getBoolean(
             "persist.radio.use_nv_for_ehrpd", false);
 
+    private SubscriptionManager mSubscriptionManager;
+    private List<SubscriptionInfo> mActiveSubInfos;
+
+    @Override
+    protected void onGetPermissionsSuccess() {
+        init();
+    }
+
+    @Override
+    protected void onGetPermissionsFailure() {
+        finish();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +92,7 @@ public class SettingsActivity extends PreferenceActivity {
         mRtpMinPort = (EditTextPreference) findPreference(PREFERENCE_RTP_MINPORT);
         mRtpMaxPort = (EditTextPreference) findPreference(PREFERENCE_RTP_MAXPORT);
         mBufferSize = (EditTextPreference) findPreference(PREFERENCE_BUFFER_SIZE);
+        mApnCategory = (PreferenceCategory) findPreference(PREFERENCE_APN_CATEGORY);
         mApn = (PreferenceScreen) findPreference(PREFERENCE_APN);
 
         setPreferenceListener(RTP_MIN_PORT, mRtpMinPort);
@@ -81,6 +104,74 @@ public class SettingsActivity extends PreferenceActivity {
         ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setTitle(R.string.setting);
+
+        if (isPermissionGranted()) {
+            init();
+        }
+    }
+
+    private void init() {
+        mSubscriptionManager = SubscriptionManager.from(this);
+        mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        // Initialize mActiveSubInfo
+        int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
+        mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
+
+        initializeSubscriptions();
+
+        if (!hasActiveSubscriptions()) {
+            ((PreferenceGroup)mApnCategory).removePreference(mApn);
+            getPreferenceScreen().removePreference(mApnCategory);
+
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (null != mSubscriptionManager) {
+            mSubscriptionManager
+                    .removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        }
+    }
+
+    private final SubscriptionManager.OnSubscriptionsChangedListener mOnSubscriptionsChangeListener
+            = new SubscriptionManager.OnSubscriptionsChangedListener() {
+        @Override
+        public void onSubscriptionsChanged() {
+            if (DBG) Log.i(TAG, "onSubscriptionsChanged:");
+            initializeSubscriptions();
+            if (hasActiveSubscriptions()) {
+                getPreferenceScreen().addPreference(mApnCategory);
+                mApnCategory.addPreference(mApn);
+            } else{
+                ((PreferenceGroup)mApnCategory).removePreference(mApn);
+                getPreferenceScreen().removePreference(mApnCategory);
+            }
+        }
+    };
+
+    private void initializeSubscriptions() {
+        if (isDestroyed()) { // Process preferences in activity only if its not destroyed
+            return;
+        }
+        if (DBG) Log.i(TAG, "initializeSubscriptions:+");
+
+        // Before updating the the active subscription list check
+        // if tab updating is needed as the list is changing.
+         List<SubscriptionInfo> sil = mSubscriptionManager.getActiveSubscriptionInfoList();
+
+        // Update to the active subscription list
+        mActiveSubInfos.clear();
+        if (sil != null) {
+            mActiveSubInfos.addAll(sil);
+        }
+
+        if (DBG) Log.i(TAG, "initializeSubscriptions:-");
+    }
+
+    private boolean hasActiveSubscriptions() {
+        return mActiveSubInfos.size() > 0;
     }
 
     @Override

@@ -29,7 +29,8 @@
             android:summary=""
             android:title="@string/buffer_size" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/apn" >
+    <PreferenceCategory android:title="@string/apn"
+        android:key="apn_category">
         <PreferenceScreen
             android:key="apn"
             android:title="@string/apn" >

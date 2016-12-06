@@ -385,5 +385,23 @@ public abstract class MediaSet extends MediaObject {
         }
     }
 
-    public void setClusterKind(int kind){};
+    private static boolean sShowTitle = true;
+
+    /**
+     * add for TimelinePage
+     * @param showTitle
+     * true: in TimelinePage we need show TimeTitle
+     * false: we don't need TimeTitle
+     */
+    public static void setShowAlbumsetTimeTitle(boolean showTitle) {
+        sShowTitle = showTitle;
+    }
+
+    /**
+     * @return true: in TimelinePage we need show TimeTitle
+     * false: we don't need TimeTitle
+     */
+    public static boolean isShowAlbumsetTimeTitle() {
+        return sShowTitle;
+    }
 }
