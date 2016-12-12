@@ -281,6 +281,10 @@ public class TimeLinePage extends ActivityState implements
                 } else {
                     MediaItem item = mAlbumDataAdapter.get(slotIndex);
                     if (item == null) return; // Item not ready yet, ignore the click
+                    if (mSelectionManager.getSelectedCount() > 0) {
+                        if (!ActionModeHandler.isThreadComplete)
+                            return;
+                    }
                     mSelectionManager.toggle(item.getPath());
                     mSlotView.invalidate();
                 }
@@ -450,7 +454,7 @@ public class TimeLinePage extends ActivityState implements
         setLoadingBit(BIT_LOADING_RELOAD);
         if (null != mMediaSet) {
             //set to show timeline title
-            mMediaSet.setClusterKind(GalleryActivity.CLUSTER_ALBUMSET_TIME_TITLE);
+            mMediaSet.setShowAlbumsetTimeTitle(true);
         }
         mLoadingFailed = false;
         mAlbumDataAdapter.resume();

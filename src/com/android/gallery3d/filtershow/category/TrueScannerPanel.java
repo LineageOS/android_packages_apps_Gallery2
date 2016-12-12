@@ -56,8 +56,11 @@ public class TrueScannerPanel extends BasicGeometryPanel {
         mEditorName.setText(R.string.truescanner);
 
         mBottomPanel.setVisibility(View.VISIBLE);
-        mTrueScannerEditor.initCords();
         final FilterShowActivity activity = (FilterShowActivity) getActivity();
+        if (mTrueScannerEditor == null) {
+            mTrueScannerEditor = (TrueScannerEditor) activity.getEditor(TrueScannerEditor.ID);
+        }
+        mTrueScannerEditor.initCords();
         mExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
