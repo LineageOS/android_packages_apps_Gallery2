@@ -67,6 +67,8 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
         public boolean onActionItemClicked(MenuItem item);
     }
 
+    public static boolean isThreadComplete = false;
+
     private final AbstractGalleryActivity mActivity;
     private final MenuExecutor mMenuExecutor;
     private final SelectionManager mSelectionManager;
@@ -452,6 +454,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
         // Disable share actions until share intent is in good shape
         if (mSharePanoramaMenuItem != null) mSharePanoramaMenuItem.setEnabled(false);
         if (mShareMenuItem != null) mShareMenuItem.setEnabled(false);
+        isThreadComplete = false;
 
         // Generate sharing intent and update supported operations in the background
         // The task can take a long time and be canceled in the mean time.
@@ -550,6 +553,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
                             showShareMaxDialogIfNeed(canShare);
 
                             mShareMenuItem.setEnabled(canShare);
+                            isThreadComplete = true;
                             shareIntent = share_intent;
                         }
                     }
