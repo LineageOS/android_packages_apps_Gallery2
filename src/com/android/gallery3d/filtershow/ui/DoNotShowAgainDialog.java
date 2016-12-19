@@ -83,4 +83,10 @@ public class DoNotShowAgainDialog extends DialogFragment {
     public void setOnOkButtonClickListener(DialogInterface.OnClickListener listener) {
         mButtonClickListener = listener;
     }
+
+    @Override
+    public void onPause() {
+        this.dismiss();
+        super.onPause();
+    }
 }

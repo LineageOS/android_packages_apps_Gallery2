@@ -208,6 +208,20 @@
     <string name="sketch">Sketch</string>
     <!--  Label for the "halo" dual camera effect  [CHAR LIMIT=15] -->
     <string name="halo">Halo</string>
+    <!--  Label for the "zoom" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="zoom">Zoom</string>
+    <!--  Label for the "motion" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="motion">Motion</string>
+    <!--  Label for the "bw" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="bw">B/W</string>
+    <!--  Label for the "blackboard" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="blackboard">Blackboard</string>
+    <!--  Label for the "whiteboard" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="whiteboard">Whiteboard</string>
+    <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="posterize">Posterize</string>
+    <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="dc_negative">Negative</string>
     <!--  Label for the "blur" true portrait effect  [CHAR LIMIT=15] -->
     <string name="blur">Blur</string>
     <!--  Label for the "motion blur" true portrait effect  [CHAR LIMIT=15] -->
@@ -350,6 +364,8 @@
 
     <string name="fusion_pick_point">Pick Segment</string>
     <string name="fusion_pick_underlay">Pick Underlay</string>
+    <string name="dual_camera_effects">Dual Camera Effects</string>
+    <string name="dual_camera_effects_intro">Allows you to apply background effects, such as "Motion" and "Sketch". You can also merge two photos together for interesting effects. This feature works best when you have a short distance your camera and the main subject of you picture.</string>
     <string name="dualcam_no_segment_toast">No segment found at this point</string>
     <string name="dualcam_filter_not_supported">Dual camera filters not supported for this image</string>
     <string name="trueportrait_intro">Allows you to enhance photos of people. You can apply effects to the background, such as \"blur\" and \"sketch\". You can also merge two photos together to create interesting backgrounds for your portrait photos.</string>
@@ -359,6 +375,7 @@
     <string name="trueportrait_edit_background_toast">Use your finger to paint in any areas of the background that were missed.</string>
     <string name="trueportrait_edit_help">To zoom, use two fingers to pinch open or closed. You can also drag with two fingers to re-position the image. This can make it easier to fix any problem areas.</string>
     <string name="trueportrait_fusion_intro">Your foreground person can be copied and pasted onto any photo in your Gallery. You can try using different background photos to create new and interesting portraits.</string>
+    <string name="dualcam_fusion_intro">Your foreground can be copied and pasted onto any photo in your Gallery. \n\nYou can try using different background photos to create new and interesting portraits.</string>
     <string name="do_not_show_again">Do not show again</string>
     <string name="trueportrait_touch_up">Touch Up</string>
     <string name="fusion_pick_background">Select Background Photo</string>
@@ -372,8 +389,11 @@
     <string name="background">Background</string>
     <string name="brush_size">Brush Size</string>
 
+    <string name="pref_dualcam_intro_show_key" translatable="false">pref_dualcam_intro_show_key</string>
     <string name="pref_trueportrait_intro_show_key" translatable="false">pref_trueportrait_intro_show_key</string>
     <string name="pref_trueportrait_edit_intro_show_key" translatable="false">pref_trueportrait_edit_intro_show_key</string>
     <string name="pref_trueportrait_fusion_intro_show_key" translatable="false">pref_trueportrait_fusion_intro_show_key</string>
     <string name="pref_trueportrait_fusion_underlay_key" translatable="false">pref_trueportrait_fusion_underlay_key</string>
+    <string name="pref_dualcam_fusion_underlay_key" translatable="false">pref_dualcam_fusion_underlay_key</string>
+    <string name="pref_dualcam_fusion_intro_show_key" translatable="false">pref_trueportrait_fusion_intro_show_key</string>
 </resources>
