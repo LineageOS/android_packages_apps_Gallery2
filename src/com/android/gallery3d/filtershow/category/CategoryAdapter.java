@@ -24,6 +24,7 @@ import android.widget.ListView;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.filters.FilterPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterTinyPlanetRepresentation;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
@@ -211,7 +212,11 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
         super.remove(action);
         FilterShowActivity activity = (FilterShowActivity) getContext();
         if (mCategory == MainPanel.LOOKS) {
-            activity.removeLook(action);
+            if ((FilterPresetRepresentation)action.getRepresentation() != null ){
+                activity.removePreset(action);
+            } else {
+                activity.removeLook(action);
+            }
         } else if (mCategory == MainPanel.VERSIONS) {
             activity.removeVersion(action);
         }
