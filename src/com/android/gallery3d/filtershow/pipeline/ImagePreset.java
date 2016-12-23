@@ -50,6 +50,7 @@ import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.state.State;
 import com.android.gallery3d.filtershow.state.StateAdapter;
+import com.android.gallery3d.filtershow.tools.FilterGeneratorNativeEngine;
 
 public class ImagePreset {
 
@@ -635,7 +636,9 @@ public class ImagePreset {
                     continue;
                 }
                 Bitmap tmp = bitmap;
-                bitmap = environment.applyRepresentation(representation, bitmap);
+                if (FilterGeneratorNativeEngine.getInstance().isLibLoaded()) {
+                    bitmap = environment.applyRepresentation(representation, bitmap);
+                }
                 if (tmp != bitmap) {
                     environment.cache(tmp);
                 }

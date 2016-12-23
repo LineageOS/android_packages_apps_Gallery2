@@ -117,7 +117,7 @@ public class FilterPresetSource {
                     String filterUri = (c.isNull(2)) ? null : c.getString(2);
                     SaveOption so = new SaveOption();
                     try {
-                        so._id = Integer.valueOf(id);
+                        so._id = Integer.parseInt(id);
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
                     }

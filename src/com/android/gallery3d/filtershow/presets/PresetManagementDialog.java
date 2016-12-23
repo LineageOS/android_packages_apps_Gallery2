@@ -56,7 +56,6 @@ public class PresetManagementDialog extends DialogFragment implements View.OnCli
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
@@ -71,6 +70,7 @@ public class PresetManagementDialog extends DialogFragment implements View.OnCli
                 mAdapter.clearChangedRepresentations();
                 mAdapter.clearDeletedRepresentations();
                 activity.updateUserPresetsFromAdapter(mAdapter);
+                activity.onFilterGeneratorLaunched (false);
                 dismiss();
                 break;
             case R.id.ok:
