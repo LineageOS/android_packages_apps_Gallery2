@@ -236,6 +236,10 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
             int pos = preset.getPositionForType(FilterRepresentation.TYPE_FX);
             if (pos != -1) {
                 rep = preset.getFilterRepresentation(pos);
+            } else {
+                pos = preset.getPositionForType(FilterRepresentation.TYPE_PRESETFILTER);
+                if (pos != -1)
+                    rep = preset.getFilterRepresentation(pos);
             }
         } else if (mCategory == MainPanel.BORDERS) {
             int pos = preset.getPositionForType(FilterRepresentation.TYPE_BORDER);

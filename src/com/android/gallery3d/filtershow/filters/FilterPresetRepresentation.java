@@ -17,12 +17,18 @@
 package com.android.gallery3d.filtershow.filters;
 
 import android.net.Uri;
+import android.util.JsonReader;
+import android.util.JsonWriter;
 
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
+
+import java.io.IOException;
 
 public class FilterPresetRepresentation extends FilterRepresentation {
 
     private static final String LOGTAG = "FilterPresetRepresentation";
+
+    private static final String URI_TAG = "URI";
 
     // TODO: When implementing serialization, we should find a unique way of
     // specifying bitmaps / names (the resource IDs being random)
@@ -50,7 +56,7 @@ public class FilterPresetRepresentation extends FilterRepresentation {
 
     @Override
     public FilterRepresentation copy() {
-        FilterPresetRepresentation representation = new FilterPresetRepresentation(getName(),0,0);
+        FilterPresetRepresentation representation = new FilterPresetRepresentation(getName(), 0, 0);
         copyAllParameters(representation);
         return representation;
     }
@@ -125,5 +131,33 @@ public class FilterPresetRepresentation extends FilterRepresentation {
 
     public void setBitmapResource(int bitmapResource) {
             mBitmapResource = bitmapResource;
+    }
+
+    // Serialization...
+
+    public void serializeRepresentation(JsonWriter writer) throws IOException {
+        writer.beginObject();
+        {
+            writer.name(NAME_TAG);
+            writer.value(getName());
+            writer.name(URI_TAG);
+            writer.value(getUri().toString());
+        }
+        writer.endObject();
+    }
+
+    public void deSerializeRepresentation(JsonReader reader) throws IOException {
+        reader.beginObject();
+        while (reader.hasNext()) {
+            String name = reader.nextName();
+            if (name.equalsIgnoreCase(NAME_TAG)) {
+                setName(reader.nextString());
+            } else if (name.equalsIgnoreCase(URI_TAG)) {
+                setUri(Uri.parse(reader.nextString()));
+            } else {
+                reader.skipValue();
+            }
+        }
+            reader.endObject();
     }
 }

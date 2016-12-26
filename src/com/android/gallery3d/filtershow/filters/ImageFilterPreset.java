@@ -89,9 +89,6 @@ public class ImageFilterPreset extends ImageFilter {
                 MasterImage.getImage().getActivity(), highresPreviewSize,
                 MasterImage.getImage().getOrientation(), new Rect());
 
-        Log.d(LOGTAG, "FilterShowActivity.startFilterGeneratorProcess: Filter.WH is (" +
-                filter.getWidth() + ", " + filter.getHeight()  + ")");
-
         FilterGeneratorNativeEngine.getInstance().filterGeneratorProcess(bitmap,filter,bitmap);
         return bitmap;
     }

@@ -590,13 +590,16 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         FilterPresetSource fp = new FilterPresetSource(context);
         ArrayList<SaveOption> ret = fp.getAllUserPresets();
         if (ret == null) return;
-        for (int id = 0; id<ret.size();id++){
+        for (int id = 0; id<ret.size(); id++){
             FilterPresetRepresentation representation= new FilterPresetRepresentation (
                     ret.get(id).name,ret.get(id)._id,id+1);
             Uri filteredUri = Uri.parse(ret.get(id).Uri);
             representation.setUri(filteredUri);
             representation.setSerializationName("Custom");
             mFilterPreset.add(representation);
+            ImagePreset preset = new ImagePreset();
+            preset.addFilter(representation);
+            addRepresentation(representation);
         }
     }
 

@@ -39,5 +39,6 @@
         android:layout_marginRight="19sp"
         android:focusable="true"
         android:imeOptions="actionDone"
-        android:hint="@string/filter_name"/>
+        android:hint="@string/filter_name"
+        android:singleLine="true"/>
 </LinearLayout>
