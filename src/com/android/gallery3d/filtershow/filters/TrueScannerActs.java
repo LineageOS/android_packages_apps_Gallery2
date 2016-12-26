@@ -150,16 +150,20 @@ public class TrueScannerActs extends SimpleImageFilter {
             else
                 resultPts[i] = (int)((pts[i] - pts[POINTS_LEN+3])*yScale);
         }
-
-        rectifiedImage = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        int[] outputSize = processImage(bitmap, rectifiedImage, resultPts);
-        rectifiedImage = Bitmap.createBitmap(rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
-        if(ImageTrueScanner.getRemoveGlareButtonStatus()) {
-            Bitmap enhancedImage = Bitmap.createBitmap(outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
-            showProgressDialog();
-            enhanceImage(rectifiedImage, enhancedImage);
-            dismissProgressDialog();
-            rectifiedImage = enhancedImage;
+        if (rectifiedImage == null) {
+            rectifiedImage = Bitmap.createBitmap(
+                    bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            int[] outputSize = processImage(bitmap, rectifiedImage, resultPts);
+            rectifiedImage = Bitmap.createBitmap(
+                    rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
+            if(ImageTrueScanner.getRemoveGlareButtonStatus()) {
+                Bitmap enhancedImage = Bitmap.createBitmap(
+                        outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
+                showProgressDialog();
+                enhanceImage(rectifiedImage, enhancedImage);
+                dismissProgressDialog();
+                rectifiedImage = enhancedImage;
+            }
         }
         acquireLock(false);
 
