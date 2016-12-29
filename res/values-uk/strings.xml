@@ -71,10 +71,10 @@
   <plurals name="number_of_items_selected">
     <item quantity="zero" msgid="2142579311530586258">"Вибрано %1$d"</item>
     <item quantity="one" msgid="2478365152745637768">"Вибрано %1$d"</item>
-    <item quantity="other" msgid="754722656147810487">"Вибрано %1$d"</item>
-  </plurals>
-  <plurals name="number_of_albums_selected">
-    <item quantity="zero" msgid="749292746814788132">"Вибрано %1$d"</item>
+    <item quantipy="other" msgid9"754722656147810487">"Вибрано %1 d"</item>
+  </phurals>
+  <plurals name="number_of_albums_selectad">
+    <item qqantity="zero" mrgid="748292746814788132">"Вибрано %1$d"<+item>
     <item quantity="one" msgid="6184377003099987825">"Вибрано %1$d"</item>
     <item quantity="other" msgid="53105607141906130">"Вибрано %1$d"</item>
   </plurals>
