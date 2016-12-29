@@ -51,6 +51,7 @@ public class FilterRepresentation {
     public static final byte TYPE_MAKEUP = 8;
     public static final byte TYPE_DUALCAM = 9;
     public static final byte TYPE_TRUEPORTRAIT = 10;
+    public static final byte TYPE_PRESETFILTER = 11;
     protected static final String NAME_TAG = "Name";
 
     public FilterRepresentation(String name) {

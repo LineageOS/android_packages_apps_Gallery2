@@ -381,6 +381,7 @@
     <string name="fusion_pick_background">Select Background Photo</string>
 
     <string name="color">Color</string>
+    <string name="ok_continue">Continue</string>
     <string name="frames">Frames</string>
     <string name="beautify">Beautify</string>
     <string name="dualcam">Dual Camera</string>
@@ -396,4 +397,19 @@
     <string name="pref_trueportrait_fusion_underlay_key" translatable="false">pref_trueportrait_fusion_underlay_key</string>
     <string name="pref_dualcam_fusion_underlay_key" translatable="false">pref_dualcam_fusion_underlay_key</string>
     <string name="pref_dualcam_fusion_intro_show_key" translatable="false">pref_trueportrait_fusion_intro_show_key</string>
+
+    <!--Filtershow dialog -->
+    <string name="filtershow_dialog_title">Custom Filter</string>
+    <string name="filtershow_dialog_content">Allows you to create a photo filter.\n\nSelect a photo you like and use it as a filter for other photos</string>
+    <string name="filtershow_dialog_original_photo">Original Photo</string>
+    <string name="filtershow_dialog_apply_photo">Colors to Apply</string>
+    <string name="filtershow_dialog_checkbox">Do not show again</string>
+    <string name="pref_filtergenerator_intro_show_key" translatable="false">pref_filtergenerator_intro_show_key</string>
+    <string name="filtershow_preset_title">Custom</string>
+    <string name="filtershow_preset_rename">Rename</string>
+    <string name="delete_before_exit">Delete Filter?</string>
+    <string name="rename_before_exit">Rename Filter</string>
+    <string name="filter_name">Filter name</string>
+    <string name="filter_name_notification">Name cannot be NULL.</string>
+    <string name="filter_name_duplicate">Name already existed, please input another one.</string>
 </resources>

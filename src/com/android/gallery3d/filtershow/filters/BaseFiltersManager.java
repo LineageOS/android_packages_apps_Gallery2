@@ -18,9 +18,15 @@ package com.android.gallery3d.filtershow.filters;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
 import android.util.Log;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.data.FilterPresetDBHelper;
+import com.android.gallery3d.filtershow.data.FilterPresetSource;
+import com.android.gallery3d.filtershow.data.FilterPresetSource.SaveOption;
 import com.android.gallery3d.filtershow.editors.EditorTruePortraitBasic;
 import com.android.gallery3d.filtershow.editors.EditorTruePortraitImageOnly;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
@@ -45,6 +51,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     protected ArrayList<FilterRepresentation> mHazeBuster = new ArrayList<FilterRepresentation>();
     protected ArrayList<FilterRepresentation> mSeeStraight = new ArrayList<FilterRepresentation>();
     protected ArrayList<FilterRepresentation> mTruePortrait = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mFilterPreset = new ArrayList<FilterRepresentation>();
     private static int mImageBorderSize = 4; // in percent
 
     protected void init() {
@@ -157,6 +164,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         filters.add(ImageFilterDualCamSketch.class);
         filters.add(ImageFilterTruePortrait.class);
         filters.add(ImageFilterTruePortraitFusion.class);
+        filters.add(ImageFilterPreset.class);
 
         if(SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
             filters.add(ImageFilterMakeupWhiten.class);
@@ -193,6 +201,8 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     public ArrayList<FilterRepresentation> getTruePortrait() {
         return mTruePortrait;
     }
+
+    public ArrayList<FilterRepresentation> getFilterPreset(){ return mFilterPreset; }
 
     public ArrayList<FilterRepresentation> getTools() {
         return mTools;
@@ -576,6 +586,20 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         mTruePortrait.add(getRepresentation(ImageFilterTruePortraitFusion.class));
     }
 
+    public void addFilterPreset (Context context) {
+        FilterPresetSource fp = new FilterPresetSource(context);
+        ArrayList<SaveOption> ret = fp.getAllUserPresets();
+        if (ret == null) return;
+        for (int id = 0; id<ret.size();id++){
+            FilterPresetRepresentation representation= new FilterPresetRepresentation (
+                    ret.get(id).name,ret.get(id)._id,id+1);
+            Uri filteredUri = Uri.parse(ret.get(id).Uri);
+            representation.setUri(filteredUri);
+            representation.setSerializationName("Custom");
+            mFilterPreset.add(representation);
+        }
+    }
+
     public void removeRepresentation(ArrayList<FilterRepresentation> list,
             FilterRepresentation representation) {
         for (int i = 0; i < list.size(); i++) {
@@ -592,5 +616,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         filterBorder.setResources(resources);
         ImageFilterFx filterFx = (ImageFilterFx) getFilter(ImageFilterFx.class);
         filterFx.setResources(resources);
+        ImageFilterPreset filterPreset = (ImageFilterPreset) getFilter(ImageFilterPreset.class);
+        filterPreset.setResources(resources);
     }
 }
