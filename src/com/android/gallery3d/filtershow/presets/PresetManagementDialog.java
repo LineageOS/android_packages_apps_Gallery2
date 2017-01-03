@@ -67,9 +67,9 @@ public class PresetManagementDialog extends DialogFragment implements View.OnCli
         FilterShowActivity activity = (FilterShowActivity) getActivity();
         switch (v.getId()) {
             case R.id.cancel:
-                mAdapter.clearChangedRepresentations();
-                mAdapter.clearDeletedRepresentations();
-                activity.updateUserPresetsFromAdapter(mAdapter);
+//                mAdapter.clearChangedRepresentations();
+//                mAdapter.clearDeletedRepresentations();
+//                activity.updateUserPresetsFromAdapter(mAdapter);
                 activity.onFilterGeneratorLaunched (false);
                 dismiss();
                 break;

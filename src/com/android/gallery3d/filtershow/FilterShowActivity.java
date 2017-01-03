@@ -260,7 +260,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     private long mRequestId = -1;
 
     private DialogFragment mPresetDialog;
-    private FilterPresetSource mFilterPresetSource = null;
+    private FilterPresetSource mFilterPresetSource;
     private ArrayList <SaveOption>  tempFilterArray = new ArrayList<SaveOption>();
     private boolean mChangeable = false;
 
@@ -858,7 +858,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                                 EditText mEditText = (EditText) layout.findViewById(
                                         R.id.filtershow_default_edit);
                                 String name = String.valueOf(mEditText.getText());
-                                if (name.isEmpty()) {
+                                if ( (name.trim().length() == 0)|| name.isEmpty()) {
                                     Toast.makeText(getApplicationContext(),
                                             getString(R.string.filter_name_notification),
                                             Toast.LENGTH_SHORT).show();
@@ -919,7 +919,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (rep == null) {
             return;
         }
-        if (tempFilterArray != null) {
+        if (tempFilterArray.size() != 0) {
             for (int i = 0; i < tempFilterArray.size(); i++) {
                 if (rep.getId() == tempFilterArray.get(i)._id) {
                     tempFilterArray.remove(i);
@@ -938,7 +938,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (rep == null) {
             return;
         }
-        if (tempFilterArray != null) {
+        if (tempFilterArray.size() != 0) {
             for (int i = 0; i < tempFilterArray.size(); i++) {
                 if (rep.getId() == tempFilterArray.get(i)._id) {
                     tempFilterArray.get(i).name = name;
@@ -953,7 +953,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     public boolean isDuplicateName(String name) {
         ArrayList<String> nameSum = new ArrayList<String>();
-        if (tempFilterArray != null) {
+        if (tempFilterArray.size() != 0) {
             for (int i = 0; i < tempFilterArray.size(); i++)
                 nameSum.add(tempFilterArray.get(i).name);
         }
@@ -1049,7 +1049,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                 representation.setSerializationName("Custom");
                 mFilterPreset.add(representation);
             }
-            if (tempFilterArray != null){
+            if (tempFilterArray.size() != 0){
                 for (int id = 0; id < tempFilterArray.size(); id ++) {
                     FilterPresetRepresentation representation = new FilterPresetRepresentation(
                             tempFilterArray.get(id).name, tempFilterArray.get(id)._id, id + 1);
@@ -2304,7 +2304,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            if ((requestCode == SELECT_PICTURE)) {
+            if (requestCode == SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
                 startLoadBitmap(selectedImageUri);
             } else if (requestCode == SELECT_FUSION_UNDERLAY) {
@@ -2320,7 +2320,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             } else if (requestCode == SELECT_FILTER ) {
                 Uri FilterImageUri = data.getData();
                 mFilterPresetSource = new FilterPresetSource(this);
-                int id = readFromPresetsFilter(mFilterPresetSource, tempFilterArray);
+                int id = nameFilter(mFilterPresetSource, tempFilterArray);
                 FilterPresetRepresentation fp= new FilterPresetRepresentation(
                         getString(R.string.filtershow_preset_title)+id, id, id);
                 fp.setSerializationName("Custom");
@@ -2333,37 +2333,58 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                 sp.Uri = FilterImageUri.toString();
                 tempFilterArray.add(sp);
                 FiltersManager.getManager().addRepresentation(fp);
-                mCategoryLooksAdapter.add(new Action(this, fp, Action.FULL_VIEW,true));
+                mCategoryLooksAdapter.add(new Action(this, fp
+                        , Action.FULL_VIEW,true));
 
             }
         }
     }
 
-    public static int readFromPresetsFilter(FilterPresetSource source,
+
+    private int nameFilter(FilterPresetSource source,
                                             ArrayList <SaveOption> tempFilterArray) {
         String s,s1,s2;
         ArrayList<SaveOption> sp = source.getAllUserPresets();
         ArrayList<Integer> temp = new ArrayList<Integer>();
-        for (int i = 0; i < sp.size(); i++){
-            s = sp.get(i).name;
-            if (s.length() > "Custom".length()){
-                s1 = s.substring(0,6);
-                if (s1.equals("Custom")){
-                    s2 = s.substring(6);
-                    int tem;
-                    try {
-                        tem = Integer.parseInt(s2);
-                    } catch (NumberFormatException e) {
-                        continue;
+        if (sp != null) {
+            for (int i = 0; i < sp.size(); i++) {
+                s = sp.get(i).name;
+                if (s.length() > "Custom".length()) {
+                    s1 = s.substring(0, 6);
+                    if (s1.equals("Custom")) {
+                        s2 = s.substring(6);
+                        int tem;
+                        try {
+                            tem = Integer.parseInt(s2);
+                        } catch (NumberFormatException e) {
+                            continue;
+                        }
+                        temp.add(tem);
                     }
-                    temp.add(tem);
                 }
             }
         }
 
-        if (tempFilterArray != null ){
-            for (int i = 0; i < tempFilterArray.size(); i++) temp.add(tempFilterArray.get(i)._id);
+        if (tempFilterArray.size() != 0 ){
+            for (int i = 0; i < tempFilterArray.size(); i++) {
+                s = tempFilterArray.get(i).name;
+                if (s.length() > "Custom".length()) {
+                    s1 = s.substring(0, 6);
+                    if (s1.equals("Custom")) {
+                        s2 = s.substring(6);
+                        int tem;
+                        try {
+                            tem = Integer.parseInt(s2);
+                        } catch (NumberFormatException e) {
+                            continue;
+                        }
+                        temp.add(tem);
+                    }
+                }
+            }
+
         }
+
         if (temp != null) {
             Collections.sort(temp);
             for (int i = 1; i <= temp.size(); i++){
@@ -2397,7 +2418,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             mReleaseDualCamOnDestory = false;
             showSavingProgress(albumName);
             mImageShow.saveImage(this, null);
-            if (tempFilterArray != null) {
+            if ( tempFilterArray.size() != 0) {
                 completeSaveFilters(mFilterPresetSource, tempFilterArray);
             }
         } else {
