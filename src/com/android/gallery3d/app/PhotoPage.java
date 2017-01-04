@@ -68,6 +68,7 @@ import com.android.gallery3d.data.SnailItem;
 import com.android.gallery3d.data.SnailSource;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 import com.android.gallery3d.mpo.MpoParser;
 import com.android.gallery3d.ui.DetailsHelper;
 import com.android.gallery3d.ui.DetailsHelper.CloseListener;
@@ -1508,11 +1509,13 @@ public abstract class PhotoPage extends ActivityState implements
 
     private void parseMpoData() {
         bShow3DButton = false;
-        if (mParseMpoDateTask.getStatus() != AsyncTask.Status.FINISHED) {
-            boolean r = mParseMpoDateTask.cancel(true);
+        if (DualCameraNativeEngine.getInstance().isLibLoaded()) {
+            if (mParseMpoDateTask.getStatus() != AsyncTask.Status.FINISHED) {
+                boolean r = mParseMpoDateTask.cancel(true);
+            }
+            mParseMpoDateTask = new ParseMpoDataTask();
+            mParseMpoDateTask.execute();
         }
-        mParseMpoDateTask = new ParseMpoDataTask();
-        mParseMpoDateTask.execute();
     }
 
     @Override

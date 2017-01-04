@@ -179,15 +179,15 @@ public class EditorTruePortraitFusion extends Editor {
                 if(dialog == null) {
                     dialog = new DoNotShowAgainDialog(
                             R.string.fusion_pick_background, R.string.trueportrait_fusion_intro,
-                            R.string.pref_trueportrait_fusion_intro_show_key) {
+                            R.string.pref_trueportrait_fusion_intro_show_key);
+                    dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
-                            super.onCancel(dialog);
                             FilterShowActivity activity = (FilterShowActivity) mContext;
                             activity.cancelCurrentFilter();
                             activity.leaveSeekBarPanel();
                         }
-                    };
+                    });
                     dialog.setOnOkButtonClickListener(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
