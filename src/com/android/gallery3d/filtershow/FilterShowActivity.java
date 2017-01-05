@@ -1664,6 +1664,9 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         protected Boolean doInBackground(Uri... params) {
             boolean result = false;
             Bitmap src = ImageLoader.loadBitmap(FilterShowActivity.this, params[0], null);
+            if(src == null) {
+                return false;
+            }
             FaceDetect fDetect = new FaceDetect();
             fDetect.initialize();
             FaceInfo[] faceInfos = fDetect.dectectFeatures(src);

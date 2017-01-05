@@ -112,7 +112,13 @@ public class SettingsActivity extends AbstractPermissionPreferenceActivity {
 
     private void init() {
         mSubscriptionManager = SubscriptionManager.from(this);
-        mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        try{
+            mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        }catch (Exception e) {
+            Log.e(TAG,e.toString());
+            mSubscriptionManager = null;
+            return;
+        }
         // Initialize mActiveSubInfo
         int max = mSubscriptionManager.getActiveSubscriptionInfoCountMax();
         mActiveSubInfos = new ArrayList<SubscriptionInfo>(max);
