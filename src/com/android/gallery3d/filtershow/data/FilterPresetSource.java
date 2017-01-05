@@ -26,6 +26,8 @@ import android.util.Log;
 
 import com.android.gallery3d.filtershow.data.FilterPresetDBHelper.FilterPreset;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class FilterPresetSource {
@@ -33,8 +35,10 @@ public class FilterPresetSource {
 
     private SQLiteDatabase database = null;
     private final FilterPresetDBHelper dbHelper;
+    private Context mContext;
 
     public FilterPresetSource(Context context) {
+        mContext = context;
         dbHelper = new FilterPresetDBHelper(context);
         open();
     }
@@ -123,6 +127,11 @@ public class FilterPresetSource {
                     }
                     so.name = name;
                     so.Uri = filterUri;
+                    if (!checkUriExist(filterUri)) {
+                        removePreset(so._id);
+                        loopCheck = c.moveToNext();
+                        continue;
+                    }
                     ret.add(so);
                     loopCheck = c.moveToNext();
                 }
@@ -136,4 +145,18 @@ public class FilterPresetSource {
         }
         return ret;
     }
-}
+
+    private boolean checkUriExist(String uriStr) {
+        boolean ret = true;
+        if (uriStr == null) return false;
+        Uri uri = Uri.parse(uriStr);
+        try {
+            InputStream is = mContext.getContentResolver().openInputStream(uri);
+        } catch (FileNotFoundException e) {
+            ret = false;
+            e.printStackTrace();
+            Log.e(LOGTAG, "FileNotFoundException for " + uri, e);
+        }
+        return ret;
+        }
+    }
