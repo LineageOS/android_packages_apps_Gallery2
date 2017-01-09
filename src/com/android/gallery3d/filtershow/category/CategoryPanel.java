@@ -35,9 +35,9 @@ public class CategoryPanel extends Fragment implements View.OnClickListener {
     public static final String FRAGMENT_TAG = "CategoryPanel";
     private static final String PARAMETER_TAG = "currentPanel";
 
-    private int mCurrentAdapter = MainPanel.LOOKS;
-    private CategoryAdapter mAdapter;
-    private IconView mAddButton;
+    protected int mCurrentAdapter = MainPanel.LOOKS;
+    protected CategoryAdapter mAdapter;
+    protected IconView mAddButton;
 
     public void setAdapter(int value) {
         mCurrentAdapter = value;
@@ -133,6 +133,13 @@ public class CategoryPanel extends Fragment implements View.OnClickListener {
                 }
                 break;
             }
+           case MainPanel.WATERMARK: {
+               mAdapter = activity.getCategoryWatermarkAdapter();
+               if (mAdapter != null) {
+                   mAdapter.initializeSelection(MainPanel.WATERMARK);
+               }
+               break;
+           }
         }
         updateAddButtonVisibility();
     }

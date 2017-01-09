@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2016, The Linux Foundation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+      * Neither the name of The Linux Foundation nor the names of its
+        contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1008dp"
+    android:height="1008dp"
+    android:viewportWidth="1008"
+    android:viewportHeight="1008">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M222,97.3c35.6,31.4,72.7,63.7,109.2,96.6c36.4,32.8,72.3,66.1,108.2,99.4c19.9,18.4,34.5,40,39.1,67.4
+c3.4,20.9,0.9,41.1-6,61c-0.7,2-1.5,4-2.4,6.6c23.4,21.8,46.8,43.7,70.7,65.9c9.1-8.5,18.1-16.8,27.1-25.2
+c16.9-15.8,33.9-31.5,50.7-47.4c1.2-1.1,2.2-3.8,1.7-5.3c-12.1-38-10.3-76.1,3.2-112.8c32.2-87.6,92.7-146.4,183-172.3
+c37.2-10.7,75-9.9,110.8,7c41.7,19.6,66,53.1,73.6,98.1c7.7,45.9-2.9,88.9-25,129c-33.5,61-82.5,104.9-148.3,128.6
+c-37.9,13.6-76.6,16.4-115.7,3.9c-1.4-0.4-3.8,0-4.7,0.9c-23.5,25-46.8,50.1-70.6,75.6c8.9,8.3,17.6,16.5,26.4,24.6
+c64.7,60.3,129.2,120.8,194.3,180.7c29.8,27.4,31.4,68.2,13.5,95.3c-26.6,40.5-82.3,44.8-115.9,8.8
+C681.2,815.3,617.7,747,554.1,678.7c-4.1-4.4-8.2-8.7-12.6-13.4c-10.5,11.2-20.7,22.1-30.9,33.1
+c-53.9,57.9-107.8,115.9-161.8,173.7c-20.1,21.4-45,29-73.2,21.6c-27.1-7.1-45-25.1-51.7-52.4c-7-28.4,0.9-53,22.4-73
+c68.3-63.6,136.5-127.1,204.8-190.7c1.4-1.3,2.8-2.7,4.5-4.4c-8-8.6-15.8-17-23.6-25.4c-12-12.9-24.2-25.8-36-38.8
+c-2.4-2.7-4.3-3-7.6-1.8c-27.8,10.4-55.8,11.8-83.9,1c-15.3-5.9-28.9-14.8-40-26.7C224.8,438.7,185.1,396,146,352.8
+c-27.7-30.6-54.6-62-81.9-93c-1.1-1.2-2.1-2.5-1.8-2.8C115.3,203.9,168.3,150.9,222,97.3z
+M661,427.1c-1.1,0.8-2.5,1.7-3.7,2.8
+c-36,33.4-72,66.9-107.9,100.4C474.5,600,399.7,669.8,324.9,739.5c-19.6,18.3-39.4,36.3-58.8,54.9c-17,16.3-16.3,42.2,1,58.8
+c16,15.3,42,14.1,57.4-2.5c36.7-39.5,73.5-79,110.3-118.5c75.4-80.9,150.7-161.8,226.1-242.7c10.1-10.8,20.2-21.6,29.7-31.8
+c9,3.6,17.1,7.7,25.6,10.3c30.4,9,60.5,5.9,89.7-4.7c60.5-21.8,104.7-62.4,134.1-119.1c16.5-31.8,25-65.7,18.8-101.8
+c-6.4-37.7-27-64.7-63.4-78.2c-30.7-11.4-61.9-9.1-92.1,1.4c-69.6,24.1-118.4,71.1-146.1,139C640.8,345,638.1,386.2,661,427.1z
+M205.7,157.2c55.8,54.8,111.5,109.6,166.8,164c-5.9,6.2-11.2,11.8-16.9,17.7C300,284.3,244.5,229.7,189.5,175.8
+c-6,6-11.5,11.4-17.1,17.1C227.5,247,283,301.5,337.9,355.5c-6.1,6.2-12,12-18.4,18.4c-54.7-54.7-109.6-109.6-164.2-164.2
+c-4.9,4.9-10,10-15.2,15.2c54.2,55.2,108.7,110.6,162.8,165.7c-5.9,5.9-11.4,11.5-17.3,17.4c-54.4-55.4-109.2-111.1-163.5-166.3
+c-5.5,5.6-10.9,10.9-16.4,16.5c0.6,0.7,1.6,1.9,2.5,3c29.1,32.9,57.9,66.2,87.5,98.7c30.7,33.8,61.6,67.3,93.4,100.1
+c21,21.7,47.5,28.2,76.7,20.2c11.7-3.2,22.7-8.9,34.7-13.7c25.6,27.5,52.2,56,78.9,84.7c12.6-11.7,24.8-23.1,37.3-34.8
+c-29.4-27.4-58.2-54.2-87-81.1c2.2-3.7,4.2-7,5.9-10.4c1.8-3.4,3.5-6.8,4.8-10.4c12.3-31.9,9.4-61.5-14-87.5
+c-8.4-9.4-17.6-18.2-27-26.7c-48.6-44.1-97.4-88-146.2-131.9c-10.4-9.3-21-18.4-31.4-27.5C216.6,146.3,211.4,151.5,205.7,157.2z
+M604.4,597.8c-13.6,14.6-27.1,29.1-40.6,43.6c1.7,1.9,3,3.4,4.4,4.8c44.3,47.5,88.5,95,132.8,142.5c23.3,25,46.5,49.9,69.9,74.8
+c7.8,8.4,17.9,12.1,29.2,12c16.8-0.2,31.6-10.9,37.3-26.3c6-16.1,1.9-32.6-10.9-44.6c-57.6-53.7-115.2-107.4-172.8-161
+C637.3,628.4,620.9,613.2,604.4,597.8z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M908.7,240.1c8.5,16.8,10.8,34.7,8.9,53c-6.6,64.5-59.1,123.9-122.2,138.2c-22.1,5-43.9,4.3-65-5.3
+c-0.7-0.3-1.5-0.8-3.5-1.8c51.7,0,93.1-21,127.5-56.5C888.7,332.3,908.5,290.3,908.7,240.1z" />
+</vector>

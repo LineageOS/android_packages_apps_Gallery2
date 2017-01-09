@@ -19,9 +19,12 @@ package com.android.gallery3d.filtershow.category;
 import android.content.res.Configuration;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +32,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import org.codeaurora.gallery.R;
+import org.json.JSONObject;
 
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.filtershow.FilterShowActivity;
@@ -46,6 +50,9 @@ import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine;
 import com.android.gallery3d.filtershow.ui.DoNotShowAgainDialog;
 import com.android.gallery3d.util.GalleryUtils;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelegate {
 
     private static final String LOGTAG = "MainPanel";
@@ -62,6 +69,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     private ImageButton hazeBusterButton;
     private ImageButton seeStraightButton;
     private ImageButton truePortraitButton;
+    private ImageButton waterMarkButton;
 
     public static final String FRAGMENT_TAG = "MainPanel";
     public static final String EDITOR_TAG = "coming-from-editor-panel";
@@ -76,6 +84,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     public static final int HAZEBUSTER = 8;
     public static final int SEESTRAIGHT = 9;
     public static final int TRUEPORTRAIT = 10;
+    public static final int WATERMARK = 11;
 
     private int mCurrentSelected = -1;
     private int mPreviousToggleVersions = -1;
@@ -132,6 +141,10 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
                 if (seeStraightButton != null) {
                     seeStraightButton.setSelected(value);
                 }
+                break;
+            }
+            case WATERMARK: {
+                waterMarkButton.setSelected(value);
                 break;
             }
         }
@@ -220,6 +233,14 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             truePortraitButton.setVisibility(View.GONE);
         }
 
+        waterMarkButton = (ImageButton) bottomPanel.findViewById(R.id.waterMarkButton);
+
+        waterMarkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPanel(WATERMARK);
+            }
+        });
         looksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -527,6 +548,94 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         selection(mCurrentSelected, true);
     }
 
+    public void loadWaterMarkPanel() {
+        if (mCurrentSelected == WATERMARK) {
+            return;
+        }
+        boolean fromRight = isRightAnimation(WATERMARK);
+        selection(mCurrentSelected, false);
+        CategoryPanel categoryPanel = new CategoryPanel();
+        categoryPanel.setAdapter(WATERMARK);
+        setCategoryFragment(categoryPanel, fromRight);
+        mCurrentSelected = WATERMARK;
+        selection(mCurrentSelected, true);
+        final FilterShowActivity activity = (FilterShowActivity) getActivity();
+//        String url = "http://api.map.baidu.com/location/ip?ak=PR0TaSQODfSbVr7hkcNF4NkAYEixoxSy&coor=bd09ll";
+        String url = "";
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                HttpURLConnection connection = null;
+                String location = "";
+                try {
+                    URL url = new URL(strings[0]);
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Charset", "UTF-8");
+                    connection.connect();
+                    if (connection.getResponseCode() == 200) {
+                        String result = WaterMarkView.convertStream2String(connection.getInputStream());
+                        JSONObject resultJson = new JSONObject(result);
+                        location = resultJson.getJSONObject("content").getString("address");
+                        if (!TextUtils.isEmpty(location)) {
+                            getWeather(activity, location);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+                return location;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                activity.setLocation(s);
+            }
+        }.execute(url);
+    }
+
+    private void getWeather(final FilterShowActivity activity, String city) {
+//        String url = "http://api.map.baidu.com/telematics/v3/weather?location="
+//                + city + "&output=json&ak=PR0TaSQODfSbVr7hkcNF4NkAYEixoxSy";
+        String url = "";
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... strings) {
+                HttpURLConnection connection = null;
+                String temperature = "";
+                try {
+                    URL url = new URL(strings[0]);
+                    connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setRequestProperty("Charset", "UTF-8");
+                    connection.connect();
+                    if (connection.getResponseCode() == 200) {
+                        String result = WaterMarkView.convertStream2String(connection.getInputStream());
+                        JSONObject resultJson = new JSONObject(result);
+                        String weather = resultJson.getJSONArray("results").getJSONObject(0).getJSONArray("weather_data").getJSONObject(0).getString("date");
+                        temperature = weather.substring(weather.indexOf("：")+1, weather.indexOf(")"));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                }
+                return temperature;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                activity.setTemperature(s);
+            }
+        }.execute(url);
+    }
+
     public void showPanel(int currentPanel) {
         FilterShowActivity activity = (FilterShowActivity) getActivity();
         if (null == activity) {
@@ -575,6 +684,10 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             }
             case TRUEPORTRAIT: {
                 loadCategoryTruePortraitPanel();
+                break;
+            }
+            case WATERMARK: {
+                loadWaterMarkPanel();
                 break;
             }
         }
