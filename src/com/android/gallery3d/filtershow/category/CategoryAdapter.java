@@ -141,11 +141,31 @@ public class CategoryAdapter extends ArrayAdapter<Action> {
     }
 
     public void setSelected(View v) {
+        setSelected((Integer) v.getTag());
+    }
+
+    public int getPositionOfPresentation(FilterRepresentation rep) {
+        int pos = -1;
+        for (int i = 0; i < getCount(); i++) {
+            FilterRepresentation itemRep = getItem(i).getRepresentation();
+            if (itemRep == null) {
+                continue;
+            }
+            if (rep.getName().equalsIgnoreCase(
+                    itemRep.getName())) {
+                pos = i;
+                break;
+            }
+        }
+        return pos;
+    }
+
+    public void setSelected(int pos) {
         int old = mSelectedPosition;
-        mSelectedPosition = (Integer) v.getTag();
         if (old != -1) {
             invalidateView(old);
         }
+        mSelectedPosition = pos;
         invalidateView(mSelectedPosition);
     }
 

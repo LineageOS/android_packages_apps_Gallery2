@@ -70,7 +70,7 @@ public class PresetManagementDialog extends DialogFragment implements View.OnCli
 //                mAdapter.clearChangedRepresentations();
 //                mAdapter.clearDeletedRepresentations();
 //                activity.updateUserPresetsFromAdapter(mAdapter);
-                activity.onFilterGeneratorLaunched (false);
+
                 dismiss();
                 break;
             case R.id.ok:
@@ -78,7 +78,7 @@ public class PresetManagementDialog extends DialogFragment implements View.OnCli
              //   activity.saveCurrentImagePreset(text);
                 checked = mCheckBox.isChecked();
                 GalleryUtils.setBooleanPref(activity,activity.getString(R.string.pref_filtergenerator_intro_show_key),checked);
-                activity.onFilterGeneratorLaunched (true);
+                activity.onMediaPickerStarted ();
              //   mAdapter.updateCurrent();
              //   activity.updateUserPresetsFromAdapter(mAdapter);
                 dismiss();

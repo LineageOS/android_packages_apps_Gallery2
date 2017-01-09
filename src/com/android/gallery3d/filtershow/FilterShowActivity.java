@@ -141,6 +141,7 @@ import com.android.gallery3d.filtershow.imageshow.ImageShow;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.imageshow.Spline;
 import com.android.gallery3d.filtershow.info.InfoPanel;
+import com.android.gallery3d.filtershow.mediapicker.MediaPickerFragment;
 import com.android.gallery3d.filtershow.pipeline.CachingPipeline;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.pipeline.ProcessingService;
@@ -186,9 +187,10 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     private EditorPlaceHolder mEditorPlaceHolder = new EditorPlaceHolder(this);
     private Editor mCurrentEditor = null;
 
+    private MediaPickerFragment mMediaPicker;
+
     private static final int SELECT_PICTURE = 1;
     public static final int SELECT_FUSION_UNDERLAY = 2;
-    public static final int SELECT_FILTER = 3;
     private static final String LOGTAG = "FilterShowActivity";
 
     private boolean mShowingTinyPlanet = false;
@@ -1435,11 +1437,91 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mCurrentDialog = null;
     }
 
-    public void onFilterGeneratorLaunched(boolean b) {
-        mPresetDialog = null;
-        if (b == true) {
-            pickImage(SELECT_FILTER);
+    public void onMediaPickerStarted() {
+        toggleComparisonButtonVisibility();
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+        if (mMediaPicker == null)
+            mMediaPicker = MediaPickerFragment.newInstance(getApplicationContext());
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_panel_container, mMediaPicker)
+                .commit();
+    }
+
+    public void onMediaPickerResult(Uri selImg) {
+        mFilterPresetSource = new FilterPresetSource(this);
+        int id = nameFilter(mFilterPresetSource, tempFilterArray);
+        FilterPresetRepresentation fp= new FilterPresetRepresentation(
+                getString(R.string.filtershow_preset_title) + id, id, id);
+        fp.setSerializationName("Custom");
+        fp.setUri(selImg);
+        ImagePreset preset = new ImagePreset();
+        preset.addFilter(fp);
+        SaveOption sp= new SaveOption();
+        sp._id = id;
+        sp.name = "Custom" + id;
+        sp.Uri = selImg.toString();
+        tempFilterArray.add(sp);
+        FiltersManager.getManager().addRepresentation(fp);
+        mCategoryLooksAdapter.add(new Action(this, fp, Action.FULL_VIEW, true));
+        useFilterRepresentation(fp);
+        int pos = mCategoryLooksAdapter.getPositionOfPresentation(fp);
+        if (pos != -1)
+            backAndSetCustomFilterSelected(pos);
+    }
+
+    private void backAndSetCustomFilterSelected(int pos) {
+        showComparisonButton();
+        removeSeekBarPanel();
+        showActionBar(true);
+        loadMainPanel();
+        if(mEditorPlaceHolder != null)
+            mEditorPlaceHolder.hide();
+        if(mImageShow != null)
+            mImageShow.setVisibility(View.VISIBLE);
+        updateCategories();
+        mCategoryLooksAdapter.setSelected(pos);
+    }
+
+    public void applyCustomFilterRepresentation(
+            FilterRepresentation filterRep, FilterRepresentation oldfilterRep) {
+        ImagePreset oldPreset = MasterImage.getImage().getPreset();
+        ImagePreset copy = new ImagePreset(oldPreset);
+        if (oldfilterRep != null)
+            copy.removeFilter(oldfilterRep);
+
+        FilterRepresentation rep = copy.getRepresentation(filterRep);
+        if (rep == null) {
+            filterRep = filterRep.copy();
+            copy.addFilter(filterRep);
+        } else {
+            if (filterRep.allowsSingleInstanceOnly()) {
+                // Don't just update the filter representation. Centralize the
+                // logic in the addFilter(), such that we can keep "None" as
+                // null.
+                if (!rep.equals(filterRep)) {
+                    // Only do this if the filter isn't the same
+                    // (state panel clicks can lead us here)
+                    copy.removeFilter(rep);
+                    copy.addFilter(filterRep);
+                }
+            }
         }
+        MasterImage.getImage().setPreset(copy, filterRep, false);
+    }
+
+    public FilterRepresentation createUserPresentaion(Uri selImg, int index) {
+        FilterPresetRepresentation fp= new FilterPresetRepresentation(
+                getString(R.string.filtershow_preset_title) + index, index, index);
+        fp.setSerializationName("Custom");
+        fp.setUri(selImg);
+        return fp;
+    }
+
+    public FilterRepresentation getCurrentPresentation() {
+        ImagePreset preset = MasterImage.getImage().getPreset();
+        return preset.getLastRepresentation();
     }
 
     private class LoadHighresBitmapTask extends AsyncTask<Void, Void, Boolean> {
@@ -1582,6 +1664,9 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         protected Boolean doInBackground(Uri... params) {
             boolean result = false;
             Bitmap src = ImageLoader.loadBitmap(FilterShowActivity.this, params[0], null);
+            if(src == null) {
+                return false;
+            }
             FaceDetect fDetect = new FaceDetect();
             fDetect.initialize();
             FaceInfo[] faceInfos = fDetect.dectectFeatures(src);
@@ -1947,7 +2032,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             mPresetDialog = new PresetManagementDialog();
             mPresetDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
         } else {
-            onFilterGeneratorLaunched(true);
+            onMediaPickerStarted();
         }
     }
 
@@ -1994,11 +2079,9 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             mCategoryLooksAdapter.add(new Action(this, Action.SPACER));
         } */
         mUserPresetsAdapter.clear();
-
         if (presets.size() > 0) {
             mCategoryLooksAdapter.add(new Action(this, Action.ADD_ACTION));
         }
-
         for (int i = 0; i < presets.size(); i++) {
             FilterUserPresetRepresentation representation = presets.get(i);
             mCategoryLooksAdapter.add(
@@ -2317,25 +2400,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                     EditorTruePortraitFusion editor = (EditorTruePortraitFusion)mCurrentEditor;
                     editor.setUnderlayImageUri(underlayImageUri);
                 }
-            } else if (requestCode == SELECT_FILTER ) {
-                Uri FilterImageUri = data.getData();
-                mFilterPresetSource = new FilterPresetSource(this);
-                int id = nameFilter(mFilterPresetSource, tempFilterArray);
-                FilterPresetRepresentation fp= new FilterPresetRepresentation(
-                        getString(R.string.filtershow_preset_title)+id, id, id);
-                fp.setSerializationName("Custom");
-                fp.setUri(FilterImageUri);
-                ImagePreset preset = new ImagePreset();
-                preset.addFilter(fp);
-                SaveOption sp= new SaveOption();
-                sp._id = id;
-                sp.name = "Custom"+id;
-                sp.Uri = FilterImageUri.toString();
-                tempFilterArray.add(sp);
-                FiltersManager.getManager().addRepresentation(fp);
-                mCategoryLooksAdapter.add(new Action(this, fp
-                        , Action.FULL_VIEW,true));
-
             }
         }
     }
