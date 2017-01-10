@@ -187,38 +187,37 @@ public class CategoryView extends IconView
         }
     }
 
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        boolean ret = super.onTouchEvent(event);
-//        FilterShowActivity activity = (FilterShowActivity) getContext();
-//
-//        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
-//            activity.startTouchAnimation(this, event.getX(), event.getY());
-//        }
-//        if (!canBeRemoved()) {
-//            return ret;
-//        }
-//        if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-//            mStartTouchY = event.getY();
-//            mStartTouchX = event.getX();
-//
-//        }
-//        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
-//            setTranslationX(0);
-//            setTranslationY(0);
-//        }
-//        if (event.getActionMasked() == MotionEvent.ACTION_MOVE) {
-//            float delta = event.getY() - mStartTouchY;
-//            if (getOrientation() == CategoryView.VERTICAL) {
-//                delta = event.getX() - mStartTouchX;
-//            }
-//        }
-////            if (Math.abs(delta) > mDeleteSlope) {
-//                activity.setHandlesSwipeForView(this, mStartTouchX, mStartTouchY);
-////            }
-////        }
-//        return true;
-//    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        boolean ret = super.onTouchEvent(event);
+        FilterShowActivity activity = (FilterShowActivity) getContext();
+
+        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+            activity.startTouchAnimation(this, event.getX(), event.getY());
+        }
+        if (!canBeRemoved() || checkPreset()) {
+            return ret;
+        }
+        if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+            mStartTouchY = event.getY();
+            mStartTouchX = event.getX();
+
+        }
+        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+            setTranslationX(0);
+            setTranslationY(0);
+        }
+        if (event.getActionMasked() == MotionEvent.ACTION_MOVE) {
+            float delta = event.getY() - mStartTouchY;
+            if (getOrientation() == CategoryView.VERTICAL) {
+                delta = event.getX() - mStartTouchX;
+            }
+           if (Math.abs(delta) > mDeleteSlope) {
+                activity.setHandlesSwipeForView(this, mStartTouchX, mStartTouchY);
+            }
+        }
+        return true;
+    }
 
     @Override
     public boolean onLongClick(View view){
@@ -276,4 +275,15 @@ public class CategoryView extends IconView
                     mPaint);
         }
     }
+
+    private boolean checkPreset () {
+        FilterRepresentation filterRepresentation = mAction.getRepresentation();
+        if (filterRepresentation != null) {
+            if (filterRepresentation.getFilterType() == FilterRepresentation.TYPE_PRESETFILTER) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
