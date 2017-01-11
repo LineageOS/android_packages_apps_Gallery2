@@ -309,6 +309,12 @@ public class ProcessingService extends Service {
         filtersManager.addSeeStraight();
         filtersManager.addTruePortrait(this);
         filtersManager.addFilterPreset(this);
+        filtersManager.addWaterMarks(this);
+        filtersManager.addLocations(this);
+        filtersManager.addTimes(this);
+        filtersManager.addWeather(this);
+        filtersManager.addEmotions(this);
+        filtersManager.addFoods(this);
 
         FiltersManager highresFiltersManager = FiltersManager.getHighresManager();
         highresFiltersManager.addLooks(this);
@@ -322,6 +328,12 @@ public class ProcessingService extends Service {
         highresFiltersManager.addSeeStraight();
         highresFiltersManager.addTruePortrait(this);
         highresFiltersManager.addFilterPreset(this);
+        highresFiltersManager.addWaterMarks(this);
+        highresFiltersManager.addLocations(this);
+        highresFiltersManager.addTimes(this);
+        highresFiltersManager.addWeather(this);
+        highresFiltersManager.addEmotions(this);
+        highresFiltersManager.addFoods(this);
     }
 
     private void tearDownPipeline() {

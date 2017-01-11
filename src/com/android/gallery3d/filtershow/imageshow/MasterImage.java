@@ -37,6 +37,7 @@ import com.android.gallery3d.exif.ExifTag;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
+import com.android.gallery3d.filtershow.category.WaterMarkView;
 import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
@@ -117,6 +118,7 @@ public class MasterImage implements RenderingRequestCaller {
     private FilterShowActivity mActivity = null;
 
     private Vector<ImageShow> mObservers = new Vector<ImageShow>();
+    private Vector<WaterMarkView> mWaterMarks = new Vector<WaterMarkView>();
     private FilterRepresentation mCurrentFilterRepresentation;
 
     private float mScaleFactor = 1.0f;
@@ -336,6 +338,17 @@ public class MasterImage implements RenderingRequestCaller {
 
     public void removeObserver(ImageShow observer) {
         mObservers.remove(observer);
+    }
+
+    public void addWaterMark(WaterMarkView waterMarkView) {
+        if (mWaterMarks.contains(waterMarkView)) {
+            return;
+        }
+        mWaterMarks.add(waterMarkView);
+    }
+
+    public void removeWaterMark(WaterMarkView waterMarkView) {
+        mWaterMarks.remove(waterMarkView);
     }
 
     public void setActivity(FilterShowActivity activity) {
@@ -616,6 +629,11 @@ public class MasterImage implements RenderingRequestCaller {
         }
     }
 
+    public void notifyWaterMarks() {
+        for (WaterMarkView waterMarkView : mWaterMarks) {
+            waterMarkView.update();
+        }
+    }
     public void resetGeometryImages(boolean force) {
         if (mPreset == null) {
             return;
@@ -847,6 +865,7 @@ public class MasterImage implements RenderingRequestCaller {
             mBitmapCache.cache(mHighresBitmap);
             mHighresBitmap = request.getBitmap();
             notifyObservers();
+            notifyWaterMarks();
             needsCheckModification = true;
         }
     }

@@ -64,4 +64,12 @@
         <item name="android:background">@null</item>
     </style>
 
+    <style name="DefaultFillColor">
+        <item name="fillColorSelector">#FFFFFF</item>
+    </style>
+
+    <style name="SelectedFillColor">
+        <item name="fillColorSelector">#4592F9</item>
+    </style>
+
 </resources>

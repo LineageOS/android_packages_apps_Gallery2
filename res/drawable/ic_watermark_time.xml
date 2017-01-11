@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2016, The Linux Foundation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+      * Neither the name of The Linux Foundation nor the names of its
+        contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="360dp"
+    android:viewportWidth="360"
+    android:viewportHeight="360">
+
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="12.2107"
+        android:strokeMiterLimit="10"
+        android:pathData="M180.2,330.3c-83.7,0-151.7-68.1-151.7-151.7
+S96.6,26.8,180.2,26.8s151.7,68.1,151.7,151.7S263.9,330.3,180.2,330.3z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M180.2,57.8c32.3,0,62.6,12.6,85.4,35.4c22.8,22.8,35.4,53.1,35.4,85.4s-12.6,62.6-35.4,85.4
+c-22.8,22.8-53.1,35.4-85.4,35.4s-62.6-12.6-85.4-35.4c-22.8-22.8-35.4-53.1-35.4-85.4S72,115.9,94.8,93.1
+C117.6,70.3,148,57.8,180.2,57.8
+M180.2,52.6c-69.6,0-126,56.4-126,126s56.4,126,126,126s126-56.4,126-126S249.8,52.6,180.2,52.6
+L180.2,52.6z" />
+    <path
+        android:strokeColor="#231F20"
+        android:strokeWidth="16.6991"
+        android:strokeMiterLimit="10"
+        android:pathData="M79.3,177.8" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="16.6991"
+        android:strokeMiterLimit="10"
+        android:pathData="M179.5,278" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="16.6991"
+        android:strokeMiterLimit="10"
+        android:pathData="M179.5,313.3" />
+    <path
+        android:strokeColor="#231F20"
+        android:strokeWidth="16.6991"
+        android:strokeMiterLimit="10"
+        android:pathData="M279.7,177.8" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 179.2 103.7 L 179.2 82.4" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 142.1 113.8 L 131.5 95.3" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 115.1 141.1 L 96.7 130.4" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 105.4 178.2 L 84.1 178.2" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 115.5 215.2 L 97 225.9" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 142.8 242.2 L 132.1 260.7" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 179.9 252 L 179.9 273.3" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 216.9 241.9 L 227.6 260.4" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 243.9 214.6 L 262.4 225.3" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 253.7 177.5 L 275 177.5" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 243.6 140.5 L 262 129.8" />
+    <path
+        android:strokeColor="#231F20"
+        android:strokeWidth="5.5664"
+        android:strokeMiterLimit="10"
+        android:pathData="M 216.3 113.4 L 227 95" />
+    <path
+        android:strokeColor="#231F20"
+        android:strokeWidth="16.6991"
+        android:strokeMiterLimit="10"
+        android:pathData="M 179.5 177.8 H 179.5 V 177.8 H 179.5 V 177.8 Z" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="12.2107"
+        android:strokeMiterLimit="10"
+        android:pathData="M 179.5 154.2 C 193.307118746 154.2 204.5 165.392881254 204.5 179.2 C 204.5 193.007118746 193.307118746 204.2 179.5 204.2 C 165.692881254 204.2 154.5 193.007118746 154.5 179.2 C 154.5 165.392881254 165.692881254 154.2 179.5 154.2 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M179.3,154.5c-2.1,6.6,59.5-80.7,59.5-80.7l-41.2,91.6L179.3,154.5z" />
+</vector>

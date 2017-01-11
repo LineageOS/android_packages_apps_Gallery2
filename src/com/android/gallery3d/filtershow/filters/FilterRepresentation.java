@@ -16,6 +16,7 @@
 
 package com.android.gallery3d.filtershow.filters;
 
+import android.content.res.Resources;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 import android.util.Log;
@@ -40,6 +41,8 @@ public class FilterRepresentation {
     private boolean mOverlayOnly = false;
     private boolean mShowParameterValue = true;
     private boolean mIsBooleanFilter = false;
+    private boolean isSvgOverlay = false;
+    private Resources.Theme currentTheme;
     private String mSerializationName;
     public static final byte TYPE_BORDER = 1;
     public static final byte TYPE_FX = 2;
@@ -52,6 +55,8 @@ public class FilterRepresentation {
     public static final byte TYPE_DUALCAM = 9;
     public static final byte TYPE_TRUEPORTRAIT = 10;
     public static final byte TYPE_PRESETFILTER = 11;
+    public static final byte TYPE_WATERMARK_CATEGORY = 12;
+    public static final byte TYPE_WATERMARK = 13;
     protected static final String NAME_TAG = "Name";
 
     public FilterRepresentation(String name) {
@@ -199,12 +204,33 @@ public class FilterRepresentation {
         mOverlayId = overlayId;
     }
 
+    public void setOverlayId(int overlayId, Resources.Theme theme) {
+        mOverlayId = overlayId;
+        currentTheme = theme;
+    }
+
+    public Resources.Theme getCurrentTheme() {
+        return currentTheme;
+    }
+
+    public void setCurrentTheme(Resources.Theme theme) {
+        currentTheme = theme;
+    }
+
     public boolean getOverlayOnly() {
         return mOverlayOnly;
     }
 
     public void setOverlayOnly(boolean value) {
         mOverlayOnly = value;
+    }
+
+    public boolean isSvgOverlay() {
+        return isSvgOverlay;
+    }
+
+    public void setSvgOverlay(boolean svgOverlay) {
+        isSvgOverlay = svgOverlay;
     }
 
     final public int getEditorId() {

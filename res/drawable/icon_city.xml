@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2016, The Linux Foundation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+      * Neither the name of The Linux Foundation nor the names of its
+        contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<vector android:height="24dp" android:viewportHeight="360.0"
+    android:viewportWidth="360.0" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M103,289 L97.1,289 L97.1,214.1 L73.8,233 L73.8,289 L67.9,289 L67.9,230.1 L103,201.7z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M152.3,289 L146.4,289 L146.4,219.7 L132.2,231.9 L132.2,155.7 L108.2,177.2 L108.2,289 L102.3,289
+			L102.3,174.4 L138.1,142.4 L138.1,219 L152.3,206.8z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M206.9,289 L201,289 L201,117.8 L159,158 L159,289 L153.2,289 L153.2,155.4 L206.9,103.9z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M229.3,39.8 L180.8,85.9 L180.8,129.2 L186.7,129.2 L186.7,88.5 L223.4,53.6 L223.4,113.3 L229.3,113.3z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M223.5,112.8 L248.5,143.1 L248.5,289 L288.4,289 L288.4,105.8 L228.9,39.9z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M137.8,142.8 L156.4,166.1 L156.4,289 L149.5,289 L149.5,214.7 L135.1,225.2z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M105.2,289 L100,289 L100.8,207.2 L105.2,210.7z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M204.2,289 L206.8,104.8 L240.9,148.3 L240.9,289z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M25.3,280.4h317.3v11.6h-317.3z"/>
+    <path android:fillColor="?attr/fillColorSelector" android:pathData="M50.1,300.4h267.7v8.3h-267.7z"/>
+</vector>

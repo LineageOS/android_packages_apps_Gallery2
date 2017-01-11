@@ -22,8 +22,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -123,6 +126,16 @@ public class Action implements RenderingRequestCaller {
             return;
         }
 
+        if (mRepresentation.getFilterType() == FilterRepresentation.TYPE_WATERMARK ||
+                mRepresentation.getFilterType() == FilterRepresentation.TYPE_WATERMARK_CATEGORY) {
+            mImageFrame = imageFrame;
+            int w = mImageFrame.width();
+            int h = mImageFrame.height();
+            mImage = MasterImage.getImage().getBitmapCache().getBitmap(w, h, BitmapCache.ICON);
+            drawOverlay();
+            return;
+        }
+
         Bitmap temp = MasterImage.getImage().getTemporaryThumbnailBitmap();
         if (temp != null) {
             mImage = temp;
@@ -173,15 +186,22 @@ public class Action implements RenderingRequestCaller {
         canvas.drawBitmap(source, m, new Paint(Paint.FILTER_BITMAP_FLAG));
     }
 
-    @Override
-    public void available(RenderingRequest request) {
-        clearBitmap();
-        mImage = request.getBitmap();
-        if (mImage == null) {
-            mImageFrame = null;
+    protected void drawOverlay() {
+        if (mRepresentation.isSvgOverlay()) {
+            mImage.eraseColor(0x00FFFFFF);
+            Canvas canvas = new Canvas(mImage);
+            canvas.drawARGB(0,255,255,255);
+            Drawable overlayDrawable = mContext.getResources().
+                    getDrawable(mRepresentation.getOverlayId());
+            if (null != mRepresentation.getCurrentTheme() && overlayDrawable.canApplyTheme()) {
+                overlayDrawable.applyTheme(mRepresentation.getCurrentTheme());
+            }
+            int with = mImageFrame.width()/8;
+            int height = mImageFrame.height()/4;
+            overlayDrawable.setBounds(with,20,with*7,height*3);
+            overlayDrawable.draw(canvas);
             return;
         }
-
         if (mRepresentation.getOverlayId() != 0 && mOverlayBitmap == null) {
             mOverlayBitmap = BitmapFactory.decodeResource(
                     mContext.getResources(),
@@ -198,7 +218,17 @@ public class Action implements RenderingRequestCaller {
                 drawCenteredImage(mOverlayBitmap, mImage, false);
             }
         }
+    }
 
+    @Override
+    public void available(RenderingRequest request) {
+        clearBitmap();
+        mImage = request.getBitmap();
+        if (mImage == null) {
+            mImageFrame = null;
+            return;
+        }
+        drawOverlay();
         if (mAdapter != null) {
             mAdapter.notifyDataSetChanged();
         }

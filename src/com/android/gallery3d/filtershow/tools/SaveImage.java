@@ -272,7 +272,7 @@ public class SaveImage {
         return exif;
     }
 
-    public boolean putExifData(File file, ExifInterface exif, Bitmap image,
+    public static boolean putExifData(File file, ExifInterface exif, Bitmap image,
             int jpegCompressQuality) {
         boolean ret = false;
         OutputStream s = null;

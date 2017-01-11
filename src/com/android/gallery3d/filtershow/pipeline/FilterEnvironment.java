@@ -129,6 +129,7 @@ public class FilterEnvironment {
         ImageFilter filter = mFiltersManager.getFilterForRepresentation(representation);
         if (filter == null){
             Log.e(LOGTAG,"No ImageFilter for "+representation.getSerializationName());
+            return bitmap;
         }
         filter.useRepresentation(representation);
         filter.setEnvironment(this);

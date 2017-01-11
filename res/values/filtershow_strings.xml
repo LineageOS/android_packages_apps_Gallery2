@@ -412,4 +412,9 @@
     <string name="filter_name">Filter name</string>
     <string name="filter_name_notification">Name cannot be NULL.</string>
     <string name="filter_name_duplicate">Name already existed, please input another one.</string>
+    <string name="watermark_location">Location</string>
+    <string name="watermark_time">Time</string>
+    <string name="watermark_weather">Weather</string>
+    <string name="watermark_emotions">Emotions</string>
+    <string name="watermark_food">Food</string>
 </resources>

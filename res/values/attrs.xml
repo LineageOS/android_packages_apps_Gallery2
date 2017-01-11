@@ -47,4 +47,7 @@
         <attr name="background" format="integer" />
         <attr name="foreground" format="integer" />
     </declare-styleable>
+    <declare-styleable name="FillColor">
+        <attr name="fillColorSelector" format="color" />
+    </declare-styleable>
 </resources>
