@@ -48,8 +48,9 @@ import static com.android.gallery3d.filtershow.imageshow.ImageTrueScanner.*;
 
 public class TrueScannerActs extends SimpleImageFilter {
     public static final String SERIALIZATION_NAME = "TrueScannerActs";
-    private static final int MIN_WIDTH = 512;
-    private static final int MIN_HEIGHT = 512;
+    //The minimum resolution that TrueScanner library supports is VGA, i.e. 640x480.
+    public static final int MIN_WIDTH = 640;
+    public static final int MIN_HEIGHT = 480;
     private static final boolean DEBUG = false;
     private static boolean isTrueScannerEnabled = true;
     private static boolean isPointsAcquired;
@@ -130,7 +131,7 @@ public class TrueScannerActs extends SimpleImageFilter {
     public Bitmap apply(Bitmap bitmap, float not_use, int quality) {
         if(bitmap == null)
             return null;
-        if(bitmap.getWidth() <= MIN_WIDTH && bitmap.getHeight() <= MIN_HEIGHT)
+        if(bitmap.getWidth() <= MIN_WIDTH || bitmap.getHeight() <= MIN_HEIGHT)
             return bitmap;
         if(ImageTrueScanner.getCordsUIState()) {
             return bitmap;

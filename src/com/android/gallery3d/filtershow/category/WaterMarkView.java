@@ -321,8 +321,8 @@ public class WaterMarkView extends FrameLayout {
                 markLeft = dip2px(getContext(), 200);
             }
             markTop = dip2px(getContext(), 35);
-            markBottom = markLeft + dip2px(getContext(), 100);
-            markRight = markTop + dip2px(getContext(), 80);
+            markBottom = markTop + dip2px(getContext(), 100);
+            markRight = markLeft + dip2px(getContext(), 80);
         } else {
             markLeft = dip2px(getContext(), 50);
             if (MasterImage.getImage().getFilteredImage().getWidth() >
@@ -331,8 +331,8 @@ public class WaterMarkView extends FrameLayout {
             } else {
                 markTop = dip2px(getContext(), 70);
             }
-            markBottom = markLeft + dip2px(getContext(), 100);
-            markRight = markTop + dip2px(getContext(), 80);
+            markBottom = markTop + dip2px(getContext(), 100);
+            markRight = markLeft + dip2px(getContext(), 80);
         }
         updateMarkLayoutRect();
         markLayout.setTranslationX(markLeft);

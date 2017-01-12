@@ -143,6 +143,7 @@ import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
 import com.android.gallery3d.filtershow.filters.SaveWaterMark;
 import com.android.gallery3d.filtershow.filters.SimpleMakeupImageFilter;
+import com.android.gallery3d.filtershow.filters.TrueScannerActs;
 import com.android.gallery3d.filtershow.history.HistoryItem;
 import com.android.gallery3d.filtershow.history.HistoryManager;
 import com.android.gallery3d.filtershow.imageshow.ImageShow;
@@ -1485,6 +1486,14 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
         if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK) {
             showWaterMark(representation);
+        }
+        if (TrueScannerActs.SERIALIZATION_NAME.equals(representation.getSerializationName())) {
+            Bitmap b = MasterImage.getImage().getOriginalBitmapHighres();
+            if (b.getWidth() <= TrueScannerActs.MIN_WIDTH
+                    || b.getHeight() <= TrueScannerActs.MIN_HEIGHT) {
+                Toast.makeText(this, "Image size too small!", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
         useFilterRepresentation(representation);
 
