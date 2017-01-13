@@ -1527,6 +1527,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mWaterMarkView = waterMarkView;
         mSaveWaterMark.useRepresentation(representation);
         imgComparison.bringToFront();
+        mSaveWaterMark.getExifData(this, mSelectedImageUri);
         hasWaterMark = true;
     }
 
