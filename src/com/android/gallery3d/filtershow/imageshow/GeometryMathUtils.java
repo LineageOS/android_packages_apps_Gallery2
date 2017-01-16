@@ -238,7 +238,7 @@ public final class GeometryMathUtils {
         }
     }
 
-    private static int getRotationForOrientation(int orientation) {
+    public static int getRotationForOrientation(int orientation) {
         switch (orientation) {
             case ImageLoader.ORI_ROTATE_90:
                 return 90;
