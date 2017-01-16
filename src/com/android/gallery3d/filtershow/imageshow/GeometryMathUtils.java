@@ -528,8 +528,8 @@ public final class GeometryMathUtils {
     }
 
     public static float getWatermarkScale(GeometryHolder holder, int bitmapWidth,
-                                                 int bitmapHeight, int viewWidth, int viewHeight
-            , int oldw, int oldh) {
+                                          int bitmapHeight, int viewWidth, int viewHeight,
+                                          int oldw, int oldh) {
         int bh = bitmapHeight;
         int bw = bitmapWidth;
         if (GeometryMathUtils.needsDimensionSwap(holder.rotation)) {
