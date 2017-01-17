@@ -247,7 +247,23 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         dualCamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPanel(DUALCAM);
+                Context context = getActivity();
+                boolean skipIntro = GalleryUtils.getBooleanPref(context,
+                        context.getString(R.string.pref_dualcam_intro_show_key), false);
+                if (skipIntro) {
+                    showPanel(DUALCAM);
+                } else {
+                    DoNotShowAgainDialog dialog = new DoNotShowAgainDialog(
+                            R.string.dual_camera_effects, R.string.dual_camera_effects_intro,
+                            R.string.pref_dualcam_intro_show_key) {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            super.onDismiss(dialog);
+                            showPanel(DUALCAM);
+                        }
+                    };
+                    dialog.show(getFragmentManager(), "dualcam_intro");
+                }
             }
         });
 

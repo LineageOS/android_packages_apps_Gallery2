@@ -154,9 +154,33 @@
     <string name="filtershow_exif_f_stop" msgid="6081797865604483139">"光圈值"</string>
     <string name="filtershow_exif_exposure_time" msgid="4099067062781294115">"曝光时间"</string>
     <string name="filtershow_exif_copyright" msgid="8801875918803737581">"版权"</string>
+    <!--  Label for the "refocus" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="focus">对焦</string>
+    <!--  Label for the "fusion" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="fusion">背景切换</string>
+    <!--  Label for the "sketch" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="sketch">素描</string>
+    <!--  Label for the "halo" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="halo">光环</string>
+    <!--  Label for the "zoom" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="zoom">缩放模糊</string>
+    <!--  Label for the "motion" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="motion">动态模糊</string>
+    <!--  Label for the "bw" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="bw">去色</string>
+    <!--  Label for the "blackboard" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="blackboard">黑板</string>
+    <!--  Label for the "whiteboard" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="whiteboard">白板</string>
+    <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="posterize">色块化</string>
+    <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
+    <string name="dc_negative">负片</string>
 
     <string name="color">滤镜</string>
     <string name="frames">相框</string>
 
+    <string name="dual_camera_effects">双摄像头效果</string>
+    <string name="dual_camera_effects_intro">此功能可将双摄像头效果应用到背景上，如动态模糊和素描。.你可以将两张照片合并到一起来创建一个有趣的效果。这个功能在你的摄像头和照片的主体有一个短距离时效果最好。</string>
     <string name="trueportrait_intro">此功能用于增强人像照。你可以将效果应用于照片背景，例如“模糊”和“速写”。你也可以将两张照片拼在一起来给你的人像照创建一个有趣的背景。</string>
 </resources>
