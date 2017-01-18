@@ -423,21 +423,29 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     public void addDualCam(Context context) {
         int[] textId = {
                 R.string.focus,
-                R.string.halo
+                R.string.halo,
+                R.string.motion,
+                R.string.posterize
         };
 
         int[] overlayId = {
                 R.drawable.focus,
-                R.drawable.halo
+                R.drawable.halo,
+                R.drawable.motion,
+                R.drawable.posterize
         };
 
         String[] serializationNames = {
                 "DUAL_CAM_FOCUS",
-                "DUAL_CAM_HALO"
+                "DUAL_CAM_HALO",
+                "DUAL_CAM_MOTION",
+                "DUAL_CAM_POSTERIZE"
         };
 
         // intensity range as defined by ddm lib
         int[][] minMaxValues = {
+                {0,5,10},
+                {0,5,10},
                 {0,5,10},
                 {0,5,10}
         };
@@ -460,13 +468,42 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
             addRepresentation(dualCam);
         }
 
-        FilterDualCamSketchRepresentation sketch = new FilterDualCamSketchRepresentation(
-                context.getString(R.string.sketch), R.string.sketch);
-        sketch.setOverlayId(R.drawable.sketch);
-        sketch.setOverlayOnly(true);
-        sketch.setSerializationName("DUAL_CAM_SKETCH");
-        mDualCam.add(sketch);
-        addRepresentation(sketch);
+        int[] textId2 = {
+                R.string.sketch,
+                R.string.zoom,
+                R.string.bw,
+                R.string.blackboard,
+                R.string.whiteboard,
+                R.string.dc_negative
+        };
+
+        int[] overlayId2 = {
+                R.drawable.sketch,
+                R.drawable.zoom,
+                R.drawable.bw,
+                R.drawable.blackboard,
+                R.drawable.whiteboard,
+                R.drawable.negative
+        };
+
+        String[] serializationNames2 = {
+                "DUAL_CAM_SKETCH",
+                "DUAL_CAM_ZOOM",
+                "DUAL_CAM_BW",
+                "DUAL_CAM_BLACKBOARD",
+                "DUAL_CAM_WHITEBOARD",
+                "DUAL_CAM_NEGATIVE"
+        };
+
+        for (int i = 0; i < textId2.length; i++) {
+            FilterDualCamSketchRepresentation dualCam = new FilterDualCamSketchRepresentation(
+                    context.getString(textId2[i]), textId2[i]);
+            dualCam.setOverlayId(overlayId2[i]);
+            dualCam.setOverlayOnly(true);
+            dualCam.setSerializationName(serializationNames2[i]);
+            mDualCam.add(dualCam);
+            addRepresentation(dualCam);
+        }
 
         mDualCam.add(getRepresentation(ImageFilterDualCamFusion.class));
     }
