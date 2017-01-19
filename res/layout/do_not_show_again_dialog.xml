@@ -29,27 +29,33 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:paddingTop="8dip"
     android:paddingBottom="8dip"
     android:paddingEnd="?android:attr/dialogPreferredPadding"
     android:paddingStart="?android:attr/dialogPreferredPadding"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/message"
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@android:style/TextAppearance.Material.Subhead" />
-
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="5dp"/>
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/TextAppearance.Material.Subhead" />
+    </ScrollView>
 
     <CheckBox
         android:id="@+id/do_not_show_chk"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:minHeight="20dp"
+        android:paddingEnd="6dp"
         style="@android:style/TextAppearance.Material.Subhead"
         android:text="@string/do_not_show_again" />
 
