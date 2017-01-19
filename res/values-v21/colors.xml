@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2012 The Android Open Source Project
-
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-
           http://www.apache.org/licenses/LICENSE-2.0
-
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,23 +12,23 @@
 -->
 <resources>
     <!-- configuration for album set page -->
-    <color name="albumset_background">#ff21272b</color>
-    <color name="albumset_placeholder">#37474F</color>
-    <color name="albumset_label_background">#EE37474F</color>
-    <color name="albumset_label_title">#FBFBFB</color>
-    <color name="albumset_label_count">#A9ABAD</color>
+    <color name="albumset_background">#ffffffff</color>
+    <color name="albumset_placeholder">#ffdadada</color>
+    <color name="albumset_label_background">#ccffffff</color>
+    <color name="albumset_label_title">#ff000000</color>
+    <color name="albumset_label_count">#ffa9abad</color>
 
     <!-- configuration for album page -->
-    <color name="album_background">#ff21272b</color>
-    <color name="album_placeholder">#37474F</color>
+    <color name="album_background">#ffffffff</color>
+    <color name="album_placeholder">#ffdadada</color>
 
     <!-- configuration for photo page -->
     <color name="photo_background">#ff21272b</color>
-    <color name="photo_placeholder">#37474F</color>
+    <color name="photo_placeholder">#ffdadada</color>
 
     <!-- configuration for manage cache page -->
     <color name="cache_background">#ff21272b</color>
-    <color name="cache_placeholder">#37474F</color>
+    <color name="cache_placeholder">#ffdadada</color>
 
     <color name="bitmap_screennail_placeholder">#37474F</color>
 
@@ -47,4 +44,9 @@
     <color name="floating_action_button_touch_tint">#FFB74D</color>
     <color name="floating_action_button_icon_color">#ffffff</color>
 
+    <!-- Make it blue just like my love -->
+    <color name="primary">#ffF4511E</color>
+    <color name="primary_dark">#ffE64A19</color>
+    <color name="accent">#ffd6d6d6</color>
+    
 </resources>
