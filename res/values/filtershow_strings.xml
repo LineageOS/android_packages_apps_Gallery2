@@ -221,7 +221,7 @@
     <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
     <string name="posterize">Posterize</string>
     <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
-    <string name="dc_negative">negative</string>
+    <string name="dc_negative">Negative</string>
     <!--  Label for the "blur" true portrait effect  [CHAR LIMIT=15] -->
     <string name="blur">Blur</string>
     <!--  Label for the "motion blur" true portrait effect  [CHAR LIMIT=15] -->
