@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -38,6 +38,9 @@ import android.util.Log;
 
 public class DualCameraNativeEngine {
     private static final String TAG = "DualCameraNativeEngine";
+
+    public static final float DEFAULT_BRIGHTNESS_INTENSITY = 1.0f;
+
     static {
         try {
             System.loadLibrary("jni_dualcamera");
@@ -56,7 +59,7 @@ public class DualCameraNativeEngine {
         DDM_LOADING,
         DDM_LOADED,
         DDM_FAILED
-    };
+    }
 
     public static final String DEPTH_MAP_EXT = "dm";
     private static final String CALIBRATION_FILENAME = "ddm_calib_file.dat";
@@ -64,10 +67,11 @@ public class DualCameraNativeEngine {
 
     private static DualCameraNativeEngine mInstance;
 
-    private DualCameraNativeEngine() {}
+    private DualCameraNativeEngine() {
+    }
 
     public static void createInstance() {
-        if(mInstance == null) {
+        if (mInstance == null) {
             mInstance = new DualCameraNativeEngine();
         }
     }
@@ -86,7 +90,7 @@ public class DualCameraNativeEngine {
         return calibFile.getAbsolutePath();
     }
 
-    native public boolean initDepthMap(Bitmap primaryRGBA, Bitmap auxiliaryRGBA, String mpoFilepath, String calibFilepath);
+    native public boolean initDepthMap(Bitmap primaryRGBA, Bitmap auxiliaryRGBA, String mpoFilepath, String calibFilepath, float brIntensity);
 
     native public void releaseDepthMap();
 
@@ -94,11 +98,59 @@ public class DualCameraNativeEngine {
 
     native public boolean getDepthMap(Bitmap dataBuffer);
 
+    native private boolean get3DEffectImages(Bitmap bitmap, Bitmap depthMap);
+
     native public boolean applyFocus(int focusPointX, int focusPointY, float intensity, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyFocusStar(int focusPointX, int focusPointY, float intensity, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyFocusHexagon(int focusPointX, int focusPointY, float intensity, int[] roiRect, boolean isPreview, Bitmap outBm);
 
     native public boolean applyHalo(int focusPointX, int focusPointY, float intensity, int[] roiRect, boolean isPreview, Bitmap outBm);
 
+    native public boolean applyMotion(int focusPointX, int focusPointY, float intensity, int[] roiRect, boolean isPreview, Bitmap outBm);
+
     native public boolean applySketch(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
 
+    native public boolean applyZoom(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyBlackAndWhite(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyBlackBoard(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyWhiteBoard(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyPosterize(int focusPointX, int focusPointY, float intensity, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean applyNegative(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
     native public boolean getForegroundImg(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    native public boolean getPrimaryImg(int focusPointX, int focusPointY, int[] roiRect, boolean isPreview, Bitmap outBm);
+
+    public static class DepthMap3D {
+        public char[] pixels;
+        public int width;
+        public int height;
+    }
+
+    public DepthMap3D getDepthMap3D(Bitmap bitmap) {
+        int width = bitmap.getWidth(), height = bitmap.getHeight();
+        Bitmap depthMap = Bitmap.createBitmap(width, height, Bitmap.Config.ALPHA_8);
+        boolean ok = get3DEffectImages(bitmap, depthMap);
+        if (!ok) return null;
+
+        DepthMap3D map = new DepthMap3D();
+        map.width = width;
+        map.height = height;
+        map.pixels = new char[width * height];
+
+        int[] pixels = new int[width * height];
+        depthMap.getPixels(pixels, 0, width, 0, 0, width, height);
+        for (int i = width * height - 1; i >= 0; --i) {
+            map.pixels[i] = (char) (pixels[i] & 0xff);
+        }
+        depthMap.recycle();
+        return map;
+    }
 }

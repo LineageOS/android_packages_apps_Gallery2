@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -121,15 +121,24 @@ public class ImageFilterDualCamera extends ImageFilter {
 
             filteredBitmap = MasterImage.getImage().getBitmapCache().getBitmap(filteredW, filteredH, BitmapCache.FILTERS);
 
-            switch(mParameters.getTextId()) {
-            case R.string.focus:
-                result = DualCameraNativeEngine.getInstance().applyFocus(point.x, point.y, intensity,
-                        roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                break;
-            case R.string.halo:
-                result = DualCameraNativeEngine.getInstance().applyHalo(point.x, point.y, intensity,
-                        roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                break;
+            switch (mParameters.getTextId()) {
+                case R.string.focus:
+                    result = DualCameraNativeEngine.getInstance().applyFocus(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.halo:
+                    result = DualCameraNativeEngine.getInstance().applyHalo(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.motion:
+                    result = DualCameraNativeEngine.getInstance().applyMotion(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.posterize:
+                    result = DualCameraNativeEngine.getInstance().applyPosterize(point.x, point.y, intensity,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+
             }
 
             if(result == false) {
@@ -161,6 +170,18 @@ public class ImageFilterDualCamera extends ImageFilter {
                 roiRectF.top = (float)roiRect[1]/(float)filteredH;
                 roiRectF.right = (float)(roiRect[0] + roiRect[2])/(float)filteredW;
                 roiRectF.bottom = (float)(roiRect[1] + roiRect[3])/(float)filteredH;
+
+                int zoomOrientation = MasterImage.getImage().getZoomOrientation();
+                if (zoomOrientation == ImageLoader.ORI_ROTATE_90 ||
+                        zoomOrientation == ImageLoader.ORI_ROTATE_180 ||
+                        zoomOrientation == ImageLoader.ORI_ROTATE_270 ||
+                        zoomOrientation == ImageLoader.ORI_TRANSPOSE ||
+                        zoomOrientation == ImageLoader.ORI_TRANSVERSE) {
+                    Matrix mt = new Matrix();
+                    mt.preRotate(GeometryMathUtils.getRotationForOrientation(zoomOrientation),
+                            0.5f, 0.5f);
+                    mt.mapRect(roiRectF);
+                }
 
                 // Check for ROI cropping
                 if(!FilterCropRepresentation.getNil().equals(roiRectF)) {

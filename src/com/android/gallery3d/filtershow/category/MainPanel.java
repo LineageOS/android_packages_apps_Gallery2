@@ -247,7 +247,23 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         dualCamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPanel(DUALCAM);
+                Context context = getActivity();
+                boolean skipIntro = GalleryUtils.getBooleanPref(context,
+                        context.getString(R.string.pref_dualcam_intro_show_key), false);
+                if (skipIntro) {
+                    showPanel(DUALCAM);
+                } else {
+                    DoNotShowAgainDialog dialog = new DoNotShowAgainDialog(
+                            R.string.dual_camera_effects, R.string.dual_camera_effects_intro,
+                            R.string.pref_dualcam_intro_show_key) {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            super.onDismiss(dialog);
+                            showPanel(DUALCAM);
+                        }
+                    };
+                    dialog.show(getFragmentManager(), "dualcam_intro");
+                }
             }
         });
 
@@ -263,10 +279,10 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
                 } else if(!skipIntro) {
                     DoNotShowAgainDialog dialog = new DoNotShowAgainDialog(
                             R.string.trueportrait, R.string.trueportrait_intro,
-                            R.string.pref_trueportrait_intro_show_key) {
+                            R.string.pref_trueportrait_intro_show_key);
+                    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
-                            super.onDismiss(dialog);
                             if(facesDetected) {
                                 showPanel(TRUEPORTRAIT);
                             } else {
@@ -274,7 +290,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
                                 TruePortraitNativeEngine.getInstance().showNoFaceDetectedDialog(getFragmentManager());
                             }
                         }
-                    };
+                    });
                     dialog.show(getFragmentManager(), "trueportrait_intro");
                 } else {
                     v.setEnabled(false);

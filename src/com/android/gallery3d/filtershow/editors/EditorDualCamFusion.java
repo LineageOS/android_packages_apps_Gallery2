@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -30,35 +30,56 @@
 package com.android.gallery3d.filtershow.editors;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.ImageFusion;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.ui.DoNotShowAgainDialog;
+import com.android.gallery3d.util.GalleryUtils;
 
-public class EditorDualCamFusion extends ImageOnlyEditor {
+import org.codeaurora.gallery.R;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
+public class EditorDualCamFusion extends Editor {
     public static final String TAG = EditorDualCamFusion.class.getSimpleName();
     public static final int ID = R.id.editorDualCamFusion;
 
     protected ImageFusion mImageFusion;
-    private Button mPickUnderlayBtn;
-    private OnClickListener mPickBtnClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View arg0) {
-            MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
-        }
-    };
+    private Uri mUnderlayUri = Uri.EMPTY;
 
     public EditorDualCamFusion() {
         super(ID);
+    }
+
+    @Override
+    public boolean showsActionBar() {
+        return true;
+    }
+
+    @Override
+    public boolean showsActionBarControls() {
+        return false;
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
     }
 
     public boolean useUtilityPanel() {
@@ -77,48 +98,123 @@ public class EditorDualCamFusion extends ImageOnlyEditor {
 
     @Override
     public void setEditPanelUI(View editControl) {
-        editControl.setVisibility(View.GONE);
+        ViewGroup controlContainer = (ViewGroup) editControl;
+        controlContainer.removeAllViews();
+
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService
+                (Context.LAYOUT_INFLATER_SERVICE);
+        View controls = inflater.inflate(R.layout.filtershow_seekbar, controlContainer);
+        View seekbar = controls.findViewById(R.id.primarySeekBar);
+        seekbar.setVisibility(View.GONE);
+        View saveButton = controls.findViewById(R.id.slider_save);
+        if (saveButton != null) {
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FilterShowActivity activity = (FilterShowActivity) mContext;
+                    finalApplyCalled();
+                    activity.leaveSeekBarPanel();
+                }
+            });
+        }
+        View cancelButton = controls.findViewById(R.id.slider_cancel);
+        if (cancelButton != null) {
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FilterShowActivity activity = (FilterShowActivity) mContext;
+                    activity.cancelCurrentFilter();
+                    activity.leaveSeekBarPanel();
+                }
+            });
+        }
     }
 
     @Override
     public void openUtilityPanel(final LinearLayout accessoryViewList) {
-        super.openUtilityPanel(accessoryViewList);
-        mPickUnderlayBtn = (Button) accessoryViewList.findViewById(R.id.applyEffect);
-        updateText();
+        accessoryViewList.removeAllViews();
+
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService
+                (Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.filtershow_actionbar_dualcam_fusion, accessoryViewList);
+
+        View pickUnderlayBtn = accessoryViewList.findViewById(R.id.pick_underlay);
+        pickUnderlayBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
+            }
+        });
+
+        // Look for previous underlay
+        String fusionUnderlay = GalleryUtils.getStringPref(mContext,
+                mContext.getString(R.string.pref_dualcam_fusion_underlay_key), null);
+        Uri fusionUri = Uri.EMPTY;
+
+        if (fusionUnderlay != null) {
+            fusionUri = Uri.parse(fusionUnderlay);
+            if (!uriExists(mContext, fusionUri))
+                fusionUri = Uri.EMPTY;
+        }
+
+        setUnderlayImageUri(fusionUri);
+    }
+
+    @Override
+    public void resume() {
+        if (mUnderlayUri.equals(Uri.EMPTY)) {
+            // No underlay set.
+            boolean skipIntro = GalleryUtils.getBooleanPref(mContext,
+                    mContext.getString(R.string.pref_dualcam_fusion_intro_show_key), false);
+            if (!skipIntro) {
+                FragmentManager fm = ((FilterShowActivity) mContext).getSupportFragmentManager();
+                DoNotShowAgainDialog dialog =
+                        (DoNotShowAgainDialog) fm.findFragmentByTag("dualcam_fusion_intro");
+                if (dialog == null) {
+                    dialog = new DoNotShowAgainDialog(
+                            R.string.fusion_pick_background, R.string.dualcam_fusion_intro,
+                            R.string.pref_dualcam_fusion_intro_show_key) {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            super.onCancel(dialog);
+                            FilterShowActivity activity = (FilterShowActivity) mContext;
+                            activity.cancelCurrentFilter();
+                            activity.leaveSeekBarPanel();
+                        }
+                    };
+                    dialog.setOnOkButtonClickListener(new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
+                        }
+                    });
+                    dialog.setCancelable(true);
+                    dialog.show(fm, "dualcam_fusion_intro");
+                } else if (dialog.isDetached()) {
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.attach(dialog);
+                    ft.commit();
+                } else if (dialog.isHidden()) {
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.show(dialog);
+                    ft.commit();
+                }
+            }
+        }
     }
 
     public void setUnderlayImageUri(Uri uri) {
+        mUnderlayUri = uri;
         FilterRepresentation filter = getLocalRepresentation();
-        if(filter instanceof FilterDualCamFusionRepresentation) {
+        if (filter instanceof FilterDualCamFusionRepresentation) {
             mImageFusion.setUnderlay(uri);
             commitLocalRepresentation();
-        }
-    }
 
-    private void updateEffectButton(boolean enabled) {
-        mPickUnderlayBtn.setEnabled(enabled);
-        if(enabled) {
-            mPickUnderlayBtn.setOnClickListener(mPickBtnClickListener);
-            mPickUnderlayBtn.setText(R.string.fusion_pick_underlay);
-        } else {
-            mPickUnderlayBtn.setOnClickListener(null);
-            mPickUnderlayBtn.setText(R.string.fusion_pick_point);
+            // save fusion underlay uri
+            GalleryUtils.setStringPref(mContext,
+                    mContext.getString(R.string.pref_dualcam_fusion_underlay_key),
+                    (uri != null) ? uri.toString() : null);
         }
-    }
-
-
-    protected void updateText() {
-        if(mPickUnderlayBtn != null) {
-            updateEffectButton(hasSegment());
-        }
-    }
-
-    private boolean hasSegment() {
-        FilterRepresentation filter = getLocalRepresentation();
-        if(filter instanceof FilterDualCamFusionRepresentation) {
-            return !((FilterDualCamFusionRepresentation) filter).getPoint().equals(-1,-1);
-        }
-        return false;
     }
 
     @Override
@@ -129,5 +225,18 @@ public class EditorDualCamFusion extends ImageOnlyEditor {
             FilterDualCamFusionRepresentation dualRep = (FilterDualCamFusionRepresentation) rep;
             mImageFusion.setRepresentation(dualRep);
         }
+    }
+
+    private boolean uriExists(Context context, Uri uri) {
+        try {
+            InputStream stream = context.getContentResolver().openInputStream(uri);
+            stream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
     }
 }
