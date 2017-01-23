@@ -2457,6 +2457,9 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             rep = historyItem.getFilterRepresentation();
         }
         mMasterImage.setPreset(original, rep, true);
+        mMasterImage.setFusionUnderlay(null);
+        mMasterImage.resetTranslation();
+        mMasterImage.setScaleFactor(1);
         invalidateViews();
         backToMain();
         showSaveButtonIfNeed();
