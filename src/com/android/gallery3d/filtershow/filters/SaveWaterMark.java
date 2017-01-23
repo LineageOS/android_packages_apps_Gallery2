@@ -47,11 +47,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 public class SaveWaterMark {
     private static final String LOGTAG = "SaveWaterMark";
     public static final int MARK_SAVE_COMPLETE = 1;
     private FilterWatermarkRepresentation waterMarkRp;
+    private static ExifInterface mExif = new ExifInterface();;
 
     public void useRepresentation(FilterRepresentation representation) {
         waterMarkRp = (FilterWatermarkRepresentation) representation;
@@ -69,7 +71,7 @@ public class SaveWaterMark {
 
                 Bitmap destinationBitmap = createBitmap(bitmap, bitmaps[0]);
                 File destinationFile = SaveImage.getNewFile(context, selectedUri);
-                ExifInterface exif = getExifData(context, selectedUri);
+                //ExifInterface exif = getExifData(context, selectedUri);
                 long time = System.currentTimeMillis();
                 Uri saveUri = selectedUri;
                 if (scaleFactor != 1f) {
@@ -82,7 +84,7 @@ public class SaveWaterMark {
                     }
                     destinationBitmap = Bitmap.createScaledBitmap(destinationBitmap, w, h, true);
                 }
-                if (SaveImage.putExifData(destinationFile, exif, destinationBitmap, quality)) {
+                if (putExifData(destinationFile, mExif, destinationBitmap, quality)) {
                     saveUri = SaveImage.linkNewFileToUri(context, selectedUri, destinationFile, time, false);
                 }
                 destinationBitmap.recycle();
@@ -133,8 +135,8 @@ public class SaveWaterMark {
         return newb;
     }
 
-    private ExifInterface getExifData(Context context, Uri source) {
-        ExifInterface exif = new ExifInterface();
+    public void getExifData(Context context, Uri source) {
+        //mExif = new ExifInterface();
         String mimeType = context.getContentResolver().getType(source);
         if (mimeType == null) {
             mimeType = ImageLoader.getMimeType(source);
@@ -143,7 +145,7 @@ public class SaveWaterMark {
             InputStream inStream = null;
             try {
                 inStream = context.getContentResolver().openInputStream(source);
-                exif.readExif(inStream);
+                mExif.readExif(inStream);
             } catch (FileNotFoundException e) {
                 Log.w(LOGTAG, "Cannot find file: " + source, e);
             } catch (IOException e) {
@@ -154,7 +156,28 @@ public class SaveWaterMark {
                 Utils.closeSilently(inStream);
             }
         }
-        return exif;
+    }
+
+    private boolean putExifData(File file, ExifInterface exif, Bitmap image,
+            int jpegCompressQuality) {
+        boolean ret = false;
+        OutputStream s = null;
+        try {
+            s = exif.getExifWriterStream(file.getAbsolutePath());
+            image.compress(Bitmap.CompressFormat.JPEG,
+                    (jpegCompressQuality > 0) ? jpegCompressQuality : 1, s);
+            s.flush();
+            s.close();
+            s = null;
+            ret = true;
+        } catch (FileNotFoundException e) {
+            Log.w(LOGTAG, "File not found: " + file.getAbsolutePath(), e);
+        } catch (IOException e) {
+            Log.w(LOGTAG, "Could not write exif: ", e);
+        } finally {
+            Utils.closeSilently(s);
+        }
+        return ret;
     }
 
 }
