@@ -1489,8 +1489,14 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
         if (TrueScannerActs.SERIALIZATION_NAME.equals(representation.getSerializationName())) {
             Bitmap b = MasterImage.getImage().getOriginalBitmapHighres();
-            if (b.getWidth() <= TrueScannerActs.MIN_WIDTH
-                    || b.getHeight() <= TrueScannerActs.MIN_HEIGHT) {
+            int w = b.getWidth();
+            int h = b.getHeight();
+            if (w < h) {
+                w = h;
+                h = b.getWidth();
+            }
+            if (w <= TrueScannerActs.MIN_WIDTH
+                    || h <= TrueScannerActs.MIN_HEIGHT) {
                 Toast.makeText(this, "Image size too small!", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -1527,6 +1533,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mWaterMarkView = waterMarkView;
         mSaveWaterMark.useRepresentation(representation);
         imgComparison.bringToFront();
+        mSaveWaterMark.getExifData(this, mSelectedImageUri);
         hasWaterMark = true;
     }
 
@@ -2450,6 +2457,9 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             rep = historyItem.getFilterRepresentation();
         }
         mMasterImage.setPreset(original, rep, true);
+        mMasterImage.setFusionUnderlay(null);
+        mMasterImage.resetTranslation();
+        mMasterImage.setScaleFactor(1);
         invalidateViews();
         backToMain();
         showSaveButtonIfNeed();

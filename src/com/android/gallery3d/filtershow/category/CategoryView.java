@@ -134,6 +134,9 @@ public class CategoryView extends IconView
             }
         }
         super.onDraw(canvas);
+        if (mAction.getRepresentation() == null) {
+            return;
+        }
         if (mAdapter.isSelected(this)) {
             mAction.getRepresentation().setCurrentTheme(
                     new ContextThemeWrapper(mContext, R.style.SelectedFillColor).getTheme());

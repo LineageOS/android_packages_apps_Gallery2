@@ -131,7 +131,13 @@ public class TrueScannerActs extends SimpleImageFilter {
     public Bitmap apply(Bitmap bitmap, float not_use, int quality) {
         if(bitmap == null)
             return null;
-        if(bitmap.getWidth() <= MIN_WIDTH || bitmap.getHeight() <= MIN_HEIGHT)
+        int w = bitmap.getWidth();
+        int h = bitmap.getHeight();
+        if (w < h) {
+            w = h;
+            h = bitmap.getWidth();
+        }
+        if(w <= MIN_WIDTH || h <= MIN_HEIGHT)
             return bitmap;
         if(ImageTrueScanner.getCordsUIState()) {
             return bitmap;

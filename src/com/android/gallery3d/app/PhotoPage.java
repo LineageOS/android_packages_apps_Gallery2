@@ -707,7 +707,8 @@ public abstract class PhotoPage extends ActivityState implements
 
     @Override
     public boolean canDisplay3DButton() {
-        return bShow3DButton && mShowBars && !mPhotoView.getFilmMode();
+        return bShow3DButton && mShowBars
+                && (mPhotoView == null ? false : !mPhotoView.getFilmMode());
     }
 
     @Override

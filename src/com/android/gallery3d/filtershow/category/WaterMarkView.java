@@ -96,7 +96,13 @@ public class WaterMarkView extends FrameLayout {
 
     private GeometryMathUtils.GeometryHolder mGeometry;
     private Matrix mDisplaySegPointsMatrix;
+    private Matrix oldImageToScreenMatrix;
     private RectF markLayoutRect = new RectF(markLeft, markTop, markRight, markBottom);
+    private int newWidth;
+    private int newHeight;
+    private int oldWidth;
+    private int oldHeight;
+    private boolean sizeChanged = false;
 
     public WaterMarkView(Context context) {
         super(context);
@@ -113,6 +119,7 @@ public class WaterMarkView extends FrameLayout {
 
         MasterImage.getImage().addWaterMark(this);
         mGeometry = new GeometryMathUtils.GeometryHolder();
+        imageBounds = MasterImage.getImage().getImageBounds();
     }
 
     private void initView(Context context, Drawable drawable, String text) {
@@ -151,23 +158,16 @@ public class WaterMarkView extends FrameLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         if (oldw == 0 || oldh == 0) {
+            Bitmap mBitmap = MasterImage.getImage().getHighresImage();
+            oldImageToScreenMatrix = MasterImage.getImage().computeImageToScreen(mBitmap, 0, false);
             return;
         }
+        newWidth = w;
+        newHeight = h;
+        oldWidth = oldw;
+        oldHeight = oldh;
+        sizeChanged = true;
         updateScreenSize();
-        Bitmap mBitmap = MasterImage.getImage().getFilteredImage();
-        scale = scale * GeometryMathUtils.getWatermarkScale(mGeometry, mBitmap.getWidth(),
-                mBitmap.getHeight(), w, h, oldw, oldh);
-        mDisplaySegPointsMatrix = GeometryMathUtils.getWatermarkMatrix(mGeometry, mBitmap.getWidth(),
-                mBitmap.getHeight(), w, h, oldw, oldh);
-        mDisplaySegPointsMatrix.mapRect(markLayoutRect);
-        markLeft = markLayoutRect.left;
-        markTop = markLayoutRect.top;
-        markRight = markLayoutRect.right;
-        markBottom = markLayoutRect.bottom;
-        markLayout.setScaleX(scale);
-        markLayout.setScaleY(scale);
-        markLayout.setTranslationX(markLayoutRect.left);
-        markLayout.setTranslationY(markLayoutRect.top);
     }
 
     @Override
@@ -273,6 +273,9 @@ public class WaterMarkView extends FrameLayout {
     }
 
     private boolean outBound(float x, float y) {
+        if (imageBounds == null) {
+            return true;
+        }
         return x < (imageBounds.left < 0 ? 0 : imageBounds.left) + x_down - markLeft
                 || x > (imageBounds.right > widthScreen ? widthScreen : imageBounds.right) + x_down - markRight
                 || y < (imageBounds.top < 0 ? 0 : imageBounds.top) + y_down - markTop
@@ -480,5 +483,37 @@ public class WaterMarkView extends FrameLayout {
 
     public void update() {
         imageBounds = MasterImage.getImage().getImageBounds();
+        if (!sizeChanged) return;
+        sizeChanged = false;
+        float mw = markLayoutRect.width();
+        Matrix mx = new Matrix();
+        mx.setTranslate(-markLayoutRect.width()/2, -markLayoutRect.height()/2);
+        mx.mapRect(markLayoutRect);
+        mx.reset();
+        oldImageToScreenMatrix.invert(mx);
+        mx.mapRect(markLayoutRect);
+        Bitmap mBitmap = MasterImage.getImage().getHighresImage();
+        oldImageToScreenMatrix = MasterImage.getImage().computeImageToScreen(mBitmap, 0, false);
+        oldImageToScreenMatrix.mapRect(markLayoutRect);
+        mx.reset();
+        mx.setTranslate(markLayoutRect.width()/2,markLayoutRect.height()/2);
+        mx.mapRect(markLayoutRect);
+
+//        Bitmap mBitmap = MasterImage.getImage().getFilteredImage();
+//        scale = scale * GeometryMathUtils.getWatermarkScale(mGeometry, mBitmap.getWidth(),
+//                mBitmap.getHeight(), w, h, oldw, oldh);
+//        mDisplaySegPointsMatrix = GeometryMathUtils.getWatermarkMatrix(mGeometry, mBitmap.getWidth(),
+//                mBitmap.getHeight(), w, h, oldw, oldh);
+//        mDisplaySegPointsMatrix.mapRect(markLayoutRect);
+        scale = scale * markLayoutRect.width() / mw;
+        markLeft = markLayoutRect.left;
+        markTop = markLayoutRect.top;
+        markRight = markLayoutRect.right;
+        markBottom = markLayoutRect.bottom;
+        markLayout.setScaleX(scale);
+        markLayout.setScaleY(scale);
+        markLayout.setTranslationX(markLayoutRect.left);
+        markLayout.setTranslationY(markLayoutRect.top);
+        requestLayout();
     }
 }
