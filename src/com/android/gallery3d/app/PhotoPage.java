@@ -873,6 +873,9 @@ public abstract class PhotoPage extends ActivityState implements
     private void updateCurrentPhoto(MediaItem photo) {
         if (mCurrentPhoto == photo) return;
         mCurrentPhoto = photo;
+        if (mPhotoView == null) {
+            return;
+        }
         if (mPhotoView.getFilmMode()) {
             requestDeferredUpdate();
         } else {
@@ -967,7 +970,7 @@ public abstract class PhotoPage extends ActivityState implements
     private void refreshHidingMessage() {
         mHandler.removeMessages(MSG_HIDE_BARS);
         if (mPhotoView == null) {
-            mPhotoView = (PhotoView) mRootPane.getComponent(0);
+            return;
         }
         if (!mIsMenuVisible && !mPhotoView.getFilmMode()) {
             mHandler.sendEmptyMessageDelayed(MSG_HIDE_BARS, HIDE_BARS_TIMEOUT);
