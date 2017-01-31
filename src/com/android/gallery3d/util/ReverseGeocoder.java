@@ -17,10 +17,12 @@
 package com.android.gallery3d.util;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.Manifest;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -85,6 +87,28 @@ public class ReverseGeocoder {
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
+    private Location getCurrentLocation() {
+        if (mContext.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED
+                && mContext.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+            return null;
+        }
+
+        LocationManager locationManager =
+                (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        Location location = null;
+        List<String> providers = locationManager.getAllProviders();
+        for (int i = 0; i < providers.size(); ++i) {
+            String provider = providers.get(i);
+            location = (provider != null) ? locationManager.getLastKnownLocation(provider) : null;
+            if (location != null)
+                break;
+        }
+
+        return location;
+    }
+
     public String computeAddress(SetLatLong set) {
         // The overall min and max latitudes and longitudes of the set.
         double setMinLatitude = set.mMinLatLatitude;
@@ -110,16 +134,8 @@ public class ReverseGeocoder {
 
         // Get current location, we decide the granularity of the string based
         // on this.
-        LocationManager locationManager =
-                (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        Location location = null;
-        List<String> providers = locationManager.getAllProviders();
-        for (int i = 0; i < providers.size(); ++i) {
-            String provider = providers.get(i);
-            location = (provider != null) ? locationManager.getLastKnownLocation(provider) : null;
-            if (location != null)
-                break;
-        }
+        Location location = getCurrentLocation();
+
         String currentCity = "";
         String currentAdminArea = "";
         String currentCountry = Locale.getDefault().getCountry();
