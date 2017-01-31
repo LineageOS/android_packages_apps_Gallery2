@@ -63,6 +63,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     private Dialog mVersionCheckDialog;
 
     private static final int PERMISSION_REQUEST_STORAGE = 1;
+    private static final int PERMISSION_REQUEST_LOCATION = 2;
     private Bundle mSavedInstanceState;
 
 
@@ -81,6 +82,10 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
         mSavedInstanceState = savedInstanceState;
 
+        /* Note: location permissions aren't required
+         */
+        needRequestLocationPermission();
+
         if (!needRequestStoragePermission()) {
             init();
         }
@@ -98,22 +103,37 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     public void onRequestPermissionsResult(int requestCode, String permissions[],
             int[] grantResults) {
         switch (requestCode) {
-            case PERMISSION_REQUEST_STORAGE: {
+            case PERMISSION_REQUEST_STORAGE:
                 if (checkPermissionGrantResults(grantResults)) {
                     init();
                 } else {
                     finish();
                 }
-            }
+                break;
+            case PERMISSION_REQUEST_LOCATION:
+                /* We check permissions during data adapter load */
+                break;
         }
     }
 
+    private boolean needRequestLocationPermission() {
+        String[] permissions = {
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        };
+        return needRequestPermission(PERMISSION_REQUEST_LOCATION, permissions);
+    }
+
     private boolean needRequestStoragePermission() {
-        boolean needRequest = false;
         String[] permissions = {
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         };
+        return needRequestPermission(PERMISSION_REQUEST_STORAGE, permissions);
+    }
+
+    private boolean needRequestPermission(int request_code, String[] permissions) {
+        boolean needRequest = false;
         ArrayList<String> permissionList = new ArrayList<String>();
         for (String permission : permissions) {
             if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
@@ -130,7 +150,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                     permissionArray[i] = permissionList.get(i);
                 }
 
-                requestPermissions(permissionArray, PERMISSION_REQUEST_STORAGE);
+                requestPermissions(permissionArray, request_code);
             }
         }
 
