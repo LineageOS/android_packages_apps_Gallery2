@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_05c242e9",
+        "filename": "src/com/android/gallery3d/util/ReverseGeocoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2017-01-31T06:19:44Z",
+      "side": 1,
+      "message": "This import isn\u0027t needed.  Will update tomorrow.",
+      "revId": "55ea3361220995c8b19048c931212096eb59eb3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
