@@ -101,11 +101,18 @@ public class DoNotShowAgainDialog extends DialogFragment {
     public void setOnCancelListener(DialogInterface.OnCancelListener listener) {
         mCancelListener = listener;
     }
+
     @Override
     public void onCancel(DialogInterface dialog) {
         super.onCancel(dialog);
         if (mCancelListener != null) {
             mCancelListener.onCancel(dialog);
         }
+    }
+
+    @Override
+    public void onPause() {
+        this.dismiss();
+        super.onPause();
     }
 }

@@ -31,6 +31,7 @@ package com.android.gallery3d.app.dualcam3d.threed;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.android.gallery3d.app.dualcam3d.GLView;
@@ -65,11 +66,14 @@ public class Controller implements Gyro.Listener {
                     case R.id.mode_touch:
                         stop(false);
                         break;
+                    case R.id.three_dimensional:
+                        start();
+                        break;
                 }
             }
         };
         for (int i = modeView.getChildCount() - 1; i >= 0; --i) {
-            Button b = (Button) modeView.getChildAt(i);
+            ImageButton b = (ImageButton) modeView.getChildAt(i);
             b.setOnClickListener(listener);
         }
     }
