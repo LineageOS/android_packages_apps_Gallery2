@@ -16,6 +16,24 @@
       "revId": "e457e7e7523126e71df4c3767081967ed1500feb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_1d6f2dc7",
+        "filename": "src/com/android/gallery3d/app/GalleryActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2017-02-01T20:19:32Z",
+      "side": 1,
+      "message": "Indeed and I first wrote it that way but I didn\u0027t like the way it flowed (comparing location vs storage permissions).  Imagine adding further runtime permissions in the future, too.  I thought it cleaner to keep location and storage methods consistent and then leave it up to onCreate() to decide whether it cares about the return status.\n\nBut I can change if you feel strongly.",
+      "parentUuid": "9a437d4f_1e1de8bd",
+      "revId": "e457e7e7523126e71df4c3767081967ed1500feb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
