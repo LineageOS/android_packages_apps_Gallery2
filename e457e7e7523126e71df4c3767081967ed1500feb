@@ -34,6 +34,24 @@
       "revId": "e457e7e7523126e71df4c3767081967ed1500feb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_5d2db545",
+        "filename": "src/com/android/gallery3d/app/GalleryActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2017-02-01T22:14:55Z",
+      "side": 1,
+      "message": "Not a big deal IMO",
+      "parentUuid": "9a437d4f_1d6f2dc7",
+      "revId": "e457e7e7523126e71df4c3767081967ed1500feb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
