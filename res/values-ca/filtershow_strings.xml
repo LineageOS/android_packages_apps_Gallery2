@@ -146,7 +146,7 @@
     <string name="filtershow_version_current" msgid="6609334422797468952">"Actual"</string>
     <string name="filtershow_exif_model" msgid="3543206476046267466">"Model"</string>
     <string name="filtershow_exif_aperture" msgid="5076571522763604380">"Obertura"</string>
-    <string name="filtershow_exif_focal_length" msgid="5925151469731623706">"Longitud focal"</string>
+    <string name="filtershow_exif_focal_length" msgid="5925151469731623706">"Distància focal"</string>
     <string name="filtershow_exif_iso" msgid="5822494416955625317">"ISO"</string>
     <string name="filtershow_exif_subject_distance" msgid="4920632253433906646">"Distància de l\'individu"</string>
     <string name="filtershow_exif_date" msgid="8882402253732028544">"Data de realització"</string>

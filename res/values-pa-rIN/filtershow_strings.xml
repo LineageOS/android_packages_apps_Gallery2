@@ -16,13 +16,13 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="title_activity_filter_show" msgid="2036539130684382763">"ਫੋਟੋ ਸੰਪਾਦਕ"</string>
+    <string name="title_activity_filter_show" msgid="2036539130684382763">"ਫ਼ੋਟੋ ਸੰਪਾਦਕ"</string>
     <string name="cannot_load_image" msgid="5023634941212959976">"ਚਿੱਤਰ ਲੋਡ ਨਹੀਂ ਕਰ ਸਕਦਾ!"</string>
     <string name="cannot_edit_original" msgid="5890293845882609388">"ਮੂਲ ਨੂੰ ਸੰਪਾਦਿਤ ਨਹੀਂ ਕਰ ਸਕਦਾ"</string>
     <!-- no translation found for original_picture_text (3076213290079909698) -->
     <skip />
     <string name="setting_wallpaper" msgid="4679087092300036632">"ਵਾਲਪੇਪਰ ਸੈਟ ਕਰ ਰਿਹਾ ਹੈ"</string>
-    <string name="download_failure" msgid="5923323939788582895">"ਫੋਟੋ ਡਾਊਨਲੋਡ ਨਹੀਂ ਕਰ ਸਕਿਆ। ਨੈੱਟਵਰਕ ਅਣਉਪਲਬਧ।"</string>
+    <string name="download_failure" msgid="5923323939788582895">"ਫ਼ੋਟੋ ਡਾਊਨਲੋਡ ਨਹੀਂ ਕਰ ਸਕਿਆ। ਨੈੱਟਵਰਕ ਅਣਉਪਲਬਧ।"</string>
     <string name="original" msgid="3524493791230430897">"ਮੂਲ"</string>
     <string name="borders" msgid="2067345080568684614">"ਬੌਰਡਰਸ"</string>
     <string name="custom_border" msgid="8679893731790931871">"ਕਸਟਮ"</string>
@@ -141,7 +141,7 @@
     <string name="filtershow_show_info_panel_histogram" msgid="2669188469897955809">"ਹਿਸਟੋਗ੍ਰਾਮ"</string>
     <string name="filtershow_show_info_panel_exif" msgid="4965486882625125154">"EXIF ਡੈਟਾ"</string>
     <string name="filtershow_add_button_looks" msgid="8630823661416925426">"ਪ੍ਰੀਸੈਟ"</string>
-    <string name="filtershow_add_button_versions" msgid="7620107266685809612">"ਵਰਜਨ"</string>
+    <string name="filtershow_add_button_versions" msgid="7620107266685809612">"ਰੂਪ"</string>
     <string name="filtershow_version_original" msgid="1413894292200912828">"ਮੂਲ"</string>
     <string name="filtershow_version_current" msgid="6609334422797468952">"ਮੌਜੂਦਾ"</string>
     <string name="filtershow_exif_model" msgid="3543206476046267466">"ਮਾਡਲ"</string>

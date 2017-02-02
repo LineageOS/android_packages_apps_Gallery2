@@ -25,14 +25,14 @@
     <string name="download_failure" msgid="5923323939788582895">"तस्बिर डाउनलोड गर्न सकेन। नेटवर्क उपलब्ध छैन।"</string>
     <string name="original" msgid="3524493791230430897">"मूल"</string>
     <string name="borders" msgid="2067345080568684614">"किनाराहरू"</string>
-    <string name="custom_border" msgid="8679893731790931871">"अनुकूलन"</string>
+    <string name="custom_border" msgid="8679893731790931871">"आफू अनुकूल"</string>
     <string name="filtershow_undo" msgid="6781743189243585101">"अन्डु गर्नुहोस्"</string>
     <string name="filtershow_redo" msgid="4219489910543059747">"पुनःगर्नुहोस्"</string>
     <string name="show_imagestate_panel" msgid="281932769701043015">"एप्लाइड प्रभावहरू देखाउनुहोस्"</string>
     <string name="hide_imagestate_panel" msgid="7207643485811695257">"एप्लाइड प्रभाव लुकाउनुहोस्"</string>
     <string name="export_image" msgid="3202835713172222134">"निर्यात गर्नुहोस्"</string>
     <string name="print_image" msgid="1942989216591621413">"प्रिन्ट गर्नुहोस्"</string>
-    <string name="export_flattened" msgid="9046192331465915411">"सिधा गरिएको चित्र निर्यात गर्नुहोस्"</string>
+    <string name="export_flattened" msgid="9046192331465915411">"सीधा गरिएको चित्र निर्यात गर्नुहोस्"</string>
     <string name="select_output_settings" msgid="1268532018080310748">"निर्यात गरिएको चित्र इतिहास बिना प्रतिलिपि हुने छ।"</string>
     <string name="quality" msgid="179292110309050529">"गुण"</string>
     <string name="size" msgid="4639404642236356037">"आकार"</string>
