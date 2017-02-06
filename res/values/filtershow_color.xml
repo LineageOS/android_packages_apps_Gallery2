@@ -69,4 +69,5 @@
     <color name="crop_panel_background_color">#A5000000</color>
     <color name="crop_text_color">#4f92e9</color>
     <color name="watermark_text_color">#80ffffff</color>
+    <color name="watermark_highlight_color">#4592F9</color>
 </resources>

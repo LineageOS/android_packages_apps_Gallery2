@@ -30,9 +30,12 @@ package com.android.gallery3d.filtershow.filters;
 
 
 import android.content.Context;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 
 import com.android.gallery3d.filtershow.category.WaterMarkView;
+
+import org.codeaurora.gallery.R;
 
 public class FilterWatermarkRepresentation extends FilterRepresentation {
     public static final String NAME_LOCATION = "LOCATION";
@@ -70,6 +73,7 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
         setFilterClass(SaveWaterMark.class);
         setName("");
         setFilterType(FilterRepresentation.TYPE_WATERMARK);
+        setCurrentTheme(new ContextThemeWrapper(mContext, R.style.DefaultFillColor).getTheme());
         if (textHint != null) {
             this.textHint = textHint;
         }
