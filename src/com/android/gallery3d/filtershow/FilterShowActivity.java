@@ -1534,6 +1534,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mSaveWaterMark.useRepresentation(representation);
         imgComparison.bringToFront();
         mSaveWaterMark.getExifData(this, mSelectedImageUri);
+        mWaterMarkView.mTouchable = true;
         hasWaterMark = true;
     }
 
@@ -1543,6 +1544,11 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             mWaterMarkView = null;
             hasWaterMark = false;
         }
+    }
+
+    public void disableTouchEvent() {
+        if (mWaterMarkView == null) return;
+        mWaterMarkView.mTouchable = false;
     }
 
     public boolean isWaterMarked() {
