@@ -103,6 +103,7 @@ public class WaterMarkView extends FrameLayout {
     private int oldWidth;
     private int oldHeight;
     private boolean sizeChanged = false;
+    public boolean mTouchable;
 
     public WaterMarkView(Context context) {
         super(context);
@@ -191,6 +192,7 @@ public class WaterMarkView extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (!mTouchable) return false;
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
                 markLayout.setFocusable(true);

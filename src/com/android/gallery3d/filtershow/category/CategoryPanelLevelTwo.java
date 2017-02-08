@@ -115,6 +115,7 @@ public class CategoryPanelLevelTwo extends CategoryPanel {
             @Override
             public void onClick(View v) {
                 //Todo xukd add watermark to bufferimage
+                activity.disableTouchEvent();
                 activity.backToMain();
                 activity.setActionBar();
             }
