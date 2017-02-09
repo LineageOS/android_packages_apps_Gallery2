@@ -20,9 +20,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
@@ -61,6 +63,7 @@ public class Action implements RenderingRequestCaller {
     private boolean mCanBeRemoved = false;
     private int mTextSize = 32;
     private boolean mIsDoubleAction = false;
+    private boolean mIsClickAction = false;
 
     public Action(FilterShowActivity context, FilterRepresentation representation, int type,
                   boolean canBeRemoved) {
@@ -196,6 +199,12 @@ public class Action implements RenderingRequestCaller {
             if (null != mRepresentation.getCurrentTheme() && overlayDrawable.canApplyTheme()) {
                 overlayDrawable.applyTheme(mRepresentation.getCurrentTheme());
             }
+            if(mIsClickAction) {
+                overlayDrawable.setColorFilter(mContext.getResources()
+                        .getColor(R.color.watermark_highlight_color), PorterDuff.Mode.MULTIPLY);
+            } else {
+                overlayDrawable.clearColorFilter();
+            }
             int with = mImageFrame.width()/8;
             int height = mImageFrame.height()/4;
             overlayDrawable.setBounds(with,20,with*7,height*3);
@@ -249,6 +258,10 @@ public class Action implements RenderingRequestCaller {
     public void setOverlayBitmap(Bitmap overlayBitmap) {
         mOverlayBitmap = overlayBitmap;
     }
+
+    public void setClickAction() { mIsClickAction = true; }
+
+    public void clearClickAction() { mIsClickAction = false; }
 
     public void clearBitmap() {
         if (mImage != null

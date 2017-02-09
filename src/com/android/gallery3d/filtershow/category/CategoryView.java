@@ -138,8 +138,7 @@ public class CategoryView extends IconView
             return;
         }
         if (mAdapter.isSelected(this)) {
-            mAction.getRepresentation().setCurrentTheme(
-                    new ContextThemeWrapper(mContext, R.style.SelectedFillColor).getTheme());
+            mAction.setClickAction();
             if (mAction.getRepresentation().getFilterType() != FilterRepresentation.TYPE_WATERMARK_CATEGORY
                     && mAction.getRepresentation().getFilterType() != FilterRepresentation.TYPE_WATERMARK) {
                 SelectionRenderer.drawSelection(canvas, getMargin() / 2, getMargin(),
@@ -147,8 +146,7 @@ public class CategoryView extends IconView
                         mSelectionStroke, mSelectPaint, mBorderStroke, mBorderPaint);
             }
         } else {
-            mAction.getRepresentation().setCurrentTheme(
-                    new ContextThemeWrapper(mContext, R.style.DefaultFillColor).getTheme());
+            mAction.clearClickAction();
         }
         mAction.drawOverlay();
     }
