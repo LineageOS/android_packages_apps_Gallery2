@@ -982,4 +982,8 @@ public class ImageShow extends View implements OnGestureListener,
         return getHeight() - 2 * mShadowMargin;
     }
 
+    public int getShadowMargin() {
+        return mShadowMargin;
+    }
+
 }
