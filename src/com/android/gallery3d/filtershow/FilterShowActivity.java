@@ -1512,6 +1512,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (mWaterMarkView != null) {
             rlImageContainer.removeView(mWaterMarkView);
             hasWaterMark = false;
+            watermarkRepresentation.reset();
         }
         RelativeLayout.LayoutParams params =
                 new RelativeLayout.LayoutParams(mImageShow.getImageShowWidth(),

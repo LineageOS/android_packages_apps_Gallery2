@@ -164,6 +164,11 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
         return textHint;
     }
 
+    public void reset() {
+        positionInfo = null;
+        currentMarkView = null;
+    }
+
     protected class PositionInfo {
         protected int marginLeft;
         protected int marginTop;
