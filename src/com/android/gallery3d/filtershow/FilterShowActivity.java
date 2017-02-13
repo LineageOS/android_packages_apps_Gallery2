@@ -1512,10 +1512,12 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (mWaterMarkView != null) {
             rlImageContainer.removeView(mWaterMarkView);
             hasWaterMark = false;
+            watermarkRepresentation.reset();
         }
         RelativeLayout.LayoutParams params =
                 new RelativeLayout.LayoutParams(mImageShow.getImageShowWidth(),
                         mImageShow.getImageShowHeight());
+        params.setMargins(mImageShow.getShadowMargin(), mImageShow.getShadowMargin(), 0, 0);
         String textHint;
         switch (watermarkRepresentation.getMarkType()) {
             case 0:
