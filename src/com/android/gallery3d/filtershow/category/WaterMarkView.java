@@ -512,6 +512,8 @@ public class WaterMarkView extends FrameLayout {
         markTop = markLayoutRect.top;
         markRight = markLayoutRect.right;
         markBottom = markLayoutRect.bottom;
+        markLayout.setPivotX(0);
+        markLayout.setPivotY(0);
         markLayout.setScaleX(scale);
         markLayout.setScaleY(scale);
         markLayout.setTranslationX(markLayoutRect.left);
