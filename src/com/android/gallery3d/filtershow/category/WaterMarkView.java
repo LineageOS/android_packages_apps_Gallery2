@@ -383,7 +383,6 @@ public class WaterMarkView extends FrameLayout {
         if (null != bmpDest) {
             Canvas canvas = new Canvas(bmpDest);
             Matrix m = new Matrix();
-            float scale = markLayoutRect.width() / bmpSrc.getWidth();
             m.setScale(scale, scale);
             m.postRotate(getFinalRotation());
             if (b.getWidth() < b.getHeight()) {

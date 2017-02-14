@@ -36,7 +36,7 @@
         android:id="@+id/image"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="left" />
 
     <EditText
         android:id="@+id/edit"
@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:cursorVisible="true"
+        android:layout_gravity="left"
         android:inputType="textNoSuggestions"
         android:textColor="@color/watermark_text_color"
         android:textColorHint="@color/watermark_text_color"
