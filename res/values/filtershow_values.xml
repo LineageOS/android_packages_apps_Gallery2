@@ -22,7 +22,7 @@
     <dimen name="state_panel_text_size">16dip</dimen>
 
     <!-- Bottom Panel Height -->
-    <dimen name="bottom_panel_height">60dip</dimen>
+    <dimen name="bottom_panel_height">50dip</dimen>
 
     <!-- Category Panel Height -->
     <dimen name="category_panel_height">90dip</dimen>
@@ -30,7 +30,7 @@
     <!-- Category Panel Icon Size -->
     <dimen name="category_panel_icon_size">80dip</dimen>
 
-    <dimen name="category_actionbar_panel_height">60dip</dimen>
+    <dimen name="category_actionbar_panel_height">50dip</dimen>
 
     <!-- Category Panel Text Size -->
     <dimen name="category_panel_text_size">11dip</dimen>
