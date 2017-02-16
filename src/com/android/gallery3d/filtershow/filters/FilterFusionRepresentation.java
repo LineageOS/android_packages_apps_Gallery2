@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -32,8 +32,8 @@ package com.android.gallery3d.filtershow.filters;
 import android.net.Uri;
 
 public interface FilterFusionRepresentation {
-    public void setUnderlay(Uri uri);
-    public void setUnderlay(String uri);
-    public boolean hasUnderlay();
-    public String getUnderlay();
+    void setUnderlay(Uri uri);
+    void setUnderlay(String uri);
+    boolean hasUnderlay();
+    String getUnderlay();
 }

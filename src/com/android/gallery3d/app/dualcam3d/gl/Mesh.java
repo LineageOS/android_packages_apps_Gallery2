@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -28,9 +28,11 @@
  */
 package com.android.gallery3d.app.dualcam3d.gl;
 
+import android.graphics.Bitmap;
 import android.opengl.GLES20;
+import android.util.Log;
 
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
+import com.android.gallery3d.filtershow.tools.DualCameraEffect;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -92,8 +94,7 @@ class Mesh {
         return ((depth + Settings.CAMERA_POSITION) * TAN_HALF_FOV);
     }
 
-    public void update(DualCameraNativeEngine.DepthMap3D depthMap, int width, int height,
-                       float depth) {
+    public void update(Bitmap depthMap, int width, int height, float depth) {
         final int resolutionH = depthMap == null ? 1 : Settings.MESH_RESOLUTION_H;
         final int resolutionV = depthMap == null ? 1 : Settings.MESH_RESOLUTION_V;
         indexLength = resolutionH * resolutionV * 2 * 3;
@@ -105,6 +106,15 @@ class Mesh {
 
         rewindBuffers();
 
+        int[] pixels = null;
+        int depthMapWidth = 0;
+        if (depthMap != null) {
+            depthMapWidth = depthMap.getWidth();
+            int depthMapHeight = depthMap.getHeight();
+            pixels = new int[depthMapWidth * depthMapHeight];
+            depthMap.getPixels(pixels, 0, depthMapWidth, 0, 0, depthMapWidth, depthMapHeight);
+        }
+
         for (int v = 0; v <= resolutionV; ++v) {
             float vV = v / (float) resolutionV;
             float v2 = sizeV - 2 * sizeV * vV;
@@ -115,7 +125,7 @@ class Mesh {
                 int depthValue = 0;
                 if (depthMap != null) {
                     int x = (int) (vH * (width - 1));
-                    depthValue = depthMap.pixels[y * depthMap.width + x];
+                    depthValue = pixels[y * depthMapWidth + x] >> 24;
                 }
                 vertices.put(-scale + 2 * scale * vH);
                 vertices.put(v2);

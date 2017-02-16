@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -38,14 +38,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.Surface;
 
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
-
 public class GLView extends GLSurfaceView {
     private static final String TAG = "GLView";
     private final com.android.gallery3d.app.dualcam3d.gl.Renderer mRenderer;
 
     private Bitmap mBitmap;
-    private DualCameraNativeEngine.DepthMap3D mDepthMap;
+    private Bitmap mDepthMap;
     private int mRotation;
 
     public GLView(Context context) {
@@ -64,7 +62,7 @@ public class GLView extends GLSurfaceView {
         super.onResume();
         setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
         mRenderer.setImageBitmap(mBitmap);
-        mRenderer.set3DEffectDepthMap(mDepthMap);
+        mRenderer.setDepthMap(mDepthMap);
         requestRender();
     }
 
@@ -72,19 +70,19 @@ public class GLView extends GLSurfaceView {
     public void onPause() {
         super.onPause();
         mRenderer.setImageBitmap(null);
-        mRenderer.set3DEffectDepthMap(null);
+        mRenderer.setDepthMap(null);
     }
 
     public void setImageBitmap(Bitmap bitmap) {
         mBitmap = bitmap;
         mRenderer.setImageBitmap(bitmap);
-        mRenderer.set3DEffectDepthMap(null);
+        mRenderer.setDepthMap(null);
         requestRender();
     }
 
-    public void set3DEffectDepthMap(DualCameraNativeEngine.DepthMap3D map) {
+    public void setDepthMap(Bitmap map) {
         mDepthMap = map;
-        mRenderer.set3DEffectDepthMap(map);
+        mRenderer.setDepthMap(map);
         requestRender();
     }
 
@@ -126,9 +124,7 @@ public class GLView extends GLSurfaceView {
 
     public interface Listener {
         void onMove(float deltaX, float deltaY);
-
         void onClick(float x, float y);
-
         void onLayout(int width, int height);
     }
 
