@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -31,58 +31,25 @@ package com.android.gallery3d.app.dualcam3d;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.Window;
 import android.widget.LinearLayout;
 
-import com.android.gallery3d.app.dualcam3d.mpo.Task;
 import com.android.gallery3d.app.dualcam3d.threed.Controller;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
+import com.android.gallery3d.filtershow.cache.ImageLoader;
+import com.android.gallery3d.util.GDepth;
 
 import org.codeaurora.gallery.R;
 
 public class ThreeDimensionalActivity extends Activity {
     private static final String TAG = ThreeDimensionalActivity.class.getSimpleName();
 
-    final static int MSG_UPDATE_IMAGE = 1;
-    final static int MSG_UPDATE_3D_DEPTH_MAP = 2;
-    private final static int MSG_IMAGE_LOADED = 3;
-    private final static int MSG_FINISH = 4;
-
-    private Effect mEffect;
     private GLView mImageView;
-    private Task mTask;
-
-    private final Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_UPDATE_IMAGE:
-                    if (mImageView != null) {
-                        mImageView.setImageBitmap((Bitmap) msg.obj);
-                    }
-                    break;
-                case MSG_UPDATE_3D_DEPTH_MAP:
-                    if (mImageView != null) {
-                        mImageView.set3DEffectDepthMap((DualCameraNativeEngine.DepthMap3D) msg.obj);
-                    }
-                    break;
-                case MSG_IMAGE_LOADED:
-                    mEffect.setBitmap((Bitmap) msg.obj, msg.arg1);
-                    break;
-                case MSG_FINISH:
-                    mEffect.set(Effect.Type.THREE_DIMENSIONAL);
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
+    private Controller mController;
+    private LoadImageTask mTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +57,8 @@ public class ThreeDimensionalActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_three_dimensional);
-
-        mEffect = new Effect(this);
-        processIntent();
         init();
+        processIntent();
     }
 
     @Override
@@ -104,39 +69,41 @@ public class ThreeDimensionalActivity extends Activity {
 
     private void init() {
         mImageView = (GLView) findViewById(R.id.image);
-        mImageView.setListener(mEffect);
         mImageView.setRotation(getWindowManager().getDefaultDisplay().getRotation());
+        mController = new Controller(mImageView, (LinearLayout) findViewById(R.id.mode_3d));
+        mImageView.setListener(new GLView.Listener() {
+            @Override
+            public void onMove(float deltaX, float deltaY) {
+                mController.onMove(deltaX, deltaY);
+            }
+
+            @Override
+            public void onClick(float x, float y) {}
+
+            @Override
+            public void onLayout(int width, int height) {}
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mImageView.onResume();
-        if (mEffect != null) {
-            mEffect.resume();
-        }
+        mController.start();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        mController.stop();
         mImageView.onPause();
-        if (mEffect != null) {
-            mEffect.pause();
-        }
     }
 
     @Override
     protected void onDestroy() {
-        if (DualCameraNativeEngine.getInstance().isLibLoaded()) {
-            DualCameraNativeEngine.getInstance().releaseDepthMap();
-        }
-        if (mEffect != null) {
-            mEffect.recycle();
-            mEffect = null;
-        }
+        mTask.cancel(true);
+        mTask = null;
         mImageView.recycle();
-        mTask.cancel();
         super.onDestroy();
     }
 
@@ -147,44 +114,39 @@ public class ThreeDimensionalActivity extends Activity {
             finish();
             return;
         }
-        startLoadImage(uri);
+        mTask = new LoadImageTask();
+        mTask.execute(uri);
     }
 
-    private void startLoadImage(Uri uri) {
-        if (DualCameraNativeEngine.getInstance().isLibLoaded()) {
-            mTask = new Task(this, uri, new Task.Listener() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, int scale) {
-                    if (bitmap != null) {
-                        mHandler.obtainMessage(MSG_IMAGE_LOADED, scale, 0, bitmap).sendToTarget();
-                    } else {
-                        finish();
+    private class LoadImageTask extends AsyncTask<Uri, Void, GDepth.Image> {
+        @Override
+        protected GDepth.Image doInBackground(Uri... params) {
+            GDepth.Parser parser = new GDepth.Parser();
+            if (parser.parse(ThreeDimensionalActivity.this, params[0])) {
+                GDepth.Image image = parser.decode();
+                if (image.valid()) {
+                    int orientation = ImageLoader.getMetadataOrientation(
+                            ThreeDimensionalActivity.this, params[0]);
+                    if (orientation != ImageLoader.ORI_NORMAL) {
+                        image.bitmap = ImageLoader.orientBitmap(image.bitmap, orientation);
+                        image.depthMap = ImageLoader.orientBitmap(image.depthMap, orientation);
                     }
+                    return image;
                 }
-
-                @Override
-                public int onScale(int width, int height) {
-                    return Effect.scale(width, height);
-                }
-
-                @Override
-                public void onFinish(boolean result) {
-                    if (!result) {
-                        finish();
-                    } else {
-                        sendMessage(MSG_FINISH, null);
-                    }
-                }
-            });
-            mTask.start(Effect.DEFAULT_BRIGHTNESS_INTENSITY);
+            }
+            return null;
         }
-    }
 
-    public void sendMessage(int what, Object obj) {
-        mHandler.obtainMessage(what, obj).sendToTarget();
-    }
-
-    public Controller getController() {
-        return new Controller(mImageView, (LinearLayout) findViewById(R.id.mode_3d));
+        @Override
+        protected void onPostExecute(GDepth.Image image) {
+            if (!isCancelled()) {
+                if (image != null && image.valid()) {
+                    mImageView.setImageBitmap(image.bitmap);
+                    mImageView.setDepthMap(image.depthMap);
+                } else {
+                    finish();
+                }
+            }
+        }
     }
 }

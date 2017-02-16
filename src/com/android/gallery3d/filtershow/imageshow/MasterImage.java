@@ -23,8 +23,6 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Point;
@@ -32,6 +30,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.util.Log;
+import android.util.Size;
 
 import com.android.gallery3d.exif.ExifTag;
 import com.android.gallery3d.filtershow.FilterShowActivity;
@@ -54,12 +53,11 @@ import com.android.gallery3d.filtershow.pipeline.RenderingRequestCaller;
 import com.android.gallery3d.filtershow.pipeline.SharedBuffer;
 import com.android.gallery3d.filtershow.pipeline.SharedPreset;
 import com.android.gallery3d.filtershow.state.StateAdapter;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine.DdmStatus;
+import com.android.gallery3d.filtershow.tools.DualCameraEffect;
+import com.android.gallery3d.util.GDepth;
 
 public class MasterImage implements RenderingRequestCaller {
-
-    private static final String LOGTAG = "MasterImage";
+    private static final String TAG = "MasterImage";
     private boolean DEBUG  = false;
     private static final boolean DISABLEZOOM = false;
     public static final int SMALL_BITMAP_DIM = 160;
@@ -99,7 +97,6 @@ public class MasterImage implements RenderingRequestCaller {
     private Bitmap mFusionUnderlay = null;
     private Rect mImageBounds = null;
     private Rect mFusionBounds = null;
-    private DualCameraNativeEngine.DdmStatus mDepthMapLoadingStatus = DdmStatus.DDM_IDLE;
 
     private ValueAnimator mAnimator = null;
     private float mMaskScale = 1;
@@ -209,6 +206,15 @@ public class MasterImage implements RenderingRequestCaller {
         }
 
         mPreviewBuffer.reset();
+
+        if (mGDepthParser != null) mGDepthParser = null;
+        if (mGDepthImage != null) mGDepthImage = null;
+        if (mEffect != null) {
+            mEffect.release();
+            mEffect = null;
+            mTargetHeight = 0;
+            mTargetWidth = 0;
+        }
     }
 
     public Bitmap getOriginalBitmapSmall() {
@@ -282,12 +288,12 @@ public class MasterImage implements RenderingRequestCaller {
             int h = bmp.getHeight();
             boolean bWidthIsEven = (w & 0x01) == 0;
             boolean bHeightIsEven = (h & 0x01) == 0;
-            Log.v(LOGTAG, "ori bitmap w="+w+" h="+h);
+            Log.v(TAG, "ori bitmap w="+w+" h="+h);
             if( !bWidthIsEven || !bHeightIsEven){
                 w = w - (w & 0x01);
                 h = h - (h & 0x01);
                 retBmp = Bitmap.createBitmap(bmp, 0, 0, w, h);
-                Log.v(LOGTAG, "new bitmap w="+retBmp.getWidth()+" h="+retBmp.getHeight());
+                Log.v(TAG, "new bitmap w="+retBmp.getWidth()+" h="+retBmp.getHeight());
             }
         }
         return retBmp;
@@ -317,7 +323,7 @@ public class MasterImage implements RenderingRequestCaller {
         int sh = (int) (sw * (float) mOriginalBitmapLarge.getHeight() / mOriginalBitmapLarge
                 .getWidth());
         mOriginalBitmapSmall = Bitmap.createScaledBitmap(mOriginalBitmapLarge, sw, sh, true);
-        Log.d(LOGTAG, "MasterImage.loadBitmap(): OriginalBitmapLarge.WH is (" + mOriginalBitmapLarge.getWidth() + ", "
+        Log.d(TAG, "MasterImage.loadBitmap(): OriginalBitmapLarge.WH is (" + mOriginalBitmapLarge.getWidth() + ", "
                 + mOriginalBitmapLarge.getHeight() + "), OriginalBitmapSmall.WH is (" + sw + ", " + sh + "), originalBounds is "
                 + originalBounds.toString());
         mZoomOrientation = mOrientation;
@@ -980,71 +986,6 @@ public class MasterImage implements RenderingRequestCaller {
         return mPreset.contains(FilterRepresentation.TYPE_TINYPLANET);
     }
 
-    public boolean loadMpo(Context context, byte[] primaryMpoData, byte[] auxiliaryMpoData, Uri uri){
-        boolean loaded = false;
-
-        if(auxiliaryMpoData != null) {
-            Bitmap primaryBm = BitmapFactory.decodeByteArray(primaryMpoData, 0, primaryMpoData.length);
-
-            if(primaryBm == null) {
-                return false;
-            }
-
-            // check for pre-generated dm file
-            String mpoFilepath = ImageLoader.getLocalPathFromUri(context, uri);
-            if(mpoFilepath == null) {
-                Log.d(LOGTAG, "Could not get file path from " + uri);
-                return false;
-            }
-            // read auxiliary image and generate depth map.
-            Bitmap auxiliaryBm = BitmapFactory.decodeByteArray(auxiliaryMpoData, 0, auxiliaryMpoData.length);
-
-            if(auxiliaryBm == null) {
-                primaryBm.recycle();
-                primaryBm = null;
-                return false;
-            }
-
-            DualCameraNativeEngine.getInstance().initDepthMap(
-                    primaryBm, auxiliaryBm, mpoFilepath,
-                    DualCameraNativeEngine.getInstance().getCalibFilepath(context),1.0f);
-
-            primaryBm.recycle();
-            primaryBm = null;
-            auxiliaryBm.recycle();
-            auxiliaryBm = null;
-
-            Point size = new Point();
-            boolean result = DualCameraNativeEngine.getInstance().getDepthMapSize(size);
-            if(result) {
-                Log.v(LOGTAG, "get depthmapsize returned true. size: " + size.x + "x" + size.y);
-
-                if(size.x == 0 || size.y == 0) {
-                    Log.v(LOGTAG, "invalid ddm size: " + size.x + "x" + size.y);
-                    loaded = false;
-                } else {
-                    Bitmap depthMap = Bitmap.createBitmap(size.x, size.y, Config.ALPHA_8);
-                    if(DualCameraNativeEngine.getInstance().getDepthMap(depthMap)) {
-                        loaded = true;
-                    } else {
-                        Log.w(LOGTAG, "get depthmap returned false");
-                    }
-
-                    depthMap.recycle();
-                    depthMap = null;
-                }
-            } else {
-                Log.w(LOGTAG, "get depthmapsize returned false");
-            }
-        }
-
-        return loaded;
-    }
-
-    public boolean loadMpo(byte[] primaryMpoData, byte[] auxiliaryMpoData) {
-        return loadMpo(getActivity(), primaryMpoData, auxiliaryMpoData, getUri());
-    }
-
     public void setFusionUnderlay(Bitmap underlay) {
         mFusionUnderlay = underlay;
     }
@@ -1070,21 +1011,56 @@ public class MasterImage implements RenderingRequestCaller {
         return mImageBounds;
     }
 
-    public boolean isDepthMapParsingDone() {
-        return (mDepthMapLoadingStatus == DdmStatus.DDM_LOADING ||
-                mDepthMapLoadingStatus == DdmStatus.DDM_FAILED);
+    private GDepth.Parser mGDepthParser;
+    private GDepth.Image mGDepthImage;
+    private DualCameraEffect mEffect;
+    private int mTargetWidth;
+    private int mTargetHeight;
+
+    public boolean parseDepthMap(Context context, Uri uri) {
+        if (mGDepthImage != null && mGDepthImage.valid()) return true;
+        if (mGDepthParser == null) {
+            mGDepthParser = new GDepth.Parser();
+            mGDepthParser.parse(context, uri);
+        }
+        return mGDepthParser.valid();
     }
 
-    public boolean isDepthMapLoadingDone() {
-        return (mDepthMapLoadingStatus == DdmStatus.DDM_LOADED ||
-                mDepthMapLoadingStatus == DdmStatus.DDM_FAILED);
-    }
+    public DualCameraEffect getDualCameraEffect(int targetWidth, int targetHeight) {
+        if (targetWidth == mTargetWidth && targetHeight == mTargetHeight && mEffect != null) {
+            Log.d(TAG, "reuse effect");
+            return mEffect;
+        }
+        if (mGDepthImage == null) {
+            if (mGDepthParser == null || !mGDepthParser.valid()) {
+                Log.e(TAG, "parser not valid");
+                return null;
+            }
+            mGDepthImage = mGDepthParser.decode();
+            if (mGDepthImage == null) {
+                Log.e(TAG, "can't decode image");
+                return null;
+            }
+            mGDepthParser = null;
+        }
+        if (mEffect == null) {
+            mEffect = DualCameraEffect.getInstance();
+        }
+        mEffect.release();
 
-    public DdmStatus getDepthMapLoadingStatus() {
-        return mDepthMapLoadingStatus;
-    }
+        int[] roi = mGDepthImage.roi;
+        if (targetWidth > roi[2]) targetWidth = roi[2];
+        if (targetHeight > roi[3]) targetHeight = roi[3];
 
-    public void setDepthMapLoadingStatus(DdmStatus status) {
-        mDepthMapLoadingStatus = status;
+        Log.d(TAG, "init effect: " + targetWidth + "x" + targetHeight);
+        boolean result = mEffect.initialize(mGDepthImage.bitmap, mGDepthImage.depthMap,
+                mGDepthImage.roi, targetWidth, targetHeight, 1.0f);
+        if (result) {
+            mTargetWidth = targetWidth;
+            mTargetHeight = targetHeight;
+            return mEffect;
+        }
+        Log.d(TAG, "init failed");
+        return null;
     }
 }
