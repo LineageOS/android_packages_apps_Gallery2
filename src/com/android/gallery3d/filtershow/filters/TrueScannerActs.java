@@ -51,6 +51,7 @@ public class TrueScannerActs extends SimpleImageFilter {
     //The minimum resolution that TrueScanner library supports is VGA, i.e. 640x480.
     public static final int MIN_WIDTH = 640;
     public static final int MIN_HEIGHT = 480;
+    private static boolean rotating = false;
     private static final boolean DEBUG = false;
     private static boolean isTrueScannerEnabled = true;
     private static boolean isPointsAcquired;
@@ -69,6 +70,10 @@ public class TrueScannerActs extends SimpleImageFilter {
 
     public static boolean isTrueScannerEnabled() {
         return isTrueScannerEnabled;
+    }
+
+    public static boolean setRotating(boolean isRotating) {
+        return rotating = isRotating;
     }
 
     public TrueScannerActs() {
@@ -157,20 +162,23 @@ public class TrueScannerActs extends SimpleImageFilter {
             else
                 resultPts[i] = (int)((pts[i] - pts[POINTS_LEN+3])*yScale);
         }
-        if (rectifiedImage == null) {
-            rectifiedImage = Bitmap.createBitmap(
-                    bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-            int[] outputSize = processImage(bitmap, rectifiedImage, resultPts);
-            rectifiedImage = Bitmap.createBitmap(
-                    rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
-            if(ImageTrueScanner.getRemoveGlareButtonStatus()) {
-                Bitmap enhancedImage = Bitmap.createBitmap(
-                        outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
-                showProgressDialog();
-                enhanceImage(rectifiedImage, enhancedImage);
-                dismissProgressDialog();
-                rectifiedImage = enhancedImage;
-            }
+        if (rotating && rectifiedImage != null) {
+            acquireLock(false);
+            rotating = false;
+            return rectifiedImage;
+        }
+        rectifiedImage = Bitmap.createBitmap(
+                bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        int[] outputSize = processImage(bitmap, rectifiedImage, resultPts);
+        rectifiedImage = Bitmap.createBitmap(
+                rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
+        if(ImageTrueScanner.getRemoveGlareButtonStatus()) {
+            Bitmap enhancedImage = Bitmap.createBitmap(
+                    outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
+            showProgressDialog();
+            enhanceImage(rectifiedImage, enhancedImage);
+            dismissProgressDialog();
+            rectifiedImage = enhancedImage;
         }
         acquireLock(false);
 
