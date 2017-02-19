@@ -31,7 +31,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
-  <string name="setp_option_name">步幅</string>
+  <string name="setp_option_name">步驟</string>
   <string name="step_option_desc">自訂快進/快退步驟</string>
   <string name="setp_option_three_second">3 秒</string>
   <string name="setp_option_six_second">6 秒</string>
