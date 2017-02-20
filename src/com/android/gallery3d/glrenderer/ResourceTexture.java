@@ -20,7 +20,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import junit.framework.Assert;
+import com.android.gallery3d.common.Utils;
 
 // ResourceTexture is a texture whose Bitmap is decoded from a resource.
 // By default ResourceTexture is not opaque.
@@ -30,7 +30,7 @@ public class ResourceTexture extends UploadedTexture {
     protected final int mResId;
 
     public ResourceTexture(Context context, int resId) {
-        Assert.assertNotNull(context);
+        Utils.checkNotNull(context);
         mContext = context;
         mResId = resId;
         setOpaque(false);
