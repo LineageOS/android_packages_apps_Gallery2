@@ -1514,10 +1514,10 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             hasWaterMark = false;
             watermarkRepresentation.reset();
         }
+        DisplayMetrics dm = getResources().getDisplayMetrics();
         RelativeLayout.LayoutParams params =
-                new RelativeLayout.LayoutParams(mImageShow.getImageShowWidth(),
-                        mImageShow.getImageShowHeight());
-        params.setMargins(mImageShow.getShadowMargin(), mImageShow.getShadowMargin(), 0, 0);
+                new RelativeLayout.LayoutParams(dm.widthPixels,
+                        dm.heightPixels);
         String textHint;
         switch (watermarkRepresentation.getMarkType()) {
             case 0:

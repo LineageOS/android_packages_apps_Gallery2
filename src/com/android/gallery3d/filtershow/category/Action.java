@@ -29,6 +29,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -43,6 +44,7 @@ import com.android.gallery3d.filtershow.pipeline.RenderingRequestCaller;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
+import com.android.gallery3d.glrenderer.Texture;
 
 public class Action implements RenderingRequestCaller {
 
@@ -205,9 +207,13 @@ public class Action implements RenderingRequestCaller {
             } else {
                 overlayDrawable.clearColorFilter();
             }
-            int with = mImageFrame.width()/8;
-            int height = mImageFrame.height()/4;
-            overlayDrawable.setBounds(with,20,with*7,height*3);
+            int with = mImageFrame.width()/9;
+            int height = mImageFrame.height()/8;
+            if (!TextUtils.isEmpty(getName())) {
+                overlayDrawable.setBounds(with,16,with*8,height*6);
+            } else {
+                overlayDrawable.setBounds(with,52,with*8,height*7);
+            }
             overlayDrawable.draw(canvas);
             return;
         }

@@ -973,17 +973,4 @@ public class ImageShow extends View implements OnGestureListener,
     {
        mActivity.toggleComparisonButtonVisibility();
     }
-
-    public int getImageShowWidth() {
-        return getWidth() - 2 * mShadowMargin;
-    }
-
-    public int getImageShowHeight() {
-        return getHeight() - 2 * mShadowMargin;
-    }
-
-    public int getShadowMargin() {
-        return mShadowMargin;
-    }
-
 }
