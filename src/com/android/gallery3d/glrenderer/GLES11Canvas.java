@@ -27,8 +27,6 @@ import android.util.Log;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.util.IntArray;
 
-import junit.framework.Assert;
-
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -126,7 +124,7 @@ public class GLES11Canvas implements GLCanvas {
 
     @Override
     public void setSize(int width, int height) {
-        Assert.assertTrue(width >= 0 && height >= 0);
+        Utils.assertTrue(width >= 0 && height >= 0);
 
         if (mTargetTexture == null) {
             mScreenWidth = width;
@@ -154,7 +152,7 @@ public class GLES11Canvas implements GLCanvas {
 
     @Override
     public void setAlpha(float alpha) {
-        Assert.assertTrue(alpha >= 0 && alpha <= 1);
+        Utils.assertTrue(alpha >= 0 && alpha <= 1);
         mAlpha = alpha;
     }
 
@@ -165,7 +163,7 @@ public class GLES11Canvas implements GLCanvas {
 
     @Override
     public void multiplyAlpha(float alpha) {
-        Assert.assertTrue(alpha >= 0 && alpha <= 1);
+        Utils.assertTrue(alpha >= 0 && alpha <= 1);
         mAlpha *= alpha;
     }
 
