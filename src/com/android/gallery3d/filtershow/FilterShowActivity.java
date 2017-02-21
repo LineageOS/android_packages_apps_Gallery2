@@ -309,6 +309,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     private void registerFilter() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ProcessingService.SAVE_IMAGE_COMPLETE_ACTION);
+        filter.addAction(Intent.ACTION_LOCALE_CHANGED);
         registerReceiver(mHandlerReceiver, filter);
     }
 
@@ -326,6 +327,10 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                     boolean releaseDualCam = bundle.getBoolean(ProcessingService.KEY_DUALCAM);
                     completeSaveImage(saveUri, releaseDualCam);
                 }
+            } else if (Intent.ACTION_LOCALE_CHANGED.equals(action)) {
+                FiltersManager.reset();
+                getProcessingService().setupPipeline();
+                fillCategories();
             }
         }
     };

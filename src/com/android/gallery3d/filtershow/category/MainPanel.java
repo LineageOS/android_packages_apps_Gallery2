@@ -760,18 +760,4 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             dualCamButton.setVisibility(enable?View.VISIBLE:View.GONE);
         }
     }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if (ApiHelper.getBooleanFieldIfExists(newConfig, "userSetLocale", false)) {
-            FiltersManager.reset();
-            FilterShowActivity activity = (FilterShowActivity) getActivity();
-            activity.getProcessingService().setupPipeline();
-            activity.fillCategories();
-            if (mCurrentSelected != -1) {
-                showPanel(mCurrentSelected);
-            }
-        }
-    }
 }
