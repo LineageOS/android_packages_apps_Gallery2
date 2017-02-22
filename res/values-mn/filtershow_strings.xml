@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="title_activity_filter_show" msgid="2036539130684382763">"Фото Засагч"</string>
-    <string name="cannot_load_image" msgid="5023634941212959976">"Зураг ачааллах боломжгүй!"</string>
+    <string name="cannot_load_image" msgid="5023634941212959976">"Зураг ачаалах боломжгүй!"</string>
     <string name="cannot_edit_original" msgid="5890293845882609388">"Эх хувийг засах боломжгүй"</string>
     <!-- no translation found for original_picture_text (3076213290079909698) -->
     <skip />
