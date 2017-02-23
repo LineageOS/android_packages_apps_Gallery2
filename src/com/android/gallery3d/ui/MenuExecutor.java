@@ -295,6 +295,7 @@ public class MenuExecutor {
 //                }
 
                     Activity activity = mActivity;
+                    mActivity.isTopMenuShow = true;
                     activity.startActivity(Intent.createChooser(
                             intent, activity.getString(R.string.set_as)));
                 }
