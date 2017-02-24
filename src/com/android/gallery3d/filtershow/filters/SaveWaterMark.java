@@ -31,18 +31,23 @@ package com.android.gallery3d.filtershow.filters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.category.WaterMarkView;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.tools.SaveImage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -53,14 +58,16 @@ public class SaveWaterMark {
     private static final String LOGTAG = "SaveWaterMark";
     public static final int MARK_SAVE_COMPLETE = 1;
     private FilterWatermarkRepresentation waterMarkRp;
+    private Context mContext;
     private static ExifInterface mExif = new ExifInterface();;
 
     public void useRepresentation(FilterRepresentation representation) {
         waterMarkRp = (FilterWatermarkRepresentation) representation;
     }
 
-    public void saveImage(Context context, Bitmap bitmap, Uri selectedUri, Handler handler,
+    public void saveImage(Context context, final Bitmap bitmap, Uri selectedUri, Handler handler,
                           int quality, float scaleFactor, boolean isScale) {
+        mContext = context;
         WaterMarkView mWaterMarkView = waterMarkRp.getWaterMarkView();
         mWaterMarkView.clearEditTextCursor();
         Bitmap markBitmap = mWaterMarkView.creatNewPhoto();
@@ -68,8 +75,22 @@ public class SaveWaterMark {
         new AsyncTask<Bitmap, Void, Uri>() {
             @Override
             protected Uri doInBackground(Bitmap... bitmaps) {
-
+                ImagePreset ip = MasterImage.getImage().getPreset();
+                FilterFusionRepresentation fusionRep = findFusionRepresentation(ip);
+                boolean hasFusion = (fusionRep != null && fusionRep.hasUnderlay());
                 Bitmap destinationBitmap = createBitmap(bitmap, bitmaps[0]);
+                Bitmap fusionBmp = null;
+                //sampleSize is 1 for fusion bitmap of 1:1 size,
+                //sizeConstraint is 0 for fusion without width or height constraint.
+                final int sampleSize = 1, sizeConstraint = 0;
+                if (hasFusion) {
+                    fusionBmp = flattenFusion(Uri.parse(fusionRep.getUnderlay()), destinationBitmap,
+                            sizeConstraint, sampleSize);
+                    if(fusionBmp != null) {
+                        destinationBitmap.recycle();
+                        destinationBitmap = fusionBmp;
+                    }
+                }
                 File destinationFile = SaveImage.getNewFile(context, selectedUri);
                 //ExifInterface exif = getExifData(context, selectedUri);
                 long time = System.currentTimeMillis();
@@ -135,6 +156,24 @@ public class SaveWaterMark {
         return newb;
     }
 
+    private FilterFusionRepresentation findFusionRepresentation(ImagePreset preset) {
+        FilterDualCamFusionRepresentation dcRepresentation =
+                (FilterDualCamFusionRepresentation)preset.getFilterWithSerializationName(
+                        FilterDualCamFusionRepresentation.SERIALIZATION_NAME);
+        FilterTruePortraitFusionRepresentation tpRepresentation =
+                (FilterTruePortraitFusionRepresentation)preset.getFilterWithSerializationName(
+                        FilterTruePortraitFusionRepresentation.SERIALIZATION_NAME);
+
+        FilterFusionRepresentation fusionRep = null;
+
+        if(dcRepresentation != null)
+            fusionRep = (FilterFusionRepresentation) dcRepresentation;
+        else if (tpRepresentation != null)
+            fusionRep = (FilterFusionRepresentation) tpRepresentation;
+
+        return fusionRep;
+    }
+
     public void getExifData(Context context, Uri source) {
         //mExif = new ExifInterface();
         String mimeType = context.getContentResolver().getType(source);
@@ -158,7 +197,7 @@ public class SaveWaterMark {
         }
     }
 
-    private boolean putExifData(File file, ExifInterface exif, Bitmap image,
+    public boolean putExifData(File file, ExifInterface exif, Bitmap image,
             int jpegCompressQuality) {
         boolean ret = false;
         OutputStream s = null;
@@ -180,4 +219,44 @@ public class SaveWaterMark {
         return ret;
     }
 
+    private Bitmap flattenFusion(Uri underlayUri, Bitmap bitmap, int sizeConstraint,
+            int sampleSize) {
+        // fusion. decode underlay image and get dest rect
+
+        Bitmap underlay = null;
+
+        if(sizeConstraint != 0) {
+            underlay = ImageLoader.loadConstrainedBitmap(underlayUri, mContext,
+                    sizeConstraint, null, false);
+        } else if (sampleSize != 0) {
+            underlay = ImageLoader.loadBitmapWithBackouts(mContext, underlayUri, sampleSize);
+        }
+
+        if(underlay != null) {
+            int ori = ImageLoader.getMetadataOrientation(mContext, underlayUri);
+            if (ori != ImageLoader.ORI_NORMAL) {
+                underlay = ImageLoader.orientBitmap(underlay, ori);
+            }
+            RectF destRect = new RectF();
+            Rect imageBounds = MasterImage.getImage().getImageBounds();
+            Rect underlayBounds = MasterImage.getImage().getFusionBounds();
+            float underlayScaleFactor = (float)underlay.getWidth()
+                    / (float)underlayBounds.width();
+
+            destRect.left = (imageBounds.left - underlayBounds.left) * underlayScaleFactor;
+            destRect.right = (imageBounds.right - underlayBounds.left) * underlayScaleFactor;
+            destRect.top = (imageBounds.top - underlayBounds.top) * underlayScaleFactor;
+            destRect.bottom = (imageBounds.bottom - underlayBounds.top) * underlayScaleFactor;
+
+            Canvas canvas = new Canvas(underlay);
+            Paint paint = new Paint();
+            paint.reset();
+            paint.setAntiAlias(true);
+            paint.setFilterBitmap(true);
+            paint.setDither(true);
+
+            canvas.drawBitmap(bitmap, null, destRect, paint);
+        }
+        return underlay;
+    }
 }
