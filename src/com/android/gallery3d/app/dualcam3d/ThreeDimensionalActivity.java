@@ -30,6 +30,7 @@ package com.android.gallery3d.app.dualcam3d;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,6 +95,12 @@ public class ThreeDimensionalActivity extends Activity {
         processIntent();
         init();
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
 
     private void init() {
         mImageView = (GLView) findViewById(R.id.image);
