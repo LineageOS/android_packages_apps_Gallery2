@@ -61,6 +61,7 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
     private TransitionStore mTransitionStore = new TransitionStore();
     private PanoramaViewHelper mPanoramaViewHelper;
     private Toolbar mToolbar;
+    public boolean isTopMenuShow = false;
 
     private AlertDialog mAlertDialog = null;
     private BroadcastReceiver mMountReceiver = new BroadcastReceiver() {
@@ -204,6 +205,12 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
     @Override
     protected void onResume() {
         super.onResume();
+        // If top menu shows, GLView is active,
+        // so don't need to resume it.
+        if (isTopMenuShow) {
+            isTopMenuShow = false;
+            return;
+        }
         mGLRootView.lockRenderThread();
         try {
             getStateManager().resume();
@@ -218,6 +225,10 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
     @Override
     protected void onPause() {
         super.onPause();
+        // If top menu shows, don't pause GLView,
+        // so it can redraw when rotating.
+        if (isTopMenuShow)
+            return;
         mOrientationManager.pause();
         mGLRootView.onPause();
         mGLRootView.lockRenderThread();
