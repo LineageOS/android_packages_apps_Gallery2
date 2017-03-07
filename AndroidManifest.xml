@@ -272,7 +272,7 @@
         <activity
             android:name="com.android.gallery3d.filtershow.FilterShowActivity"
             android:theme="@style/Theme.FilterShow"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection">
+            android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection">
             <intent-filter>
                 <action android:name="android.intent.action.EDIT" />
                 <category android:name="android.intent.category.DEFAULT" />
