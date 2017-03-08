@@ -31,8 +31,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
+  <string name="setp_option_name">Pasu</string>
   <string name="setp_option_three_second">3 segundos</string>
   <string name="setp_option_six_second">6 segundos</string>
+  <string name="stereo">"Estereu"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
