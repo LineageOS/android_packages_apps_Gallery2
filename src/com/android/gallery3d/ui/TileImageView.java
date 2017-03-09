@@ -470,6 +470,10 @@ public class TileImageView extends GLView {
     }
 
     void queueForUpload(Tile tile) {
+        // if getGLRoot retun null, then maybe no place to show
+        // these decode tiles.
+        if (getGLRoot() == null)
+            return;
         synchronized (this) {
             mUploadQueue.push(tile);
         }

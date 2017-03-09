@@ -197,7 +197,7 @@ public class Action implements RenderingRequestCaller {
             Canvas canvas = new Canvas(mImage);
             canvas.drawARGB(0,255,255,255);
             Drawable overlayDrawable = mContext.getResources().
-                    getDrawable(mRepresentation.getOverlayId());
+                    getDrawable(mRepresentation.getOverlayId(), null);
             if (null != mRepresentation.getCurrentTheme() && overlayDrawable.canApplyTheme()) {
                 overlayDrawable.applyTheme(mRepresentation.getCurrentTheme());
             }
