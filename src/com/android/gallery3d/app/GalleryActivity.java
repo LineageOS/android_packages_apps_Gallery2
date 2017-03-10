@@ -121,7 +121,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION
         };
-        return needRequestPermission(PERMISSION_REQUEST_LOCATION, permissions);
+        return needRequestPermission(PERMISSION_REQUEST_LOCATION, permissions, true);
     }
 
     private boolean needRequestStoragePermission() {
@@ -129,16 +129,20 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE
         };
-        return needRequestPermission(PERMISSION_REQUEST_STORAGE, permissions);
+        return needRequestPermission(PERMISSION_REQUEST_STORAGE, permissions, false);
     }
 
-    private boolean needRequestPermission(int request_code, String[] permissions) {
+    private boolean needRequestPermission(int request_code, String[] permissions,
+            boolean optional) {
         boolean needRequest = false;
         ArrayList<String> permissionList = new ArrayList<String>();
         for (String permission : permissions) {
             if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                permissionList.add(permission);
-                needRequest = true;
+                boolean alreadyAsked = shouldShowRequestPermissionRationale(permission);
+                if (!optional || !alreadyAsked) {
+                    permissionList.add(permission);
+                    needRequest = true;
+                }
             }
         }
 
