@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_68e9031a",
+        "filename": "src/com/android/gallery3d/app/GalleryActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 3075
+      },
+      "writtenOn": "2017-03-10T18:11:51Z",
+      "side": 1,
+      "message": "Terribly minor nit - this looks like c++ indent rather than android java 8 spaces.",
+      "revId": "4264d3bfdfcf33b2783bb87b5c6eae50f4f7b9f3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
