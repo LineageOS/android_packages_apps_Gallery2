@@ -33,11 +33,13 @@ LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay
 
-LOCAL_PACKAGE_NAME := SnapdragonGallery
+LOCAL_PACKAGE_NAME := Gallery2
 
 LOCAL_PRIVILEGED_MODULE := true
 
-LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D Gallery2
+LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
+
+LOCAL_AAPT_FLAGS += --rename-manifest-package com.android.gallery3d
 
 LOCAL_SDK_VERSION := current
 
