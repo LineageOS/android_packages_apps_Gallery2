@@ -195,7 +195,7 @@ public class MovieActivity extends AbstractPermissionActivity {
         if (isPermissionGranted()) {
             init(intent, rootView, savedInstanceState);
         }
-
+        registerScreenReceiver();
         // DRM validation
 //        Uri original = intent.getData();
 //        String mimeType = intent.getType();
@@ -584,7 +584,6 @@ public class MovieActivity extends AbstractPermissionActivity {
         mPlayer.requestAudioFocus();
         super.onStart();
         mMovieHooker.onStart();
-        registerScreenReceiver();
     }
 
     @Override
@@ -600,7 +599,6 @@ public class MovieActivity extends AbstractPermissionActivity {
             mControlResumed = false;
         }
         mMovieHooker.onStop();
-        unregisterScreenReceiver();
     }
 
     @Override
@@ -687,6 +685,7 @@ public class MovieActivity extends AbstractPermissionActivity {
         mPlayer.onDestroy();
         super.onDestroy();
         mMovieHooker.onDestroy();
+        unregisterScreenReceiver();
     }
 
     @Override
