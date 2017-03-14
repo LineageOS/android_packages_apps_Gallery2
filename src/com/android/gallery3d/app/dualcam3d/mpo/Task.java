@@ -30,17 +30,15 @@
 package com.android.gallery3d.app.dualcam3d.mpo;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Log;
 
+import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 import com.android.gallery3d.mpo.MpoParser;
-
 
 import java.io.OutputStream;
 
@@ -169,21 +167,13 @@ public class Task {
         mThread2.start();
     }
 
-    public static String getLocalPathFromUri(Context context, Uri uri) {
-        Cursor cursor = context.getContentResolver().query(uri,
-                new String[]{MediaStore.Images.Media.DATA}, null, null, null);
-        if (cursor == null) {
-            return null;
-        }
-        int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        String s = cursor.moveToFirst() ? cursor.getString(index) : null;
-        cursor.close();
-        return s;
-    }
-
     private boolean loadDepthMap(Bitmap[] bitmaps, float brIntensity, boolean primaryForDisplay) {
         // check for pre-generated dm file
-        String mpoFilepath = getLocalPathFromUri(mContext, mUri);
+        String mpoFilepath = ImageLoader.getLocalPathFromUri(mContext, mUri);
+        if (mpoFilepath == null) {
+            Log.d(TAG, "Could not get file path from " + mUri);
+            return false;
+        }
         DualCameraNativeEngine engine = DualCameraNativeEngine.getInstance();
 
         if (mCancelled) return false;
