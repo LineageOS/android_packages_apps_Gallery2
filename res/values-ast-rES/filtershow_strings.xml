@@ -19,6 +19,7 @@
   <!--  String shown when we cannot load the image when starting the activity [CHAR LIMIT=NONE] -->
   <!--  String shown when cannot load the original image. We will edit selected image [CHAR LIMIT=NONE] -->
   <!--  String displayed when showing the original image [CHAR LIMIT=NONE] -->
+  <string name="original_picture_text">@string/original</string>
   <!--  String displayed when setting the homepage wallpaper in the background [CHAR LIMIT=NONE] -->
   <!--  generic strings -->
   <!--  Text for to display on a download failure [CHAR LIMIT=NONE] -->
@@ -47,8 +48,10 @@
   <!--  String displayed when exiting editor[CHAR LIMIT=NONE] -->
   <!--  History Panel -->
   <!--  Text for the history panel title [CHAR LIMIT=50] -->
+  <string name="history">Historial</string>
   <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
   <!--  Text for the original image[CHAR LIMIT=20]-->
+  <string name="history_original">@string/original</string>
   <!--  Image state panel -->
   <!--  Text for the image state panel title [CHAR LIMIT=50] -->
   <!--  Additional filters buttons  -->
@@ -65,6 +68,7 @@
   <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
+  <string name="aspectOriginal_effect">@string/original</string>
   <!-- Label for when the aspect ratio is fixed to a value [CHAR LIMIT=15] -->
   <!--  Label for the tuny planet effect [CHAR LIMIT=10] -->
   <!--  Filters buttons -->
@@ -133,6 +137,7 @@
   <!--  The title for the color pick dialog [CHAR LIMIT=20] -->
   <!--  The title for draw size [CHAR LIMIT=50] -->
   <!--  The accept the draw size [CHAR LIMIT=20] -->
+  <string name="draw_size_accept">ACEUTAR</string>
   <!--  Name used to indicate the original image in the state panel [CHAR LIMIT=20] -->
   <!--  Name used to indicate the final image in the state panel [CHAR LIMIT=20] -->
   <!-- Label for the notification [CHAR LIMIT=50] -->

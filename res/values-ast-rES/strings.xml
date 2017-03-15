@@ -35,8 +35,10 @@
   <!-- Movie View Start Playing button "Beginning" -->
   <!-- Title of a menu item to indicate performing the image crop operation
          [CHAR LIMIT=20] -->
+  <string name="crop_save_text">ACEUTAR</string>
   <!-- Title of a menu item to indicate performing the image crop operation
          [CHAR LIMIT=20] -->
+  <string name="ok">ACEUTAR</string>
   <!-- Button indicating that the cropped image should be reverted back to the original -->
   <!-- Hint that appears when cropping an image with more than one face -->
   <!-- Toast/alert that the image is being saved to the SD card -->
@@ -57,6 +59,7 @@
   <!-- Toast message for share items -->
   <!-- Details dialog "OK" button. Dismisses dialog. -->
   <!-- String Delete the selected media item(s) [CHAR LIMIT=50] -->
+  <string name="cancel">Encaboxar</string>
   <!-- The label shown after an image is deleted [CHAR LIMIT=16] -->
   <!-- The label on the button which when clicked will undo a deletion of image [CHAR LIMIT=16]-->
   <!-- String indicating more actions are available -->
@@ -238,7 +241,9 @@
   <!-- Text to show with progress bar while stitching in Gallery -->
   <!-- The label on the button that will save an edited image -->
   <!-- A label representing the action of importing media item(s) [CHAR LIMIT=20] -->
+  <string name="ingest_import">@string/Import</string>
   <!-- A label that indicates the media import operation completed [CHAR LIMIT=20] -->
+  <string name="ingest_import_complete">@string/import_complete</string>
   <!--  Text of notification message which is shown when user attaches camera -->
   <!-- String indicating how many media items from the camera have been scanned -->
   <!-- String indicating how many media items from the camera have been selected -->
@@ -248,7 +253,9 @@
   <!--  Status message shown when there is no content available to be imported -->
   <!--  Status message shown when there is no MTP device connected  -->
   <!-- Label for album grid button -->
+  <string name="ingest_switch_photo_grid">@string/switch_photo_grid</string>
   <!-- Label for fullscreen button. [CHAR LIMIT=20] -->
+  <string name="ingest_switch_photo_fullscreen">@string/switch_photo_fullscreen</string>
   <!-- Camera resources below -->
   <!-- General strings -->
   <!-- title for the dialog showing the error of camera hardware -->
@@ -263,6 +270,7 @@
   <!-- alert to the user that the camera fails to read or write the USB storage. [CHAR LIMIT=NONE] -->
   <!-- alert to the user that the camera fails to read or write the SD card. -->
   <!-- button in review mode indicating that the photo taking, video recording, and panorama saving session should be canceled [CHAR LIMIT=10] -->
+  <string name="review_cancel">ENCABOXAR</string>
   <!-- button in review mode indicating that the taken photo/video is OK to be attached/uploaded [CHAR LIMIT=10] -->
   <!-- A label that overlays on top of the preview frame to indicate the camcorder is in time lapse mode [CHAR LIMIT=35] -->
   <!-- Settings screen, camera selection dialog title. Users can select a camera from the phone (front-facing or back-facing). [CHAR LIMIT=20] -->
@@ -272,6 +280,7 @@
   <!--  Label for record location preference [CHAR LIMIT=50] -->
   <!-- Title for countdown timer on camera settings screen [CHAR LIMIT=30]-->
   <!-- Entry for countdown timer setting. e.g. 1 second, 10 seconds, etc. [CHAR LIMIT=30]-->
+  <string name="pref_camera_timer_sound_default">@string/setting_on_value</string>
   <!-- Text followed by a checkbox to turn on/off sound effects during the countdown. [CHAR LIMIT = 16]-->
   <!-- Entry of a on/off setting. The setting is turned off. [CHAR LIMIT=15] -->
   <!-- Entry of a on/off setting. The setting is turned on. [CHAR LIMIT=15] -->
@@ -302,7 +311,9 @@
   <!-- Settings screen, dialog choice for QVGA picture size [CHAR LIMIT=15] -->
   <!-- Settings screen, Focus mode title -->
   <!-- Settings screen, Focus mode dialog radio button choices -->
+  <string name="pref_camera_focusmode_entry_macro">Macro</string>
   <!-- Menu, focus mode labels [CHAR LIMIT=50] -->
+  <string name="pref_camera_focusmode_label_macro">MACRO</string>
   <!-- Default flash mode setting.-->
   <!-- Value for flash off setting-->
   <!-- Settings screen, Flash mode title -->
@@ -338,10 +349,12 @@
   <!-- Exposure settings in preference -->
   <!--  menu label exposure compensation [CHAR LIMIT=50] -->
   <!-- Default HDR entry value -->
+  <string name="pref_camera_hdr_default">@string/setting_off_value</string>
   <!-- HDR label ON [CHAR LIMIT=60] -->
   <!-- switch camera label back [CHAR LIMIT=60] -->
   <!-- switch camera label front [CHAR LIMIT=60] -->
   <!-- Dialog "OK" button. Dismisses dialog. -->
+  <string name="dialog_ok">ACEUTAR</string>
   <!-- Low-memory dialog message [CHAR LIMT=NONE] -->
   <!-- Low-memory dialog message [CHAR LIMIT=NONE] -->
   <!-- Camera format string for new image files. Passed to java.text.SimpleDateFormat. -->
@@ -463,6 +476,7 @@ CHAR LIMIT = NONE] -->
   <!-- Title for the albums tab [CHAR LIMIT=25] -->
   <!-- Camera menu labels -->
   <!-- more options label [CHAR LIMIT=50] -->
+  <string name="camera_menu_more_label">MÁS OPCIONES</string>
   <!-- settings label [CHAR LIMIT=50] -->
   <!-- String indicating how many photos are in an album [CHAR LIMIT=15] -->
   <!-- The tips of trimming video -->
