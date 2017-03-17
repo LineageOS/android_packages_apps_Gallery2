@@ -1352,27 +1352,27 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     }
 
     public CategoryAdapter getCategoryWatermarkAdapter() {
-        return mCategoryWatermarkAdapters.get(0);
+        return (mCategoryWatermarkAdapters != null) ? mCategoryWatermarkAdapters.get(0) : null;
     }
 
     public CategoryAdapter getCategoryLocationAdapter() {
-        return mCategoryWatermarkAdapters.get(1);
+        return (mCategoryWatermarkAdapters != null) ? mCategoryWatermarkAdapters.get(1) : null;
     }
 
     public CategoryAdapter getCategoryTimeAdapter() {
-        return mCategoryWatermarkAdapters.get(2);
+        return (mCategoryWatermarkAdapters != null) ? mCategoryWatermarkAdapters.get(2) : null;
     }
 
     public CategoryAdapter getCategoryWeatherAdapter() {
-        return mCategoryWatermarkAdapters.get(3);
+        return (mCategoryWatermarkAdapters != null) ? mCategoryWatermarkAdapters.get(3) : null;
     }
 
     public CategoryAdapter getCategoryEmotionAdapter() {
-        return mCategoryWatermarkAdapters.get(4);
+        return (mCategoryWatermarkAdapters != null) ? mCategoryWatermarkAdapters.get(4) : null;
     }
 
     public CategoryAdapter getCategoryFoodAdapter() {
-        return mCategoryWatermarkAdapters.get(5);
+        return (mCategoryWatermarkAdapters != null) ? mCategoryWatermarkAdapters.get(5) : null;
     }
 
     public void removeFilterRepresentation(FilterRepresentation filterRepresentation) {

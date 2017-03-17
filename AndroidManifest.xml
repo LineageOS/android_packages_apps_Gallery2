@@ -103,7 +103,7 @@
 
         <activity android:name="com.android.gallery3d.app.GalleryActivity"
                 android:theme="@style/AppTheme"
-                android:configChanges="keyboardHidden|orientation|screenSize">
+                android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -272,7 +272,7 @@
         <activity
             android:name="com.android.gallery3d.filtershow.FilterShowActivity"
             android:theme="@style/Theme.FilterShow"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection">
+            android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection">
             <intent-filter>
                 <action android:name="android.intent.action.EDIT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -399,6 +399,8 @@
                 android:theme="@android:style/Theme.Material.Light"
                 android:configChanges="orientation|keyboardHidden|screenSize|mnc|mcc">
         </activity>
-        <activity android:name="com.android.gallery3d.app.dualcam3d.ThreeDimensionalActivity"/>
+        <activity android:name="com.android.gallery3d.app.dualcam3d.ThreeDimensionalActivity"
+            android:configChanges="orientation|screenSize|layoutDirection">
+        </activity>
     </application>
 </manifest>

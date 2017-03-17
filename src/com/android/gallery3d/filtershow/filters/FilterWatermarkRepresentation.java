@@ -165,7 +165,6 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
     }
 
     public void reset() {
-        positionInfo = null;
         currentMarkView = null;
     }
 
