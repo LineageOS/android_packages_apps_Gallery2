@@ -35,7 +35,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="setp_option_three_second">3 segundos</string>
   <string name="setp_option_six_second">6 segundos</string>
   <string name="stereo">"Estereu"</string>
+  <string name="input_url">"Introducir URL"</string>
+  <string name="next">"Siguiente"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
+  <string name="more_image">Más imáxenes</string>
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <!-- The label for the bass boost knob of the audio effects dialog. -->

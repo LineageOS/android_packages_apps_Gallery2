@@ -40,6 +40,7 @@
   <!--  Text for size value tag [CHAR LIMIT=30] -->
   <!--  Text for size x [CHAR LIMIT=1] -->
   <!--  Name for the overflow menu item for settings [CHAR LIMIT=20] -->
+  <string name="menu_settings">Axustes</string>
   <!--  Exit Dialog -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
@@ -103,6 +104,7 @@
   <!--  Label for the image downsampling effect (makes image smaller) [CHAR LIMIT=15] -->
   <!--  Label for the "neutral density graduated filter" filter effect  [CHAR LIMIT=15] -->
   <!--  Label for the Brightness effect  [CHAR LIMIT=20] -->
+  <string name="editor_grad_brightness">Brilléu</string>
   <!--  Label for the Contrast filter effect  [CHAR LIMIT=20] -->
   <!--  Label for the saturation effect  [CHAR LIMIT=20] -->
   <!--  Label for the Main or Master control for per channel saturation effect [CHAR LIMIT=20] -->
@@ -111,11 +113,13 @@
   <!--  Label for the green control for per channel saturation effect [CHAR LIMIT=20] -->
   <!--  Label for the cyan control for per channel saturation effect [CHAR LIMIT=20] -->
   <!--  Label for the blue control for per channel saturation effect [CHAR LIMIT=20] -->
+  <string name="editor_chan_sat_blue">Azul</string>
   <!--  Label for the Magenta control for per channel saturation effect [CHAR LIMIT=20] -->
   <!--  Label for the image graduated filter effect  [CHAR LIMIT=20] -->
   <!-- new virtual graduated neutral density filter  [CHAR LIMIT=20] -->
   <!--  Labels for the curves tool -->
   <!--  Label for the curves tool, all channels (RGB) [CHAR LIMIT=3] -->
+  <string name="curves_channel_rgb">RGB</string>
   <!--  Label for the curves tool, Red color channel [CHAR LIMIT=14] -->
   <!--  Label for the curves tool, Green color channel [CHAR LIMIT=14] -->
   <!--  Label for the curves tool, Blue color channel [CHAR LIMIT=14] -->
@@ -124,6 +128,7 @@
   <!--  Label for the Hue to draw in [CHAR LIMIT=14] -->
   <!--  Label for the color to draw in [CHAR LIMIT=14] -->
   <!--  Label for the Brightness to draw in [CHAR LIMIT=14] -->
+  <string name="draw_value">Brilléu</string>
   <!--  Label for the color to draw in [CHAR LIMIT=14] -->
   <!--  Label for the line style of drawing in [CHAR LIMIT=14] -->
   <!--  Label for the Marker brush style of drawing in [CHAR LIMIT=14] -->
