@@ -57,6 +57,8 @@ public class CategoryPanelLevelTwo extends CategoryPanel {
         setAdapter(adapter);
     }
 
+    public CategoryPanelLevelTwo() {}
+
     @Override
     public void loadAdapter(int adapter) {
         super.loadAdapter(adapter);
