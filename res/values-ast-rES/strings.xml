@@ -246,6 +246,7 @@
   <!-- Toast if the trimmed video is too short to trim. [CHAR LIMIT=80] -->
   <!-- Text to show with progress bar while stitching in Gallery -->
   <!-- The label on the button that will save an edited image -->
+  <string name="save" msgid="8140440041190264400">Guardar</string>
   <!-- A label representing the action of importing media item(s) [CHAR LIMIT=20] -->
   <string name="ingest_import">@string/Import</string>
   <!-- A label that indicates the media import operation completed [CHAR LIMIT=20] -->

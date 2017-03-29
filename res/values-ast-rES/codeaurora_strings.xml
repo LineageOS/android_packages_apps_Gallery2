@@ -32,11 +32,25 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
   <string name="setp_option_name">Pasu</string>
+  <string name="step_option_desc">Personalizar el saltu rápidu hacia alantre o hacia atrás</string>
   <string name="setp_option_three_second">3 segundos</string>
   <string name="setp_option_six_second">6 segundos</string>
+  <string name="loop">"Bucle"</string>
+  <string name="single">"Simple"</string>
   <string name="stereo">"Estereu"</string>
+  <string name="speaker_on">Altavoz encesu</string>
+  <string name="speaker_off">Altavoz apagáu</string>
+  <string name="speaker_need_headset">Coneuta unos auriculares pa usar esta carauterística.</string>
+  <string name="single_track">"Una pista"</string>
   <string name="input_url">"Introducir URL"</string>
+  <string name="streaming_settings">"Axustes de fluxu de datos"</string>
   <string name="next">"Siguiente"</string>
+  <string name="previous">"Anterior"</string>
+  <string name="buffer_size">Tamañu del buffer</string>
+  <string name="apn">APN preferíu</string>
+  <string name="rtp_min_port">Puertu min.</string>
+  <string name="rtp_max_port">Puertu máx.</string>
+  <string name="media_controller_connecting">Coneutando\u2026</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <string name="more_image">Más imáxenes</string>
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->

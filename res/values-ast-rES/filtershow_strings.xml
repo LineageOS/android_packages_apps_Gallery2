@@ -45,6 +45,7 @@
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
+  <string name="save_and_exit">Guardar y colar</string>
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <!--  String displayed when exiting editor[CHAR LIMIT=NONE] -->
   <!--  History Panel -->
