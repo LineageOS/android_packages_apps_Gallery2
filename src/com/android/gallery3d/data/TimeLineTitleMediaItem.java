@@ -30,8 +30,8 @@ import com.android.gallery3d.util.ThreadPool.Job;
 public class TimeLineTitleMediaItem extends MediaItem {
     private static final String TAG = "TimeLineTitleMediaItem";
     private String mTitle;
-    private static int mPhotoCount;
-    private static int mVideoCount;
+    private int mPhotoCount;
+    private int mVideoCount;
 
     public TimeLineTitleMediaItem(Path path) {
         super(path);

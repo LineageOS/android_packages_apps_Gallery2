@@ -111,9 +111,11 @@ public class SpeakerHooker extends MovieHooker {
                         || mAudioManager.isBluetoothA2dpOn();
             } else if (action.equals(BluetoothDevice.ACTION_ACL_CONNECTED)
                     || action.equals(BluetoothDevice.ACTION_ACL_DISCONNECTED)) {
-                final int deviceClass = ((BluetoothDevice)
+                final BluetoothClass bc = ((BluetoothDevice)
                         intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE))
-                                .getBluetoothClass().getDeviceClass();
+                                .getBluetoothClass();
+                if (bc == null) return;
+                final int deviceClass = bc.getDeviceClass();
                 if ((deviceClass == BluetoothClass.Device.AUDIO_VIDEO_HEADPHONES)
                         || (deviceClass == BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET)) {
                     mIsHeadsetOn = action.equals(BluetoothDevice.ACTION_ACL_CONNECTED)
