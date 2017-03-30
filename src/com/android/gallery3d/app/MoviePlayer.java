@@ -100,7 +100,6 @@ public class MoviePlayer implements
     private static final String KEY_VIDEO_STATE = "video_state";
 
     private static final String VIRTUALIZE_EXTRA = "virtualize";
-    private static final long BLACK_TIMEOUT = 500;
     public static final int SERVER_TIMEOUT = 8801;
 
     // If we resume the acitivty with in RESUMEABLE_TIMEOUT, we will keep playing.
@@ -115,6 +114,7 @@ public class MoviePlayer implements
 
     private Context mContext;
     private final CodeauroraVideoView mVideoView;
+    private final View mCoverView;
     private final View mRootView;
     private final Bookmarker mBookmarker;
     private final Handler mHandler = new Handler();
@@ -194,16 +194,6 @@ public class MoviePlayer implements
         }
     };
 
-    private Runnable mDelayVideoRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (LOG) {
-                Log.v(TAG, "mDelayVideoRunnable.run()");
-            }
-            mVideoView.setVisibility(View.VISIBLE);
-        }
-    };
-
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -227,6 +217,7 @@ public class MoviePlayer implements
         mContext = movieActivity.getApplicationContext();
         mRootView = rootView;
         mVideoView = (CodeauroraVideoView) rootView.findViewById(R.id.surface_view);
+        mCoverView = rootView.findViewById(R.id.surface_view_cover);
         mBookmarker = new Bookmarker(movieActivity);
 
         mController = new MovieControllerOverlayNew(movieActivity);
@@ -278,18 +269,6 @@ public class MoviePlayer implements
                 setProgress();
             }
         });
-
-        // The SurfaceView is transparent before drawing the first frame.
-        // This makes the UI flashing when open a video. (black -> old screen
-        // -> video) However, we have no way to know the timing of the first
-        // frame. So, we hide the VideoView for a while to make sure the
-        // video has been drawn on it.
-        mVideoView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mVideoView.setVisibility(View.VISIBLE);
-            }
-        }, BLACK_TIMEOUT);
 
         setOnSystemUiVisibilityChangeListener();
         // Hide system UI by default
@@ -506,10 +485,6 @@ public class MoviePlayer implements
     public void onResume() {
         mDragging = false;// clear drag info
         if (mHasPaused) {
-            //M: same as launch case to delay transparent.
-            mVideoView.removeCallbacks(mDelayVideoRunnable);
-            mVideoView.postDelayed(mDelayVideoRunnable, BLACK_TIMEOUT);
-
             if (mServerTimeoutExt.handleOnResume() || mIsShowResumingDialog) {
                 mHasPaused = false;
                 return;
@@ -815,6 +790,7 @@ public class MoviePlayer implements
         if (LOG) {
             Log.v(TAG, "onPrepared(" + mp + ")");
         }
+        mCoverView.setVisibility(View.GONE);
         if (!isLocalFile()) {
             mOverlayExt.setPlayingInfo(isLiveStreaming());
         }

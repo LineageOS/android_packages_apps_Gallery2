@@ -21,10 +21,15 @@
         android:layout_height="match_parent">
 
     <org.codeaurora.gallery3d.video.CodeauroraVideoView android:id="@+id/surface_view"
-            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true" />
+
+    <View
+        android:id="@+id/surface_view_cover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"/>
 
     <ImageView
         android:id="@+id/img_live"
