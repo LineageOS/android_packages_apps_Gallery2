@@ -132,7 +132,7 @@
     <string name="filtershow_notification_label" msgid="1653168445525855247">"Պատկերը պահվում է"</string>
     <string name="filtershow_notification_message" msgid="2661871765484036286">"Մշակվում է..."</string>
     <string name="filtershow_save_preset" msgid="3933550455577927439">"Պահել ներկայիս նախակայումը"</string>
-    <string name="filtershow_manage_preset" msgid="3872896753708921286">"Կառավարել օգտվողի նախակայումները"</string>
+    <string name="filtershow_manage_preset" msgid="3872896753708921286">"Կառավարել օգտատիրոջ նախակայումները"</string>
     <string name="filtershow_new_preset" msgid="8923930134923416617">"Նոր նախակայում"</string>
     <string name="filtershow_preset_name" msgid="7015939727047649866">"Նախակայման անունը"</string>
     <string name="filtershow_show_info_panel" msgid="5773036746043711115">"Տեղեկություններ"</string>

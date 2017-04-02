@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="title_activity_filter_show" msgid="2036539130684382763">"Фото Засагч"</string>
-    <string name="cannot_load_image" msgid="5023634941212959976">"Зураг ачааллах боломжгүй!"</string>
+    <string name="cannot_load_image" msgid="5023634941212959976">"Зураг ачаалах боломжгүй!"</string>
     <string name="cannot_edit_original" msgid="5890293845882609388">"Эх хувийг засах боломжгүй"</string>
     <!-- no translation found for original_picture_text (3076213290079909698) -->
     <skip />
@@ -126,7 +126,7 @@
     <string name="color_pick_select" msgid="734312818059057394">"Өнгө тохируулж сонгох"</string>
     <string name="color_pick_title" msgid="6195567431995308876">"Өнгө сонгох"</string>
     <string name="draw_size_title" msgid="3121649039610273977">"Хэмжээ сонгох"</string>
-    <string name="draw_size_accept" msgid="6781529716526190028">"Тийм"</string>
+    <string name="draw_size_accept" msgid="6781529716526190028">"OK"</string>
     <string name="state_panel_original" msgid="9069584409934164419">"Эх хувь"</string>
     <string name="state_panel_result" msgid="318640531123298676">"Үр дүн"</string>
     <string name="filtershow_notification_label" msgid="1653168445525855247">"Зургийг хадгалж байна"</string>

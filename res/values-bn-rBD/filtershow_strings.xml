@@ -27,11 +27,11 @@
     <string name="borders" msgid="2067345080568684614">"সীমানাগুলি"</string>
     <string name="custom_border" msgid="8679893731790931871">"কাস্টম"</string>
     <string name="filtershow_undo" msgid="6781743189243585101">"পূর্বাবস্থায় ফিরুন"</string>
-    <string name="filtershow_redo" msgid="4219489910543059747">"পুনরায় করুন"</string>
+    <string name="filtershow_redo" msgid="4219489910543059747">"আবার করুন"</string>
     <string name="show_imagestate_panel" msgid="281932769701043015">"প্রয়োগ করা প্রভাবগুলি দেখান"</string>
     <string name="hide_imagestate_panel" msgid="7207643485811695257">"প্রয়োগ করা প্রভাবগুলি লুকান"</string>
     <string name="export_image" msgid="3202835713172222134">"রপ্তানি"</string>
-    <string name="print_image" msgid="1942989216591621413">"মুদ্রণ করুন"</string>
+    <string name="print_image" msgid="1942989216591621413">"প্রিন্ট করুন"</string>
     <string name="export_flattened" msgid="9046192331465915411">"চ্যাপ্টা চিত্র রপ্তানি করুন"</string>
     <string name="select_output_settings" msgid="1268532018080310748">"রপ্তানি করা চিত্রটি ইতিহাস ছাড়া, একটি অনুলিপি হবে।"</string>
     <string name="quality" msgid="179292110309050529">"গুণমান"</string>
@@ -44,13 +44,13 @@
     <string name="save_and_processing" msgid="6371565035837463194">"পূর্ণ রেজোলিউশানের চিত্রের প্রক্রিয়া করা হচ্ছে..."</string>
     <string name="exit" msgid="242642957038770113">"প্রস্থান করুন"</string>
     <string name="history" msgid="455767361472692409">"ইতিহাস"</string>
-    <string name="reset" msgid="9013181350779592937">"পুনরায় সেট করুন"</string>
+    <string name="reset" msgid="9013181350779592937">"আবার সেট করুন"</string>
     <!-- no translation found for history_original (150973253194312841) -->
     <skip />
     <string name="imageState" msgid="8632586742752891968">"প্রয়োগ করা প্রভাবগুলি"</string>
     <string name="compare_original" msgid="8140838959007796977">"তুলনা করুন"</string>
     <string name="apply_effect" msgid="1218288221200568947">"প্রয়োগ করুন"</string>
-    <string name="reset_effect" msgid="7712605581024929564">"পুনরায় সেট করুন"</string>
+    <string name="reset_effect" msgid="7712605581024929564">"আবার সেট করুন"</string>
     <string name="aspect" msgid="4025244950820813059">"আসপেক্ট"</string>
     <string name="aspect1to1_effect" msgid="1159104543795779123">"১:১"</string>
     <string name="aspect4to3_effect" msgid="7968067847241223578">"৪.৩"</string>
