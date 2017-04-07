@@ -215,7 +215,6 @@ void JpegReader::formatPixels(uint8_t* buf, int32_t len) {
     // Do endianness and alpha for output format
     if (mFormat == Jpeg_Config::FORMAT_RGBA) {
         // Set alphas to 255
-        uint8_t* end = buf + len - 1;
         for (int i = len - 1; i >= 0; i -= 4) {
             buf[i] = 255;
             buf[i - 1] = *--iter;
@@ -224,7 +223,6 @@ void JpegReader::formatPixels(uint8_t* buf, int32_t len) {
         }
     } else if (mFormat == Jpeg_Config::FORMAT_ABGR) {
         // Reverse endianness and set alphas to 255
-        uint8_t* end = buf + len - 1;
         int r, g, b;
         for (int i = len - 1; i >= 0; i -= 4) {
             b = *--iter;

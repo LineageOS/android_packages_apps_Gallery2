@@ -29,8 +29,8 @@ __inline__ int  interp(unsigned char  *src, int p , int *off ,float dr,float dg,
     return (int)frbg ;
 }
 
-void JNIFUNCF(ImageFilterFx, nativeApplyFilter, jobject bitmap, jint width, jint height,
-        jobject lutbitmap, jint lutwidth, jint lutheight,
+void JNIFUNCF(ImageFilterFx, nativeApplyFilter, jobject bitmap, jint width __unused,
+        jint height __unused, jobject lutbitmap, jint lutwidth, jint lutheight,
         jint start, jint end)
 {
     char* destination = 0;

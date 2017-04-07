@@ -36,7 +36,6 @@ void JNIFUNCF(ImageFilterSaturated, nativeApplyFilter, jobject bitmap, jint widt
         int r = destination[RED];
         int g = destination[GREEN];
         int b = destination[BLUE];
-        int t = (r + g) / 2;
         R = r;
         G = g;
         B = b;
