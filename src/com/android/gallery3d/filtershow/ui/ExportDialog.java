@@ -105,11 +105,18 @@ public class ExportDialog extends DialogFragment implements SeekBar.OnSeekBarCha
                         Uri sourceUri = MasterImage.getImage().getUri();
                         File dest = SaveImage.getNewFile(activity, activity.getSelectedImageUri());
                         float scaleFactor = mExportWidth / (float) mOriginalBounds.width();
-                        Intent processIntent = ProcessingService.getSaveIntent(activity,
-                                MasterImage.getImage().getPreset(), dest,
-                                activity.getSelectedImageUri(), sourceUri, true,
-                                mSeekBar.getProgress(), scaleFactor, false, -1);
-                        activity.startService(processIntent);
+                        if (!activity.isWaterMarked()) {
+                            Intent processIntent = ProcessingService.getSaveIntent(activity,
+                                    MasterImage.getImage().getPreset(), dest,
+                                    activity.getSelectedImageUri(), sourceUri, true,
+                                    mSeekBar.getProgress(), scaleFactor, false, -1);
+                            activity.startService(processIntent);
+                        } else {
+                            activity.getSaveWaterMark().saveImage(activity,
+                                    MasterImage.getImage().getHighresImage(),
+                                    activity.getSelectedImageUri(), null, mSeekBar.getProgress(),
+                                    scaleFactor, true);
+                        }
                     }
                 });
         builder.setNegativeButton(R.string.cancel, null);

@@ -21,6 +21,7 @@ import java.util.Vector;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -36,6 +37,7 @@ import com.android.gallery3d.exif.ExifTag;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
+import com.android.gallery3d.filtershow.category.WaterMarkView;
 import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
@@ -116,6 +118,7 @@ public class MasterImage implements RenderingRequestCaller {
     private FilterShowActivity mActivity = null;
 
     private Vector<ImageShow> mObservers = new Vector<ImageShow>();
+    private Vector<WaterMarkView> mWaterMarks = new Vector<WaterMarkView>();
     private FilterRepresentation mCurrentFilterRepresentation;
 
     private float mScaleFactor = 1.0f;
@@ -335,6 +338,17 @@ public class MasterImage implements RenderingRequestCaller {
 
     public void removeObserver(ImageShow observer) {
         mObservers.remove(observer);
+    }
+
+    public void addWaterMark(WaterMarkView waterMarkView) {
+        if (mWaterMarks.contains(waterMarkView)) {
+            return;
+        }
+        mWaterMarks.add(waterMarkView);
+    }
+
+    public void removeWaterMark(WaterMarkView waterMarkView) {
+        mWaterMarks.remove(waterMarkView);
     }
 
     public void setActivity(FilterShowActivity activity) {
@@ -615,6 +629,11 @@ public class MasterImage implements RenderingRequestCaller {
         }
     }
 
+    public void notifyWaterMarks() {
+        for (WaterMarkView waterMarkView : mWaterMarks) {
+            waterMarkView.update();
+        }
+    }
     public void resetGeometryImages(boolean force) {
         if (mPreset == null) {
             return;
@@ -727,9 +746,9 @@ public class MasterImage implements RenderingRequestCaller {
                     bitmapToDraw.getWidth(),
                     bitmapToDraw.getHeight());
             scale = mImageShowSize.x / size.width();
-            if (size.width() < size.height()) {
-                scale = mImageShowSize.y / size.height();
-            }
+            float tmp = mImageShowSize.y / size.height();
+            // Choose the smaller one to avoid master image beyound the screen.
+            scale = scale < tmp ? scale : tmp;
             translateX = (mImageShowSize.x - (size.width() * scale)) / 2.0f;
             translateY = (mImageShowSize.y - (size.height() * scale)) / 2.0f;
         } else {
@@ -767,7 +786,7 @@ public class MasterImage implements RenderingRequestCaller {
         return m;
     }
 
-    private Matrix getScreenToImageMatrix(boolean reflectRotation) {
+    public Matrix getScreenToImageMatrix(boolean reflectRotation) {
         Matrix m = getImageToScreenMatrix(reflectRotation);
         Matrix invert = new Matrix();
         m.invert(invert);
@@ -846,6 +865,7 @@ public class MasterImage implements RenderingRequestCaller {
             mBitmapCache.cache(mHighresBitmap);
             mHighresBitmap = request.getBitmap();
             notifyObservers();
+            notifyWaterMarks();
             needsCheckModification = true;
         }
     }
@@ -960,7 +980,7 @@ public class MasterImage implements RenderingRequestCaller {
         return mPreset.contains(FilterRepresentation.TYPE_TINYPLANET);
     }
 
-    public boolean loadMpo(byte[] primaryMpoData, byte[] auxiliaryMpoData) {
+    public boolean loadMpo(Context context, byte[] primaryMpoData, byte[] auxiliaryMpoData, Uri uri){
         boolean loaded = false;
 
         if(auxiliaryMpoData != null) {
@@ -971,7 +991,11 @@ public class MasterImage implements RenderingRequestCaller {
             }
 
             // check for pre-generated dm file
-            String mpoFilepath = ImageLoader.getLocalPathFromUri(getActivity(), getUri());
+            String mpoFilepath = ImageLoader.getLocalPathFromUri(context, uri);
+            if(mpoFilepath == null) {
+                Log.d(LOGTAG, "Could not get file path from " + uri);
+                return false;
+            }
             // read auxiliary image and generate depth map.
             Bitmap auxiliaryBm = BitmapFactory.decodeByteArray(auxiliaryMpoData, 0, auxiliaryMpoData.length);
 
@@ -983,7 +1007,7 @@ public class MasterImage implements RenderingRequestCaller {
 
             DualCameraNativeEngine.getInstance().initDepthMap(
                     primaryBm, auxiliaryBm, mpoFilepath,
-                    DualCameraNativeEngine.getInstance().getCalibFilepath(mActivity));
+                    DualCameraNativeEngine.getInstance().getCalibFilepath(context),1.0f);
 
             primaryBm.recycle();
             primaryBm = null;
@@ -1015,6 +1039,10 @@ public class MasterImage implements RenderingRequestCaller {
         }
 
         return loaded;
+    }
+
+    public boolean loadMpo(byte[] primaryMpoData, byte[] auxiliaryMpoData) {
+        return loadMpo(getActivity(), primaryMpoData, auxiliaryMpoData, getUri());
     }
 
     public void setFusionUnderlay(Bitmap underlay) {

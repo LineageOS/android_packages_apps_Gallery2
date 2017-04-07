@@ -32,6 +32,7 @@ import android.util.Log;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
+import com.android.gallery3d.filtershow.data.FilterPresetDBHelper;
 import com.android.gallery3d.filtershow.filters.BaseFiltersManager;
 import com.android.gallery3d.filtershow.filters.FilterCropRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
@@ -39,6 +40,7 @@ import com.android.gallery3d.filtershow.filters.FilterDualCamSketchRepresentatio
 import com.android.gallery3d.filtershow.filters.FilterFxRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterImageBorderRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
+import com.android.gallery3d.filtershow.filters.FilterPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRotateRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterStraightenRepresentation;
@@ -50,6 +52,7 @@ import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.state.State;
 import com.android.gallery3d.filtershow.state.StateAdapter;
+import com.android.gallery3d.filtershow.tools.FilterGeneratorNativeEngine;
 
 public class ImagePreset {
 
@@ -413,7 +416,8 @@ public class ImagePreset {
             boolean replaced = false;
             for (int i = 0; i < mFilters.size(); i++) {
                 FilterRepresentation current = mFilters.elementAt(i);
-                if (current.getFilterType() == FilterRepresentation.TYPE_FX) {
+                if (current.getFilterType() == FilterRepresentation.TYPE_FX
+                        || (current.getFilterType() == FilterRepresentation.TYPE_PRESETFILTER)) {
                     mFilters.remove(i);
                     replaced = true;
                     if (!isNoneFxFilter(representation)) {
@@ -423,6 +427,23 @@ public class ImagePreset {
                 }
             }
             if (!replaced && !isNoneFxFilter(representation)) {
+                mFilters.add(representation);
+            }
+        } else if (representation.getFilterType() == FilterRepresentation.TYPE_PRESETFILTER) {
+            boolean replaced = false;
+            for (int i = 0; i < mFilters.size(); i++) {
+                FilterRepresentation current = mFilters.elementAt(i);
+                if ((current.getFilterType() == FilterRepresentation.TYPE_PRESETFILTER)
+                        || (current.getFilterType() == FilterRepresentation.TYPE_FX)) {
+                    mFilters.remove(i);
+                    replaced = true;
+                    if (!isNonePresetFilter(representation)) {
+                        mFilters.add(i, representation);
+                    }
+                    break;
+                }
+            }
+            if (!replaced && !isNonePresetFilter(representation)) {
                 mFilters.add(representation);
             }
         } else {
@@ -493,6 +514,11 @@ public class ImagePreset {
     private boolean isNoneTruePortraitFilter(FilterRepresentation representation) {
         return representation.getTextId() == R.string.none &&
                 representation.getFilterType() == FilterRepresentation.TYPE_TRUEPORTRAIT;
+    }
+
+    private boolean isNonePresetFilter(FilterRepresentation representation) {
+        return representation instanceof FilterPresetRepresentation &&
+                ((FilterPresetRepresentation) representation).getTextId() == R.string.none;
     }
 
     public FilterRepresentation getRepresentation(FilterRepresentation filterRepresentation) {

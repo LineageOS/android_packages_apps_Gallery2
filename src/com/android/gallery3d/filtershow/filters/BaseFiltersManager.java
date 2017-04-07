@@ -18,9 +18,17 @@ package com.android.gallery3d.filtershow.filters;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.data.FilterPresetDBHelper;
+import com.android.gallery3d.filtershow.data.FilterPresetSource;
+import com.android.gallery3d.filtershow.data.FilterPresetSource.SaveOption;
 import com.android.gallery3d.filtershow.editors.EditorTruePortraitBasic;
 import com.android.gallery3d.filtershow.editors.EditorTruePortraitImageOnly;
 import com.android.gallery3d.filtershow.editors.ImageOnlyEditor;
@@ -45,6 +53,13 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     protected ArrayList<FilterRepresentation> mHazeBuster = new ArrayList<FilterRepresentation>();
     protected ArrayList<FilterRepresentation> mSeeStraight = new ArrayList<FilterRepresentation>();
     protected ArrayList<FilterRepresentation> mTruePortrait = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mFilterPreset = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mWaterMarks = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mLocations = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mTimes = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mWeathers = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mEmotions = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mFoods = new ArrayList<FilterRepresentation>();
     private static int mImageBorderSize = 4; // in percent
 
     protected void init() {
@@ -157,6 +172,8 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         filters.add(ImageFilterDualCamSketch.class);
         filters.add(ImageFilterTruePortrait.class);
         filters.add(ImageFilterTruePortraitFusion.class);
+        filters.add(ImageFilterPreset.class);
+        filters.add(SaveWaterMark.class);
 
         if(SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
             filters.add(ImageFilterMakeupWhiten.class);
@@ -194,6 +211,8 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         return mTruePortrait;
     }
 
+    public ArrayList<FilterRepresentation> getFilterPreset(){ return mFilterPreset; }
+
     public ArrayList<FilterRepresentation> getTools() {
         return mTools;
     }
@@ -213,6 +232,24 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     }
     public ArrayList<FilterRepresentation> getSeeStraight() {
         return mSeeStraight;
+    }
+    public ArrayList<FilterRepresentation> getWaterMarks() {
+        return mWaterMarks;
+    }
+    public ArrayList<FilterRepresentation> getLocations() {
+        return mLocations;
+    }
+    public ArrayList<FilterRepresentation> getTimes() {
+        return mTimes;
+    }
+    public ArrayList<FilterRepresentation> getWeathers() {
+        return mWeathers;
+    }
+    public ArrayList<FilterRepresentation> getEmotions() {
+        return mEmotions;
+    }
+    public ArrayList<FilterRepresentation> getFoods() {
+        return mFoods;
     }
 
     public void addBorders(Context context) {
@@ -420,24 +457,248 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         //mTools.add(getRepresentation(ImageFilterRedEye.class));
     }
 
+    public void addWaterMarks(Context context) {
+        int[] textId = {
+                R.string.watermark_location,
+                R.string.watermark_time,
+                R.string.watermark_weather,
+                R.string.watermark_emotions,
+                R.string.watermark_food
+        };
+
+        int[] overlayId = {
+                R.drawable.ic_watermark_location,
+                R.drawable.ic_watermark_time,
+                R.drawable.ic_watermark_weather,
+                R.drawable.ic_watermark_emotion,
+                R.drawable.ic_watermark_food
+        };
+
+        FilterWatermarkRepresentation[] waterMarkFilters = {
+                new FilterWatermarkRepresentation(context, FilterWatermarkRepresentation.NAME_LOCATION,
+                        FilterWatermarkRepresentation.LOCATION),
+                new FilterWatermarkRepresentation(context, FilterWatermarkRepresentation.NAME_TIME,
+                        FilterWatermarkRepresentation.TIME),
+                new FilterWatermarkRepresentation(context, FilterWatermarkRepresentation.NAME_WEATHER,
+                        FilterWatermarkRepresentation.WEATHER),
+                new FilterWatermarkRepresentation(context, FilterWatermarkRepresentation.NAME_EMOTION,
+                        FilterWatermarkRepresentation.EMOTIONS),
+                new FilterWatermarkRepresentation(context, FilterWatermarkRepresentation.NAME_FOOD,
+                        FilterWatermarkRepresentation.FOOD)
+        };
+
+        for (int i = 0; i < textId.length; i++) {
+            FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setTextId(textId[i]);
+            waterMark.setOverlayId(overlayId[i]);
+            waterMark.setOverlayOnly(true);
+            if (waterMark.getTextId() != 0) {
+                waterMark.setName(context.getString(waterMark.getTextId()));
+            }
+            mWaterMarks.add(waterMark);
+        }
+    }
+    public void addLocations(Context context) {
+        int[] overlayId = {
+                R.drawable.icon_pin,
+                R.drawable.icon_city,
+                R.drawable.icon_hello,
+                R.drawable.icon_stamp
+        };
+
+        FilterWatermarkRepresentation[] waterMarkFilters = {
+                new FilterWatermarkRepresentation(context, "LOCATION_PIN", "SAN DIEGO"),
+                new FilterWatermarkRepresentation(context, "LOCATION_CITY", "SAN DIEGO"),
+                new FilterWatermarkRepresentation(context, "LOCATION_HELLO","SAN DIEGO"),
+                new FilterWatermarkRepresentation(context, "LOCATION_STAMP","SAN DIEGO")
+        };
+
+        waterMarkFilters[0].new PositionInfo(0,
+                context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                0,0, Gravity.CENTER_HORIZONTAL);
+        waterMarkFilters[1].new PositionInfo(0,
+                context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                0,0, Gravity.CENTER_HORIZONTAL);
+        waterMarkFilters[2].new PositionInfo(0,60,0,0, Gravity.RIGHT, true);
+        waterMarkFilters[3].new PositionInfo(0,0,0,0, Gravity.CENTER);
+
+        for (int i = 0; i < waterMarkFilters.length; i++) {
+            FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setOverlayId(overlayId[i],
+                    new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
+            waterMark.setWaterMarkId(overlayId[i]);
+            waterMark.setMarkType(0);
+            mLocations.add(waterMark);
+        }
+    }
+    public void addTimes(Context context) {
+
+        int[] overlayId = {
+                R.drawable.icon_hourglass,
+                R.drawable.icon_timestamp,
+                R.drawable.icon_sunrise,
+                R.drawable.icon_calendar
+        };
+
+        FilterWatermarkRepresentation[] waterMarkFilters = {
+                new FilterWatermarkRepresentation(context, "TIME_HOURGLASS", null),
+                new FilterWatermarkRepresentation(context, "TIME_TIMESTAMP", null),
+                new FilterWatermarkRepresentation(context, "TIME_SUNRISE", null),
+                new FilterWatermarkRepresentation(context, "TIME_CALENDAR", null)
+        };
+
+        FilterWatermarkRepresentation.PositionInfo[] positionInfos = {
+                waterMarkFilters[0].new PositionInfo(
+                        context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                        0,0,0, Gravity.CENTER_VERTICAL),
+                waterMarkFilters[1].new PositionInfo(0,
+                        context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                        0,0, Gravity.CENTER_HORIZONTAL),
+                waterMarkFilters[2].new PositionInfo(0,
+                        context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                        0,0, Gravity.RIGHT),
+                waterMarkFilters[3].new PositionInfo(0,0,0,0, Gravity.CENTER)
+
+        };
+
+        for (int i = 0; i < waterMarkFilters.length; i++) {
+            FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setOverlayId(overlayId[i],
+                    new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
+            waterMark.setWaterMarkId(overlayId[i]);
+            waterMark.setMarkType(1);
+            mTimes.add(waterMark);
+        }
+    }
+    public void addWeather(Context context) {
+        int[] overlayId = {
+                R.drawable.icon_rain,
+                R.drawable.icon_snow,
+                R.drawable.icon_sun,
+                R.drawable.icon_artistic_sun
+        };
+
+        FilterWatermarkRepresentation[] waterMarkFilters = {
+                new FilterWatermarkRepresentation(context, "WEATHER_RAIN", "50F"),
+                new FilterWatermarkRepresentation(context, "WEATHER_SNOW", "30F"),
+                new FilterWatermarkRepresentation(context, "WEATHER_SUN", "78F"),
+                new FilterWatermarkRepresentation(context, "WEATHER_ARTISTIC_SUN", "78F")
+        };
+
+        waterMarkFilters[0].new PositionInfo(84, 40, 0, 0, true);
+        waterMarkFilters[1].new PositionInfo(60, 50, 0, 0, true);
+        waterMarkFilters[2].new PositionInfo(0, 66, 0, 0, Gravity.CENTER_HORIZONTAL, true);
+        waterMarkFilters[3].new PositionInfo(0, 56, 0, 0, Gravity.CENTER_HORIZONTAL, true);
+
+        for (int i = 0; i < waterMarkFilters.length; i++) {
+            FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setOverlayId(overlayId[i],
+                    new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
+            waterMark.setWaterMarkId(overlayId[i]);
+            waterMark.setMarkType(2);
+            mWeathers.add(waterMark);
+        }
+    }
+    public void addEmotions(Context context) {
+        int[] overlayId = {
+                R.drawable.icon_party,
+                R.drawable.icon_peace,
+                R.drawable.icon_cry,
+                R.drawable.icon_happy
+        };
+
+        FilterWatermarkRepresentation[] waterMarkFilters = {
+                new FilterWatermarkRepresentation(context, "EMOTION_PARTY", "Party!!"),
+                new FilterWatermarkRepresentation(context, "EMOTION_PEACE", "PEACE"),
+                new FilterWatermarkRepresentation(context, "EMOTION_CRY", null),
+                new FilterWatermarkRepresentation(context, "EMOTION_HAPPY", null)
+        };
+
+        waterMarkFilters[0].new PositionInfo(0,
+                context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                0, 0, Gravity.CENTER_HORIZONTAL);
+        waterMarkFilters[1].new PositionInfo(0,
+                context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                0, 0, Gravity.CENTER_HORIZONTAL);
+
+        for (int i = 0; i < waterMarkFilters.length; i++) {
+            FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setOverlayId(overlayId[i],
+                    new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
+            switch (i) {
+                case 2:
+                    waterMark.setWaterMarkId(R.drawable.icon_cry_color);
+                    waterMark.setMarkAlpha(255);
+                    break;
+                case 3:
+                    waterMark.setWaterMarkId(R.drawable.icon_happy_color);
+                    waterMark.setMarkAlpha(255);
+                    break;
+                default:
+                    waterMark.setWaterMarkId(overlayId[i]);
+                    break;
+            }
+            waterMark.setMarkType(3);
+            mEmotions.add(waterMark);
+        }
+    }
+    public void addFoods(Context context) {
+        int[] overlayId = {
+                R.drawable.icon_fork_and_knife,
+                R.drawable.icon_tea_time,
+                R.drawable.icon_cheers,
+                R.drawable.icon_yum
+        };
+
+        FilterWatermarkRepresentation[] waterMarkFilters = {
+                new FilterWatermarkRepresentation(context, "FOOD_FORK_KNIFE", "Breakfast"),
+                new FilterWatermarkRepresentation(context, "FOOD_TEA_TIME", "Tea Time"),
+                new FilterWatermarkRepresentation(context, "FOOD_CHEERS", "Cheers"),
+                new FilterWatermarkRepresentation(context, "FOOD_YUM", null)
+        };
+
+        waterMarkFilters[0].new PositionInfo(0,32,0,0,Gravity.CENTER_HORIZONTAL,true);
+        waterMarkFilters[1].new PositionInfo(0,
+                context.getResources().getDimensionPixelSize(R.dimen.watermark_default_size),
+                0, 0, Gravity.CENTER_HORIZONTAL);
+        waterMarkFilters[2].new PositionInfo(0, 60, 0, 0, Gravity.CENTER_HORIZONTAL, true);
+
+        for (int i = 0; i < waterMarkFilters.length; i++) {
+            FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setOverlayId(overlayId[i],
+                    new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
+            waterMark.setWaterMarkId(overlayId[i]);
+            waterMark.setMarkType(4);
+            mFoods.add(waterMark);
+        }
+    }
+
     public void addDualCam(Context context) {
         int[] textId = {
                 R.string.focus,
-                R.string.halo
+                R.string.halo,
+                R.string.motion,
+                R.string.posterize
         };
 
         int[] overlayId = {
                 R.drawable.focus,
-                R.drawable.halo
+                R.drawable.halo,
+                R.drawable.motion,
+                R.drawable.posterize
         };
 
         String[] serializationNames = {
                 "DUAL_CAM_FOCUS",
-                "DUAL_CAM_HALO"
+                "DUAL_CAM_HALO",
+                "DUAL_CAM_MOTION",
+                "DUAL_CAM_POSTERIZE"
         };
 
         // intensity range as defined by ddm lib
         int[][] minMaxValues = {
+                {0,5,10},
+                {0,5,10},
                 {0,5,10},
                 {0,5,10}
         };
@@ -460,13 +721,42 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
             addRepresentation(dualCam);
         }
 
-        FilterDualCamSketchRepresentation sketch = new FilterDualCamSketchRepresentation(
-                context.getString(R.string.sketch), R.string.sketch);
-        sketch.setOverlayId(R.drawable.sketch);
-        sketch.setOverlayOnly(true);
-        sketch.setSerializationName("DUAL_CAM_SKETCH");
-        mDualCam.add(sketch);
-        addRepresentation(sketch);
+        int[] textId2 = {
+                R.string.sketch,
+                R.string.zoom,
+                R.string.bw,
+                R.string.blackboard,
+                R.string.whiteboard,
+                R.string.dc_negative
+        };
+
+        int[] overlayId2 = {
+                R.drawable.sketch,
+                R.drawable.zoom,
+                R.drawable.bw,
+                R.drawable.blackboard,
+                R.drawable.whiteboard,
+                R.drawable.negative
+        };
+
+        String[] serializationNames2 = {
+                "DUAL_CAM_SKETCH",
+                "DUAL_CAM_ZOOM",
+                "DUAL_CAM_BW",
+                "DUAL_CAM_BLACKBOARD",
+                "DUAL_CAM_WHITEBOARD",
+                "DUAL_CAM_NEGATIVE"
+        };
+
+        for (int i = 0; i < textId2.length; i++) {
+            FilterDualCamSketchRepresentation dualCam = new FilterDualCamSketchRepresentation(
+                    context.getString(textId2[i]), textId2[i]);
+            dualCam.setOverlayId(overlayId2[i]);
+            dualCam.setOverlayOnly(true);
+            dualCam.setSerializationName(serializationNames2[i]);
+            mDualCam.add(dualCam);
+            addRepresentation(dualCam);
+        }
 
         mDualCam.add(getRepresentation(ImageFilterDualCamFusion.class));
     }
@@ -539,6 +829,23 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         mTruePortrait.add(getRepresentation(ImageFilterTruePortraitFusion.class));
     }
 
+    public void addFilterPreset (Context context) {
+        FilterPresetSource fp = new FilterPresetSource(context);
+        ArrayList<SaveOption> ret = fp.getAllUserPresets();
+        if (ret == null) return;
+        for (int id = 0; id<ret.size(); id++){
+            FilterPresetRepresentation representation= new FilterPresetRepresentation (
+                    ret.get(id).name,ret.get(id)._id,id+1);
+            Uri filteredUri = Uri.parse(ret.get(id).Uri);
+            representation.setUri(filteredUri);
+            representation.setSerializationName("Custom");
+            mFilterPreset.add(representation);
+            ImagePreset preset = new ImagePreset();
+            preset.addFilter(representation);
+            addRepresentation(representation);
+        }
+    }
+
     public void removeRepresentation(ArrayList<FilterRepresentation> list,
             FilterRepresentation representation) {
         for (int i = 0; i < list.size(); i++) {
@@ -555,5 +862,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         filterBorder.setResources(resources);
         ImageFilterFx filterFx = (ImageFilterFx) getFilter(ImageFilterFx.class);
         filterFx.setResources(resources);
+        ImageFilterPreset filterPreset = (ImageFilterPreset) getFilter(ImageFilterPreset.class);
+        filterPreset.setResources(resources);
     }
 }

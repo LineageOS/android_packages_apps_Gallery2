@@ -272,7 +272,7 @@ public class SaveImage {
         return exif;
     }
 
-    public boolean putExifData(File file, ExifInterface exif, Bitmap image,
+    public static boolean putExifData(File file, ExifInterface exif, Bitmap image,
             int jpegCompressQuality) {
         boolean ret = false;
         OutputStream s = null;
@@ -366,7 +366,7 @@ public class SaveImage {
             FilterFusionRepresentation fusionRep = findFusionRepresentation(preset);
             boolean hasFusion = (fusionRep != null && fusionRep.hasUnderlay());
             if(hasFusion) {
-                previewBmp = flattenFusion(Uri.parse(fusionRep.getUnderlay()), mPreviewImage,
+                previewBmp = flattenFusion(mContext, Uri.parse(fusionRep.getUnderlay()), mPreviewImage,
                         Math.max(mPreviewImage.getWidth(), mPreviewImage.getHeight()), 0);
                 // If we fail to flatten, save original image
                 if(previewBmp == null) {
@@ -450,7 +450,7 @@ public class SaveImage {
                 FilterFusionRepresentation fusionRep = findFusionRepresentation(preset);
                 boolean hasFusion = (fusionRep != null && fusionRep.hasUnderlay());
                 if(hasFusion) {
-                    Bitmap underlay = flattenFusion(
+                    Bitmap underlay = flattenFusion(mContext,
                             Uri.parse(fusionRep.getUnderlay()), bitmap, 0, sampleSize);
                     if(underlay != null) {
                         bitmap.recycle();
@@ -814,19 +814,23 @@ public class SaveImage {
         return fusionRep;
     }
 
-    private Bitmap flattenFusion(Uri underlayUri, Bitmap bitmap, int sizeConstraint, int sampleSize) {
+    public static Bitmap flattenFusion(Context context, Uri underlayUri, Bitmap bitmap, int sizeConstraint, int sampleSize) {
         // fusion. decode underlay image and get dest rect
 
         Bitmap underlay = null;
 
         if(sizeConstraint != 0) {
-            underlay = ImageLoader.loadConstrainedBitmap(underlayUri, mContext,
+            underlay = ImageLoader.loadConstrainedBitmap(underlayUri, context,
                     sizeConstraint, null, false);
         } else if (sampleSize != 0) {
-            underlay = ImageLoader.loadBitmapWithBackouts(mContext, underlayUri, sampleSize);
+            underlay = ImageLoader.loadBitmapWithBackouts(context, underlayUri, sampleSize);
         }
 
         if(underlay != null) {
+            int ori = ImageLoader.getMetadataOrientation(context, underlayUri);
+            if (ori != ImageLoader.ORI_NORMAL) {
+                underlay = ImageLoader.orientBitmap(underlay, ori);
+            }
             RectF destRect = new RectF();
             Rect imageBounds = MasterImage.getImage().getImageBounds();
             Rect underlayBounds = MasterImage.getImage().getFusionBounds();

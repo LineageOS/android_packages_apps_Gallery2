@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015,2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -158,6 +158,18 @@ public class ImageFilterDualCamFusion extends ImageFilter {
                 roiRectF.top = (float)roiRect[1]/(float)filteredH;
                 roiRectF.right = (float)(roiRect[0] + roiRect[2])/(float)filteredW;
                 roiRectF.bottom = (float)(roiRect[1] + roiRect[3])/(float)filteredH;
+
+                int zoomOrientation = MasterImage.getImage().getZoomOrientation();
+                if (zoomOrientation == ImageLoader.ORI_ROTATE_90 ||
+                        zoomOrientation == ImageLoader.ORI_ROTATE_180 ||
+                        zoomOrientation == ImageLoader.ORI_ROTATE_270 ||
+                        zoomOrientation == ImageLoader.ORI_TRANSPOSE ||
+                        zoomOrientation == ImageLoader.ORI_TRANSVERSE) {
+                    Matrix mt = new Matrix();
+                    mt.preRotate(GeometryMathUtils.getRotationForOrientation(zoomOrientation),
+                            0.5f, 0.5f);
+                    mt.mapRect(roiRectF);
+                }
 
                 // Check for ROI cropping
                 if(!FilterCropRepresentation.getNil().equals(roiRectF)) {

@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.CreateBeamUrisCallback;
 import android.nfc.NfcEvent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -47,6 +48,8 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.app.dualcam3d.ThreeDimensionalActivity;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.data.ComboAlbum;
 import com.android.gallery3d.data.DataManager;
@@ -64,6 +67,9 @@ import com.android.gallery3d.data.SnailAlbum;
 import com.android.gallery3d.data.SnailItem;
 import com.android.gallery3d.data.SnailSource;
 import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
+import com.android.gallery3d.mpo.MpoParser;
 import com.android.gallery3d.ui.DetailsHelper;
 import com.android.gallery3d.ui.DetailsHelper.CloseListener;
 import com.android.gallery3d.ui.DetailsHelper.DetailsSource;
@@ -83,7 +89,7 @@ import java.util.Locale;
 
 public abstract class PhotoPage extends ActivityState implements
         PhotoView.Listener, AppBridge.Server, ShareActionProvider.OnShareTargetSelectedListener,
-        PhotoPageBottomControls.Delegate {
+        PhotoPageBottomControls.Delegate, ThreeDButton.Delegate{
     private static final String TAG = "PhotoPage";
 
     private static final int MSG_HIDE_BARS = 1;
@@ -111,6 +117,7 @@ public abstract class PhotoPage extends ActivityState implements
     public static final String KEY_MEDIA_SET_PATH = "media-set-path";
     public static final String KEY_MEDIA_ITEM_PATH = "media-item-path";
     public static final String KEY_INDEX_HINT = "index-hint";
+    public static final String KEY_CURRENT_PHOTO_HINT = "currtent_photo_path";
     public static final String KEY_OPEN_ANIMATION_RECT = "open-animation-rect";
     public static final String KEY_APP_BRIDGE = "app-bridge";
     public static final String KEY_TREAT_BACK_AS_UP = "treat-back-as-up";
@@ -208,6 +215,11 @@ public abstract class PhotoPage extends ActivityState implements
     private int originalHeight = 0;
     private int originalPadding = 0;
 
+    private ThreeDButton m3DButton;
+    private boolean bShow3DButton;
+    private LoadMpoDataTask mLoadMpoTask = new LoadMpoDataTask();;
+    private ParseMpoDataTask mParseMpoDateTask = new ParseMpoDataTask();
+
     private final PanoramaSupportCallback mUpdatePanoramaMenuItemsCallback = new PanoramaSupportCallback() {
         @Override
         public void panoramaInfoAvailable(MediaObject mediaObject, boolean isPanorama,
@@ -302,6 +314,9 @@ public abstract class PhotoPage extends ActivityState implements
                             mIsPanorama = message.arg1 == 1;
                             mIsPanorama360 = message.arg2 == 1;
                             mBottomControls.refresh();
+                            if (null != m3DButton) {
+                                m3DButton.refresh();
+                            }
                         }
                         break;
                     }
@@ -420,6 +435,12 @@ public abstract class PhotoPage extends ActivityState implements
             mCurrentIndex = restoreState.getInt(KEY_INDEX_HINT, 0);
             //we only save index in onSaveState, set itemPath to null to get the right path later
             itemPath = null;
+        }
+        if ((mCurrentPhoto == null) && (restoreState != null)) {
+            String curPath = restoreState.getString(KEY_CURRENT_PHOTO_HINT, null);
+            if (curPath != null)
+                mCurrentPhoto = (MediaItem)
+                        mActivity.getDataManager().getMediaObject(curPath);
         }
         if (mSetPathString != null) {
             mShowSpinner = true;
@@ -591,6 +612,7 @@ public abstract class PhotoPage extends ActivityState implements
         if (galleryRoot != null) {
             if (mSecureAlbum == null) {
                 mBottomControls = new PhotoPageBottomControls(this, mActivity, galleryRoot);
+                m3DButton = new ThreeDButton(this, mActivity, galleryRoot);
             }
         }
 
@@ -611,6 +633,7 @@ public abstract class PhotoPage extends ActivityState implements
     @Override
     protected void onSaveState(Bundle outState) {
         outState.putInt(KEY_INDEX_HINT,mCurrentIndex);
+        outState.putString(KEY_CURRENT_PHOTO_HINT, mCurrentPhoto.getFilePath());
         super.onSaveState(outState);
     }
 
@@ -662,6 +685,7 @@ public abstract class PhotoPage extends ActivityState implements
             case R.id.photopage_bottom_control_share:
                  if (mModel != null && mModel.getMediaItem(0) != null) {
                  Uri uri = mActivity.getDataManager().getContentUri(mModel.getMediaItem(0).getPath());
+                 mActivity.isTopMenuShow = true;
                  mShareIntent.setType(MenuExecutor.getMimeType(mModel
                     .getMediaItem(0).getMediaType()));
                  mShareIntent.putExtra(Intent.EXTRA_STREAM, uri);
@@ -687,6 +711,24 @@ public abstract class PhotoPage extends ActivityState implements
                 return;
         default:
             return;
+        }
+    }
+
+    @Override
+    public boolean canDisplay3DButton() {
+        return bShow3DButton && mShowBars
+                && (mPhotoView == null ? false : !mPhotoView.getFilmMode());
+    }
+
+    @Override
+    public void on3DButtonClicked() {
+        if (mCurrentPhoto != null) {
+            Path p = mCurrentPhoto.getPath();
+            Uri uri = mActivity.getDataManager().getContentUri(p);
+            Intent intent = new Intent();
+            intent.setClass(mActivity, ThreeDimensionalActivity.class);
+            intent.setData(uri);
+            mActivity.startActivity(intent);
         }
     }
 
@@ -828,6 +870,7 @@ public abstract class PhotoPage extends ActivityState implements
 
         updateMenuOperations();
         refreshBottomControlsWhenReady();
+        parseMpoData();
         if (mShowDetails) {
             mDetailsHelper.reloadDetails();
         }
@@ -840,6 +883,9 @@ public abstract class PhotoPage extends ActivityState implements
     private void updateCurrentPhoto(MediaItem photo) {
         if (mCurrentPhoto == photo) return;
         mCurrentPhoto = photo;
+        if (mPhotoView == null) {
+            return;
+        }
         if (mPhotoView.getFilmMode()) {
             requestDeferredUpdate();
         } else {
@@ -934,7 +980,7 @@ public abstract class PhotoPage extends ActivityState implements
     private void refreshHidingMessage() {
         mHandler.removeMessages(MSG_HIDE_BARS);
         if (mPhotoView == null) {
-            mPhotoView = (PhotoView) mRootPane.getComponent(0);
+            return;
         }
         if (!mIsMenuVisible && !mPhotoView.getFilmMode()) {
             mHandler.sendEmptyMessageDelayed(MSG_HIDE_BARS, HIDE_BARS_TIMEOUT);
@@ -1419,6 +1465,7 @@ public abstract class PhotoPage extends ActivityState implements
             }
             if (null != mModel) {
                 mModel.setCurrentPhoto(path, mCurrentIndex);
+                parseMpoData();
             }
         }
     }
@@ -1464,8 +1511,20 @@ public abstract class PhotoPage extends ActivityState implements
                 }
                 if (path != null) {
                     mModel.setCurrentPhoto(Path.fromString(path), index);
+                    parseMpoData();
                 }
             }
+        }
+    }
+
+    private void parseMpoData() {
+        bShow3DButton = false;
+        if (DualCameraNativeEngine.getInstance().isLibLoaded()) {
+            if (mParseMpoDateTask.getStatus() != AsyncTask.Status.FINISHED) {
+                boolean r = mParseMpoDateTask.cancel(true);
+            }
+            mParseMpoDateTask = new ParseMpoDataTask();
+            mParseMpoDateTask.execute();
         }
     }
 
@@ -1663,6 +1722,7 @@ public abstract class PhotoPage extends ActivityState implements
         }
         mActivity.getGLRoot().setOrientationSource(null);
         if (mBottomControls != null) mBottomControls.cleanup();
+        if (m3DButton != null) m3DButton.cleanup();
         mPhotoView.destroy();
         mPhotoView = null;
         // Remove all pending messages.
@@ -1761,4 +1821,60 @@ public abstract class PhotoPage extends ActivityState implements
         }
     }
 
+    public class ParseMpoDataTask extends AsyncTask<Void, Void, Void> {
+        private byte[] mPrimaryImgData = null;
+        private byte[] mAuxImgData = null;
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            if (mCurrentPhoto == null)return null;
+            MpoParser parser = MpoParser.parse(mActivity, mCurrentPhoto.getContentUri());
+            mPrimaryImgData = parser.readImgData(true);
+            mAuxImgData = parser.readImgData(false);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            if (isCancelled()){
+                bShow3DButton = false;
+                m3DButton.refresh();
+                return;
+            }
+            if(mPrimaryImgData == null ||
+                    mAuxImgData == null) {
+                // parse failed
+                bShow3DButton = false;
+            } else {
+                if (mLoadMpoTask.getStatus() != Status.FINISHED) {
+                    boolean r = mLoadMpoTask.cancel(true);
+                }
+                bShow3DButton = true;
+                mLoadMpoTask = new LoadMpoDataTask();
+                mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
+            }
+            m3DButton.refresh();
+        }
+    }
+
+    private class LoadMpoDataTask extends AsyncTask<byte[], Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(byte[]... params) {
+            return MasterImage.getImage().loadMpo(mActivity, params[0], params[1], mCurrentPhoto.getContentUri());
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (isCancelled()){
+                bShow3DButton = false;
+                m3DButton.refresh();
+                return;
+            }
+            if (!result) {
+                bShow3DButton = result;
+                m3DButton.refresh();
+            }
+        }
+    }
 }

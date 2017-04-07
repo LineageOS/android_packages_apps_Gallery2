@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016,2017 The Linux Foundation. All rights reserved.
 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -40,6 +40,8 @@ import android.os.Environment;
 import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Images.ImageColumns;
 import android.util.Log;
+import android.webkit.URLUtil;
+
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.MovieControllerOverlay;
 import com.android.gallery3d.app.MovieControllerOverlayNew;
@@ -146,6 +148,9 @@ public class VideoSnapshotExt implements IVideoSnapshotListener {
 
         private Bitmap doVideoSnap(Uri videoUri, int snapPosition) {
             MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            if (videoUri == null || !URLUtil.isValidUrl(videoUri.toString())) {
+                return null;
+            }
             retriever.setDataSource(mContext, videoUri);
             String durationString =
                     retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);

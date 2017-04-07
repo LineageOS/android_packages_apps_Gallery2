@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -49,6 +49,8 @@ public class DoNotShowAgainDialog extends DialogFragment {
     private int mMessageId;
     private CheckBox mDoNotShowAgainChk;
     private DialogInterface.OnClickListener mButtonClickListener;
+    private DialogInterface.OnDismissListener mDialogDismissListener;
+    private DialogInterface.OnCancelListener mCancelListener;
 
     public DoNotShowAgainDialog(int titleId, int msgId, int sharedPrefKeyId) {
         mTitleId = titleId;
@@ -82,5 +84,35 @@ public class DoNotShowAgainDialog extends DialogFragment {
 
     public void setOnOkButtonClickListener(DialogInterface.OnClickListener listener) {
         mButtonClickListener = listener;
+    }
+
+    public void setOnDismissListener (DialogInterface.OnDismissListener listener) {
+        mDialogDismissListener = listener;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (mDialogDismissListener != null) {
+            mDialogDismissListener.onDismiss(dialog);
+        }
+    }
+
+    public void setOnCancelListener(DialogInterface.OnCancelListener listener) {
+        mCancelListener = listener;
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        super.onCancel(dialog);
+        if (mCancelListener != null) {
+            mCancelListener.onCancel(dialog);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        this.dismiss();
+        super.onPause();
     }
 }

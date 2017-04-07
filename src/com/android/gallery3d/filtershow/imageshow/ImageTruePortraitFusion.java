@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -65,6 +65,10 @@ public class ImageTruePortraitFusion extends ImageShow {
         }
 
         mUnderlay = ImageLoader.loadConstrainedBitmap(uri, getContext(), MasterImage.MAX_BITMAP_DIM, new Rect(), false);
+        int ori = ImageLoader.getMetadataOrientation(getContext(), uri);
+        if (ori != ImageLoader.ORI_NORMAL) {
+            mUnderlay = ImageLoader.orientBitmap(mUnderlay, ori);
+        }
         MasterImage.getImage().setFusionUnderlay(mUnderlay);
         invalidate();
     }

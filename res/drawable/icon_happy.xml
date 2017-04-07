@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2016, The Linux Foundation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+      * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+      * Neither the name of The Linux Foundation nor the names of its
+        contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="1008"
+    android:viewportHeight="1008">
+
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M491.1,869.9c-101.8-1.7-190.2-36.8-264.2-107.5c-22.9-21.9-42.3-46.5-59.1-73.3c-1.7-2.7-4.6-5.3-7.5-6.6
+c-42.7-19.2-75.5-48.7-91.8-93.1c-22.2-60.2-8.9-114.2,33.2-161.6c3.3-3.7,6.7-7.5,10.7-10.5c5.8-4.2,8.1-9.8,9.7-16.6
+c16.3-68.4,49.5-127.5,98.7-177.6c53.9-54.9,118.5-91,194.1-105.4c127.4-24.2,240,7.3,336.1,94.6c42.9,38.9,73.8,86.3,95,140.2
+c1,2.4,3,4.7,5.2,6.3c35,26.1,58,59.8,65,103.4c7,44.2-3.9,84.1-31.4,119c-9.2,11.7-20.9,21.3-31.4,32c-2,2.1-4.1,4.4-5.1,7
+c-42.6,109.6-118.5,185.6-228.7,226.9c-38.3,14.4-78.3,21.3-119.2,22.1C497.3,869.4,494.3,869.7,491.1,869.9z
+M490.9,853.6
+c3.2,0,6.3,0.1,9.5,0c38.7-1,76.6-7.4,112.9-21C721,792.4,794.6,717.8,835,610.2c0.9-2.5,2.8-4.7,4.7-6.6
+c10.4-10.3,22.2-19.4,31.3-30.7c25.9-32.1,36.2-68.9,29.1-109.9c-6.9-39.9-28.8-70.2-61.4-93.5c-2.7-2-5.3-5.1-6.5-8.2
+c-17.1-44.7-41.1-85.4-74.5-119.6c-97-99.5-214.4-135.9-350.1-106.1c-137.2,30.1-244.3,142-272.9,280c-0.5,2.3-2.3,4.6-4,6.5
+c-8.8,9.3-19,17.5-26.6,27.6C68.9,497,63.4,547.5,90.9,600.1c17.3,33.1,45.2,54.9,79.4,69c3.6,1.5,6.3,3.4,8.6,6.9
+C251,791.2,355.8,849.1,490.9,853.6z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M514.3,723.5c-67.4-1-118.8-23.7-162.2-64.8c-37-35.1-61.5-77.9-75.4-126.8c-0.9-3.2-0.9-7.4,0.4-10.4
+c2-4.7,7.7-5.1,12.9-1.7c20.2,13.1,41.1,24.7,63.6,33.3c117.2,44.6,226.7,29.4,328.2-43.7c14.4-10.4,27.1-23,40.5-34.9
+c3.8-3.3,7.5-4.8,12.2-2.7c4.7,2.1,5.8,6.1,5.4,10.8c-4.1,48.5-18.1,93.7-45.1,134.4c-34.5,52.1-81,87.8-142.9,101.3
+C537.3,721.5,522.2,722.4,514.3,723.5z
+M498.3,691.2c35,0,59.6-5.2,82.9-16c47.7-22.1,80.7-58.8,103.2-105.6
+c2.8-5.8,2.3-10-1.3-13.2c-3.6-3.2-7.9-3.2-13.3-0.2c-10.9,6-21.7,12.3-32.9,17.7C586.7,598,533.7,610,478.1,609.9
+c-41.8,0-82.4-7.3-121.8-21.3c-4.4-1.6-8.6-1.8-11.7,2.4c-3,4.1-2,8.2,1.1,11.9c9.1,10.6,17.5,21.9,27.5,31.6
+C410.7,670.4,455.1,690.6,498.3,691.2z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M164.1,436.6c16.1-121.6,120.1-256,286-276.3c177.5-21.7,316.7,95.4,356.9,227c-1.3-0.5-2.3-0.9-3.3-1.2
+c-11.9-4.1-23.8-8.5-35.8-12.3c-3.3-1-5.2-2.4-6.7-5.6c-40.4-85.6-106-141.4-197.5-165.4c-132.7-34.8-274.8,30.3-336.3,153
+c-9.6,19.3-17.4,39.2-22.8,60.1c-0.4,1.6-1.8,3.6-3.3,4.3c-11.9,5.6-23.9,10.9-35.8,16.2C165.1,436.5,164.6,436.5,164.1,436.6z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M198.9,646.1c9.6,1.5,18.8,3,28,4.3c2.5,0.4,5,0.9,7.5,0.5c6.6-0.9,10.2,1.9,14,7.3
+c48.1,67.8,113,110.3,195.1,123.3c94,14.9,177.1-10.5,248-74.2c30.9-27.8,54.3-61.2,70.9-99.3c1.2-2.8,2.8-4.2,5.9-5.3
+c13.6-4.7,27-10,39.7-14.8c-27.1,98.9-123.6,211.4-273,230.8C374.4,839.7,249.1,745.2,198.9,646.1z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M403.7,472.1c-11.4-10.2-18.2-22.9-21-37.6c-4.3-22-0.7-42.5,13-60.5c21.8-28.5,59.3-28.1,80.7,0.6
+c18.6,24.8,18.8,62.4,0.5,87.4c-0.9,1.2-1.9,2.3-3.4,4.1c-0.2-4.5-0.2-8.4-0.6-12.2c-1-10.3-5-19.3-12.3-26.7
+c-13.5-13.6-33.2-13.1-46,1.1c-9.5,10.5-12.7,23.1-11.3,37c0.2,1.8,0.5,3.6,0.7,5.4C404.3,471.2,404,471.5,403.7,472.1z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M612.5,453.7c-0.6-5.9-0.6-11.4-1.7-16.7c-3.4-17.3-16.1-29.9-31.3-31.3c-10.8-1-19.6,3.3-26.5,11.2
+c-9.7,11.1-12.6,24.3-10.6,38.7c0.1,1,0.4,2,0.5,3c0,0.3-0.1,0.6-0.4,1.8c-2.7-2.8-5.2-5.1-7.4-7.8c-21.1-25.6-20.6-67.8,1-93
+c21.7-25.4,56.5-24.9,77.4,1.1c20.3,25.2,20.9,64.5,1.3,90.3C614.3,451.9,613.5,452.7,612.5,453.7z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M449.2,281.7c0,8.4-6,14.7-14.5,15.3c-38.7,2.9-65.6,22.2-80.1,58.3c-3.8,9.4-12.1,13.5-20.7,10.2
+c-8.3-3.1-11.7-11.9-8.4-21.1c16-44.7,58.8-76.4,106-78.4C442,265.6,449.2,271.9,449.2,281.7z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M556.6,254.6c43.5,1.6,76.7,18.7,100.5,53c5.9,8.5,4.6,17.7-2.9,22.9c-7.6,5.3-16.7,2.9-22.9-5.5
+c-22.4-30.8-52.4-43.5-90.1-37.4c-9.7,1.6-17.9-3.5-19.3-12.1c-1.5-9.4,3.9-17,13.8-18.5C543.3,255.9,551,255.3,556.6,254.6z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M719.2,400c44.2,0.7,87.2,30.1,103.7,71.1c2.3,5.8,1,10.2-3.8,12.1c-4.5,1.8-8.4-0.3-11-5.7
+c-18.3-39.4-49.1-59.9-92.6-61.5c-5.8-0.2-9.4-3.2-9.4-8.1c0.1-4.8,3.7-7.8,9.5-7.9C716.9,400,718,400,719.2,400z" />
+    <path
+        android:fillColor="?attr/fillColorSelector"
+        android:pathData="M299,450.5c0.1,4.2-2.7,7.3-7.5,7.6c-13.8,1-27,4-39.3,10.3c-22.2,11.3-37.7,28.6-46.9,51.6
+c-0.2,0.6-0.4,1.3-0.7,1.9c-2,4.9-5.9,7-10.1,5.4c-4.3-1.6-6.5-5.8-4.2-10.7c4.2-9,8.2-18.4,13.9-26.4
+c20.7-29.3,49.5-44.6,85.1-47.2C295.2,442.6,298.9,445.7,299,450.5z" />
+</vector>

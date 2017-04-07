@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015,2017, The Linux Foundation. All rights reserved.
  * Not a Contribution
  *
  * Copyright (C) 2010 The Android Open Source Project
@@ -30,8 +30,8 @@ import com.android.gallery3d.util.ThreadPool.Job;
 public class TimeLineTitleMediaItem extends MediaItem {
     private static final String TAG = "TimeLineTitleMediaItem";
     private String mTitle;
-    private static int mPhotoCount;
-    private static int mVideoCount;
+    private int mPhotoCount;
+    private int mVideoCount;
 
     public TimeLineTitleMediaItem(Path path) {
         super(path);

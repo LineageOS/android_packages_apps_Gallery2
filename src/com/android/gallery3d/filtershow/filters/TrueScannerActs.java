@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -48,8 +48,10 @@ import static com.android.gallery3d.filtershow.imageshow.ImageTrueScanner.*;
 
 public class TrueScannerActs extends SimpleImageFilter {
     public static final String SERIALIZATION_NAME = "TrueScannerActs";
-    private static final int MIN_WIDTH = 512;
-    private static final int MIN_HEIGHT = 512;
+    //The minimum resolution that TrueScanner library supports is VGA, i.e. 640x480.
+    public static final int MIN_WIDTH = 640;
+    public static final int MIN_HEIGHT = 480;
+    private static boolean rotating = false;
     private static final boolean DEBUG = false;
     private static boolean isTrueScannerEnabled = true;
     private static boolean isPointsAcquired;
@@ -68,6 +70,10 @@ public class TrueScannerActs extends SimpleImageFilter {
 
     public static boolean isTrueScannerEnabled() {
         return isTrueScannerEnabled;
+    }
+
+    public static boolean setRotating(boolean isRotating) {
+        return rotating = isRotating;
     }
 
     public TrueScannerActs() {
@@ -130,7 +136,13 @@ public class TrueScannerActs extends SimpleImageFilter {
     public Bitmap apply(Bitmap bitmap, float not_use, int quality) {
         if(bitmap == null)
             return null;
-        if(bitmap.getWidth() <= MIN_WIDTH && bitmap.getHeight() <= MIN_HEIGHT)
+        int w = bitmap.getWidth();
+        int h = bitmap.getHeight();
+        if (w < h) {
+            w = h;
+            h = bitmap.getWidth();
+        }
+        if(w <= MIN_WIDTH || h <= MIN_HEIGHT)
             return bitmap;
         if(ImageTrueScanner.getCordsUIState()) {
             return bitmap;
@@ -150,12 +162,19 @@ public class TrueScannerActs extends SimpleImageFilter {
             else
                 resultPts[i] = (int)((pts[i] - pts[POINTS_LEN+3])*yScale);
         }
-
-        rectifiedImage = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        if (rotating && rectifiedImage != null) {
+            acquireLock(false);
+            rotating = false;
+            return rectifiedImage;
+        }
+        rectifiedImage = Bitmap.createBitmap(
+                bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         int[] outputSize = processImage(bitmap, rectifiedImage, resultPts);
-        rectifiedImage = Bitmap.createBitmap(rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
+        rectifiedImage = Bitmap.createBitmap(
+                rectifiedImage, 0, 0, outputSize[0], outputSize[1]);
         if(ImageTrueScanner.getRemoveGlareButtonStatus()) {
-            Bitmap enhancedImage = Bitmap.createBitmap(outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
+            Bitmap enhancedImage = Bitmap.createBitmap(
+                    outputSize[0], outputSize[1], Bitmap.Config.ARGB_8888);
             showProgressDialog();
             enhanceImage(rectifiedImage, enhancedImage);
             dismissProgressDialog();

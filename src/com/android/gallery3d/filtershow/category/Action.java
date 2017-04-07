@@ -20,10 +20,16 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -38,6 +44,7 @@ import com.android.gallery3d.filtershow.pipeline.RenderingRequestCaller;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
+import com.android.gallery3d.glrenderer.Texture;
 
 public class Action implements RenderingRequestCaller {
 
@@ -58,6 +65,7 @@ public class Action implements RenderingRequestCaller {
     private boolean mCanBeRemoved = false;
     private int mTextSize = 32;
     private boolean mIsDoubleAction = false;
+    private boolean mIsClickAction = false;
 
     public Action(FilterShowActivity context, FilterRepresentation representation, int type,
                   boolean canBeRemoved) {
@@ -123,6 +131,16 @@ public class Action implements RenderingRequestCaller {
             return;
         }
 
+        if (mRepresentation.getFilterType() == FilterRepresentation.TYPE_WATERMARK ||
+                mRepresentation.getFilterType() == FilterRepresentation.TYPE_WATERMARK_CATEGORY) {
+            mImageFrame = imageFrame;
+            int w = mImageFrame.width();
+            int h = mImageFrame.height();
+            mImage = MasterImage.getImage().getBitmapCache().getBitmap(w, h, BitmapCache.ICON);
+            drawOverlay();
+            return;
+        }
+
         Bitmap temp = MasterImage.getImage().getTemporaryThumbnailBitmap();
         if (temp != null) {
             mImage = temp;
@@ -173,15 +191,32 @@ public class Action implements RenderingRequestCaller {
         canvas.drawBitmap(source, m, new Paint(Paint.FILTER_BITMAP_FLAG));
     }
 
-    @Override
-    public void available(RenderingRequest request) {
-        clearBitmap();
-        mImage = request.getBitmap();
-        if (mImage == null) {
-            mImageFrame = null;
+    protected void drawOverlay() {
+        if (mRepresentation.isSvgOverlay()) {
+            mImage.eraseColor(0x00FFFFFF);
+            Canvas canvas = new Canvas(mImage);
+            canvas.drawARGB(0,255,255,255);
+            Drawable overlayDrawable = mContext.getResources().
+                    getDrawable(mRepresentation.getOverlayId(), null);
+            if (null != mRepresentation.getCurrentTheme() && overlayDrawable.canApplyTheme()) {
+                overlayDrawable.applyTheme(mRepresentation.getCurrentTheme());
+            }
+            if(mIsClickAction) {
+                overlayDrawable.setColorFilter(mContext.getResources()
+                        .getColor(R.color.watermark_highlight_color), PorterDuff.Mode.MULTIPLY);
+            } else {
+                overlayDrawable.clearColorFilter();
+            }
+            int with = mImageFrame.width()/9;
+            int height = mImageFrame.height()/8;
+            if (!TextUtils.isEmpty(getName())) {
+                overlayDrawable.setBounds(with,16,with*8,height*6);
+            } else {
+                overlayDrawable.setBounds(with,52,with*8,height*7);
+            }
+            overlayDrawable.draw(canvas);
             return;
         }
-
         if (mRepresentation.getOverlayId() != 0 && mOverlayBitmap == null) {
             mOverlayBitmap = BitmapFactory.decodeResource(
                     mContext.getResources(),
@@ -198,7 +233,17 @@ public class Action implements RenderingRequestCaller {
                 drawCenteredImage(mOverlayBitmap, mImage, false);
             }
         }
+    }
 
+    @Override
+    public void available(RenderingRequest request) {
+        clearBitmap();
+        mImage = request.getBitmap();
+        if (mImage == null) {
+            mImageFrame = null;
+            return;
+        }
+        drawOverlay();
         if (mAdapter != null) {
             mAdapter.notifyDataSetChanged();
         }
@@ -219,6 +264,10 @@ public class Action implements RenderingRequestCaller {
     public void setOverlayBitmap(Bitmap overlayBitmap) {
         mOverlayBitmap = overlayBitmap;
     }
+
+    public void setClickAction() { mIsClickAction = true; }
+
+    public void clearClickAction() { mIsClickAction = false; }
 
     public void clearBitmap() {
         if (mImage != null

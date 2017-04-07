@@ -238,7 +238,7 @@ public final class GeometryMathUtils {
         }
     }
 
-    private static int getRotationForOrientation(int orientation) {
+    public static int getRotationForOrientation(int orientation) {
         switch (orientation) {
             case ImageLoader.ORI_ROTATE_90:
                 return 90;
@@ -508,6 +508,45 @@ public final class GeometryMathUtils {
         m.postScale(scale / oldScale, scale / oldScale);
         m.postTranslate(viewWidth / 2f, viewHeight / 2f);
         return m;
+    }
+
+    public static Matrix getWatermarkMatrix(GeometryHolder holder, int bitmapWidth,
+                                            int bitmapHeight, int viewWidth, int viewHeight
+            , int oldw, int oldh) {
+        int bh = bitmapHeight;
+        int bw = bitmapWidth;
+        if (GeometryMathUtils.needsDimensionSwap(holder.rotation)) {
+            bh = bitmapWidth;
+            bw = bitmapHeight;
+        }
+        float scale = GeometryMathUtils.getWatermarkScale(holder,bw, bh, viewWidth, viewHeight, oldw, oldh);
+        Matrix m = new Matrix();
+        m.setTranslate(-oldw / 2f, -oldh / 2f);
+        m.postScale(scale, scale);
+        m.postTranslate(viewWidth / 2f, viewHeight / 2f);
+        return m;
+    }
+
+    public static float getWatermarkScale(GeometryHolder holder, int bitmapWidth,
+                                          int bitmapHeight, int viewWidth, int viewHeight,
+                                          int oldw, int oldh) {
+        int bh = bitmapHeight;
+        int bw = bitmapWidth;
+        if (GeometryMathUtils.needsDimensionSwap(holder.rotation)) {
+            bh = bitmapWidth;
+            bw = bitmapHeight;
+        }
+        float oldScale = GeometryMathUtils.scale(bw, bh, oldw, oldh);
+        if (oldScale > 3.0f) {
+            oldScale = 3.0f;
+        }
+        oldScale *= SHOW_SCALE;
+        float scale = GeometryMathUtils.scale(bw, bh, viewWidth, viewHeight);
+        if (scale > 3.0f) {
+            scale = 3.0f;
+        }
+        scale *= SHOW_SCALE;
+        return scale / oldScale;
     }
 
     public static RectF getTrueCropRect(GeometryHolder holder, int bitmapWidth, int bitmapHeight) {
