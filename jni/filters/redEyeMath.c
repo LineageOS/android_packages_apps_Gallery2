@@ -32,8 +32,8 @@ int isRed(unsigned char *src, int p) {
     return ((r * 100 / (max + 2) > 160) & (max < 80));
 }
 
-void findPossible(unsigned char *src, unsigned char *mask, int iw, int ih,
-        short *rect) {
+void findPossible(unsigned char *src, unsigned char *mask, int iw,
+        int ih __unused, short *rect) {
     int recX = rect[0], recY = rect[1], recW = rect[2], recH = rect[3];
     int y, x;
 
@@ -53,7 +53,7 @@ void findPossible(unsigned char *src, unsigned char *mask, int iw, int ih,
     }
 }
 
-void findReds(unsigned char *src, unsigned char *mask, int iw, int ih,
+void findReds(unsigned char *src, unsigned char *mask, int iw, int ih __unused,
         short *rect) {
     int recX = rect[0], recY = rect[1], recW = rect[2], recH = rect[3];
     int y, x;
@@ -70,8 +70,8 @@ void findReds(unsigned char *src, unsigned char *mask, int iw, int ih,
     }
 }
 
-void dialateMaskIfRed(unsigned char *src, int iw, int ih, unsigned char *mask,
-        unsigned char *out, short *rect) {
+void dialateMaskIfRed(unsigned char *src, int iw, int ih __unused,
+        unsigned char *mask, unsigned char *out, short *rect) {
     int recX = rect[0], recY = rect[1], recW = rect[2], recH = rect[3];
     int y, x;
 
@@ -113,7 +113,6 @@ void filterRedEye(unsigned char *src, unsigned char *dest, int iw, int ih, short
     int recX = rect[0], recY = rect[1], recW = rect[2], recH = rect[3];
     unsigned char *mask1 = (unsigned char *) malloc(recW * recH);
     unsigned char *mask2 = (unsigned char *)malloc(recW*recH);
-    int QUE_LEN = 100;
     int y, x, i;
 
     rect[0] = MAX(rect[0],0);

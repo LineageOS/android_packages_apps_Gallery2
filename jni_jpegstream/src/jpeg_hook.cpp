@@ -121,7 +121,7 @@ void Mgr_skip_input_data_fcn(j_decompress_ptr cinfo, long num_bytes) {
         return;
     }
     SourceManager *src = reinterpret_cast<SourceManager*>(cinfo->src);
-    if (src->mgr.bytes_in_buffer >= num_bytes) {
+    if (src->mgr.bytes_in_buffer >= (size_t)num_bytes) {
         src->mgr.bytes_in_buffer -= num_bytes;
         src->mgr.next_input_byte += num_bytes;
     } else {
@@ -149,7 +149,7 @@ void Mgr_skip_input_data_fcn(j_decompress_ptr cinfo, long num_bytes) {
     }
 }
 
-void Mgr_term_source_fcn(j_decompress_ptr cinfo) {
+void Mgr_term_source_fcn(j_decompress_ptr cinfo __unused) {
     //noop
 }
 
