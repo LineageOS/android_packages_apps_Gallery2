@@ -73,7 +73,7 @@
     <!--  Exit Dialog -->
 
     <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
-    <string name="unsaved">Discrad the changes you\'ve made to this image?</string>
+    <string name="unsaved">Discard the changes you\'ve made to this image?</string>
     <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
     <string name="save_before_exit">Discard changes?</string>
     <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
