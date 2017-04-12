@@ -117,6 +117,7 @@ public abstract class PhotoPage extends ActivityState implements
     public static final String KEY_MEDIA_SET_PATH = "media-set-path";
     public static final String KEY_MEDIA_ITEM_PATH = "media-item-path";
     public static final String KEY_INDEX_HINT = "index-hint";
+    public static final String KEY_CURRENT_PHOTO_HINT = "currtent_photo_path";
     public static final String KEY_OPEN_ANIMATION_RECT = "open-animation-rect";
     public static final String KEY_APP_BRIDGE = "app-bridge";
     public static final String KEY_TREAT_BACK_AS_UP = "treat-back-as-up";
@@ -435,6 +436,12 @@ public abstract class PhotoPage extends ActivityState implements
             //we only save index in onSaveState, set itemPath to null to get the right path later
             itemPath = null;
         }
+        if ((mCurrentPhoto == null) && (restoreState != null)) {
+            String curPath = restoreState.getString(KEY_CURRENT_PHOTO_HINT, null);
+            if (curPath != null)
+                mCurrentPhoto = (MediaItem)
+                        mActivity.getDataManager().getMediaObject(curPath);
+        }
         if (mSetPathString != null) {
             mShowSpinner = true;
             mAppBridge = (AppBridge) data.getParcelable(KEY_APP_BRIDGE);
@@ -626,6 +633,7 @@ public abstract class PhotoPage extends ActivityState implements
     @Override
     protected void onSaveState(Bundle outState) {
         outState.putInt(KEY_INDEX_HINT,mCurrentIndex);
+        outState.putString(KEY_CURRENT_PHOTO_HINT, mCurrentPhoto.getFilePath());
         super.onSaveState(outState);
     }
 
@@ -1819,6 +1827,7 @@ public abstract class PhotoPage extends ActivityState implements
 
         @Override
         protected Void doInBackground(Void... params) {
+            if (mCurrentPhoto == null)return null;
             MpoParser parser = MpoParser.parse(mActivity, mCurrentPhoto.getContentUri());
             mPrimaryImgData = parser.readImgData(true);
             mAuxImgData = parser.readImgData(false);
