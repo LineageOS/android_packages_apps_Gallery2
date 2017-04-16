@@ -476,7 +476,7 @@ public class TileImageView extends GLView {
         synchronized (this) {
             mUploadQueue.push(tile);
         }
-        if (mTileUploader.mActive.compareAndSet(false, true)) {
+        if (getGLRoot() != null && mTileUploader.mActive.compareAndSet(false, true)) {
             getGLRoot().addOnGLIdleListener(mTileUploader);
         }
     }
