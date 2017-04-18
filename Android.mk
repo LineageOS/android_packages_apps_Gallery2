@@ -48,8 +48,6 @@ LOCAL_REQUIRED_MODULES := libts_detected_face_jni libts_face_beautify_jni
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
-LOCAL_MULTILIB := 32
-
 LOCAL_JAVA_LIBRARIES += org.apache.http.legacy
 
 include $(BUILD_PACKAGE)
