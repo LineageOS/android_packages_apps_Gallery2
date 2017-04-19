@@ -36,12 +36,13 @@ import java.util.ArrayList;
 // upload the whole bitmap but we reduce the time of uploading each tile
 // so it make the animation more smooth and prevents jank.
 public class TiledTexture implements Texture {
-    private static final int TILE_THRESHOLD = 512;
-
     private static final int CONTENT_SIZE = 254;
     private static final int BORDER_SIZE = 1;
     private static final int TILE_SIZE = CONTENT_SIZE + 2 * BORDER_SIZE;
     private static final int INIT_CAPACITY = 8;
+
+    private static Tile sFreeTileHead = null;
+    private static final Object sFreeTileLock = new Object();
 
     private static Bitmap sUploadBitmap;
     private static Canvas sCanvas;
@@ -108,9 +109,9 @@ public class TiledTexture implements Texture {
         public int offsetX;
         public int offsetY;
         public Bitmap bitmap;
+        public Tile nextFreeTile;
         public int contentWidth;
         public int contentHeight;
-        private boolean raw;
 
         @Override
         public void setSize(int width, int height) {
@@ -120,13 +121,10 @@ public class TiledTexture implements Texture {
             mHeight = height + 2 * BORDER_SIZE;
             mTextureWidth = TILE_SIZE;
             mTextureHeight = TILE_SIZE;
-            raw = false;
         }
 
         @Override
         protected Bitmap onGetBitmap() {
-            if (raw) return bitmap;
-
             // make a local copy of the reference to the bitmap,
             // since it might be null'd in a different thread. b/8694871
             Bitmap localBitmapRef = bitmap;
@@ -153,13 +151,24 @@ public class TiledTexture implements Texture {
         protected void onFreeBitmap(Bitmap bitmap) {
             // do nothing
         }
+    }
 
-        public void setAsRaw(Bitmap bitmap) {
-            this.bitmap = bitmap;
-            offsetX = offsetY = 0;
-            contentWidth = mWidth = mTextureWidth = bitmap.getWidth();
-            contentHeight = mHeight = mTextureHeight = bitmap.getHeight();
-            raw = true;
+    private static void freeTile(Tile tile) {
+        tile.invalidateContent();
+        tile.bitmap = null;
+        synchronized (sFreeTileLock) {
+            tile.nextFreeTile = sFreeTileHead;
+            sFreeTileHead = tile;
+        }
+    }
+
+    private static Tile obtainTile() {
+        synchronized (sFreeTileLock) {
+            Tile result = sFreeTileHead;
+            if (result == null) return new Tile();
+            sFreeTileHead = result.nextFreeTile;
+            result.nextFreeTile = null;
+            return result;
         }
     }
 
@@ -188,19 +197,11 @@ public class TiledTexture implements Texture {
     public TiledTexture(Bitmap bitmap) {
         mWidth = bitmap.getWidth();
         mHeight = bitmap.getHeight();
-
-        if (mWidth < TILE_THRESHOLD && mHeight < TILE_THRESHOLD) {
-            Tile tile = new Tile();
-            tile.setAsRaw(bitmap);
-            mTiles = new Tile[] { tile };
-            return;
-        }
-
         ArrayList<Tile> list = new ArrayList<>();
 
         for (int x = 0, w = mWidth; x < w; x += CONTENT_SIZE) {
             for (int y = 0, h = mHeight; y < h; y += CONTENT_SIZE) {
-                Tile tile = new Tile();
+                Tile tile = obtainTile();
                 tile.offsetX = x;
                 tile.offsetY = y;
                 tile.bitmap = bitmap;
@@ -220,9 +221,8 @@ public class TiledTexture implements Texture {
     // Can be called in UI thread.
     public void recycle() {
         synchronized (mTiles) {
-            for (Tile tile : mTiles) {
-                tile.invalidateContent();
-                tile.bitmap = null;
+            for (Tile mTile : mTiles) {
+                freeTile(mTile);
             }
         }
     }
