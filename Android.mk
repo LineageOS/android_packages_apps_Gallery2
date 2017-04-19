@@ -14,9 +14,10 @@ LOCAL_SRC_FILES := \
     $(call all-renderscript-files-under, src)
 LOCAL_SRC_FILES += $(call all-java-files-under, src_pd)
 
-LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res
+LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res $(LOCAL_PATH)/../../../$(SUPPORT_LIBRARY_ROOT)/compat/res
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay
+LOCAL_AAPT_FLAGS += --extra-packages android.support.compat
 
 LOCAL_PACKAGE_NAME := Gallery2
 
