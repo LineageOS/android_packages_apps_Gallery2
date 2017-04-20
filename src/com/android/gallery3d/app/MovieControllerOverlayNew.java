@@ -88,8 +88,9 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
         int w = right - left;
 
         int y = h - pb;
+        int barHeight = mTimeBar.getPreferredHeight();
 
-        mBackground.layout(0, y - mTimeBar.getPreferredHeight(), w, y);
+        mBackground.layout(0, y - barHeight, w, y);
         mScreenModeExt.onLayout(w, pr, y);
         if (mIsLive && mState != State.ENDED) {
             if (mLiveImage != null) {
@@ -102,8 +103,7 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
 
                 if (mStopBtn != null) {
                     mStopBtn.setVisibility(View.VISIBLE);
-                    mStopBtn.layout(0, y - mTimeBar.getPreferredHeight(),
-                            mTimeBar.getPreferredHeight(), y);
+                    mStopBtn.layout(0, y - barHeight, barHeight, y);
                 }
             }
         } else {
@@ -114,17 +114,16 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
             if (mStopBtn != null) {
                 mStopBtn.setVisibility(View.GONE);
             }
-            mPlayPauseReplayView.layout(0, y - mTimeBar.getPreferredHeight(),
-                    mTimeBar.getPreferredHeight(), y);
+            mPlayPauseReplayView.layout(insets.left, y - barHeight, insets.left + barHeight, y);
         }
-        mTimeBar.layout(mTimeBar.getPreferredHeight(), y - mTimeBar.getPreferredHeight(),
+        mTimeBar.layout(insets.left + barHeight, y - barHeight,
                 width - mScreenModeExt.getAddedRightPadding(), y);
 
         mVideoSnapshotLayout.layoutButton(
                 w - pr - mVideoSnapshotLayout.getButtonWidth(),
-                y - mTimeBar.getPreferredHeight() - mVideoSnapshotLayout.getButtonHeight(),
+                y - barHeight - mVideoSnapshotLayout.getButtonHeight(),
                 w - pr,
-                y - mTimeBar.getPreferredHeight());
+                y - barHeight);
         mVideoSnapshotLayout.layoutAnim(left, top, right, bottom);
     }
 
