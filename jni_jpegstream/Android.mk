@@ -17,7 +17,7 @@ LOCAL_SDK_VERSION   := 17
 LOCAL_ARM_MODE := arm
 
 LOCAL_CFLAGS    += -ffast-math -O3 -funroll-loops
-LOCAL_CFLAGS += -Wall -Wextra -Werror
+LOCAL_CFLAGS += -Wall -Wextra
 LOCAL_LDLIBS := -llog
 
 LOCAL_CPP_EXTENSION := .cpp
