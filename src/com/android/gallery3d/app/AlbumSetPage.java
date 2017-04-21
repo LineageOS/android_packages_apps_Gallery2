@@ -261,6 +261,7 @@ public class AlbumSetPage extends ActivityState implements
             tvEmptyAlbum.setTextColor(Color.parseColor("#8A000000"));
             tvEmptyAlbum.setGravity(Gravity.CENTER);
             tvEmptyAlbum.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            tvEmptyAlbum.setId(R.id.empty_album);
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -412,8 +413,14 @@ public class AlbumSetPage extends ActivityState implements
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
-        lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+        if (tvEmptyAlbum != null && tvEmptyAlbum.getVisibility() == View.VISIBLE) {
+            lp.addRule(RelativeLayout.BELOW, tvEmptyAlbum.getId());
+            lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        } else {
+            lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+        }
         galleryRoot.addView(mCameraButton, lp);
+
         return true;
     }
 
