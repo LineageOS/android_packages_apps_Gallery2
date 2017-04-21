@@ -23,4 +23,6 @@
 
     <item type="id" name="ingest_notification_scanning" />
     <item type="id" name="ingest_notification_importing" />
+
+    <item type="id" name="empty_album" />
 </resources>
