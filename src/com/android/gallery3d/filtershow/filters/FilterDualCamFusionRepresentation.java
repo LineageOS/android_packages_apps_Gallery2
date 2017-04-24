@@ -95,6 +95,18 @@ public class FilterDualCamFusionRepresentation extends FilterDualCamBasicReprese
         return false;
     }
 
+    public void setPoint(int x, int y) {
+        mPoint = new Point(x,y);
+    }
+
+    public void setPoint(Point point) {
+        mPoint = point;
+    }
+
+    public Point getPoint() {
+        return mPoint;
+    }
+
     @Override
     public void setUnderlay(Uri uri) {
         if (uri != null) {

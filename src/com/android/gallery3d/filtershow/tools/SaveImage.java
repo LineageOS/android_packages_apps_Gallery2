@@ -34,6 +34,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
@@ -848,6 +850,7 @@ public class SaveImage {
             paint.setAntiAlias(true);
             paint.setFilterBitmap(true);
             paint.setDither(true);
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
 
             canvas.drawBitmap(bitmap, null, destRect, paint);
         }
