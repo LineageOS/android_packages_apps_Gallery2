@@ -131,8 +131,10 @@ public class CategoryPanelLevelTwo extends CategoryPanel {
             }
         });
         mEditName = (TextView) main.findViewById(R.id.editor_name);
-        mEditName.setText(mFiltersRepresentations.get(
-                mCurrentAdapter % FilterWatermarkRepresentation.LOCATION).getTextId());
+        if (!mFiltersRepresentations.isEmpty()) {
+            mEditName.setText(mFiltersRepresentations.get(
+                    mCurrentAdapter % FilterWatermarkRepresentation.LOCATION).getTextId());
+        }
         View panelView = main.findViewById(R.id.listItems);
         if (panelView instanceof CategoryTrack) {
             CategoryTrack panel = (CategoryTrack) panelView;
