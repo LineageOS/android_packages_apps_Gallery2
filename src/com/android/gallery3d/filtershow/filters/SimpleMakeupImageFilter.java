@@ -23,12 +23,13 @@ import android.util.Log;
 import com.android.gallery3d.common.ApiHelper.SystemProperties;
 import com.thundersoft.hz.selfportrait.detect.FaceDetect;
 import com.thundersoft.hz.selfportrait.detect.FaceInfo;
+import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;
 
 public abstract class SimpleMakeupImageFilter extends SimpleImageFilter {
     private static final String LOGTAG = "SimpleMakeupImageFilter";
     protected static final int MAKEUP_INTENSITY = 50;
 
-    public static final boolean HAS_TS_MAKEUP = SystemProperties.getBoolean("persist.ts.postmakeup", true);
+    public static final boolean HAS_TS_MAKEUP = MakeupEngine.getMakeupObj().isLibLoaded();
 
     public SimpleMakeupImageFilter() {
     }
@@ -41,10 +42,13 @@ public abstract class SimpleMakeupImageFilter extends SimpleImageFilter {
     }
 
     protected FaceInfo detectFaceInfo(Bitmap bitmap) {
-        FaceDetect faceDetect = new FaceDetect();
-        faceDetect.initialize();
-        FaceInfo[] faceInfos = faceDetect.dectectFeatures(bitmap);
-        faceDetect.uninitialize();
+        FaceDetect faceDetect = FaceDetect.getInstance();
+        FaceInfo[] faceInfos = null;
+        if (faceDetect.isLibLoaded()) {
+            faceDetect.initialize();
+            faceInfos = faceDetect.dectectFeatures(bitmap);
+            faceDetect.uninitialize();
+        }
 
         Log.v(LOGTAG, "SimpleMakeupImageFilter.detectFaceInfo(): detect faceNum is "
                 + (faceInfos != null ? faceInfos.length : "NULL"));
