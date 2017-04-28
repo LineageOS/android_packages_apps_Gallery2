@@ -1786,10 +1786,14 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             if(src == null) {
                 return false;
             }
-            FaceDetect fDetect = new FaceDetect();
-            fDetect.initialize();
-            FaceInfo[] faceInfos = fDetect.dectectFeatures(src);
-            fDetect.uninitialize();
+
+            FaceInfo[] faceInfos = null;
+            FaceDetect fDetect = FaceDetect.getInstance();
+            if (fDetect.isLibLoaded()) {
+                fDetect.initialize();
+                faceInfos = fDetect.dectectFeatures(src);
+                fDetect.uninitialize();
+            }
 
             if(faceInfos != null && faceInfos.length > 0) {
                 Rect[] faces = new Rect[faceInfos.length];
