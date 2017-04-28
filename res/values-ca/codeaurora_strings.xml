@@ -43,7 +43,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="speaker_need_headset">Endolla els auriculars per utilitzar aquesta característica.</string>
   <string name="single_track">"Una pista"</string>
   <string name="input_url">"Introdueix URL"</string>
-  <string name="streaming_settings">"Ajustaments del flux de dades"</string>
+  <string name="streaming_settings">"Configuració de la transmissió"</string>
   <string name="next">"Següent"</string>
   <string name="previous">"Anterior"</string>
   <string name="buffer_size">Mida del buffer</string>
@@ -54,7 +54,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="set_rtp_max_port">Estableix el port max</string>
   <string name="set_buffer_size">Estableix la mida del buffer</string>
   <string name="set_apn">Selecciona l\'APN preferida</string>
-  <string name="setting">Ajustaments</string>
+  <string name="setting">Configuració</string>
   <string name="server_timeout_title">"Temps d'espera del servidor"</string>
   <string name="server_timeout_message">"vols tornar a connectar amb el servidor per reproduir el vídeo?"</string>
   <string name="videoview_error_text_cannot_connect_retry">"La connexió ha fallat, intentant tornar a connectar a %1$d\u2026"</string>

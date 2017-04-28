@@ -31,13 +31,32 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
+  <string name="setp_option_name">Hapi</string>
+  <string name="setp_option_three_second">3 sekonda</string>
+  <string name="setp_option_six_second">6 sekonda</string>
+  <string name="stereo">"Stereo"</string>
+  <string name="speaker_on">Altoparlanti AKTIV</string>
+  <string name="speaker_off">Altoparlanti INAKTIV</string>
+  <string name="speaker_need_headset">Lidhni kufjet për të përdorur këtë funksion.</string>
+  <string name="input_url">"Vendos URL-në"</string>
+  <string name="apn">APN i preferuar</string>
+  <string name="bookmark_title">"Titulli"</string>
+  <string name="bookmark_location">"Vendndodhja"</string>
+  <string name="delete_all">"Fshiji të gjitha"</string>
+  <string name="default_title">"Titulli i paracaktuar"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
+  <string name="mute_nosupport">Nuk mund t\'i heqësh zërin : video nuk është e suportuar</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
+  <string name="map_activity_not_found_err">Nuk ka asnjë aplikacion hartash të intaluar që të tregojë vendndodhjen.</string>
   <!-- The label for the bass boost knob of the audio effects dialog. -->
   <!-- The label for the 3d effect knob of the audio effects dialog. -->
+  <string name="virtualizer_strength">efekt 3D</string>
   <!-- The label for the audio effects menu. -->
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <!-- The title of the audio effects dialog. -->
   <!-- The tips of trimming video -->
+  <string name="fail_trim">Na vjen keq, por kjo video nuk mund të shkurtohet</string>
+  <string name="no_permission_for_drm">Më vjen keq, skedarët e mbrojtur me DRM nuk mund të ndahen</string>
+  <string name="drm_license_info">Informacion rreth liçensës DRM</string>
 </resources>

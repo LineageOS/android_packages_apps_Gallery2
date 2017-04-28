@@ -32,7 +32,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
   <string name="setp_option_name">Salto</string>
-  <string name="step_option_desc">Personalizar el salto del avance o retroceso rápidos</string>
+  <string name="step_option_desc">Personaliza el salto rápido hacia adelante o atrás</string>
   <string name="setp_option_three_second">3 segundos</string>
   <string name="setp_option_six_second">6 segundos</string>
   <string name="loop">"Bucle"</string>
@@ -43,7 +43,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="speaker_need_headset">Conecta los auriculares para usar esta función.</string>
   <string name="single_track">"Pista sencilla"</string>
   <string name="input_url">"Ingresar URL"</string>
-  <string name="streaming_settings">"Opciones de transmisión"</string>
+  <string name="streaming_settings">"Ajustes de transmisión"</string>
   <string name="next">"Siguiente"</string>
   <string name="previous">"Anterior"</string>
   <string name="buffer_size">Tamaño de búfer</string>
@@ -54,14 +54,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="set_rtp_max_port">Establecer puerto superior</string>
   <string name="set_buffer_size">Establecer tamaño de búfer</string>
   <string name="set_apn">Seleccionar APN preferido</string>
-  <string name="setting">Opciones</string>
+  <string name="setting">Ajustes</string>
   <string name="server_timeout_title">"Tiempo de espera del servidor"</string>
   <string name="server_timeout_message">"¿Volver a conectar al servidor para reproducir el video?"</string>
   <string name="videoview_error_text_cannot_connect_retry">"Error de conexión, intentando volver a conectar con %1$d\u2026"</string>
   <string name="media_controller_live">En vivo</string>
   <string name="media_controller_playing">Reproduciendo</string>
   <string name="media_controller_connecting">Conectando\u2026</string>
-  <string name="bookmark_add">"Agregar marcador"</string>
+  <string name="bookmark_add">"Añadir marcador"</string>
   <string name="bookmark_display">"Mostrar marcadores"</string>
   <string name="bookmark_empty">"No hay marcadores"</string>
   <string name="bookmark_exist">"El marcador ya existe"</string>
@@ -69,8 +69,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="bookmark_list">"Marcadores"</string>
   <string name="bookmark_title">"Título"</string>
   <string name="bookmark_location">"Ubicación"</string>
-  <string name="delete_all">"Eliminar todos"</string>
-  <string name="default_title">"Título predeterminado"</string>
+  <string name="delete_all">"Borrar todos"</string>
+  <string name="default_title">"Título predefinido"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <string name="more_image">Más imágenes</string>
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
