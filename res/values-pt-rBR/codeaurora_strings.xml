@@ -90,11 +90,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <string name="headset_plug">Conecte fones de ouvido para estes efeitos.</string>
   <!-- Toast message for share items -->
+  <string name="cannot_share_items">O número máximo de itens selecionados é 300</string>
   <string name="share_dialogue_title">Compartilhar via</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
+  <string name="no_faces">Sem rostos</string>
   <!-- The tips of trimming video -->
   <string name="fail_trim">Desculpe, o arquivo de vídeo não pode ser cortado</string>
+  <string name="can_not_trim">Apenas arquivos mp4 e 3gp podem ser cortados</string>
   <string name="drm_license_info">Informação de licença DRM</string>
   <!-- Timeline screen title -->
   <string name="timeline_title">Linha do tempo</string>
@@ -102,11 +105,17 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="albums_title">Álbuns</string>
   <!-- Videos screen title -->
   <string name="videos_title">Vídeos</string>
+  <string name="action_viewtype_list">Visualização em lista</string>
   <string name="tvEmptyAlbum">Nenhuma foto encontrada</string>
   <string name="tvEmptyVideos">Nenhum vídeo encontrado</string>
+  <string name="text_makeup_Soften">Suavizar</string>
+  <string name="text_makeup_trimface">Melhorar rosto</string>
   <string name="text_makeup_bigeye">Olhos grandes</string>
   <string name="truescanner_normal">Normal</string>
+  <string name="truescanner_white">Quadro branco</string>
   <string name="truescanner">TrueScanner</string>
+  <string name="hazebuster_acts">Ajuste de neblina</string>
+  <string name="seestraight_input_image_is_small">A imagem é pequena demais para processar.</string>
   <string name="seestraight_process_fail">Não foi possível processar a imagem.</string>
   <string name="trim_video_exit_title">Descartar as alterações?</string>
   <string name="trim_video_exit_msg">Descartar as alterações feitas neste vídeo?</string>

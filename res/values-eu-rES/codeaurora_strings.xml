@@ -90,12 +90,37 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <string name="headset_plug">Konektatu aurikularrak efektu hauentzako .</string>
   <!-- Toast message for share items -->
+  <string name="cannot_share_items">Partekatzeko aukeratutako elementu kopuru maximoa 300 da</string>
+  <string name="share_dialogue_title">Partekatu honen bidez</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
+  <string name="no_faces">Aurpegirik ez</string>
   <!-- The tips of trimming video -->
   <string name="fail_trim">Barkatu, bideo hau ezin da ebaki</string>
+  <string name="can_not_trim">mp4 eta 3gp fitxategiak baino ezin dira ebaki</string>
   <string name="drm_license_info">DRM lizentziaren informazioa</string>
   <!-- Timeline screen title -->
+  <string name="timeline_title">Denbora-lerroa</string>
   <!-- Albums screen title -->
+  <string name="albums_title">Albumak</string>
   <!-- Videos screen title -->
+  <string name="videos_title">Bideoak</string>
+  <string name="action_viewtype_list">Zerrenda ikuspegia</string>
+  <string name="tvEmptyAlbum">Ez da argazkirik aurkitu</string>
+  <string name="tvEmptyVideos">Ez da bideorik aurkitu</string>
+  <string name="text_makeup_whiten">Zuritu</string>
+  <string name="text_makeup_Soften">Xamurtu</string>
+  <string name="text_makeup_trimface">Trimface</string>
+  <string name="text_makeup_bigeye">Bigeye</string>
+  <string name="truescanner_normal">Arrunta</string>
+  <string name="truescanner_white">Arbela zuria</string>
+  <string name="truescanner">TrueScanner</string>
+  <string name="truescanner_remove_glare">Kendu dirdira</string>
+  <string name="hazebuster_acts">Laino kentzailea</string>
+  <string name="seestraight_acts">Ikusi garbi</string>
+  <string name="seestraight_input_image_is_small">Sarrera-irudia txikiegia da prozesatzeko.</string>
+  <string name="seestraight_process_fail">Ezin izan da irudia prozesatu.</string>
+  <string name="trim_video_exit_title">Baztertu aldaketak?</string>
+  <string name="trim_video_exit_msg">Baztertu bideo honi egindako aldaketak?</string>
+  <string name="trim_video_exit_discard">BAZTERTU</string>
 </resources>

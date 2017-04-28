@@ -100,7 +100,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="can_not_trim">Nur MP4- und 3GP-Dateien können gekürzt werden</string>
   <string name="drm_license_info">DRM-Lizenzinformationen</string>
   <!-- Timeline screen title -->
-  <string name="timeline_title">Zeitachse</string>
   <!-- Albums screen title -->
   <string name="albums_title">Alben</string>
   <!-- Videos screen title -->

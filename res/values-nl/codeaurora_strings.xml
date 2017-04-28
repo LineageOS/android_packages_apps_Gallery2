@@ -90,7 +90,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <string name="headset_plug">Sluit een koptelefoon aan voor deze effecten.</string>
   <!-- Toast message for share items -->
-  <string name="cannot_share_items">Maximaal aantal items wat gedeeld kan worden is 300</string>
+  <string name="cannot_share_items">Maximaal aantal items dat gedeeld kan worden is 300</string>
   <string name="share_dialogue_title">Delen via</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
@@ -100,7 +100,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="can_not_trim">Alleen mp4- en 3gp-bestanden kunnen worden bijgesneden</string>
   <string name="drm_license_info">DRM licentie-informatie</string>
   <!-- Timeline screen title -->
-  <string name="timeline_title">Tijdslijn</string>
+  <string name="timeline_title">Tijdlijn</string>
   <!-- Albums screen title -->
   <string name="albums_title">Albums</string>
   <!-- Videos screen title -->
@@ -108,19 +108,19 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="action_viewtype_list">Lijstweergave</string>
   <string name="tvEmptyAlbum">Geen foto\'s gevonden</string>
   <string name="tvEmptyVideos">Geen video\'s gevonden</string>
-  <string name="text_makeup_whiten">Witten</string>
-  <string name="text_makeup_Soften">Verzachten</string>
-  <string name="text_makeup_trimface">Trimface</string>
-  <string name="text_makeup_bigeye">Grootoog</string>
+  <string name="text_makeup_whiten">Witter</string>
+  <string name="text_makeup_Soften">Zachter</string>
+  <string name="text_makeup_trimface">Gezicht bijwerken</string>
+  <string name="text_makeup_bigeye">Grote ogen</string>
   <string name="truescanner_normal">Normaal</string>
   <string name="truescanner_white">Whiteboard</string>
   <string name="truescanner">TrueScanner</string>
-  <string name="truescanner_remove_glare">Verwijder Reflectie</string>
-  <string name="hazebuster_acts">Verwijder Waas</string>
-  <string name="seestraight_acts">Kijk rechtuit</string>
-  <string name="seestraight_input_image_is_small">Invoerafbeelding is te klein om te verwerken.</string>
-  <string name="seestraight_process_fail">Kon de afbeelding niet verwerken.</string>
-  <string name="trim_video_exit_title">Wijzigingen niet opslaan?</string>
-  <string name="trim_video_exit_msg">Wijzigingen aan deze video niet opslaan?</string>
-  <string name="trim_video_exit_discard">Negeren</string>
+  <string name="truescanner_remove_glare">Reflecties verwijderen</string>
+  <string name="hazebuster_acts">Waas verwijderen</string>
+  <string name="seestraight_acts">Rechtuit kijken</string>
+  <string name="seestraight_input_image_is_small">Afbeelding is te klein om te verwerken.</string>
+  <string name="seestraight_process_fail">Kan afbeelding niet verwerken.</string>
+  <string name="trim_video_exit_title">Wijzigingen verwerpen?</string>
+  <string name="trim_video_exit_msg">Wijzigingen aan deze video verwerpen?</string>
+  <string name="trim_video_exit_discard">VERWERPEN</string>
 </resources>
