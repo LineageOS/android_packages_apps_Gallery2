@@ -59,7 +59,7 @@
     <string name="aspect5to7_effect" msgid="5122395569059384741">"5:7"</string>
     <string name="aspect7to5_effect" msgid="5780001758108328143">"7:5"</string>
     <string name="aspect9to16_effect" msgid="7740468012919660728">"16:9"</string>
-    <string name="aspectNone_effect" msgid="6263330561046574134">"Nijedno"</string>
+    <string name="aspectNone_effect" msgid="6263330561046574134">"Ništa"</string>
     <!-- no translation found for aspectOriginal_effect (5678516555493036594) -->
     <skip />
     <string name="Fixed" msgid="8017376448916924565">"Fiksno"</string>
@@ -88,7 +88,7 @@
     <string name="rotate" msgid="2796802553793795371">"Rotiraj"</string>
     <string name="mirror" msgid="5482518108154883096">"Ogledalo"</string>
     <string name="negative" msgid="6998313764388022201">"Negativ"</string>
-    <string name="none" msgid="6633966646410296520">"Nijedno"</string>
+    <string name="none" msgid="6633966646410296520">"Ništa"</string>
     <string name="edge" msgid="7036064886242147551">"Ivice"</string>
     <string name="kmeans" msgid="2080952022674981541">"Posterizuj"</string>
     <string name="downsample" msgid="3552938534146980104">"Smanji"</string>
