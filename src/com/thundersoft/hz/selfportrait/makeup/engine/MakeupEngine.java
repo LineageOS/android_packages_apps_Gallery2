@@ -25,16 +25,23 @@ public class MakeupEngine {
     static {
         try {
             System.loadLibrary("ts_face_beautify_jni");
+            mLibLoaded = true;
         } catch (UnsatisfiedLinkError e) {
             e.printStackTrace();
+            mLibLoaded = false;
             Log.e(MakeupEngine.class.getName(), "ts_face_beautify_jni library not found!");
         }
     }
 
+    private static boolean mLibLoaded;
     private static MakeupEngine mInstance;
 
     private MakeupEngine() {
 
+    }
+
+    public boolean isLibLoaded() {
+        return mLibLoaded;
     }
 
     public static MakeupEngine getMakeupObj() {
