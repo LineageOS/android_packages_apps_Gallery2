@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -34,9 +34,11 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
+import android.util.Size;
 import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
@@ -47,9 +49,9 @@ import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils.GeometryHold
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
+import com.android.gallery3d.filtershow.tools.DualCameraEffect;
 
-public class ImageFilterDualCamera extends ImageFilter {
+class ImageFilterDualCamera extends ImageFilter {
     private static final String TAG = ImageFilterDualCamera.class.getSimpleName();
 
     private FilterDualCamBasicRepresentation mParameters;
@@ -60,156 +62,165 @@ public class ImageFilterDualCamera extends ImageFilter {
     }
 
     public void useRepresentation(FilterRepresentation representation) {
-        FilterDualCamBasicRepresentation parameters = (FilterDualCamBasicRepresentation) representation;
-        mParameters = parameters;
+        mParameters = (FilterDualCamBasicRepresentation) representation;
     }
 
-    public FilterDualCamBasicRepresentation getParameters() {
-        return mParameters;
-    }
+    boolean mSupportFusion = false;
 
     @Override
     public Bitmap apply(Bitmap bitmap, float scaleFactor, int quality) {
-        if (getParameters() == null) {
+        if (mParameters == null) {
             return bitmap;
         }
 
-        Point point = getParameters().getPoint();
+        Point point = new Point(mParameters.getPoint());
+        if (!point.equals(-1, -1)) {
+            MasterImage image = MasterImage.getImage();
 
-        if(!point.equals(-1,-1)) {
-            int value = getParameters().getValue();
-            int maxValue = getParameters().getMaximum();
-            float intensity = (float)value / (float)maxValue;
-            Bitmap filteredBitmap = null;
-            boolean result = false;
-            int orientation = MasterImage.getImage().getOrientation();
-            Rect originalBounds = MasterImage.getImage().getOriginalBounds();
-            int filteredW;
-            int filteredH;
-            int[] roiRect = new int[4];
-
-            if(quality == FilterEnvironment.QUALITY_FINAL) {
-                filteredW = originalBounds.width();
-                filteredH = originalBounds.height();
-            } else {
-                Bitmap originalBmp = MasterImage.getImage().getOriginalBitmapHighres();
-                filteredW = originalBmp.getWidth();
-                filteredH = originalBmp.getHeight();
-
-                // image is rotated
-                if (orientation == ImageLoader.ORI_ROTATE_90 ||
-                        orientation == ImageLoader.ORI_ROTATE_270 ||
-                        orientation == ImageLoader.ORI_TRANSPOSE ||
-                        orientation == ImageLoader.ORI_TRANSVERSE) {
-                    int tmp = filteredW;
-                    filteredW = filteredH;
-                    filteredH = tmp;
-                }
-
-                // non even width or height
-                if(filteredW%2 != 0 || filteredH%2 != 0) {
-                    float aspect = (float)filteredH / (float)filteredW;
-                    if(filteredW >= filteredH) {
-                        filteredW = MasterImage.MAX_BITMAP_DIM;
-                        filteredH = (int)(filteredW * aspect);
-                    } else {
-                        filteredH = MasterImage.MAX_BITMAP_DIM;
-                        filteredW = (int)(filteredH / aspect);
-                    }
-                }
+            Size size = getFilteredSize(image, quality);
+            DualCameraEffect effect = image.getDualCameraEffect(size.getWidth(), size.getHeight());
+            if (effect == null) {
+                return bitmap;
             }
+            size = effect.size();
 
-            filteredBitmap = MasterImage.getImage().getBitmapCache().getBitmap(filteredW, filteredH, BitmapCache.FILTERS);
+            Bitmap filteredBitmap = image.getBitmapCache().getBitmap(size.getWidth(),
+                    size.getHeight(), BitmapCache.FILTERS);
+            Log.d(TAG, "filtered: " + size.getWidth() + "x" + size.getHeight());
+            filteredBitmap.setHasAlpha(mSupportFusion);
 
-            switch (mParameters.getTextId()) {
-                case R.string.focus:
-                    result = DualCameraNativeEngine.getInstance().applyFocus(point.x, point.y, intensity,
-                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                    break;
-                case R.string.halo:
-                    result = DualCameraNativeEngine.getInstance().applyHalo(point.x, point.y, intensity,
-                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                    break;
-                case R.string.motion:
-                    result = DualCameraNativeEngine.getInstance().applyMotion(point.x, point.y, intensity,
-                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                    break;
-                case R.string.posterize:
-                    result = DualCameraNativeEngine.getInstance().applyPosterize(point.x, point.y, intensity,
-                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
-                    break;
-
-            }
-
-            if(result == false) {
-                Log.e(TAG, "Imagelib API failed");
+            float intensity = getIntensity();
+            effect.map(point);
+            int effectType = getEffectType();
+            boolean result = effect.render(effectType, point.x, point.y, filteredBitmap, intensity);
+            if (!result) {
                 showToast(R.string.dualcam_no_segment_toast, Toast.LENGTH_SHORT);
                 return bitmap;
+            }
+
+            mPaint.reset();
+            mPaint.setAntiAlias(true);
+            if (quality == FilterEnvironment.QUALITY_FINAL) {
+                mPaint.setFilterBitmap(true);
+                mPaint.setDither(true);
+            }
+
+            Canvas canvas = new Canvas(bitmap);
+            ImagePreset preset = getEnvironment().getImagePreset();
+            int bmWidth = bitmap.getWidth();
+            int bmHeight = bitmap.getHeight();
+            GeometryHolder holder;
+            if (preset.getDoApplyGeometry()) {
+                holder = GeometryMathUtils.unpackGeometry(preset.getGeometryFilters());
             } else {
+                holder = new GeometryHolder();
+            }
 
-                mPaint.reset();
-                mPaint.setAntiAlias(true);
-                if(quality == FilterEnvironment.QUALITY_FINAL) {
-                    mPaint.setFilterBitmap(true);
-                    mPaint.setDither(true);
+            RectF roiRectF = new RectF();
+            roiRectF.left = 0;
+            roiRectF.top = 0;
+            roiRectF.right = 1;
+            roiRectF.bottom = 1;
+
+            int zoomOrientation = image.getZoomOrientation();
+            if (isRotated(zoomOrientation)) {
+                Matrix mt = new Matrix();
+                mt.preRotate(GeometryMathUtils.getRotationForOrientation(zoomOrientation),
+                        0.5f, 0.5f);
+                mt.mapRect(roiRectF);
+            }
+
+            // Check for ROI cropping
+            if (!FilterCropRepresentation.getNil().equals(roiRectF)) {
+                if (FilterCropRepresentation.getNil().equals(holder.crop)) {
+                    // no crop filter, set crop to be roiRect
+                    holder.crop.set(roiRectF);
+                } else if (!roiRectF.contains(holder.crop)) {
+                    // take smaller intersecting area between roiRect and crop rect
+                    holder.crop.left = Math.max(holder.crop.left, roiRectF.left);
+                    holder.crop.top = Math.max(holder.crop.top, roiRectF.top);
+                    holder.crop.right = Math.min(holder.crop.right, roiRectF.right);
+                    holder.crop.bottom = Math.min(holder.crop.bottom, roiRectF.bottom);
                 }
+            }
 
-                Canvas canvas = new Canvas(bitmap);
-                ImagePreset preset = getEnvironment().getImagePreset();
-                int bmWidth = bitmap.getWidth();
-                int bmHeight = bitmap.getHeight();
-                GeometryHolder holder;
-                if(preset.getDoApplyGeometry()) {
-                    holder = GeometryMathUtils.unpackGeometry(preset.getGeometryFilters());
+            RectF crop = new RectF();
+            Matrix m = GeometryMathUtils.getOriginalToScreen(holder, crop, true,
+                    size.getWidth(), size.getHeight(), bmWidth, bmHeight);
+
+            if (mSupportFusion) canvas.drawColor(0, PorterDuff.Mode.CLEAR);
+            canvas.save();
+            canvas.clipRect(crop);
+            canvas.drawBitmap(filteredBitmap, m, mPaint);
+            canvas.restore();
+
+            image.getBitmapCache().cache(filteredBitmap);
+        }
+        return bitmap;
+    }
+
+    private int getEffectType() {
+        switch (mParameters.getTextId()) {
+            case R.string.focus: return DualCameraEffect.REFOCUS_CIRCLE;
+            case R.string.halo: return DualCameraEffect.HALO;
+            case R.string.motion: return DualCameraEffect.MOTION_BLUR;
+            case R.string.posterize: return DualCameraEffect.POSTERIZE;
+            case R.string.sketch: return DualCameraEffect.SKETCH;
+            case R.string.zoom: return DualCameraEffect.ZOOM_BLUR;
+            case R.string.bw: return DualCameraEffect.BLACK_WHITE;
+            case R.string.blackboard: return DualCameraEffect.BLACKBOARD;
+            case R.string.whiteboard: return DualCameraEffect.WHITEBOARD;
+            case R.string.fusion: return DualCameraEffect.FUSION_FOREGROUND;
+            case R.string.dc_negative: return DualCameraEffect.NEGATIVE;
+            default: throw new IllegalArgumentException();
+        }
+    }
+
+    private Size getFilteredSize(MasterImage image, int quality) {
+        int width, height;
+        if (quality == FilterEnvironment.QUALITY_FINAL) {
+            Rect originalBounds = image.getOriginalBounds();
+            width = originalBounds.width();
+            height = originalBounds.height();
+        } else {
+
+            Bitmap originalBmp = image.getOriginalBitmapHighres();
+            width = originalBmp.getWidth();
+            height = originalBmp.getHeight();
+
+            // image is rotated
+            int orientation = image.getOrientation();
+            if (isRotated(orientation)) {
+                int tmp = width;
+                width = height;
+                height = tmp;
+            }
+
+            // non even width or height
+            if (width % 2 != 0 || height % 2 != 0) {
+                float aspect = (float) height / (float) width;
+                if (width >= height) {
+                    width = MasterImage.MAX_BITMAP_DIM;
+                    height = (int) (width * aspect);
                 } else {
-                    holder = new GeometryHolder();
+                    height = MasterImage.MAX_BITMAP_DIM;
+                    width = (int) (height / aspect);
                 }
-
-                RectF roiRectF = new RectF();
-                roiRectF.left = (float)roiRect[0]/(float)filteredW;
-                roiRectF.top = (float)roiRect[1]/(float)filteredH;
-                roiRectF.right = (float)(roiRect[0] + roiRect[2])/(float)filteredW;
-                roiRectF.bottom = (float)(roiRect[1] + roiRect[3])/(float)filteredH;
-
-                int zoomOrientation = MasterImage.getImage().getZoomOrientation();
-                if (zoomOrientation == ImageLoader.ORI_ROTATE_90 ||
-                        zoomOrientation == ImageLoader.ORI_ROTATE_180 ||
-                        zoomOrientation == ImageLoader.ORI_ROTATE_270 ||
-                        zoomOrientation == ImageLoader.ORI_TRANSPOSE ||
-                        zoomOrientation == ImageLoader.ORI_TRANSVERSE) {
-                    Matrix mt = new Matrix();
-                    mt.preRotate(GeometryMathUtils.getRotationForOrientation(zoomOrientation),
-                            0.5f, 0.5f);
-                    mt.mapRect(roiRectF);
-                }
-
-                // Check for ROI cropping
-                if(!FilterCropRepresentation.getNil().equals(roiRectF)) {
-                    if(FilterCropRepresentation.getNil().equals(holder.crop)) {
-                        // no crop filter, set crop to be roiRect
-                        holder.crop.set(roiRectF);
-                    } else if(roiRectF.contains(holder.crop) == false) {
-                        // take smaller intersecting area between roiRect and crop rect
-                        holder.crop.left = Math.max(holder.crop.left, roiRectF.left);
-                        holder.crop.top = Math.max(holder.crop.top, roiRectF.top);
-                        holder.crop.right = Math.min(holder.crop.right, roiRectF.right);
-                        holder.crop.bottom = Math.min(holder.crop.bottom, roiRectF.bottom);
-                    }
-                }
-
-                RectF crop = new RectF();
-                Matrix m = GeometryMathUtils.getOriginalToScreen(holder, crop, true,
-                        filteredW, filteredH, bmWidth, bmHeight);
-
-                canvas.save();
-                canvas.clipRect(crop);
-                canvas.drawBitmap(filteredBitmap, m, mPaint);
-                canvas.restore();
-
-                MasterImage.getImage().getBitmapCache().cache(filteredBitmap);
             }
         }
+        return new Size(width, height);
+    }
 
-        return bitmap;
+    private boolean isRotated(int orientation) {
+        return orientation == ImageLoader.ORI_ROTATE_90 ||
+                orientation == ImageLoader.ORI_ROTATE_270 ||
+                orientation == ImageLoader.ORI_TRANSPOSE ||
+                orientation == ImageLoader.ORI_TRANSVERSE;
+    }
+
+    private float getIntensity() {
+        float value = (float) mParameters.getValue();
+        float max = (float) mParameters.getMaximum();
+        return max != 0 ? value / max : 0;
     }
 }
