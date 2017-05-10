@@ -61,7 +61,6 @@ public class ImageCrop extends ImageShow {
     private Mode mState = Mode.NONE;
     private boolean mValidDraw = false;
     FilterCropRepresentation mLocalRep = new FilterCropRepresentation();
-    EditorCrop mEditorCrop;
 
     public ImageCrop(Context context) {
         super(context);
@@ -332,17 +331,11 @@ public class ImageCrop extends ImageShow {
                 (int) outer.height());
         FilterCropRepresentation.findScaledCrop(mScreenCropBounds, bitmap.getWidth(),
                 bitmap.getHeight());
-        if (mDisplayCropMatrix.mapRect(mScreenCropBounds)) {
-            // Draw crop rect and markers
-            CropDrawingUtils.drawShade(canvas, mScreenCropBounds);
-            CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds, getContext());
-            CropDrawingUtils.drawCorner(canvas, mScreenCropBounds, getContext());
-            CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds, getContext());
-        }
-    }
-
-    public void setEditor(EditorCrop editorCrop) {
-        mEditorCrop = editorCrop;
+        mDisplayCropMatrix.mapRect(mScreenCropBounds);
+        CropDrawingUtils.drawShade(canvas, mScreenCropBounds);
+        CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds, getContext());
+        CropDrawingUtils.drawCorner(canvas, mScreenCropBounds, getContext());
+        CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds, getContext());
     }
 
     private void updateMatrix(int w, int h) {

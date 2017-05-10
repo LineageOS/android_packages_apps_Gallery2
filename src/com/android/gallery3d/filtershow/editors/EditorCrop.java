@@ -78,7 +78,6 @@ public class EditorCrop extends Editor implements EditorInfo {
             mImageCrop = new ImageCrop(context);
         }
         mView = mImageShow = mImageCrop;
-        mImageCrop.setEditor(this);
     }
 
     @Override
