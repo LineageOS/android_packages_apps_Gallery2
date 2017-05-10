@@ -499,6 +499,13 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         }
     }
     public void addLocations(Context context) {
+        int[] textId = {
+                R.string.location_pin,
+                R.string.location_city,
+                R.string.location_hello,
+                R.string.location_stamp
+        };
+
         int[] overlayId = {
                 R.drawable.icon_pin,
                 R.drawable.icon_city,
@@ -524,6 +531,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
         for (int i = 0; i < waterMarkFilters.length; i++) {
             FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setTextId(textId[i]);
             waterMark.setOverlayId(overlayId[i],
                     new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
             waterMark.setWaterMarkId(overlayId[i]);
@@ -532,6 +540,12 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         }
     }
     public void addTimes(Context context) {
+        int[] textId = {
+                R.string.time_hourglass,
+                R.string.time_timestamp,
+                R.string.time_sunrise,
+                R.string.time_calendar
+        };
 
         int[] overlayId = {
                 R.drawable.icon_hourglass,
@@ -563,6 +577,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
         for (int i = 0; i < waterMarkFilters.length; i++) {
             FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setTextId(textId[i]);
             waterMark.setOverlayId(overlayId[i],
                     new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
             waterMark.setWaterMarkId(overlayId[i]);
@@ -571,6 +586,13 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         }
     }
     public void addWeather(Context context) {
+        int[] textId = {
+                R.string.weather_rain,
+                R.string.weather_snow,
+                R.string.weather_sun,
+                R.string.weather_artistic_sun
+        };
+
         int[] overlayId = {
                 R.drawable.icon_rain,
                 R.drawable.icon_snow,
@@ -592,6 +614,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
         for (int i = 0; i < waterMarkFilters.length; i++) {
             FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setTextId(textId[i]);
             waterMark.setOverlayId(overlayId[i],
                     new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
             waterMark.setWaterMarkId(overlayId[i]);
@@ -600,6 +623,13 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         }
     }
     public void addEmotions(Context context) {
+        int[] textId = {
+                R.string.emotion_party,
+                R.string.emotion_peace,
+                R.string.emotion_cry,
+                R.string.emotion_happy
+        };
+
         int[] overlayId = {
                 R.drawable.icon_party,
                 R.drawable.icon_peace,
@@ -623,6 +653,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
         for (int i = 0; i < waterMarkFilters.length; i++) {
             FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setTextId(textId[i]);
             waterMark.setOverlayId(overlayId[i],
                     new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
             switch (i) {
@@ -643,6 +674,13 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         }
     }
     public void addFoods(Context context) {
+        int[] textId = {
+                R.string.food_fork_knife,
+                R.string.food_tea_time,
+                R.string.food_cheers,
+                R.string.food_yum
+        };
+
         int[] overlayId = {
                 R.drawable.icon_fork_and_knife,
                 R.drawable.icon_tea_time,
@@ -665,6 +703,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
 
         for (int i = 0; i < waterMarkFilters.length; i++) {
             FilterWatermarkRepresentation waterMark = waterMarkFilters[i];
+            waterMark.setTextId(textId[i]);
             waterMark.setOverlayId(overlayId[i],
                     new ContextThemeWrapper(context, R.style.DefaultFillColor).getTheme());
             waterMark.setWaterMarkId(overlayId[i]);

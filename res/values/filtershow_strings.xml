@@ -417,4 +417,24 @@
     <string name="watermark_weather">Weather</string>
     <string name="watermark_emotions">Emotions</string>
     <string name="watermark_food">Food</string>
+    <string name="location_pin">LOCATION_PIN</string>
+    <string name="location_city">LOCATION_CITY</string>
+    <string name="location_hello">LOCATION_HELLO</string>
+    <string name="location_stamp">LOCATION_STAMP</string>
+    <string name="time_hourglass">TIME_HOURGLASS</string>
+    <string name="time_timestamp">TIME_TIMESTAMP</string>
+    <string name="time_sunrise">TIME_SUNRISE</string>
+    <string name="time_calendar">TIME_CALENDAR</string>
+    <string name="weather_rain">WEATHER_RAIN</string>
+    <string name="weather_snow">WEATHER_SNOW</string>
+    <string name="weather_sun">WEATHER_SUN</string>
+    <string name="weather_artistic_sun">WEATHER_ARTISTIC_SUN</string>
+    <string name="emotion_party">EMOTION_PARTY</string>
+    <string name="emotion_peace">EMOTION_PEACE</string>
+    <string name="emotion_cry">EMOTION_CRY</string>
+    <string name="emotion_happy">EMOTION_HAPPY</string>
+    <string name="food_fork_knife">FOOD_FORK_KNIFE</string>
+    <string name="food_tea_time">FOOD_TEA_TIME</string>
+    <string name="food_cheers">FOOD_CHEERS</string>
+    <string name="food_yum">FOOD_YUM</string>
 </resources>
