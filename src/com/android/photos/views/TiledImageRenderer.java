@@ -159,7 +159,7 @@ public class TiledImageRenderer {
     }
 
     public static int suggestedTileSize(Context context) {
-        return isHighResolution(context) ? 512 : 256;
+        return isHighResolution(context) ? 2048 : 1024;
     }
 
     private static boolean isHighResolution(Context context) {
