@@ -259,7 +259,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     private Menu mMenu;
     private DialogInterface mCurrentDialog = null;
     private PopupMenu mCurrentMenu = null;
-    private boolean mReleaseDualCamOnDestory = true;
+    private boolean mReleaseDualCam = false;
     private ImageButton imgComparison;
     private String mPopUpText, mCancel;
     RelativeLayout rlImageContainer;
@@ -279,7 +279,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case SaveWaterMark.MARK_SAVE_COMPLETE:
-                    completeSaveImage((Uri) msg.obj, true);
+                    completeSaveImage((Uri) msg.obj);
                     break;
                 default:
                     break;
@@ -325,8 +325,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                 if (requestId == mRequestId) {
                     String url = bundle.getString(ProcessingService.KEY_URL);
                     Uri saveUri = url == null ? null : Uri.parse(url);
-                    boolean releaseDualCam = bundle.getBoolean(ProcessingService.KEY_DUALCAM);
-                    completeSaveImage(saveUri, releaseDualCam);
+                    completeSaveImage(saveUri);
                 }
             } else if (Intent.ACTION_LOCALE_CHANGED.equals(action)) {
                 FiltersManager.reset();
@@ -1043,6 +1042,10 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         return false;
     }
 
+    public void setDualCameraLoaded(boolean loaded) {
+        mReleaseDualCam = loaded;
+    }
+
     private void fillEffects() {
         FiltersManager filtersManager = FiltersManager.getManager();
         ArrayList<FilterRepresentation> filtersRepresentations = filtersManager.getEffects();
@@ -1270,17 +1273,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mLoadBitmapTask = new LoadBitmapTask();
         mLoadBitmapTask.execute(uri);
 
-        if(DualCameraNativeEngine.getInstance().isLibLoaded()) {
-            mParseMpoTask = new ParseMpoDataTask();
-            mParseMpoTask.execute();
-        } else {
-            MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
-            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
-            if (currentPanel instanceof MainPanel) {
-                MainPanel mainPanel = (MainPanel) currentPanel;
-                mainPanel.updateDualCameraButton();
-            }
-        }
+        mParseMpoTask = new ParseMpoDataTask();
+        mParseMpoTask.execute();
 
         if(TruePortraitNativeEngine.getInstance().isLibLoaded()) {
             mLoadTruePortraitTask = new LoadTruePortraitTask();
@@ -1787,8 +1781,11 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                 MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
             } else {
                 MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_LOADING);
-                mLoadMpoTask = new LoadMpoDataTask();
-                mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
+                if (DualCameraNativeEngine.getInstance().isLibLoaded()) {
+                    mLoadMpoTask = new LoadMpoDataTask();
+                    mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
+                } else
+                    MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
             }
             Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
             if (currentPanel instanceof MainPanel) {
@@ -2032,7 +2029,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
         unregisterReceiver(mHandlerReceiver);
         doUnbindService();
-        if (mReleaseDualCamOnDestory && DualCameraNativeEngine.getInstance().isLibLoaded())
+        if (mReleaseDualCam && DualCameraNativeEngine.getInstance().isLibLoaded())
             DualCameraNativeEngine.getInstance().releaseDepthMap();
         super.onDestroy();
     }
@@ -2073,7 +2070,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
     }
 
-    public void completeSaveImage(Uri saveUri, boolean releaseDualCam) {
+    public void completeSaveImage(Uri saveUri) {
         if (mSharingImage && mSharedOutputFile != null) {
             // Image saved, we unblock the content provider
             Uri uri = Uri.withAppendedPath(SharedImageProvider.CONTENT_URI,
@@ -2083,8 +2080,10 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             getContentResolver().insert(uri, values);
         }
         setResult(RESULT_OK, new Intent().setData(saveUri));
-        if (releaseDualCam && DualCameraNativeEngine.getInstance().isLibLoaded())
+        if (mReleaseDualCam && DualCameraNativeEngine.getInstance().isLibLoaded()) {
             DualCameraNativeEngine.getInstance().releaseDepthMap();
+            mReleaseDualCam = false;
+        }
         hideSavingProgress();
         finish();
     }
@@ -2165,8 +2164,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
             MakeupEngine.getMakeupObj();
         }
-
-        DualCameraNativeEngine.createInstance();
     }
 
     @Override
@@ -2683,7 +2680,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             File saveDir = SaveImage.getFinalSaveDirectory(this, mSelectedImageUri);
             int bucketId = GalleryUtils.getBucketId(saveDir.getPath());
             String albumName = LocalAlbum.getLocalizedName(getResources(), bucketId, null);
-            mReleaseDualCamOnDestory = false;
             showSavingProgress(albumName);
             if (mWaterMarkView == null) {
                 mImageShow.saveImage(this, null);
@@ -2705,7 +2701,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (mLoadBitmapTask != null) {
             mLoadBitmapTask.cancel(false);
         }
-        mReleaseDualCamOnDestory = true;
         finish();
     }
 

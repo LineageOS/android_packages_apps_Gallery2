@@ -196,9 +196,6 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         geometryButton = (ImageButton) bottomPanel.findViewById(R.id.geometryButton);
         filtersButton = (ImageButton) bottomPanel.findViewById(R.id.colorsButton);
         dualCamButton = (ImageButton) bottomPanel.findViewById(R.id.dualCamButton);
-        if(!DualCameraNativeEngine.getInstance().isLibLoaded()) {
-            dualCamButton.setVisibility(View.GONE);
-        }
 
         if (SimpleMakeupImageFilter.HAS_TS_MAKEUP) {
             makeupButton = (ImageButton) bottomPanel.findViewById(R.id.makeupButton);
@@ -754,10 +751,12 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
 
     public void updateDualCameraButton() {
         if(dualCamButton != null) {
+            FilterShowActivity activity = (FilterShowActivity) getActivity();
             DdmStatus status = MasterImage.getImage().getDepthMapLoadingStatus();
             boolean enable = (status == DdmStatus.DDM_LOADING ||
                                status == DdmStatus.DDM_LOADED);
             dualCamButton.setVisibility(enable?View.VISIBLE:View.GONE);
+            activity.setDualCameraLoaded(enable);
         }
     }
 }

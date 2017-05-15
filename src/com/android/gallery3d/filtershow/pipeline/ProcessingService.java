@@ -60,7 +60,6 @@ public class ProcessingService extends Service {
     public static final String SAVE_IMAGE_COMPLETE_ACTION = "save_image_complete_action";
     public static final String KEY_URL = "key_url";
     public static final String KEY_REQUEST_ID = "request_id";
-    public static final String KEY_DUALCAM = "dualCam";
 
     private ProcessingTaskController mProcessingTaskController;
     private ImageSavingTask mImageSavingTask;
@@ -287,7 +286,6 @@ public class ProcessingService extends Service {
             Bundle bundle = new Bundle();
             bundle.putString(KEY_URL, result == null ? null : result.toString());
             bundle.putLong(KEY_REQUEST_ID, requestId);
-            bundle.putBoolean(KEY_DUALCAM, releaseDualCam);
             broadcastState(SAVE_IMAGE_COMPLETE_ACTION, bundle);
         }
     }
