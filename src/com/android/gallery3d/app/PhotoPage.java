@@ -632,9 +632,13 @@ public abstract class PhotoPage extends ActivityState implements
 
     @Override
     protected void onSaveState(Bundle outState) {
-        outState.putInt(KEY_INDEX_HINT,mCurrentIndex);
-        outState.putString(KEY_CURRENT_PHOTO_HINT, mCurrentPhoto.getFilePath());
-        super.onSaveState(outState);
+        if (mCurrentPhoto != null) {
+            outState.putInt(KEY_INDEX_HINT,mCurrentIndex);
+            outState.putString(KEY_CURRENT_PHOTO_HINT, mCurrentPhoto.getFilePath());
+            super.onSaveState(outState);
+        } else {
+            onBackPressed();
+        }
     }
 
     @Override
