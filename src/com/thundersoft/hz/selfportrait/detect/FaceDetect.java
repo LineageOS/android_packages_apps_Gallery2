@@ -77,7 +77,13 @@ public class FaceDetect {
             return null;
         }
 
-        int count = native_detect(mHandle, bmp);
+        int count = 0;
+        try {
+            count = native_detect(mHandle, bmp);
+        } catch (UnsatisfiedLinkError e) {
+            e.printStackTrace();
+            Log.e(TAG, "could not link native handle for ts_detected_face_jni library!");
+        }
         if (count < 1) {
             return null;
         }
