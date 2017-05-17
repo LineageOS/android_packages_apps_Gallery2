@@ -189,7 +189,12 @@ public abstract class UploadedTexture extends BasicTexture {
             if (mThrottled && ++sUploadedCount > UPLOAD_LIMIT) {
                 return;
             }
-            uploadToCanvas(canvas);
+            try {
+                uploadToCanvas(canvas);
+            } catch (RuntimeException e) {
+                mContentValid = true;
+                e.printStackTrace();
+            }
         } else if (!mContentValid) {
             Bitmap bitmap = getBitmap();
             int format = GLUtils.getInternalFormat(bitmap);
