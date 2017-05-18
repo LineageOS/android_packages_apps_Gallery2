@@ -1521,6 +1521,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     private void clearWaterMark() {
         if (mWaterMarkView != null) {
+            mSaveWaterMark.clearExifData();
             rlImageContainer.removeView(mWaterMarkView);
             mWaterMarkView = null;
             hasWaterMark = false;
