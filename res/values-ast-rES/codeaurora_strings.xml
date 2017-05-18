@@ -50,6 +50,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="apn">APN preferida</string>
   <string name="rtp_min_port">Puertu mínimu</string>
   <string name="rtp_max_port">Puertu máximu</string>
+  <string name="setting">Axustes</string>
+  <string name="server_timeout_message">"¿Reconeutar col sirvidor pa reproducir el videu?"</string>
+  <string name="media_controller_playing">Reproduciendo</string>
   <string name="media_controller_connecting">Coneutando\u2026</string>
   <string name="bookmark_location">"Allugamientu"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
@@ -66,10 +69,22 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- The label for the audio effects menu. -->
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <!-- Toast message for share items -->
+  <string name="share_dialogue_title">Compartir per</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
+  <string name="no_faces">Ensin cares</string>
   <!-- The tips of trimming video -->
   <!-- Timeline screen title -->
   <!-- Albums screen title -->
+  <string name="albums_title">Álbumes</string>
   <!-- Videos screen title -->
+  <string name="videos_title">Vídeos</string>
+  <string name="tvEmptyAlbum">Nun s\'alcontraron semeyes</string>
+  <string name="tvEmptyVideos">Nun s\'alcontraron vídeos</string>
+  <string name="truescanner_normal">Normal</string>
+  <string name="truescanner_white">Pizarra</string>
+  <string name="seestraight_process_fail">Nun pudo procesase la imaxe.</string>
+  <string name="trim_video_exit_title">¿Escartar cambeos?</string>
+  <string name="trim_video_exit_msg">¿Escartar los cambeos fechos nesti videu?</string>
+  <string name="trim_video_exit_discard">ESCARTAR</string>
 </resources>

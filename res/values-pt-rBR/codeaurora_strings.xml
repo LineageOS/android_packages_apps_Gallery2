@@ -108,13 +108,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="action_viewtype_list">Visualização em lista</string>
   <string name="tvEmptyAlbum">Nenhuma foto encontrada</string>
   <string name="tvEmptyVideos">Nenhum vídeo encontrado</string>
+  <string name="text_makeup_whiten">Branquear</string>
   <string name="text_makeup_Soften">Suavizar</string>
   <string name="text_makeup_trimface">Melhorar rosto</string>
   <string name="text_makeup_bigeye">Olhos grandes</string>
   <string name="truescanner_normal">Normal</string>
   <string name="truescanner_white">Quadro branco</string>
   <string name="truescanner">TrueScanner</string>
+  <string name="truescanner_remove_glare">Remover brilho</string>
   <string name="hazebuster_acts">Ajuste de neblina</string>
+  <string name="seestraight_acts">Ver em linha reta</string>
   <string name="seestraight_input_image_is_small">A imagem é pequena demais para processar.</string>
   <string name="seestraight_process_fail">Não foi possível processar a imagem.</string>
   <string name="trim_video_exit_title">Descartar as alterações?</string>

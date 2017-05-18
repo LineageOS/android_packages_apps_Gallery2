@@ -99,7 +99,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="can_not_trim">Chỉ tập tin mp4 và 3gp có thể cắt được</string>
   <string name="drm_license_info">Thông tin giấy phép DRM</string>
   <!-- Timeline screen title -->
-  <string name="timeline_title">Mốc thời gian</string>
+  <string name="timeline_title">Dòng thời gian</string>
   <!-- Albums screen title -->
   <string name="albums_title">Album</string>
   <!-- Videos screen title -->

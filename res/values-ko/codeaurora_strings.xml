@@ -116,6 +116,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="truescanner">TrueScanner</string>
   <string name="truescanner_remove_glare">빛반사 제거</string>
   <string name="hazebuster_acts">안개 제거</string>
+  <string name="seestraight_acts">See Straight</string>
   <string name="seestraight_input_image_is_small">편집하기에는 이미지가 너무 작습니다.</string>
   <string name="seestraight_process_fail">이미지를 편집할 수 없습니다.</string>
   <string name="trim_video_exit_title">변경 사항을 취소하시겠습니까?</string>

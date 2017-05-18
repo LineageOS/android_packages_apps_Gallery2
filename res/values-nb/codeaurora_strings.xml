@@ -111,9 +111,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="text_makeup_whiten">Blek</string>
   <string name="text_makeup_Soften">Mykgjør</string>
   <string name="text_makeup_trimface">Trimfjes</string>
+  <string name="text_makeup_bigeye">Storøye</string>
   <string name="truescanner_normal">Normal</string>
+  <string name="truescanner_white">Tavle</string>
   <string name="truescanner">TrueScanner</string>
   <string name="truescanner_remove_glare">Fjern gjenskinn</string>
+  <string name="hazebuster_acts">Tåkefjerner</string>
   <string name="seestraight_acts">Se rett</string>
   <string name="seestraight_input_image_is_small">Angitt bilde er for lite til å behandles.</string>
   <string name="seestraight_process_fail">Kunne ikke behandle bilde.</string>
