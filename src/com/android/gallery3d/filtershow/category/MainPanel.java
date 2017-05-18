@@ -745,7 +745,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
 
     public void showDualCameraButton(boolean visible) {
         if (dualCamButton != null) {
-            dualCamButton.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+            dualCamButton.setVisibility(visible ? View.VISIBLE : View.GONE);
         }
     }
 }
