@@ -56,7 +56,6 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
     private String textHint = "HELLO";
     private PositionInfo positionInfo;
     private Context mContext;
-    private WaterMarkView currentMarkView;
 
     //for main panel
     public FilterWatermarkRepresentation(Context context, String name, int category) {
@@ -134,17 +133,15 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
     }
 
     public WaterMarkView getWaterMarkView(String textHint) {
-        if (currentMarkView == null) {
-            currentMarkView = new WaterMarkView(mContext,
-                    mContext.getResources().getDrawable(getWaterMarkId(), getCurrentTheme()), textHint);
-            if (positionInfo != null) {
-                currentMarkView.setTextPosition(positionInfo.marginLeft, positionInfo.marginTop,
-                        positionInfo.marginRight, positionInfo.marginBottom, positionInfo.gravity, positionInfo.isDip);
-            } else {
-                currentMarkView.setTextVisibility(false);
-            }
-            currentMarkView.setImageAlpha(markAlpha >= 0 ? markAlpha : 128);
+        WaterMarkView currentMarkView = new WaterMarkView(mContext,
+                mContext.getResources().getDrawable(getWaterMarkId(), getCurrentTheme()), textHint);
+        if (positionInfo != null) {
+            currentMarkView.setTextPosition(positionInfo.marginLeft, positionInfo.marginTop,
+                    positionInfo.marginRight, positionInfo.marginBottom, positionInfo.gravity, positionInfo.isDip);
+        } else {
+            currentMarkView.setTextVisibility(false);
         }
+        currentMarkView.setImageAlpha(markAlpha >= 0 ? markAlpha : 128);
         return currentMarkView;
     }
 
@@ -162,10 +159,6 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
 
     public String getTextHint() {
         return textHint;
-    }
-
-    public void reset() {
-        currentMarkView = null;
     }
 
     protected class PositionInfo {

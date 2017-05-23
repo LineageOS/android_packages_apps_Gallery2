@@ -52,6 +52,7 @@ public class CategoryPanelLevelTwo extends CategoryPanel {
     private ImageButton mApplyButton;
     private TextView mEditName;
     private ArrayList<FilterRepresentation> mFiltersRepresentations;
+    private static final String DEFAULT_NAME = "LEVEL_TWO";
 
     public CategoryPanelLevelTwo(int adapter) {
         setAdapter(adapter);
@@ -131,8 +132,12 @@ public class CategoryPanelLevelTwo extends CategoryPanel {
             }
         });
         mEditName = (TextView) main.findViewById(R.id.editor_name);
-        mEditName.setText(mFiltersRepresentations.get(
-                mCurrentAdapter % FilterWatermarkRepresentation.LOCATION).getTextId());
+        int adapterId = mCurrentAdapter % FilterWatermarkRepresentation.LOCATION;
+        if (adapterId >= 0 && adapterId < mFiltersRepresentations.size()) {
+            mEditName.setText(mFiltersRepresentations.get(adapterId).getTextId());
+        } else {
+            mEditName.setText(DEFAULT_NAME);
+        }
         View panelView = main.findViewById(R.id.listItems);
         if (panelView instanceof CategoryTrack) {
             CategoryTrack panel = (CategoryTrack) panelView;

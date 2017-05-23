@@ -460,6 +460,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
         if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK_CATEGORY) {
             loadWaterMarkPanel((FilterWatermarkRepresentation) representation);
+            return;
         }
 
         if (currentId == ImageOnlyEditor.ID) {
@@ -1513,7 +1514,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (mWaterMarkView != null) {
             rlImageContainer.removeView(mWaterMarkView);
             hasWaterMark = false;
-            watermarkRepresentation.reset();
         }
         DisplayMetrics dm = getResources().getDisplayMetrics();
         RelativeLayout.LayoutParams params =

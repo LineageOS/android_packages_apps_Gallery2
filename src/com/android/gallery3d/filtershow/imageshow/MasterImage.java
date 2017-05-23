@@ -118,7 +118,7 @@ public class MasterImage implements RenderingRequestCaller {
     private FilterShowActivity mActivity = null;
 
     private Vector<ImageShow> mObservers = new Vector<ImageShow>();
-    private Vector<WaterMarkView> mWaterMarks = new Vector<WaterMarkView>();
+    private WaterMarkView mWaterMark = null;
     private FilterRepresentation mCurrentFilterRepresentation;
 
     private float mScaleFactor = 1.0f;
@@ -341,14 +341,11 @@ public class MasterImage implements RenderingRequestCaller {
     }
 
     public void addWaterMark(WaterMarkView waterMarkView) {
-        if (mWaterMarks.contains(waterMarkView)) {
-            return;
-        }
-        mWaterMarks.add(waterMarkView);
+        mWaterMark = waterMarkView;
     }
 
-    public void removeWaterMark(WaterMarkView waterMarkView) {
-        mWaterMarks.remove(waterMarkView);
+    public void removeWaterMark() {
+        mWaterMark = null;
     }
 
     public void setActivity(FilterShowActivity activity) {
@@ -630,8 +627,8 @@ public class MasterImage implements RenderingRequestCaller {
     }
 
     public void notifyWaterMarks() {
-        for (WaterMarkView waterMarkView : mWaterMarks) {
-            waterMarkView.update();
+        if (mWaterMark != null) {
+            mWaterMark.update();
         }
     }
     public void resetGeometryImages(boolean force) {

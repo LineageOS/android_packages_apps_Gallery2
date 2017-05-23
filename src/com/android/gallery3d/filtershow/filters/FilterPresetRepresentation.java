@@ -43,7 +43,6 @@ public class FilterPresetRepresentation extends FilterRepresentation {
         mBitmapResource = bitmapResource;
         mNameResource = nameResource;
         setFilterType(FilterRepresentation.TYPE_PRESETFILTER);
-        setTextId(nameResource);
         setEditorId(ImageOnlyEditor.ID);
         setShowParameterValue(false);
         setSupportsPartialRendering(true);

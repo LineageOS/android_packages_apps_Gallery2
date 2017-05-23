@@ -61,6 +61,7 @@ public class FilterRepresentation {
 
     public FilterRepresentation(String name) {
         mName = name;
+        mSerializationName = name.toUpperCase();
     }
 
     public FilterRepresentation copy(){
