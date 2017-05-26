@@ -59,6 +59,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.Locale;
 
+import java.lang.ref.WeakReference;
+
 public class PhotoDataAdapter implements PhotoPage.Model {
     @SuppressWarnings("unused")
     private static final String TAG = "PhotoDataAdapter";
@@ -166,7 +168,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     private boolean mNeedFullImage;
     private int mFocusHintDirection = FOCUS_HINT_NEXT;
     private Path mFocusHintPath = null;
-    private AbstractGalleryActivity mActivity;
+    private WeakReference<AbstractGalleryActivity> mActivity;
 
     // If Bundle is from widget, it's true, otherwise it's false.
     private boolean mIsFromWidget = false;
@@ -188,7 +190,7 @@ public class PhotoDataAdapter implements PhotoPage.Model {
     public PhotoDataAdapter(AbstractGalleryActivity activity, PhotoView view,
             MediaSet mediaSet, Path itemPath, int indexHint, int cameraIndex,
             boolean isPanorama, boolean isStaticCamera) {
-        mActivity = activity;
+        mActivity = new WeakReference<AbstractGalleryActivity>(activity);
         mSource = Utils.checkNotNull(mediaSet);
         mPhotoView = Utils.checkNotNull(view);
         mItemPath = Utils.checkNotNull(itemPath);
@@ -820,7 +822,11 @@ public class PhotoDataAdapter implements PhotoPage.Model {
             if (isTemporaryItem(mItem)) {
                 return null;
             }
-            return new GifRequest(mItem.getContentUri(), mActivity).run(jc);
+            if(mActivity.get() != null){
+                return new GifRequest(mItem.getContentUri(), mActivity.get()).run(jc);
+            }else{
+                return null;
+            }
         }
     }
 

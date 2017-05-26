@@ -17,13 +17,9 @@
 package com.android.gallery3d.filtershow;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 
@@ -43,7 +39,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Point;
@@ -55,7 +50,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.provider.Settings;
 import android.os.Message;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -65,17 +59,13 @@ import android.support.v4.print.PrintHelper;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.ContextMenu;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager;
@@ -85,20 +75,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.ShareActionProvider;
 import android.widget.ShareActionProvider.OnShareTargetSelectedListener;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
-import org.json.JSONObject;
 
 import com.android.gallery3d.app.PhotoPage;
-import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.data.LocalAlbum;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.category.Action;
@@ -111,7 +97,6 @@ import com.android.gallery3d.filtershow.category.StraightenPanel;
 import com.android.gallery3d.filtershow.category.SwipableView;
 import com.android.gallery3d.filtershow.category.TruePortraitMaskEditorPanel;
 import com.android.gallery3d.filtershow.category.TrueScannerPanel;
-import com.android.gallery3d.filtershow.data.FilterPresetDBHelper;
 import com.android.gallery3d.filtershow.data.FilterPresetSource;
 import com.android.gallery3d.filtershow.data.FilterPresetSource.SaveOption;
 import com.android.gallery3d.filtershow.category.WaterMarkView;
@@ -131,8 +116,6 @@ import com.android.gallery3d.filtershow.editors.SeeStraightEditor;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 import com.android.gallery3d.filtershow.filters.FilterDualCamBasicRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterDualCamFusionRepresentation;
-import com.android.gallery3d.filtershow.filters.FilterDualCamSketchRepresentation;
-import com.android.gallery3d.filtershow.filters.FilterFxRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterMirrorRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
@@ -158,8 +141,7 @@ import com.android.gallery3d.filtershow.presets.PresetManagementDialog;
 import com.android.gallery3d.filtershow.presets.UserPresetsAdapter;
 import com.android.gallery3d.filtershow.provider.SharedImageProvider;
 import com.android.gallery3d.filtershow.state.StateAdapter;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine.DdmStatus;
+import com.android.gallery3d.filtershow.tools.DualCameraEffect;
 import com.android.gallery3d.filtershow.tools.FilterGeneratorNativeEngine;
 import com.android.gallery3d.filtershow.tools.SaveImage;
 import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine;
@@ -167,15 +149,11 @@ import com.android.gallery3d.filtershow.tools.XmpPresets;
 import com.android.gallery3d.filtershow.tools.XmpPresets.XMresults;
 import com.android.gallery3d.filtershow.ui.ExportDialog;
 import com.android.gallery3d.filtershow.ui.FramedTextButton;
-import com.android.gallery3d.mpo.MpoParser;
-import com.android.gallery3d.ui.SlotView;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.photos.data.GalleryBitmapPool;
 import com.thundersoft.hz.selfportrait.detect.FaceDetect;
 import com.thundersoft.hz.selfportrait.detect.FaceInfo;
 import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;
-
-import static android.app.Activity.RESULT_OK;
 
 public class FilterShowActivity extends FragmentActivity implements OnItemClickListener,
 OnShareTargetSelectedListener, DialogInterface.OnShowListener,
@@ -218,8 +196,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     private LoadBitmapTask mLoadBitmapTask;
     private LoadHighresBitmapTask mHiResBitmapTask;
-    private ParseMpoDataTask mParseMpoTask;
-    private LoadMpoDataTask mLoadMpoTask;
+    private ParseDepthMapTask mParseDepthMapTask;
     private LoadTruePortraitTask mLoadTruePortraitTask;
 
     private Uri mOriginalImageUri = null;
@@ -1270,21 +1247,24 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mLoadBitmapTask = new LoadBitmapTask();
         mLoadBitmapTask.execute(uri);
 
-        if(DualCameraNativeEngine.getInstance().isLibLoaded()) {
-            mParseMpoTask = new ParseMpoDataTask();
-            mParseMpoTask.execute();
+        if (DualCameraEffect.isSupported()) {
+            mParseDepthMapTask = new ParseDepthMapTask();
+            mParseDepthMapTask.execute(uri);
         } else {
-            MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
-            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
-            if (currentPanel instanceof MainPanel) {
-                MainPanel mainPanel = (MainPanel) currentPanel;
-                mainPanel.updateDualCameraButton();
-            }
+            showDualCameraButton(false);
         }
 
         if(TruePortraitNativeEngine.getInstance().isLibLoaded()) {
             mLoadTruePortraitTask = new LoadTruePortraitTask();
             mLoadTruePortraitTask.execute(uri);
+        }
+    }
+
+    private void showDualCameraButton(boolean visible) {
+        Fragment currentPanel = getSupportFragmentManager()
+                .findFragmentByTag(MainPanel.FRAGMENT_TAG);
+        if (currentPanel instanceof MainPanel) {
+            ((MainPanel) currentPanel).showDualCameraButton(visible);
         }
     }
 
@@ -1446,11 +1426,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             removeSeekBarPanel();
         }
 
-        if (representation.getFilterType() == FilterRepresentation.TYPE_DUALCAM &&
-                MasterImage.getImage().getDepthMapLoadingStatus() == DdmStatus.DDM_FAILED) {
-            Toast.makeText(this, getString(R.string.dualcam_filter_not_supported), Toast.LENGTH_SHORT).show();
-            return;
-        }
         if (representation instanceof FilterRotateRepresentation) {
             FilterRotateRepresentation r = (FilterRotateRepresentation) representation;
             r.rotateCW();
@@ -1486,9 +1461,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             }
             if (representation instanceof FilterDualCamFusionRepresentation) {
                 ((FilterDualCamFusionRepresentation)representation).setPoint((int)mTmpPoint[0],(int)mTmpPoint[1]);
-            }
-            if (representation instanceof FilterDualCamSketchRepresentation) {
-                ((FilterDualCamSketchRepresentation)representation).setPoint((int)mTmpPoint[0],(int)mTmpPoint[1]);
             }
         }
         if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK) {
@@ -1549,6 +1521,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     private void clearWaterMark() {
         if (mWaterMarkView != null) {
+            mSaveWaterMark.clearExifData();
             rlImageContainer.removeView(mWaterMarkView);
             mWaterMarkView = null;
             hasWaterMark = false;
@@ -1720,7 +1693,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         @Override
         protected Boolean doInBackground(Void... params) {
             MasterImage master = MasterImage.getImage();
-            Rect originalBounds = master.getOriginalBounds();
             if (master.supportsHighRes()) {
                 int highresPreviewSize = Math.min(MasterImage.MAX_BITMAP_DIM, getScreenImageSize());
                 Log.d(LOGTAG, "FilterShowActivity.LoadHighresBitmapTask.doInBackground(): after, highresPreviewSize is " + highresPreviewSize);
@@ -1762,63 +1734,21 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
     }
 
-    private class ParseMpoDataTask extends AsyncTask<Void, Void, Void> {
-        private byte[] mPrimaryImgData = null;
-        private byte[] mAuxImgData = null;
-
+    private class ParseDepthMapTask extends AsyncTask<Uri, Void, Boolean> {
         @Override
-        protected void onPreExecute() {
-            MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_PARSING);
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            MpoParser parser = MpoParser.parse(FilterShowActivity.this, MasterImage.getImage().getUri());
-            mPrimaryImgData = parser.readImgData(true);
-            mAuxImgData = parser.readImgData(false);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            if(mPrimaryImgData == null ||
-                    mAuxImgData == null) {
-                // parse failed
-                MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_FAILED);
-            } else {
-                MasterImage.getImage().setDepthMapLoadingStatus(DdmStatus.DDM_LOADING);
-                mLoadMpoTask = new LoadMpoDataTask();
-                mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
-            }
-            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
-            if (currentPanel instanceof MainPanel) {
-                MainPanel mainPanel = (MainPanel) currentPanel;
-                mainPanel.updateDualCameraButton();
-            }
-        }
-    }
-
-    private class LoadMpoDataTask extends AsyncTask<byte[], Void, Boolean> {
-
-        @Override
-        protected Boolean doInBackground(byte[]... params) {
-            return MasterImage.getImage().loadMpo(params[0], params[1]);
+        protected Boolean doInBackground(Uri... params) {
+            return MasterImage.getImage().parseDepthMap(FilterShowActivity.this, params[0]);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
-            MasterImage.getImage().setDepthMapLoadingStatus(result?DdmStatus.DDM_LOADED:DdmStatus.DDM_FAILED);
-            Fragment currentPanel = getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
-            if (currentPanel instanceof MainPanel) {
-                MainPanel mainPanel = (MainPanel) currentPanel;
-                mainPanel.updateDualCameraButton();
-            }
+            showDualCameraButton(result);
             stopLoadingIndicator();
         }
     }
 
     public boolean isLoadingVisible() {
-        if(mLoadingDialog != null) {
+        if (mLoadingDialog != null) {
             return mLoadingDialog.isShowing();
         }
 
@@ -1845,7 +1775,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     }
 
     public void stopLoadingIndicator() {
-        if(mLoadingDialog != null && mLoadingDialog.isShowing()) {
+        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
             mLoadingDialog.dismiss();
         }
     }
@@ -1946,7 +1876,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             final View imageShow = findViewById(R.id.imageShow);
             imageShow.setVisibility(View.VISIBLE);
 
-
             Bitmap largeBitmap = MasterImage.getImage().getOriginalBitmapLarge();
             mBoundService.setOriginalBitmap(largeBitmap);
 
@@ -2014,12 +1943,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             mHiResBitmapTask.cancel(false);
         }
 
-        if(mParseMpoTask != null) {
-            mParseMpoTask.cancel(false);
-        }
-
-        if(mLoadMpoTask != null) {
-            mLoadMpoTask.cancel(false);
+        if(mParseDepthMapTask != null) {
+            mParseDepthMapTask.cancel(false);
         }
 
         if(mLoadTruePortraitTask != null) {
@@ -2036,8 +1961,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
         unregisterReceiver(mHandlerReceiver);
         doUnbindService();
-        if (mReleaseDualCamOnDestory && DualCameraNativeEngine.getInstance().isLibLoaded())
-            DualCameraNativeEngine.getInstance().releaseDepthMap();
+        if (mReleaseDualCamOnDestory && DualCameraEffect.isSupported())
+            DualCameraEffect.getInstance().release();
         super.onDestroy();
     }
 
@@ -2087,8 +2012,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             getContentResolver().insert(uri, values);
         }
         setResult(RESULT_OK, new Intent().setData(saveUri));
-        if (releaseDualCam && DualCameraNativeEngine.getInstance().isLibLoaded())
-            DualCameraNativeEngine.getInstance().releaseDepthMap();
+        if (releaseDualCam && DualCameraEffect.isSupported())
+            DualCameraEffect.getInstance().release();
         hideSavingProgress();
         finish();
     }
@@ -2170,7 +2095,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             MakeupEngine.getMakeupObj();
         }
 
-        DualCameraNativeEngine.createInstance();
+        DualCameraEffect.getInstance();
     }
 
     @Override
@@ -2442,7 +2367,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             mCategoryFiltersAdapter.removeTinyPlanet();
         }
         stopLoadingIndicator();
-
     }
 
     public void setupMasterImage() {

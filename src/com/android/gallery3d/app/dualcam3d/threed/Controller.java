@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -30,7 +30,6 @@
 package com.android.gallery3d.app.dualcam3d.threed;
 
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
@@ -38,7 +37,6 @@ import com.android.gallery3d.app.dualcam3d.GLView;
 import com.android.gallery3d.app.dualcam3d.gl.Renderer;
 
 import org.codeaurora.gallery.R;
-
 
 public class Controller implements Gyro.Listener {
     private static final String TAG = "Controller";
@@ -52,24 +50,21 @@ public class Controller implements Gyro.Listener {
     public Controller(GLView glView, LinearLayout modeView) {
         mGLView = glView;
         mModeView = modeView;
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int id = v.getId();
-                switch (id) {
-                    case R.id.mode_gyro:
-                        startGyro();
-                        break;
-                    case R.id.mode_auto:
-                        startAuto();
-                        break;
-                    case R.id.mode_touch:
-                        stop(false);
-                        break;
-                    case R.id.three_dimensional:
-                        start();
-                        break;
-                }
+        View.OnClickListener listener = v -> {
+            int id = v.getId();
+            switch (id) {
+                case R.id.mode_gyro:
+                    startGyro();
+                    break;
+                case R.id.mode_auto:
+                    startAuto();
+                    break;
+                case R.id.mode_touch:
+                    stop();
+                    break;
+                case R.id.three_dimensional:
+                    start();
+                    break;
             }
         };
         for (int i = modeView.getChildCount() - 1; i >= 0; --i) {
@@ -79,7 +74,7 @@ public class Controller implements Gyro.Listener {
     }
 
     private boolean startGyro() {
-        stop(false);
+        stop();
         if (mGyro == null) {
             mGyro = new Gyro(mGLView.getContext());
             if (mGyro.start()) {
@@ -94,7 +89,7 @@ public class Controller implements Gyro.Listener {
     }
 
     private void startAuto() {
-        stop(false);
+        stop();
         if (mAuto == null) {
             mAuto = new Auto();
             mAuto.start(mGLView);
@@ -105,10 +100,9 @@ public class Controller implements Gyro.Listener {
         if (!startGyro()) {
             startAuto();
         }
-//		mModeView.setVisibility(View.VISIBLE);
     }
 
-    public void stop(boolean hide) {
+    public void stop() {
         if (mGyro != null) {
             mGyro.stop();
             mGyro = null;
@@ -117,9 +111,6 @@ public class Controller implements Gyro.Listener {
             mAuto.stop();
             mAuto = null;
         }
-//		if (hide) {
-//			mModeView.setVisibility(View.INVISIBLE);
-//		}
     }
 
     @Override
@@ -128,7 +119,7 @@ public class Controller implements Gyro.Listener {
     }
 
     public void onMove(float deltaX, float deltaY) {
-        stop(false);
+        stop();
         mGLView.setOffsetDelta(deltaX * ANGLE_PER_PIXEL, deltaY * ANGLE_PER_PIXEL);
     }
 
@@ -138,29 +129,26 @@ public class Controller implements Gyro.Listener {
 
         public void start(final GLView glView) {
             mStop = false;
-            mThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    float x = 0, y = 0, speed = 0.003f, angle = 0.87f;
-                    double deltaX = angle * speed;
-                    double deltaY = Math.sqrt(speed * speed - deltaX * deltaX);
+            mThread = new Thread(() -> {
+                float x = 0, y = 0, speed = 0.003f, angle = 0.87f;
+                double deltaX = angle * speed;
+                double deltaY = Math.sqrt(speed * speed - deltaX * deltaX);
 
-                    while (!mStop) {
-                        x += deltaX;
-                        y += deltaY;
-                        glView.setOffset(x, y);
+                while (!mStop) {
+                    x += deltaX;
+                    y += deltaY;
+                    glView.setOffset(x, y);
 
-                        if (x >= Renderer.THETA_MAX || x <= -Renderer.THETA_MAX) {
-                            deltaX = -deltaX;
-                        }
-                        if (y >= Renderer.THETA_MAX || y <= -Renderer.THETA_MAX) {
-                            deltaY = -deltaY;
-                        }
-                        try {
-                            Thread.sleep(15);
-                        } catch (InterruptedException e) {
-                            // ignore
-                        }
+                    if (x >= Renderer.THETA_MAX || x <= -Renderer.THETA_MAX) {
+                        deltaX = -deltaX;
+                    }
+                    if (y >= Renderer.THETA_MAX || y <= -Renderer.THETA_MAX) {
+                        deltaY = -deltaY;
+                    }
+                    try {
+                        Thread.sleep(15);
+                    } catch (InterruptedException e) {
+                        // ignore
                     }
                 }
             });

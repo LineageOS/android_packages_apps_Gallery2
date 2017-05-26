@@ -68,8 +68,7 @@ import com.android.gallery3d.data.SnailItem;
 import com.android.gallery3d.data.SnailSource;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
-import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
-import com.android.gallery3d.mpo.MpoParser;
+import com.android.gallery3d.filtershow.tools.DualCameraEffect;
 import com.android.gallery3d.ui.DetailsHelper;
 import com.android.gallery3d.ui.DetailsHelper.CloseListener;
 import com.android.gallery3d.ui.DetailsHelper.DetailsSource;
@@ -79,6 +78,7 @@ import com.android.gallery3d.ui.MenuExecutor;
 import com.android.gallery3d.ui.PhotoView;
 import com.android.gallery3d.ui.SelectionManager;
 import com.android.gallery3d.ui.SynchronizedHandler;
+import com.android.gallery3d.util.GDepth;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.UsageStatistics;
 
@@ -217,8 +217,7 @@ public abstract class PhotoPage extends ActivityState implements
 
     private ThreeDButton m3DButton;
     private boolean bShow3DButton;
-    private LoadMpoDataTask mLoadMpoTask = new LoadMpoDataTask();;
-    private ParseMpoDataTask mParseMpoDateTask = new ParseMpoDataTask();
+    private ParseGDepthTask mParseGDepthTask;
 
     private final PanoramaSupportCallback mUpdatePanoramaMenuItemsCallback = new PanoramaSupportCallback() {
         @Override
@@ -632,9 +631,13 @@ public abstract class PhotoPage extends ActivityState implements
 
     @Override
     protected void onSaveState(Bundle outState) {
-        outState.putInt(KEY_INDEX_HINT,mCurrentIndex);
-        outState.putString(KEY_CURRENT_PHOTO_HINT, mCurrentPhoto.getFilePath());
-        super.onSaveState(outState);
+        if (mCurrentPhoto != null) {
+            outState.putInt(KEY_INDEX_HINT,mCurrentIndex);
+            outState.putString(KEY_CURRENT_PHOTO_HINT, mCurrentPhoto.getFilePath());
+            super.onSaveState(outState);
+        } else {
+            onBackPressed();
+        }
     }
 
     @Override
@@ -870,7 +873,7 @@ public abstract class PhotoPage extends ActivityState implements
 
         updateMenuOperations();
         refreshBottomControlsWhenReady();
-        parseMpoData();
+        parseGDepth();
         if (mShowDetails) {
             mDetailsHelper.reloadDetails();
         }
@@ -1465,7 +1468,7 @@ public abstract class PhotoPage extends ActivityState implements
             }
             if (null != mModel) {
                 mModel.setCurrentPhoto(path, mCurrentIndex);
-                parseMpoData();
+                parseGDepth();
             }
         }
     }
@@ -1511,20 +1514,21 @@ public abstract class PhotoPage extends ActivityState implements
                 }
                 if (path != null) {
                     mModel.setCurrentPhoto(Path.fromString(path), index);
-                    parseMpoData();
+                    parseGDepth();
                 }
             }
         }
     }
 
-    private void parseMpoData() {
+    private void parseGDepth() {
         bShow3DButton = false;
-        if (DualCameraNativeEngine.getInstance().isLibLoaded()) {
-            if (mParseMpoDateTask.getStatus() != AsyncTask.Status.FINISHED) {
-                boolean r = mParseMpoDateTask.cancel(true);
+        if (DualCameraEffect.isSupported()) {
+            if (mParseGDepthTask != null
+                    && mParseGDepthTask.getStatus() != AsyncTask.Status.FINISHED) {
+                mParseGDepthTask.cancel(true);
             }
-            mParseMpoDateTask = new ParseMpoDataTask();
-            mParseMpoDateTask.execute();
+            mParseGDepthTask = new ParseGDepthTask();
+            mParseGDepthTask.execute(mCurrentPhoto.getContentUri());
         }
     }
 
@@ -1821,60 +1825,17 @@ public abstract class PhotoPage extends ActivityState implements
         }
     }
 
-    public class ParseMpoDataTask extends AsyncTask<Void, Void, Void> {
-        private byte[] mPrimaryImgData = null;
-        private byte[] mAuxImgData = null;
-
+    private class ParseGDepthTask extends AsyncTask<Uri, Void, Boolean> {
         @Override
-        protected Void doInBackground(Void... params) {
-            if (mCurrentPhoto == null)return null;
-            MpoParser parser = MpoParser.parse(mActivity, mCurrentPhoto.getContentUri());
-            mPrimaryImgData = parser.readImgData(true);
-            mAuxImgData = parser.readImgData(false);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            if (isCancelled()){
-                bShow3DButton = false;
-                m3DButton.refresh();
-                return;
-            }
-            if(mPrimaryImgData == null ||
-                    mAuxImgData == null) {
-                // parse failed
-                bShow3DButton = false;
-            } else {
-                if (mLoadMpoTask.getStatus() != Status.FINISHED) {
-                    boolean r = mLoadMpoTask.cancel(true);
-                }
-                bShow3DButton = true;
-                mLoadMpoTask = new LoadMpoDataTask();
-                mLoadMpoTask.execute(mPrimaryImgData, mAuxImgData);
-            }
-            m3DButton.refresh();
-        }
-    }
-
-    private class LoadMpoDataTask extends AsyncTask<byte[], Void, Boolean> {
-
-        @Override
-        protected Boolean doInBackground(byte[]... params) {
-            return MasterImage.getImage().loadMpo(mActivity, params[0], params[1], mCurrentPhoto.getContentUri());
+        protected Boolean doInBackground(Uri... params) {
+            GDepth.Parser parser = new GDepth.Parser();
+            return parser.parse(mActivity, params[0]);
         }
 
         @Override
         protected void onPostExecute(Boolean result) {
-            if (isCancelled()){
-                bShow3DButton = false;
-                m3DButton.refresh();
-                return;
-            }
-            if (!result) {
-                bShow3DButton = result;
-                m3DButton.refresh();
-            }
+            bShow3DButton = !isCancelled() && result;
+            m3DButton.refresh();
         }
     }
 }

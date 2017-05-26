@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.exif;
 
-class JpegHeader {
+public class JpegHeader {
     public static final short SOI =  (short) 0xFFD8;
     public static final short APP1 = (short) 0xFFE1;
     public static final short APP0 = (short) 0xFFE0;

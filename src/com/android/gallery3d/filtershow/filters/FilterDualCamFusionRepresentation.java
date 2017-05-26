@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -36,11 +36,13 @@ import android.net.Uri;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 
-import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
 
+import org.codeaurora.gallery.R;
 
-public class FilterDualCamFusionRepresentation extends FilterRepresentation implements FilterFusionRepresentation {
+
+public class FilterDualCamFusionRepresentation extends FilterDualCamBasicRepresentation
+        implements FilterFusionRepresentation {
     private static final String LOGTAG = "FilterFusionRepresentation";
     public static final String SERIALIZATION_NAME = "FUSION";
 
@@ -70,12 +72,6 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation impl
         return representation;
     }
 
-    @Override
-    protected void copyAllParameters(FilterRepresentation representation) {
-        super.copyAllParameters(representation);
-        representation.useParametersFrom(this);
-    }
-
     public void useParametersFrom(FilterRepresentation a) {
         super.useParametersFrom(a);
         if (a instanceof FilterDualCamFusionRepresentation) {
@@ -92,8 +88,7 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation impl
         }
         if (representation instanceof FilterDualCamFusionRepresentation) {
             FilterDualCamFusionRepresentation fusion = (FilterDualCamFusionRepresentation) representation;
-            if (fusion.mPoint.equals(mPoint) &&
-                    fusion.mUri.equals(mUri)) {
+            if (fusion.mPoint.equals(mPoint) && fusion.mUri.equals(mUri)) {
                 return true;
             }
         }
@@ -114,7 +109,7 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation impl
 
     @Override
     public void setUnderlay(Uri uri) {
-        if(uri != null) {
+        if (uri != null) {
             mUri = uri.toString();
         } else {
             mUri = "";
@@ -123,7 +118,7 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation impl
 
     @Override
     public void setUnderlay(String uri) {
-        if(uri != null)
+        if (uri != null)
             mUri = uri;
         else
             mUri = "";
@@ -131,7 +126,7 @@ public class FilterDualCamFusionRepresentation extends FilterRepresentation impl
 
     @Override
     public boolean hasUnderlay() {
-        return (mUri != null) && (mUri.isEmpty() == false);
+        return (mUri != null) && (!mUri.isEmpty());
     }
 
     @Override

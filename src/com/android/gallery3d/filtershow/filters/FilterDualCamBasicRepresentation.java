@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015, 2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -35,23 +35,25 @@ import android.graphics.Point;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 
+import com.android.gallery3d.filtershow.editors.EditorDualCamSketch;
 import com.android.gallery3d.filtershow.editors.EditorDualCamera;
 
-
 public class FilterDualCamBasicRepresentation extends FilterBasicRepresentation {
-    private static final String LOGTAG = "FilterDualCameraRepresentation";
-
     private static final String SERIAL_VALUE = "value";
     private static final String SERIAL_POINT = "point";
 
     private Point mPoint = new Point(-1, -1);
 
-    public FilterDualCamBasicRepresentation(String name, int minVal, int defVal, int maxVal) {
+    FilterDualCamBasicRepresentation(String name, int minVal, int defVal, int maxVal) {
         super(name, minVal, defVal, maxVal);
         setFilterType(FilterRepresentation.TYPE_DUALCAM);
         setFilterClass(ImageFilterDualCamera.class);
-        setEditorId(EditorDualCamera.ID);
+        setEditorId(minVal == maxVal ? EditorDualCamSketch.ID : EditorDualCamera.ID);
         setShowParameterValue(true);
+    }
+
+    FilterDualCamBasicRepresentation(String name) {
+        this(name, 0, 0, 0);
     }
 
     @Override
