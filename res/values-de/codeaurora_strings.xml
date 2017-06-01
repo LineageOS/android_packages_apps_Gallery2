@@ -115,7 +115,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="truescanner_normal">Standard</string>
   <string name="truescanner_white">Weißwandtafel</string>
   <string name="truescanner">TrueScanner</string>
+  <string name="truescanner_remove_glare">Reflexionen entfernen</string>
   <string name="hazebuster_acts">Dunstfilter</string>
+  <string name="seestraight_acts">SeeStraight</string>
   <string name="seestraight_input_image_is_small">Bild ist zu klein zur Bearbeitung.</string>
   <string name="seestraight_process_fail">Bild konnte nicht verarbeitet werden.</string>
   <string name="trim_video_exit_title">Änderungen verwerfen?</string>

@@ -111,11 +111,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="text_makeup_whiten">Blanchir</string>
   <string name="text_makeup_Soften">Adoucir</string>
   <string name="text_makeup_trimface">Trimface</string>
+  <string name="text_makeup_bigeye">Filtre grand yeux</string>
   <string name="truescanner_normal">Normal</string>
   <string name="truescanner_white">Tableau blanc</string>
   <string name="truescanner">TrueScanner</string>
   <string name="truescanner_remove_glare">Supprimer les reflets</string>
   <string name="hazebuster_acts">Filtre anti-brume</string>
+  <string name="seestraight_acts">Voir directement</string>
   <string name="seestraight_input_image_is_small">L\'image d\'origine est trop petite pour être traitée.</string>
   <string name="seestraight_process_fail">Impossible de traiter l\'image.</string>
   <string name="trim_video_exit_title">Ignorer les modifications ?</string>

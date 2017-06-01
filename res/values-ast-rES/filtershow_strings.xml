@@ -183,6 +183,7 @@
   <!-- Label for the Original version in the versions panel [CHAR LIMIT=30] -->
   <!-- Label for the Current version in the versions panel [CHAR LIMIT=30] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
+  <string name="filtershow_exif_model">Modelu</string>
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
