@@ -331,14 +331,13 @@ public class CropView extends View {
         mScreenImageBounds.set(mImageBounds);
 
         // Draw background shadow
-        if (mDisplayMatrix.mapRect(mScreenImageBounds)) {
-            int margin = (int) mDisplayMatrix.mapRadius(mShadowMargin);
-            mScreenImageBounds.roundOut(mShadowBounds);
-            mShadowBounds.set(mShadowBounds.left - margin, mShadowBounds.top -
-                    margin, mShadowBounds.right + margin, mShadowBounds.bottom + margin);
-            mShadow.setBounds(mShadowBounds);
-            mShadow.draw(canvas);
-        }
+        mDisplayMatrix.mapRect(mScreenImageBounds);
+        int margin = (int) mDisplayMatrix.mapRadius(mShadowMargin);
+        mScreenImageBounds.roundOut(mShadowBounds);
+        mShadowBounds.set(mShadowBounds.left - margin, mShadowBounds.top -
+                margin, mShadowBounds.right + margin, mShadowBounds.bottom + margin);
+        mShadow.setBounds(mShadowBounds);
+        mShadow.draw(canvas);
 
         mPaint.setAntiAlias(true);
         mPaint.setFilterBitmap(true);
@@ -346,31 +345,29 @@ public class CropView extends View {
         canvas.drawBitmap(mBitmap, mDisplayMatrix, mPaint);
 
         mCropObj.getInnerBounds(mScreenCropBounds);
+        mDisplayMatrix.mapRect(mScreenCropBounds);
 
-        if (mDisplayMatrix.mapRect(mScreenCropBounds)) {
+        // Draw overlay shadows
+        Paint p = new Paint();
+        p.setColor(mOverlayShadowColor);
+        p.setStyle(Paint.Style.FILL);
+        CropDrawingUtils.drawShadows(canvas, p, mScreenCropBounds, mScreenImageBounds);
 
-            // Draw overlay shadows
-            Paint p = new Paint();
-            p.setColor(mOverlayShadowColor);
-            p.setStyle(Paint.Style.FILL);
-            CropDrawingUtils.drawShadows(canvas, p, mScreenCropBounds, mScreenImageBounds);
-
-            // Draw crop rect and markers
-            CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds, getContext());
-            CropDrawingUtils.drawCorner(canvas, mScreenCropBounds, getContext());
-            if (!mDoSpot) {
-                CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds, getContext());
-            } else {
-                Paint wpPaint = new Paint();
-                wpPaint.setColor(mWPMarkerColor);
-                wpPaint.setStrokeWidth(3);
-                wpPaint.setStyle(Paint.Style.STROKE);
-                wpPaint.setPathEffect(new DashPathEffect(new float[]
-                        {mDashOnLength, mDashOnLength + mDashOffLength}, 0));
-                p.setColor(mOverlayWPShadowColor);
-                CropDrawingUtils.drawWallpaperSelectionFrame(canvas, mScreenCropBounds,
-                        mSpotX, mSpotY, wpPaint, p);
-            }
+        // Draw crop rect and markers
+        CropDrawingUtils.drawCropRect(canvas, mScreenCropBounds, getContext());
+        CropDrawingUtils.drawCorner(canvas, mScreenCropBounds, getContext());
+        if (!mDoSpot) {
+            CropDrawingUtils.drawRuleOfThird(canvas, mScreenCropBounds, getContext());
+        } else {
+            Paint wpPaint = new Paint();
+            wpPaint.setColor(mWPMarkerColor);
+            wpPaint.setStrokeWidth(3);
+            wpPaint.setStyle(Paint.Style.STROKE);
+            wpPaint.setPathEffect(new DashPathEffect(new float[]
+                    {mDashOnLength, mDashOnLength + mDashOffLength}, 0));
+            p.setColor(mOverlayWPShadowColor);
+            CropDrawingUtils.drawWallpaperSelectionFrame(canvas, mScreenCropBounds,
+                    mSpotX, mSpotY, wpPaint, p);
         }
 
     }

@@ -219,9 +219,7 @@ public class CropMath {
         Matrix m = new Matrix();
         m.setRectToRect(photoBounds, displayBounds, Matrix.ScaleToFit.FILL);
         RectF trueCrop = new RectF(cropBounds);
-        if (!m.mapRect(trueCrop)) {
-            return null;
-        }
+        m.mapRect(trueCrop);
         return trueCrop;
     }
 

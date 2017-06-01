@@ -207,10 +207,7 @@ public abstract class CropDrawingUtils {
             RectF screen, int rotation) {
         RectF rotatedImage = new RectF();
         dst.setRotate(rotation, image.centerX(), image.centerY());
-        if (!dst.mapRect(rotatedImage, image)) {
-            return false; // fails for rotations that are not multiples of 90
-                          // degrees
-        }
+        dst.mapRect(rotatedImage, image);
         boolean rToR = dst.setRectToRect(rotatedImage, screen, Matrix.ScaleToFit.CENTER);
         boolean rot = dst.preRotate(rotation, image.centerX(), image.centerY());
         return rToR && rot;
