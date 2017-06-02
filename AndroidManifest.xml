@@ -249,12 +249,6 @@
             </intent-filter>
         </activity>
 
-        <permission android:name="com.android.gallery3d.filtershow.permission.READ"
-                    android:protectionLevel="signature" />
-
-        <permission android:name="com.android.gallery3d.filtershow.permission.WRITE"
-                    android:protectionLevel="signature" />
-
         <provider
             android:name="com.android.gallery3d.filtershow.provider.SharedImageProvider"
             android:authorities="com.android.gallery3d.filtershow.provider.SharedImageProvider"
