@@ -63,7 +63,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="media_controller_connecting">Conectando\u2026</string>
   <string name="bookmark_add">"Añadir marcador"</string>
   <string name="bookmark_display">"Mostrar marcadores"</string>
-  <string name="bookmark_empty">"No hay marcadores"</string>
+  <string name="bookmark_empty">"Sin marcadores"</string>
   <string name="bookmark_exist">"El marcador ya existe"</string>
   <string name="bookmark_add_success">"Marcador añadido"</string>
   <string name="bookmark_list">"Marcadores"</string>
@@ -76,7 +76,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
   <string name="mute_nosupport">No se puede silenciar: video no compatible</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-  <string name="map_activity_not_found_err">No hay ninguna aplicación de mapas instalada para mostrar la ubicación.</string>
+  <string name="map_activity_not_found_err">Sin aplicación de mapas instalada para mostrar la ubicación.</string>
   <!-- The label for the bass boost knob of the audio effects dialog. -->
   <string name="bass_boost_strength">Refuerzo de graves</string>
   <!-- The label for the 3d effect knob of the audio effects dialog. -->

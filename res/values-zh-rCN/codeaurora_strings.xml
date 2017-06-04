@@ -42,7 +42,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="speaker_off">扬声器 关</string>
   <string name="speaker_need_headset">插入耳机以使用此功能。</string>
   <string name="single_track">"单音轨"</string>
-  <string name="input_url">"输入 URL"</string>
+  <string name="input_url">"输入网址"</string>
   <string name="streaming_settings">"流媒体设置"</string>
   <string name="next">"下一个"</string>
   <string name="previous">"上一个"</string>

@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_name">Galería</string>
   <!-- Title for picture frame gadget to show in list of all available gadgets -->
   <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
   <!-- Used to format video duration in Details dialog. hours:minutes:seconds e.g. 0:21:30 -->
@@ -104,6 +105,7 @@
          [CHAR LIMIT=20]-->
   <!-- When grouping photos by locations, the label used for photos that don't
          have location information in them [CHAR LIMIT=20]-->
+  <string name="no_location">Ensin allugamientu</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
         have people information in them [CHAR LIMIT=20]-->
   <!-- This toast message is shown when network connection is lost while doing clustering -->
@@ -148,6 +150,7 @@
   <!-- Text indicating the file size of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the maker of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the model of a media item in details window [CHAR LIMIT=14] -->
+  <string name="model">Modelu</string>
   <!-- Text indicating flash info of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating aperture of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the focal length of a media item in details window [CHAR LIMIT=14] -->
@@ -255,10 +258,12 @@
   <!-- A label that indicates the media import operation completed [CHAR LIMIT=20] -->
   <string name="ingest_import_complete">@string/import_complete</string>
   <!--  Text of notification message which is shown when user attaches camera -->
+  <string name="ingest_scanning" msgid="2048262851775139720">Analizando conteníu...</string>
   <!-- String indicating how many media items from the camera have been scanned -->
   <!-- String indicating how many media items from the camera have been selected -->
   <!--  Status message shown when content from the camera is being sorted -->
   <!--  Status message shown when scanning the content from the camera has completed -->
+  <string name="ingest_scanning_done">Escanéu fechu</string>
   <!--  Status message shown when content from an external camera is being imported -->
   <!--  Status message shown when there is no content available to be imported -->
   <!--  Status message shown when there is no MTP device connected  -->
@@ -536,6 +541,7 @@ CHAR LIMIT = NONE] -->
   <!-- Title in timer setting for setting the duration for the countdown timer. [CHAR LIMIT = 50]-->
   <!-- On-screen hint during timer countdown for taking a photo. [CHAR LIMIT = 60]-->
   <!-- Title for first run dialog asking if the user wants to remember photo locations [CHAR LIMIT = 50] -->
+  <string name="remember_location_title">¿Recordar allugamientu de semeyes?</string>
   <!-- Message for first run dialog asking if the user wants to remember photo locations [CHAR LIMIT = None] -->
   <!-- Negative answer for first run dialog asking if the user wants to remember photo locations [CHAR LIMIT = 20] -->
   <!-- Positive answer for first run dialog asking if the user wants to remember photo locations [CHAR LIMIT = 20] -->

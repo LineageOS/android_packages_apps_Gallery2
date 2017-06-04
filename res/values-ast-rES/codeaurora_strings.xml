@@ -50,6 +50,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="apn">APN preferida</string>
   <string name="rtp_min_port">Puertu mínimu</string>
   <string name="rtp_max_port">Puertu máximu</string>
+  <string name="setting">Axustes</string>
+  <string name="server_timeout_message">"¿Reconeutar col sirvidor pa reproducir el videu?"</string>
+  <string name="media_controller_playing">Reproduciendo</string>
   <string name="media_controller_connecting">Coneutando\u2026</string>
   <string name="bookmark_location">"Allugamientu"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
