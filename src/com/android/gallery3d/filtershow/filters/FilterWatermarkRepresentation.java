@@ -56,6 +56,7 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
     private String textHint = "HELLO";
     private PositionInfo positionInfo;
     private Context mContext;
+    private WaterMarkView currentMarkView;
 
     //for main panel
     public FilterWatermarkRepresentation(Context context, String name, int category) {
@@ -133,7 +134,10 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
     }
 
     public WaterMarkView getWaterMarkView(String textHint) {
-        WaterMarkView currentMarkView = new WaterMarkView(mContext,
+        if (currentMarkView != null) {
+            return currentMarkView;
+        }
+        currentMarkView = new WaterMarkView(mContext,
                 mContext.getResources().getDrawable(getWaterMarkId(), getCurrentTheme()), textHint);
         if (positionInfo != null) {
             currentMarkView.setTextPosition(positionInfo.marginLeft, positionInfo.marginTop,
@@ -159,6 +163,10 @@ public class FilterWatermarkRepresentation extends FilterRepresentation {
 
     public String getTextHint() {
         return textHint;
+    }
+
+    public void reset() {
+        currentMarkView = null;
     }
 
     protected class PositionInfo {

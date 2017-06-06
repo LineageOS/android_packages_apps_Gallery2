@@ -1514,6 +1514,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (mWaterMarkView != null) {
             rlImageContainer.removeView(mWaterMarkView);
             hasWaterMark = false;
+            watermarkRepresentation.reset();
         }
         DisplayMetrics dm = getResources().getDisplayMetrics();
         RelativeLayout.LayoutParams params =
