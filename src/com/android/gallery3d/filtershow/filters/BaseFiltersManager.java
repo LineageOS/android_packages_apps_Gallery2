@@ -43,23 +43,23 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
     protected HashMap<String, FilterRepresentation> mRepresentationLookup = null;
     private static final String LOGTAG = "BaseFiltersManager";
 
-    protected ArrayList<FilterRepresentation> mLooks = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mBorders = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mTools = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mEffects = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mMakeup = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mDualCam = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mTrueScanner = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mHazeBuster = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mSeeStraight = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mTruePortrait = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mFilterPreset = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mWaterMarks = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mLocations = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mTimes = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mWeathers = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mEmotions = new ArrayList<FilterRepresentation>();
-    protected ArrayList<FilterRepresentation> mFoods = new ArrayList<FilterRepresentation>();
+    protected ArrayList<FilterRepresentation> mLooks = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mBorders = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mTools = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mEffects = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mMakeup = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mDualCam = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mTrueScanner = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mHazeBuster = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mSeeStraight = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mTruePortrait = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mFilterPreset = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mWaterMarks = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mLocations = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mTimes = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mWeathers = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mEmotions = new ArrayList<>();
+    protected ArrayList<FilterRepresentation> mFoods = new ArrayList<>();
     private static int mImageBorderSize = 4; // in percent
 
     protected void init() {
@@ -169,7 +169,6 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         filters.add(ImageFilterColorBorder.class);
         filters.add(ImageFilterDualCamera.class);
         filters.add(ImageFilterDualCamFusion.class);
-        filters.add(ImageFilterDualCamSketch.class);
         filters.add(ImageFilterTruePortrait.class);
         filters.add(ImageFilterTruePortraitFusion.class);
         filters.add(ImageFilterPreset.class);
@@ -717,50 +716,7 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
                 R.string.focus,
                 R.string.halo,
                 R.string.motion,
-                R.string.posterize
-        };
-
-        int[] overlayId = {
-                R.drawable.focus,
-                R.drawable.halo,
-                R.drawable.motion,
-                R.drawable.posterize
-        };
-
-        String[] serializationNames = {
-                "DUAL_CAM_FOCUS",
-                "DUAL_CAM_HALO",
-                "DUAL_CAM_MOTION",
-                "DUAL_CAM_POSTERIZE"
-        };
-
-        // intensity range as defined by ddm lib
-        int[][] minMaxValues = {
-                {0,5,10},
-                {0,5,10},
-                {0,5,10},
-                {0,5,10}
-        };
-
-        FilterDualCamSketchRepresentation none =
-                new FilterDualCamSketchRepresentation(context.getString(R.string.none), R.string.none);
-        none.setEditorId(ImageOnlyEditor.ID);
-        none.setSerializationName("DUAL_CAM_NONE");
-        mDualCam.add(none);
-
-        for (int i = 0; i < textId.length; i++) {
-            FilterRepresentation dualCam =
-                    new FilterDualCamBasicRepresentation(context.getString(textId[i]),
-                            minMaxValues[i][0], minMaxValues[i][1], minMaxValues[i][2]);
-            dualCam.setTextId(textId[i]);
-            dualCam.setOverlayId(overlayId[i]);
-            dualCam.setOverlayOnly(true);
-            dualCam.setSerializationName(serializationNames[i]);
-            mDualCam.add(dualCam);
-            addRepresentation(dualCam);
-        }
-
-        int[] textId2 = {
+                R.string.posterize,
                 R.string.sketch,
                 R.string.zoom,
                 R.string.bw,
@@ -769,7 +725,11 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
                 R.string.dc_negative
         };
 
-        int[] overlayId2 = {
+        int[] overlayId = {
+                R.drawable.focus,
+                R.drawable.halo,
+                R.drawable.motion,
+                R.drawable.posterize,
                 R.drawable.sketch,
                 R.drawable.zoom,
                 R.drawable.bw,
@@ -778,7 +738,11 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
                 R.drawable.negative
         };
 
-        String[] serializationNames2 = {
+        String[] serializationNames = {
+                "DUAL_CAM_FOCUS",
+                "DUAL_CAM_HALO",
+                "DUAL_CAM_MOTION",
+                "DUAL_CAM_POSTERIZE",
                 "DUAL_CAM_SKETCH",
                 "DUAL_CAM_ZOOM",
                 "DUAL_CAM_BW",
@@ -787,14 +751,34 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
                 "DUAL_CAM_NEGATIVE"
         };
 
-        for (int i = 0; i < textId2.length; i++) {
-            FilterDualCamSketchRepresentation dualCam = new FilterDualCamSketchRepresentation(
-                    context.getString(textId2[i]), textId2[i]);
-            dualCam.setOverlayId(overlayId2[i]);
-            dualCam.setOverlayOnly(true);
-            dualCam.setSerializationName(serializationNames2[i]);
-            mDualCam.add(dualCam);
-            addRepresentation(dualCam);
+        // intensity range as defined by ddm lib
+        int[][] ranges = {
+                {0, 5, 10},
+                {0, 5, 10},
+                {0, 5, 10},
+                {0, 5, 10}
+        };
+
+        FilterDualCamBasicRepresentation representation = new FilterDualCamBasicRepresentation(
+                context.getString(R.string.none));
+        representation.setTextId(R.string.none);
+        representation.setEditorId(ImageOnlyEditor.ID);
+        representation.setSerializationName("DUAL_CAM_NONE");
+        mDualCam.add(representation);
+
+        for (int i = 0; i < textId.length; i++) {
+            if (i < ranges.length) {
+                representation = new FilterDualCamBasicRepresentation(context.getString(textId[i]),
+                        ranges[i][0], ranges[i][1], ranges[i][2]);
+            } else {
+                representation = new FilterDualCamBasicRepresentation(context.getString(textId[i]));
+            }
+            representation.setTextId(textId[i]);
+            representation.setOverlayId(overlayId[i]);
+            representation.setOverlayOnly(true);
+            representation.setSerializationName(serializationNames[i]);
+            mDualCam.add(representation);
+            addRepresentation(representation);
         }
 
         mDualCam.add(getRepresentation(ImageFilterDualCamFusion.class));

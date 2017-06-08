@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015, 2017 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -33,7 +33,8 @@ import android.content.Context;
 import android.widget.FrameLayout;
 
 import org.codeaurora.gallery.R;
-import com.android.gallery3d.filtershow.filters.FilterDualCamSketchRepresentation;
+
+import com.android.gallery3d.filtershow.filters.FilterDualCamBasicRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.ImageDualCamera;
 
@@ -60,8 +61,8 @@ public class EditorDualCamSketch extends ImageOnlyEditor {
     public void reflectCurrentFilter() {
         super.reflectCurrentFilter();
         FilterRepresentation rep = getLocalRepresentation();
-        if (rep != null && rep instanceof FilterDualCamSketchRepresentation) {
-            FilterDualCamSketchRepresentation dualRep = (FilterDualCamSketchRepresentation) rep;
+        if (rep != null && rep instanceof FilterDualCamBasicRepresentation) {
+            FilterDualCamBasicRepresentation dualRep = (FilterDualCamBasicRepresentation) rep;
             mImageDualCam.setRepresentation(dualRep);
         }
     }

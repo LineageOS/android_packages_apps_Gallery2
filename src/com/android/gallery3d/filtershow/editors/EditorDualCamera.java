@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015, 2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -33,6 +33,8 @@ import android.content.Context;
 import android.widget.FrameLayout;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.filtershow.filters.FilterBasicRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterDualCamBasicRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.ImageDualCamera;
@@ -61,5 +63,15 @@ public class EditorDualCamera extends BasicEditor {
             FilterDualCamBasicRepresentation dualRep = (FilterDualCamBasicRepresentation) rep;
             mImageDualCam.setRepresentation(dualRep);
         }
+    }
+
+    @Override
+    public boolean showsSeekBar() {
+        FilterRepresentation r = getLocalRepresentation();
+        if (r != null && r instanceof FilterBasicRepresentation) {
+            FilterBasicRepresentation repr = (FilterBasicRepresentation) r;
+            return repr.getMaximum() != repr.getMinimum();
+        }
+        return true;
     }
 }
