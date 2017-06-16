@@ -357,15 +357,19 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 || ACTION_REVIEW.equalsIgnoreCase(action)){
             mDrawerLayoutSupported = false;
             Uri uri = intent.getData();
-            int flag = intent.getFlags();
-            int match = sURIMatcher.match(uri);
-            if ((match == ALL_DOWNLOADS || match == ALL_DOWNLOADS_ID) &&
-                   (flag & Intent.FLAG_GRANT_READ_URI_PERMISSION) == 0) {
-                if (checkCallingOrSelfPermission(
-                        PERMISSION_ACCESS_ALL) != PackageManager.PERMISSION_GRANTED) {
-                    Log.w(TAG, "no permission to view: " + uri);
-                    return;
+            if (uri != null) {
+                int flag = intent.getFlags();
+                int match = sURIMatcher.match(uri);
+                if ((match == ALL_DOWNLOADS || match == ALL_DOWNLOADS_ID) &&
+                       (flag & Intent.FLAG_GRANT_READ_URI_PERMISSION) == 0) {
+                    if (checkCallingOrSelfPermission(
+                            PERMISSION_ACCESS_ALL) != PackageManager.PERMISSION_GRANTED) {
+                        Log.w(TAG, "no permission to view: " + uri);
+                        return;
+                    }
                 }
+            } else {
+                Log.w(TAG, "uri get from intent is null");
             }
             startViewAction(intent);
         } else {
