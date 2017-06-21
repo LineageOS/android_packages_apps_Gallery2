@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,33 +26,32 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package com.android.gallery3d.ui;
 
-package com.android.gallery3d.filtershow.ui;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.os.Bundle;
+public class BaseDialogFragment extends DialogFragment {
 
-import com.android.gallery3d.ui.BaseDialogFragment;
-
-import org.codeaurora.gallery.R;
-
-public class AlertMsgDialog extends BaseDialogFragment {
-    private int mTitleId;
-    private int mMessageId;
-
-    public AlertMsgDialog(int titleId, int msgId) {
-        mTitleId = titleId;
-        mMessageId = msgId;
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        try {
+            super.show(manager, tag);
+        } catch(IllegalStateException e) {
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.add(this, tag);
+            transaction.commitAllowingStateLoss();
+        }
     }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder ab = new AlertDialog.Builder(getActivity());
-        ab.setTitle(mTitleId);
-        ab.setMessage(mMessageId);
-        ab.setCancelable(false);
-        ab.setPositiveButton(R.string.ok, null);
-        return ab.create();
+    public int show(FragmentTransaction transaction, String tag) {
+        try {
+            return super.show(transaction, tag);
+        } catch (IllegalStateException e) {
+            transaction.add(this, tag);
+            return transaction.commitAllowingStateLoss();
+        }
     }
 }

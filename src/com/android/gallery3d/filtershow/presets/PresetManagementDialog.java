@@ -19,22 +19,19 @@ package com.android.gallery3d.filtershow.presets;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.CheckBox;
-import android.widget.EditText;
-
-import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.util.GalleryUtils;
-
 import org.codeaurora.gallery.R;
+import com.android.gallery3d.filtershow.FilterShowActivity;
+import com.android.gallery3d.ui.BaseDialogFragment;
+import com.android.gallery3d.util.GalleryUtils;
 
 //import static com.android.gallery3d.filtershow.FilterShowActivity.SELECT_FILTER;
 
-public class PresetManagementDialog extends DialogFragment implements View.OnClickListener {
+public class PresetManagementDialog extends BaseDialogFragment implements View.OnClickListener {
     private CheckBox mCheckBox;
     private boolean checked;
     private boolean mDismissInternel = false;
