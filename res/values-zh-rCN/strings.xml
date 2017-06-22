@@ -473,4 +473,6 @@
     <string name="trim_video_exit_msg">是否放弃对当前影片的操作？</string>
     <string name="trim_video_exit_discard">放弃</string>
     <string name="do_not_show_again">不再显示</string>
+    <string name="seestraight_input_image_is_small">图片太小无法处理</string>
+    <string name="seestraight_process_fail">无法处理图片</string>
 </resources>

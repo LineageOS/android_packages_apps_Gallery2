@@ -183,4 +183,16 @@
     <string name="dual_camera_effects">双摄像头效果</string>
     <string name="dual_camera_effects_intro">此功能可将双摄像头效果应用到背景上，如动态模糊和素描。.你可以将两张照片合并到一起来创建一个有趣的效果。这个功能在你的摄像头和照片的主体有一个短距离时效果最好。</string>
     <string name="trueportrait_intro">此功能用于增强人像照。你可以将效果应用于照片背景，例如“模糊”和“速写”。你也可以将两张照片拼在一起来给你的人像照创建一个有趣的背景。</string>
+    <string name="watermark_location">位置</string>
+    <string name="watermark_time">时间</string>
+    <string name="watermark_weather">天气</string>
+    <string name="watermark_emotions">表情</string>
+    <string name="watermark_food">食物</string>
+    <!--  True Effect button -->
+    <string name="truescanner">真实扫描仪</string>
+    <!--  HazeBuster button -->
+    <string name="hazebuster_acts">去雾霾</string>
+    <!--  SeeStraight button -->
+    <string name="seestraight_acts">正视</string>
+    <string name="trueportrait">真实人像</string>
 </resources>
