@@ -32,35 +32,35 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
   <string name="setp_option_name">Корак</string>
-  <string name="step_option_desc">Прилагоди брзи корак унапред/уназад</string>
+  <string name="step_option_desc">Подесите интервал за брзо премотавање унапред или уназад</string>
   <string name="setp_option_three_second">3 секунде</string>
   <string name="setp_option_six_second">6 секунди</string>
-  <string name="loop">"Понови"</string>
+  <string name="loop">"Понављање"</string>
   <string name="single">"Појединачно"</string>
   <string name="stereo">"Стерео"</string>
-  <string name="speaker_on">Звучник УКЉУЧЕН</string>
-  <string name="speaker_off">Звучник ИСКЉУЧЕН</string>
-  <string name="speaker_need_headset">Прикључи слушалице да користиш ову функцију.</string>
-  <string name="single_track">"Појединачна нумера"</string>
-  <string name="input_url">"Унеси URL"</string>
-  <string name="streaming_settings">"Подешавања streaming-а"</string>
-  <string name="next">"Следеће"</string>
-  <string name="previous">"Претходно"</string>
-  <string name="buffer_size">Величина buffer-а</string>
+  <string name="speaker_on">Укључен звучник</string>
+  <string name="speaker_off">Искључен звучник</string>
+  <string name="speaker_need_headset">Прикључите слушалице за коришћење ове функције.</string>
+  <string name="single_track">"Једна нумера"</string>
+  <string name="input_url">"Унесите URL"</string>
+  <string name="streaming_settings">"Подешавања стриминга"</string>
+  <string name="next">"Следећа"</string>
+  <string name="previous">"Претходна"</string>
+  <string name="buffer_size">Величина бафера</string>
   <string name="apn">Жељени APN</string>
-  <string name="rtp_min_port">Мин. порт</string>
-  <string name="rtp_max_port">Макс. порт</string>
-  <string name="set_rtp_min_port">Постави мин. порт</string>
-  <string name="set_rtp_max_port">Постави макс порт</string>
-  <string name="set_buffer_size">Постави величину buffer-а</string>
-  <string name="set_apn">Изабери жељени APN</string>
-  <string name="setting">Подешавања</string>
-  <string name="server_timeout_title">"Време сервера је истекло"</string>
-  <string name="server_timeout_message">"Поново повежи на сервер да репродукујеш видео?"</string>
-  <string name="videoview_error_text_cannot_connect_retry">"Повезивање није успело, покушавање поновног повезивања на %1$d\u2026"</string>
+  <string name="rtp_min_port">Минимални порт</string>
+  <string name="rtp_max_port">Максимални порт</string>
+  <string name="set_rtp_min_port">Поставите мин. број порта</string>
+  <string name="set_rtp_max_port">Поставите макс. број порта</string>
+  <string name="set_buffer_size">Поставите величину бафера</string>
+  <string name="set_apn">Изаберите жељени APN</string>
+  <string name="setting">Поставке</string>
+  <string name="server_timeout_title">"Време истека сервера"</string>
+  <string name="server_timeout_message">"Поново се повезати са сервером за репродуковање видео снимка?"</string>
+  <string name="videoview_error_text_cannot_connect_retry">"Грешка у вези. Поново се повезујем са %1$d\u2026"</string>
   <string name="media_controller_live">Уживо</string>
   <string name="media_controller_playing">Репродукција</string>
-  <string name="media_controller_connecting">Повезивање\u2026</string>
+  <string name="media_controller_connecting">Повезујем се\u2026</string>
   <string name="bookmark_add">"Додај обележивач"</string>
   <string name="bookmark_display">"Прикажи обележиваче"</string>
   <string name="bookmark_empty">"Нема обележивача"</string>
@@ -74,21 +74,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <string name="more_image">Још слика</string>
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
-  <string name="mute_nosupport">Не може се искључити: видео није подржан</string>
+  <string name="mute_nosupport">Не могу да искључим звук: видео није подржан</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-  <string name="map_activity_not_found_err">Нема апликације мапа инсталиране да прикаже локацију.</string>
+  <string name="map_activity_not_found_err">Не могу да прикажем локацију јер апликација за рад са мапама није инсталирана.</string>
   <!-- The label for the bass boost knob of the audio effects dialog. -->
   <string name="bass_boost_strength">Појачање басова</string>
   <!-- The label for the 3d effect knob of the audio effects dialog. -->
   <string name="virtualizer_strength">3D ефекат</string>
   <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Аудио ефекти</string>
+  <string name="audio_effects">Звучни ефекти</string>
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Прикључи слушалице за ове ефекте.</string>
+  <string name="headset_plug">Прикључите слушалице за коришћење ефеката.</string>
   <!-- The title of the audio effects dialog. -->
   <string name="audio_effects_dialog_title">Snapdragon Audio+</string>
   <!-- The tips of trimming video -->
-  <string name="fail_trim">Жао нам је, овај видео фајл не може бити скраћен</string>
+  <string name="fail_trim">Нажалост, видео снимак не може бити скраћен</string>
   <string name="no_permission_for_drm">Извини, DRM заштићене фајлове није могуће делити</string>
   <string name="drm_license_info">Информације о DRM лиценци</string>
 </resources>
