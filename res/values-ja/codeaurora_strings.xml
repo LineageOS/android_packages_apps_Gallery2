@@ -107,6 +107,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="action_viewtype_list">リスト表示</string>
   <string name="tvEmptyAlbum">写真が見つかりません</string>
   <string name="tvEmptyVideos">動画が見つかりません</string>
+  <string name="text_makeup_whiten">白くする</string>
+  <string name="text_makeup_Soften">ソフトにする</string>
+  <string name="text_makeup_trimface">Trimface</string>
+  <string name="text_makeup_bigeye">Bigeye</string>
+  <string name="truescanner_normal">標準</string>
+  <string name="truescanner_white">ホワイトボード</string>
+  <string name="truescanner">TrueScanner</string>
+  <string name="truescanner_remove_glare">Remove Glare</string>
+  <string name="hazebuster_acts">Haze Buster</string>
+  <string name="seestraight_acts">See Straight</string>
   <string name="seestraight_input_image_is_small">入力された画像が小さすぎます。</string>
   <string name="seestraight_process_fail">画像を処理できませんでした。</string>
   <string name="trim_video_exit_title">変更を破棄しますか？</string>

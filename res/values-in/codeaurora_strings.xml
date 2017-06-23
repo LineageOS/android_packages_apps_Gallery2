@@ -106,4 +106,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="tvEmptyVideos">Tidak ada video ditemukan</string>
   <string name="text_makeup_whiten">Putihkan</string>
   <string name="text_makeup_Soften">Perhalus</string>
+  <string name="trim_video_exit_title">Batalkan perubahan?</string>
+  <string name="trim_video_exit_discard">BUANG</string>
 </resources>

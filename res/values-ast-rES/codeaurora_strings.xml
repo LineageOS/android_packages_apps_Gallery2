@@ -81,6 +81,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="videos_title">Vídeos</string>
   <string name="tvEmptyAlbum">Nun s\'alcontraron semeyes</string>
   <string name="tvEmptyVideos">Nun s\'alcontraron vídeos</string>
+  <string name="text_makeup_bigeye">Güeyos grandes</string>
   <string name="truescanner_normal">Normal</string>
   <string name="truescanner_white">Pizarra</string>
   <string name="seestraight_process_fail">Nun pudo procesase la imaxe.</string>
