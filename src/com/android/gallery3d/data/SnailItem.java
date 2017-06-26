@@ -18,6 +18,7 @@ package com.android.gallery3d.data;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapRegionDecoder;
+import android.net.Uri;
 
 import com.android.gallery3d.ui.ScreenNail;
 import com.android.gallery3d.util.ThreadPool.Job;
@@ -79,6 +80,11 @@ public class SnailItem extends MediaItem {
     @Override
     public int getHeight() {
         return 0;
+    }
+
+    @Override
+    public Uri getContentUri() {
+        return null;
     }
 
     //////////////////////////////////////////////////////////////////////////
