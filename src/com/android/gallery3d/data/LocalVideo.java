@@ -101,7 +101,6 @@ public class LocalVideo extends LocalMediaItem {
 
     private void loadFromCursor(Cursor cursor) {
         id = cursor.getInt(INDEX_ID);
-        caption = cursor.getString(INDEX_CAPTION);
         mimeType = cursor.getString(INDEX_MIME_TYPE);
         latitude = cursor.getDouble(INDEX_LATITUDE);
         longitude = cursor.getDouble(INDEX_LONGITUDE);
@@ -109,6 +108,7 @@ public class LocalVideo extends LocalMediaItem {
         dateAddedInSec = cursor.getLong(INDEX_DATE_ADDED);
         dateModifiedInSec = cursor.getLong(INDEX_DATE_MODIFIED);
         filePath = cursor.getString(INDEX_DATA);
+        caption = getPathTile(filePath);
         durationInSec = cursor.getInt(INDEX_DURATION) / 1000;
         bucketId = cursor.getInt(INDEX_BUCKET_ID);
         fileSize = cursor.getLong(INDEX_SIZE);
@@ -133,7 +133,6 @@ public class LocalVideo extends LocalMediaItem {
     protected boolean updateFromCursor(Cursor cursor) {
         UpdateHelper uh = new UpdateHelper();
         id = uh.update(id, cursor.getInt(INDEX_ID));
-        caption = uh.update(caption, cursor.getString(INDEX_CAPTION));
         mimeType = uh.update(mimeType, cursor.getString(INDEX_MIME_TYPE));
         latitude = uh.update(latitude, cursor.getDouble(INDEX_LATITUDE));
         longitude = uh.update(longitude, cursor.getDouble(INDEX_LONGITUDE));
@@ -144,6 +143,7 @@ public class LocalVideo extends LocalMediaItem {
         dateModifiedInSec = uh.update(
                 dateModifiedInSec, cursor.getLong(INDEX_DATE_MODIFIED));
         filePath = uh.update(filePath, cursor.getString(INDEX_DATA));
+        caption = uh.update(caption, getPathTile(filePath));
         durationInSec = uh.update(
                 durationInSec, cursor.getInt(INDEX_DURATION) / 1000);
         bucketId = uh.update(bucketId, cursor.getInt(INDEX_BUCKET_ID));

@@ -61,6 +61,23 @@ public abstract class LocalMediaItem extends MediaItem {
         return caption;
     }
 
+    public String getPathTile(String path) {
+        // extract file name after last slash
+        int lastSlash = path.lastIndexOf('/');
+        if (lastSlash >= 0) {
+            lastSlash++;
+            if (lastSlash < path.length()) {
+                path = path.substring(lastSlash);
+            }
+        }
+        // truncate the file extension (if any)
+        int lastDot = path.lastIndexOf('.');
+        if (lastDot > 0) {
+            path = path.substring(0, lastDot);
+        }
+        return path;
+    }
+
     @Override
     public void getLatLong(double[] latLong) {
         latLong[0] = latitude;
