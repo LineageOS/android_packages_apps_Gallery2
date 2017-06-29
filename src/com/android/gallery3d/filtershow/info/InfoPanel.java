@@ -21,13 +21,11 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,10 +34,11 @@ import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.exif.ExifTag;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.ui.BaseDialogFragment;
 
 import java.util.List;
 
-public class InfoPanel extends DialogFragment {
+public class InfoPanel extends BaseDialogFragment {
     public static final String FRAGMENT_TAG = "InfoPanel";
     private static final String LOGTAG = FRAGMENT_TAG;
     private LinearLayout mMainView;

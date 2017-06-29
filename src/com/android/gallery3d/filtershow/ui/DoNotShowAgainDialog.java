@@ -34,16 +34,17 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.ui.BaseDialogFragment;
 import com.android.gallery3d.util.GalleryUtils;
 
-public class DoNotShowAgainDialog extends DialogFragment {
+public class DoNotShowAgainDialog extends BaseDialogFragment {
     private int mSharedPrefKeyId;
     private int mTitleId;
     private int mMessageId;

@@ -25,7 +25,6 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -40,11 +39,12 @@ import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.pipeline.ProcessingService;
 import com.android.gallery3d.filtershow.tools.SaveImage;
+import com.android.gallery3d.ui.BaseDialogFragment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-public class ExportDialog extends DialogFragment implements SeekBar.OnSeekBarChangeListener {
+public class ExportDialog extends BaseDialogFragment implements SeekBar.OnSeekBarChangeListener {
     SeekBar mSeekBar;
     TextView mSeekVal;
     EditText mWidthText;
