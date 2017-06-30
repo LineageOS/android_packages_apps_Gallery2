@@ -285,7 +285,10 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
         if (mInCameraApp) {
             GalleryUtils.startGalleryActivity(mActivity);
         } else if (mActivity.getStateManager().getStateCount() > 1) {
-            ((GalleryActivity) mActivity).toggleNavBar(true);
+            Toolbar toolbar = mActivity.getToolbar();
+            if (toolbar != null) {
+                ((GalleryActivity) mActivity).toggleNavBar(true);
+            }
             super.onBackPressed();
         } else if (mParentMediaSetString != null) {
             Bundle data = new Bundle(getData());
