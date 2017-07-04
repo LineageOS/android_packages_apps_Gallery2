@@ -42,6 +42,7 @@ LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
 LOCAL_AAPT_FLAGS += --rename-manifest-package com.android.gallery3d
 
 LOCAL_SDK_VERSION := current
+LOCAL_MIN_SDK_VERSION := 23
 
 LOCAL_JNI_SHARED_LIBRARIES := libjni_gallery_eglfence libjni_gallery_filters libjni_gallery_jpegstream
 LOCAL_SHARED_LIBRARIES += libjni_dualcamera libjni_trueportrait libjni_filtergenerator

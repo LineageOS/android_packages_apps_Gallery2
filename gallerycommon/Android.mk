@@ -22,6 +22,9 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := org.codeaurora.gallery.common
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
-LOCAL_SDK_VERSION := 16
+LOCAL_SDK_VERSION := current
+LOCAL_MIN_SDK_VERSION := 23
+
+LOCAL_JAVA_LIBRARIES += org.apache.http.legacy
 
 include $(BUILD_STATIC_JAVA_LIBRARY)
