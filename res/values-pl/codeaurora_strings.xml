@@ -111,6 +111,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="tvEmptyVideos">Nie znaleziono filmów</string>
   <string name="text_makeup_whiten">Wybiel</string>
   <string name="text_makeup_Soften">Zmiękczenie</string>
+  <string name="truescanner_normal">Normalny</string>
+  <string name="truescanner_white">Biała tablica</string>
+  <string name="truescanner_remove_glare">Usuń odblask</string>
+  <string name="hazebuster_acts">Zredukuj efekt mgły</string>
+  <string name="seestraight_acts">Patrz prosto</string>
   <string name="seestraight_input_image_is_small">Obraz wejściowy jest zbyt mały do przetworzenia.</string>
   <string name="seestraight_process_fail">Nie udało się przetworzyć obrazu.</string>
   <string name="trim_video_exit_title">Odrzucić zmiany?</string>
