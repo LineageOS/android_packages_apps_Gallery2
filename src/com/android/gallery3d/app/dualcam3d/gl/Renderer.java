@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -35,6 +35,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.util.Log;
 
+import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -48,7 +49,7 @@ public class Renderer implements GLSurfaceView.Renderer {
     private float mOffsetY;
 
     private Bitmap mImageBitmap;
-    private Bitmap mDepthMap;
+    private DualCameraNativeEngine.DepthMap3D mDepthMap;
 
     private boolean mImageChanged;
     private boolean mDepthMapChanged;
@@ -71,7 +72,7 @@ public class Renderer implements GLSurfaceView.Renderer {
         setImageInvertMatrix();
     }
 
-    public void setDepthMap(Bitmap map) {
+    public void set3DEffectDepthMap(DualCameraNativeEngine.DepthMap3D map) {
         mDepthMap = map;
         mDepthMapChanged = true;
         if (map == null) {
@@ -109,8 +110,8 @@ public class Renderer implements GLSurfaceView.Renderer {
             mImageChanged = false;
         }
         if (mDepthMapChanged) {
-            int width = mDepthMap == null ? mImageBitmap.getWidth() : mDepthMap.getWidth();
-            int height = mDepthMap == null ? mImageBitmap.getHeight() : mDepthMap.getHeight();
+            int width = mDepthMap == null ? mImageBitmap.getWidth() : mDepthMap.width;
+            int height = mDepthMap == null ? mImageBitmap.getHeight() : mDepthMap.height;
             mMesh.update(mDepthMap, width, height, Settings.FOREGROUND_POSITION);
             mDepthMapChanged = false;
         }

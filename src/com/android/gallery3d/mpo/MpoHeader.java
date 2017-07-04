@@ -27,39 +27,30 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.android.gallery3d.filtershow.editors;
+package com.android.gallery3d.mpo;
 
-import android.content.Context;
-import android.widget.FrameLayout;
+class MpoHeader {
+    public static final short SOI =  (short) 0xFFD8;
+    public static final short APP2 = (short) 0xFFE2;
+    public static final short APP1 = (short) 0xFFE1;
+    public static final short APP0 = (short) 0xFFE0;
+    public static final short EOI = (short) 0xFFD9;
 
-import org.codeaurora.gallery.R;
-import com.android.gallery3d.filtershow.filters.FilterDualCamBasicRepresentation;
-import com.android.gallery3d.filtershow.filters.FilterRepresentation;
-import com.android.gallery3d.filtershow.imageshow.ImageDualCamera;
+    /**
+     *  SOF (start of frame). All value between SOF0 and SOF15 is SOF marker except for DHT, JPG,
+     *  and DAC marker.
+     */
+    public static final short SOF0 = (short) 0xFFC0;
+    public static final short SOF15 = (short) 0xFFCF;
+    public static final short DHT = (short) 0xFFC4;
+    public static final short JPG = (short) 0xFFC8;
+    public static final short DAC = (short) 0xFFCC;
 
-public class EditorDualCamera extends BasicEditor {
-    public static final int ID = R.id.editorDualCam;
-    private static final String LOGTAG = "EditorDualCamera";
-    private ImageDualCamera mImageDualCam;
+    public static final int APP2_FIELD_LENGTH_BYTES = 2;
+    public static final int MP_FORMAT_IDENTIFIER_BYTES = 4;
 
-    public EditorDualCamera() {
-        super(ID, R.layout.filtershow_dualcamera_editor, R.id.editorDualCam);
-    }
-
-    @Override
-    public void createEditor(Context context, FrameLayout frameLayout) {
-        super.createEditor(context, frameLayout);
-        mImageDualCam = (ImageDualCamera) mImageShow;
-        mImageDualCam.setEditor(this);
-    }
-
-    @Override
-    public void reflectCurrentFilter() {
-        super.reflectCurrentFilter();
-        FilterRepresentation rep = getLocalRepresentation();
-        if (rep != null && rep instanceof FilterDualCamBasicRepresentation) {
-            FilterDualCamBasicRepresentation dualRep = (FilterDualCamBasicRepresentation) rep;
-            mImageDualCam.setRepresentation(dualRep);
-        }
+    public static final boolean isSofMarker(short marker) {
+        return marker >= SOF0 && marker <= SOF15 && marker != DHT && marker != JPG
+                && marker != DAC;
     }
 }

@@ -27,39 +27,33 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.android.gallery3d.filtershow.editors;
+package com.android.gallery3d.filtershow.filters;
 
-import android.content.Context;
-import android.widget.FrameLayout;
+import com.android.gallery3d.filtershow.editors.EditorDualCamSketch;
 
-import org.codeaurora.gallery.R;
-import com.android.gallery3d.filtershow.filters.FilterDualCamBasicRepresentation;
-import com.android.gallery3d.filtershow.filters.FilterRepresentation;
-import com.android.gallery3d.filtershow.imageshow.ImageDualCamera;
 
-public class EditorDualCamera extends BasicEditor {
-    public static final int ID = R.id.editorDualCam;
-    private static final String LOGTAG = "EditorDualCamera";
-    private ImageDualCamera mImageDualCam;
+public class FilterDualCamSketchRepresentation extends FilterDualCamBasicRepresentation {
+    private static final String LOGTAG = "FilterDualCamSketchRepresentation";
 
-    public EditorDualCamera() {
-        super(ID, R.layout.filtershow_dualcamera_editor, R.id.editorDualCam);
+    public FilterDualCamSketchRepresentation(String name, int nameResId) {
+        super(name, 0, 0, 0);
+        setFilterType(FilterRepresentation.TYPE_DUALCAM);
+        setFilterClass(ImageFilterDualCamSketch.class);
+        setEditorId(EditorDualCamSketch.ID);
+        setTextId(nameResId);
+        setShowParameterValue(false);
     }
 
     @Override
-    public void createEditor(Context context, FrameLayout frameLayout) {
-        super.createEditor(context, frameLayout);
-        mImageDualCam = (ImageDualCamera) mImageShow;
-        mImageDualCam.setEditor(this);
+    public FilterRepresentation copy() {
+        FilterDualCamSketchRepresentation representation =
+                new FilterDualCamSketchRepresentation(getName(), 0);
+        copyAllParameters(representation);
+        return representation;
     }
 
     @Override
-    public void reflectCurrentFilter() {
-        super.reflectCurrentFilter();
-        FilterRepresentation rep = getLocalRepresentation();
-        if (rep != null && rep instanceof FilterDualCamBasicRepresentation) {
-            FilterDualCamBasicRepresentation dualRep = (FilterDualCamBasicRepresentation) rep;
-            mImageDualCam.setRepresentation(dualRep);
-        }
+    public String toString() {
+        return "dualcam - point: " + getPoint().toString();
     }
 }

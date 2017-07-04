@@ -172,8 +172,13 @@ public class ParametricEditor extends Editor {
         if (param != null) {
             control(param, editControl);
         } else {
+            /*mSeekBar = new SeekBar(editControl.getContext());
+            LayoutParams lp = new LinearLayout.LayoutParams(
+                    LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            mSeekBar.setLayoutParams(lp);
+            ((LinearLayout) editControl).addView(mSeekBar);*/
             mSeekBar = (SeekBar) editControl.findViewById(R.id.primarySeekBar);
-            if (mSeekBar != null && showsSeekBar()) {
+            if (mSeekBar != null) {
                 mSeekBar.setVisibility(View.VISIBLE);
             }
             mSeekBar.setOnSeekBarChangeListener(this);

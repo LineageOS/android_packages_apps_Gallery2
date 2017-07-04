@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2015-2016, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -34,7 +34,6 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
@@ -50,27 +49,23 @@ import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.tools.DualCameraNativeEngine;
 
-public class ImageFilterDualCamFusion extends ImageFilter {
-    private static final String TAG = ImageFilterDualCamFusion.class.getSimpleName();
+public class ImageFilterDualCamSketch extends ImageFilter {
+    private static final String TAG = ImageFilterDualCamSketch.class.getSimpleName();
 
-    private FilterDualCamFusionRepresentation mParameters;
+    private FilterDualCamSketchRepresentation mParameters;
     private Paint mPaint = new Paint();
 
-    public ImageFilterDualCamFusion() {
-        mName = "Fusion";
+    public FilterRepresentation getDefaultRepresentation() {
+        return null;
     }
 
     public void useRepresentation(FilterRepresentation representation) {
-        FilterDualCamFusionRepresentation parameters = (FilterDualCamFusionRepresentation) representation;
+        FilterDualCamSketchRepresentation parameters = (FilterDualCamSketchRepresentation) representation;
         mParameters = parameters;
     }
 
-    public FilterDualCamFusionRepresentation getParameters() {
+    public FilterDualCamSketchRepresentation getParameters() {
         return mParameters;
-    }
-
-    public FilterRepresentation getDefaultRepresentation() {
-        return new FilterDualCamFusionRepresentation();
     }
 
     @Override
@@ -80,7 +75,6 @@ public class ImageFilterDualCamFusion extends ImageFilter {
         }
 
         Point point = getParameters().getPoint();
-
         if(!point.equals(-1,-1)) {
             Bitmap filteredBitmap = null;
             boolean result = false;
@@ -122,25 +116,45 @@ public class ImageFilterDualCamFusion extends ImageFilter {
             }
 
             filteredBitmap = MasterImage.getImage().getBitmapCache().getBitmap(filteredW, filteredH, BitmapCache.FILTERS);
-            filteredBitmap.setHasAlpha(true);
 
-            result = DualCameraNativeEngine.getInstance().getForegroundImg(point.x, point.y,
-                    roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+            switch (mParameters.getTextId()) {
+                case R.string.sketch:
+                    result = DualCameraNativeEngine.getInstance().applySketch(point.x, point.y,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.zoom:
+                    result = DualCameraNativeEngine.getInstance().applyZoom(point.x, point.y,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.bw:
+                    result = DualCameraNativeEngine.getInstance().applyBlackAndWhite(point.x, point.y,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.blackboard:
+                    result = DualCameraNativeEngine.getInstance().applyBlackBoard(point.x, point.y,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.whiteboard:
+                    result = DualCameraNativeEngine.getInstance().applyWhiteBoard(point.x, point.y,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+                case R.string.dc_negative:
+                    result = DualCameraNativeEngine.getInstance().applyNegative(point.x, point.y,
+                            roiRect, quality != FilterEnvironment.QUALITY_FINAL, filteredBitmap);
+                    break;
+            }
 
             if(result == false) {
                 Log.e(TAG, "Imagelib API failed");
                 showToast(R.string.dualcam_no_segment_toast, Toast.LENGTH_SHORT);
                 return bitmap;
             } else {
-
                 mPaint.reset();
                 mPaint.setAntiAlias(true);
                 if(quality == FilterEnvironment.QUALITY_FINAL) {
                     mPaint.setFilterBitmap(true);
                     mPaint.setDither(true);
                 }
-
-                bitmap.setHasAlpha(true);
 
                 Canvas canvas = new Canvas(bitmap);
                 ImagePreset preset = getEnvironment().getImagePreset();
@@ -188,8 +202,6 @@ public class ImageFilterDualCamFusion extends ImageFilter {
                 RectF crop = new RectF();
                 Matrix m = GeometryMathUtils.getOriginalToScreen(holder, crop, true,
                         filteredW, filteredH, bmWidth, bmHeight);
-
-                canvas.drawColor(0, PorterDuff.Mode.CLEAR);
 
                 canvas.save();
                 canvas.clipRect(crop);
