@@ -71,7 +71,6 @@ public class GestureControllerOverlay extends FrameLayout implements
     private TimeBar mTimeBar;
 
     private CommonControllerOverlay mControllerOverlay;
-    private boolean mSystemUiVisible = false;
 
     public GestureControllerOverlay(Context context) {
         super(context);
@@ -189,10 +188,6 @@ public class GestureControllerOverlay extends FrameLayout implements
         view.layout(cl, ct, cl + cw, ct + ch);
     }
 
-    public void setSystemUiVisible(boolean visible) {
-        mSystemUiVisible = visible;
-    }
-
     @Override
     public void onGestureDone(boolean notStart) {
         mStartBrightness = -1.0f;
@@ -201,17 +196,13 @@ public class GestureControllerOverlay extends FrameLayout implements
         hideIndicator();
 
         if (notStart) {
-            if (mSystemUiVisible) {
-                // hide system ui
-                if (mControllerOverlay != null) {
+            if (mControllerOverlay != null) {
+                if (mControllerOverlay.isShown())
                     mControllerOverlay.hide();
-                }
-            } else {
-                // show system ui
-                if (mControllerOverlay != null) {
+                else
                     mControllerOverlay.show();
-                }
             }
+
         }
     }
 
