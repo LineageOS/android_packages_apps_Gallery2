@@ -17,6 +17,7 @@
 package com.android.gallery3d.app;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -382,6 +383,11 @@ public class MovieControllerOverlay extends CommonControllerOverlay implements
                 mState == State.PAUSED ? R.drawable.videoplayer_play :
                         mState == State.PLAYING ? R.drawable.videoplayer_pause :
                                 R.drawable.videoplayer_reload);
+        Resources resources = getContext().getResources();
+        mPlayPauseReplayView.setContentDescription(
+                mState == State.PAUSED ? resources.getString(R.string.accessibility_play_video) :
+                        mState == State.PLAYING ? resources.getString(R.string.accessibility_pause_video) :
+                                resources.getString(R.string.accessibility_reload_video));
         mScreenModeExt.onShow();
         if (enableRewindAndForward) {
             mControllerRewindAndForwardExt.onShow();
