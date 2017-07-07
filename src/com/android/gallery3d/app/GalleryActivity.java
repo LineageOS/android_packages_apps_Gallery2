@@ -39,6 +39,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.text.TextUtils;
@@ -46,6 +47,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.InputDevice;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -80,9 +82,6 @@ import com.android.gallery3d.util.ThreadPool.JobContext;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-
 public final class GalleryActivity extends AbstractGalleryActivity implements OnCancelListener {
     public static final String EXTRA_SLIDESHOW = "slideshow";
     public static final String EXTRA_DREAM = "dream";
@@ -115,8 +114,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     public static boolean mIsparentActivityFInishing;
     public Toolbar mToolbar;
 
-    private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
-    private AHBottomNavigation bottomNavigation;
+    private BottomNavigationView mBottomNavigation;
     private RelativeLayout mGLParentLayout;
     private RelativeLayout.LayoutParams params;
 
@@ -192,33 +190,29 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
     public void initView() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        bottomNavigation = (AHBottomNavigation) findViewById(R.id.bottom_navigation);
         setActionBar(mToolbar);
         setToolbar(mToolbar);
-
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(
-                R.string.timeline_title, R.drawable.ic_timeline, R.color.tab_1);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(
-                R.string.albums_title, R.drawable.ic_album, R.color.tab_2);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(
-                R.string.videos_title, R.drawable.ic_video, R.color.tab_3);
-
-        bottomNavigation.addItem(item1);
-        bottomNavigation.addItem(item2);
-        bottomNavigation.addItem(item3);
-        bottomNavigation.setBehaviorTranslationEnabled(true);
-        bottomNavigation.setForceTint(true);
-        bottomNavigation.setColored(true);
 
         mGLParentLayout = (RelativeLayout) findViewById(R.id.gl_parent_layout);
         params = (RelativeLayout.LayoutParams) mGLParentLayout.getLayoutParams();
 
-        bottomNavigation.setOnTabSelectedListener(
-                new AHBottomNavigation.OnTabSelectedListener() {
+        mBottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        mBottomNavigation.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onTabSelected(int position, boolean wasSelected) {
+            public boolean onNavigationItemSelected(MenuItem item) {
                 getGLRoot().lockRenderThread();
-                showScreen(position);
+                switch (item.getItemId()) {
+                    case R.id.action_timeline:
+                        showScreen(0);
+                        break;
+                    case R.id.action_album:
+                        showScreen(1);
+                        break;
+                    case R.id.action_videos:
+                        showScreen(2);
+                        break;
+                }
                 getGLRoot().unlockRenderThread();
                 return true;
             }
@@ -227,9 +221,9 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
     public void toggleNavBar(boolean show) {
         if (show) {
-            bottomNavigation.restoreBottomNavigation(true);
+            mBottomNavigation.setVisibility(View.VISIBLE);
         } else {
-            bottomNavigation.hideBottomNavigation(true);
+            mBottomNavigation.setVisibility(View.INVISIBLE);
         }
 
         // Convert dp to pixels
