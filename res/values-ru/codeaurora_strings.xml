@@ -91,9 +91,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <string name="headset_plug">Подключите наушники для использования эффектов.</string>
   <!-- Toast message for share items -->
+  <string name="cannot_share_items">Максимальное количество выбранных элементов для передачи 300</string>
   <string name="share_dialogue_title">Способ отправки</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
+  <string name="no_faces">Без лиц</string>
   <!-- The tips of trimming video -->
   <string name="fail_trim">Этот видеофайл невозможно обрезать</string>
   <string name="can_not_trim">Можно обрезать только файлы в форматах MP4 и 3GP</string>
@@ -107,8 +109,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="action_viewtype_list">Список</string>
   <string name="tvEmptyAlbum">Нет фотографий</string>
   <string name="tvEmptyVideos">Нет видео</string>
+  <string name="text_makeup_whiten">Осветление</string>
+  <string name="text_makeup_Soften">Смягчение</string>
+  <string name="text_makeup_trimface">Обрезать по овалу лица</string>
+  <string name="text_makeup_bigeye">Увеличить глаза</string>
+  <string name="truescanner_normal">Нормальный</string>
+  <string name="truescanner_white">Доска</string>
   <string name="truescanner">TrueScanner</string>
   <string name="truescanner_remove_glare">Удалить блики</string>
+  <string name="hazebuster_acts">Удалить дымку</string>
+  <string name="seestraight_acts">Смотрите прямо</string>
   <string name="seestraight_input_image_is_small">Исходное изображение слишком мало для обработки.</string>
   <string name="seestraight_process_fail">Не удалось обработать изображение.</string>
   <string name="trim_video_exit_title">Отменить изменения?</string>

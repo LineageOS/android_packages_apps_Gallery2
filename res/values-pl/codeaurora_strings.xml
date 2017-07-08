@@ -113,6 +113,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="text_makeup_Soften">Zmiękczenie</string>
   <string name="truescanner_normal">Normalny</string>
   <string name="truescanner_white">Biała tablica</string>
+  <string name="truescanner">TrueScanner</string>
   <string name="truescanner_remove_glare">Usuń odblask</string>
   <string name="hazebuster_acts">Zredukuj efekt mgły</string>
   <string name="seestraight_acts">Patrz prosto</string>
