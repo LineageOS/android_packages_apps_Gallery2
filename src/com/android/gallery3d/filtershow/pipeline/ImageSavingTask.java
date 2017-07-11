@@ -20,7 +20,11 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
+
+import com.android.gallery3d.app.GalleryActivity;
+import com.android.gallery3d.app.Log;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
+import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.tools.SaveImage;
 
@@ -119,6 +123,12 @@ public class ImageSavingTask extends ProcessingTask {
                 });
         Uri uri = saveImage.processAndSaveImage(preset, flatten,
                 request.quality, request.sizeFactor, request.exit);
+        if (uri != null) {
+            FilterRepresentation rep = preset.getFilterRepresentation(0);
+            if (rep != null) {
+                Log.d(GalleryActivity.QSST, "edited image saved successfully " + rep.getName());
+            }
+        }
         URIResult result = new URIResult();
         result.uri = uri;
         result.exit = request.exit;
