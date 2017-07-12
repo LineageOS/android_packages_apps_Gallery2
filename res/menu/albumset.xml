@@ -24,7 +24,7 @@
     <item android:id="@+id/action_select"
         android:icon="@drawable/ic_selection"
         android:title="@string/select_album"
-        android:showAsAction="never" />
+        android:showAsAction="ifRoom" />
     <item android:id="@+id/action_manage_offline"
             android:title="@string/make_available_offline"
             android:visible="false"

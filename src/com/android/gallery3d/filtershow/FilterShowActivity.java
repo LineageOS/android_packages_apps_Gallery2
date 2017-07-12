@@ -437,7 +437,7 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
             setActionBar();
             showActionBar(true);
         } else {
-            showActionBar(false);
+            //showActionBar(false);
         }
 
         if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK_CATEGORY) {
