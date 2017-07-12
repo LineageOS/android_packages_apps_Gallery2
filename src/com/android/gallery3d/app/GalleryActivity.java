@@ -206,13 +206,8 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
         if (show) {
             mBottomNavigation.setVisibility(View.VISIBLE);
         } else {
-            mBottomNavigation.setVisibility(View.INVISIBLE);
+            mBottomNavigation.setVisibility(View.GONE);
         }
-
-        // Convert dp to pixels
-        float dp = getApplicationContext().getResources().getDisplayMetrics().density;
-
-        params.setMargins(0, 0, 0, show ? Math.round(56 * dp) : 0);
     }
 
     public void showScreen(int position) {
