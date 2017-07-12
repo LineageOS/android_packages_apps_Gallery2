@@ -652,9 +652,17 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
         if (mMediaSet == null)
             return false;
         int count = mMediaSet.getMediaItemCount();
+        ArrayList<MediaItem> list;
         MediaItem item;
         for (int i = 0; i < count; i++) {
-            item = mMediaSet.getMediaItem(i, 1).get(0);
+            list = mMediaSet.getMediaItem(i, 1);
+            if (list == null) {
+                continue;
+            }
+            if (list.isEmpty()) {
+                break;
+            }
+            item = list.get(0);
             if (item == null) {
                 continue;
             }
