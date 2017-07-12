@@ -278,6 +278,13 @@ public class AlbumSetPage extends ActivityState implements
     }
 
     private void pickAlbum(int slotIndex) {
+        if (mActivity.getStateManager().getStateCount() >= 1) {
+            android.widget.Toolbar toolbar = mActivity.getToolbar();
+            if (toolbar != null) {
+                ((GalleryActivity) mActivity).toggleNavBar(false);
+            }
+        }
+
         if (!mIsActive) return;
 
         MediaSet targetSet = mAlbumSetDataAdapter.getMediaSet(slotIndex);
@@ -701,12 +708,12 @@ public class AlbumSetPage extends ActivityState implements
                 //mActionBar.disableClusterMenu(true);
                 mActionModeHandler.startActionMode();
                 performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-                ((GalleryActivity)mActivity).toggleNavBar(false);
+                ((GalleryActivity) mActivity).toggleNavBar(false);
                 break;
             }
             case SelectionManager.LEAVE_SELECTION_MODE: {
                 mActionModeHandler.finishActionMode();
-                ((GalleryActivity)mActivity).toggleNavBar(true);
+                ((GalleryActivity) mActivity).toggleNavBar(true);
                 /*if (mShowClusterMenu) {
                     mActionBar.enableClusterMenu(mSelectedAction, this);
                 }*/
@@ -732,13 +739,11 @@ public class AlbumSetPage extends ActivityState implements
         mDetailsHelper.hide();
         mAlbumSetView.setHighlightItemPath(null);
         mSlotView.invalidate();
-        ((GalleryActivity)mActivity).toggleNavBar(true);
     }
 
     private void showDetails() {
         mShowDetails = true;
         if (mDetailsHelper == null) {
-            ((GalleryActivity)mActivity).toggleNavBar(false);
             mDetailsHelper = new DetailsHelper(mActivity, mRootPane, mDetailsSource);
             mDetailsHelper.setCloseListener(new CloseListener() {
                 @Override
