@@ -19,8 +19,7 @@
     <RelativeLayout
         android:id="@+id/gl_parent_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="56dp">
+        android:layout_height="match_parent">
         <com.android.gallery3d.ui.GLRootView
             android:id="@+id/gl_root_view"
             android:layout_width="match_parent"
