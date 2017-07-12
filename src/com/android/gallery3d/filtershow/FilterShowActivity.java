@@ -453,7 +453,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
             setActionBar();
             showActionBar(true);
         } else {
-            showActionBar(false);
+            //showActionBar(false);
         }
 
         if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK_CATEGORY) {

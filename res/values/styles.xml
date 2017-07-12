@@ -23,7 +23,7 @@
         <item name="switchStyle">@android:style/Widget.CompoundButton</item>
     </style>
 
-    <style name="Theme.Gallery.Dialog" parent="android:Theme.Holo.Dialog" />
+    <style name="Theme.Gallery.Dialog" parent="android:Theme.Material.Dialog" />
 
     <style name="Theme.Gallery" parent="android:Theme.Material.Light">
         <item name="android:colorPrimary">@color/primary</item>
@@ -66,7 +66,9 @@
         <item name="android:background">@null</item>
         <item name="android:src">@drawable/icn_media_play</item>
     </style>
-    <style name="DialogPickerTheme" parent="Theme.Gallery">
+    <style name="DialogPickerTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primaryDark</item>
     </style>
     <style name="Theme.ProxyLauncher" parent="@android:Theme.Translucent.NoTitleBar">
     </style>
@@ -338,6 +340,8 @@
 
     <style name="ToolbarTheme" parent="android:Theme.Material" >
         <item name="android:actionOverflowButtonStyle">@style/WhiteOverflow</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
     </style>
 
     <style name="ToolbarTitleStyle" parent="android:TextAppearance.Material.Widget.Toolbar.Title">
