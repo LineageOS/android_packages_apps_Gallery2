@@ -34,35 +34,38 @@
     android:id="@+id/drawerLayout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- MAIN CONTENT -->
         <RelativeLayout
             android:id="@+id/gallery_root"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_navigation">
 
-            <android.support.design.widget.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:elevation="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                app:menu="@menu/navigation_items"
-                app:itemBackground="@color/primary"
-                app:itemIconTint="@drawable/item_bg"
-                app:itemTextColor="@drawable/item_bg" />
+            <!-- Toolbar -->
+            <include layout="@layout/toolbar" />
 
-            <include layout="@layout/gl_root_group"/>
+            <!-- Main content -->
+            <include layout="@layout/gl_root_group" />
+
         </RelativeLayout>
 
-        <!-- This layout will overlap all the others -->
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"  />
+        <!-- Bottom bar -->
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/navigation_items"
+            app:itemBackground="@color/primary"
+            app:itemIconTint="@drawable/item_bg"
+            app:itemTextColor="@drawable/item_bg" />
+
     </RelativeLayout>
+
 </LinearLayout>

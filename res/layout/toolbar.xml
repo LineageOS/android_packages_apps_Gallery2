@@ -28,14 +28,20 @@
   IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/toolbar_height"
-    android:paddingTop="24dp"
-    android:background="@color/primary"
-    android:elevation="8dp"
-    android:theme="@style/ToolbarTheme"
-    android:titleTextAppearance="@style/ToolbarTitleStyle"
-    android:popupTheme="@style/ToolbarPopUpTheme" >
+    android:layout_height="wrap_content"
+    android:theme="@style/ToolbarTheme">
 
-</Toolbar>
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:paddingTop="24dp"
+        android:background="@color/primary"
+        android:elevation="8dp"
+        android:titleTextAppearance="@style/ToolbarTitleStyle"
+        android:popupTheme="@style/ToolbarPopUpTheme" />
+
+</android.support.design.widget.AppBarLayout>
+
