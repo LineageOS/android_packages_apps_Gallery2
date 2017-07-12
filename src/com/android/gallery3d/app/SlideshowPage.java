@@ -176,7 +176,9 @@ public class SlideshowPage extends ActivityState {
     @Override
     public void onPause() {
         super.onPause();
-        ((GalleryActivity) mActivity).toggleNavBar(true);
+        if (mActivity.getStateManager().getStateCount() <= 1) {
+            ((GalleryActivity) mActivity).toggleNavBar(true);
+        }
         mIsActive = false;
         mModel.pause();
         mSlideshowView.release();
