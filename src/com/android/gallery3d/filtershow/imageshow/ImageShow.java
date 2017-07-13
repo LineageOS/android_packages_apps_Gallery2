@@ -783,6 +783,9 @@ public class ImageShow extends View implements OnGestureListener,
         }
 
         Matrix originalToScreen = MasterImage.getImage().originalImageToScreen();
+        if (originalToScreen == null) {
+            return;//if the bitmap loading task is not complete, don't response to touch event
+        }
         Rect originalBounds = MasterImage.getImage().getOriginalBounds();
         RectF screenPos = new RectF(originalBounds);
         originalToScreen.mapRect(screenPos);
