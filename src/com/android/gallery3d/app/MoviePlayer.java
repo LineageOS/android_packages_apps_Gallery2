@@ -335,13 +335,6 @@ public class MoviePlayer implements
                         && (visibility & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION) == 0) {
                     mController.show();
                     mRootView.setBackgroundColor(Color.BLACK);
-                    if (mGestureController != null) {
-                        mGestureController.setSystemUiVisible(true);
-                    }
-                } else {
-                    if (mGestureController != null) {
-                        mGestureController.setSystemUiVisible(false);
-                    }
                 }
 
                 if (LOG) {
