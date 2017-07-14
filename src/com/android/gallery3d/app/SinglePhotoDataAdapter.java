@@ -172,11 +172,10 @@ public class SinglePhotoDataAdapter extends TileImageViewAdapter
     @Override
     public void pause() {
         Future<?> task = mTask;
-        task.cancel();
-        task.waitDone();
-        if (task.get() == null || task.isDone()) {
-            mTask = null;
+        if (!task.isDone()) {
+            task.cancel();
         }
+        mTask = null;
         if (mBitmapScreenNail != null) {
             mBitmapScreenNail.recycle();
             mBitmapScreenNail = null;
