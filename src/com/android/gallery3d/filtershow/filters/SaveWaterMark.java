@@ -112,7 +112,7 @@ public class SaveWaterMark {
                 destinationBitmap.recycle();
                 if (saveUri != selectedUri) {
                     Log.d(GalleryActivity.QSST, "watermark saved successfully"
-                            + waterMarkRp.getName());
+                            + waterMarkRp.getSerializationName());
                 }
                 return saveUri;
             }
