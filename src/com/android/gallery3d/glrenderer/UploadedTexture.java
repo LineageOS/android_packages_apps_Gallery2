@@ -192,16 +192,20 @@ public abstract class UploadedTexture extends BasicTexture {
             try {
                 uploadToCanvas(canvas);
             } catch (RuntimeException e) {
-                mContentValid = true;
+                mContentValid = false;
                 e.printStackTrace();
             }
         } else if (!mContentValid) {
             Bitmap bitmap = getBitmap();
-            int format = GLUtils.getInternalFormat(bitmap);
-            int type = GLUtils.getType(bitmap);
-            canvas.texSubImage2D(this, mBorder, mBorder, bitmap, format, type);
-            freeBitmap();
-            mContentValid = true;
+            if (bitmap != null) {
+                int format = GLUtils.getInternalFormat(bitmap);
+                int type = GLUtils.getType(bitmap);
+                canvas.texSubImage2D(this, mBorder, mBorder, bitmap, format, type);
+                freeBitmap();
+                mContentValid = true;
+            } else {
+                mContentValid = false;
+            }
         }
     }
 
