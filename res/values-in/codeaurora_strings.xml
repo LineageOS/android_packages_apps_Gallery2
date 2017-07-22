@@ -97,6 +97,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="fail_trim">Maaf, berkas video ini tidak dapat dipotong</string>
   <string name="drm_license_info">Info lisensi DRM</string>
   <!-- Timeline screen title -->
+  <string name="timeline_title">Berita terbaru</string>
   <!-- Albums screen title -->
   <string name="albums_title">Album</string>
   <!-- Videos screen title -->
@@ -106,6 +107,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="tvEmptyVideos">Tidak ada video ditemukan</string>
   <string name="text_makeup_whiten">Putihkan</string>
   <string name="text_makeup_Soften">Perhalus</string>
+  <string name="truescanner_white">Papan tulis putih</string>
   <string name="trim_video_exit_title">Batalkan perubahan?</string>
   <string name="trim_video_exit_discard">BUANG</string>
 </resources>

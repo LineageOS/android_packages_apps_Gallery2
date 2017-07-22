@@ -100,7 +100,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="can_not_trim">Sadece mp4 ve 3gp dosyaları kesilebilir</string>
   <string name="drm_license_info">DHY lisans bilgisi</string>
   <!-- Timeline screen title -->
-  <string name="timeline_title">Zaman Çizelgesi</string>
+  <string name="timeline_title">Zaman Tüneli</string>
   <!-- Albums screen title -->
   <string name="albums_title">Albümler</string>
   <!-- Videos screen title -->
@@ -111,9 +111,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="text_makeup_whiten">Beyazlat</string>
   <string name="text_makeup_Soften">Yumuşat</string>
   <string name="text_makeup_trimface">Yüz Kırpma</string>
-  <string name="text_makeup_bigeye">Büyük Göz</string>
+  <string name="text_makeup_bigeye">Büyük göz</string>
   <string name="truescanner_normal">Normal</string>
-  <string name="truescanner_white">Beyaz Tahta</string>
+  <string name="truescanner_white">Beyaz tahta</string>
   <string name="truescanner">Gerçek Tarama</string>
   <string name="truescanner_remove_glare">Parlamayı Kaldır</string>
   <string name="hazebuster_acts">Pus Giderici</string>
