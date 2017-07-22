@@ -130,7 +130,9 @@ public class StateManager {
     }
 
     public void notifyActivityResult(int requestCode, int resultCode, Intent data) {
-        getTopState().onStateResult(requestCode, resultCode, data);
+        if (!mStack.isEmpty()) {
+            getTopState().onStateResult(requestCode, resultCode, data);
+        }
     }
 
     public void clearActivityResult() {
