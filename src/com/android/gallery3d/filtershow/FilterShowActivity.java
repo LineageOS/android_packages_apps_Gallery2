@@ -53,7 +53,6 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.print.PrintHelper;
 import android.util.DisplayMetrics;
@@ -84,6 +83,7 @@ import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
 
+import com.android.gallery3d.app.AbstractPermissionActivity;
 import com.android.gallery3d.app.PhotoPage;
 import com.android.gallery3d.data.LocalAlbum;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
@@ -155,7 +155,7 @@ import com.thundersoft.hz.selfportrait.detect.FaceDetect;
 import com.thundersoft.hz.selfportrait.detect.FaceInfo;
 import com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine;
 
-public class FilterShowActivity extends FragmentActivity implements OnItemClickListener,
+public class FilterShowActivity extends AbstractPermissionActivity implements OnItemClickListener,
 OnShareTargetSelectedListener, DialogInterface.OnShowListener,
 DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
@@ -312,6 +312,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         }
     };
 
+    private boolean canUpdataUI = false;
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
@@ -361,6 +362,10 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     }
 
     public void updateUIAfterServiceStarted() {
+        if (!isPermissionGranted()) {
+            canUpdataUI = true;
+            return;
+        }
         //This activity will have more than one running instances
         //mRequestId to distinguish the different instance's request
         mRequestId = System.currentTimeMillis();
@@ -2750,4 +2755,15 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         return mEditrCropButtonSelect;
     }
 
+    @Override
+    protected void onGetPermissionsFailure() {
+        finish();
+    }
+
+    @Override
+    protected void onGetPermissionsSuccess() {
+        if (canUpdataUI) {
+            updateUIAfterServiceStarted();
+        }
+    }
 }
