@@ -29,8 +29,6 @@ LOCAL_AAPT_FLAGS := \
 
 LOCAL_PACKAGE_NAME := Gallery2
 
-LOCAL_PRIVILEGED_MODULE := true
-
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
 
 LOCAL_AAPT_FLAGS += --rename-manifest-package com.android.gallery3d
