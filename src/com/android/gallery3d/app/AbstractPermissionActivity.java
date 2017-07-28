@@ -33,10 +33,11 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import java.util.ArrayList;
 
-public abstract class AbstractPermissionActivity extends Activity {
+public abstract class AbstractPermissionActivity extends FragmentActivity {
 
     public static final int PERMISSION_REQUEST_STORAGE = 1;
     private boolean permissionGranted = false;
