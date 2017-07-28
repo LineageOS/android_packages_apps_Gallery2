@@ -305,4 +305,6 @@
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <string name="filtershow_exif_copyright">مافی له‌به‌رگرتنه‌وه‌</string>
   <string name="color">ڕەنگ</string>
+  <!--Filtershow dialog -->
+  <string name="filtershow_preset_title">تایبەت بە خۆ</string>
 </resources>

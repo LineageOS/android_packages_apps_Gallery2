@@ -18,7 +18,9 @@
   <string name="app_name">Galería</string>
   <!-- Title for picture frame gadget to show in list of all available gadgets -->
   <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
+  <string name="details_ms">%1$02d:%2$02d</string>
   <!-- Used to format video duration in Details dialog. hours:minutes:seconds e.g. 0:21:30 -->
+  <string name="details_hms">%1$d:%2$02d:%3$02d</string>
   <!-- Activity label. This might show up in the activity-picker -->
   <!-- shown in the video player view while the video is being loaded, before it starts playing -->
   <!-- Message shown on the progress dialog to indicate we're loading the
@@ -504,18 +506,31 @@ CHAR LIMIT = NONE] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_30000">0,5 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_60000">1 minutu</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_90000">1,5 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_120000">2 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_150000">2,5 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_180000">3 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_240000">4 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_300000">5 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_360000">6 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_600000">10 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_720000">12 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_900000">15 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_1440000">24 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
@@ -531,6 +546,7 @@ CHAR LIMIT = NONE] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Seconds: a unit of time for time lapse intervals. [CHAR LIMIT = 20] -->
   <!-- Minutes: a unit of time for time lapse intervals. [CHAR LIMIT = 20] -->
+  <string name="time_lapse_minutes">minutos</string>
   <!-- Hours: a unit of time for time lapse intervals. [CHAR LIMIT = 20] -->
   <!-- The button to confirm time-lapse setting changes. [CHAR LIMIT = 20] -->
   <!-- Title in time interval picker for setting time interval. [CHAR LIMIT = 30]-->
