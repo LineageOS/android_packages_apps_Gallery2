@@ -45,13 +45,20 @@ import com.android.gallery3d.ui.BaseDialogFragment;
 import com.android.gallery3d.util.GalleryUtils;
 
 public class DoNotShowAgainDialog extends BaseDialogFragment {
-    private int mSharedPrefKeyId;
-    private int mTitleId;
-    private int mMessageId;
+    private int mSharedPrefKeyId = -1;
+    private int mTitleId = -1;
+    private int mMessageId = -1;
     private CheckBox mDoNotShowAgainChk;
     private DialogInterface.OnClickListener mButtonClickListener;
     private DialogInterface.OnDismissListener mDialogDismissListener;
     private DialogInterface.OnCancelListener mCancelListener;
+
+    public DoNotShowAgainDialog() {
+        super();
+        //this constructor should only be called by FragmentActivity.
+        //if called, it means dialog has been killed and is reconstructed.
+        //then don't show title and message.
+    }
 
     public DoNotShowAgainDialog(int titleId, int msgId, int sharedPrefKeyId) {
         mTitleId = titleId;
@@ -65,18 +72,24 @@ public class DoNotShowAgainDialog extends BaseDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.do_not_show_again_dialog, null);
         TextView message = (TextView) view.findViewById(R.id.message);
-        message.setText(mMessageId);
+        if (-1 != mMessageId) {
+            message.setText(mMessageId);
+        }
         mDoNotShowAgainChk = (CheckBox) view.findViewById(R.id.do_not_show_chk);
 
         AlertDialog.Builder ab = new AlertDialog.Builder(getActivity());
-        ab.setTitle(mTitleId);
+        if (-1 != mTitleId) {
+            ab.setTitle(mTitleId);
+        }
         ab.setView(view);
         ab.setCancelable(false);
         ab.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Context context = getActivity();
-                GalleryUtils.setBooleanPref(context,
-                        context.getString(mSharedPrefKeyId), mDoNotShowAgainChk.isChecked());
+                if (-1 != mSharedPrefKeyId) {
+                    Context context = getActivity();
+                    GalleryUtils.setBooleanPref(context,
+                            context.getString(mSharedPrefKeyId), mDoNotShowAgainChk.isChecked());
+                }
                 if(mButtonClickListener != null) mButtonClickListener.onClick(dialog, id);
             }
         });

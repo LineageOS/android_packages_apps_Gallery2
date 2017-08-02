@@ -38,8 +38,15 @@ import com.android.gallery3d.ui.BaseDialogFragment;
 import org.codeaurora.gallery.R;
 
 public class AlertMsgDialog extends BaseDialogFragment {
-    private int mTitleId;
-    private int mMessageId;
+    private int mTitleId = -1;
+    private int mMessageId = -1;
+
+    public AlertMsgDialog() {
+        super();
+        //this constructor should only be called by FragmentActivity.
+        //if called, it means dialog has been killed and is reconstructed.
+        //then don't show title and message.
+    }
 
     public AlertMsgDialog(int titleId, int msgId) {
         mTitleId = titleId;
@@ -49,8 +56,12 @@ public class AlertMsgDialog extends BaseDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder ab = new AlertDialog.Builder(getActivity());
-        ab.setTitle(mTitleId);
-        ab.setMessage(mMessageId);
+        if (-1 != mTitleId) {
+            ab.setTitle(mTitleId);
+        }
+        if (-1 != mMessageId) {
+            ab.setMessage(mMessageId);
+        }
         ab.setCancelable(false);
         ab.setPositiveButton(R.string.ok, null);
         return ab.create();
