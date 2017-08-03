@@ -170,7 +170,7 @@ public class ColorRectView extends View implements ColorListener {
         canvas.drawRect(rect, mWheelPaint3);
         canvas.drawRect(rect, mWheelPaint2);
 
-        if (!Float.isNaN(mDotX)) {
+        if (Float.isFinite(mDotX)) {
             canvas.drawCircle(mDotX, mDotY, mDotRadus, mDotPaint);
         }
     }

@@ -1195,7 +1195,7 @@ public class PhotoView extends GLView {
             if (mIgnoreSwipingGesture) return true;
             if (mIgnoreScalingGesture) return true;
             if (mModeChanged) return true;
-            if (Float.isNaN(scale) || Float.isInfinite(scale)) return false;
+            if (!Float.isFinite(scale)) return false;
 
             int outOfRange = mPositionController.scaleBy(scale, focusX, focusY);
 

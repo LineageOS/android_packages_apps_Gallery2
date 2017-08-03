@@ -189,7 +189,7 @@ public class EclipseControl {
     }
 
     public void paintGrayPoint(Canvas canvas, float x, float y) {
-        if (x == Float.NaN) {
+        if (!Float.isFinite(x)) {
             return;
         }
 
@@ -206,7 +206,7 @@ public class EclipseControl {
     }
 
     public void paintPoint(Canvas canvas, float x, float y) {
-        if (x == Float.NaN) {
+        if (!Float.isFinite(x)) {
             return;
         }
 
@@ -223,7 +223,7 @@ public class EclipseControl {
     }
 
     void paintRadius(Canvas canvas, float cx, float cy, float rx, float ry) {
-        if (cx == Float.NaN) {
+        if (!Float.isFinite(cx)) {
             return;
         }
         int mSliderColor = 0xFF33B5E5;
@@ -305,7 +305,7 @@ public class EclipseControl {
     }
 
     public boolean isUndefined() {
-        return Float.isNaN(mCenterX);
+        return !Float.isFinite(mCenterX);
     }
 
     public void setShowReshapeHandles(boolean showReshapeHandles) {

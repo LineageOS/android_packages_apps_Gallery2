@@ -126,7 +126,7 @@ public class ColorSVRectView extends View implements ColorListener {
         mRect.right -= mBorder;
         canvas.drawBitmap(mBitmap, null, mRect, mPaint1);
 
-        if (!Float.isNaN(mDotX)) {
+        if (Float.isFinite(mDotX)) {
             canvas.drawCircle(mDotX, mDotY, mDotRadus, mDotPaint);
         }
     }

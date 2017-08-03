@@ -265,7 +265,7 @@ public class GradControl {
     }
 
     public boolean isUndefined() {
-        return Float.isNaN(mPoint1X);
+        return !Float.isFinite(mPoint1X);
     }
 
     public void setShowReshapeHandles(boolean showReshapeHandles) {
