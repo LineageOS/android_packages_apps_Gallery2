@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e3a36ab_7fdcc483",
+        "filename": "src/com/android/gallery3d/filtershow/colorpicker/ColorSVRectView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 17205
+      },
+      "writtenOn": "2017-08-03T03:08:53Z",
+      "side": 1,
+      "message": "Would it not be better to us if (Float.isFinite(mDotX)) { to ensure we\u0027re also not passing around +/- Infinities?",
+      "revId": "a0801b0a87d9b0e0127506b716adaea30de32135",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
