@@ -60,7 +60,9 @@ public class TrueScannerPanel extends BasicGeometryPanel {
         if (mTrueScannerEditor == null) {
             mTrueScannerEditor = (TrueScannerEditor) activity.getEditor(TrueScannerEditor.ID);
         }
-        mTrueScannerEditor.initCords();
+        if (mTrueScannerEditor != null) {
+            mTrueScannerEditor.initCords();
+        }
         mExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +74,9 @@ public class TrueScannerPanel extends BasicGeometryPanel {
         mApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTrueScannerEditor.finalApplyCalled();
+                if (mTrueScannerEditor != null) {
+                    mTrueScannerEditor.finalApplyCalled();
+                }
                 activity.backToMain();
                 activity.setActionBar();
             }
