@@ -51,6 +51,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="rtp_min_port">Puertu mínimu</string>
   <string name="rtp_max_port">Puertu máximu</string>
   <string name="setting">Axustes</string>
+  <string name="server_timeout_title">"Escosó'l tiempu d'espera del sirvidor"</string>
   <string name="server_timeout_message">"¿Reconeutar col sirvidor pa reproducir el videu?"</string>
   <string name="media_controller_playing">Reproduciendo</string>
   <string name="media_controller_connecting">Coneutando\u2026</string>
@@ -74,6 +75,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          have people information in them [CHAR LIMIT=20]-->
   <string name="no_faces">Ensin cares</string>
   <!-- The tips of trimming video -->
+  <string name="drm_license_info">Información de llicencia de DRM</string>
   <!-- Timeline screen title -->
   <!-- Albums screen title -->
   <string name="albums_title">Álbumes</string>
@@ -84,6 +86,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="text_makeup_bigeye">Güeyos grandes</string>
   <string name="truescanner_normal">Normal</string>
   <string name="truescanner_white">Pizarra</string>
+  <string name="truescanner_remove_glare">Desaniciar reflexos</string>
+  <string name="seestraight_acts">Ver direutamente</string>
   <string name="seestraight_process_fail">Nun pudo procesase la imaxe.</string>
   <string name="trim_video_exit_title">¿Escartar cambeos?</string>
   <string name="trim_video_exit_msg">¿Escartar los cambeos fechos nesti videu?</string>

@@ -29,6 +29,7 @@
   <!-- Movie View Start Playing dialog title -->
   <!-- Movie View Start Playing button "Resume from bookmark" -->
   <!-- Displayed in the title of those albums that are being loaded -->
+  <string name="loading">Loading\u2026</string>
   <!-- Displayed in the title of those pictures that fails to be loaded
          [CHAR LIMIT=50]-->
   <!-- Used in a toast message when an image fails to be loaded
@@ -86,6 +87,7 @@
          It means the pictures of the Picasa album is currently being
          transferred to local storage, so the pictures can later be viewed
          offline. [CHAR LIMIT=15] -->
+  <string name="caching_label">Atroxando na caché\u2026</string>
   <!-- The title of the menu item to let user crop the image. [CHAR LIMIT=15] -->
   <!-- The title of the menu item to let user trim the video. [CHAR LIMIT=15] -->
   <!-- The title of the menu item to let user mute the video. [CHAR LIMIT=15] -->
@@ -134,6 +136,7 @@
   <!-- A label of a menu item for user to sync the content [CHAR LIMIT=30] -->
   <!-- A label on a button. The user clicks this button after he has
          finished selection. [CHAR LIMIT=15] -->
+  <string name="done">Fecho</string>
   <!-- String indicating the sequence of currently selected item in the
             media set eg. 3 of 5 items [CHAR LIMIT=30] -->
   <!-- Text indicating the title of a media item in details window [CHAR LIMIT=14] -->
@@ -160,6 +163,7 @@
   <!-- String indicating the time units in seconds. [CHAR LIMIT=8] -->
   <!-- String indicating the length units in milli-meters. [CHAR LIMIT=8] -->
   <!-- String indicating how camera shooting feature is used. [CHAR LIMIT=8] -->
+  <string name="manual">Manual</string>
   <!-- String indicating how camera shooting feature is used. [CHAR LIMIT=8] -->
   <!-- String indicating camera flash is fired. [CHAR LIMIT=14] -->
   <!-- String indicating camera flash is not used. [CHAR LIMIT=14] -->
@@ -287,6 +291,7 @@
   <!-- button in review mode indicating that the photo taking, video recording, and panorama saving session should be canceled [CHAR LIMIT=10] -->
   <string name="review_cancel">ENCABOXAR</string>
   <!-- button in review mode indicating that the taken photo/video is OK to be attached/uploaded [CHAR LIMIT=10] -->
+  <string name="review_ok">FECHO</string>
   <!-- A label that overlays on top of the preview frame to indicate the camcorder is in time lapse mode [CHAR LIMIT=35] -->
   <!-- Settings screen, camera selection dialog title. Users can select a camera from the phone (front-facing or back-facing). [CHAR LIMIT=20] -->
   <string name="pref_camera_id_title">Escoyer cámara</string>
@@ -549,6 +554,7 @@ CHAR LIMIT = NONE] -->
   <string name="time_lapse_minutes">minutos</string>
   <!-- Hours: a unit of time for time lapse intervals. [CHAR LIMIT = 20] -->
   <!-- The button to confirm time-lapse setting changes. [CHAR LIMIT = 20] -->
+  <string name="time_lapse_interval_set">Fecho</string>
   <!-- Title in time interval picker for setting time interval. [CHAR LIMIT = 30]-->
   <!-- Help text that is shown when the time lapse feature is turned off. [CHAR LIMIT = 180]-->
   <!-- Help text that is shown when the countdown timer is turned off. [CHAR LIMIT = 180]-->
