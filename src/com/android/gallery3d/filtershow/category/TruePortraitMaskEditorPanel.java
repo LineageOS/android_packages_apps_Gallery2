@@ -60,7 +60,9 @@ public class TruePortraitMaskEditorPanel extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         mMainView = inflater.inflate(R.layout.filtershow_trueportrait_editor_panel, container, false);
-        mEditor.setUpEditorUI(mMainView, null);
+        if (mEditor != null) {
+            mEditor.setUpEditorUI(mMainView, null);
+        }
         return mMainView;
     }
 
