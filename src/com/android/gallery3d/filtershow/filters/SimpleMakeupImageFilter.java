@@ -42,7 +42,7 @@ public abstract class SimpleMakeupImageFilter extends SimpleImageFilter {
     }
 
     protected FaceInfo detectFaceInfo(Bitmap bitmap) {
-        FaceDetect faceDetect = FaceDetect.getInstance();
+        FaceDetect faceDetect = new FaceDetect();
         FaceInfo[] faceInfos = null;
         if (faceDetect.isLibLoaded()) {
             faceDetect.initialize();

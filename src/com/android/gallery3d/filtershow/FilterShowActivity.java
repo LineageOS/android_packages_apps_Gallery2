@@ -1792,7 +1792,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             }
 
             FaceInfo[] faceInfos = null;
-            FaceDetect fDetect = FaceDetect.getInstance();
+            FaceDetect fDetect = new FaceDetect();
             if (fDetect.isLibLoaded()) {
                 fDetect.initialize();
                 faceInfos = fDetect.dectectFeatures(src);
