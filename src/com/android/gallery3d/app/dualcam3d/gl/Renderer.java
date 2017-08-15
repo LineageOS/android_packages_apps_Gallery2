@@ -93,23 +93,11 @@ public class Renderer implements GLSurfaceView.Renderer {
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         Log.d("TAG", "onSurfaceChanged:" + width + "x" + height);
         float ratio = (float) width / height;
-        if (width > height) {
-            ratio = (float) height / width;
-        }
-
         float sinY = (float) Math.sin(Math.toRadians(Settings.FIELD_OF_VIEW / 2)) / ratio;
         float cosY = (float) Math.cos(Math.toRadians(Settings.FIELD_OF_VIEW / 2));
         float fovY = (float) Math.toDegrees(Math.atan2(sinY, cosY) * 2.f);
         Matrix.perspectiveM(mProjectionMatrix, 0, fovY, ratio, 0.1f, 500.f);
-        if (width > height) {
-            // Caculate the width after rotating 90 or 270.
-            int scaledWidth = height * height / width;
-            // Caculate the offset in X level
-            int offsetX = width/2 - scaledWidth/2;
-            GLES20.glViewport(offsetX, 0, scaledWidth, height);
-        } else {
-            GLES20.glViewport(0, 0, width, height);
-        }
+        GLES20.glViewport(0, 0, width, height);
         mSurfaceRect = new RectF(0, 0, width, height);
         setImageInvertMatrix();
     }
