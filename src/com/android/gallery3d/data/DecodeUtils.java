@@ -139,6 +139,8 @@ public class DecodeUtils {
         } else {
             // For screen nail, we only want to keep the longer side >= targetSize.
             float scale = (float) targetSize / Math.max(w, h);
+            if (scale < 0.2) scale *= 2;
+            Log.d(TAG, "decodeThumbnail scale=" + scale);
             options.inSampleSize = BitmapUtils.computeSampleSizeLarger(scale);
         }
 
