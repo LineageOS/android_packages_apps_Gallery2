@@ -130,7 +130,7 @@ public abstract class MediaItem extends MediaObject {
     }
 
     public static void setThumbnailSizes(int size, int microSize) {
-        sThumbnailTargetSize = size;
+        sThumbnailTargetSize = Math.max(size, sThumbnailTargetSize);
         if (sMicrothumbnailTargetSize != microSize) {
             sMicrothumbnailTargetSize = microSize;
         }
