@@ -34,7 +34,7 @@ import com.android.gallery3d.util.GalleryUtils;
 public class PresetManagementDialog extends BaseDialogFragment implements View.OnClickListener {
     private CheckBox mCheckBox;
     private boolean checked;
-    private boolean mDismissInternel = false;
+    private boolean mDismissInternal = true;
     private DialogInterface.OnDismissListener mDialogDismissListener;
 
     @Override
@@ -62,14 +62,14 @@ public class PresetManagementDialog extends BaseDialogFragment implements View.O
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
-        if ((mDialogDismissListener != null) && mDismissInternel) {
+        if ((mDialogDismissListener != null) && mDismissInternal) {
             mDialogDismissListener.onDismiss(dialog);
         }
+        mDismissInternal = true;
     }
 
-    public void dismissInternal() {
-        mDismissInternel = true;
-        dismiss();
+    public void setDismissFlag(boolean isInternal) {
+        mDismissInternal = isInternal;
     }
 
     @Override
@@ -77,13 +77,13 @@ public class PresetManagementDialog extends BaseDialogFragment implements View.O
         FilterShowActivity activity = (FilterShowActivity) getActivity();
         switch (v.getId()) {
             case R.id.cancel:
-                dismissInternal();
+                dismiss();
                 break;
             case R.id.ok:
                 checked = mCheckBox.isChecked();
                 GalleryUtils.setBooleanPref(activity,activity.getString(R.string.pref_filtergenerator_intro_show_key),checked);
                 activity.onMediaPickerStarted ();
-                dismissInternal();
+                dismiss();
                 break;
         }
     }
