@@ -2334,12 +2334,14 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         switch (newConfig.orientation) {
             case (Configuration.ORIENTATION_LANDSCAPE):
                 if (mPresetDialog != null) {
+                    mPresetDialog.setDismissFlag(false);
                     mPresetDialog.dismiss();
                     mPresetDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 }
                 break;
             case (Configuration.ORIENTATION_PORTRAIT):
                 if (mPresetDialog != null) {
+                    mPresetDialog.setDismissFlag(false);
                     mPresetDialog.dismiss();
                     mPresetDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 }
