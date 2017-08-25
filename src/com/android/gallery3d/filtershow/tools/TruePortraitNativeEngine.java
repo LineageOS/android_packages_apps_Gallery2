@@ -97,15 +97,17 @@ public class TruePortraitNativeEngine {
     }
 
     public boolean init(Context context, Bitmap src, Rect[] faces) {
-        setFacesDetected(true);
+        boolean result = false; 
         if(nativeInit(src, faces.length, faces)) {
-            nativeGetPreviewSize(mPreviewSize);
+            result = nativeGetPreviewSize(mPreviewSize);
+        }
+        if (result) {
             mSketchBm = BitmapFactory.decodeResource(context.getResources(), R.raw.sketch_bm);
-            return true;
         } else {
             mSketchBm = null;
-            return false;
         }
+        setFacesDetected(result);   
+        return result;
     }
 
     public void release() {
