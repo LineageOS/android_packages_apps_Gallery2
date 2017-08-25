@@ -415,7 +415,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                     // Don't call release() while run suspend operation
                     return;
                 }
-                release(true);
+                release(mTargetState == STATE_ERROR || mCurrentState == STATE_ERROR);
             }
         };
         getHolder().addCallback(mSHCallback);
