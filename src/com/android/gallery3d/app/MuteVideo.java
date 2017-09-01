@@ -94,7 +94,9 @@ public class MuteVideo {
                             Toast.makeText(mActivity, mActivity.getString(R.string.video_mute_err),
                                 Toast.LENGTH_SHORT).show();
                             if (mMuteProgress != null) {
-                                mMuteProgress.dismiss();
+                                if (isActivityValid(mActivity)) {
+                                    mMuteProgress.dismiss();
+                                }
                                 mMuteProgress = null;
                             }
                         }
@@ -112,7 +114,9 @@ public class MuteVideo {
                                 .show();
 
                         if (mMuteProgress != null) {
-                            mMuteProgress.dismiss();
+                            if (isActivityValid(mActivity)) {
+                                mMuteProgress.dismiss();
+                            }
                             mMuteProgress = null;
 
                             // Show the result only when the activity not
@@ -134,7 +138,9 @@ public class MuteVideo {
         mMuteProgress.setMessage(mActivity.getString(R.string.please_wait));
         mMuteProgress.setCancelable(false);
         mMuteProgress.setCanceledOnTouchOutside(false);
-        mMuteProgress.show();
+        if (isActivityValid(mActivity)) {
+            mMuteProgress.show();
+        }
     }
     private boolean isValidFileForMute(String mimeType) {
         if (mimeType != null) {
@@ -147,5 +153,9 @@ public class MuteVideo {
         } else {
             return false;
         }
+    }
+
+    private boolean isActivityValid(Activity activity) {
+        return (!activity.isDestroyed() && !activity.isFinishing());
     }
 }
