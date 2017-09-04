@@ -170,7 +170,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     public static final String TINY_PLANET_ACTION = "com.android.camera.action.TINY_PLANET";
     public static final String LAUNCH_FULLSCREEN = "launch-fullscreen";
-    public static final boolean RESET_TO_LOADED = false;
     private ImageShow mImageShow = null;
 
     private View mSaveButton = null;
@@ -2409,11 +2408,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         adapter.reset();
         HistoryItem historyItem = adapter.getItem(0);
         ImagePreset original = null;
-        if (RESET_TO_LOADED) {
-            original = new ImagePreset(historyItem.getImagePreset());
-        } else {
-            original = new ImagePreset();
-        }
+        original = new ImagePreset();
         FilterRepresentation rep = null;
         if (historyItem != null) {
             rep = historyItem.getFilterRepresentation();
@@ -2422,9 +2417,9 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mMasterImage.setFusionUnderlay(null);
         mMasterImage.resetTranslation();
         mMasterImage.setScaleFactor(1);
-        invalidateViews();
-        backToMain();
+        showDefaultImageView();
         showSaveButtonIfNeed();
+        invalidateViews();
     }
 
     public void showDefaultImageView() {
