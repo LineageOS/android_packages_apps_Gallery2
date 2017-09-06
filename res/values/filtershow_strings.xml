@@ -437,4 +437,8 @@
     <string name="food_tea_time">FOOD_TEA_TIME</string>
     <string name="food_cheers">FOOD_CHEERS</string>
     <string name="food_yum">FOOD_YUM</string>
+
+    <!--Filtershow Toast -->
+    <string name="no_faces_found">No Faces Found</string>
+    <string name="image_size_too_small">Image size too small</string>
 </resources>
