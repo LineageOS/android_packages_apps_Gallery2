@@ -370,10 +370,10 @@ public class GalleryUtils {
         int typeBits = 0;
         String type = intent.resolveType(context);
 
-        if (MIME_TYPE_ALL.equals(type)) {
+        if (MIME_TYPE_ALL.equals(type) ||
+                MIME_TYPE_IMAGE.equals(type)) {
             typeBits = DataManager.INCLUDE_ALL;
-        } else if (MIME_TYPE_IMAGE.equals(type) ||
-                DIR_TYPE_IMAGE.equals(type)) {
+        } else if (DIR_TYPE_IMAGE.equals(type)) {
             typeBits = DataManager.INCLUDE_IMAGE;
         } else if (MIME_TYPE_VIDEO.equals(type) ||
                 DIR_TYPE_VIDEO.equals(type)) {
