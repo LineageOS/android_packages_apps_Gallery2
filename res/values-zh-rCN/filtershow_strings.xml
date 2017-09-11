@@ -234,4 +234,8 @@
     <string name="filter_name">"滤镜名称"</string>
     <string name="filter_name_notification">"名称不能为空。"</string>
     <string name="filter_name_duplicate">"该名称已存在，请输入其他名称。"</string>
+
+    <!--Filtershow Toast -->
+    <string name="no_faces_found">未能检测到人脸</string>
+    <string name="image_size_too_small">图片尺寸太小</string>
 </resources>

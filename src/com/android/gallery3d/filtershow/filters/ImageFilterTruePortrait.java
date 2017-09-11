@@ -40,6 +40,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.app.GalleryAppImpl;
 import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
@@ -114,7 +116,8 @@ public class ImageFilterTruePortrait extends ImageFilter {
 
         if(result == false) {
             Log.e(TAG, "Imagelib API failed");
-            showToast("No Faces Found", Toast.LENGTH_SHORT);
+            showToast(GalleryAppImpl.getContext().getString(R.string.no_faces_found),
+                    Toast.LENGTH_SHORT);
             return bitmap;
         } else {
 

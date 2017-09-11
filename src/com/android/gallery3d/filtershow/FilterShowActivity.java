@@ -1478,7 +1478,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             }
             if (w <= TrueScannerActs.MIN_WIDTH
                     || h <= TrueScannerActs.MIN_HEIGHT) {
-                Toast.makeText(this, "Image size too small!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.image_size_too_small),
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
         }
