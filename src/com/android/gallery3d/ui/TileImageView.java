@@ -154,9 +154,10 @@ public class TileImageView extends GLView {
         mTileDecoder = mThreadPool.submit(new TileDecoder());
         if (sTileSize == 0) {
             if (isHighResolution(context.getAndroidContext())) {
-                sTileSize = 512 ;
+                // Need to tuning
+                sTileSize = 2048;
             } else {
-                sTileSize = 256;
+                sTileSize = 1024;
             }
         }
     }
@@ -184,7 +185,6 @@ public class TileImageView extends GLView {
             mLevelCount = mModel.getLevelCount();
         }
         layoutTiles(mCenterX, mCenterY, mScale, mRotation);
-        invalidate();
     }
 
     @Override
@@ -358,7 +358,6 @@ public class TileImageView extends GLView {
         mScale = scale;
         mRotation = rotation;
         layoutTiles(centerX, centerY, scale, rotation);
-        invalidate();
         return true;
     }
 

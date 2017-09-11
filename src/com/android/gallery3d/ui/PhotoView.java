@@ -18,7 +18,6 @@ package com.android.gallery3d.ui;
 
 import android.content.Context;
 import android.content.res.Configuration;
-//import android.drm.DrmHelper;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Rect;
@@ -1054,8 +1053,16 @@ public class PhotoView extends GLView {
             // onDoubleTap happened on the second ACTION_DOWN.
             // We need to ignore the next UP event.
             mIgnoreUpEvent = true;
-            if (scale <= .75f || controller.isAtMinimalScale()) {
-                controller.zoomIn(x, y, Math.max(1.0f, scale * 1.5f));
+            Log.d(TAG, "onDoubleTap scale=" + scale);
+            if (scale <= .15f) {
+                //mPictures.get(0).setScreenNail(mBigSNail);
+                controller.zoomIn(x, y, Math.max(0.2f, scale * 1.5f));
+            } else if (scale <= .45f) {
+                controller.zoomIn(x, y, Math.max(0.6f, scale * 1.5f));
+            } else if (scale <= .75f) {
+                controller.zoomIn(x, y, Math.max(1f, scale * 1.5f));
+            } else if (controller.isAtMinimalScale()) {
+                controller.zoomIn(x, y, scale * 1.5f);
             } else {
                 controller.resetToFullView();
             }
