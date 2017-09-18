@@ -41,7 +41,6 @@
   <!--  Text for size value tag [CHAR LIMIT=30] -->
   <!--  Text for size x [CHAR LIMIT=1] -->
   <!--  Name for the overflow menu item for settings [CHAR LIMIT=20] -->
-  <string name="menu_settings">Axustes</string>
   <!--  Exit Dialog -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
@@ -54,16 +53,15 @@
   <!--  String displayed when exiting editor[CHAR LIMIT=NONE] -->
   <!--  History Panel -->
   <!--  Text for the history panel title [CHAR LIMIT=50] -->
-  <string name="history">Historial</string>
   <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
   <!--  Text for the original image[CHAR LIMIT=20]-->
-  <string name="history_original">@string/original</string>
   <!--  Image state panel -->
   <!--  Text for the image state panel title [CHAR LIMIT=50] -->
   <!--  Additional filters buttons  -->
   <!--  Label for the compare original image filter button [CHAR LIMIT=15] -->
   <!--  Label for the apply effect button [CHAR LIMIT=15] -->
   <!--  Label for the reset effect button [CHAR LIMIT=15] -->
+  <string name="reset_effect">Reafitar</string>
   <!--  Label for aspect [CHAR LIMIT=15] -->
   <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
   <!--  Label for the aspect 4:3 effect [CHAR LIMIT=15] -->
@@ -138,13 +136,11 @@
   <!--  Label for the green control for per channel saturation effect [CHAR LIMIT=20] -->
   <!--  Label for the cyan control for per channel saturation effect [CHAR LIMIT=20] -->
   <!--  Label for the blue control for per channel saturation effect [CHAR LIMIT=20] -->
-  <string name="editor_chan_sat_blue">Azul</string>
   <!--  Label for the Magenta control for per channel saturation effect [CHAR LIMIT=20] -->
   <!--  Label for the image graduated filter effect  [CHAR LIMIT=20] -->
   <!-- new virtual graduated neutral density filter  [CHAR LIMIT=20] -->
   <!--  Labels for the curves tool -->
   <!--  Label for the curves tool, all channels (RGB) [CHAR LIMIT=3] -->
-  <string name="curves_channel_rgb">RGB</string>
   <!--  Label for the curves tool, Red color channel [CHAR LIMIT=14] -->
   <!--  Label for the curves tool, Green color channel [CHAR LIMIT=14] -->
   <!--  Label for the curves tool, Blue color channel [CHAR LIMIT=14] -->
@@ -186,7 +182,6 @@
   <!-- Label for the Original version in the versions panel [CHAR LIMIT=30] -->
   <!-- Label for the Current version in the versions panel [CHAR LIMIT=30] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
-  <string name="filtershow_exif_model">Modelu</string>
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
@@ -198,8 +193,14 @@
   <string name="dual_camera_effects">Efeutu de cámara doble</string>
   <string name="do_not_show_again">Nun amosar de nueves</string>
   <string name="ok_continue">Siguir</string>
+  <string name="beautify">Aguapar</string>
+  <string name="foreground">Primer planu</string>
+  <string name="background">Fondu</string>
+  <string name="brush_size">Tamañu de pincel</string>
   <!--Filtershow dialog -->
   <string name="filtershow_dialog_checkbox">Nun amosar más</string>
+  <string name="filtershow_preset_rename">Renomar</string>
+  <string name="filter_name_notification">El nome nun pue ser NULL.</string>
   <string name="watermark_location">Allugamientu</string>
   <string name="watermark_time">Hora</string>
   <string name="watermark_emotions">Emociones</string>
