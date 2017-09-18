@@ -2417,6 +2417,12 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mMasterImage.setFusionUnderlay(null);
         mMasterImage.resetTranslation();
         mMasterImage.setScaleFactor(1);
+        ArrayList<FilterRepresentation> frList = FiltersManager.getManager().getTools();
+        for (FilterRepresentation fr : frList) {
+            if (fr instanceof FilterRotateRepresentation) {
+                ((FilterRotateRepresentation) fr).resetRotation();
+            }
+        }
         showDefaultImageView();
         showSaveButtonIfNeed();
         invalidateViews();

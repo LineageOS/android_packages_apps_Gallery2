@@ -114,6 +114,10 @@ public class FilterRotateRepresentation extends FilterRepresentation {
         mRotation = rotation;
     }
 
+    public void resetRotation() {
+        mRotation = Rotation.ZERO;
+    }
+
     @Override
     public boolean allowsSingleInstanceOnly() {
         return true;
