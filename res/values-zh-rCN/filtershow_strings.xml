@@ -238,4 +238,5 @@
     <!--Filtershow Toast -->
     <string name="no_faces_found">未能检测到人脸</string>
     <string name="image_size_too_small">图片尺寸太小</string>
+    <string name="not_support_gif">不支持gif格式的图片，请重新选择</string>
 </resources>

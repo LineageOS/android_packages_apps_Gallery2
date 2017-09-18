@@ -441,4 +441,5 @@
     <!--Filtershow Toast -->
     <string name="no_faces_found">No Faces Found</string>
     <string name="image_size_too_small">Image size too small</string>
+    <string name="not_support_gif">do not support gif extension, please pick again</string>
 </resources>
