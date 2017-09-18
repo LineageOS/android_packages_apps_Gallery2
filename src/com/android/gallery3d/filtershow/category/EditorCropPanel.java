@@ -105,7 +105,9 @@ public class EditorCropPanel extends BasicGeometryPanel {
         mApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEditorCrop.finalApplyCalled();
+                if (mEditorCrop != null) {
+                    mEditorCrop.finalApplyCalled();
+                }
                 activity.backToMain();
                 activity.setActionBar();
             }
@@ -146,7 +148,9 @@ public class EditorCropPanel extends BasicGeometryPanel {
     private void changeSelection(int index) {
         if (index >= 0 && index < mButtons.length) {
             mSelectPosition = index;
-            mEditorCrop.changeCropAspect(mCropAspectIds[index]);
+            if (mEditorCrop != null) {
+                mEditorCrop.changeCropAspect(mCropAspectIds[index]);
+            }
             highlightIndex(index);
         }
     }

@@ -138,6 +138,7 @@ public class SlideshowPage extends ActivityState {
         };
         initializeViews();
         initializeData(data);
+        Log.d(GalleryActivity.QSST, "enter slide show successfully");
     }
 
     private void loadNextBitmap() {

@@ -176,7 +176,11 @@ public class GLView extends GLSurfaceView {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         if (changed && mListener != null) {
-            mListener.onLayout(right - left, bottom - top);
+            // if the loyout is changed by rotation not by reLayoutGLView,
+            // then save width and heigh of the view for caculating.
+            if (left == 0 && top == 0) {
+                mListener.onLayout(right - left, bottom - top);
+            }
         }
     }
 }

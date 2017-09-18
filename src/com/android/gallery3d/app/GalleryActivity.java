@@ -74,6 +74,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     public static final String KEY_DISMISS_KEYGUARD = "dismiss-keyguard";
     public static final String KEY_FROM_SNAPCAM = "from-snapcam";
     public static final String KEY_TOTAL_NUMBER = "total-number";
+    public static final String QSST = "QSST";
 
     private static final int ALL_DOWNLOADS = 1;
     private static final int ALL_DOWNLOADS_ID = 2;

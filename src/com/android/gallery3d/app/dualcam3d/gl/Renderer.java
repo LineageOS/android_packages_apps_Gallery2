@@ -91,7 +91,7 @@ public class Renderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        Log.d(TAG, "w=" + width + "x" + height);
+        Log.d("TAG", "onSurfaceChanged:" + width + "x" + height);
         float ratio = (float) width / height;
         float sinY = (float) Math.sin(Math.toRadians(Settings.FIELD_OF_VIEW / 2)) / ratio;
         float cosY = (float) Math.cos(Math.toRadians(Settings.FIELD_OF_VIEW / 2));

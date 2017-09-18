@@ -31,6 +31,7 @@ package com.android.gallery3d.app.dualcam3d;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -50,6 +51,10 @@ public class ThreeDimensionalActivity extends Activity {
     private GLView mImageView;
     private Controller mController;
     private LoadImageTask mTask;
+    private int mWidth, mHeight;
+    private int mOrientation;
+    private Bitmap mBitmap = null;
+    private boolean mOriChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,10 @@ public class ThreeDimensionalActivity extends Activity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        if (mOrientation != newConfig.orientation) {
+            mOriChanged = true;
+            mOrientation = newConfig.orientation;
+        }
     }
 
 
@@ -81,7 +90,11 @@ public class ThreeDimensionalActivity extends Activity {
             public void onClick(float x, float y) {}
 
             @Override
-            public void onLayout(int width, int height) {}
+            public void onLayout(int width, int height) {
+                mWidth = width;
+                mHeight = height;
+                reLayoutGLView(false);
+            }
         });
     }
 
@@ -103,6 +116,7 @@ public class ThreeDimensionalActivity extends Activity {
     protected void onDestroy() {
         mTask.cancel(true);
         mTask = null;
+        mBitmap = null;
         mImageView.recycle();
         super.onDestroy();
     }
@@ -116,6 +130,19 @@ public class ThreeDimensionalActivity extends Activity {
         }
         mTask = new LoadImageTask();
         mTask.execute(uri);
+    }
+
+    private void reLayoutGLView(boolean force) {
+        if (!mOriChanged && !force) return;
+        mOriChanged = false;
+        if (mBitmap == null) return;
+        int width = mBitmap.getWidth();
+        int height = mBitmap.getHeight();
+        if (mWidth*height/width > mHeight) {
+            int scaledWidth = width*mHeight/height;
+            int move = (mWidth - scaledWidth)/2;
+            mImageView.layout(move, 0, mWidth-move, mHeight);
+        }
     }
 
     private class LoadImageTask extends AsyncTask<Uri, Void, GDepth.Image> {
@@ -143,6 +170,8 @@ public class ThreeDimensionalActivity extends Activity {
                 if (image != null && image.valid()) {
                     mImageView.setImageBitmap(image.bitmap);
                     mImageView.setDepthMap(image.depthMap);
+                    mBitmap = image.bitmap;
+                    reLayoutGLView(true);
                 } else {
                     finish();
                 }

@@ -26,7 +26,6 @@ public class FaceDetect {
 
     private long mHandle = 0;
     private static boolean mLibLoaded;
-    private static FaceDetect mInstance;
 
     static {
         try {
@@ -39,19 +38,11 @@ public class FaceDetect {
         }
     }
 
-    private FaceDetect() {}
-
     /**
      * initialize method,MUST called at first time.
      */
     public void initialize() {
         mHandle = native_create();
-    }
-
-    public static FaceDetect getInstance() {
-        if (mInstance == null)
-            mInstance = new FaceDetect();
-        return mInstance;
     }
 
     public boolean isLibLoaded() {

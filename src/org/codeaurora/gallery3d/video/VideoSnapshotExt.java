@@ -43,6 +43,8 @@ import android.util.Log;
 import android.webkit.URLUtil;
 
 import org.codeaurora.gallery.R;
+
+import com.android.gallery3d.app.GalleryActivity;
 import com.android.gallery3d.app.MovieControllerOverlay;
 import com.android.gallery3d.app.MovieControllerOverlayNew;
 
@@ -171,6 +173,7 @@ public class VideoSnapshotExt implements IVideoSnapshotListener {
                         Log.d(TAG, "retriever get frame resolution : " +
                                 bitmap.getHeight() + "x" + bitmap.getWidth());
                     }
+                    Log.d(GalleryActivity.QSST, "video snapshot done");
                     return bitmap;
                 }
             }

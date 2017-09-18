@@ -40,6 +40,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.android.gallery3d.app.GalleryActivity;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
@@ -109,6 +110,10 @@ public class SaveWaterMark {
                     saveUri = SaveImage.linkNewFileToUri(context, selectedUri, destinationFile, time, false);
                 }
                 destinationBitmap.recycle();
+                if (saveUri != selectedUri) {
+                    Log.d(GalleryActivity.QSST, "watermark saved successfully"
+                            + waterMarkRp.getSerializationName());
+                }
                 return saveUri;
             }
 
