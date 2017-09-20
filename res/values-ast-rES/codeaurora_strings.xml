@@ -51,6 +51,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="rtp_min_port">Puertu mínimu</string>
   <string name="rtp_max_port">Puertu máximu</string>
   <string name="setting">Axustes</string>
+  <string name="server_timeout_title">"Escosó'l tiempu d'espera del sirvidor"</string>
   <string name="server_timeout_message">"¿Reconeutar col sirvidor pa reproducir el videu?"</string>
   <string name="media_controller_playing">Reproduciendo</string>
   <string name="media_controller_connecting">Coneutando\u2026</string>
@@ -58,12 +59,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <string name="more_image">Más imáxenes</string>
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
+  <string name="mute_nosupport">Nun pue silenciase: videu non sofitáu</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <!-- The label for the bass boost knob of the audio effects dialog. -->
+  <string name="bass_boost_strength">Amplificación de graves</string>
   <!-- The label for the 3d effect knob of the audio effects dialog. -->
   <string name="virtualizer_strength">Efeutu 3D</string>
   <!-- The label for the audio effects menu. -->
+  <string name="audio_effects">Efeutos d\'audiu</string>
   <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <!-- The title of the audio effects dialog. -->
   <!-- The tips of trimming video -->
+  <string name="drm_license_info">Información de llicencia de DRM</string>
 </resources>
