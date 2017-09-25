@@ -1,4 +1,4 @@
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
@@ -6,55 +6,44 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_JAVA_LIBRARIES := telephony-common
 
-LOCAL_STATIC_JAVA_LIBRARIES := \
-    android-support-v4 \
+LOCAL_STATIC_ANDROID_LIBRARIES := \
+    androidx.heifwriter_heifwriter \
+    android-support-fragment \
+    android-support-core-ui \
+    android-support-compat \
     android-support-v13
-LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
-LOCAL_STATIC_JAVA_LIBRARIES += xmp_toolkit
-LOCAL_STATIC_JAVA_LIBRARIES += mp4parser
-#LOCAL_STATIC_JAVA_LIBRARIES += android-support-v8-renderscript
-LOCAL_STATIC_JAVA_LIBRARIES += androidx.heifwriter_heifwriter
 
-#LOCAL_RENDERSCRIPT_TARGET_API := 18
-#LOCAL_RENDERSCRIPT_COMPATIBILITY := 18
-#LOCAL_RENDERSCRIPT_FLAGS := -rs-package-name=android.support.v8.renderscript
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    org.codeaurora.gallery.common \
+    xmp_toolkit \
+    mp4parser
 
-# Keep track of previously compiled RS files too (from bundled GalleryGoogle).
-prev_compiled_rs_files := $(call all-renderscript-files-under, src)
+LOCAL_SRC_FILES := \
+    $(call all-java-files-under, src) \
+    $(call all-renderscript-files-under, src) \
+    $(call all-java-files-under, src_pd)
 
+LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res
 
-# We already have these files from GalleryGoogle, so don't install them.
-LOCAL_RENDERSCRIPT_SKIP_INSTALL := $(prev_compiled_rs_files)
-# $(warning Anand Commend LOCAL_RENDERSCRIPT_SKIP_INSTALL is $(LOCAL_RENDERSCRIPT_SKIP_INSTALL))
-
-LOCAL_SRC_FILES := $(call all-java-files-under, src) $(prev_compiled_rs_files)
-LOCAL_SRC_FILES += $(call all-java-files-under, src_pd)
-
-# $(warning Anand Commend LOCAL_RENDERSCRIPT_SKIP_INSTALL is $(LOCAL_RENDERSCRIPT_SKIP_INSTALL))
-
-LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res \
-    $(LOCAL_PATH)/../../../frameworks/support/compat/res \
-    $(LOCAL_PATH)/../../../frameworks/support/media-compat/res \
-    $(LOCAL_PATH)/../../../frameworks/support/core-ui/res
-
-LOCAL_AAPT_FLAGS := --auto-add-overlay
-LOCAL_AAPT_FLAGS += \
-    --extra-packages android.support.compat \
-    --extra-packages android.support.mediacompat \
-    --extra-packages android.support.coreui \
+LOCAL_USE_AAPT2 := true
 
 LOCAL_PACKAGE_NAME := SnapdragonGallery
 
 LOCAL_PRIVILEGED_MODULE := true
 
-LOCAL_PRIVATE_PLATFORM_APIS:=true
+LOCAL_PRIVATE_PLATFORM_APIS := true
 
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D Gallery2
 
-#LOCAL_SDK_VERSION := current
+LOCAL_JNI_SHARED_LIBRARIES := \
+    libjni_gallery_eglfence \
+    libjni_gallery_filters \
+    libjni_gallery_jpegstream
 
-LOCAL_JNI_SHARED_LIBRARIES := libjni_gallery_eglfence libjni_gallery_filters libjni_gallery_jpegstream
-LOCAL_SHARED_LIBRARIES += libjni_dualcamera libjni_trueportrait libjni_filtergenerator
+LOCAL_SHARED_LIBRARIES += \
+    libjni_dualcamera \
+    libjni_trueportrait \
+    libjni_filtergenerator
 
 LOCAL_REQUIRED_MODULES := libts_detected_face_jni libts_face_beautify_jni
 
