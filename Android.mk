@@ -33,10 +33,15 @@ LOCAL_SRC_FILES += $(call all-java-files-under, src_pd)
 # $(warning Anand Commend LOCAL_RENDERSCRIPT_SKIP_INSTALL is $(LOCAL_RENDERSCRIPT_SKIP_INSTALL))
 
 LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res \
-    $(LOCAL_PATH)/../../../frameworks/support/compat/res
+    $(LOCAL_PATH)/../../../frameworks/support/compat/res \
+    $(LOCAL_PATH)/../../../frameworks/support/media-compat/res \
+    $(LOCAL_PATH)/../../../frameworks/support/core-ui/res
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay
-LOCAL_AAPT_FLAGS += --extra-packages android.support.compat
+LOCAL_AAPT_FLAGS += \
+    --extra-packages android.support.compat \
+    --extra-packages android.support.mediacompat \
+    --extra-packages android.support.coreui \
 
 LOCAL_PACKAGE_NAME := SnapdragonGallery
 
