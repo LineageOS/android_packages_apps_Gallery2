@@ -23,6 +23,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.content.FileProvider;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,6 +58,7 @@ public class TrimVideo extends Activity implements
     private Uri mUri;
     private final Handler mHandler = new Handler();
     public static final String TRIM_ACTION = "com.android.camera.action.TRIM";
+    private static final String FILE_PROVIDER_AUTHORITY = "com.android.gallery3d.fileprovider";
 
     public ProgressDialog mProgress;
 
@@ -318,7 +320,10 @@ public class TrimVideo extends Activity implements
                             mProgress = null;
                             // Show the result only when the activity not stopped.
                             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setDataAndType(Uri.fromFile(mDstFileInfo.mFile), "video/*");
+                            Uri fileUri = FileProvider.getUriForFile(getApplicationContext(),
+                                    FILE_PROVIDER_AUTHORITY, mDstFileInfo.mFile);
+                            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            intent.setDataAndType(fileUri, "video/*");
                             intent.putExtra(MediaStore.EXTRA_FINISH_ON_COMPLETION, false);
                             startActivity(intent);
                             finish();
