@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +29,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -57,6 +59,7 @@ public class TrimVideo extends Activity implements
     private Uri mUri;
     private final Handler mHandler = new Handler();
     public static final String TRIM_ACTION = "com.android.camera.action.TRIM";
+    private static final String FILE_PROVIDER_AUTHORITY = "com.android.gallery3d.fileprovider";
 
     public ProgressDialog mProgress;
 
@@ -318,7 +321,10 @@ public class TrimVideo extends Activity implements
                             mProgress = null;
                             // Show the result only when the activity not stopped.
                             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setDataAndType(Uri.fromFile(mDstFileInfo.mFile), "video/*");
+                            Uri fileUri = FileProvider.getUriForFile(getApplicationContext(),
+                                    FILE_PROVIDER_AUTHORITY, mDstFileInfo.mFile);
+                            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            intent.setDataAndType(fileUri, "video/*");
                             intent.putExtra(MediaStore.EXTRA_FINISH_ON_COMPLETION, false);
                             startActivity(intent);
                             finish();
