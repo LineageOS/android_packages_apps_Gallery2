@@ -662,6 +662,9 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
             if (list == null) {
                 continue;
             }
+            if (list.isEmpty()) {
+                break;
+            }
             item = list.get(0);
             if (item == null) {
                 continue;
