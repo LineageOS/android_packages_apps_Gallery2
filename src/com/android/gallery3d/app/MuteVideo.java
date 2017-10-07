@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +25,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
@@ -51,6 +53,8 @@ public class MuteVideo {
     private final String FILE_TYPE_WEBM = "video/webm";
 
     final String TIME_STAMP_NAME = "'MUTE'_yyyyMMdd_HHmmss";
+
+    private static final String FILE_PROVIDER_AUTHORITY = "com.android.gallery3d.fileprovider";
 
     public MuteVideo(String filePath, Uri uri, Activity activity) {
         mUri = uri;
@@ -122,7 +126,10 @@ public class MuteVideo {
                             // Show the result only when the activity not
                             // stopped.
                             Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                            intent.setDataAndType(Uri.fromFile(mDstFileInfo.mFile), "video/*");
+                            Uri fileUri = FileProvider.getUriForFile(mActivity,
+                                    FILE_PROVIDER_AUTHORITY, mDstFileInfo.mFile);
+                            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            intent.setDataAndType(fileUri, "video/*");
                             intent.putExtra(MediaStore.EXTRA_FINISH_ON_COMPLETION, false);
                             mActivity.startActivity(intent);
                         }
