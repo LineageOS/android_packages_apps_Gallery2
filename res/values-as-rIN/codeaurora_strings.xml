@@ -77,14 +77,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="mute_nosupport">মিউট কৰিব নোৱাৰি : ভিডিঅ\' সমৰ্থিত নহয়</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <string name="map_activity_not_found_err">অৱস্থান দেখুৱাবলৈ মেপ এপ্প্ ইনষ্টল কৰা নাই।</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">বেছ বুষ্ট</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D প্ৰভাৱ</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">অডিঅ\' প্ৰভাৱসমূহ</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">এইসমূহ এফেক্টৰ বাবে হেডফোন এডাল প্লাগ ইন কৰক৷</string>
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->

@@ -36,10 +36,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <!-- The label for the audio effects menu. -->
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
