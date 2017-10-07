@@ -40,10 +40,6 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
-import android.media.audiofx.AudioEffect;
-import android.media.audiofx.AudioEffect.Descriptor;
-import android.media.audiofx.BassBoost;
-import android.media.audiofx.Virtualizer;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -67,7 +63,6 @@ import android.widget.Toast;
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.Utils;
-import com.android.gallery3d.ui.Knob;
 import org.codeaurora.gallery3d.ext.IActivityHooker;
 import org.codeaurora.gallery3d.ext.IMovieItem;
 import org.codeaurora.gallery3d.ext.MovieItem;
@@ -108,17 +103,6 @@ public class MovieActivity extends AbstractPermissionActivity {
     private boolean mVirtualizerSupported = false;
     private boolean mBassBoostSupported = false;
 
-    static enum Key {
-        global_enabled, bb_strength, virt_strength
-    };
-
-    private BassBoost   mBassBoostEffect;
-    private Virtualizer mVirtualizerEffect;
-    private AlertDialog mEffectDialog;
-    private ToggleButton mSwitch;
-    private Knob        mBassBoostKnob;
-    private Knob        mVirtualizerKnob;
-
     private SharedPreferences   mPrefs;
     private IMovieItem          mMovieItem;
     private IActivityHooker     mMovieHooker;
@@ -153,12 +137,6 @@ public class MovieActivity extends AbstractPermissionActivity {
                 }
             } else if (action.equals(AudioManager.ACTION_AUDIO_BECOMING_NOISY)) {
                 mIsHeadsetOn = false;
-            }
-            if (mEffectDialog != null) {
-                if (!mIsHeadsetOn && !isBtHeadsetConnected() && mEffectDialog.isShowing()) {
-                    mEffectDialog.dismiss();
-                    showHeadsetPlugToast();
-                }
             }
         }
     };
@@ -241,21 +219,11 @@ public class MovieActivity extends AbstractPermissionActivity {
         // But for the performance (and battery), we remove the background here.
         win.setBackgroundDrawable(null);
         initMovieHooker(intent, savedInstanceState);
-        // Determine available/supported effects
-        final Descriptor[] effects = AudioEffect.queryEffects();
-        for (final Descriptor effect : effects) {
-            if (effect.type.equals(AudioEffect.EFFECT_TYPE_VIRTUALIZER)) {
-                mVirtualizerSupported = true;
-            } else if (effect.type.equals(AudioEffect.EFFECT_TYPE_BASS_BOOST)) {
-                mBassBoostSupported = true;
-            }
-        }
 
         mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mPlayer.onPrepared(mp);
-                initEffects(mp.getAudioSessionId());
             }
         });
     }
@@ -370,14 +338,6 @@ public class MovieActivity extends AbstractPermissionActivity {
             });
         }
 
-        final MenuItem mi = menu.add(R.string.audio_effects);
-        mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                onAudioEffectsMenuItemClick();
-                return true;
-            }
-        });
         if (isPermissionGranted()) {
             refreshShareProvider(mMovieItem);
             mMovieHooker.onCreateOptionsMenu(menu);
@@ -399,159 +359,6 @@ public class MovieActivity extends AbstractPermissionActivity {
 //        }
 
         return true;
-    }
-
-    private void onAudioEffectsMenuItemClick() {
-        if (!mIsHeadsetOn && !isBtHeadsetConnected()) {
-            showHeadsetPlugToast();
-        } else {
-            LayoutInflater factory = LayoutInflater.from(this);
-            final View content = factory.inflate(R.layout.audio_effects_dialog, null);
-            final View title = factory.inflate(R.layout.audio_effects_title, null);
-
-            boolean enabled = mPrefs.getBoolean(Key.global_enabled.toString(), false);
-
-            mSwitch = (ToggleButton) title.findViewById(R.id.audio_effects_switch);
-            mSwitch.setChecked(enabled);
-            mSwitch.setButtonDrawable(enabled ?
-                    R.drawable.switch_thumb_activated : R.drawable.switch_thumb_off);
-
-            mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    mSwitch.setButtonDrawable(isChecked ?
-                            R.drawable.switch_thumb_activated : R.drawable.switch_thumb_off);
-                    if(mBassBoostEffect != null) {
-                        mBassBoostEffect.setEnabled(isChecked);
-                    }
-                    if(mVirtualizerEffect != null) {
-                        mVirtualizerEffect.setEnabled(isChecked);
-                    }
-                    mBassBoostKnob.setEnabled(isChecked);
-                    mVirtualizerKnob.setEnabled(isChecked);
-                }
-            });
-
-            mBassBoostKnob = (Knob) content.findViewById(R.id.bBStrengthKnob);
-            mBassBoostKnob.setEnabled(enabled);
-            mBassBoostKnob.setMax(BASSBOOST_MAX_STRENGTH);
-            mBassBoostKnob.setValue(mPrefs.getInt(Key.bb_strength.toString(), 0));
-            mBassBoostKnob.setOnKnobChangeListener(new Knob.OnKnobChangeListener() {
-                @Override
-                public void onValueChanged(Knob knob, int value, boolean fromUser) {
-                    if(mBassBoostEffect != null) {
-                        mBassBoostEffect.setStrength((short) value);
-                    }
-                }
-
-                @Override
-                public boolean onSwitchChanged(Knob knob, boolean enabled) {
-                    return false;
-                }
-            });
-
-            mVirtualizerKnob = (Knob) content.findViewById(R.id.vIStrengthKnob);
-            mVirtualizerKnob.setEnabled(enabled);
-            mVirtualizerKnob.setMax(VIRTUALIZER_MAX_STRENGTH);
-            mVirtualizerKnob.setValue(mPrefs.getInt(Key.virt_strength.toString(), 0));
-            mVirtualizerKnob.setOnKnobChangeListener(new Knob.OnKnobChangeListener() {
-                @Override
-                public void onValueChanged(Knob knob, int value, boolean fromUser) {
-                    if(mVirtualizerEffect != null) {
-                        mVirtualizerEffect.setStrength((short) value);
-                    }
-                }
-
-                @Override
-                public boolean onSwitchChanged(Knob knob, boolean enabled) {
-                    return false;
-                }
-            });
-
-            mEffectDialog = new AlertDialog.Builder(MovieActivity.this,
-                    AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
-                .setCustomTitle(title)
-                .setView(content)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences.Editor editor = mPrefs.edit();
-                        editor.putBoolean(Key.global_enabled.toString(), mSwitch.isChecked());
-                        editor.putInt(Key.bb_strength.toString(), mBassBoostKnob.getValue());
-                        editor.putInt(Key.virt_strength.toString(),
-                                mVirtualizerKnob.getValue());
-                        editor.commit();
-                    }
-                })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        boolean enabled = mPrefs.getBoolean(Key.global_enabled.toString(), false);
-                        if(mBassBoostEffect != null) {
-                            mBassBoostEffect.setStrength((short)
-                                    mPrefs.getInt(Key.bb_strength.toString(), 0));
-                            mBassBoostEffect.setEnabled(enabled);
-                        }
-                        if(mVirtualizerEffect != null) {
-                            mVirtualizerEffect.setStrength((short)
-                                mPrefs.getInt(Key.virt_strength.toString(), 0));
-                            mVirtualizerEffect.setEnabled(enabled);
-                        }
-                    }
-                })
-                .setCancelable(false)
-                .create();
-            mEffectDialog.show();
-        }
-    }
-
-    public void initEffects(int sessionId) {
-        // Singleton instance
-        if ((mBassBoostEffect == null) && mBassBoostSupported) {
-            mBassBoostEffect = new BassBoost(0, sessionId);
-        }
-
-        if ((mVirtualizerEffect == null) && mVirtualizerSupported) {
-            mVirtualizerEffect = new Virtualizer(0, sessionId);
-        }
-
-        if (mIsHeadsetOn || isBtHeadsetConnected()) {
-            if (mPrefs.getBoolean(Key.global_enabled.toString(), false)) {
-                if (mBassBoostSupported) {
-                    mBassBoostEffect.setStrength((short)
-                        mPrefs.getInt(Key.bb_strength.toString(), 0));
-                    mBassBoostEffect.setEnabled(true);
-                }
-                if (mVirtualizerSupported) {
-                    mVirtualizerEffect.setStrength((short)
-                        mPrefs.getInt(Key.virt_strength.toString(), 0));
-                    mVirtualizerEffect.setEnabled(true);
-                }
-            } else {
-                if (mBassBoostSupported) {
-                    mBassBoostEffect.setStrength((short)
-                        mPrefs.getInt(Key.bb_strength.toString(), 0));
-                }
-                if (mVirtualizerSupported) {
-                    mVirtualizerEffect.setStrength((short)
-                        mPrefs.getInt(Key.virt_strength.toString(), 0));
-                }
-            }
-        }
-
-    }
-
-    public void releaseEffects() {
-        if (mBassBoostEffect != null) {
-            mBassBoostEffect.setEnabled(false);
-            mBassBoostEffect.release();
-            mBassBoostEffect = null;
-        }
-        if (mVirtualizerEffect != null) {
-            mVirtualizerEffect.setEnabled(false);
-            mVirtualizerEffect.release();
-            mVirtualizerEffect = null;
-        }
     }
 
     private Intent createShareIntent() {
@@ -616,9 +423,6 @@ public class MovieActivity extends AbstractPermissionActivity {
             super.onPause();
             return;
         }
-        // Audio track will be deallocated for local video playback,
-        // thus recycle effect here.
-        releaseEffects();
         try {
             unregisterReceiver(mReceiver);
         } catch (IllegalArgumentException e) {
@@ -648,7 +452,6 @@ public class MovieActivity extends AbstractPermissionActivity {
             if (!isKeyguardLocked() && !mControlResumed && mPlayer != null) {
                 mPlayer.onResume();
                 mControlResumed = true;
-                //initEffects(mPlayer.getAudioSessionId());
             }
             enhanceActionBar();
             super.onResume();
@@ -691,7 +494,6 @@ public class MovieActivity extends AbstractPermissionActivity {
             super.onDestroy();
             return;
         }
-        releaseEffects();
         mPlayer.onDestroy();
         super.onDestroy();
         mMovieHooker.onDestroy();
