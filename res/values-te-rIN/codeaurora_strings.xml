@@ -77,14 +77,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="mute_nosupport">నిశ్శబ్దం చేయడం సాధ్యపడదు: వీడియోకు మద్దతు లేదు</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <string name="map_activity_not_found_err">స్థానాన్ని చూపించేందుకు మ్యాప్స్ అనువర్తనం వ్యవస్థాపించబడిలేదు.</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">బేస్ బూస్ట్</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D ప్రభావం</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">ఆడియో ప్రభావాలు</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">ఈ ప్రభావాలకోసం హెడ్‌ఫోన్‌లను ప్లగ్ ఇన్ చేయండి.</string>
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->

@@ -77,14 +77,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="mute_nosupport">നിശബ്ദമാക്കാൻ കഴിയില്ല: വീഡിയോ പിന്തുണയ്ക്കുന്നില്ല</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <string name="map_activity_not_found_err">സ്ഥാനം കാണിക്കുന്നതിന് മാപ്പ് അപ്ലിക്കേഷനുകള്‍ ഇന്‍സ്റ്റാള്‍ ചെയ്തിട്ടില്ല.</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">ബാസ്സ് ബൂസ്റ്റ്</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D ഇഫക്റ്റ്</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">ഓഡിയോ ഇഫക്റ്റുകൾ</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">ഈ ഇഫക്റ്റുകൾക്കായി ഹെഡ്ഫോണുകൾ പ്ലഗുചെയ്യുക.</string>
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->

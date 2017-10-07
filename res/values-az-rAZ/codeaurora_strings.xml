@@ -77,14 +77,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="mute_nosupport">Səsi kəsilə bilmir : video dəstəklənmir</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <string name="map_activity_not_found_err">Yeri göstərmək üçün quraşdırılmış xəritə tətbiqetməsi yoxdur.</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Bas yüksəldici</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D effekti</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Səs effekti</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Bu effektlər üçün qulaqcıq taxın.</string>
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->

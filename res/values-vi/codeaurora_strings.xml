@@ -80,14 +80,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <plurals name="number_of_videos">
     <item quantity="other">%1$d video</item>
   </plurals>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Tăng bass</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">Hiệu ứng 3D</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Hiệu ứng âm thanh</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Cắm tai nghe cho những hiệu ứng này.</string>
   <!-- Toast message for share items -->
   <string name="cannot_share_items">Các mục đã chọn lớn nhất cho chia sẻ là 300</string>
   <string name="share_dialogue_title">Chia sẻ qua</string>

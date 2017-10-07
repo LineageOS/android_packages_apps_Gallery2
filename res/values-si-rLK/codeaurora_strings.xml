@@ -72,14 +72,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
   <string name="mute_nosupport">නිශ්ශබ්ද කල නොහැක : සහාය නොදක්වන වීඩියෝවකි</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">බේස් වැඩිවීම</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D බලපෑම</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">ශ්‍රව්‍ය බලපෑම්</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">මෙම බලපෑම් සඳහා ඉස් බණුව පේනුගත කරන්න.</string>
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
