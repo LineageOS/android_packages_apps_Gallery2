@@ -77,14 +77,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="mute_nosupport">Negalima nutildyti: vaizdo įrašas nepalaikomas</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <string name="map_activity_not_found_err">Nėra įdiegtos žemėlapių programos tam, kad parodyti vietovę.</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Žemų tonų išryškinimas</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D efektas</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Garso efektai</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Prijunkite ausines dėl šių efektų.</string>
   <!-- Toast message for share items -->
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->

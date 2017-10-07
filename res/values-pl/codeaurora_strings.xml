@@ -82,14 +82,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <item quantity="few">%1$d filmy</item>
     <item quantity="other">%1$d filmów</item>
   </plurals>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Podbicie basu</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">Efekt 3D</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Efekty dźwiękowe</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Podłącz słuchawki dla tych efektów.</string>
   <!-- Toast message for share items -->
   <string name="cannot_share_items">Maksymalnie możesz udostępnić 300 elementów</string>
   <string name="share_dialogue_title">Udostępnij przez</string>

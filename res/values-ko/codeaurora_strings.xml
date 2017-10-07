@@ -80,14 +80,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <plurals name="number_of_videos">
     <item quantity="other">%1$d개 영상</item>
   </plurals>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">베이스 부스트</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D 효과</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">음향 효과</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">음향 효과를 사용하려면 헤드폰을 연결하세요.</string>
   <!-- Toast message for share items -->
   <string name="cannot_share_items">공유할 수 있는 항목 개수는 최대 300개까지입니다.</string>
   <string name="share_dialogue_title">공유에 사용할 앱:</string>

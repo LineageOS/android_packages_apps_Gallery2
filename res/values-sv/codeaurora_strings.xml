@@ -81,14 +81,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <item quantity="one">%1$d video</item>
     <item quantity="other">%1$d videor</item>
   </plurals>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Basförstärkning</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D-effekt</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Ljudeffekter</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Koppla in hörlurar för dessa effekter.</string>
   <!-- Toast message for share items -->
   <string name="share_dialogue_title">Dela via</string>
   <!-- When grouping photos by peoples, the label used for photos that don't

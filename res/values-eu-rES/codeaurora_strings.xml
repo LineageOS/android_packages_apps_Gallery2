@@ -81,14 +81,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <item quantity="one">bideo %1$d</item>
     <item quantity="other">%1$d bideo</item>
   </plurals>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Baxuen indartzea</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D efektua</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Audio efektuak</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Konektatu aurikularrak efektu hauentzako .</string>
   <!-- Toast message for share items -->
   <string name="cannot_share_items">Partekatzeko aukeratutako elementu kopuru maximoa 300 da</string>
   <string name="share_dialogue_title">Partekatu honen bidez</string>
