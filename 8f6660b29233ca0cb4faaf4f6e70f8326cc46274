@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c944daa8_5d3d3c90",
+        "filename": "src/com/android/gallery3d/app/AlbumPage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 17323
+      },
+      "writtenOn": "2017-10-08T09:56:48Z",
+      "side": 1,
+      "message": "Continuing when we get \u0027null\u0027 does not make sense to me. Maybe these conditions should be merged as\nif (list \u003d\u003d null || list.isEmpty()) {\n        break;\n}\n\nOr, alternatively, we should stick to always using \u0027null\u0027 or empty list as a method to report \u0027No more items available\u0027",
+      "revId": "8f6660b29233ca0cb4faaf4f6e70f8326cc46274",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
