@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b83e08a_f9aa9fdc",
+        "filename": "src/com/android/gallery3d/app/AlbumPage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 17323
+      },
+      "writtenOn": "2017-10-08T09:46:59Z",
+      "side": 1,
+      "message": "If getMediaItemCount() reports more items available then there actually are and getMediaItem starts returning nulls, why do we \u0027continue\u0027 and not \u0027break\u0027 here?",
+      "revId": "d9f145130fcba2226d0d6713bbe498597cce259d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
