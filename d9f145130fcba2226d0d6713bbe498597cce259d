@@ -16,6 +16,24 @@
       "revId": "d9f145130fcba2226d0d6713bbe498597cce259d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28a2118b_d35ed262",
+        "filename": "src/com/android/gallery3d/app/AlbumPage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2017-10-09T08:55:37Z",
+      "side": 1,
+      "message": "I was repeating the existing behaviour (see L#666), that\u0027s the reason. If they don\u0027t break here, why would I?",
+      "parentUuid": "8b83e08a_f9aa9fdc",
+      "revId": "d9f145130fcba2226d0d6713bbe498597cce259d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
