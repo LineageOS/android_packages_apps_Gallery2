@@ -43,6 +43,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Images.ImageColumns;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -85,6 +86,8 @@ public class SaveImage {
     private static final String PREFIX_IMG = "IMG";
     private static final String POSTFIX_JPG = ".jpg";
     private static final String AUX_DIR_NAME = ".aux";
+
+    private static final String FILE_PROVIDER_AUTHORITY = "com.android.gallery3d.fileprovider";
 
     private final Context mContext;
     private final Uri mSourceUri;
@@ -561,8 +564,7 @@ public class SaveImage {
             }
         }
 
-        return Uri.fromFile(newSrcFile);
-
+        return FileProvider.getUriForFile(mContext, FILE_PROVIDER_AUTHORITY, newSrcFile);
     }
 
     private static File getLocalAuxDirectory(File dstFile) {
