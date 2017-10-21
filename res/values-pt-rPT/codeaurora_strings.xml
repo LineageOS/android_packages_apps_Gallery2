@@ -40,7 +40,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="stereo">"Estéreo"</string>
   <string name="speaker_on">Altifalante ligado</string>
   <string name="speaker_off">Altifalante desligado</string>
-  <string name="speaker_need_headset">Ligue o auricular para usar este recurso.</string>
+  <string name="speaker_need_headset">Ligue os auscultadores para usar esta funcionalidade.</string>
   <string name="single_track">"Faixa única"</string>
   <string name="input_url">"Insira a URL"</string>
   <string name="streaming_settings">"Definições de transmissão"</string>
