@@ -18,6 +18,7 @@ LOCAL_SDK_VERSION   := 17
 LOCAL_ARM_MODE := arm
 
 LOCAL_CFLAGS    += -ffast-math -O3 -funroll-loops
+LOCAL_CFLAGS += -Wall -Wextra -Werror
 LOCAL_CPPFLAGS += $(JNI_CFLAGS)
 LOCAL_LDLIBS := -llog
 
