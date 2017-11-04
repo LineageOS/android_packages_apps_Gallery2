@@ -7,7 +7,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_JAVA_LIBRARIES := telephony-common
 
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-design
-LOCAL_STATIC_JAVA_LIBRARIES += android-support-transition
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
 LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
@@ -25,7 +24,11 @@ LOCAL_RESOURCE_DIR += \
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
     --extra-packages android.support.design \
+    --extra-packages android.support.transition \
     --extra-packages android.support.v7.appcompat
+
+LOCAL_STATIC_JAVA_AAR_LIBRARIES := \
+    android-support-transition-gallery
 
 LOCAL_PACKAGE_NAME := Gallery2
 
@@ -48,6 +51,13 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 LOCAL_JAVA_LIBRARIES += org.apache.http.legacy
 
 include $(BUILD_PACKAGE)
+
+include $(CLEAR_VARS)
+
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+    android-support-transition-gallery:libs/transition-26.1.0.aar
+
+include $(BUILD_MULTI_PREBUILT)
 
 ifeq ($(strip $(LOCAL_PACKAGE_OVERRIDES)),)
 
