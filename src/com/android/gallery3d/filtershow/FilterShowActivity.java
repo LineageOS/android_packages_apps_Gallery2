@@ -28,6 +28,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -38,6 +39,7 @@ import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -51,6 +53,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -68,6 +71,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -166,7 +170,6 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
 
     public static final String TINY_PLANET_ACTION = "com.android.camera.action.TINY_PLANET";
     public static final String LAUNCH_FULLSCREEN = "launch-fullscreen";
-    public static final boolean RESET_TO_LOADED = false;
     private ImageShow mImageShow = null;
 
     private View mSaveButton = null;
@@ -1479,7 +1482,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             }
             if (w <= TrueScannerActs.MIN_WIDTH
                     || h <= TrueScannerActs.MIN_HEIGHT) {
-                Toast.makeText(this, "Image size too small!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.image_size_too_small),
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
         }
@@ -2334,12 +2338,14 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         switch (newConfig.orientation) {
             case (Configuration.ORIENTATION_LANDSCAPE):
                 if (mPresetDialog != null) {
+                    mPresetDialog.setDismissFlag(false);
                     mPresetDialog.dismiss();
                     mPresetDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 }
                 break;
             case (Configuration.ORIENTATION_PORTRAIT):
                 if (mPresetDialog != null) {
+                    mPresetDialog.setDismissFlag(false);
                     mPresetDialog.dismiss();
                     mPresetDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 }
@@ -2402,11 +2408,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         adapter.reset();
         HistoryItem historyItem = adapter.getItem(0);
         ImagePreset original = null;
-        if (RESET_TO_LOADED) {
-            original = new ImagePreset(historyItem.getImagePreset());
-        } else {
-            original = new ImagePreset();
-        }
+        original = new ImagePreset();
         FilterRepresentation rep = null;
         if (historyItem != null) {
             rep = historyItem.getFilterRepresentation();
@@ -2415,9 +2417,15 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         mMasterImage.setFusionUnderlay(null);
         mMasterImage.resetTranslation();
         mMasterImage.setScaleFactor(1);
-        invalidateViews();
-        backToMain();
+        ArrayList<FilterRepresentation> frList = FiltersManager.getManager().getTools();
+        for (FilterRepresentation fr : frList) {
+            if (fr instanceof FilterRotateRepresentation) {
+                ((FilterRotateRepresentation) fr).resetRotation();
+            }
+        }
+        showDefaultImageView();
         showSaveButtonIfNeed();
+        invalidateViews();
     }
 
     public void showDefaultImageView() {
@@ -2537,13 +2545,57 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                     EditorDualCamFusion editor = (EditorDualCamFusion)mCurrentEditor;
                     editor.setUnderlayImageUri(underlayImageUri);
                 } else if (mCurrentEditor instanceof EditorTruePortraitFusion) {
-                    EditorTruePortraitFusion editor = (EditorTruePortraitFusion)mCurrentEditor;
-                    editor.setUnderlayImageUri(underlayImageUri);
+                    if (checkExtensionValidity(this, underlayImageUri)) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.not_support_gif),
+                                Toast.LENGTH_SHORT).show();
+                        pickImage(SELECT_FUSION_UNDERLAY);
+                    } else {
+                        EditorTruePortraitFusion editor = (EditorTruePortraitFusion)mCurrentEditor;
+                        editor.setUnderlayImageUri(underlayImageUri);
+                    }
                 }
             }
         }
     }
 
+    /**
+     * check whether the extension of the given uri is supported to be underlay
+     * @param context context for get ContentResolver
+     * @param uri uri need to check
+     * @return validity of uri's extension, true means unsupported, false means supported
+     */
+    private boolean checkExtensionValidity(final Context context, final Uri uri) {
+        if (uri == null) {
+            return false;
+        }
+        // get file path from uri
+        String filePath = null;
+        final String scheme = uri.getScheme();
+        if (scheme == null || ContentResolver.SCHEME_FILE.equals(scheme)) {
+            filePath = uri.getPath();
+        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+            Cursor cursor = context.getContentResolver().query(
+                    uri, new String[] {MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            if (null != cursor) {
+                if (cursor.moveToFirst()) {
+                    int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                    if (index > -1) {
+                        filePath = cursor.getString(index);
+                    }
+                }
+                cursor.close();
+            }
+        }
+
+        //get extension from filepath
+        String extension = MimeTypeMap.getFileExtensionFromUrl(filePath);
+
+        //check validity of extension
+        boolean notSupported = false;
+        //if have new unsupported extension, add it below
+        notSupported |= (extension.equals("gif") || extension.equals("GIF"));
+        return notSupported;
+    }
 
     private int nameFilter(FilterPresetSource source,
                                             ArrayList <SaveOption> tempFilterArray) {

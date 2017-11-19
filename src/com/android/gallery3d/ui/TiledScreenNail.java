@@ -213,6 +213,6 @@ public class TiledScreenNail implements ScreenNail {
     }
 
     public static void setMaxSide(int size) {
-        sMaxSide = size;
+        sMaxSide = Math.max(size, sMaxSide);
     }
 }

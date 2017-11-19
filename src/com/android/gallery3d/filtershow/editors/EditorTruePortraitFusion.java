@@ -62,6 +62,7 @@ public class EditorTruePortraitFusion extends Editor {
 
     protected ImageTruePortraitFusion mImageFusion;
     private Uri mUnderlayUri = Uri.EMPTY;
+    private boolean pickDialogHasShown = false;
 
     public EditorTruePortraitFusion() {
         super(ID);
@@ -163,12 +164,13 @@ public class EditorTruePortraitFusion extends Editor {
                 fusionUri = Uri.EMPTY;
         }
 
+        pickDialogHasShown = false;
         setUnderlayImageUri(fusionUri);
     }
 
     @Override
     public void resume() {
-        if(mUnderlayUri.equals(Uri.EMPTY)) {
+        if(mUnderlayUri.equals(Uri.EMPTY) && !pickDialogHasShown) {
             // No underlay set.
             boolean skipIntro = GalleryUtils.getBooleanPref(mContext,
                     mContext.getString(R.string.pref_trueportrait_fusion_intro_show_key), false);
@@ -191,6 +193,7 @@ public class EditorTruePortraitFusion extends Editor {
                     dialog.setOnOkButtonClickListener(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
+                            pickDialogHasShown = true;
                             MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
                         }
                     });
