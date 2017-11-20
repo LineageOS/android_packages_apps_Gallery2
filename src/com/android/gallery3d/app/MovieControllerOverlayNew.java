@@ -114,7 +114,8 @@ public class MovieControllerOverlayNew extends MovieControllerOverlay {
             if (mStopBtn != null) {
                 mStopBtn.setVisibility(View.GONE);
             }
-            mPlayPauseReplayView.layout(insets.left, y - barHeight, insets.left + barHeight, y);
+            // Put the play/pause/next/previous button in the center of the screen
+            layoutCenteredView(mPlayPauseReplayView, 0, 0, w, h);
         }
         mTimeBar.layout(insets.left + barHeight, y - barHeight,
                 width - mScreenModeExt.getAddedRightPadding(), y);
