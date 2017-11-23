@@ -1387,6 +1387,8 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
         if (filterRepresentation.getFilterType() == FilterWatermarkRepresentation.TYPE_WATERMARK_CATEGORY) {
             return;
         }
+        boolean addToHistory = filterRepresentation.getFilterType()
+                != FilterWatermarkRepresentation.TYPE_WATERMARK;
         if (filterRepresentation instanceof FilterUserPresetRepresentation
                 || filterRepresentation instanceof FilterRotateRepresentation
                 || filterRepresentation instanceof FilterMirrorRepresentation) {
@@ -1411,7 +1413,7 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
                 }
             }
         }
-        MasterImage.getImage().setPreset(copy, filterRepresentation, true);
+        MasterImage.getImage().setPreset(copy, filterRepresentation, addToHistory);
         MasterImage.getImage().setCurrentFilterRepresentation(filterRepresentation);
     }
 
@@ -1470,6 +1472,11 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
             }
         }
         if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK) {
+            if (MasterImage.getImage().getCurrentFilterRepresentation() != null
+                    && representation.getSerializationName().equals(MasterImage.getImage()
+                    .getCurrentFilterRepresentation().getSerializationName())) {
+                return;
+            }
             showWaterMark(representation);
         }
         if (TrueScannerActs.SERIALIZATION_NAME.equals(representation.getSerializationName())) {
