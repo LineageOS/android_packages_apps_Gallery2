@@ -17,6 +17,7 @@
 package com.android.gallery3d.filtershow.filters;
 
 import android.content.res.Resources;
+import android.text.TextUtils;
 import android.util.JsonReader;
 import android.util.JsonWriter;
 import android.util.Log;
@@ -67,6 +68,10 @@ public class FilterRepresentation {
     public FilterRepresentation copy(){
         FilterRepresentation representation = new FilterRepresentation(mName);
         representation.useParametersFrom(this);
+        if (getFilterType() == TYPE_WATERMARK) {
+            representation.setSerializationName(getSerializationName());
+            representation.setFilterType(TYPE_WATERMARK);
+        }
         return representation;
     }
 
