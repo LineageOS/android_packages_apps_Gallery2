@@ -118,11 +118,11 @@
     <string name="draw_style_line" msgid="9216476853904429628">"Linije"</string>
     <string name="draw_style_brush_spatter" msgid="7612691122932981554">"Marker"</string>
     <string name="draw_style_brush_marker" msgid="8468302322165644292">"Prskanje"</string>
-    <string name="draw_clear" msgid="6728155515454921052">"Obrisati"</string>
+    <string name="draw_clear" msgid="6728155515454921052">"Obriši"</string>
     <string name="color_border_size" msgid="1086895807615869290">"Debljina"</string>
     <string name="color_border_corner_size" msgid="7637235159438869979">"Velič. uglova"</string>
     <string name="color_border_color" msgid="8765458414425980711">"Boja"</string>
-    <string name="color_border_clear" msgid="4418261191091091722">"Obrisati"</string>
+    <string name="color_border_clear" msgid="4418261191091091722">"Obriši"</string>
     <string name="color_pick_select" msgid="734312818059057394">"Izabrati prilagođenu boju"</string>
     <string name="color_pick_title" msgid="6195567431995308876">"Izabrati boju"</string>
     <string name="draw_size_title" msgid="3121649039610273977">"Odabir veličine"</string>
