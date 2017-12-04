@@ -126,7 +126,6 @@ public class DoNotShowAgainDialog extends BaseDialogFragment {
 
     @Override
     public void onPause() {
-        this.dismiss();
         super.onPause();
     }
 }
