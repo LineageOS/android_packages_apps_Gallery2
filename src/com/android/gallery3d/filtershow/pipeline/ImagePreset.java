@@ -444,6 +444,20 @@ public class ImagePreset {
             if (!replaced && !isNonePresetFilter(representation)) {
                 mFilters.add(representation);
             }
+        } else if (representation.getFilterType() == FilterRepresentation.TYPE_WATERMARK) {
+            boolean replaced = false;
+            for (int i = 0; i < mFilters.size(); i++) {
+                FilterRepresentation current = mFilters.elementAt(i);
+                if (current.getFilterType() == FilterRepresentation.TYPE_WATERMARK) {
+                    mFilters.remove(i);
+                    replaced = true;
+                    mFilters.add(i, representation);
+                    break;
+                }
+            }
+            if (!replaced) {
+                mFilters.add(representation);
+            }
         } else {
             mFilters.add(representation);
         }
