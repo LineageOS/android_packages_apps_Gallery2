@@ -112,8 +112,10 @@ public class TrueScannerActs extends SimpleImageFilter {
         if (null != sActivity) {
             sActivity.runOnUiThread(new Runnable() {
                 public void run() {
-                    mProgressDialog = ProgressDialog.show(sActivity, "", "Processing...", true, false);
-                    mProgressDialog.show();
+                    if (!sActivity.isFinishing()) {
+                        mProgressDialog = ProgressDialog.show(sActivity, "", "Processing...", true, false);
+                        mProgressDialog.show();
+                    }
                 }
             });
         }
