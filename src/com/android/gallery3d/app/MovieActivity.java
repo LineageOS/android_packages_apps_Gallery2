@@ -475,12 +475,12 @@ public class MovieActivity extends AbstractPermissionActivity {
             }
             if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
                 // Only stop video.
-                if (mControlResumed) {
+                if (mControlResumed && !mResumed) {
                     mPlayer.onStop();
                     mControlResumed = false;
                 }
             } else if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())) {
-                if (!mControlResumed) {
+                if (!mControlResumed && mResumed) {
                     mPlayer.onResume();
                     mControlResumed = true;
                 }
