@@ -108,6 +108,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
     private static final int PERMISSION_REQUEST_STORAGE = 1;
     private Bundle mSavedInstanceState;
+    private boolean mIsViewInited = false;
 
 
     @Override
@@ -121,6 +122,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
         setContentView(R.layout.gallery_main);
         initView();
+        mIsViewInited = true;
 
         mSavedInstanceState = savedInstanceState;
         if (isPermissionGranted()) {
@@ -139,7 +141,9 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
 
     @Override
     protected void onGetPermissionsSuccess() {
-        init();
+        if (mIsViewInited) {
+            init();
+        }
     }
 
     @Override
