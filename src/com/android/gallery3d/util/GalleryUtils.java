@@ -42,7 +42,6 @@ import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.GalleryActivity;
-import com.android.gallery3d.app.PackagesMonitor;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;
@@ -74,6 +73,8 @@ public class GalleryUtils {
 
     private static final String KEY_CAMERA_UPDATE = "camera-update";
     private static final String KEY_HAS_CAMERA = "has-camera";
+
+    private static final String KEY_PACKAGES_VERSION  = "packages-version";
 
     private static float sPixelDensity = -1f;
     private static boolean sCameraAvailableInitialized = false;
@@ -204,7 +205,7 @@ public class GalleryUtils {
     }
 
     public static boolean isEditorAvailable(Context context, String mimeType) {
-        int version = PackagesMonitor.getPackagesVersion(context);
+        int version = getPackagesVersion(context);
 
         String updateKey = PREFIX_PHOTO_EDITOR_UPDATE + mimeType;
         String hasKey = PREFIX_HAS_PHOTO_EDITOR + mimeType;
@@ -223,7 +224,7 @@ public class GalleryUtils {
     }
 
     public static boolean isAnyCameraAvailable(Context context) {
-        int version = PackagesMonitor.getPackagesVersion(context);
+        int version = getPackagesVersion(context);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         if (prefs.getInt(KEY_CAMERA_UPDATE, 0) != version) {
             PackageManager packageManager = context.getPackageManager();
@@ -469,5 +470,10 @@ public class GalleryUtils {
         TelephonyManager telephonyManager =
                 (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         return telephonyManager.getCallState() != TelephonyManager.CALL_STATE_IDLE;
+    }
+
+    public static int getPackagesVersion(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getInt(KEY_PACKAGES_VERSION, 1);
     }
 }
