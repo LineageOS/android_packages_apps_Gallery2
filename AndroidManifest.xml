@@ -359,15 +359,6 @@
             <meta-data android:name="android.appwidget.provider"
                     android:resource="@xml/widget_info" />
         </receiver>
-        <receiver android:name="com.android.gallery3d.app.PackagesMonitor">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED"/>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <action android:name="android.intent.action.PACKAGE_CHANGED"/>
-                <data android:scheme="package"/>
-            </intent-filter>
-        </receiver>
-        <service android:name="com.android.gallery3d.app.PackagesMonitor$AsyncService"/>
         <service android:name="com.android.gallery3d.gadget.WidgetService"
                 android:permission="android.permission.BIND_REMOTEVIEWS"/>
         <activity android:name="com.android.gallery3d.gadget.WidgetConfigure"
