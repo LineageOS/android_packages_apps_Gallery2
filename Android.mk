@@ -9,9 +9,10 @@ LOCAL_JAVA_LIBRARIES := telephony-common
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-design
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-transition
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
+LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-recyclerview
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
-LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
 LOCAL_STATIC_JAVA_LIBRARIES += mp4parser
+LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
 LOCAL_STATIC_JAVA_LIBRARIES += xmp_toolkit
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src) $(call all-renderscript-files-under, src)

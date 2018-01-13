@@ -90,3 +90,6 @@
 -keep class com.thundersoft.hz.selfportrait.makeup.engine.MakeupEngine{
   *;
 }
+
+# Better fix will be below one day
+-dontwarn android.util.Pools*
