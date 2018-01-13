@@ -41,14 +41,18 @@
   <!--  Name for the overflow menu item for settings [CHAR LIMIT=20] -->
   <!--  Exit Dialog -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
+  <string name="unsaved">Cael gwared â\'r newidiadau i\'r ddelwedd hon?</string>
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
+  <string name="save_before_exit">Gwaredu â\'r newidiadau?</string>
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <!--  String displayed when discard editor [CHAR LIMIT=NONE] -->
+  <string name="discard">Gwaredu</string>
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <!--  String displayed when exiting editor[CHAR LIMIT=NONE] -->
   <!--  History Panel -->
   <!--  Text for the history panel title [CHAR LIMIT=50] -->
   <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
+  <string name="reset">Nôl i\'r gwreiddiol</string>
   <!--  Text for the original image[CHAR LIMIT=20]-->
   <!--  Image state panel -->
   <!--  Text for the image state panel title [CHAR LIMIT=50] -->
@@ -65,13 +69,17 @@
   <!--  Label for the aspect 7:5 effect [CHAR LIMIT=15] -->
   <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
+  <string name="aspectNone_effect">Rhydd</string>
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
   <!-- Label for when the aspect ratio is fixed to a value [CHAR LIMIT=15] -->
   <!--  Label for the tuny planet effect [CHAR LIMIT=10] -->
   <!--  Filters buttons -->
   <!--  True Effect button -->
+  <string name="trueScanner">Sganiwr Cywir</string>
   <!--  HazeBuster button -->
+  <string name="hazeBuster">Gwaredwr Tawch</string>
   <!--  SeeStraight button -->
+  <string name="seeStraight">Gweld yn syth</string>
   <!--  Label for the image exposure (brightness) filter button [CHAR LIMIT=10] -->
   <!--  Label for the image sharpness (clarity, distinctness) filter button [CHAR LIMIT=10] -->
   <!--  Label for the image contrast (color difference) filter button [CHAR LIMIT=10] -->
@@ -103,18 +111,29 @@
   <!--  Label for the image downsampling effect (makes image smaller) [CHAR LIMIT=15] -->
   <!--  Label for the "neutral density graduated filter" filter effect  [CHAR LIMIT=15] -->
   <!--  Label for the "refocus" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="focus">Ffocws</string>
   <!--  Label for the "fusion" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="fusion">Ymdoddi</string>
   <!--  Label for the "sketch" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="sketch">Braslun</string>
   <!--  Label for the "halo" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="halo">Eurgylch</string>
   <!--  Label for the "zoom" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="zoom">Chwyddo</string>
   <!--  Label for the "motion" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="motion">Symudiad</string>
   <!--  Label for the "bw" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="bw">D/G</string>
   <!--  Label for the "blackboard" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="blackboard">Bwrdd du</string>
   <!--  Label for the "whiteboard" dual camera effect  [CHAR LIMIT=15] -->
+  <string name="whiteboard">Bwrdd gwyn</string>
   <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
   <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
   <!--  Label for the "blur" true portrait effect  [CHAR LIMIT=15] -->
+  <string name="blur">Aneglurder</string>
   <!--  Label for the "motion blur" true portrait effect  [CHAR LIMIT=15] -->
+  <string name="motion_blur">Aneglurder Symudiad</string>
   <!--  Label for the Brightness effect  [CHAR LIMIT=20] -->
   <!--  Label for the Contrast filter effect  [CHAR LIMIT=20] -->
   <!--  Label for the saturation effect  [CHAR LIMIT=20] -->
@@ -176,5 +195,46 @@
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
+  <string name="fusion_pick_point">Dewisa Segment</string>
+  <string name="fusion_pick_underlay">Dewisa Haen Waelod</string>
+  <string name="dual_camera_effects">Effeithiau Camerâu Deuol</string>
+  <string name="dual_camera_effects_intro">Mae\'n dy ganiatáu i roi effeithiau cefndir ar waith, megis \"Symudiad\" a \"Braslun\". Mae hefyd yn bosib cyfuno lluniau gyda\'i gilydd am effeithiau diddorol. Mae\'r nodwedd yn gweithio orau pan fo\'ch camera yn agos at brif destun y llun.</string>
+  <string name="dualcam_no_segment_toast">Methwyd dod o hyd i segment yn y pwynt yma.</string>
+  <string name="dualcam_filter_not_supported">Dyw hidlyddion camerâu deuol ddim yn bosib gyda\'r ddelwedd hon.</string>
+  <string name="trueportrait_intro">Mae\'n dy ganiatáu i wella lluniau o bobol. Mae\'n bosib rhoi effeithiau yn y cefndir, er enghraifft \"Aneglurder\" a \"Braslun\". Mae hefyd yn bosib cyfuno dau lun gyda\'i gilydd i greu cefndiroedd diddorol i dy luniau o bobol.</string>
+  <string name="trueportrait_no_face">Nid yw\'n bosib rhoi effeithiau portread i\'r llun hwn. Methwyd adnabod wyneb.</string>
+  <string name="trueportrait_edit_intro">Gyda\'r offeryn Mireinio, mae\'n bosib golygu\'r blaendir a\'r cefndir. Galli di ddefnyddio dy fys i baentio unrhyw rannau o\'r blaendir neu gefndir sy\'n cael eu methu.</string>
+  <string name="trueportrait_edit_foreground_toast">Defnyddia dy fys i baentio unrhyw rannau o\'r blaendir cafodd eu methu.</string>
+  <string name="trueportrait_edit_background_toast">Defnyddia dy fys i baentio unrhyw rannau o\'r cefndir cafodd eu methu.</string>
+  <string name="trueportrait_edit_help">I chwyddo, defnyddia dau fys i binsio mewn neu allan. Mae\'n bosib hefyd llusgo gyda dau fys i ail-leoli\'r ddelwedd. Gall hyn ei wneud yn haws trwsio rhannau sy\'n achosi anhawster.</string>
+  <string name="trueportrait_fusion_intro">Mae\'n bosib copïo\'r person yn y blaendir a\'i bastio ar unrhyw lun yn dy galeri. Beth am roi cynnig ar wahanol luniau cefndir i greu portreadau newydd a diddorol?</string>
+  <string name="dualcam_fusion_intro">Mae\'n bosib copïo\'r blaendir a\'i bastio ar unrhyw lun yn dy galeri. Beth am roi cynnig ar wahanol luniau cefndir i greu portreadau newydd a diddorol?</string>
+  <string name="do_not_show_again">Peidio â dangos eto</string>
+  <string name="trueportrait_touch_up">Mireinio</string>
+  <string name="fusion_pick_background">Dewis Llun Cefndir</string>
+  <string name="ok_continue">Parhau</string>
+  <string name="frames">Fframiau</string>
+  <string name="beautify">Harddu</string>
+  <string name="dualcam">Camerâu Deuol</string>
+  <string name="trueportrait">Gwir Portread</string>
+  <string name="foreground">Blaendir</string>
+  <string name="background">Cefndir</string>
+  <string name="brush_size">Maint Brws</string>
   <!--Filtershow dialog -->
+  <string name="filtershow_dialog_title">Hidlydd Personol</string>
+  <string name="filtershow_dialog_content">Mae\'n dy alluogi i greu hidlydd ffotograff.\n\nDewisa lun a\'i ddefnyddio fel hidlydd ar gyfer lluniau eraill.</string>
+  <string name="filtershow_dialog_original_photo">Llun Gwreiddiol</string>
+  <string name="filtershow_dialog_apply_photo">Lliwiau i\'w Hychwanegu</string>
+  <string name="filtershow_dialog_checkbox">Peidio â dangos eto</string>
+  <string name="filtershow_preset_rename">Ailenwi</string>
+  <string name="delete_before_exit">Dileu\'r hidlydd?</string>
+  <string name="rename_before_exit">Ailenwi\'r Hidlydd</string>
+  <string name="filter_name">Enw\'r hidlydd</string>
+  <string name="filter_name_notification">Rhaid rhoi enw i\'r hidlydd.</string>
+  <string name="filter_name_duplicate">Mae\'r enw yn bodoli eisoes. Rho enw arall.</string>
+  <string name="watermark_location">Lleoliad</string>
+  <string name="watermark_time">Amser</string>
+  <string name="watermark_weather">Tywydd</string>
+  <string name="watermark_emotions">Emosiynau</string>
+  <string name="watermark_food">Bwyd</string>
 </resources>
