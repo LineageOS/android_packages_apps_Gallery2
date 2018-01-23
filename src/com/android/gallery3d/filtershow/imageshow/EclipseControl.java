@@ -189,7 +189,7 @@ public class EclipseControl {
     }
 
     public void paintGrayPoint(Canvas canvas, float x, float y) {
-        if (x == Float.NaN) {
+        if (Float.isNaN(x)) {
             return;
         }
 
@@ -206,7 +206,7 @@ public class EclipseControl {
     }
 
     public void paintPoint(Canvas canvas, float x, float y) {
-        if (x == Float.NaN) {
+        if (Float.isNaN(x)) {
             return;
         }
 
@@ -223,7 +223,7 @@ public class EclipseControl {
     }
 
     void paintRadius(Canvas canvas, float cx, float cy, float rx, float ry) {
-        if (cx == Float.NaN) {
+        if (Float.isNaN(cx)) {
             return;
         }
         int mSliderColor = 0xFF33B5E5;
