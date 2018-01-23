@@ -151,7 +151,7 @@ public class FilterVignetteRepresentation extends FilterRepresentation implement
     }
 
     public boolean isCenterSet() {
-        return mCenterX != Float.NaN;
+        return !Float.isNaN(mCenterX);
     }
 
     @Override
