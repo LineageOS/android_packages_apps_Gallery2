@@ -64,6 +64,7 @@
             android:logo="@mipmap/ic_launcher_gallery"
             android:hardwareAccelerated="true"
             android:largeHeap="true"
+            android:appCategory="image"
             android:restoreAnyVersion="true"
             android:supportsRtl="true"
             android:usesCleartextTraffic="true">
