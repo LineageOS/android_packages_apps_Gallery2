@@ -440,11 +440,6 @@ public class AlbumSetPage extends ActivityState implements
         mCameraButton = null;
     }
 
-    private void showCameraButton() {
-        if (mCameraButton == null && !setupCameraButton()) return;
-        mCameraButton.setVisibility(View.VISIBLE);
-    }
-
     private void hideCameraButton() {
         if (mCameraButton == null) return;
         mCameraButton.setVisibility(View.GONE);
@@ -467,7 +462,6 @@ public class AlbumSetPage extends ActivityState implements
                     mShowedEmptyToastForSelf = true;
                     showEmptyAlbumToast(Toast.LENGTH_LONG);
                     mSlotView.invalidate();
-                    showCameraButton();
                 }
                 return;
             } else {
