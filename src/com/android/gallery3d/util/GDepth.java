@@ -64,6 +64,7 @@ public class GDepth {
 
         public boolean parse(Context context, Uri uri) {
             InputStream is = null;
+            if (uri == null) return valid();
             try {
                 is = context.getContentResolver().openInputStream(uri);
                 XMPStream stream = new XMPStream(is);
