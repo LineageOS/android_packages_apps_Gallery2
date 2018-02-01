@@ -46,7 +46,11 @@ LOCAL_SHARED_LIBRARIES += libjni_dualcamera libjni_trueportrait libjni_filtergen
 
 LOCAL_REQUIRED_MODULES := libts_detected_face_jni libts_face_beautify_jni
 
+ifdef LOCAL_JACK_ENABLED
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
+else
+LOCAL_PROGUARD_ENABLED := disabled
+endif
 
 LOCAL_JAVA_LIBRARIES += org.apache.http.legacy
 
