@@ -15,7 +15,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Oriel</string>
   <!-- Title for picture frame gadget to show in list of all available gadgets -->
   <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
   <!-- Used to format video duration in Details dialog. hours:minutes:seconds e.g. 0:21:30 -->
@@ -36,10 +35,8 @@
   <!-- Movie View Start Playing button "Beginning" -->
   <!-- Title of a menu item to indicate performing the image crop operation
          [CHAR LIMIT=20] -->
-  <string name="crop_save_text">Iawn</string>
   <!-- Title of a menu item to indicate performing the image crop operation
          [CHAR LIMIT=20] -->
-  <string name="ok">Iawn</string>
   <!-- Button indicating that the cropped image should be reverted back to the original -->
   <!-- Hint that appears when cropping an image with more than one face -->
   <!-- Toast/alert that the image is being saved to the SD card -->
@@ -114,7 +111,6 @@
   <!-- Title of a menu item to show videos only [CHAR LIMIT=30]-->
   <!-- Title of a menu item to show all (both images and videos) [CHAR LIMIT=30]-->
   <!-- Title of the StackView AppWidget -->
-  <string name="appwidget_title">Oriel Lluniau</string>
   <!-- Text for the empty state of the StackView AppWidget [CHAR LIMIT=30] -->
   <!-- Toast message shown when the cropped image has been saved in the
          %s folder (string: folder_download) [CHAR LIMIT=50]-->
@@ -276,7 +272,6 @@
   <!-- Text followed by a checkbox to turn on/off sound effects during the countdown. [CHAR LIMIT = 16]-->
   <!-- Entry of a on/off setting. The setting is turned off. [CHAR LIMIT=15] -->
   <!-- Entry of a on/off setting. The setting is turned on. [CHAR LIMIT=15] -->
-  <string name="setting_on">Ymlaen</string>
   <!-- The value of a camera preference indicating the setting is off. -->
   <!-- The value of a camera preference indicating the setting is on. -->
   <!-- The Video quality settings in preference [CHAR LIMIT=21] -->
@@ -344,7 +339,6 @@
   <!-- switch camera label back [CHAR LIMIT=60] -->
   <!-- switch camera label front [CHAR LIMIT=60] -->
   <!-- Dialog "OK" button. Dismisses dialog. -->
-  <string name="dialog_ok">Iawn</string>
   <!-- Low-memory dialog message [CHAR LIMT=NONE] -->
   <!-- Low-memory dialog message [CHAR LIMIT=NONE] -->
   <!-- Camera format string for new image files. Passed to java.text.SimpleDateFormat. -->
