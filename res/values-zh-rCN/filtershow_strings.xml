@@ -38,10 +38,9 @@
     <string name="size" msgid="4639404642236356037">"大小"</string>
     <string name="x" msgid="6810256999024563662">"x"</string>
     <string name="menu_settings" msgid="6428291655769260831">"设置"</string>
-    <string name="unsaved" msgid="8704442449002374375">"是否放弃对当前图片的操作？"</string>
-    <string name="save_before_exit" msgid="2680660633675916712">"放弃更改？"</string>
+    <string name="unsaved" msgid="8704442449002374375">"此图片的更改尚未保存。"</string>
+    <string name="save_before_exit" msgid="2680660633675916712">"要在退出之前保存更改吗？"</string>
     <string name="save_and_exit" msgid="3628425023766687419">"保存并退出"</string>
-    <string name="discard">"放弃"</string>
     <string name="save_and_processing" msgid="6371565035837463194">"正在处理完整分辨率图片…"</string>
     <string name="exit" msgid="242642957038770113">"退出"</string>
     <string name="history" msgid="455767361472692409">"历史记录"</string>
@@ -145,7 +144,7 @@
     <string name="filtershow_add_button_versions" msgid="7620107266685809612">"版本"</string>
     <string name="filtershow_version_original" msgid="1413894292200912828">"原图"</string>
     <string name="filtershow_version_current" msgid="6609334422797468952">"当前"</string>
-    <string name="filtershow_exif_model" msgid="3543206476046267466">"型号"</string>
+    <string name="filtershow_exif_model" msgid="3543206476046267466">"机型"</string>
     <string name="filtershow_exif_aperture" msgid="5076571522763604380">"光圈"</string>
     <string name="filtershow_exif_focal_length" msgid="5925151469731623706">"焦距"</string>
     <string name="filtershow_exif_iso" msgid="5822494416955625317">"感光度"</string>
@@ -154,8 +153,4 @@
     <string name="filtershow_exif_f_stop" msgid="6081797865604483139">"光圈值"</string>
     <string name="filtershow_exif_exposure_time" msgid="4099067062781294115">"曝光时间"</string>
     <string name="filtershow_exif_copyright" msgid="8801875918803737581">"版权"</string>
-
-    <string name="color">滤镜</string>
-    <string name="frames">相框</string>
-
 </resources>
