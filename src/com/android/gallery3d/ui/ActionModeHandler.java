@@ -195,7 +195,6 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
             } else if (action == R.id.action_share) {
                 String shareTitle = mActivity.getResources().
                         getString(R.string.share_dialogue_title);
-                mActivity.isTopMenuShow = true;
                 mActivity.startActivity(Intent.createChooser(
                         mShareIntent, shareTitle));
                 return true;
