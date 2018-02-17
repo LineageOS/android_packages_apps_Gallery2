@@ -81,7 +81,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <item quantity="other">%1$d 個影片</item>
   </plurals>
   <!-- Toast message for share items -->
-  <string name="cannot_share_items">分享的最大選取項目為 300</string>
+  <string name="cannot_share_items">分享的最大選擇項目為 300</string>
   <string name="share_dialogue_title">分享方式：</string>
   <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
