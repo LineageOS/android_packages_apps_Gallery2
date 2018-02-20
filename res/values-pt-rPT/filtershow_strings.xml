@@ -22,7 +22,7 @@
     <!-- no translation found for original_picture_text (3076213290079909698) -->
     <skip />
     <string name="setting_wallpaper" msgid="4679087092300036632">"A definir imagem de fundo"</string>
-    <string name="download_failure" msgid="5923323939788582895">"Não foi possível transferir a fotografia. Rede não disponível."</string>
+    <string name="download_failure" msgid="5923323939788582895">"Não foi possível transferir a foto. Rede não disponível."</string>
     <string name="original" msgid="3524493791230430897">"Original"</string>
     <string name="borders" msgid="2067345080568684614">"Limites"</string>
     <string name="custom_border" msgid="8679893731790931871">"Personalizado"</string>
