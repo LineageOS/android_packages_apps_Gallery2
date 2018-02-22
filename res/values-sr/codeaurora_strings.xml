@@ -32,10 +32,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
   <string name="setp_option_name">Корак</string>
-  <string name="step_option_desc">Подесите интервал за брзо премотавање унапред или уназад.</string>
-  <string name="setp_option_three_second">3 сек.</string>
-  <string name="setp_option_six_second">6 сек.</string>
-  <string name="loop">"Понављај"</string>
+  <string name="step_option_desc">Подесите интервал за брзо премотавање унапред или уназад</string>
+  <string name="setp_option_three_second">3 секунде</string>
+  <string name="setp_option_six_second">6 секунди</string>
+  <string name="loop">"Понављање"</string>
   <string name="single">"Појединачно"</string>
   <string name="stereo">"Стерео"</string>
   <string name="speaker_on">Укључен звучник</string>
@@ -44,8 +44,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="single_track">"Једна нумера"</string>
   <string name="input_url">"Унесите URL"</string>
   <string name="streaming_settings">"Подешавања стриминга"</string>
-  <string name="next">"Следеће"</string>
-  <string name="previous">"Претходно"</string>
+  <string name="next">"Следећа"</string>
+  <string name="previous">"Претходна"</string>
   <string name="buffer_size">Величина бафера</string>
   <string name="apn">Жељени APN</string>
   <string name="rtp_min_port">Минимални порт</string>
@@ -54,18 +54,18 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="set_rtp_max_port">Поставите макс. број порта</string>
   <string name="set_buffer_size">Поставите величину бафера</string>
   <string name="set_apn">Изаберите жељени APN</string>
-  <string name="setting">Подешавања</string>
+  <string name="setting">Поставке</string>
   <string name="server_timeout_title">"Време истека сервера"</string>
-  <string name="server_timeout_message">"Поново се повезати са сервером за репродуковање видео-снимка?"</string>
+  <string name="server_timeout_message">"Поново се повезати са сервером за репродуковање видео снимка?"</string>
   <string name="videoview_error_text_cannot_connect_retry">"Грешка у вези. Поново се повезујем са %1$d\u2026"</string>
   <string name="media_controller_live">Уживо</string>
-  <string name="media_controller_playing">Репродукујем\u2026</string>
+  <string name="media_controller_playing">Репродукција</string>
   <string name="media_controller_connecting">Повезујем се\u2026</string>
   <string name="bookmark_add">"Додај обележивач"</string>
   <string name="bookmark_display">"Прикажи обележиваче"</string>
-  <string name="bookmark_empty">"Нема обележивача."</string>
-  <string name="bookmark_exist">"Обележивач већ постоји."</string>
-  <string name="bookmark_add_success">"Обележивач је додат."</string>
+  <string name="bookmark_empty">"Нема обележивача"</string>
+  <string name="bookmark_exist">"Обележивач већ постоји"</string>
+  <string name="bookmark_add_success">"Обележивач додат"</string>
   <string name="bookmark_list">"Обележивачи"</string>
   <string name="bookmark_title">"Наслов"</string>
   <string name="bookmark_location">"Локација"</string>
@@ -74,7 +74,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <string name="more_image">Још слика</string>
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
-  <string name="mute_nosupport">Не могу да искључим звук јер видео није подржан.</string>
+  <string name="mute_nosupport">Не могу да искључим звук: видео није подржан</string>
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
   <string name="map_activity_not_found_err">Не могу да прикажем локацију јер апликација за рад са мапама није инсталирана.</string>
   <plurals name="number_of_videos">
@@ -89,7 +89,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          have people information in them [CHAR LIMIT=20]-->
   <string name="no_faces">Без лица</string>
   <!-- The tips of trimming video -->
-  <string name="fail_trim">Нажалост, видео-снимак не може бити скраћен.</string>
+  <string name="fail_trim">Нажалост, видео снимак не може бити скраћен</string>
   <string name="can_not_trim">Можете скратити само датотеке у форматима MP4 и 3GP.</string>
   <string name="drm_license_info">Информације о DRM лиценци</string>
   <!-- Timeline screen title -->

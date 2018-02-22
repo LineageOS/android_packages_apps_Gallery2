@@ -387,6 +387,7 @@
   <!-- Dialog "OK" button. Dismisses dialog. -->
   <string name="dialog_ok">ACEUTAR</string>
   <!-- Low-memory dialog message [CHAR LIMT=NONE] -->
+  <string name="spaceIsLow_content" product="nosdcard">Ta escosando l\'espaciu del almacenamientu USB. Camuda l\'axustes de calidá o desanicia delles imáxenes u ficheros.</string>
   <!-- Low-memory dialog message [CHAR LIMIT=NONE] -->
   <!-- Camera format string for new image files. Passed to java.text.SimpleDateFormat. -->
   <!-- Video Camera format string for new video files. Passed to java.text.SimpleDateFormat. -->

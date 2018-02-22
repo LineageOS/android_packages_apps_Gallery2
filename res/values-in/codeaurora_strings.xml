@@ -107,6 +107,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="truescanner_white">Papan tulis putih</string>
   <string name="truescanner">TrueScanner</string>
   <string name="truescanner_remove_glare">Hapus kilauan</string>
+  <string name="hazebuster_acts">Pembasmi Kabut</string>
   <string name="seestraight_acts">Melihat lurus</string>
   <string name="seestraight_input_image_is_small">Gambar masukan terlalu kecil untuk diproses.</string>
   <string name="seestraight_process_fail">Tidak dapat memproses gambar.</string>

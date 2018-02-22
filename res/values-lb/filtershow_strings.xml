@@ -30,7 +30,6 @@
   <!--  Text to label an image as "original" [CHAR LIMIT=20] -->
   <string name="original">Original</string>
   <!--  Text for filters that apply a border to a picture [CHAR LIMIT=20] -->
-  <string name="borders" msgid="4461692156695893616">Rumm</string>
   <!-- Text for the custom border filter [CHAR LIMIT=20] -->
   <string name="custom_border">Personaliséiert</string>
   <!--  actionbar menu -->
@@ -61,10 +60,11 @@
   <string name="menu_settings">Astellungen</string>
   <!--  Exit Dialog -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
+  <string name="unsaved">Et ginn ongespäichert Ännerungen un dësem Bild.</string>
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
+  <string name="save_before_exit">Wëlls du d\'Bild virum Zoumaache späicheren?</string>
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <string name="save_and_exit">Späicheren an zoumaachen</string>
-  <!--  String displayed when discard editor [CHAR LIMIT=NONE] -->
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <string name="save_and_processing">Bild mat voller Opléisung gëtt beaarbecht...</string>
   <!--  String displayed when exiting editor[CHAR LIMIT=NONE] -->
@@ -73,6 +73,7 @@
   <!--  Text for the history panel title [CHAR LIMIT=50] -->
   <string name="history">Historique</string>
   <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
+  <string name="reset">Zrécksetzen</string>
   <!--  Text for the original image[CHAR LIMIT=20]-->
   <string name="history_original">@string/original</string>
   <!--  Image state panel -->
@@ -102,15 +103,13 @@
   <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
   <string name="aspect9to16_effect">16:9</string>
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
+  <string name="aspectNone_effect">Keen</string>
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
   <!-- Label for when the aspect ratio is fixed to a value [CHAR LIMIT=15] -->
   <string name="Fixed">Fixéiert</string>
   <!--  Label for the tuny planet effect [CHAR LIMIT=10] -->
   <string name="tinyplanet">Klenge Planéit</string>
   <!--  Filters buttons -->
-  <!--  True Effect button -->
-  <!--  HazeBuster button -->
-  <!--  SeeStraight button -->
   <!--  Label for the image exposure (brightness) filter button [CHAR LIMIT=10] -->
   <string name="exposure" msgid="1229093066434614811">Beliichtung</string>
   <!--  Label for the image sharpness (clarity, distinctness) filter button [CHAR LIMIT=10] -->
@@ -170,21 +169,6 @@
   <string name="downsample">Verklengeren</string>
   <!--  Label for the "neutral density graduated filter" filter effect  [CHAR LIMIT=15] -->
   <string name="grad">Ofgestuft</string>
-  <!--  Label for the "refocus" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "fusion" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "sketch" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "halo" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "zoom" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "motion" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "bw" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "blackboard" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "whiteboard" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
-  <string name="posterize">Posteriséiert</string>
-  <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
-  <string name="dc_negative">Negativ</string>
-  <!--  Label for the "blur" true portrait effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "motion blur" true portrait effect  [CHAR LIMIT=15] -->
   <!--  Label for the Brightness effect  [CHAR LIMIT=20] -->
   <string name="editor_grad_brightness">Hellegkeet</string>
   <!--  Label for the Contrast filter effect  [CHAR LIMIT=20] -->
@@ -306,7 +290,4 @@
   <string name="filtershow_exif_exposure_time">Beliichtungszäit</string>
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <string name="filtershow_exif_copyright">Auteursrecht</string>
-  <string name="color">Faarf</string>
-  <!--Filtershow dialog -->
-  <string name="filtershow_preset_title">Personaliséiert</string>
 </resources>
