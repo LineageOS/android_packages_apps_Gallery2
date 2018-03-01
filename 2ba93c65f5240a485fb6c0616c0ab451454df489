@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dea09228_606ac718",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 18486
+      },
+      "writtenOn": "2018-03-01T04:42:20Z",
+      "side": 1,
+      "message": "typo \"SnapdragonGallery\"",
+      "revId": "2ba93c65f5240a485fb6c0616c0ab451454df489",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
