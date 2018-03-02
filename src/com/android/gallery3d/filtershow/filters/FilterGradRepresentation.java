@@ -104,7 +104,7 @@ public class FilterGradRepresentation extends FilterRepresentation
                 count++;
             }
         }
-        return "c=" + mBands.indexOf(mBands) + "[" + mBands.size() + "]" + count;
+        return "c=" + mBands.indexOf(mCurrentBand) + "[" + mBands.size() + "]" + count;
     }
 
     private void creatExample() {
