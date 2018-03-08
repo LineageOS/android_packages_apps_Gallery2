@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_name">Galería</string>
   <!-- Title for picture frame gadget to show in list of all available gadgets -->
   <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
   <!-- Used to format video duration in Details dialog. hours:minutes:seconds e.g. 0:21:30 -->
