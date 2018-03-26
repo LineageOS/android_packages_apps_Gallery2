@@ -369,7 +369,8 @@ public class ApiHelper {
 
     public static class AudioSystem {
         public static final int FORCE_NONE = 0;
-        public static final int FORCE_SPEAKER = 1;
+        public static final int FORCE_SPEAKER_HEADSET = 1;
+        public static final int FORCE_SPEAKER_BT = 10;
 
         public static final int FOR_MEDIA = 1;
 
