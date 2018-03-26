@@ -28,8 +28,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.codeaurora.gallery3d.video;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothProfile;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -154,7 +156,7 @@ public class SpeakerHooker extends MovieHooker {
         if (isSpeakerOn()) {
             turnSpeakerOff();
         } else {
-            if (mIsHeadsetOn) {
+            if (mIsHeadsetOn || isBtHeadsetConnected()) {
                 turnSpeakerOn();
             } else {
                 Toast.makeText(getContext(), getContext().getString(R.string.speaker_need_headset),
@@ -164,12 +166,25 @@ public class SpeakerHooker extends MovieHooker {
         updateSpeakerButton();
     }
 
+    private boolean isBtHeadsetConnected() {
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if (adapter != null) {
+            if ((BluetoothProfile.STATE_CONNECTED ==
+                    adapter.getProfileConnectionState(BluetoothProfile.HEADSET)) ||
+                    (BluetoothProfile.STATE_CONNECTED ==
+                            adapter.getProfileConnectionState(BluetoothProfile.A2DP))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void turnSpeakerOn() {
         if (mAudioManager == null) {
             initAudioManager();
         }
-        AudioSystem.setForceUse(AudioSystem.FOR_MEDIA,
-                AudioSystem.FORCE_SPEAKER);
+        AudioSystem.setForceUse(AudioSystem.FOR_MEDIA, isBtHeadsetConnected() ?
+                AudioSystem.FORCE_SPEAKER_BT : AudioSystem.FORCE_SPEAKER_HEADSET);
     }
 
     private void turnSpeakerOff() {
@@ -198,8 +213,8 @@ public class SpeakerHooker extends MovieHooker {
     }
 
     private boolean isSpeakerOn() {
-        return (AudioSystem.FORCE_SPEAKER
-                == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA));
+        return (AudioSystem.FORCE_SPEAKER_HEADSET == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA) ||
+                AudioSystem.FORCE_SPEAKER_BT == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA));
     }
 
 }
