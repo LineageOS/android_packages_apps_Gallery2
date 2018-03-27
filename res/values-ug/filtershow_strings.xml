@@ -60,10 +60,11 @@
   <string name="menu_settings">تەڭشەكلەر</string>
   <!--  Exit Dialog -->
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
+  <string name="unsaved">بۇ سۈرەتنىڭ ساقلانمىغان ئۆزگەرتىشلىرى بار.</string>
   <!--  String displayed when exiting with unsaved changes [CHAR LIMIT=NONE] -->
+  <string name="save_before_exit">چېكىنىش ئاۋۋال ساقلامسىز؟</string>
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <string name="save_and_exit">ساقلاپ چېكىن</string>
-  <!--  String displayed when discard editor [CHAR LIMIT=NONE] -->
   <!--  String displayed when saving and exiting editor [CHAR LIMIT=NONE] -->
   <string name="save_and_processing">ئەسلى ئېنىقلىقتىكى سۈرەتنى بىر تەرەپ قىلىۋاتىدۇ…</string>
   <!--  String displayed when exiting editor[CHAR LIMIT=NONE] -->
@@ -72,6 +73,7 @@
   <!--  Text for the history panel title [CHAR LIMIT=50] -->
   <string name="history">تارىخ</string>
   <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
+  <string name="reset">ئەسلىگە قايتۇر</string>
   <!--  Text for the original image[CHAR LIMIT=20]-->
   <!--  Image state panel -->
   <!--  Text for the image state panel title [CHAR LIMIT=50] -->
@@ -100,15 +102,13 @@
   <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
   <string name="aspect9to16_effect">16:9</string>
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
+  <string name="aspectNone_effect">يوق</string>
   <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
   <!-- Label for when the aspect ratio is fixed to a value [CHAR LIMIT=15] -->
   <string name="Fixed">مۇقىم</string>
   <!--  Label for the tuny planet effect [CHAR LIMIT=10] -->
   <string name="tinyplanet">كىچىك پىلانىت</string>
   <!--  Filters buttons -->
-  <!--  True Effect button -->
-  <!--  HazeBuster button -->
-  <!--  SeeStraight button -->
   <!--  Label for the image exposure (brightness) filter button [CHAR LIMIT=10] -->
   <string name="exposure" msgid="1229093066434614811">نۇر ئۆتۈش</string>
   <!--  Label for the image sharpness (clarity, distinctness) filter button [CHAR LIMIT=10] -->
@@ -168,21 +168,6 @@
   <string name="downsample">ئاستى مىسال</string>
   <!--  Label for the "neutral density graduated filter" filter effect  [CHAR LIMIT=15] -->
   <string name="grad">تەدرىجىي ئۆزگىرىش</string>
-  <!--  Label for the "refocus" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "fusion" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "sketch" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "halo" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "zoom" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "motion" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "bw" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "blackboard" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "whiteboard" dual camera effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "posterize" dual camera effect  [CHAR LIMIT=15] -->
-  <string name="posterize">رەڭ تۈسى ئايرىش</string>
-  <!--  Label for the "negative" dual camera effect  [CHAR LIMIT=15] -->
-  <string name="dc_negative">تەتۈر رەڭ</string>
-  <!--  Label for the "blur" true portrait effect  [CHAR LIMIT=15] -->
-  <!--  Label for the "motion blur" true portrait effect  [CHAR LIMIT=15] -->
   <!--  Label for the Brightness effect  [CHAR LIMIT=20] -->
   <string name="editor_grad_brightness">يورۇقلۇق</string>
   <!--  Label for the Contrast filter effect  [CHAR LIMIT=20] -->
@@ -303,7 +288,4 @@
   <string name="filtershow_exif_exposure_time">نۇرلاندۇرۇش ۋاقتى</string>
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <string name="filtershow_exif_copyright">نەشر ھوقوقى</string>
-  <string name="color">رەڭ</string>
-  <!--Filtershow dialog -->
-  <string name="filtershow_preset_title">ئىختىيارىي</string>
 </resources>

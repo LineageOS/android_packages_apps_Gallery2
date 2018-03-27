@@ -80,6 +80,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <plurals name="number_of_videos">
     <item quantity="one">%1$d film</item>
     <item quantity="few">%1$d filmy</item>
+    <item quantity="many">%1$d filmów</item>
     <item quantity="other">%1$d filmów</item>
   </plurals>
   <!-- Toast message for share items -->
@@ -104,6 +105,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <string name="text_makeup_whiten">Wybiel</string>
   <string name="text_makeup_Soften">Zmiękczenie</string>
   <string name="text_makeup_trimface">Przycinanie twarzy</string>
+  <string name="text_makeup_bigeye">Duże oko</string>
   <string name="truescanner_normal">Normalny</string>
   <string name="truescanner_white">Biała tablica</string>
   <string name="truescanner">TrueScanner</string>
