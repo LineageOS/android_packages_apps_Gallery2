@@ -25,7 +25,7 @@
         android:choiceMode="multipleChoiceModal"
         android:stretchMode="columnWidth"  />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/ingest_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
