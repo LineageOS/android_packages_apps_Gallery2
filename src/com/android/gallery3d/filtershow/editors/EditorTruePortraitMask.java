@@ -31,7 +31,7 @@ package com.android.gallery3d.filtershow.editors;
 
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
