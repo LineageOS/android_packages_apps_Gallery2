@@ -30,7 +30,7 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.print.PrintHelper;
+import androidx.print.PrintHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 
