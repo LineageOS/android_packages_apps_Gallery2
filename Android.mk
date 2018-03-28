@@ -8,11 +8,11 @@ LOCAL_JAVA_LIBRARIES := telephony-common
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
     $(ANDROID_SUPPORT_DESIGN_TARGETS) \
+    androidx.fragment_fragment \
     androidx.heifwriter_heifwriter \
-    android-support-fragment \
-    android-support-core-ui \
-    android-support-compat \
-    android-support-v13
+    androidx.legacy_legacy-support-core-ui \
+    androidx.core_core \
+    androidx.legacy_legacy-support-v13
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     org.codeaurora.gallery.common \
