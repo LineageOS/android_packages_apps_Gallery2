@@ -35,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
-import android.support.v4.content.FileProvider;
+import androidx.core.content.FileProvider;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.util.SaveVideoFileInfo;
