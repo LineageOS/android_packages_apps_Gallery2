@@ -17,7 +17,7 @@
 package com.android.gallery3d.util;
 
 import android.content.Context;
-import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import androidx.core.view.accessibility.AccessibilityRecordCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
