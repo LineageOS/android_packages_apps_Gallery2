@@ -26,7 +26,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.print.PrintHelper;
+import androidx.print.PrintHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 
