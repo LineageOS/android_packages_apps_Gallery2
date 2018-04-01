@@ -38,7 +38,7 @@ static bool egl_khr_fence_sync_supported = false;
 bool IsEglKHRFenceSyncSupported() {
   if (!initialized) {
     EGLDisplay display = eglGetCurrentDisplay();
-    const char* eglExtensions = eglQueryString(eglGetCurrentDisplay(), EGL_EXTENSIONS);
+    const char* eglExtensions = eglQueryString(display, EGL_EXTENSIONS);
     if (eglExtensions && strstr(eglExtensions, "EGL_KHR_fence_sync")) {
       FuncEglCreateSyncKHR = (TypeEglCreateSyncKHR) eglGetProcAddress("eglCreateSyncKHR");
       FuncEglClientWaitSyncKHR = (TypeEglClientWaitSyncKHR) eglGetProcAddress("eglClientWaitSyncKHR");
@@ -54,8 +54,8 @@ bool IsEglKHRFenceSyncSupported() {
 }
 
 void
-Java_com_android_gallery3d_photoeditor_FilterStack_nativeEglSetFenceAndWait(JNIEnv* env,
-                                                                          jobject thiz) {
+Java_com_android_gallery3d_photoeditor_FilterStack_nativeEglSetFenceAndWait(
+        JNIEnv* env __unused, jobject thiz __unused) {
   if (!IsEglKHRFenceSyncSupported()) return;
   EGLDisplay display = eglGetCurrentDisplay();
 

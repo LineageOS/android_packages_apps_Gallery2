@@ -7,22 +7,27 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_JAVA_LIBRARIES := telephony-common
 
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-design
+LOCAL_STATIC_JAVA_LIBRARIES += android-support-v4
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
 LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
 LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
 LOCAL_STATIC_JAVA_LIBRARIES += mp4parser
 LOCAL_STATIC_JAVA_LIBRARIES += xmp_toolkit
 
-LOCAL_SRC_FILES := $(call all-java-files-under, src) $(call all-renderscript-files-under, src)
+LOCAL_SRC_FILES := \
+    $(call all-java-files-under, src) \
+    $(call all-renderscript-files-under, src)
 LOCAL_SRC_FILES += $(call all-java-files-under, src_pd)
 
 LOCAL_RESOURCE_DIR += \
     $(LOCAL_PATH)/res \
+    $(TOP)/frameworks/support/compat/res \
     $(TOP)/frameworks/support/design/res \
     $(TOP)/frameworks/support/v7/appcompat/res
 
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
+    --extra-packages android.support.compat \
     --extra-packages android.support.design \
     --extra-packages android.support.transition \
     --extra-packages android.support.v7.appcompat

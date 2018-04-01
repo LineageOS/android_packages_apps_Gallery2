@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="title_activity_filter_show" msgid="2036539130684382763">"ফটো সম্পাদক"</string>
-    <string name="cannot_load_image" msgid="5023634941212959976">"চিত্রটি লোড করা যাবে না!"</string>
+    <string name="cannot_load_image" msgid="5023634941212959976">"ছবিটি লোড করা যাবে না!"</string>
     <string name="cannot_edit_original" msgid="5890293845882609388">"আসলটি সম্পাদনা করতে পারবেন না"</string>
     <!-- no translation found for original_picture_text (3076213290079909698) -->
     <skip />
@@ -27,13 +27,13 @@
     <string name="borders" msgid="2067345080568684614">"সীমানাগুলি"</string>
     <string name="custom_border" msgid="8679893731790931871">"কাস্টম"</string>
     <string name="filtershow_undo" msgid="6781743189243585101">"পূর্বাবস্থায় ফিরুন"</string>
-    <string name="filtershow_redo" msgid="4219489910543059747">"পুনরায় করুন"</string>
+    <string name="filtershow_redo" msgid="4219489910543059747">"আবার করুন"</string>
     <string name="show_imagestate_panel" msgid="281932769701043015">"প্রয়োগ করা প্রভাবগুলি দেখান"</string>
     <string name="hide_imagestate_panel" msgid="7207643485811695257">"প্রয়োগ করা প্রভাবগুলি লুকান"</string>
     <string name="export_image" msgid="3202835713172222134">"রপ্তানি"</string>
-    <string name="print_image" msgid="1942989216591621413">"মুদ্রণ করুন"</string>
-    <string name="export_flattened" msgid="9046192331465915411">"চ্যাপ্টা চিত্র রপ্তানি করুন"</string>
-    <string name="select_output_settings" msgid="1268532018080310748">"রপ্তানি করা চিত্রটি ইতিহাস ছাড়া, একটি অনুলিপি হবে।"</string>
+    <string name="print_image" msgid="1942989216591621413">"প্রিন্ট করুন"</string>
+    <string name="export_flattened" msgid="9046192331465915411">"চ্যাপ্টা ছবি রপ্তানি করুন"</string>
+    <string name="select_output_settings" msgid="1268532018080310748">"রপ্তানি করা ছবিটি ইতিহাস ছাড়া, একটি অনুলিপি হবে।"</string>
     <string name="quality" msgid="179292110309050529">"গুণমান"</string>
     <string name="size" msgid="4639404642236356037">"আকার"</string>
     <string name="x" msgid="6810256999024563662">"x"</string>
@@ -44,13 +44,13 @@
     <string name="save_and_processing" msgid="6371565035837463194">"পূর্ণ রেজোলিউশানের চিত্রের প্রক্রিয়া করা হচ্ছে..."</string>
     <string name="exit" msgid="242642957038770113">"প্রস্থান করুন"</string>
     <string name="history" msgid="455767361472692409">"ইতিহাস"</string>
-    <string name="reset" msgid="9013181350779592937">"পুনরায় সেট করুন"</string>
+    <string name="reset" msgid="9013181350779592937">"আবার সেট করুন"</string>
     <!-- no translation found for history_original (150973253194312841) -->
     <skip />
     <string name="imageState" msgid="8632586742752891968">"প্রয়োগ করা প্রভাবগুলি"</string>
     <string name="compare_original" msgid="8140838959007796977">"তুলনা করুন"</string>
     <string name="apply_effect" msgid="1218288221200568947">"প্রয়োগ করুন"</string>
-    <string name="reset_effect" msgid="7712605581024929564">"পুনরায় সেট করুন"</string>
+    <string name="reset_effect" msgid="7712605581024929564">"আবার সেট করুন"</string>
     <string name="aspect" msgid="4025244950820813059">"আসপেক্ট"</string>
     <string name="aspect1to1_effect" msgid="1159104543795779123">"১:১"</string>
     <string name="aspect4to3_effect" msgid="7968067847241223578">"৪.৩"</string>
@@ -124,19 +124,19 @@
     <string name="color_border_color" msgid="8765458414425980711">"রঙ"</string>
     <string name="color_border_clear" msgid="4418261191091091722">"সাফ করুন"</string>
     <string name="color_pick_select" msgid="734312818059057394">"কাস্টম রঙ চয়ন করুন"</string>
-    <string name="color_pick_title" msgid="6195567431995308876">"রঙ নির্বাচন করুন"</string>
-    <string name="draw_size_title" msgid="3121649039610273977">"আকার নির্বাচন করুন"</string>
+    <string name="color_pick_title" msgid="6195567431995308876">"রঙ বেছে নিন"</string>
+    <string name="draw_size_title" msgid="3121649039610273977">"আকার বেছে নিন"</string>
     <string name="draw_size_accept" msgid="6781529716526190028">"ঠিক আছে"</string>
     <string name="state_panel_original" msgid="9069584409934164419">"প্রকৃত"</string>
     <string name="state_panel_result" msgid="318640531123298676">"ফলাফল"</string>
-    <string name="filtershow_notification_label" msgid="1653168445525855247">"চিত্র সংরক্ষণ করা হচ্ছে"</string>
+    <string name="filtershow_notification_label" msgid="1653168445525855247">"ছবি সংরক্ষণ করা হচ্ছে"</string>
     <string name="filtershow_notification_message" msgid="2661871765484036286">"প্রক্রিয়া করা হচ্ছে..."</string>
-    <string name="filtershow_save_preset" msgid="3933550455577927439">"বর্তমান প্রিসেট সংরক্ষণ করুন"</string>
+    <string name="filtershow_save_preset" msgid="3933550455577927439">"বর্তমান প্রিসেট সেভ করুন"</string>
     <string name="filtershow_manage_preset" msgid="3872896753708921286">"ব্যবহারকারী প্রিসেটগুলি পরিচালনা করুন"</string>
     <string name="filtershow_new_preset" msgid="8923930134923416617">"নতুন প্রিসেট"</string>
     <string name="filtershow_preset_name" msgid="7015939727047649866">"প্রিসেট নাম"</string>
     <string name="filtershow_show_info_panel" msgid="5773036746043711115">"তথ্য"</string>
-    <string name="filtershow_show_info_panel_name" msgid="5908258517140549439">"চিত্র নাম"</string>
+    <string name="filtershow_show_info_panel_name" msgid="5908258517140549439">"ছবি নাম"</string>
     <string name="filtershow_show_info_panel_size" msgid="1714666849204493017">"চিত্রের আকার"</string>
     <string name="filtershow_show_info_panel_histogram" msgid="2669188469897955809">"হিস্টোগ্রাম"</string>
     <string name="filtershow_show_info_panel_exif" msgid="4965486882625125154">"EXIF ডেটা"</string>
