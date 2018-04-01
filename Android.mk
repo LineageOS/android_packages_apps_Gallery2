@@ -6,13 +6,15 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_JAVA_LIBRARIES := telephony-common
 
-LOCAL_STATIC_JAVA_LIBRARIES += android-support-design
-LOCAL_STATIC_JAVA_LIBRARIES += android-support-v4
-LOCAL_STATIC_JAVA_LIBRARIES += android-support-v7-appcompat
-LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
-LOCAL_STATIC_JAVA_LIBRARIES += org.codeaurora.gallery.common
-LOCAL_STATIC_JAVA_LIBRARIES += mp4parser
-LOCAL_STATIC_JAVA_LIBRARIES += xmp_toolkit
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    android-support-design \
+    android-support-v4 \
+    android-support-v7-appcompat \
+    android-support-v7-recyclerview \
+    android-support-v13 \
+    org.codeaurora.gallery.common \
+    mp4parser \
+    xmp_toolkit
 
 LOCAL_SRC_FILES := \
     $(call all-java-files-under, src) \
