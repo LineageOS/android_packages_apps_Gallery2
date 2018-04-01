@@ -124,7 +124,7 @@
     <string name="color_border_color" msgid="8765458414425980711">"Boja"</string>
     <string name="color_border_clear" msgid="4418261191091091722">"Obriši"</string>
     <string name="color_pick_select" msgid="734312818059057394">"Izabrati prilagođenu boju"</string>
-    <string name="color_pick_title" msgid="6195567431995308876">"Izabrati boju"</string>
+    <string name="color_pick_title" msgid="6195567431995308876">"Odabrati boju"</string>
     <string name="draw_size_title" msgid="3121649039610273977">"Odabir veličine"</string>
     <string name="draw_size_accept" msgid="6781529716526190028">"UREDU"</string>
     <string name="state_panel_original" msgid="9069584409934164419">"Original"</string>

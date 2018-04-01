@@ -5,10 +5,10 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    android-support-fragment \
-    android-support-core-ui \
-    android-support-compat \
-    android-support-v13
+    androidx.fragment_fragment \
+    androidx.legacy_legacy-support-core-ui \
+    androidx.core_core \
+    androidx.legacy_legacy-support-v13
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     com.android.gallery3d.common2 \

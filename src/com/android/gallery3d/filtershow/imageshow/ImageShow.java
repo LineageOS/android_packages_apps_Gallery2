@@ -32,7 +32,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.NinePatchDrawable;
-import android.support.v4.widget.EdgeEffectCompat;
+import androidx.core.widget.EdgeEffectCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
