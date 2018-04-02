@@ -153,7 +153,7 @@ public class SaveWaterMark {
         //draw watermark into
         cv.drawBitmap(watermark, 0, 0, null);
         //save all clip
-        cv.save(Canvas.ALL_SAVE_FLAG);
+        cv.save();
         //store
         cv.restore();
         watermark.recycle();
