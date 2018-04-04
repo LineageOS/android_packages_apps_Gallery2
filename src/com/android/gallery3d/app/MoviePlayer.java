@@ -67,6 +67,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 public class MoviePlayer implements
         MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener,
@@ -194,6 +195,18 @@ public class MoviePlayer implements
         }
     };
 
+    public interface TimerProgress {
+        void startTimer();
+    }
+
+    private TimerProgress mTimerController = new TimerProgress() {
+        @Override
+        public void startTimer() {
+            mHandler.removeCallbacks(mProgressChecker);
+            mHandler.post(mProgressChecker);
+        }
+    };
+
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -236,6 +249,7 @@ public class MoviePlayer implements
 
         mVideoView.setOnErrorListener(this);
         mVideoView.setOnCompletionListener(this);
+        mVideoView.setTimerProgress(mTimerController);
 
         if (mVirtualizer != null) {
             mVirtualizer.release();
@@ -516,7 +530,7 @@ public class MoviePlayer implements
             mHandler.postDelayed(mPlayingChecker, 250);
         }
 
-        mHandler.post(mProgressChecker);
+        mTimerController.startTimer();
     }
 
     private void pauseVideoMoreThanThreeMinutes() {
