@@ -1418,6 +1418,13 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
         if (representation == null) {
             return;
         }
+        if (hasWaterMark && representation.getFilterType() != FilterRepresentation.TYPE_WATERMARK &&
+                representation.getFilterType() !=
+                FilterWatermarkRepresentation.TYPE_WATERMARK_CATEGORY) {
+            clearWaterMark();
+            resetHistory();
+            showWatermarkButton(false);
+        }
 
         Fragment currentPanel =
                 getSupportFragmentManager().findFragmentByTag(MainPanel.FRAGMENT_TAG);
@@ -2445,6 +2452,15 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
         if(MasterImage.getImage() != null) {
             MasterImage.getImage().setCurrentFilter(null);
             MasterImage.getImage().setCurrentFilterRepresentation(null);
+        }
+        showWatermarkButton(true);
+    }
+
+    private void showWatermarkButton(boolean visible) {
+        Fragment currentPanel = getSupportFragmentManager()
+                .findFragmentByTag(MainPanel.FRAGMENT_TAG);
+        if (currentPanel instanceof MainPanel) {
+            ((MainPanel) currentPanel).showWatermarkButton(visible);
         }
     }
 
