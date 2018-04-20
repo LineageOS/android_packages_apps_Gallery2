@@ -29,6 +29,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
 import org.json.JSONObject;
@@ -232,7 +233,14 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         waterMarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPanel(WATERMARK);
+                if (MasterImage.getImage().getHistory().getItem(1) == null) {
+                    waterMarkButton.setVisibility(View.VISIBLE);
+                    showPanel(WATERMARK);
+                } else {
+                    Toast.makeText(getActivity(), "Watermark only support single edit",
+                            Toast.LENGTH_SHORT).show();
+                    waterMarkButton.setVisibility(View.GONE);
+                }
             }
         });
         looksButton.setOnClickListener(new View.OnClickListener() {
@@ -743,6 +751,12 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
     public void showDualCameraButton(boolean visible) {
         if (dualCamButton != null) {
             dualCamButton.setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    public void showWatermarkButton(boolean visible) {
+        if (waterMarkButton != null) {
+            waterMarkButton.setVisibility(visible ? View.VISIBLE : View.GONE);
         }
     }
 }
