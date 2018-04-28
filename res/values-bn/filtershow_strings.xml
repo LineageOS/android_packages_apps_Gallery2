@@ -103,13 +103,13 @@
     <string name="editor_chan_sat_cyan" msgid="1367634650172508288">"সবজে নীল"</string>
     <string name="editor_chan_sat_blue" msgid="384409736863387895">"নীল"</string>
     <string name="editor_chan_sat_magenta" msgid="6689215719351415546">"ম্যাজেন্টা"</string>
-    <string name="editor_grad_style" msgid="2168414479007745179">"শৈলী"</string>
+    <string name="editor_grad_style" msgid="2168414479007745179">"স্টাইল"</string>
     <string name="editor_grad_new" msgid="4857265951369377379">"নতুন"</string>
     <string name="curves_channel_rgb" msgid="7909209509638333690">"RGB"</string>
     <string name="curves_channel_red" msgid="4199710104162111357">"লাল"</string>
     <string name="curves_channel_green" msgid="3733003466905031016">"সবুজ"</string>
     <string name="curves_channel_blue" msgid="9129211507395079371">"নীল"</string>
-    <string name="draw_style" msgid="2036125061987325389">"শৈলী"</string>
+    <string name="draw_style" msgid="2036125061987325389">"স্টাইল"</string>
     <string name="draw_size" msgid="4360005386104151209">"আকার"</string>
     <string name="draw_hue" msgid="4975135843189267133">"রঙ বিন্যাস"</string>
     <string name="draw_saturation" msgid="5394395648014454882">"পরিপৃক্তি"</string>
