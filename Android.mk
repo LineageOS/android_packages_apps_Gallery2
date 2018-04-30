@@ -37,9 +37,11 @@ LOCAL_PACKAGE_NAME := SnapdragonGallery
 
 LOCAL_PRIVILEGED_MODULE := true
 
+LOCAL_PRIVATE_PLATFORM_APIS:=true
+
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D Gallery2
 
-LOCAL_SDK_VERSION := current
+#LOCAL_SDK_VERSION := current
 
 LOCAL_JNI_SHARED_LIBRARIES := libjni_gallery_eglfence libjni_gallery_filters libjni_gallery_jpegstream
 LOCAL_SHARED_LIBRARIES += libjni_dualcamera libjni_trueportrait libjni_filtergenerator

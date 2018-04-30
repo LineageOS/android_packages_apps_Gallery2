@@ -1314,7 +1314,9 @@ public class PhotoView extends GLView {
             if (mIgnoreSwipingGesture) return;
 
             mHolding &= ~HOLD_TOUCH_DOWN;
-            mEdgeView.onRelease();
+            if (mEdgeView != null) {
+                mEdgeView.onRelease();
+            }
 
             // If we scrolled in Y direction far enough, treat it as a delete
             // gesture.
