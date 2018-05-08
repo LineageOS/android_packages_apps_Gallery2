@@ -31,6 +31,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
+  <string name="setp_option_six_second">6 segundos</string>
+  <string name="setting">Cunfiguratziones</string>
+  <string name="server_timeout_title">"Tempus de isetu pro su server acabbadu"</string>
+  <string name="bookmark_title">"Tìtulu"</string>
+  <string name="bookmark_location">"Positzione"</string>
+  <string name="delete_all">"Iscantzella totu"</string>
   <!-- A label describing to link website [CHAR LIMIT=30] -->
   <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
   <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
@@ -41,4 +47,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- Timeline screen title -->
   <!-- Albums screen title -->
   <!-- Videos screen title -->
+  <string name="videos_title">Vìdeos</string>
+  <string name="trim_video_exit_title">Non cheres sarvare sas modìficas?</string>
 </resources>
