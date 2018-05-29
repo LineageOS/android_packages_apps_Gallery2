@@ -236,6 +236,9 @@ public class EditorDualCamFusion extends Editor {
             return false;
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+            return false;
         }
         return true;
     }
