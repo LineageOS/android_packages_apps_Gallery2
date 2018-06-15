@@ -136,6 +136,12 @@ public class PicasaSource extends MediaSource {
 
     public static void showSignInReminder(Activity context) {/*do nothing*/}
 
+    public static void onPackageAdded(Context context, String packageName) {/*do nothing*/}
+
+    public static void onPackageRemoved(Context context, String packageName) {/*do nothing*/}
+
+    public static void onPackageChanged(Context context, String packageName) {/*do nothing*/}
+
     public static Dialog getVersionCheckDialog(Activity activity){
         return null;
     }
