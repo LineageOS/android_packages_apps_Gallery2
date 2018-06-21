@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "824e14b0_38513d94",
+        "filename": "src/com/android/gallery3d/gadget/WidgetConfigure.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2018-06-21T19:04:06Z",
+      "side": 1,
+      "message": "This should be translatable",
+      "revId": "0f041aeed3b61d302500de9e6f8078c9aba28f31",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
