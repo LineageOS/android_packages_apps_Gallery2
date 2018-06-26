@@ -563,6 +563,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                 mMediaController.hide();
             }
             if (mOnCompletionListener != null) {
+                Log.d(TAG, "OnCompletion: " + mMediaPlayer.getMetrics());
                 mOnCompletionListener.onCompletion(mMediaPlayer);
             }
         }
@@ -799,6 +800,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             }
         }
         */
+        Log.d(TAG, "Suspend: " + mMediaPlayer.getMetrics());
         release(false);
     }
 
