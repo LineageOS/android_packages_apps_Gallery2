@@ -15,6 +15,7 @@ import android.media.MediaPlayer.OnInfoListener;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -563,7 +564,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                 mMediaController.hide();
             }
             if (mOnCompletionListener != null) {
-                Log.d(TAG, "OnCompletion: " + mMediaPlayer.getMetrics());
+                printMetrics("OnCompletion: ");
                 mOnCompletionListener.onCompletion(mMediaPlayer);
             }
         }
@@ -800,8 +801,28 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             }
         }
         */
-        Log.d(TAG, "Suspend: " + mMediaPlayer.getMetrics());
+        printMetrics("Suspend: ");
         release(false);
+    }
+
+    private void printMetrics(String preLog) {
+       if (mMediaPlayer == null)return;
+       PersistableBundle metrics = mMediaPlayer.getMetrics();
+       if (metrics != null) {
+           long frames = metrics.getLong(MediaPlayer.MetricsConstants.FRAMES);
+           long dropFrames = metrics.getLong(MediaPlayer.MetricsConstants.FRAMES_DROPPED);
+           float percentageDropped = (frames == 0) ? 0 : (100*(float)dropFrames/frames);
+           String log = preLog + "\n"
+                   + "CODEC_AUDIO: " + metrics.getString(MediaPlayer.MetricsConstants.CODEC_AUDIO) + "\n"
+                   + "DURATION: " + metrics.getLong(MediaPlayer.MetricsConstants.DURATION) + "\n"
+                   + "CODEC_VIDEO: " + metrics.getString(MediaPlayer.MetricsConstants.CODEC_VIDEO) + "\n"
+                   + "MIME_TYPE_VIDEO: " + metrics.getString(MediaPlayer.MetricsConstants.MIME_TYPE_VIDEO) + "\n"
+                   + "MIME_TYPE_AUDIO: " + metrics.getString(MediaPlayer.MetricsConstants.MIME_TYPE_AUDIO) + "\n"
+                   + "FRAMES: " + frames + " DROP: " + dropFrames + " DropPecentage: " + percentageDropped + "%" + "\n"
+                   + "RESOLUTION: " + metrics.getInt(MediaPlayer.MetricsConstants.WIDTH) + "x" +
+                   metrics.getInt(MediaPlayer.MetricsConstants.HEIGHT);
+           Log.d(TAG, log);
+       }
     }
 
     public void resume() {
