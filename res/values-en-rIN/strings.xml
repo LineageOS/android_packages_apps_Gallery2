@@ -114,7 +114,7 @@
     <string name="appwidget_empty_text" msgid="1228925628357366957">"No photos."</string>
     <string name="crop_saved" msgid="1595985909779105158">"Cropped image saved to <xliff:g id="FOLDER_NAME">%s</xliff:g>."</string>
     <string name="no_albums_alert" msgid="4111744447491690896">"No albums available."</string>
-    <string name="empty_album" msgid="4542880442593595494">"O images/videos available."</string>
+    <string name="empty_album" msgid="4542880442593595494">"No images/videos available."</string>
     <string name="picasa_posts" msgid="1497721615718760613">"Posts"</string>
     <string name="make_available_offline" msgid="5157950985488297112">"Make available offline"</string>
     <string name="sync_picasa_albums" msgid="8522572542111169872">"Refresh"</string>
