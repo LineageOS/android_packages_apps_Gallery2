@@ -269,7 +269,7 @@
 
     <!-- Toast message shown when we close the AlbumPage because it is empty
             [CHAR LIMIT=50] -->
-    <string name="empty_album">O images/videos available.</string>
+    <string name="empty_album">No images/videos available.</string>
 
     <!-- Album label used to indicate the collection of PWA Buzz/Post photos -->
     <string name="picasa_posts">Posts</string>
