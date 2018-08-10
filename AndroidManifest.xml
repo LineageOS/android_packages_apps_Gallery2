@@ -27,7 +27,13 @@
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26"/>
 
     <permission android:name="com.android.gallery3d.permission.GALLERY_PROVIDER"
-            android:protectionLevel="signatureOrSystem" />
+                android:protectionLevel="signatureOrSystem" />
+
+    <permission android:name="com.android.gallery3d.filtershow.permission.READ"
+                android:protectionLevel="signature" />
+
+    <permission android:name="com.android.gallery3d.filtershow.permission.WRITE"
+                android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -249,12 +255,6 @@
                 <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
-
-        <permission android:name="com.android.gallery3d.filtershow.permission.READ"
-                    android:protectionLevel="signature" />
-
-        <permission android:name="com.android.gallery3d.filtershow.permission.WRITE"
-                    android:protectionLevel="signature" />
 
         <provider
             android:name="com.android.gallery3d.filtershow.provider.SharedImageProvider"
