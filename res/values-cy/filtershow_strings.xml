@@ -100,7 +100,7 @@
   <string name="tinyplanet">Planed Fychan</string>
   <!--  Filters buttons -->
   <!--  Label for the image exposure (brightness) filter button [CHAR LIMIT=10] -->
-  <string name="exposure" msgid="1229093066434614811">Dinoethiad</string>
+  <string name="exposure" msgid="1229093066434614811">Goleuni</string>
   <!--  Label for the image sharpness (clarity, distinctness) filter button [CHAR LIMIT=10] -->
   <string name="sharpness">Awch</string>
   <!--  Label for the image contrast (color difference) filter button [CHAR LIMIT=10] -->
@@ -123,7 +123,7 @@
   <!--  Label for the image vignette filter (darkens photo around edges) button [CHAR LIMIT=10] -->
   <!--  Label for the image vignette main parameter ui [CHAR LIMIT=15] -->
   <!--  Label for the image vignette exposure parameter ui [CHAR LIMIT=15] -->
-  <string name="vignette_exposure">Dinoethiad</string>
+  <string name="vignette_exposure">Goleuni</string>
   <!--  Label for the image vignette saturation parameter ui [CHAR LIMIT=15] -->
   <!--  Label for the image vignette contrast fparameter ui [CHAR LIMIT=15] -->
   <string name="vignette_contrast">Cyferbyniaeth</string>
@@ -264,7 +264,7 @@
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <string name="filtershow_exif_f_stop">F Stop</string>
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
-  <string name="filtershow_exif_exposure_time">Amser Dinoethiad</string>
+  <string name="filtershow_exif_exposure_time">Amser Goleuni</string>
   <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
   <string name="filtershow_exif_copyright">Hawlfraint</string>
 </resources>

@@ -276,7 +276,7 @@ Cadwyd y ddelwedd wedi\'i thocio yn <xliff:g id="folder_name">%s</xliff:g>.</str
   <!-- Text indicating the white balance of a media item in details window [CHAR LIMIT=14] -->
   <string name="white_balance">Cydbwysedd Gwyn</string>
   <!-- Text indicating the exposure time of a media item in details window [CHAR LIMIT=14] -->
-  <string name="exposure_time">Amser Dinoethiad</string>
+  <string name="exposure_time">Amser Goleuni</string>
   <!-- Text indicating the ISO speed rating of a media item in details window [CHAR LIMIT=14] -->
   <string name="iso">ISO</string>
   <!-- String indicating the time units in seconds. [CHAR LIMIT=8] -->
@@ -646,9 +646,9 @@ Mae\'r eitem hon wedi ei gadw\'n lleol ac ar gael all-lein.</string>
   <!-- Toast after trying to select a setting that is not allowed to change in scene mode [CHAR LIMIT=NONE] -->
   <string name="not_selectable_in_scene_mode">Nid yw\'n bosib ei ddewis mewn modd golygfa.</string>
   <!-- Exposure settings in preference -->
-  <string name="pref_exposure_title">Dinoethiad</string>
+  <string name="pref_exposure_title">Goleuni</string>
   <!--  menu label exposure compensation [CHAR LIMIT=50] -->
-  <string name="pref_exposure_label">DINOETHIAD</string>
+  <string name="pref_exposure_label">GOLEUNI</string>
   <!-- Default HDR entry value -->
   <!-- HDR label ON [CHAR LIMIT=60] -->
   <string name="pref_camera_hdr_label">HDR</string>
@@ -884,7 +884,7 @@ CHAR LIMIT = NONE] -->
   <string name="tab_albums">Casgliadau</string>
   <!-- Camera menu labels -->
   <!-- more options label [CHAR LIMIT=50] -->
-  <string name="camera_menu_more_label">MWY O DDEWISIADAU</string>
+  <string name="camera_menu_more_label">RHAGOR O DDEWISIADAU</string>
   <!-- settings label [CHAR LIMIT=50] -->
   <string name="camera_menu_settings_label">GOSODIADAU</string>
   <!-- String indicating how many photos are in an album [CHAR LIMIT=15] -->
