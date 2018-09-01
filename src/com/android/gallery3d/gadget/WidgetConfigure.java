@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.app.AlbumPicker;
@@ -148,6 +149,14 @@ public class WidgetConfigure extends Activity {
         int widgetWidth = Math.round(width * scale);
         int widgetHeight = Math.round(height * scale);
 
+        if (data.getData() != null && data.getData().toString().contains("/video/media")) {
+            Toast.makeText(this, "Please select one picture", Toast.LENGTH_LONG).show();
+            Intent request = new Intent(this, DialogPicker.class)
+                    .setAction(Intent.ACTION_GET_CONTENT)
+                    .setType("image/*");
+            startActivityForResult(request, REQUEST_GET_PHOTO);
+            return;
+        }
         mPickedItem = data.getData();
         Intent request = new Intent(CropActivity.CROP_ACTION, mPickedItem)
                 .putExtra(CropExtras.KEY_OUTPUT_X, widgetWidth)
