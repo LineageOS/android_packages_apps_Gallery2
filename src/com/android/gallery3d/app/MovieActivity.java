@@ -49,6 +49,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.view.Gravity;
@@ -241,13 +242,15 @@ public class MovieActivity extends AbstractPermissionActivity {
         // But for the performance (and battery), we remove the background here.
         win.setBackgroundDrawable(null);
         initMovieHooker(intent, savedInstanceState);
-        // Determine available/supported effects
-        final Descriptor[] effects = AudioEffect.queryEffects();
-        for (final Descriptor effect : effects) {
-            if (effect.type.equals(AudioEffect.EFFECT_TYPE_VIRTUALIZER)) {
-                mVirtualizerSupported = true;
-            } else if (effect.type.equals(AudioEffect.EFFECT_TYPE_BASS_BOOST)) {
-                mBassBoostSupported = true;
+        if (!SystemProperties.getBoolean("persist.sys.galley.disable_audioeffects", false)) {
+            // Determine available/supported effects
+            final Descriptor[] effects = AudioEffect.queryEffects();
+            for (final Descriptor effect : effects) {
+                if (effect.type.equals(AudioEffect.EFFECT_TYPE_VIRTUALIZER)) {
+                    mVirtualizerSupported = true;
+                } else if (effect.type.equals(AudioEffect.EFFECT_TYPE_BASS_BOOST)) {
+                    mBassBoostSupported = true;
+                }
             }
         }
 

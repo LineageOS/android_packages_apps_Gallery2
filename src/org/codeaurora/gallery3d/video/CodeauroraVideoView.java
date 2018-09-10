@@ -15,6 +15,7 @@ import android.media.MediaPlayer.OnInfoListener;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,6 +28,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 
+import com.android.gallery3d.app.MoviePlayer;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.ApiHelper.Metadata;
 
@@ -84,6 +86,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
     private MediaPlayer.OnVideoSizeChangedListener mVideoSizeListener;
     private MediaPlayer.OnPreparedListener mPreparedListener;
     private ScreenModeManager mScreenManager;
+    private MoviePlayer.TimerProgress mTimerController;
     private int         mCurrentBufferPercentage;
     private OnErrorListener mOnErrorListener;
     private OnInfoListener  mOnInfoListener;
@@ -563,7 +566,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
                 mMediaController.hide();
             }
             if (mOnCompletionListener != null) {
-                Log.d(TAG, "OnCompletion: " + mMediaPlayer.getMetrics());
+                printMetrics("OnCompletion: ");
                 mOnCompletionListener.onCompletion(mMediaPlayer);
             }
         }
@@ -618,6 +621,16 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
      */
     public void setOnInfoListener(OnInfoListener l) {
         mOnInfoListener = l;
+    }
+
+    /**
+     * Register a callback to start Timer for time progress bar
+     * occurs during this.start()
+     *
+     * @param c The callback that will be run
+     */
+    public void setTimerProgress(MoviePlayer.TimerProgress c) {
+        mTimerController = c;
     }
 
     SurfaceHolder.Callback mSHCallback = new SurfaceHolder.Callback() {
@@ -771,6 +784,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
         if (mIsShowDialog) return;
         if (isInPlaybackState()) {
             mMediaPlayer.start();
+            mTimerController.startTimer();
             mCurrentState = STATE_PLAYING;
         }
         mTargetState = STATE_PLAYING;
@@ -800,8 +814,28 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
             }
         }
         */
-        Log.d(TAG, "Suspend: " + mMediaPlayer.getMetrics());
+        printMetrics("Suspend: ");
         release(false);
+    }
+
+    private void printMetrics(String preLog) {
+       if (mMediaPlayer == null)return;
+       PersistableBundle metrics = mMediaPlayer.getMetrics();
+       if (metrics != null) {
+           long frames = metrics.getLong(MediaPlayer.MetricsConstants.FRAMES);
+           long dropFrames = metrics.getLong(MediaPlayer.MetricsConstants.FRAMES_DROPPED);
+           float percentageDropped = (frames == 0) ? 0 : (100*(float)dropFrames/frames);
+           String log = preLog + "\n"
+                   + "CODEC_AUDIO: " + metrics.getString(MediaPlayer.MetricsConstants.CODEC_AUDIO) + "\n"
+                   + "DURATION: " + metrics.getLong(MediaPlayer.MetricsConstants.DURATION) + "\n"
+                   + "CODEC_VIDEO: " + metrics.getString(MediaPlayer.MetricsConstants.CODEC_VIDEO) + "\n"
+                   + "MIME_TYPE_VIDEO: " + metrics.getString(MediaPlayer.MetricsConstants.MIME_TYPE_VIDEO) + "\n"
+                   + "MIME_TYPE_AUDIO: " + metrics.getString(MediaPlayer.MetricsConstants.MIME_TYPE_AUDIO) + "\n"
+                   + "FRAMES: " + frames + " DROP: " + dropFrames + " DropPecentage: " + percentageDropped + "%" + "\n"
+                   + "RESOLUTION: " + metrics.getInt(MediaPlayer.MetricsConstants.WIDTH) + "x" +
+                   metrics.getInt(MediaPlayer.MetricsConstants.HEIGHT);
+           Log.d(TAG, log);
+       }
     }
 
     public void resume() {

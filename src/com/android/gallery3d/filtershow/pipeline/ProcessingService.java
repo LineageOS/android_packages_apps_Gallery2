@@ -17,6 +17,7 @@
 package com.android.gallery3d.filtershow.pipeline;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
@@ -26,6 +27,7 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -243,11 +245,18 @@ public class ProcessingService extends Service {
         mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.cancelAll();
 
-        mBuilder =
-                new Notification.Builder(this)
-                        .setSmallIcon(R.drawable.filtershow_button_fx)
-                        .setContentTitle(getString(R.string.filtershow_notification_label))
-                        .setContentText(getString(R.string.filtershow_notification_message));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = "GallerySavingRequest";
+            NotificationChannel channel = new NotificationChannel(channelId, channelId,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            mNotifyMgr.createNotificationChannel(channel);
+            mBuilder = new Notification.Builder(this, channelId);
+        } else {
+            mBuilder = new Notification.Builder(this);
+        }
+        mBuilder.setSmallIcon(R.drawable.filtershow_button_fx)
+                .setContentTitle(getString(R.string.filtershow_notification_label))
+                .setContentText(getString(R.string.filtershow_notification_message));
 
         startForeground(mNotificationId, mBuilder.build());
 

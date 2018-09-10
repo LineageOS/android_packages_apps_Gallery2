@@ -156,6 +156,7 @@ public class ImagePreset {
     }
 
     public void updateOrAddFilterRepresentation(FilterRepresentation rep) {
+        if (rep == null) return;
         int pos = getPositionForRepresentation(rep);
         if (pos != -1) {
             mFilters.elementAt(pos).useParametersFrom(rep);
