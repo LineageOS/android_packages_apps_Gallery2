@@ -352,6 +352,8 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
             printer.printBitmap(printJobName, uri);
         } catch (FileNotFoundException fnfe) {
             Log.e(TAG, "Error printing an image", fnfe);
+        } catch (RuntimeException e) {
+            Log.e(TAG,"Print failure,",e);
         }
     }
 
