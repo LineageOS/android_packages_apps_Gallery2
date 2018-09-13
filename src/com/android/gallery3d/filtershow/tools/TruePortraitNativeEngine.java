@@ -52,9 +52,9 @@ public class TruePortraitNativeEngine {
     private static final String TAG = "TruePortraitNativeEngine";
     static {
         try {
-            System.loadLibrary("jni_trueportrait");
-            mLibLoaded = true;
-            Log.v(TAG, "successfully loaded true portrait lib");
+            //System.loadLibrary("jni_trueportrait");
+            //mLibLoaded = true;
+            //Log.v(TAG, "successfully loaded true portrait lib");
         } catch (UnsatisfiedLinkError e) {
             Log.e(TAG, "failed to load true portrait lib");
             mLibLoaded = false;
@@ -71,7 +71,7 @@ public class TruePortraitNativeEngine {
     private static final int MASK_UPDATE_FOREGROUND = 0x7F000000;
     private static final int MASK_UPDATE_BACKGROUND = 0x81000000;
 
-    private static boolean mLibLoaded;
+    private static boolean mLibLoaded = false;
     private static TruePortraitNativeEngine mInstance;
 
     private Bitmap mSketchBm;
