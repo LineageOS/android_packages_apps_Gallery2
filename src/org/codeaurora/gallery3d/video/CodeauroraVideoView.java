@@ -28,6 +28,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 
+import com.android.gallery3d.app.MoviePlayer;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.ApiHelper.Metadata;
 
@@ -85,6 +86,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
     private MediaPlayer.OnVideoSizeChangedListener mVideoSizeListener;
     private MediaPlayer.OnPreparedListener mPreparedListener;
     private ScreenModeManager mScreenManager;
+    private MoviePlayer.TimerProgress mTimerController;
     private int         mCurrentBufferPercentage;
     private OnErrorListener mOnErrorListener;
     private OnInfoListener  mOnInfoListener;
@@ -621,6 +623,16 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
         mOnInfoListener = l;
     }
 
+    /**
+     * Register a callback to start Timer for time progress bar
+     * occurs during this.start()
+     *
+     * @param c The callback that will be run
+     */
+    public void setTimerProgress(MoviePlayer.TimerProgress c) {
+        mTimerController = c;
+    }
+
     SurfaceHolder.Callback mSHCallback = new SurfaceHolder.Callback() {
         public void surfaceChanged(SurfaceHolder holder, int format,
                                     int w, int h) {
@@ -772,6 +784,7 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
         if (mIsShowDialog) return;
         if (isInPlaybackState()) {
             mMediaPlayer.start();
+            mTimerController.startTimer();
             mCurrentState = STATE_PLAYING;
         }
         mTargetState = STATE_PLAYING;
