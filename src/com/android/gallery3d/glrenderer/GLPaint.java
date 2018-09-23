@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.glrenderer;
 
-//import junit.framework.Assert;
+import junit.framework.Assert;
 
 public class GLPaint {
     private float mLineWidth = 1f;
@@ -31,7 +31,7 @@ public class GLPaint {
     }
 
     public void setLineWidth(float width) {
-        //Assert.assertTrue(width >= 0);
+        Assert.assertTrue(width >= 0);
         mLineWidth = width;
     }
 
