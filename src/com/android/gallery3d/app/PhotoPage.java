@@ -694,6 +694,10 @@ public abstract class PhotoPage extends ActivityState implements
                  mShareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                  String shareTitle = mActivity.getResources().
                          getString(R.string.share_dialogue_title);
+                 if (uri.toString().contains("file:")) {
+                     Log.d(TAG, "can't share uri started with file://");
+                     return;
+                 }
                  mActivity.startActivity(Intent.createChooser(mShareIntent,
                     shareTitle));
                  }

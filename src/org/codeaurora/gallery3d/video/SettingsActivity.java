@@ -125,7 +125,7 @@ public class SettingsActivity extends AbstractPermissionPreferenceActivity {
 
         initializeSubscriptions();
 
-        if (!hasActiveSubscriptions()) {
+        if (!hasActiveSubscriptions() && mApnCategory != null && mApn != null) {
             ((PreferenceGroup)mApnCategory).removePreference(mApn);
             getPreferenceScreen().removePreference(mApnCategory);
 

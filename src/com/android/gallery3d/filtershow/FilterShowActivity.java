@@ -2156,7 +2156,11 @@ DialogInterface.OnDismissListener, PopupMenu.OnDismissListener{
     public void print() {
         Bitmap bitmap = MasterImage.getImage().getHighresImage();
         PrintHelper printer = new PrintHelper(this);
-        printer.printBitmap("ImagePrint", bitmap);
+        try {
+            printer.printBitmap("ImagePrint", bitmap);
+        } catch (RuntimeException e) {
+            Log.e(LOGTAG,"Print failure,",e);
+        }
     }
 
     private void manageUserPresets() {

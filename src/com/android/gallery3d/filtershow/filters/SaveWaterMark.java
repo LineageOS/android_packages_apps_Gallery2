@@ -106,8 +106,15 @@ public class SaveWaterMark {
                     }
                     destinationBitmap = Bitmap.createScaledBitmap(destinationBitmap, w, h, true);
                 }
-                if (SaveImage.putExifData(destinationFile, mExif, destinationBitmap, quality)) {
-                    saveUri = SaveImage.linkNewFileToUri(context, selectedUri, destinationFile, time, false);
+                boolean saveHeif = destinationFile.getName().endsWith(SaveImage.POSTFIX_HEIC);
+                if (saveHeif) {
+                    if (SaveImage.putHeifData(destinationFile, mExif, destinationBitmap, quality)) {
+                        saveUri = SaveImage.linkNewFileToUri(context, selectedUri, destinationFile, time, false);
+                    }
+                } else {
+                    if (SaveImage.putExifData(destinationFile, mExif, destinationBitmap, quality)) {
+                        saveUri = SaveImage.linkNewFileToUri(context, selectedUri, destinationFile, time, false);
+                    }
                 }
                 destinationBitmap.recycle();
                 if (saveUri != selectedUri) {

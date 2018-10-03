@@ -63,6 +63,7 @@ import com.android.gallery3d.filtershow.pipeline.CachingPipeline;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.pipeline.ProcessingService;
 import com.android.gallery3d.util.XmpUtilHelper;
+import androidx.heifwriter.HeifWriter;
 
 /**
  * Handles saving edited photo
@@ -88,10 +89,12 @@ public class SaveImage {
     private static final String POSTFIX_JPG = ".jpg";
     private static final String AUX_DIR_NAME = ".aux";
 
+    public static final String POSTFIX_HEIC = ".heic";
+
     private final Context mContext;
     private final Uri mSourceUri;
-    private final Callback mCallback;
     private final File mDestinationFile;
+    private final Callback mCallback;
     private final Uri mSelectedImageUri;
     private final Bitmap mPreviewImage;
 
@@ -173,6 +176,9 @@ public class SaveImage {
                 System.currentTimeMillis()));
         if (hasPanoPrefix(context, sourceUri)) {
             return new File(saveDirectory, PREFIX_PANO + filename + POSTFIX_JPG);
+        }
+        if (hasHeifPostfix(context, sourceUri)) {
+            return new File(saveDirectory, PREFIX_IMG + filename + POSTFIX_HEIC);
         }
         return new File(saveDirectory, PREFIX_IMG + filename + POSTFIX_JPG);
     }
@@ -298,6 +304,34 @@ public class SaveImage {
         return ret;
     }
 
+    public static boolean putHeifData(File file, ExifInterface exif, Bitmap image,
+                                      int compressQuality) {
+        boolean ret = false;
+        String path = file.getAbsolutePath();
+        if (image != null) {
+            try {
+                HeifWriter.Builder builder =
+                        new HeifWriter.Builder(path,image.getWidth(), image.getHeight(),
+                                HeifWriter.INPUT_MODE_BITMAP);
+                builder.setQuality(compressQuality);
+                builder.setMaxImages(1);
+                builder.setPrimaryIndex(0);
+                builder.setRotation(0);
+                HeifWriter heifWriter = builder.build();
+                heifWriter.start();
+                heifWriter.addBitmap(image);
+                heifWriter.stop(3000);
+                heifWriter.close();
+                ret = true;
+            } catch (IOException|IllegalStateException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return ret;
+    }
+
     private Uri resetToOriginalImageIfNeeded(ImagePreset preset, boolean doAuxBackup) {
         Uri uri = null;
         if (!preset.hasModifications()) {
@@ -354,6 +388,9 @@ public class SaveImage {
         boolean noBitmap = true;
         int num_tries = 0;
         int sampleSize = 1;
+
+        File sourceFile = getLocalFileFromUri(mContext,mSourceUri);
+        boolean saveHeif = sourceFile.getName().endsWith(POSTFIX_HEIC);
 
         // If necessary, move the source file into the auxiliary directory,
         // newSourceUri is then pointing to the new location.
@@ -473,10 +510,17 @@ public class SaveImage {
                 updateProgress();
 
                 // If we succeed in writing the bitmap as a jpeg, return a uri.
-                if (putExifData(mDestinationFile, exif, bitmap, quality)) {
-                    putPanoramaXMPData(mDestinationFile, xmp);
+                boolean success = false;
+                if (saveHeif) {
+                    success = putHeifData(mDestinationFile, exif, bitmap, quality);
+                } else {
+                    success = putExifData(mDestinationFile, exif, bitmap, quality);
+                }
+                if (success) {
+                    if (!saveHeif)
+                        putPanoramaXMPData(mDestinationFile, xmp);
                     // mDestinationFile will save the newSourceUri info in the XMP.
-                    if (!flatten) {
+                    if (!flatten && !saveHeif) {
                         XmpPresets.writeFilterXMP(mContext, newSourceUri,
                                 mDestinationFile, preset);
                         uri = updateFile(mContext, savedUri, mDestinationFile, time);
@@ -707,6 +751,11 @@ public class SaveImage {
         return name != null && name.startsWith(PREFIX_PANO);
     }
 
+    private static boolean hasHeifPostfix(Context context, Uri src) {
+        String name = getTrueFilename(context,src);
+        return name != null && name.endsWith(POSTFIX_HEIC);
+    }
+
     /**
      * If the <code>sourceUri</code> is a local content Uri, update the
      * <code>sourceUri</code> to point to the <code>file</code>.
@@ -741,6 +790,9 @@ public class SaveImage {
 
     public static Uri updateFile(Context context, Uri sourceUri, File file, long time) {
         final ContentValues values = getContentValues(context, sourceUri, file, time);
+        if (file.getName().endsWith(".heic")) {
+            values.put(Images.Media.MIME_TYPE, "image/heif");
+        }
         context.getContentResolver().update(sourceUri, values, null, null);
         return sourceUri;
     }
@@ -752,7 +804,11 @@ public class SaveImage {
         time /= 1000;
         values.put(Images.Media.TITLE, file.getName());
         values.put(Images.Media.DISPLAY_NAME, file.getName());
-        values.put(Images.Media.MIME_TYPE, "image/jpeg");
+        if (file.getName().endsWith(".heic")) {
+            values.put(Images.Media.MIME_TYPE, "image/heif");
+        } else {
+            values.put(Images.Media.MIME_TYPE, "image/jpeg");
+        }
         values.put(Images.Media.DATE_TAKEN, time);
         values.put(Images.Media.DATE_MODIFIED, time);
         values.put(Images.Media.DATE_ADDED, time);

@@ -579,6 +579,7 @@ public class MoviePlayer implements
             boolean start) {
         // For streams that we expect to be slow to start up, show a
         // progress spinner until playback starts.
+        requestAudioFocus();
         String scheme = mMovieItem.getUri().getScheme();
         if ("http".equalsIgnoreCase(scheme) || "rtsp".equalsIgnoreCase(scheme)
                 || "https".equalsIgnoreCase(scheme)) {
@@ -630,7 +631,7 @@ public class MoviePlayer implements
             Log.w(TAG, "CS/CSVT Call is in progress, can't play video");
             return false;
         }
-
+        requestAudioFocus();
         mTState = TState.PLAYING;
         mVideoView.start();
         mController.showPlaying();
@@ -808,6 +809,7 @@ public class MoviePlayer implements
         mOverlayExt.setCanScrubbing(canSeek);
         mController.setPlayPauseReplayResume();
         if (!canPause && !mVideoView.isTargetPlaying()) {
+            requestAudioFocus();
             mVideoView.start();
         }
         updateRewindAndForwardUI();
