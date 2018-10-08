@@ -104,7 +104,8 @@ public class ExportDialog extends BaseDialogFragment implements SeekBar.OnSeekBa
                         FilterShowActivity activity = (FilterShowActivity) getActivity();
                         Uri sourceUri = MasterImage.getImage().getUri();
                         File dest = SaveImage.getNewFile(activity, activity.getSelectedImageUri());
-                        float scaleFactor = mExportWidth / (float) mOriginalBounds.width();
+                        float scaleFactor = mExportWidth / (mOriginalBounds == null ? 1f :
+                                (float) mOriginalBounds.width());
                         if (!activity.isWaterMarked()) {
                             Intent processIntent = ProcessingService.getSaveIntent(activity,
                                     MasterImage.getImage().getPreset(), dest,
