@@ -39,6 +39,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          have people information in them [CHAR LIMIT=20]-->
   <!-- The tips of trimming video -->
   <!-- Timeline screen title -->
+  <string name="timeline_title">Llinell amser</string>
   <!-- Albums screen title -->
   <!-- Videos screen title -->
+  <string name="videos_title">Fideos</string>
 </resources>

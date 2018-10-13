@@ -23,7 +23,7 @@
   <string name="cannot_edit_original">Methu â golygu\'r gwreiddiol</string>
   <!--  String displayed when showing the original image [CHAR LIMIT=NONE] -->
   <!--  String displayed when setting the homepage wallpaper in the background [CHAR LIMIT=NONE] -->
-  <string name="setting_wallpaper">Yn gosod papur wal</string>
+  <string name="setting_wallpaper">Yn gosod fel papur wal</string>
   <!--  generic strings -->
   <!--  Text for to display on a download failure [CHAR LIMIT=NONE] -->
   <string name="download_failure">Methwyd â lawrlwytho\'r llun. Rhwydwaith ddim ar gael.</string>

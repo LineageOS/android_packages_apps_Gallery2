@@ -74,7 +74,7 @@
   <!-- Title prompted for user to choose a video item [CHAR LIMIT=20] -->
   <string name="select_video">Dewisa fideo</string>
   <!-- Title prompted for user to choose a media object [CHAR LIMIT=20] -->
-  <string name="select_item">Dewisa eitem</string>
+  <string name="select_item">Dewis eitemau</string>
   <!-- Title prompted for user to choose an album [CHAR LIMIT=20] -->
   <string name="select_album">Dewisa albwm</string>
   <!-- Title prompted for user to choose a group [CHAR LIMIT=20] -->
@@ -85,7 +85,7 @@
   <!-- Activity title for cropping picture and setting it as wallpaper [CHAR LIMIT=20] -->
   <string name="set_wallpaper">Gosod papur wal</string>
   <!-- Toast/alert after saving wallpaper -->
-  <string name="wallpaper">Yn gosod papur wal\u2026</string>
+  <string name="wallpaper">Wedi gosod fel papur wal\u2026</string>
   <string name="camera_setas_wallpaper">Papur wal</string>
   <!-- Details dialog "OK" button. Dismisses dialog. -->
   <string name="delete">Dileu</string>
@@ -323,7 +323,7 @@ Mae\'r eitem hon wedi ei gadw\'n lleol ac ar gael all-lein.</string>
   <string name="set_label_all_albums">Pob casgliad</string>
   <!-- A label shown on the action bar. It indicates that the user is
          viewing albums stored locally on the device [CHAR LIMIT=20] -->
-  <string name="set_label_local_albums">Albymau lleol</string>
+  <string name="set_label_local_albums">Casgliadau lleol</string>
   <!-- A label shown on the action bar. It indicates that the user is
          viewing MTP devices connected (like other digital cameras).
          [CHAR LIMIT=20] -->
