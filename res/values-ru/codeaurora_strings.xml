@@ -32,7 +32,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Strings for step option settins -->
   <string name="setp_option_name">Шаг перемотки</string>
-  <string name="step_option_desc">Настройка интервала для быстрой перемотки вперёд или назад</string>
+  <string name="step_option_desc">Настройка интервала для быстрой перемотки вперед или назад</string>
   <string name="setp_option_three_second">3 секунды</string>
   <string name="setp_option_six_second">6 секунд</string>
   <string name="loop">"Зациклить"</string>

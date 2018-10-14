@@ -18,7 +18,9 @@
   <string name="app_name">Galería</string>
   <!-- Title for picture frame gadget to show in list of all available gadgets -->
   <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
+  <string name="details_ms">%1$02d:%2$02d</string>
   <!-- Used to format video duration in Details dialog. hours:minutes:seconds e.g. 0:21:30 -->
+  <string name="details_hms">%1$d:%2$02d:%3$02d</string>
   <!-- Activity label. This might show up in the activity-picker -->
   <!-- shown in the video player view while the video is being loaded, before it starts playing -->
   <!-- Message shown on the progress dialog to indicate we're loading the
@@ -63,13 +65,26 @@
   <!-- The label shown after an image is deleted [CHAR LIMIT=16] -->
   <!-- The label on the button which when clicked will undo a deletion of image [CHAR LIMIT=16]-->
   <!-- String indicating more actions are available -->
+  <string name="details_title">%1$d de %2$d elementos:</string>
   <!-- Title of a menu item to switch from Gallery to Camera app [CHAR LIMIT=30] -->
   <!-- String indicating how many media item(s) is(are) selected
             eg. 1 selected [CHAR LIMIT=30] -->
+  <plurals name="number_of_items_selected">
+    <item quantity="one">%1$d esbilláu</item>
+    <item quantity="other">%1$d esbillaos</item>
+  </plurals>
   <!-- String indicating how many media album(s) is(are) selected
             eg. 1 selected [CHAR LIMIT=30] -->
+  <plurals name="number_of_albums_selected">
+    <item quantity="one">%1$d esbilláu</item>
+    <item quantity="other">%1$d esbillaos</item>
+  </plurals>
   <!-- String indicating how many media group(s) is(are) selected
             eg. 1 selected [CHAR LIMIT=30] -->
+  <plurals name="number_of_groups_selected">
+    <item quantity="one">%1$d esbilláu</item>
+    <item quantity="other">%1$d esbillaos</item>
+  </plurals>
   <!-- String indicating timestamp of photo or video -->
   <!-- Toast message prompted when the specified item is not found [CHAR LIMIT=40]-->
   <!-- String used as a menu label. The user can choose to edit the image
@@ -120,6 +135,8 @@
   <!-- Text for the empty state of the StackView AppWidget [CHAR LIMIT=30] -->
   <!-- Toast message shown when the cropped image has been saved in the
          %s folder (string: folder_download) [CHAR LIMIT=50]-->
+  <string name="crop_saved">
+        La imaxe retayada guardóse en <xliff:g id="folder_name">%s</xliff:g>.</string>
   <!-- Toast message shown when there is no albums available [CHAR LIMIT=50]-->
   <!-- Toast message shown when we close the AlbumPage because it is empty
             [CHAR LIMIT=50] -->
@@ -131,6 +148,7 @@
          finished selection. [CHAR LIMIT=15] -->
   <!-- String indicating the sequence of currently selected item in the
             media set eg. 3 of 5 items [CHAR LIMIT=30] -->
+  <string name="sequence_in_set">%1$d de %2$d elementos:</string>
   <!-- Text indicating the title of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the description of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the creation time of a media item in details window [CHAR LIMIT=14] -->
@@ -147,6 +165,7 @@
   <!-- Text indicating the model of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating flash info of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating aperture of a media item in details window [CHAR LIMIT=14] -->
+  <string name="aperture">Apertura</string>
   <!-- Text indicating the focal length of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the white balance of a media item in details window [CHAR LIMIT=14] -->
   <!-- Text indicating the exposure time of a media item in details window [CHAR LIMIT=14] -->
@@ -178,6 +197,7 @@
         Esti elementu ta atroxáu llocalmente y disponible y fuera llinia.</string>
   <!-- A label shown on the action bar. It indicates that the user is
          viewing all available albums [CHAR LIMIT=20] -->
+  <string name="set_label_all_albums">Tolos álbumes</string>
   <!-- A label shown on the action bar. It indicates that the user is
          viewing albums stored locally on the device [CHAR LIMIT=20] -->
   <!-- A label shown on the action bar. It indicates that the user is
@@ -219,6 +239,7 @@
   <!-- The title of the dialog for choosing the type of widget. [CHAR LIMIT=20] -->
   <!-- Title of the Android Dreams slideshow screensaver. [CHAR LIMIT=20] -->
   <!-- Group by Albums tab on Action Bar. [CHAR LIMIT=12] -->
+  <string name="albums">Álbumes</string>
   <!-- Group by Times tab on Action Bar. [CHAR LIMIT=12] -->
   <!-- Group by Locations tab on Action Bar. [CHAR LIMIT=12] -->
   <string name="locations">Allugamientos</string>
@@ -253,6 +274,10 @@
   <!--  Text of notification message which is shown when user attaches camera -->
   <!-- String indicating how many media items from the camera have been scanned -->
   <!-- String indicating how many media items from the camera have been selected -->
+  <plurals name="ingest_number_of_items_selected">
+    <item quantity="one">%1$d elementu esbilláu</item>
+    <item quantity="other">%1$d elementos esbillaos</item>
+  </plurals>
   <!--  Status message shown when content from the camera is being sorted -->
   <!--  Status message shown when scanning the content from the camera has completed -->
   <string name="ingest_scanning_done">Escanéu fechu</string>
@@ -295,6 +320,7 @@
     <item quantity="one">1 segundu</item>
     <item quantity="other">%d segundos</item>
   </plurals>
+  <string name="pref_camera_timer_sound_default">@string/setting_on_value</string>
   <!-- Text followed by a checkbox to turn on/off sound effects during the countdown. [CHAR LIMIT = 16]-->
   <string name="pref_camera_timer_sound_title">Pitar na cuenta atrás</string>
   <!-- Entry of a on/off setting. The setting is turned off. [CHAR LIMIT=15] -->
@@ -382,6 +408,7 @@
   <!-- Exposure settings in preference -->
   <!--  menu label exposure compensation [CHAR LIMIT=50] -->
   <!-- Default HDR entry value -->
+  <string name="pref_camera_hdr_default">@string/setting_off_value</string>
   <!-- HDR label ON [CHAR LIMIT=60] -->
   <!-- switch camera label back [CHAR LIMIT=60] -->
   <!-- switch camera label front [CHAR LIMIT=60] -->
@@ -434,6 +461,7 @@
   <!-- The decrement button in camera preference such as exposure, picture size. [CHAR LIMIT = NONE] -->
   <!-- The increment button in camera preference such as exposure, picture size. [CHAR LIMIT = NONE] -->
   <!-- The check box in camera settings, such as store location. [CHAR LIMIT = NONE] -->
+  <string name="accessibility_check_box">Caxellu %1$s</string>
   <!-- The button to switch to Camera mode. [CHAR LIMIT = NONE] -->
   <!-- The button to switch to Video mode. [CHAR LIMIT = NONE] -->
   <!-- The button to switch to Panorama mode. [CHAR LIMIT = NONE] -->
@@ -504,19 +532,29 @@ CHAR LIMIT = NONE] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <string name="pref_video_time_lapse_frame_interval_1440000">24 minutos</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_1800000">0,5 hores</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_3600000">1 hora</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <string name="pref_video_time_lapse_frame_interval_5400000">1,5 hores</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_7200000">2 hores</string>
+  <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_9000000">2,5 hores</string>
+  <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_10800000">3 hores</string>
+  <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_14400000">4 hores</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_36000000">10 hores</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_43200000">12 hores</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_54000000">15 hores</string>
   <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
-  <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
-  <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
-  <!-- Text to indicate time lapse recording frame interval [CHAR LIMIT = 30] -->
+  <string name="pref_video_time_lapse_frame_interval_86400000">24 hores</string>
   <!-- Seconds: a unit of time for time lapse intervals. [CHAR LIMIT = 20] -->
   <string name="time_lapse_seconds">segundos</string>
   <!-- Minutes: a unit of time for time lapse intervals. [CHAR LIMIT = 20] -->
@@ -537,8 +575,13 @@ CHAR LIMIT = NONE] -->
   <!-- Menu item to search for photos [CHAR LIMIT=25] -->
   <!-- Title for the all photos tab [CHAR LIMIT=25] -->
   <!-- Title for the albums tab [CHAR LIMIT=25] -->
+  <string name="tab_albums">Álbumes</string>
   <!-- Camera menu labels -->
   <!-- more options label [CHAR LIMIT=50] -->
   <!-- settings label [CHAR LIMIT=50] -->
   <!-- String indicating how many photos are in an album [CHAR LIMIT=15] -->
+  <plurals name="number_of_photos">
+    <item quantity="one">%1$d semeya</item>
+    <item quantity="other">%1$d semeyes</item>
+  </plurals>
 </resources>
