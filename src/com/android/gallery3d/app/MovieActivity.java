@@ -109,6 +109,7 @@ public class MovieActivity extends AbstractPermissionActivity {
     private boolean mIsHeadsetOn = false;
     private boolean mVirtualizerSupported = false;
     private boolean mBassBoostSupported = false;
+    private boolean mUserPresentReceived = false;
 
     static enum Key {
         global_enabled, bb_strength, virt_strength
@@ -751,13 +752,15 @@ public class MovieActivity extends AbstractPermissionActivity {
             }
             if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
                 // Only stop video.
-                if (mControlResumed) {
+                if (mControlResumed && mUserPresentReceived) {
                     mPlayer.onStop();
+                    mUserPresentReceived = false;
                     mControlResumed = false;
                 }
             } else if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())) {
-                if (!mControlResumed) {
+                if (!mControlResumed && !mUserPresentReceived) {
                     mPlayer.onResume();
+                    mUserPresentReceived = true;
                     mControlResumed = true;
                 }
             }
