@@ -44,13 +44,13 @@
     <string name="save_and_processing" msgid="6371565035837463194">"Обрађивање слике у пуној резолуцији..."</string>
     <string name="exit" msgid="242642957038770113">"Изађи"</string>
     <string name="history" msgid="455767361472692409">"Историја"</string>
-    <string name="reset" msgid="9013181350779592937">"Поново постави"</string>
+    <string name="reset" msgid="9013181350779592937">"Ресетуј"</string>
     <!-- no translation found for history_original (150973253194312841) -->
     <skip />
     <string name="imageState" msgid="8632586742752891968">"Примењени ефекти"</string>
     <string name="compare_original" msgid="8140838959007796977">"Упореди"</string>
     <string name="apply_effect" msgid="1218288221200568947">"Примени"</string>
-    <string name="reset_effect" msgid="7712605581024929564">"Поново постави"</string>
+    <string name="reset_effect" msgid="7712605581024929564">"Ресетуј"</string>
     <string name="aspect" msgid="4025244950820813059">"Размера"</string>
     <string name="aspect1to1_effect" msgid="1159104543795779123">"1:1"</string>
     <string name="aspect4to3_effect" msgid="7968067847241223578">"4:3"</string>
@@ -59,7 +59,7 @@
     <string name="aspect5to7_effect" msgid="5122395569059384741">"5:7"</string>
     <string name="aspect7to5_effect" msgid="5780001758108328143">"7:5"</string>
     <string name="aspect9to16_effect" msgid="7740468012919660728">"16:9"</string>
-    <string name="aspectNone_effect" msgid="6263330561046574134">"Ниједно"</string>
+    <string name="aspectNone_effect" msgid="6263330561046574134">"Ништа"</string>
     <!-- no translation found for aspectOriginal_effect (5678516555493036594) -->
     <skip />
     <string name="Fixed" msgid="8017376448916924565">"Фиксно"</string>
@@ -88,7 +88,7 @@
     <string name="rotate" msgid="2796802553793795371">"Ротирај"</string>
     <string name="mirror" msgid="5482518108154883096">"Огледало"</string>
     <string name="negative" msgid="6998313764388022201">"Негатив"</string>
-    <string name="none" msgid="6633966646410296520">"Ниједно"</string>
+    <string name="none" msgid="6633966646410296520">"Ништа"</string>
     <string name="edge" msgid="7036064886242147551">"Ивице"</string>
     <string name="kmeans" msgid="2080952022674981541">"Постеризуј"</string>
     <string name="downsample" msgid="3552938534146980104">"Смањи"</string>
