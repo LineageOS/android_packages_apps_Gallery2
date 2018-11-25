@@ -262,7 +262,7 @@
     <!-- Label for the information panel [CHAR LIMIT=30] -->
     <string name="filtershow_show_info_panel_histogram">مێژوویی</string>
     <!-- Label for the information panel [CHAR LIMIT=30] -->
-    <string name="filtershow_show_info_panel_exif">داتای EXIF</string>
+    <string name="filtershow_show_info_panel_exif">داتای EXIF </string>
     <!-- Label for the add button in the category panel [CHAR LIMIT=30] -->
     <string name="filtershow_add_button_looks">ئاماده‌کراو</string>
     <!-- Label for the add button in the versions panel [CHAR LIMIT=30] -->

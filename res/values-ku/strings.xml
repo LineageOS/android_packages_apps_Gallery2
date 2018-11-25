@@ -207,7 +207,7 @@
     <string name="appwidget_empty_text">وێنه‌ نییه‌.</string>
     <!-- Toast message shown when the cropped image has been saved in the
          %s folder (string: folder_download) [CHAR LIMIT=50]-->
-    <string name="crop_saved">وێنەی قرتێنراو پاشەکەوت کرا بۆ <xliff:g id="folder_name">%s</xliff:g>.</string>
+    <string name="crop_saved">        وێنەی قرتێنراو پاشەکەوت کرا بۆ <xliff:g id="folder_name">%s</xliff:g>.</string>
     <!-- Toast message shown when there is no albums available [CHAR LIMIT=50]-->
     <string name="no_albums_alert">هیچ ئه‌لبومێک ئاماده‌ نییه‌.</string>
     <!-- Toast message shown when we close the AlbumPage because it is empty
@@ -306,7 +306,7 @@
     </plurals>
     <!-- Toast message shown after we try to make a local album available offline
          [CHAR LIMIT=150] -->
-    <string name="try_to_set_local_album_available_offline">ئەم بڕگەیە له‌ ناوخۆدا پاشەکەوتکراوە و به‌بێ هێڵیش به‌رده‌سته‌.</string>
+    <string name="try_to_set_local_album_available_offline">        ئەم بڕگەیە له‌ ناوخۆدا پاشەکەوتکراوە و به‌بێ هێڵیش به‌رده‌سته‌.</string>
     <!-- A label shown on the action bar. It indicates that the user is
          viewing all available albums [CHAR LIMIT=20] -->
     <string name="set_label_all_albums">هه‌موو ئه‌لبومه‌كانم</string>
