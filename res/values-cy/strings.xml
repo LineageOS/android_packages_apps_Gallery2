@@ -492,7 +492,7 @@
     <!-- button in review mode indicating that the taken photo/video is OK to be attached/uploaded [CHAR LIMIT=10] -->
     <string name="review_ok">IAWN</string>
     <!-- A label that overlays on top of the preview frame to indicate the camcorder is in time lapse mode [CHAR LIMIT=35] -->
-    <string name="time_lapse_title">Yn recrodio treigl amser</string>
+    <string name="time_lapse_title">Yn recordio treigl amser</string>
     <!-- Settings screen, camera selection dialog title. Users can select a camera from the phone (front-facing or back-facing). [CHAR LIMIT=20] -->
     <string name="pref_camera_id_title">Dewis camera</string>
     <!-- In select camera setting, back facing camera. [CHAR LIMIT=14] -->
