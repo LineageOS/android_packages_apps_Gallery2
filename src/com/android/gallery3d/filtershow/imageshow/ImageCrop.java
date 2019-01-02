@@ -165,6 +165,9 @@ public class ImageCrop extends ImageShow {
     }
 
     public void applyOriginalAspect() {
+        if(mCropObj == null) {
+            return;
+        }
         RectF outer = mCropObj.getOuterBounds();
         float w = outer.width();
         float h = outer.height();
