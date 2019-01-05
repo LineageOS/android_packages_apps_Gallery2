@@ -30,6 +30,7 @@
     <!--  Text to label an image as "original" [CHAR LIMIT=20] -->
     <string name="original">Gwreiddiol</string>
     <!--  Text for filters that apply a border to a picture [CHAR LIMIT=20] -->
+    <string name="borders" msgid="4461692156695893616">Borderi</string>
     <!-- Text for the custom border filter [CHAR LIMIT=20] -->
     <string name="custom_border">Addasedig</string>
     <!--  actionbar menu -->
@@ -38,7 +39,9 @@
     <!--  Text for redo menu item [CHAR LIMIT=20] -->
     <string name="filtershow_redo">Ail-wneud</string>
     <!--  Text for the image menu item showing the filters that have been applied [CHAR LIMIT=30] -->
+    <string name="show_imagestate_panel">Dangos yr Effeithiau a Osodwyd</string>
     <!--  Text for the image state panel menu item [CHAR LIMIT=30] -->
+    <string name="hide_imagestate_panel">Cuddio\'r Effeithiau a Osodwyd</string>
     <!--  Text for the menu item to export a flattened photo[CHAR LIMIT=30] -->
     <string name="export_image">Allforio</string>
     <!-- Text for the print menu item [CHAR LIMIT=20] -->
@@ -75,6 +78,7 @@
     <!--  Text for the original image[CHAR LIMIT=20]-->
     <!--  Image state panel -->
     <!--  Text for the image state panel title [CHAR LIMIT=50] -->
+    <string name="imageState">Effeithiau a Osodwyd</string>
     <!--  Additional filters buttons  -->
     <!--  Label for the compare original image filter button [CHAR LIMIT=15] -->
     <string name="compare_original">Cymharu</string>
@@ -108,6 +112,7 @@
     <!--  Label for the image vibrance (strengthens colors) filter button [CHAR LIMIT=10] -->
     <string name="vibrance">Cryfder Lliwiau</string>
     <!--  Label for the image saturation (brightens colors) filter button [CHAR LIMIT=10] -->
+    <string name="saturation">Dirlawnder</string>
     <!--  Label for the image BW filter (makes black & white) button [CHAR LIMIT=10] -->
     <string name="bwfilter">Hidlydd DG</string>
     <!--  Label for the image Autocolor filter (makes off-white colors whiter) button [CHAR LIMIT=10] -->
@@ -121,10 +126,13 @@
     <!--  Label for the image curves filter button [CHAR LIMIT=10] -->
     <string name="curvesRGB">Cromliniau</string>
     <!--  Label for the image vignette filter (darkens photo around edges) button [CHAR LIMIT=10] -->
+    <string name="vignette">Twll clo</string>
     <!--  Label for the image vignette main parameter ui [CHAR LIMIT=15] -->
+    <string name="vignette_main">Twll clo</string>
     <!--  Label for the image vignette exposure parameter ui [CHAR LIMIT=15] -->
     <string name="vignette_exposure">Goleuni</string>
     <!--  Label for the image vignette saturation parameter ui [CHAR LIMIT=15] -->
+    <string name="vignette_saturation">Dirlawnder</string>
     <!--  Label for the image vignette contrast fparameter ui [CHAR LIMIT=15] -->
     <string name="vignette_contrast">Cyferbyniaeth</string>
     <!--  Label for the rate of change in brightness as it goes to the edge [CHAR LIMIT=15] -->
@@ -156,6 +164,7 @@
     <!--  Label for the Contrast filter effect  [CHAR LIMIT=20] -->
     <string name="editor_grad_contrast">Cyferbyniaeth</string>
     <!--  Label for the saturation effect  [CHAR LIMIT=20] -->
+    <string name="editor_grad_saturation">Dirlawnder</string>
     <!--  Label for the Main or Master control for per channel saturation effect [CHAR LIMIT=20] -->
     <string name="editor_chan_sat_main">Prif</string>
     <!--  Label for the red control for per channel saturation effect [CHAR LIMIT=20] -->
@@ -190,6 +199,7 @@
     <!--  Label for the Hue to draw in [CHAR LIMIT=14] -->
     <string name="draw_hue">Gwawr</string>
     <!--  Label for the color to draw in [CHAR LIMIT=14] -->
+    <string name="draw_saturation">Dirlawnder</string>
     <!--  Label for the Brightness to draw in [CHAR LIMIT=14] -->
     <string name="draw_value">Disgleirdeb</string>
     <!--  Label for the color to draw in [CHAR LIMIT=14] -->

@@ -178,7 +178,7 @@
     <!-- String indicating an error when muting the video. [CHAR LIMIT=30] -->
     <string name="video_mute_err">Methu â distewi\'r fideo.</string>
     <!-- String indicating an error when playing the video. [CHAR LIMIT=30] -->
-    <string name="video_err">Methu â chware\'r fideo.</string>
+    <string name="video_err">Methu â chwarae\'r fideo.</string>
     <!-- Strings for grouping operations in the menu. The photos can be grouped
          by their location, taken time, or tags. -->
     <!-- The title of the menu item to let user choose the grouping rule, when
@@ -227,7 +227,6 @@
     <string name="no_albums_alert">Dim casgliadau ar gael.</string>
     <!-- Toast message shown when we close the AlbumPage because it is empty
             [CHAR LIMIT=50] -->
-    <string name="empty_album">Dim delweddau/fideos ar gael.</string>
     <!-- Album label used to indicate the collection of PWA Buzz/Post photos -->
     <!-- A label describing that the current screen is for the user to pick
          some albums to be viewable offline [CHAR LIMIT=30] -->
@@ -721,6 +720,7 @@
     <!-- Title of category for background replacement effects. [CHAR LIMIT=26] -->
     <string name="effect_background">CEFNDIR</string>
     <!-- The shutter button. [CHAR LIMIT = NONE] -->
+    <string name="accessibility_shutter_button">Botwm caead</string>
     <!-- The menu button. [CHAR LIMIT = NONE] -->
     <string name="accessibility_menu_button">Botwm dewislen</string>
     <!-- The button to review the thumbnail. [CHAR LIMIT = NONE] -->

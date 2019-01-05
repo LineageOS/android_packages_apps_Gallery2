@@ -212,7 +212,6 @@
     <string name="no_albums_alert">هیچ ئه‌لبومێک ئاماده‌ نییه‌.</string>
     <!-- Toast message shown when we close the AlbumPage because it is empty
             [CHAR LIMIT=50] -->
-    <string name="empty_album">0 وێنه‌/ڤیدیۆ ئاماده‌یه‌.</string>
     <!-- Album label used to indicate the collection of PWA Buzz/Post photos -->
     <string name="picasa_posts">په‌یامه‌کان</string>
     <!-- A label describing that the current screen is for the user to pick

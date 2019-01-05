@@ -194,7 +194,6 @@
     <string name="no_albums_alert">ئىشلەتكىلى بولىدىغان ئالبۇم يوق.</string>
     <!-- Toast message shown when we close the AlbumPage because it is empty
             [CHAR LIMIT=50] -->
-    <string name="empty_album">سۈرەت/سىننى ئىشلەتكىلى بولىدۇ.</string>
     <!-- Album label used to indicate the collection of PWA Buzz/Post photos -->
     <string name="picasa_posts">يازمىلار</string>
     <!-- A label describing that the current screen is for the user to pick

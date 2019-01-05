@@ -32,9 +32,24 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Strings for step option settins -->
     <string name="setp_option_name">Cam</string>
+    <string name="setp_option_three_second">3 eiliad</string>
+    <string name="setp_option_six_second">6 eiliad</string>
+    <string name="single">"Sengl"</string>
     <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Seinydd YMLAEN</string>
+    <string name="speaker_off">Seinydd I FFWRDD</string>
+    <string name="input_url">"Rho URL"</string>
+    <string name="next">"Nesaf"</string>
+    <string name="previous">"Blaenorol"</string>
+    <string name="setting">Gosodiadau</string>
+    <string name="media_controller_playing">Yn chwarae</string>
+    <string name="bookmark_add">"Ychwanegu nod tudalen"</string>
+    <string name="bookmark_list">"Nodau tudalennau"</string>
     <string name="bookmark_title">"Teitl"</string>
+    <string name="bookmark_location">"Lleoliad"</string>
+    <string name="delete_all">"Dileu'r cwbl"</string>
     <!-- A label describing to link website [CHAR LIMIT=30] -->
+    <string name="more_image">Rhagor o ddelweddau</string>
     <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Does dim apiau mapio wedi eu gosod i fedru dangos y lleoliad.</string>

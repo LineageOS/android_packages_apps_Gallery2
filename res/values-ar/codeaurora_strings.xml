@@ -77,13 +77,46 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="mute_nosupport">لا يمكن كتم الصوت : الفيديو غير مدعوم</string>
     <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">لا يوجد تطبيق خرائط مثبت لإظهار الموقع.</string>
+    <plurals name="number_of_videos">
+        <item quantity="zero">%1$d فيديوهات</item>
+        <item quantity="one">%1$d فيديو</item>
+        <item quantity="two">%1$d فيديوهات</item>
+        <item quantity="few">%1$d فيديوهات</item>
+        <item quantity="many">%1$d فيديوهات</item>
+        <item quantity="other">%1$d فيديوهات</item>
+    </plurals>
     <!-- Toast message for share items -->
+    <string name="cannot_share_items">الحد الأقصى للعناصر المحددة للمشاركة هو 300</string>
+    <string name="share_dialogue_title">مشاركة عبر</string>
     <!-- When grouping photos by peoples, the label used for photos that don't
          have people information in them [CHAR LIMIT=20]-->
+    <string name="no_faces">لا يوجد وجوه</string>
     <!-- The tips of trimming video -->
     <string name="fail_trim">عذراً، لا يمكن الاقتطاع من ملف الفيديو هذا</string>
+    <string name="can_not_trim">يمكن اقتطاع ملفات mp4 و 3gp فقط</string>
     <string name="drm_license_info">معلومات ترخيص إدارة الحقوق الرقمية</string>
     <!-- Timeline screen title -->
+    <string name="timeline_title">الجدول الزمني</string>
     <!-- Albums screen title -->
+    <string name="albums_title">الألبومات</string>
     <!-- Videos screen title -->
+    <string name="videos_title">الفيديوهات</string>
+    <string name="action_viewtype_list">عرض القائمة</string>
+    <string name="tvEmptyAlbum">لم يُعثر على صور</string>
+    <string name="tvEmptyVideos">لم يُعثر على فيديوهات</string>
+    <string name="text_makeup_whiten">تبييض</string>
+    <string name="text_makeup_Soften">تنعيم</string>
+    <string name="text_makeup_trimface">اقتطاع الوجه</string>
+    <string name="text_makeup_bigeye">تكبير العين</string>
+    <string name="truescanner_normal">عادي</string>
+    <string name="truescanner_white">سبورة بيضاء</string>
+    <string name="truescanner">ماسحة حقيقة</string>
+    <string name="truescanner_remove_glare">إزالة الوهج</string>
+    <string name="hazebuster_acts">Haze Buster</string>
+    <string name="seestraight_acts">نظر مستقيم</string>
+    <string name="seestraight_input_image_is_small">الصورة المدخلة صغيرة جداً للعملية.</string>
+    <string name="seestraight_process_fail">تعذر معالجة الصورة.</string>
+    <string name="trim_video_exit_title">تجاهل التغييرات؟</string>
+    <string name="trim_video_exit_msg">تجاهل التغييرات التي تم إجراؤها على هذا الفيديو؟</string>
+    <string name="trim_video_exit_discard">تجاهل</string>
 </resources>
