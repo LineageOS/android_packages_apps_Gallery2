@@ -50,7 +50,10 @@ $(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/APPS/Gallery*)
 $(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/APPS/Gallery*)
 $(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/APPS/Gallery*)
 $(call add-clean-step, rm -rf $(OUT_DIR)/target/common/obj/APPS/Gallery*)
-
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/app/Gallery2)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib*/libjni_gallery_jpegstream.so)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib*/libjni_gallery_eglfence.so)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib*/libjni_gallery_filters.so)
 # ************************************************
 # NEWER CLEAN STEPS MUST BE AT THE END OF THE LIST
 # ************************************************
