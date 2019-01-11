@@ -35,6 +35,8 @@ LOCAL_CERTIFICATE := platform
 
 LOCAL_PRIVATE_PLATFORM_APIS := true
 
+LOCAL_PRODUCT_MODULE := true
+
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
 
 LOCAL_AAPT_FLAGS += --rename-manifest-package com.android.gallery3d
