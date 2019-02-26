@@ -44,10 +44,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="setting">Gosodiadau</string>
     <string name="media_controller_playing">Yn chwarae</string>
     <string name="bookmark_add">"Ychwanegu nod tudalen"</string>
+    <string name="bookmark_exist">"Nod tudalen yn bodoli eisoes"</string>
+    <string name="bookmark_add_success">"Ychwanegwyd nod tudalen"</string>
     <string name="bookmark_list">"Nodau tudalennau"</string>
     <string name="bookmark_title">"Teitl"</string>
     <string name="bookmark_location">"Lleoliad"</string>
     <string name="delete_all">"Dileu'r cwbl"</string>
+    <string name="default_title">"Teitl rhagosodedig"</string>
     <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Rhagor o ddelweddau</string>
     <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->

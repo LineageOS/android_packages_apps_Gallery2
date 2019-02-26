@@ -22,6 +22,7 @@
     <!--  String shown when cannot load the original image. We will edit selected image [CHAR LIMIT=NONE] -->
     <string name="cannot_edit_original">Methu â golygu\'r gwreiddiol</string>
     <!--  String displayed when showing the original image [CHAR LIMIT=NONE] -->
+    <string name="original_picture_text">@string/original</string>
     <!--  String displayed when setting the homepage wallpaper in the background [CHAR LIMIT=NONE] -->
     <string name="setting_wallpaper">Yn gosod fel papur wal</string>
     <!--  generic strings -->
@@ -76,6 +77,7 @@
     <!--  Text for the history panel reset button [CHAR LIMIT=20]-->
     <string name="reset">Ailosod</string>
     <!--  Text for the original image[CHAR LIMIT=20]-->
+    <string name="history_original">@string/original</string>
     <!--  Image state panel -->
     <!--  Text for the image state panel title [CHAR LIMIT=50] -->
     <string name="imageState">Effeithiau a Osodwyd</string>
@@ -89,15 +91,23 @@
     <!--  Label for aspect [CHAR LIMIT=15] -->
     <string name="aspect">Cymhareb</string>
     <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
+    <string name="aspect1to1_effect">1:1</string>
     <!--  Label for the aspect 4:3 effect [CHAR LIMIT=15] -->
+    <string name="aspect4to3_effect">4:3</string>
     <!--  Label for the aspect 3:4 effect [CHAR LIMIT=15] -->
+    <string name="aspect3to4_effect">3:4</string>
     <!--  Label for the aspect 4:7 effect [CHAR LIMIT=15] -->
+    <string name="aspect4to6_effect">4:6</string>
     <!--  Label for the aspect 5:7 effect [CHAR LIMIT=15] -->
+    <string name="aspect5to7_effect">5:7</string>
     <!--  Label for the aspect 7:5 effect [CHAR LIMIT=15] -->
+    <string name="aspect7to5_effect">7:5</string>
     <!--  Label for the aspect 1:1 effect [CHAR LIMIT=15] -->
+    <string name="aspect9to16_effect">16:9</string>
     <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
     <string name="aspectNone_effect">Dim</string>
     <!--  Label for the aspect None effect [CHAR LIMIT=15] -->
+    <string name="aspectOriginal_effect">@string/original</string>
     <!-- Label for when the aspect ratio is fixed to a value [CHAR LIMIT=15] -->
     <string name="Fixed">Sefydlog</string>
     <!--  Label for the tuny planet effect [CHAR LIMIT=10] -->
@@ -136,6 +146,7 @@
     <!--  Label for the image vignette contrast fparameter ui [CHAR LIMIT=15] -->
     <string name="vignette_contrast">Cyferbyniaeth</string>
     <!--  Label for the rate of change in brightness as it goes to the edge [CHAR LIMIT=15] -->
+    <string name="vignette_falloff">Disgyn i ffwrdd</string>
     <!--  Label for the image effect that removes redeye. [CHAR LIMIT=10] -->
     <string name="redeye">Llygaid Cochion</string>
     <!--  Label for the that allows drawing on Image [CHAR LIMIT=10] -->
@@ -158,7 +169,9 @@
           images into solid colors, as popularized by Andy Warhol [CHAR LIMIT=15] -->
     <string name="kmeans">Postereiddio</string>
     <!--  Label for the image downsampling effect (makes image smaller) [CHAR LIMIT=15] -->
+    <string name="downsample">Lawrsamplo</string>
     <!--  Label for the "neutral density graduated filter" filter effect  [CHAR LIMIT=15] -->
+    <string name="grad">Graddedig</string>
     <!--  Label for the Brightness effect  [CHAR LIMIT=20] -->
     <string name="editor_grad_brightness">Disgleirdeb</string>
     <!--  Label for the Contrast filter effect  [CHAR LIMIT=20] -->
@@ -207,7 +220,9 @@
     <!--  Label for the line style of drawing in [CHAR LIMIT=14] -->
     <string name="draw_style_line">Llinellau</string>
     <!--  Label for the Marker brush style of drawing in [CHAR LIMIT=14] -->
+    <string name="draw_style_brush_spatter">Marciwr</string>
     <!--  Label for the Spatter brush style of drawing in [CHAR LIMIT=14] -->
+    <string name="draw_style_brush_marker">Ysgeintio</string>
     <!--  Label for the removing drawing from screen [CHAR LIMIT=14] -->
     <string name="draw_clear">Clirio</string>
     <!--  Label for the with of the border[CHAR LIMIT=14] -->
@@ -265,6 +280,7 @@
     <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
     <string name="filtershow_exif_aperture">Agorfa</string>
     <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
+    <string name="filtershow_exif_focal_length">Hyd Ffocal</string>
     <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
     <string name="filtershow_exif_iso">ISO</string>
     <!-- Label for exif tags in the information panel [CHAR LIMIT=50] -->
