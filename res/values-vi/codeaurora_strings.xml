@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">Bước</string>
     <string name="step_option_desc">Tuỳ chỉnh bước tới/lui nhanh</string>
     <string name="setp_option_three_second">3 giây</string>
@@ -71,30 +70,20 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Vị trí"</string>
     <string name="delete_all">"Xoá tất cả"</string>
     <string name="default_title">"Tiêu đề mặc định"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Nhiều ảnh hơn</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Không thể ngắt tiếng: video không hỗ trợ</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Không có ứng dụng bản đồ để hiện vị trí.</string>
     <plurals name="number_of_videos">
         <item quantity="other">%1$d video</item>
     </plurals>
-    <!-- Toast message for share items -->
     <string name="cannot_share_items">Các mục đã chọn lớn nhất cho chia sẻ là 300</string>
     <string name="share_dialogue_title">Chia sẻ qua</string>
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
     <string name="no_faces">Không có khuôn mặt</string>
-    <!-- The tips of trimming video -->
     <string name="fail_trim">Xin lỗi, không thể cắt video này</string>
     <string name="can_not_trim">Chỉ tập tin mp4 và 3gp có thể cắt được</string>
     <string name="drm_license_info">Thông tin giấy phép DRM</string>
-    <!-- Timeline screen title -->
     <string name="timeline_title">Dòng thời gian</string>
-    <!-- Albums screen title -->
     <string name="albums_title">Album</string>
-    <!-- Videos screen title -->
     <string name="videos_title">Video</string>
     <string name="action_viewtype_list">Chế độ xem danh sách</string>
     <string name="tvEmptyAlbum">Không tìm thấy hình ảnh</string>

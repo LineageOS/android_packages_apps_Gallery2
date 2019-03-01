@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">Крок перамоткі</string>
     <string name="step_option_desc">Налада інтэрвалу для хуткага прагляду наперад ці назад</string>
     <string name="setp_option_three_second">3 секунды</string>
@@ -71,19 +70,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Месцазнаходжанне"</string>
     <string name="delete_all">"Выдаліць усё"</string>
     <string name="default_title">"Загаловак па змаўчанні"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Іншыя выявы</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Немагчыма адключыць гук: відэафайл не падтрымваецца</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Дадатак для працы з картамі не ўсталяваны. Паказ месцазнаходжання немагчымы.</string>
-    <!-- Toast message for share items -->
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
-    <!-- The tips of trimming video -->
     <string name="fail_trim">Дадзены відэафайл не можа быць абрэзаны</string>
     <string name="drm_license_info">Звесткі пра ліцэнзію DRM</string>
-    <!-- Timeline screen title -->
-    <!-- Albums screen title -->
-    <!-- Videos screen title -->
 </resources>

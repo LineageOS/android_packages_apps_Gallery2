@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">דילוג</string>
     <string name="step_option_desc">התאם אישית דילוג מהיר קדימה/אחורה</string>
     <string name="setp_option_three_second">3 שניות</string>
@@ -71,11 +70,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"מיקום"</string>
     <string name="delete_all">"מחק הכול"</string>
     <string name="default_title">"כותרת ברירת מחדל"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">תמונות נוספות</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">לא ניתן להשתיק: וידאו לא נתמך</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">אין יישומי מפות מותקנים להצגת המיקום.</string>
     <plurals name="number_of_videos">
         <item quantity="one">סרטון אחד</item>
@@ -83,21 +79,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="many">%1$d סרטונים</item>
         <item quantity="other">%1$d סרטונים</item>
     </plurals>
-    <!-- Toast message for share items -->
     <string name="cannot_share_items">מספר הפריטים המירבי לשיתוף הוא 300</string>
     <string name="share_dialogue_title">שתף באמצעות</string>
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
     <string name="no_faces">ללא פרצופים</string>
-    <!-- The tips of trimming video -->
     <string name="fail_trim">סליחה, קובץ וידאו זה אינו ניתן לחיתוך</string>
     <string name="can_not_trim">אפשר לחתוך רק קבצי mp4 ו-3gp</string>
     <string name="drm_license_info">פרטי רישיון DRM</string>
-    <!-- Timeline screen title -->
     <string name="timeline_title">ציר זמן</string>
-    <!-- Albums screen title -->
     <string name="albums_title">אלבומים</string>
-    <!-- Videos screen title -->
     <string name="videos_title">סרטונים</string>
     <string name="action_viewtype_list">תצוגת רשימה</string>
     <string name="tvEmptyAlbum">לא נמצאו תמונות</string>
