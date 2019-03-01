@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">Solis</string>
     <string name="step_option_desc">Pielāgot ātro pārtīšanu turp/atpakaļ</string>
     <string name="setp_option_three_second">3 sekundes</string>
@@ -71,18 +70,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Atrašanās vieta"</string>
     <string name="delete_all">"Dzēst visu"</string>
     <string name="default_title">"Noklusētais virsraksts"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Vairāk attēlu</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Nevar atslēgt skaņu: video nav atbalstīts</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Atrašanās vietu nevar parādīt, jo nav uzstādīta kartes lietotne.</string>
-    <!-- Toast message for share items -->
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
-    <!-- The tips of trimming video -->
     <string name="fail_trim">Atvainojiet, šo video failu nevar apgriezt</string>
-    <!-- Timeline screen title -->
-    <!-- Albums screen title -->
-    <!-- Videos screen title -->
 </resources>

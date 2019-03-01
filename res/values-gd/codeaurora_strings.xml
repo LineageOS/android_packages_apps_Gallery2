@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">Ceum</string>
     <string name="step_option_desc">Gnàthaich ceumannan an toinneimh air adhart/air ais</string>
     <string name="setp_option_three_second">3 diogan</string>
@@ -71,19 +70,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Ionad"</string>
     <string name="delete_all">"Sguab às na h-uile"</string>
     <string name="default_title">"An tiotal bunaiteach"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Barrachd dhealbhan</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Cha ghabh a mhùchadh : chan eil taic ri video</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Cha deach aplacaid mhapaichean a stàladh anns an t-sealladh sinn an t-ionad.</string>
-    <!-- Toast message for share items -->
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
-    <!-- The tips of trimming video -->
     <string name="fail_trim">Tha sinn duilich ach cha ghabh am faidhle video seo a bhearradh</string>
     <string name="drm_license_info">Fiosrachadh mun cheadachas DRM</string>
-    <!-- Timeline screen title -->
-    <!-- Albums screen title -->
-    <!-- Videos screen title -->
 </resources>

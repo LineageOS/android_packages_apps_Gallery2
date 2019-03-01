@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">Cam</string>
     <string name="setp_option_three_second">3 eiliad</string>
     <string name="setp_option_six_second">6 eiliad</string>
@@ -44,23 +43,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="setting">Gosodiadau</string>
     <string name="media_controller_playing">Yn chwarae</string>
     <string name="bookmark_add">"Ychwanegu nod tudalen"</string>
+    <string name="bookmark_exist">"Nod tudalen yn bodoli eisoes"</string>
+    <string name="bookmark_add_success">"Ychwanegwyd nod tudalen"</string>
     <string name="bookmark_list">"Nodau tudalennau"</string>
     <string name="bookmark_title">"Teitl"</string>
     <string name="bookmark_location">"Lleoliad"</string>
     <string name="delete_all">"Dileu'r cwbl"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
+    <string name="default_title">"Teitl rhagosodedig"</string>
     <string name="more_image">Rhagor o ddelweddau</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Does dim apiau mapio wedi eu gosod i fedru dangos y lleoliad.</string>
-    <!-- Toast message for share items -->
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
-    <!-- The tips of trimming video -->
-    <!-- Timeline screen title -->
     <string name="timeline_title">Llinell amser</string>
-    <!-- Albums screen title -->
-    <!-- Videos screen title -->
     <string name="videos_title">Fideos</string>
     <string name="text_makeup_whiten">Gwynnu</string>
     <string name="truescanner_white">Bwrdd gwyn</string>

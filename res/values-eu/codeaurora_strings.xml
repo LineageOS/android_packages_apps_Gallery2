@@ -30,7 +30,6 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Strings for step option settins -->
     <string name="setp_option_name">Urratsa</string>
     <string name="step_option_desc">Pertsonalizatu aurrera/atzerako jauziak</string>
     <string name="setp_option_three_second">3 segundo</string>
@@ -71,31 +70,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Kokalekua"</string>
     <string name="delete_all">"Ezabatu guztiak"</string>
     <string name="default_title">"Izenburu lehenetsia"</string>
-    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Irudi gehiago</string>
-    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Ezin da mututu: bideoa ez da onartzen</string>
-    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Ez dago kokalekua bistaratu dezakeen mapa aplikaziorik instalatuta.</string>
     <plurals name="number_of_videos">
         <item quantity="one">bideo %1$d</item>
         <item quantity="other">%1$d bideo</item>
     </plurals>
-    <!-- Toast message for share items -->
     <string name="cannot_share_items">Partekatzeko aukeratutako elementu kopuru maximoa 300 da</string>
     <string name="share_dialogue_title">Partekatu honen bidez</string>
-    <!-- When grouping photos by peoples, the label used for photos that don't
-         have people information in them [CHAR LIMIT=20]-->
     <string name="no_faces">Aurpegirik ez</string>
-    <!-- The tips of trimming video -->
     <string name="fail_trim">Barkatu, bideo hau ezin da ebaki</string>
     <string name="can_not_trim">mp4 eta 3gp fitxategiak baino ezin dira ebaki</string>
     <string name="drm_license_info">DRM lizentziaren informazioa</string>
-    <!-- Timeline screen title -->
     <string name="timeline_title">Denbora-lerroa</string>
-    <!-- Albums screen title -->
     <string name="albums_title">Albumak</string>
-    <!-- Videos screen title -->
     <string name="videos_title">Bideoak</string>
     <string name="action_viewtype_list">Zerrenda ikuspegia</string>
     <string name="tvEmptyAlbum">Ez da argazkirik aurkitu</string>
