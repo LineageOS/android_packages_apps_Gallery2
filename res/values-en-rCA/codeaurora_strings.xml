@@ -83,4 +83,25 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="fail_trim">Sorry, this video file can not be trimmed</string>
     <string name="can_not_trim">Only mp4 and 3gp files can be trimmed</string>
     <string name="drm_license_info">DRM license info</string>
+    <string name="timeline_title">Timeline</string>
+    <string name="albums_title">Albums</string>
+    <string name="videos_title">Videos</string>
+    <string name="action_viewtype_list">List view</string>
+    <string name="tvEmptyAlbum">No photos found</string>
+    <string name="tvEmptyVideos">No videos found</string>
+    <string name="text_makeup_whiten">Whiten</string>
+    <string name="text_makeup_Soften">Soften</string>
+    <string name="text_makeup_trimface">Trimface</string>
+    <string name="text_makeup_bigeye">Bigeye</string>
+    <string name="truescanner_normal">Normal</string>
+    <string name="truescanner_white">Whiteboard</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Remove Glare</string>
+    <string name="hazebuster_acts">Haze Buster</string>
+    <string name="seestraight_acts">See Straight</string>
+    <string name="seestraight_input_image_is_small">Input image is too small to process.</string>
+    <string name="seestraight_process_fail">Couldn\'t process the image.</string>
+    <string name="trim_video_exit_title">Discard changes?</string>
+    <string name="trim_video_exit_msg">Discard the changes made to this video?</string>
+    <string name="trim_video_exit_discard">DISCARD</string>
 </resources>

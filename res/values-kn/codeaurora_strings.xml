@@ -41,7 +41,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="speaker_off">ಧ್ವನಿವರ್ಧಕ ಆಫ್</string>
     <string name="speaker_need_headset">ಈ ವೈಷಿಷ್ಟ್ಯವನ್ನು ಉಪಯೋಗಿಸಲು ಹೇಡ್‍ಫೋನ್ಸ್ ಪ್ಲಗ್ ಇನ್ ಮಾಡಿ.</string>
     <string name="single_track">"ಏಕೈಕ ಟ್ರಾಕ್"</string>
-    <string name="input_url">"URL ಬರೆಯಿರಿ"</string>
+    <string name="input_url">"URL ನಮೂದಿಸಿ"</string>
     <string name="streaming_settings">"ಸ್ಟ್ರೀಮಿಂಗ್ ಸೆಟ್ಟಿಂಗ್ಸ್"</string>
     <string name="next">"ಮುಂದಿನ"</string>
     <string name="previous">"ಹಿಂದಿನ"</string>
@@ -60,7 +60,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="media_controller_live">ಲೈವ್</string>
     <string name="media_controller_playing">ಪ್ಲೇ ಆಗುತ್ತಿದೆ</string>
     <string name="media_controller_connecting">ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ\u2026</string>
-    <string name="bookmark_add">"ಬುಕ್‍ಮಾರ್ಕ್ ಸೇರಿಸು"</string>
+    <string name="bookmark_add">"ಪುಟತೋರುಕ ಸೇರಿಸು"</string>
     <string name="bookmark_display">"ಬುಕ್‍ಮಾರ್ಕ್ ತೋರಿಸು"</string>
     <string name="bookmark_empty">"ಯಾವುದೇ ಬುಕ್‍ಮಾರ್ಕ್‍ಗಳಿಲ್ಲ"</string>
     <string name="bookmark_exist">"ಬುಕ್‍ಮಾರ್ಕ್ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ"</string>
@@ -73,6 +73,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="more_image">ಮತ್ತಷ್ಟು ಚಿತ್ರಗಳು</string>
     <string name="mute_nosupport">ಮೌನಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ : ವೀಡಿಯೋ ಬೆಂಬಲಿತವಾಗಿಲ್ಲ</string>
     <string name="map_activity_not_found_err">ಸ್ಥಳವನ್ನು ಪ್ರದರ್ಶಿಸಲು ಯಾವುದೇ ನಕ್ಷೆ ಆಪ್ ಸ್ಥಾಪಿತವಾಗಿಲ್ಲ.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d ದೃಶ್ಯ</item>
+        <item quantity="other">%1$d ದೃಶ್ಯಗಳು</item>
+    </plurals>
     <string name="fail_trim">ಕ್ಷಮಿಸಿ, ಈ ವೀಡಿಯೋ ಕಡತವನ್ನು ಕತ್ತರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
     <string name="drm_license_info">DRM ಪರವಾನಗಿ ಮಾಹಿತಿ</string>
+    <string name="text_makeup_whiten">ಬಿಳಿಯಾಗಿಸು</string>
+    <string name="truescanner_white">ಬಿಳಿಹಲಿಗೆ</string>
+    <string name="trim_video_exit_title">ಬದಲಾವಣೆಗಳನ್ನು ತ್ಯಜಿಸಬೇಕೆ?</string>
+    <string name="trim_video_exit_msg">ಈ ದೃಶ್ಯಕ್ಕೆ ಮಾಡಿದ ಬದಲಾವಣೆಗಳನ್ನು ತ್ಯಜಿಸಬೇಕೆ?</string>
+    <string name="trim_video_exit_discard">ತ್ಯಜಿಸು</string>
 </resources>

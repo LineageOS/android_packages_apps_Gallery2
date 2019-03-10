@@ -60,11 +60,11 @@
     <string name="aspectOriginal_effect">@string/original</string>
     <string name="Fixed">Sefydlog</string>
     <string name="tinyplanet">Planed Fychan</string>
-    <string name="exposure" msgid="1229093066434614811">Goleuni</string>
+    <string name="exposure" msgid="1229093066434614811">Amlygiad</string>
     <string name="sharpness">Awch</string>
     <string name="contrast">Cyferbyniaeth</string>
     <string name="vibrance">Cryfder Lliwiau</string>
-    <string name="saturation">Dirlawnder</string>
+    <string name="saturation">Dyfnder Lliw</string>
     <string name="bwfilter">Hidlydd DG</string>
     <string name="wbalance">Awtoliw</string>
     <string name="hue">Gwawr</string>
@@ -73,8 +73,8 @@
     <string name="curvesRGB">Cromliniau</string>
     <string name="vignette">Twll clo</string>
     <string name="vignette_main">Twll clo</string>
-    <string name="vignette_exposure">Goleuni</string>
-    <string name="vignette_saturation">Dirlawnder</string>
+    <string name="vignette_exposure">Amlygiad</string>
+    <string name="vignette_saturation">Dyfnder Lliw</string>
     <string name="vignette_contrast">Cyferbyniaeth</string>
     <string name="vignette_falloff">Disgyn i ffwrdd</string>
     <string name="redeye">Llygaid Cochion</string>
@@ -91,7 +91,7 @@
     <string name="grad">Graddedig</string>
     <string name="editor_grad_brightness">Disgleirdeb</string>
     <string name="editor_grad_contrast">Cyferbyniaeth</string>
-    <string name="editor_grad_saturation">Dirlawnder</string>
+    <string name="editor_grad_saturation">Dyfnder Lliw</string>
     <string name="editor_chan_sat_main">Prif</string>
     <string name="editor_chan_sat_red">Coch</string>
     <string name="editor_chan_sat_yellow">Melyn</string>
@@ -108,7 +108,7 @@
     <string name="draw_style">Arddull</string>
     <string name="draw_size">Maint</string>
     <string name="draw_hue">Gwawr</string>
-    <string name="draw_saturation">Dirlawnder</string>
+    <string name="draw_saturation">Dyfnder Lliw</string>
     <string name="draw_value">Disgleirdeb</string>
     <string name="draw_color">Lliw</string>
     <string name="draw_style_line">Llinellau</string>
@@ -147,6 +147,6 @@
     <string name="filtershow_exif_subject_distance">Pellter y Pwnc</string>
     <string name="filtershow_exif_date">Dyddiad tynnwyd</string>
     <string name="filtershow_exif_f_stop">F Stop</string>
-    <string name="filtershow_exif_exposure_time">Amser Goleuni</string>
+    <string name="filtershow_exif_exposure_time">Amser Amlygiad</string>
     <string name="filtershow_exif_copyright">Hawlfraint</string>
 </resources>
