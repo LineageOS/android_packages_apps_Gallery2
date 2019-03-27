@@ -121,7 +121,12 @@ public class LocalMergeAlbum extends MediaSet implements ContentListener {
 
         // First find the nearest mark position <= start.
         SortedMap<Integer, int[]> head = mIndex.headMap(start + 1);
-        int markPos = head.lastKey();
+        int markPos;
+        try {
+            markPos = head.lastKey();
+        } catch (NoSuchElementException e) {
+            return new ArrayList<MediaItem>();
+        }
         int[] subPos = head.get(markPos).clone();
         MediaItem[] slot = new MediaItem[mSources.length];
 

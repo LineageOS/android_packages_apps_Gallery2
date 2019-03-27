@@ -1483,6 +1483,9 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
         }
         if (TrueScannerActs.SERIALIZATION_NAME.equals(representation.getSerializationName())) {
             Bitmap b = MasterImage.getImage().getOriginalBitmapHighres();
+            if (b == null) {
+                return;
+            }
             int w = b.getWidth();
             int h = b.getHeight();
             if (w < h) {

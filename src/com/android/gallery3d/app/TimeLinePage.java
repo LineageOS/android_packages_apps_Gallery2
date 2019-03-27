@@ -20,8 +20,10 @@
 package com.android.gallery3d.app;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -124,6 +126,7 @@ public class TimeLinePage extends ActivityState implements
     private int mSyncResult;
     private boolean mLoadingFailed;
     private RelativePosition mOpenCenter = new RelativePosition();
+    private HomeIconActionReceiver mHomeIconActionReceiver;
 
     private Handler mHandler;
     private static final int MSG_PICK_PHOTO = 0;
@@ -433,6 +436,7 @@ public class TimeLinePage extends ActivityState implements
                 }
             }
         };
+        registerHomeReceiver();
     }
 
     @Override
@@ -499,6 +503,7 @@ public class TimeLinePage extends ActivityState implements
             mAlbumDataAdapter.setLoadingListener(null);
         }
         mActionModeHandler.destroy();
+        ((GalleryActivity) mActivity).unregisterHomeButtonReceiver(mHomeIconActionReceiver);
     }
 
     private void initializeViews() {
@@ -894,5 +899,29 @@ public class TimeLinePage extends ActivityState implements
         if (tvEmptyAlbum != null) {
             tvEmptyAlbum.setVisibility(View.GONE);
         }
+    }
+
+    public class HomeIconActionReceiver extends BroadcastReceiver {
+        private static final String SYSTEM_DIALOG_REASON_KEY = "reason";
+        private static final String SYSTEM_DIALOG_REASON_HOME_KEY = "homekey";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (TextUtils.equals(intent.getAction(), Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+                String reasonHomeKey = intent.getStringExtra(SYSTEM_DIALOG_REASON_KEY);
+                if (TextUtils.equals(SYSTEM_DIALOG_REASON_HOME_KEY, reasonHomeKey)) {
+                    StateManager manager = mActivity.getStateManager();
+                    int stateCount = manager.getStateCount();
+                    if (stateCount == 1 && manager.getTopState() instanceof TimeLinePage) {
+                        manager.finishState(manager.getTopState());
+                    }
+                }
+            }
+        }
+    }
+
+    private void registerHomeReceiver() {
+        mHomeIconActionReceiver = new HomeIconActionReceiver();
+        ((GalleryActivity) mActivity).registerHomeButtonReceiver(mHomeIconActionReceiver);
     }
 }

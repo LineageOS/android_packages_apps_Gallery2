@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.UriMatcher;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -528,5 +529,21 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
             return dispatchTouchEvent(touchEvent);
         }
         return super.onGenericMotionEvent(event);
+    }
+
+    public void registerHomeButtonReceiver(TimeLinePage.HomeIconActionReceiver receiver) {
+        IntentFilter filter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        registerReceiver(receiver, filter);
+    }
+
+    public void unregisterHomeButtonReceiver(TimeLinePage.HomeIconActionReceiver receiver) {
+        if (receiver == null) {
+            return;
+        }
+        try {
+            unregisterReceiver(receiver);
+        } catch (Exception e) {
+            Log.w(TAG, "unregister HomeIconActionReceiver failed");
+        }
     }
 }

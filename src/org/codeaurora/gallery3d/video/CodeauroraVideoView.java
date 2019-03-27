@@ -461,6 +461,17 @@ public class CodeauroraVideoView extends SurfaceView implements MediaPlayerContr
         clearVideoInfo();
         if (mUri == null || mSurfaceHolder == null || mTargetState == STATE_ERROR) {
             // not ready for playback just yet, will try again later
+            if (mSurfaceHolder == null) {
+                setVisibility(GONE);
+                getHolder().removeCallback(mSHCallback);
+                getHolder().addCallback(mSHCallback);
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        setVisibility(VISIBLE);
+                    }
+                },500);
+            }
             return;
         }
 

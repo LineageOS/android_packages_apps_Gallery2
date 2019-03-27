@@ -41,6 +41,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -82,7 +83,6 @@ public class MovieActivity extends AbstractPermissionActivity {
     private boolean     mFinishOnCompletion;
     private Uri         mUri;
     private ImageView   mLiveImg;
-    private boolean     mUserPresentReceived = false;
 
     private IMovieItem          mMovieItem;
     private IActivityHooker     mMovieHooker;
@@ -470,21 +470,21 @@ public class MovieActivity extends AbstractPermissionActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            Display display = getWindowManager().getDefaultDisplay();
             if (LOG) {
                 Log.v(TAG, "onReceive(" + intent.getAction() + ") mControlResumed="
                         + mControlResumed);
             }
-            if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
+            if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction()) &&
+                    display.getState() == Display.STATE_OFF) {
                 // Only stop video.
-                if (mControlResumed && mUserPresentReceived) {
+                if (mControlResumed) {
                     mPlayer.onStop();
-                    mUserPresentReceived = false;
                     mControlResumed = false;
                 }
             } else if (Intent.ACTION_USER_PRESENT.equals(intent.getAction())) {
-                if (!mControlResumed && !mUserPresentReceived) {
+                if (!mControlResumed) {
                     mPlayer.onResume();
-                    mUserPresentReceived = true;
                     mControlResumed = true;
                 }
             }
