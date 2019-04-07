@@ -75,4 +75,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="map_activity_not_found_err">ಸ್ಥಳವನ್ನು ಪ್ರದರ್ಶಿಸಲು ಯಾವುದೇ ನಕ್ಷೆ ಆಪ್ ಸ್ಥಾಪಿತವಾಗಿಲ್ಲ.</string>
     <string name="fail_trim">ಕ್ಷಮಿಸಿ, ಈ ವೀಡಿಯೋ ಕಡತವನ್ನು ಕತ್ತರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
     <string name="drm_license_info">DRM ಪರವಾನಗಿ ಮಾಹಿತಿ</string>
+    <string name="videos_title">ದೃಶ್ಯಗಳು</string>
+    <string name="text_makeup_whiten">ಬಿಳಿಯಾಗಿಸು</string>
+    <string name="truescanner_white">ಬಿಳಿಹಲಿಗೆ</string>
 </resources>
