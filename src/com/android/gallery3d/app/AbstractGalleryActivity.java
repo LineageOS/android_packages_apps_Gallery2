@@ -256,6 +256,7 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         mGLRootView.lockRenderThread();
         try {
             getStateManager().notifyActivityResult(
