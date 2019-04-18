@@ -30,13 +30,10 @@ package com.android.gallery3d.app;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.role.RoleManager;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,7 +41,6 @@ public abstract class AbstractPermissionActivity extends FragmentActivity {
 
     public static final int PERMISSION_REQUEST_STORAGE = 1;
     private boolean permissionGranted = false;
-    private final int REQUEST_GALLERY_ROLE = 1001;
 
     protected abstract void onGetPermissionsSuccess();
     protected abstract void onGetPermissionsFailure();
@@ -53,20 +49,6 @@ public abstract class AbstractPermissionActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestStoragePermission();
-        RoleManager roleManager = getSystemService(RoleManager.class);
-        if (!roleManager.isRoleHeld(RoleManager.ROLE_GALLERY)) {
-            startActivityForResult(roleManager.createRequestRoleIntent(RoleManager.ROLE_GALLERY),
-                    REQUEST_GALLERY_ROLE);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_GALLERY_ROLE && Activity.RESULT_CANCELED == resultCode) {
-            Toast.makeText(getApplicationContext(),
-                    "Granting failed. SnapdragonGallery can't edit media files.",
-                    Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void requestStoragePermission() {
