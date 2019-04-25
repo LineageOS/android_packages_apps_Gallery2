@@ -287,7 +287,7 @@ public class ImageShow extends View implements OnGestureListener,
             mFusionBounds.right = mFusionBounds.left + width;
 
             canvas.drawBitmap(fusionUnderlay, null, mFusionBounds, null);
-            canvas.clipRect(mFusionBounds, Region.Op.REPLACE);
+            canvas.clipRect(mFusionBounds);
             MasterImage.getImage().setFusionBounds(canvas, mFusionBounds);
         }
 
