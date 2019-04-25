@@ -51,7 +51,6 @@
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="com.android.gallery3d.permission.GALLERY_PROVIDER" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_ROUTING" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- add for guest to set system property -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
