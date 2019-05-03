@@ -40,8 +40,7 @@ LOCAL_AAPT_FLAGS += --rename-manifest-package com.android.gallery3d
 
 LOCAL_JNI_SHARED_LIBRARIES := \
     libjni_gallery_eglfence \
-    libjni_gallery_filters \
-    libjni_gallery_jpegstream
+    libjni_gallery_filters
 
 LOCAL_SHARED_LIBRARIES += \
     libjni_dualcamera \
