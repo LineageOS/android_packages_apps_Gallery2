@@ -49,14 +49,31 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="one">%1$d video</item>
         <item quantity="other">%1$d video</item>
     </plurals>
+    <string name="cannot_share_items">Maksimumi i lejuar për të shpërndarë është 300</string>
     <string name="share_dialogue_title">Ndaj me anë të</string>
+    <string name="no_faces">Pa foto</string>
     <string name="fail_trim">Na vjen keq, por kjo video nuk mund të shkurtohet</string>
     <string name="can_not_trim">Vetëm skedarët me format mp4 dhe mp3 mund të shkurtohen</string>
     <string name="drm_license_info">Informacion rreth liçensës DRM</string>
+    <string name="timeline_title">Vija kohore</string>
     <string name="albums_title">Albumet</string>
     <string name="videos_title">Videot</string>
+    <string name="action_viewtype_list">Paraqit si liste</string>
     <string name="tvEmptyAlbum">Nuk u gjet asnjë foto</string>
     <string name="tvEmptyVideos">Nuk u gjet asnjë video</string>
     <string name="text_makeup_whiten">Zbardh</string>
     <string name="text_makeup_Soften">Zbut</string>
+    <string name="text_makeup_trimface">Sajdisje</string>
+    <string name="text_makeup_bigeye">Sy të mëdhenj</string>
+    <string name="truescanner_normal">Normale</string>
+    <string name="truescanner_white">Faqe e bardhë</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Hiq shkëlqimin</string>
+    <string name="hazebuster_acts">Heq mjegullimin</string>
+    <string name="seestraight_acts">Shiko drejt</string>
+    <string name="seestraight_input_image_is_small">Imazhi i vendosur është shumë i vogël per tu përpunuar.</string>
+    <string name="seestraight_process_fail">Nuk mund të përpunohej imazhi.</string>
+    <string name="trim_video_exit_title">Shpërfill ndryshimet?</string>
+    <string name="trim_video_exit_msg">Shpërfill ndryshimet e bëra në këtë video?</string>
+    <string name="trim_video_exit_discard">SHPËRFILL</string>
 </resources>

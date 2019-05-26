@@ -110,6 +110,7 @@
     <string name="appwidget_empty_text">Nun hai semeyes.</string>
     <string name="crop_saved">        La imaxe retayada guardóse en <xliff:g id="folder_name">%s</xliff:g>.</string>
     <string name="no_albums_alert">Nun hai álbumes disponibles.</string>
+    <string name="empty_album">Nun hai imáxenes/vídeos disponibles.</string>
     <string name="picasa_posts">Publicaciones</string>
     <string name="make_available_offline">Disponible ensin conexón</string>
     <string name="sync_picasa_albums">Anovar</string>
