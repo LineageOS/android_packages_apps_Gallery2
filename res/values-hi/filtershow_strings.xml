@@ -33,7 +33,7 @@
     <string name="export_image" msgid="3202835713172222134">"निर्यात करें"</string>
     <string name="print_image" msgid="1942989216591621413">"प्रिंट करें"</string>
     <string name="export_flattened" msgid="9046192331465915411">"चौरस चित्र निर्यात करें"</string>
-    <string name="select_output_settings" msgid="1268532018080310748">"निर्यात किया गया चित्र, इतिहास के बिना एक प्रतिलिपि होगा."</string>
+    <string name="select_output_settings" msgid="1268532018080310748">"निर्यात किया गया चित्र, इतिहास के बिना एक कॉपी होगा."</string>
     <string name="quality" msgid="179292110309050529">"गुणवत्ता"</string>
     <string name="size" msgid="4639404642236356037">"आकार"</string>
     <string name="x" msgid="6810256999024563662">"x"</string>
