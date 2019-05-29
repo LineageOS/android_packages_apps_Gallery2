@@ -72,9 +72,5 @@ LOCAL_PRODUCT_MODULE := true
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
-ifeq ($(strip $(LOCAL_PACKAGE_OVERRIDES)),)
-
 # Use the following include to make gallery test apk
 include $(call all-makefiles-under, $(LOCAL_PATH))
-
-endif
