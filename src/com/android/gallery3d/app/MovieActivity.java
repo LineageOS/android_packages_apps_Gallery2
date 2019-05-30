@@ -39,6 +39,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.view.KeyEvent;
@@ -93,6 +94,7 @@ public class MovieActivity extends AbstractPermissionActivity {
     private boolean mControlResumed = false;
 
     private Intent mShareIntent;
+    private PowerManager.WakeLock mWakeLock = null;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void setSystemUiVisibility(View rootView) {
@@ -344,6 +346,10 @@ public class MovieActivity extends AbstractPermissionActivity {
         mPlayer.requestAudioFocus();
         super.onStart();
         mMovieHooker.onStart();
+
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "Gallery_WAKE_LOCK");
+        mWakeLock.acquire();
     }
 
     @Override
@@ -359,6 +365,8 @@ public class MovieActivity extends AbstractPermissionActivity {
             mControlResumed = false;
         }
         mMovieHooker.onStop();
+
+        mWakeLock.release();
     }
 
     @Override
