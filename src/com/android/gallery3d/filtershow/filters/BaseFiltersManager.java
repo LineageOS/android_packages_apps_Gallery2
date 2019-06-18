@@ -134,31 +134,18 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         }
     }
 
-    public void freeRSFilterScripts() {
-        for (Class c : mFilters.keySet()) {
-            ImageFilter filter = mFilters.get(c);
-            if (filter != null && filter instanceof ImageFilterRS) {
-                ((ImageFilterRS) filter).resetScripts();
-            }
-        }
-    }
-
     protected void addFilterClasses(Vector<Class> filters) {
         filters.add(ImageFilterTinyPlanet.class);
         filters.add(ImageFilterRedEye.class);
         filters.add(ImageFilterWBalance.class);
         filters.add(ImageFilterExposure.class);
-        filters.add(ImageFilterVignette.class);
-        filters.add(ImageFilterGrad.class);
         filters.add(ImageFilterContrast.class);
         filters.add(ImageFilterShadows.class);
         filters.add(ImageFilterHighlights.class);
         filters.add(ImageFilterVibrance.class);
-        filters.add(ImageFilterSharpen.class);
         filters.add(ImageFilterCurves.class);
         filters.add(ImageFilterDraw.class);
         filters.add(ImageFilterHue.class);
-        filters.add(ImageFilterChanSat.class);
         filters.add(ImageFilterSaturated.class);
         filters.add(ImageFilterBwFilter.class);
         filters.add(ImageFilterNegative.class);
@@ -398,7 +385,6 @@ public abstract class BaseFiltersManager implements FiltersManagerInterface {
         mEffects.add(getRepresentation(ImageFilterExposure.class));
         mEffects.add(getRepresentation(ImageFilterContrast.class));
         mEffects.add(getRepresentation(ImageFilterVibrance.class));
-        mEffects.add(getRepresentation(ImageFilterSharpen.class));
     }
 
     public void addMakeups(Context context) {

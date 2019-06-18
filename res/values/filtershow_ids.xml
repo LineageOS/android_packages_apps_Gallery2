@@ -48,8 +48,6 @@
     <item type="id" name="editorRotate" />
     <item type="id" name="editorStraighten" />
     <item type="id" name="editorParametric" />
-    <item type="id" name="editorGrad" />
-    <item type="id" name="editorChanSat" />
     <item type="id" name="editorMakeup" />
     <item type="id" name="editorDualCam" />
     <item type="id" name="editorDualCamSketch" />
