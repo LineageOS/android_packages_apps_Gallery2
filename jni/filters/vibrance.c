@@ -19,7 +19,7 @@
 
 void JNIFUNCF(ImageFilterVibrance, nativeApplyFilter, jobject bitmap, jint width, jint height,  jfloat vibrance)
 {
-    char* destination = 0;
+    uint8_t* destination = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
     int i;
     int len = width * height * 4;
