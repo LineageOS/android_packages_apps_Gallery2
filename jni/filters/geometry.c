@@ -19,7 +19,7 @@
 
 #include "filters.h"
 
-static __inline__ void flipVertical(char * source, int srcWidth, int srcHeight, char * destination,
+static __inline__ void flipVertical(uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination,
         int dstWidth __unused, int dstHeight __unused) {
     //Vertical
     size_t cpy_bytes = sizeof(char) * 4;
@@ -34,8 +34,8 @@ static __inline__ void flipVertical(char * source, int srcWidth, int srcHeight, 
     }
 }
 
-static __inline__ void flipHorizontal(char * source, int srcWidth, int srcHeight,
-        char * destination, int dstWidth __unused, int dstHeight __unused) {
+static __inline__ void flipHorizontal(uint8_t * source, int srcWidth, int srcHeight,
+        uint8_t * destination, int dstWidth __unused, int dstHeight __unused) {
     //Horizontal
     size_t cpy_bytes = sizeof(char) * 4;
     int width = cpy_bytes * srcWidth;
@@ -52,12 +52,12 @@ static __inline__ void flipHorizontal(char * source, int srcWidth, int srcHeight
     }
 }
 
-static __inline__ void flip_fun(int flip, char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
+static __inline__ void flip_fun(int flip, uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination, int dstWidth, int dstHeight){
     int horiz = (flip & 1) != 0;
     int vert = (flip & 2) != 0;
     if (horiz && vert){
         int arr_len = dstWidth * dstHeight * sizeof(char) * 4;
-        char* temp = (char *) malloc(arr_len);
+        uint8_t* temp = (uint8_t *) malloc(arr_len);
         flipHorizontal(source, srcWidth, srcHeight, temp, dstWidth, dstHeight);
         flipVertical(temp, dstWidth, dstHeight, destination, dstWidth, dstHeight);
         free(temp);
@@ -74,7 +74,7 @@ static __inline__ void flip_fun(int flip, char * source, int srcWidth, int srcHe
 }
 
 //90 CCW (opposite of what's used in UI?)
-static __inline__ void rotate90(char * source, int srcWidth, int srcHeight, char * destination,
+static __inline__ void rotate90(uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination,
         int dstWidth __unused, int dstHeight __unused) {
     size_t cpy_bytes = sizeof(char) * 4;
     int width = cpy_bytes * srcWidth;
@@ -88,17 +88,17 @@ static __inline__ void rotate90(char * source, int srcWidth, int srcHeight, char
     }
 }
 
-static __inline__ void rotate180(char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
+static __inline__ void rotate180(uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination, int dstWidth, int dstHeight){
     flip_fun(3, source, srcWidth, srcHeight, destination, dstWidth, dstHeight);
 }
 
-static __inline__ void rotate270(char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
+static __inline__ void rotate270(uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination, int dstWidth, int dstHeight){
     rotate90(source, srcWidth, srcHeight, destination, dstWidth, dstHeight);
     flip_fun(3, destination, dstWidth, dstHeight, destination, dstWidth, dstHeight);
 }
 
 // rotate == 1 is 90 degrees, 2 is 180, 3 is 270 (positive is CCW).
-static __inline__ void rotate_fun(int rotate, char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
+static __inline__ void rotate_fun(int rotate, uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination, int dstWidth, int dstHeight){
     switch( rotate )
     {
         case 1:
@@ -115,7 +115,7 @@ static __inline__ void rotate_fun(int rotate, char * source, int srcWidth, int s
     }
 }
 
-static __inline__ void crop(char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight, int offsetWidth, int offsetHeight){
+static __inline__ void crop(uint8_t * source, int srcWidth, int srcHeight, uint8_t * destination, int dstWidth, int dstHeight, int offsetWidth, int offsetHeight){
     size_t cpy_bytes = sizeof(char) * 4;
     int row_width = cpy_bytes * srcWidth;
     int new_row_width = cpy_bytes * dstWidth;
@@ -129,8 +129,8 @@ static __inline__ void crop(char * source, int srcWidth, int srcHeight, char * d
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterFlip, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jint flip) {
-    char* destination = 0;
-    char* source = 0;
+    uint8_t* destination = 0;
+    uint8_t* source = 0;
     if (srcWidth != dstWidth || srcHeight != dstHeight) {
         return;
     }
@@ -142,8 +142,8 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterFlip, jobject src, jint srcW
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterRotate, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jint rotate) {
-    char* destination = 0;
-    char* source = 0;
+    uint8_t* destination = 0;
+    uint8_t* source = 0;
     AndroidBitmap_lockPixels(env, src, (void**) &source);
     AndroidBitmap_lockPixels(env, dst, (void**) &destination);
     rotate_fun(rotate, source, srcWidth, srcHeight, destination, dstWidth, dstHeight);
@@ -152,8 +152,8 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterRotate, jobject src, jint sr
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterCrop, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jint offsetWidth, jint offsetHeight) {
-    char* destination = 0;
-    char* source = 0;
+    uint8_t* destination = 0;
+    uint8_t* source = 0;
     AndroidBitmap_lockPixels(env, src, (void**) &source);
     AndroidBitmap_lockPixels(env, dst, (void**) &destination);
     crop(source, srcWidth, srcHeight, destination, dstWidth, dstHeight, offsetWidth, offsetHeight);
@@ -164,8 +164,8 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterCrop, jobject src, jint srcW
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterStraighten, jobject src, jint srcWidth __unused,
         jint srcHeight __unused, jobject dst, jint dstWidth, jint dstHeight,
         jfloat straightenAngle __unused) {
-    char* destination = 0;
-    char* source = 0;
+    uint8_t* destination = 0;
+    uint8_t* source = 0;
     int len = dstWidth * dstHeight * 4;
     AndroidBitmap_lockPixels(env, src, (void**) &source);
     AndroidBitmap_lockPixels(env, dst, (void**) &destination);
