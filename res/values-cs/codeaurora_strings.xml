@@ -73,6 +73,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="more_image">Další obrázky</string>
     <string name="mute_nosupport">Nelze ztlumit: video není podporované</string>
     <string name="map_activity_not_found_err">Není nainstalována žádná mapová aplikace pro zobrazení polohy.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d video</item>
+        <item quantity="few">%1$d videa</item>
+        <item quantity="many">%1$d videí</item>
+        <item quantity="other">%1$d videí</item>
+    </plurals>
     <string name="cannot_share_items">Maximální počet vybraných položek pro sdílení je 300</string>
     <string name="share_dialogue_title">Sdílet pomocí</string>
     <string name="no_faces">Žádné tváře</string>
