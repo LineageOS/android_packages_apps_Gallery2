@@ -78,11 +78,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="other">%1$d videor</item>
     </plurals>
     <string name="share_dialogue_title">Dela via</string>
+    <string name="no_faces">Inga ansikten</string>
     <string name="fail_trim">Tyvärr, denna videofil kan inte klippas</string>
     <string name="drm_license_info">Information om DRM-licens</string>
     <string name="timeline_title">Tidslinje</string>
     <string name="albums_title">Album</string>
     <string name="videos_title">Videor</string>
+    <string name="action_viewtype_list">Listvy</string>
+    <string name="tvEmptyAlbum">Inga foton hittades</string>
+    <string name="tvEmptyVideos">Inga videor hittades</string>
     <string name="truescanner_normal">Normal</string>
     <string name="trim_video_exit_discard">AVBRYT</string>
 </resources>
