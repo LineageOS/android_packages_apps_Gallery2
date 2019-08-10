@@ -30,65 +30,55 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Strings for step option settins -->
-  <string name="setp_option_name">Krok</string>
-  <string name="step_option_desc">Prispôsobiť krok rýchleho pretočenia dopredu/dozadu</string>
-  <string name="setp_option_three_second">3 sekundy</string>
-  <string name="setp_option_six_second">6 sekúnd</string>
-  <string name="loop">"Opakovanie"</string>
-  <string name="single">"Jednoduchý"</string>
-  <string name="stereo">"Stereo"</string>
-  <string name="speaker_on">Zapnúť reproduktor</string>
-  <string name="speaker_off">Vypnúť reproduktor</string>
-  <string name="speaker_need_headset">Pripojte slúchadlá pre použitie tejto funkcie.</string>
-  <string name="single_track">"Jedna stopa"</string>
-  <string name="input_url">"Zadať adresu URL"</string>
-  <string name="streaming_settings">"Nastavenia streamovania"</string>
-  <string name="next">"Ďalšie"</string>
-  <string name="previous">"Predchádzajúce"</string>
-  <string name="buffer_size">Veľkosť vyrovnávacej pamäte</string>
-  <string name="apn">Uprednostňovaný prístupový bod</string>
-  <string name="rtp_min_port">Minimálny port</string>
-  <string name="rtp_max_port">Maximálny port</string>
-  <string name="set_rtp_min_port">Nastaviť minimálny port</string>
-  <string name="set_rtp_max_port">Nastaviť maximálny port</string>
-  <string name="set_buffer_size">Nastaviť veľkosť vyrovnávacej pamäte</string>
-  <string name="set_apn">Vybrať uprednostňovaný prístupový bod</string>
-  <string name="setting">Nastavenia</string>
-  <string name="server_timeout_title">"Časový limit servera"</string>
-  <string name="server_timeout_message">"Pripojiť sa znova k serveru pre prehrávanie videa?"</string>
-  <string name="videoview_error_text_cannot_connect_retry">"Pripojenie zlyhalo, pokúšanie sa o opätovné pripojenie k %1$d\u2026"</string>
-  <string name="media_controller_live">Naživo</string>
-  <string name="media_controller_playing">Prehrávanie</string>
-  <string name="media_controller_connecting">Pripájanie\u2026</string>
-  <string name="bookmark_add">"Pridať záložku"</string>
-  <string name="bookmark_display">"Zobraziť záložky"</string>
-  <string name="bookmark_empty">"Žiadne záložky"</string>
-  <string name="bookmark_exist">"Záložka už existuje"</string>
-  <string name="bookmark_add_success">"Záložka bola pridaná"</string>
-  <string name="bookmark_list">"Záložky"</string>
-  <string name="bookmark_title">"Názov"</string>
-  <string name="bookmark_location">"Poloha"</string>
-  <string name="delete_all">"Vymazať všetky"</string>
-  <string name="default_title">"Predvolený názov"</string>
-  <!-- A label describing to link website [CHAR LIMIT=30] -->
-  <string name="more_image">Viac obrázkov</string>
-  <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
-  <string name="mute_nosupport">Nie je možné stíšiť: video nie je podporované</string>
-  <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-  <string name="map_activity_not_found_err">Nie je nainštalovaná žiadna mapová aplikácia pre zobrazenie polohy.</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Zosilnenie basov</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D efekt</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Zvukové efekty</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Pre tieto efekty pripojte slúchadlá.</string>
-  <!-- The title of the audio effects dialog. -->
-  <string name="audio_effects_dialog_title">Snapdragon Zvuk+</string>
-  <!-- The tips of trimming video -->
-  <string name="fail_trim">Prepáčte, ale toto video nie je možné orezať</string>
-  <string name="no_permission_for_drm">Ospravedlňujeme sa, nie je možné zdieľať súbory chránené DRM</string>
-  <string name="drm_license_info">Informácie o licencii DRM</string>
+    <string name="setp_option_name">Krok</string>
+    <string name="step_option_desc">Prispôsobiť krok rýchleho pretočenia dopredu/dozadu</string>
+    <string name="setp_option_three_second">3 sekundy</string>
+    <string name="setp_option_six_second">6 sekúnd</string>
+    <string name="loop">"Opakovanie"</string>
+    <string name="single">"Jednoduchý"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Zapnúť reproduktor</string>
+    <string name="speaker_off">Vypnúť reproduktor</string>
+    <string name="speaker_need_headset">Pripojte slúchadlá pre použitie tejto funkcie.</string>
+    <string name="single_track">"Jedna stopa"</string>
+    <string name="input_url">"Zadať adresu URL"</string>
+    <string name="streaming_settings">"Nastavenia streamovania"</string>
+    <string name="next">"Ďalšie"</string>
+    <string name="previous">"Predchádzajúce"</string>
+    <string name="buffer_size">Veľkosť vyrovnávacej pamäte</string>
+    <string name="apn">Uprednostňovaný prístupový bod</string>
+    <string name="rtp_min_port">Minimálny port</string>
+    <string name="rtp_max_port">Maximálny port</string>
+    <string name="set_rtp_min_port">Nastaviť minimálny port</string>
+    <string name="set_rtp_max_port">Nastaviť maximálny port</string>
+    <string name="set_buffer_size">Nastaviť veľkosť vyrovnávacej pamäte</string>
+    <string name="set_apn">Vybrať uprednostňovaný prístupový bod</string>
+    <string name="setting">Nastavenia</string>
+    <string name="server_timeout_title">"Časový limit servera"</string>
+    <string name="server_timeout_message">"Pripojiť sa znova k serveru pre prehrávanie videa?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Pripojenie zlyhalo, pokúšanie sa o opätovné pripojenie k %1$d\u2026"</string>
+    <string name="media_controller_live">Naživo</string>
+    <string name="media_controller_playing">Prehrávanie</string>
+    <string name="media_controller_connecting">Pripájanie\u2026</string>
+    <string name="bookmark_add">"Pridať záložku"</string>
+    <string name="bookmark_display">"Zobraziť záložky"</string>
+    <string name="bookmark_empty">"Žiadne záložky"</string>
+    <string name="bookmark_exist">"Záložka už existuje"</string>
+    <string name="bookmark_add_success">"Záložka bola pridaná"</string>
+    <string name="bookmark_list">"Záložky"</string>
+    <string name="bookmark_title">"Názov"</string>
+    <string name="bookmark_location">"Poloha"</string>
+    <string name="delete_all">"Vymazať všetky"</string>
+    <string name="default_title">"Predvolený názov"</string>
+    <string name="more_image">Viac obrázkov</string>
+    <string name="mute_nosupport">Nie je možné stíšiť: video nie je podporované</string>
+    <string name="map_activity_not_found_err">Nie je nainštalovaná žiadna mapová aplikácia pre zobrazenie polohy.</string>
+    <string name="bass_boost_strength">Zosilnenie basov</string>
+    <string name="virtualizer_strength">3D efekt</string>
+    <string name="audio_effects">Zvukové efekty</string>
+    <string name="headset_plug">Pre tieto efekty pripojte slúchadlá.</string>
+    <string name="audio_effects_dialog_title">Snapdragon Zvuk+</string>
+    <string name="fail_trim">Prepáčte, ale toto video nie je možné orezať</string>
+    <string name="no_permission_for_drm">Ospravedlňujeme sa, nie je možné zdieľať súbory chránené DRM</string>
+    <string name="drm_license_info">Informácie o licencii DRM</string>
 </resources>

@@ -30,65 +30,55 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <!-- Strings for step option settins -->
-  <string name="setp_option_name">Stap</string>
-  <string name="step_option_desc">Verpersoonlik vinnige vorentoe/terugspeel stap</string>
-  <string name="setp_option_three_second">3 sekondes</string>
-  <string name="setp_option_six_second">6 sekondes</string>
-  <string name="loop">"Omkring"</string>
-  <string name="single">"Enkel"</string>
-  <string name="stereo">"Stereo"</string>
-  <string name="speaker_on">Luidspreker AAN</string>
-  <string name="speaker_off">Luidspreker AF</string>
-  <string name="speaker_need_headset">Prop in oorfone om hierdie funksie te gebruik.</string>
-  <string name="single_track">"Enkele snit"</string>
-  <string name="input_url">"Sleutel URL in"</string>
-  <string name="streaming_settings">"Stroom instellings"</string>
-  <string name="next">"Volgende"</string>
-  <string name="previous">"Vorige"</string>
-  <string name="buffer_size">Buffer grootte</string>
-  <string name="apn">Voorkeur TPN</string>
-  <string name="rtp_min_port">Min poort</string>
-  <string name="rtp_max_port">Maks poort</string>
-  <string name="set_rtp_min_port">Stel min poort</string>
-  <string name="set_rtp_max_port">Stel maks poort</string>
-  <string name="set_buffer_size">Stel buffer grootte</string>
-  <string name="set_apn">Kies gewenste TPN</string>
-  <string name="setting">Instellings</string>
-  <string name="server_timeout_title">"Bediener tydverstreke"</string>
-  <string name="server_timeout_message">"Herkonnekteer met die bediener om die video te speel?"</string>
-  <string name="videoview_error_text_cannot_connect_retry">"Verbinding het misluk, probeer weer om aan te sluit na %1$d\u2026"</string>
-  <string name="media_controller_live">Regstreeks</string>
-  <string name="media_controller_playing">Speel</string>
-  <string name="media_controller_connecting">Koppel\u2026</string>
-  <string name="bookmark_add">"Voeg boekmerk by"</string>
-  <string name="bookmark_display">"Wys boekmerk"</string>
-  <string name="bookmark_empty">"Geen boekmerk"</string>
-  <string name="bookmark_exist">"Boekmerk bestaan alreeds"</string>
-  <string name="bookmark_add_success">"Boekmerk bygevoeg"</string>
-  <string name="bookmark_list">"Boekmerke"</string>
-  <string name="bookmark_title">"Titel"</string>
-  <string name="bookmark_location">"Ligging"</string>
-  <string name="delete_all">"Verwyder alles"</string>
-  <string name="default_title">"Standaard titel"</string>
-  <!-- A label describing to link website [CHAR LIMIT=30] -->
-  <string name="more_image">Nog prente</string>
-  <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
-  <string name="mute_nosupport">Kan nie klank afskakel: video nie ondersteun</string>
-  <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
-  <string name="map_activity_not_found_err">Daar is geen kaart program geïnstalleer om die plek te wys nie.</string>
-  <!-- The label for the bass boost knob of the audio effects dialog. -->
-  <string name="bass_boost_strength">Versterk bas</string>
-  <!-- The label for the 3d effect knob of the audio effects dialog. -->
-  <string name="virtualizer_strength">3D Effek</string>
-  <!-- The label for the audio effects menu. -->
-  <string name="audio_effects">Klank effekte</string>
-  <!-- Toast if user attempts to control audio effects without headphones plugged in. -->
-  <string name="headset_plug">Prop in oorfone vir hierdie effekte.</string>
-  <!-- The title of the audio effects dialog. -->
-  <string name="audio_effects_dialog_title">Snapdragon Oudio+</string>
-  <!-- The tips of trimming video -->
-  <string name="fail_trim">Jammer, hierdie video lêer kan nie afgewerk word nie</string>
-  <string name="no_permission_for_drm">Jammer, maar DRM beskermde leërs kan nie gedeel word nie</string>
-  <string name="drm_license_info">DRM lisensie inligting</string>
+    <string name="setp_option_name">Stap</string>
+    <string name="step_option_desc">Verpersoonlik vinnige vorentoe/terugspeel stap</string>
+    <string name="setp_option_three_second">3 sekondes</string>
+    <string name="setp_option_six_second">6 sekondes</string>
+    <string name="loop">"Omkring"</string>
+    <string name="single">"Enkel"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Luidspreker AAN</string>
+    <string name="speaker_off">Luidspreker AF</string>
+    <string name="speaker_need_headset">Prop in oorfone om hierdie funksie te gebruik.</string>
+    <string name="single_track">"Enkele snit"</string>
+    <string name="input_url">"Sleutel URL in"</string>
+    <string name="streaming_settings">"Stroom instellings"</string>
+    <string name="next">"Volgende"</string>
+    <string name="previous">"Vorige"</string>
+    <string name="buffer_size">Buffer grootte</string>
+    <string name="apn">Voorkeur TPN</string>
+    <string name="rtp_min_port">Min poort</string>
+    <string name="rtp_max_port">Maks poort</string>
+    <string name="set_rtp_min_port">Stel min poort</string>
+    <string name="set_rtp_max_port">Stel maks poort</string>
+    <string name="set_buffer_size">Stel buffer grootte</string>
+    <string name="set_apn">Kies gewenste TPN</string>
+    <string name="setting">Instellings</string>
+    <string name="server_timeout_title">"Bediener tydverstreke"</string>
+    <string name="server_timeout_message">"Herkonnekteer met die bediener om die video te speel?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Verbinding het misluk, probeer weer om aan te sluit na %1$d\u2026"</string>
+    <string name="media_controller_live">Regstreeks</string>
+    <string name="media_controller_playing">Speel</string>
+    <string name="media_controller_connecting">Koppel\u2026</string>
+    <string name="bookmark_add">"Voeg boekmerk by"</string>
+    <string name="bookmark_display">"Wys boekmerk"</string>
+    <string name="bookmark_empty">"Geen boekmerk"</string>
+    <string name="bookmark_exist">"Boekmerk bestaan alreeds"</string>
+    <string name="bookmark_add_success">"Boekmerk bygevoeg"</string>
+    <string name="bookmark_list">"Boekmerke"</string>
+    <string name="bookmark_title">"Titel"</string>
+    <string name="bookmark_location">"Ligging"</string>
+    <string name="delete_all">"Verwyder alles"</string>
+    <string name="default_title">"Standaard titel"</string>
+    <string name="more_image">Nog prente</string>
+    <string name="mute_nosupport">Kan nie klank afskakel: video nie ondersteun</string>
+    <string name="map_activity_not_found_err">Daar is geen kaart program geïnstalleer om die plek te wys nie.</string>
+    <string name="bass_boost_strength">Versterk bas</string>
+    <string name="virtualizer_strength">3D Effek</string>
+    <string name="audio_effects">Klank effekte</string>
+    <string name="headset_plug">Prop in oorfone vir hierdie effekte.</string>
+    <string name="audio_effects_dialog_title">Snapdragon Oudio+</string>
+    <string name="fail_trim">Jammer, hierdie video lêer kan nie afgewerk word nie</string>
+    <string name="no_permission_for_drm">Jammer, maar DRM beskermde leërs kan nie gedeel word nie</string>
+    <string name="drm_license_info">DRM lisensie inligting</string>
 </resources>
