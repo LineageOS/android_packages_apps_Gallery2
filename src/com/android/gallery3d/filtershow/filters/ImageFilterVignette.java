@@ -34,7 +34,6 @@ import android.util.Log;
 public class ImageFilterVignette extends ImageFilterRS {
     private static final String LOGTAG = "ImageFilterVignette";
     private Bitmap mOverlayBitmap;
-    private ScriptC_vignette mScript;
     FilterVignetteRepresentation mParameters;
     public static final int MODE_VIGNETTE = FilterVignetteRepresentation.MODE_VIGNETTE;
     public static final int MODE_EXPOSURE = FilterVignetteRepresentation.MODE_EXPOSURE;
@@ -79,7 +78,6 @@ public class ImageFilterVignette extends ImageFilterRS {
     protected void createFilter(Resources res, float scaleFactor, int quality) {
         RenderScript rsCtx = getRenderScriptContext();
 
-        mScript = new ScriptC_vignette(rsCtx);
     }
 
     @Override
@@ -110,20 +108,7 @@ public class ImageFilterVignette extends ImageFilterRS {
             ry = c[1];
         }
 
-        mScript.set_inputWidth(w);
-        mScript.set_inputHeight(h);
         int v = mParameters.getValue(MODE_VIGNETTE);
-        mScript.set_finalSubtract((v < 0) ? v : 0);
-        mScript.set_finalBright((v > 0) ? -v : 0);
-        mScript.set_finalSaturation(mParameters.getValue(MODE_SATURATION));
-        mScript.set_finalContrast(mParameters.getValue(MODE_CONTRAST));
-        mScript.set_centerx(cx);
-        mScript.set_centery(cy);
-        mScript.set_radiusx(rx);
-        mScript.set_radiusy(ry);
-        mScript.set_strength(mParameters.getValue(MODE_FALLOFF)/10.f);
-        mScript.invoke_setupVignetteParams();
-        mScript.forEach_vignette(getInPixelsAllocation(), getOutPixelsAllocation());
     }
 
     @Override
@@ -160,7 +145,5 @@ public class ImageFilterVignette extends ImageFilterRS {
     protected void bindScriptValues() {
         int width = getInPixelsAllocation().getType().getX();
         int height = getInPixelsAllocation().getType().getY();
-        mScript.set_inputWidth(width);
-        mScript.set_inputHeight(height);
     }
 }

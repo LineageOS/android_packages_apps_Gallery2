@@ -33,7 +33,6 @@ public abstract class ImageFilterRS extends ImageFilter {
 
     public static boolean PERF_LOGGING = false;
 
-    private static ScriptC_grey mGreyConvert = null;
     private static RenderScript mRScache = null;
 
     private volatile boolean mResourcesLoaded = false;
@@ -158,8 +157,7 @@ public abstract class ImageFilterRS extends ImageFilter {
     }
 
     private static Allocation convertRGBAtoA(RenderScript RS, Bitmap bitmap) {
-        if (RS != mRScache || mGreyConvert == null) {
-            mGreyConvert = new ScriptC_grey(RS);
+        if (RS != mRScache) {
             mRScache = RS;
         }
 
@@ -175,7 +173,6 @@ public abstract class ImageFilterRS extends ImageFilter {
         Allocation bitmapAlloc = Allocation.createTyped(RS, tb_a8.create(),
                                                         Allocation.MipmapControl.MIPMAP_NONE,
                                                         Allocation.USAGE_SCRIPT | Allocation.USAGE_GRAPHICS_TEXTURE);
-        mGreyConvert.forEach_RGBAtoA(bitmapTemp, bitmapAlloc);
         bitmapTemp.destroy();
         return bitmapAlloc;
     }

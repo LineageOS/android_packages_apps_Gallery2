@@ -29,7 +29,6 @@ import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 
 public class ImageFilterChanSat extends ImageFilterRS {
     private static final String LOGTAG = "ImageFilterChanSat";
-    private ScriptC_saturation mScript;
     private Bitmap mSourceBitmap;
 
     private static final int STRIP_SIZE = 64;
@@ -58,10 +57,6 @@ public class ImageFilterChanSat extends ImageFilterRS {
 
     @Override
     public void resetScripts() {
-        if (mScript != null) {
-            mScript.destroy();
-            mScript = null;
-        }
     }
     @Override
     protected void createFilter(android.content.res.Resources res, float scaleFactor,
@@ -77,7 +72,6 @@ public class ImageFilterChanSat extends ImageFilterRS {
         Type.Builder tb_float = new Type.Builder(rsCtx, Element.F32_4(rsCtx));
         tb_float.setX(in.getType().getX());
         tb_float.setY(in.getType().getY());
-        mScript = new ScriptC_saturation(rsCtx);
     }
 
 
@@ -120,9 +114,6 @@ public class ImageFilterChanSat extends ImageFilterRS {
         Matrix m = getOriginalToScreenMatrix(width, height);
 
 
-        mScript.set_saturation(sat);
-
-        mScript.invoke_setupGradParams();
         runSelectiveAdjust(
                 getInPixelsAllocation(), getOutPixelsAllocation());
 
@@ -142,7 +133,6 @@ public class ImageFilterChanSat extends ImageFilterRS {
                 endy = height;
             }
             options.setY(ty, endy);
-            mScript.forEach_selectiveAdjust(in, out, options);
             if (checkStop()) {
                 return;
             }

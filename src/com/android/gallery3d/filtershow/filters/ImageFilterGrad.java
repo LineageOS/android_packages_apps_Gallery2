@@ -38,7 +38,6 @@ import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 
 public class ImageFilterGrad extends ImageFilterRS {
     private static final String LOGTAG = "ImageFilterGrad";
-    private ScriptC_grad mScript;
     private Bitmap mSourceBitmap;
     private static final int RADIUS_SCALE_FACTOR = 160;
 
@@ -68,10 +67,6 @@ public class ImageFilterGrad extends ImageFilterRS {
 
     @Override
     public void resetScripts() {
-        if (mScript != null) {
-            mScript.destroy();
-            mScript = null;
-        }
     }
     @Override
     protected void createFilter(android.content.res.Resources res, float scaleFactor,
@@ -87,7 +82,6 @@ public class ImageFilterGrad extends ImageFilterRS {
         Type.Builder tb_float = new Type.Builder(rsCtx, Element.F32_4(rsCtx));
         tb_float.setX(in.getType().getX());
         tb_float.setY(in.getType().getY());
-        mScript = new ScriptC_grad(rsCtx);
     }
 
 
@@ -113,8 +107,6 @@ public class ImageFilterGrad extends ImageFilterRS {
     protected void bindScriptValues() {
         int width = getInPixelsAllocation().getType().getX();
         int height = getInPixelsAllocation().getType().getY();
-        mScript.set_inputWidth(width);
-        mScript.set_inputHeight(height);
     }
 
     @Override
@@ -141,17 +133,7 @@ public class ImageFilterGrad extends ImageFilterRS {
             y2[i] = (int) coord[1];
         }
 
-        mScript.set_mask(mParameters.getMask());
-        mScript.set_xPos1(x1);
-        mScript.set_yPos1(y1);
-        mScript.set_xPos2(x2);
-        mScript.set_yPos2(y2);
 
-        mScript.set_brightness(mParameters.getBrightness());
-        mScript.set_contrast(mParameters.getContrast());
-        mScript.set_saturation(mParameters.getSaturation());
-
-        mScript.invoke_setupGradParams();
         runSelectiveAdjust(
                 getInPixelsAllocation(), getOutPixelsAllocation());
 
@@ -171,7 +153,6 @@ public class ImageFilterGrad extends ImageFilterRS {
                 endy = height;
             }
             options.setY(ty, endy);
-            mScript.forEach_selectiveAdjust(in, out, options);
             if (checkStop()) {
                 return;
             }
