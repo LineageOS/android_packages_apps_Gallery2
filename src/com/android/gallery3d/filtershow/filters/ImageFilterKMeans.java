@@ -17,7 +17,6 @@
 package com.android.gallery3d.filtershow.filters;
 
 import android.graphics.Bitmap;
-import android.text.format.Time;
 
 import org.codeaurora.gallery.R;
 
@@ -29,9 +28,7 @@ public class ImageFilterKMeans extends SimpleImageFilter {
         mName = "KMeans";
 
         // set random seed for session
-        Time t = new Time();
-        t.setToNow();
-        mSeed = (int) t.toMillis(false);
+        mSeed = (int) System.currentTimeMillis();
     }
 
     public FilterRepresentation getDefaultRepresentation() {
