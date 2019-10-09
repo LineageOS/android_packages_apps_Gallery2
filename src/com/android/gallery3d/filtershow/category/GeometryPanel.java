@@ -31,12 +31,13 @@ package com.android.gallery3d.filtershow.category;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
