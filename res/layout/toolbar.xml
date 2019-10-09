@@ -30,7 +30,8 @@
 
 <Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/actionBarSize"
+    android:layout_height="@dimen/toolbar_height"
+    android:paddingTop="26dp"
     android:background="@color/toolbar_theme"
     android:elevation="4dp"
     android:theme="@style/ToolbarTheme"
