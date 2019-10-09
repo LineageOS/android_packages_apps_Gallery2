@@ -143,6 +143,9 @@ class ExifParser {
 
     protected static final int DEFAULT_IFD0_OFFSET = 8;
 
+    //HEIC header
+    protected static final int HEIC_HEADER = 0x68656963;
+
     private final CountedDataInputStream mTiffStream;
     private final int mOptions;
     private int mIfdStartOffset = 0;
@@ -753,37 +756,66 @@ class ExifParser {
     private boolean seekTiffData(InputStream inputStream) throws IOException,
             ExifInvalidFormatException {
         CountedDataInputStream dataStream = new CountedDataInputStream(inputStream);
-        if (dataStream.readShort() != JpegHeader.SOI) {
-            throw new ExifInvalidFormatException("Invalid JPEG format");
-        }
-
-        short marker = dataStream.readShort();
-        while (marker != JpegHeader.EOI
-                && !JpegHeader.isSofMarker(marker)) {
-            int length = dataStream.readUnsignedShort();
-            // Some invalid formatted image contains multiple APP1,
-            // try to find the one with Exif data.
-            if (marker == JpegHeader.APP1) {
-                int header = 0;
-                short headerTail = 0;
-                if (length >= 8) {
-                    header = dataStream.readInt();
-                    headerTail = dataStream.readShort();
-                    length -= 6;
-                    if (header == EXIF_HEADER && headerTail == EXIF_HEADER_TAIL) {
-                        mTiffStartPosition = dataStream.getReadByteCount();
-                        mApp1End = length;
-                        mOffsetToApp1EndFromSOF = mTiffStartPosition + mApp1End;
-                        return true;
+        if (dataStream.readShort() == JpegHeader.SOI) {
+            short marker = dataStream.readShort();
+            while (marker != JpegHeader.EOI
+                    && !JpegHeader.isSofMarker(marker)) {
+                int length = dataStream.readUnsignedShort();
+                // Some invalid formatted image contains multiple APP1,
+                // try to find the one with Exif data.
+                if (marker == JpegHeader.APP1) {
+                    int header = 0;
+                    short headerTail = 0;
+                    if (length >= 8) {
+                        header = dataStream.readInt();
+                        headerTail = dataStream.readShort();
+                        length -= 6;
+                        if (header == EXIF_HEADER && headerTail == EXIF_HEADER_TAIL) {
+                            mTiffStartPosition = dataStream.getReadByteCount();
+                            mApp1End = length;
+                            mOffsetToApp1EndFromSOF = mTiffStartPosition + mApp1End;
+                            return true;
+                        }
                     }
                 }
+                if (length < 2 || (length - 2) != dataStream.skip(length - 2)) {
+                    Log.w(TAG, "Invalid JPEG format.");
+                    return false;
+                }
+                marker = dataStream.readShort();
             }
-            if (length < 2 || (length - 2) != dataStream.skip(length - 2)) {
-                Log.w(TAG, "Invalid JPEG format.");
+
+
+        } else{
+            dataStream.skip(6);
+            if (dataStream.readInt() == HEIC_HEADER) {
+                while(true){
+                    try{
+                        short marker = dataStream.readShort();
+                        if (marker == JpegHeader.APP1) {
+                            int header = 0;
+                            short headerTail = 0;
+                            int length = dataStream.readUnsignedShort();
+                            header = dataStream.readInt();
+                            headerTail = dataStream.readShort();
+                            if (header == EXIF_HEADER && headerTail == EXIF_HEADER_TAIL) {
+                                mTiffStartPosition = dataStream.getReadByteCount();
+                                mApp1End = length;
+                                mOffsetToApp1EndFromSOF = mTiffStartPosition + mApp1End;
+                                return true;
+                            }
+                        }
+                    }catch (Exception e){
+                        break;
+                    }
+                }
                 return false;
+            } else {
+                throw new ExifInvalidFormatException("Invalid JPEG format");
             }
-            marker = dataStream.readShort();
+
         }
+
         return false;
     }
 
