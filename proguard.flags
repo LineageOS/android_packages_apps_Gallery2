@@ -44,13 +44,6 @@
 # Disable the warnings of using dynamic method calls in EffectsRecorder
 -dontnote com.android.camera.EffectsRecorder
 
-# Required for ActionBarSherlock
--keep class android.support.v4.app.** { *; }
--keep interface android.support.v4.app.** { *; }
--keep class com.actionbarsherlock.** { *; }
--keep interface com.actionbarsherlock.** { *; }
--keepattributes *Annotation*
-
 # Required for mp4parser
 -keep public class * implements com.coremedia.iso.boxes.Box
 

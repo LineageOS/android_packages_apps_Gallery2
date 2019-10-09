@@ -7,7 +7,8 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_JAVA_LIBRARIES := telephony-common
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    $(ANDROID_SUPPORT_DESIGN_TARGETS) \
+    com.google.android.material_material \
+    androidx.annotation_annotation \
     androidx.fragment_fragment \
     androidx.heifwriter_heifwriter \
     androidx.legacy_legacy-support-core-ui \

@@ -33,10 +33,11 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import org.codeaurora.gallery.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
