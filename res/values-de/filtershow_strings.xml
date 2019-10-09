@@ -39,7 +39,7 @@
     <string name="x" msgid="6810256999024563662">"x"</string>
     <string name="menu_settings" msgid="6428291655769260831">"Einstellungen"</string>
     <string name="unsaved" msgid="8704442449002374375">"Das Bild weist nicht gespeicherte Änderungen auf."</string>
-    <string name="save_before_exit" msgid="2680660633675916712">"Möchten Sie vor dem Schließen speichern?"</string>
+    <string name="save_before_exit" msgid="2680660633675916712">"Möchtest du vor dem Schließen speichern?"</string>
     <string name="save_and_exit" msgid="3628425023766687419">"Speichern und schließen"</string>
     <string name="save_and_processing" msgid="6371565035837463194">"Bild mit hoher Auflösung wird verarbeitet..."</string>
     <string name="exit" msgid="242642957038770113">"Schließen"</string>
@@ -126,7 +126,7 @@
     <string name="color_pick_select" msgid="734312818059057394">"Benutzerdefinierte Farbe wählen"</string>
     <string name="color_pick_title" msgid="6195567431995308876">"Farbe auswählen"</string>
     <string name="draw_size_title" msgid="3121649039610273977">"Größe auswählen"</string>
-    <string name="draw_size_accept" msgid="6781529716526190028">"OK"</string>
+    <string name="draw_size_accept" msgid="6781529716526190028">"Ok"</string>
     <string name="state_panel_original" msgid="9069584409934164419">"Original"</string>
     <string name="state_panel_result" msgid="318640531123298676">"Ergebnis"</string>
     <string name="filtershow_notification_label" msgid="1653168445525855247">"Bild wird gespeichert..."</string>
