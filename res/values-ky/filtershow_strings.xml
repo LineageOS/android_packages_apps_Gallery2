@@ -31,7 +31,7 @@
     <string name="show_imagestate_panel" msgid="281932769701043015">"Колдонулган кубулуштарды көрсөтүү"</string>
     <string name="hide_imagestate_panel" msgid="7207643485811695257">"Колдонулган кубулуштарды катуу"</string>
     <string name="export_image" msgid="3202835713172222134">"Экспорт"</string>
-    <string name="print_image" msgid="1942989216591621413">"Басуу"</string>
+    <string name="print_image" msgid="1942989216591621413">"Басып чыгаруу"</string>
     <string name="export_flattened" msgid="9046192331465915411">"Дайын сүрөттү экспорттоо"</string>
     <string name="select_output_settings" msgid="1268532018080310748">"Экспорттолгон сүрөт - тарыхы жок көчүрмө болот."</string>
     <string name="quality" msgid="179292110309050529">"Сапат"</string>

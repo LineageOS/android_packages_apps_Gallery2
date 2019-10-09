@@ -33,7 +33,7 @@
     <string name="export_image" msgid="3202835713172222134">"Ekspor"</string>
     <string name="print_image" msgid="1942989216591621413">"Cetak"</string>
     <string name="export_flattened" msgid="9046192331465915411">"Ekspor Gambar yang Dipipihkan"</string>
-    <string name="select_output_settings" msgid="1268532018080310748">"Gambar yang diekspor akan berupa salinan, tanpa riwayat."</string>
+    <string name="select_output_settings" msgid="1268532018080310748">"Gambar yang diekspor akan berupa salinan, tanpa histori."</string>
     <string name="quality" msgid="179292110309050529">"Kualitas"</string>
     <string name="size" msgid="4639404642236356037">"Ukuran"</string>
     <string name="x" msgid="6810256999024563662">"x"</string>
@@ -43,7 +43,7 @@
     <string name="save_and_exit" msgid="3628425023766687419">"Simpan dan Keluar"</string>
     <string name="save_and_processing" msgid="6371565035837463194">"Memproses gambar resolusi penuh..."</string>
     <string name="exit" msgid="242642957038770113">"Keluar"</string>
-    <string name="history" msgid="455767361472692409">"Riwayat"</string>
+    <string name="history" msgid="455767361472692409">"Histori"</string>
     <string name="reset" msgid="9013181350779592937">"Setel Ulang"</string>
     <!-- no translation found for history_original (150973253194312841) -->
     <skip />
