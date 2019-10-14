@@ -220,7 +220,7 @@ public class GestureControllerOverlay extends FrameLayout implements
         }
         float targetBrightness = (float) (mStartBrightness + adjustPercent * 1.0f);
         if (targetBrightness <= 0.0f) {
-            targetBrightness = 0.0f;
+            targetBrightness = 0.004f;
         } else if (targetBrightness >= 1.0f) {
             targetBrightness = 1.0f;
         }
