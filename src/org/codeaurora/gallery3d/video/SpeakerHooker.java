@@ -51,7 +51,7 @@ public class SpeakerHooker extends MovieHooker {
 
     private MenuItem mMenuSpeakerButton;
 
-    private boolean mIsHeadsetOn = false;
+    private static boolean mIsHeadsetOn = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -154,7 +154,12 @@ public class SpeakerHooker extends MovieHooker {
         if (isSpeakerOn()) {
             turnSpeakerOff();
         } else {
-            if (mIsHeadsetOn) {
+            if (mAudioManager == null) {
+                initAudioManager();
+            }
+            boolean isBluetoothOn = mAudioManager.isBluetoothA2dpOn() ||
+                    mAudioManager.isBluetoothScoOn();
+            if (mIsHeadsetOn || isBluetoothOn) {
                 turnSpeakerOn();
             } else {
                 Toast.makeText(getContext(), getContext().getString(R.string.speaker_need_headset),
@@ -168,8 +173,16 @@ public class SpeakerHooker extends MovieHooker {
         if (mAudioManager == null) {
             initAudioManager();
         }
-        AudioSystem.setForceUse(AudioSystem.FOR_MEDIA,
-                AudioSystem.FORCE_SPEAKER);
+        boolean isBluetoothOn = mAudioManager.isBluetoothA2dpOn() ||
+                mAudioManager.isBluetoothScoOn();
+        if (isBluetoothOn) {
+            AudioSystem.setForceUse(AudioSystem.FOR_MEDIA,
+                    AudioSystem.FORCE_NO_BT_A2DP);
+        } else {
+            AudioSystem.setForceUse(AudioSystem.FOR_MEDIA,
+                    AudioSystem.FORCE_SPEAKER);
+
+        }
     }
 
     private void turnSpeakerOff() {
@@ -199,7 +212,9 @@ public class SpeakerHooker extends MovieHooker {
 
     private boolean isSpeakerOn() {
         return (AudioSystem.FORCE_SPEAKER
-                == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA));
+                == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA)) ||
+                (AudioSystem.FORCE_NO_BT_A2DP
+                        == AudioSystem.getForceUse(AudioSystem.FOR_MEDIA));
     }
 
 }
