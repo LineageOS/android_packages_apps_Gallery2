@@ -218,16 +218,16 @@ public class PhotoProvider extends SQLiteContentProvider {
             + Albums.TABLE;
     protected static final String SELECT_PHOTO_ID = "SELECT " + Photos._ID + " FROM "
             + Photos.TABLE;
-    protected static final String SELECT_PHOTO_COUNT = "SELECT COUNT(*) FROM " + Photos.TABLE;
+    protected static final String SELECT_PHOTO_COUNT = "SELECT COUNT(_id) FROM " + Photos.TABLE;
     protected static final String DELETE_PHOTOS = "DELETE FROM " + Photos.TABLE;
     protected static final String DELETE_METADATA = "DELETE FROM " + Metadata.TABLE;
-    protected static final String SELECT_METADATA_COUNT = "SELECT COUNT(*) FROM " + Metadata.TABLE;
+    protected static final String SELECT_METADATA_COUNT = "SELECT COUNT(_id) FROM " + Metadata.TABLE;
     protected static final String WHERE = " WHERE ";
     protected static final String IN = " IN ";
     protected static final String NESTED_SELECT_START = "(";
     protected static final String NESTED_SELECT_END = ")";
     protected static final String[] PROJECTION_COUNT = {
-        "COUNT(*)"
+        "COUNT(_id)"
     };
 
     /**

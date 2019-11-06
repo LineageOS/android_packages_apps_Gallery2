@@ -50,7 +50,7 @@ public class LocalPhotoSource implements WidgetSource {
     private static final Uri CONTENT_URI = Media.EXTERNAL_CONTENT_URI;
     private static final String DATE_TAKEN = Media.DATE_TAKEN;
     private static final String[] PROJECTION = {Media._ID};
-    private static final String[] COUNT_PROJECTION = {"count(*)"};
+    private static final String[] COUNT_PROJECTION = {"COUNT(_id)"};
     /* We don't want to include the download directory */
     private static final String SELECTION =
             String.format("%s != %s", Media.BUCKET_ID, getDownloadBucketId());
