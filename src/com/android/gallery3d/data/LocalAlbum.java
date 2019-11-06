@@ -41,7 +41,7 @@ import java.util.ArrayList;
 // The media items need to be all images or all videos, but not both.
 public class LocalAlbum extends MediaSet {
     private static final String TAG = "LocalAlbum";
-    private static final String[] COUNT_PROJECTION = { "count(*)" };
+    private static final String[] COUNT_PROJECTION = { "COUNT(_id)" };
 
     private static final int INVALID_COUNT = -1;
     private final String mWhereClause;

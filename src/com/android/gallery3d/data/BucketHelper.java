@@ -52,17 +52,6 @@ class BucketHelper {
     private static final int INDEX_MEDIA_TYPE = 1;
     private static final int INDEX_BUCKET_NAME = 2;
 
-    // We want to order the albums by reverse chronological order. We abuse the
-    // "WHERE" parameter to insert a "GROUP BY" clause into the SQL statement.
-    // The template for "WHERE" parameter is like:
-    //    SELECT ... FROM ... WHERE (%s)
-    // and we make it look like:
-    //    SELECT ... FROM ... WHERE (1) GROUP BY 1,(2)
-    // The "(1)" means true. The "1,(2)" means the first two columns specified
-    // after SELECT. Note that because there is a ")" in the template, we use
-    // "(2" to match it.
-    private static final String BUCKET_GROUP_BY = "1) GROUP BY 1,(2";
-
     private static final String BUCKET_ORDER_BY = "MAX(datetaken) DESC";
 
     // Before HoneyComb there is no Files table. Thus, we need to query the
@@ -82,9 +71,6 @@ class BucketHelper {
     // PROJECTION_BUCKET so we can reuse the values defined before.
     private static final int INDEX_DATE_TAKEN = 1;
 
-    // When query from the Images or Video tables, we only need to group by BUCKET_ID.
-    private static final String BUCKET_GROUP_BY_IN_ONE_TABLE = "1) GROUP BY (1";
-
     public static BucketEntry[] loadBucketEntries(
             JobContext jc, ContentResolver resolver, int type) {
         if (ApiHelper.HAS_MEDIA_PROVIDER_FILES_TABLE) {
@@ -97,7 +83,7 @@ class BucketHelper {
     private static void updateBucketEntriesFromTable(JobContext jc,
             ContentResolver resolver, Uri tableUri, HashMap<Integer, BucketEntry> buckets) {
         Cursor cursor = resolver.query(tableUri, PROJECTION_BUCKET_IN_ONE_TABLE,
-                BUCKET_GROUP_BY_IN_ONE_TABLE, null, null);
+                null, null, null);
         if (cursor == null) {
             Log.w(TAG, "cannot open media database: " + tableUri);
             return;
@@ -146,9 +132,7 @@ class BucketHelper {
             JobContext jc, ContentResolver resolver, int type) {
         Uri uri = getFilesContentUri();
 
-        Cursor cursor = resolver.query(uri,
-                PROJECTION_BUCKET, BUCKET_GROUP_BY,
-                null, BUCKET_ORDER_BY);
+        Cursor cursor = resolver.query(uri, PROJECTION_BUCKET, null, null, null);
         if (cursor == null) {
             Log.w(TAG, "cannot open local database: " + uri);
             return new BucketEntry[0];
