@@ -16,7 +16,7 @@ LOCAL_STATIC_LIBRARIES := libjpeg_static_ndk
 
 LOCAL_SDK_VERSION   := 17
 LOCAL_ARM_MODE := arm
-
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_CFLAGS    += -ffast-math -O3 -funroll-loops
 LOCAL_CPPFLAGS += $(JNI_CFLAGS)
 LOCAL_LDLIBS := -llog

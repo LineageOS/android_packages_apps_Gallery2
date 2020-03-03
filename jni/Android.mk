@@ -8,6 +8,8 @@ LOCAL_SRC_FILES := jni_egl_fence.cpp
 
 LOCAL_SDK_VERSION := 9
 
+LOCAL_SYSTEM_EXT_MODULE := true
+
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_MODULE := libjni_gallery_eglfence
@@ -23,6 +25,7 @@ include $(CLEAR_VARS)
 
 LOCAL_CPP_EXTENSION := .cc
 LOCAL_SDK_VERSION := 9
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_MODULE    := libjni_gallery_filters
 LOCAL_SRC_FILES := filters/gradient.c \
                    filters/saturated.c \
