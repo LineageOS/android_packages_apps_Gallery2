@@ -356,7 +356,8 @@ public class LocalImage extends LocalMediaItem {
     public MediaDetails getDetails() {
         MediaDetails details = super.getDetails();
         details.addDetail(MediaDetails.INDEX_ORIENTATION, Integer.valueOf(rotation));
-        if (MIME_TYPE_JPEG.equals(mimeType)) {
+        if (MIME_TYPE_JPEG.equals(mimeType) || MIME_TYPE_HEIF.equals(mimeType) ||
+                MIME_TYPE_HEIC.equals(mimeType)) {
             // ExifInterface returns incorrect values for photos in other format.
             // For example, the width and height of an webp images is always '0'.
             MediaDetails.extractExifInfo(details, filePath);
