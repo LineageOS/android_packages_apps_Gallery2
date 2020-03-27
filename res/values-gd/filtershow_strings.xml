@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="cannot_load_image">Chan urrainn dhuinn an dealbh a luchdadh!</string>
+    <string name="setting_wallpaper">A’ suidheachadh a’ phàipeir-bhalla</string>
+    <string name="original">Tùsail</string>
+    <string name="custom_border">Gnàthaichte</string>
+    <string name="filtershow_undo">Neo-dhèan</string>
+    <string name="filtershow_redo">Ath-dhèan</string>
+    <string name="quality">Càileachd</string>
+    <string name="menu_settings">Roghainnean</string>
+    <string name="reset">Ath-shuidhich</string>
+    <string name="compare_original">Dèan coimeas</string>
+    <string name="apply_effect">Cuir an sàs</string>
+    <string name="reset_effect">Ath-shuidhich</string>
+    <string name="aspect">Co-mheas deilbh</string>
+    <string name="Fixed">Socraichte</string>
+    <string name="exposure" msgid="1229093066434614811">Deisearas</string>
+    <string name="sharpness">Gèiread</string>
+    <string name="contrast">Iomsgaradh</string>
+    <string name="saturation">Sàthachd</string>
+    <string name="hue">Tuar</string>
+    <string name="shadow_recovery">Sgàilean</string>
+    <string name="highlight_recovery">Soillseachadh</string>
+    <string name="vignette_exposure">Deisearas</string>
+    <string name="vignette_saturation">Sàthachd</string>
+    <string name="vignette_contrast">Iomsgaradh</string>
+    <string name="imageDraw">Tarraing</string>
+    <string name="straighten" msgid="5217801513491493491">Dèan dìreach</string>
+    <string name="crop" msgid="5584000454518174632">Beàrr</string>
+    <string name="rotate" msgid="460017689320955494">Cuairtich</string>
+    <string name="negative">Ais-thionndaidh</string>
+    <string name="edge">Oirean</string>
+    <string name="kmeans">Postairich</string>
+    <string name="editor_grad_brightness">Soilleireachd</string>
+    <string name="editor_grad_contrast">Iomsgaradh</string>
+    <string name="editor_grad_saturation">Sàthachd</string>
+    <string name="editor_chan_sat_red">Dearg</string>
+    <string name="editor_chan_sat_yellow">Buidhe</string>
+    <string name="editor_chan_sat_green">Uaine</string>
+    <string name="editor_chan_sat_cyan">Saidhean</string>
+    <string name="editor_chan_sat_blue">Gorm</string>
+    <string name="editor_grad_style">Stoidhle</string>
+    <string name="curves_channel_red">Dearg</string>
+    <string name="curves_channel_green">Uaine</string>
+    <string name="curves_channel_blue">Gorm</string>
+    <string name="draw_style">Stoidhle</string>
+    <string name="draw_hue">Tuar</string>
+    <string name="draw_saturation">Sàthachd</string>
+    <string name="draw_value">Soilleireachd</string>
+    <string name="draw_color">Dath</string>
+    <string name="draw_style_line">Loidhnichean</string>
+    <string name="draw_style_brush_spatter">Comharraiche</string>
+    <string name="color_border_size">Tiughad</string>
+    <string name="color_border_color">Dath</string>
+    <string name="color_pick_title">Tagh dath</string>
+    <string name="state_panel_original">Tùsail</string>
+    <string name="filtershow_notification_message">’Ga phròiseasadh…</string>
+    <string name="filtershow_preset_name">Ainm an ro-sheata</string>
+    <string name="filtershow_show_info_panel">Fiosrachadh</string>
+    <string name="filtershow_show_info_panel_size">Meud an deilbh</string>
+    <string name="filtershow_show_info_panel_histogram">Hiostogram</string>
+    <string name="filtershow_add_button_looks">Ro-sheata</string>
+    <string name="filtershow_add_button_versions">Tionndadh</string>
+    <string name="filtershow_version_original">Tùsail</string>
+    <string name="filtershow_version_current">Làithreach</string>
+    <string name="filtershow_exif_aperture">Fosgladh</string>
+    <string name="filtershow_exif_focal_length">Faid an fhòcais</string>
+    <string name="filtershow_exif_exposure_time">Faid an deisearais</string>
+    <string name="filtershow_exif_copyright">Còir-lethbhreac</string>
+</resources>
