@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="loading_video">A’ luchdadh a’ video…</string>
+    <string name="select_album">Tagh albam</string>
+    <string name="set_image">Cleachd an dealbh mar</string>
+    <string name="set_wallpaper">Suidhich pàipear-balla</string>
+    <string name="wallpaper">A’ suidheachadh a’ phàipeir-bhalla…</string>
+    <string name="camera_setas_wallpaper">Pàipear-balla</string>
+    <plurals name="delete_selection">
+        <item quantity="one">A bheil thu airson an nì a thagh thu a sguabadh às?</item>
+        <item quantity="two">A bheil thu airson na nithean a thagh thu a sguabadh às?</item>
+        <item quantity="few">A bheil thu airson na nithean a thagh thu a sguabadh às?</item>
+        <item quantity="other">A bheil thu airson na nithean a thagh thu a sguabadh às?</item>
+    </plurals>
+    <string name="share">Co-roinn</string>
+    <string name="share_panorama">Co-roinn an cuairt-shealladh</string>
+    <string name="share_as_photo">Co-roinn ’na dhealbh</string>
+    <string name="deleted">Chaidh a sguabadh às</string>
+    <string name="undo">NEO-DHÈAN</string>
+    <string name="select_all">Tagh na h-uile</string>
+    <string name="deselect_all">Dì-thagh na h-uile</string>
+    <string name="slideshow">Taisbeanadh-shleamhnagan</string>
+    <string name="close">Dùin</string>
+    <plurals name="number_of_items_selected">
+        <item quantity="one">Chaidh %1$d a thaghadh</item>
+        <item quantity="two">Chaidh %1$d a thaghadh</item>
+        <item quantity="few">Chaidh %1$d a thaghadh</item>
+        <item quantity="other">Chaidh %1$d a thaghadh</item>
+    </plurals>
+    <plurals name="number_of_albums_selected">
+        <item quantity="one">Chaidh %1$d a thaghadh</item>
+        <item quantity="two">Chaidh %1$d a thaghadh</item>
+        <item quantity="few">Chaidh %1$d a thaghadh</item>
+        <item quantity="other">Chaidh %1$d a thaghadh</item>
+    </plurals>
+    <plurals name="number_of_groups_selected">
+        <item quantity="one">Chaidh %1$d a thaghadh</item>
+        <item quantity="two">Chaidh %1$d a thaghadh</item>
+        <item quantity="few">Chaidh %1$d a thaghadh</item>
+        <item quantity="other">Chaidh %1$d a thaghadh</item>
+    </plurals>
+    <string name="show_on_map">Seall air mapa</string>
+    <string name="rotate_left">Cuairtich gu tuathail</string>
+    <string name="rotate_right">Cuairtich gu deiseil</string>
+    <string name="edit">Deasaich</string>
+    <string name="crop_action">Beàrr</string>
+    <string name="set_as">Suidhich mar</string>
+    <string name="video_err">Cha ghabh a’ video a chluich.</string>
+    <string name="appwidget_title">Gailearaidh dhealbhan</string>
+    <string name="crop_saved">        Chaidh an dealbh beàrrte a shàbhaladh gu <xliff:g id="folder_name">%s</xliff:g>.</string>
+    <string name="picasa_posts">Postaichean</string>
+    <string name="sync_picasa_albums">Ath-nuadhaich</string>
+    <string name="title">Tiotal</string>
+    <string name="description">Tuairisgeul</string>
+    <string name="time">Àm</string>
+    <string name="location">Ionad</string>
+    <string name="path">Slighe</string>
+    <string name="width">Leud</string>
+    <string name="height">Àirde</string>
+    <string name="orientation">Comhair</string>
+    <string name="duration">Faid</string>
+    <string name="mimetype">Seòrsa MIME</string>
+    <string name="file_size">Meud an fhaidhle</string>
+    <string name="maker">Ùghdar</string>
+    <string name="model">Modail</string>
+    <string name="flash">Solas-boillsgidh</string>
+    <string name="aperture">Fosgladh</string>
+    <string name="focal_length">Faid an fhòcais</string>
+    <string name="white_balance">Am balans geal</string>
+    <string name="exposure_time">Faid an deisearais</string>
+    <string name="manual">A làimh</string>
+    <string name="auto">Fèin-obrachail</string>
+    <string name="flash_on">Bhoillsg solas</string>
+    <string name="flash_off">Gun solas-boillsgidh</string>
+    <string name="ffx_original">Tùsail</string>
+    <string name="ffx_blue_crush">Gorm</string>
+    <string name="try_to_set_local_album_available_offline">        Tha an nì seo ’ga stòradh gu h-ionadail ’s ri fhaighinn far loidhne.</string>
+    <string name="Import">Ion-phortaich</string>
+    <string name="widget_type_photo">Tagh dealbh</string>
+    <string name="slideshow_dream_name">Taisbeanadh-shleamhnagan</string>
+    <string name="albums">Albaman</string>
+    <string name="times">Amannan</string>
+    <string name="people">Daoine</string>
+    <string name="settings">Roghainnean</string>
+    <string name="folder_imported">Air ion-phortadh</string>
+    <string name="folder_screenshot">Glacadh-sgrìn</string>
+    <string name="help">Cobhair</string>
+    <string name="switch_photo_filmstrip">Sealladh stiall film</string>
+    <string name="please_wait">Fuirich ort</string>
+    <string name="pano_progress_text">A’ reandaradh a’ chuairt-sheallaidh</string>
+    <string name="save" msgid="8140440041190264400">Sàbhail</string>
+    <string name="cannot_connect_camera">Cha ghabh ceangal a dhèanamh ris a’ chamara.</string>
+    <string name="camera_disabled">Chaidh an camara a chur à comas ri linn poileasaidhean tèarainteachd.</string>
+    <string name="wait">Fuirich ort…</string>
+    <string name="no_storage" product="default">Cuir a-steach cairt SD mus cleachd thu an camara.</string>
+    <string name="preparing_sd" product="default">Ag ullachadh a’ chairt SD…</string>
+    <string name="access_sd_fail" product="default">Cha b’ urrainn dhuinn a’ chairt SD inntrigeadh.</string>
+    <string name="time_lapse_title">Clàradh film luathaichte</string>
+    <string name="pref_camera_id_title">Tagh camara</string>
+    <string name="pref_camera_id_entry_back">Cùl</string>
+    <string name="pref_camera_id_entry_front">Beul</string>
+    <string name="pref_camera_recordlocation_title">Ionad an stòraidh</string>
+    <string name="pref_camera_location_label">IONAD</string>
+    <string name="pref_camera_timer_title">Tìmear cunntaidh sìos</string>
+    <plurals name="pref_camera_timer_entry">
+        <item quantity="one">%d diog</item>
+        <item quantity="two">%d dhiog</item>
+        <item quantity="few">%d diogan</item>
+        <item quantity="other">%d diog</item>
+    </plurals>
+    <string name="pref_camera_timer_sound_title">Dèan bìd rè a’ chunntaidh sìos</string>
+    <string name="setting_off">Dheth</string>
+    <string name="setting_on">Air</string>
+    <string name="pref_video_quality_title">Càileachd a’ video</string>
+    <string name="pref_video_time_lapse_frame_interval_title">Film luathaichte</string>
+    <string name="pref_camera_settings_category">Roghainnean a’ chamara</string>
+    <string name="pref_camcorder_settings_category">Roghainnean a’ chamara video</string>
+    <string name="pref_camera_picturesize_title">Meud an deilbh</string>
+    <string name="pref_camera_focusmode_title">Modh an fhòcais</string>
+    <string name="pref_camera_focusmode_entry_auto">Fèin-obrachail</string>
+    <string name="pref_camera_focusmode_entry_infinity">Neo-chrìochnachd</string>
+    <string name="pref_camera_focusmode_label_auto">FÈIN-OBRACHAIL</string>
+    <string name="pref_camera_focusmode_label_infinity">NEO-CHRÌOCHNACHD</string>
+    <string name="pref_camera_flashmode_title">Modh an t-solais-bhoillsgidh</string>
+    <string name="pref_camera_flashmode_label">MODH an t-SOLAIS-BHOILLSGIDH</string>
+    <string name="pref_camera_flashmode_entry_auto">Fèin-obrachail</string>
+    <string name="pref_camera_flashmode_entry_on">Air</string>
+    <string name="pref_camera_flashmode_entry_off">Dheth</string>
+    <string name="pref_camera_flashmode_label_auto">SOLAS-BOILLSGIDH FÈIN-OBRACHAIL</string>
+    <string name="pref_camera_flashmode_label_on">SOLAS-BOILLSGIDH AIR</string>
+    <string name="pref_camera_flashmode_label_off">SOLAS-BOILLSGIDH DHETH</string>
+    <string name="pref_camera_whitebalance_title">Am balans geal</string>
+    <string name="pref_camera_whitebalance_label">AM BALANS GEAL</string>
+    <string name="pref_camera_whitebalance_entry_auto">Fèin-obrachail</string>
+    <string name="pref_camera_whitebalance_entry_incandescent">Solas-dealain</string>
+    <string name="pref_camera_whitebalance_entry_daylight">Solas an latha</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent">Fluaraiseach</string>
+    <string name="pref_camera_whitebalance_entry_cloudy">Neulach</string>
+    <string name="pref_camera_whitebalance_label_auto">FÈIN-OBRACHAIL</string>
+    <string name="pref_camera_whitebalance_label_incandescent">SOLAS-DEALAIN</string>
+    <string name="pref_camera_whitebalance_label_daylight">SOLAS an LATHA</string>
+    <string name="pref_camera_whitebalance_label_fluorescent">FLUARAISEACH</string>
+    <string name="pref_camera_whitebalance_label_cloudy">NEULACH</string>
+    <string name="pref_camera_scenemode_title">Am modh seallaidh</string>
+    <string name="pref_camera_scenemode_entry_night">Oidhche</string>
+    <string name="pref_camera_scenemode_entry_sunset">Laighe na grèine</string>
+    <string name="pref_camera_scenemode_entry_party">Cèilidh</string>
+    <string name="pref_camera_scenemode_label_auto">CHAN EIL GIN</string>
+    <string name="pref_camera_scenemode_label_action">GLUASAD</string>
+    <string name="pref_camera_scenemode_label_night">OIDHCHE</string>
+    <string name="pref_camera_scenemode_label_sunset">LAIGHE na GRÈINE</string>
+    <string name="pref_camera_scenemode_label_party">CÈILIDH</string>
+    <string name="pref_camera_countdown_label_off">TÌMEAR DHETH</string>
+    <string name="pref_camera_countdown_label_one">1 DIOG</string>
+    <string name="pref_camera_countdown_label_three">3 DIOGAN</string>
+    <string name="pref_camera_countdown_label_ten">10 DIOGAN</string>
+    <string name="pref_camera_countdown_label_fifteen">15 DIOGAN</string>
+    <string name="not_selectable_in_scene_mode">Cha ghabh a thaghadh sa mhodh seallaidh.</string>
+    <string name="pref_exposure_title">Deisearas</string>
+    <string name="pref_exposure_label">DEISEARAS</string>
+    <string name="pref_camera_id_label_back">CAMARA BEÒIL</string>
+    <string name="pref_camera_id_label_front">CAMARA CÙIL</string>
+    <string name="spaceIsLow_content" product="default">Tha an àite gu bhith a’ ruith air a’ chairt SD agad. Atharraich roghainn na càileachd no sguab às dealbh no dhà no faidhlichean eile.</string>
+    <string name="video_reach_size_limit">Ràinig thu crìoch a’ mheud.</string>
+    <string name="pano_too_fast_prompt">Ro luath</string>
+    <string name="pano_dialog_prepare_preview">Ag ullachadh a’ chuairt-sheallaidh</string>
+    <string name="pano_dialog_panorama_failed">Cha b’ urrainn dhuinn an cuairt-shealladh a shàbhaladh.</string>
+    <string name="pano_dialog_title">Cuairt-shealladh</string>
+    <string name="pano_capture_indication">A’ glacadh cuairt-shealladh</string>
+    <string name="pano_dialog_waiting_previous">A’ feitheamh ris a’ chuairt-shealladh roimhe</string>
+    <string name="pano_review_saving_indication_str">’Ga shàbhaladh…</string>
+    <string name="pano_review_rendering">A’ reandaradh a’ chuairt-sheallaidh</string>
+    <string name="tap_to_focus">Suath ris airson fòcas.</string>
+    <string name="pref_video_effect_title">Èifeachdan</string>
+    <string name="effect_none">Chan eil gin</string>
+    <string name="effect_goofy_face_squeeze">Teannaich</string>
+    <string name="effect_goofy_face_big_eyes">Sùilean mòra</string>
+    <string name="effect_goofy_face_big_mouth">Beul mòr</string>
+    <string name="effect_goofy_face_small_mouth">Beul beag</string>
+    <string name="effect_goofy_face_big_nose">Sròn mhòr</string>
+    <string name="effect_goofy_face_small_eyes">Sùilean beaga</string>
+    <string name="effect_backdropper_space">San fhànas</string>
+    <string name="effect_backdropper_sunset">Laighe na grèine</string>
+    <string name="effect_backdropper_gallery">A’ video agad</string>
+    <string name="video_snapshot_hint">Suath ris airson dealbh a thogail rè a’ chlàraidh.</string>
+    <string name="video_recording_started">Tòisich clàradh a’ video.</string>
+    <string name="video_recording_stopped">Stad clàradh a’ video.</string>
+    <string name="clear_effects">Falamhaich na h-èifeachdan</string>
+    <string name="effect_silly_faces">AODANNAN GÒRACH</string>
+    <string name="effect_background">CÙLAIBH</string>
+    <string name="accessibility_menu_button">Putan a’ chlàir-thaice</string>
+    <string name="accessibility_mode_picker">Taghadh a’ chamara, a’ video no a’ chuairt-sheallaidh</string>
+    <string name="accessibility_check_box">Bogsa-cromaige %1$s</string>
+    <string name="accessibility_switch_to_camera">Atharraich gu dealbh-camara</string>
+    <string name="accessibility_switch_to_video">Atharraich gu video</string>
+    <string name="accessibility_switch_to_panorama">Atharraich gu cuairt-shealladh</string>
+    <string name="accessibility_review_cancel">Sgrùdadh – Sguir dheth</string>
+    <string name="accessibility_review_ok">Sgrùdadh – Deiseil</string>
+    <string name="accessibility_review_retake">Sgrùdadh – tog a-rithist e</string>
+    <string name="capital_on">AIR</string>
+    <string name="capital_off">DHETH</string>
+    <string name="pref_video_time_lapse_frame_interval_off">Dheth</string>
+    <string name="pref_video_time_lapse_frame_interval_500">Leth-dhiog</string>
+    <string name="pref_video_time_lapse_frame_interval_1000">1 diog</string>
+    <string name="pref_video_time_lapse_frame_interval_1500">Diog gu leth</string>
+    <string name="pref_video_time_lapse_frame_interval_2000">2 dhiog</string>
+    <string name="pref_video_time_lapse_frame_interval_2500">2 dhiog gu leth</string>
+    <string name="pref_video_time_lapse_frame_interval_3000">3 diogan</string>
+    <string name="pref_video_time_lapse_frame_interval_4000">4 diogan</string>
+    <string name="pref_video_time_lapse_frame_interval_5000">5 diogan</string>
+    <string name="pref_video_time_lapse_frame_interval_6000">6 diogan</string>
+    <string name="pref_video_time_lapse_frame_interval_10000">10 diogan</string>
+    <string name="pref_video_time_lapse_frame_interval_12000">12 dhiog</string>
+    <string name="pref_video_time_lapse_frame_interval_15000">15 diogan</string>
+    <string name="pref_video_time_lapse_frame_interval_24000">24 diog</string>
+    <string name="pref_video_time_lapse_frame_interval_30000">Leth-mhionaid</string>
+    <string name="pref_video_time_lapse_frame_interval_60000">Mionaid</string>
+    <string name="pref_video_time_lapse_frame_interval_90000">Mionaid gu leth</string>
+    <string name="pref_video_time_lapse_frame_interval_120000">2 mhionaid</string>
+    <string name="pref_video_time_lapse_frame_interval_150000">2 mhionaid gu leth</string>
+    <string name="pref_video_time_lapse_frame_interval_180000">3 mionaidean</string>
+    <string name="pref_video_time_lapse_frame_interval_240000">4 mionaidean</string>
+    <string name="pref_video_time_lapse_frame_interval_300000">5 mionaidean</string>
+    <string name="pref_video_time_lapse_frame_interval_360000">6 mionaidean</string>
+    <string name="pref_video_time_lapse_frame_interval_600000">10 mionaidean</string>
+    <string name="pref_video_time_lapse_frame_interval_720000">12 mhionaid</string>
+    <string name="pref_video_time_lapse_frame_interval_900000">15 mionaidean</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000">24 mionaid</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000">Leth-uair a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000">1 uair a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000">Uair gu leth a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000">2 uair a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000">2 uair gu leth a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000">3 uairean a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000">4 uairean a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000">5 uairean a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000">6 uairean a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000">10 uairean a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000">12 uair a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000">15 uairean a thìde</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000">24 uair a thìde</string>
+    <string name="time_lapse_seconds">diog</string>
+    <string name="time_lapse_minutes">mionaid</string>
+    <string name="time_lapse_hours">uair a thìde</string>
+    <string name="time_lapse_interval_set">Deiseil</string>
+    <string name="set_time_interval">Suidhich an t-eadaramh</string>
+    <string name="set_time_interval_help">Tha gleus an fhilm luathaichte dheth. Cuir air e airson eadaramh a shuidheachadh.</string>
+    <string name="set_duration">Suidhich an fhaid ann an diogan</string>
+    <string name="count_down_title_text">A’ cunntadh sìos airson dealbh a thogail</string>
+    <string name="remember_location_title">A bheil thu airson ionadan nan dealbhan a chur an cuimhne?</string>
+    <string name="remember_location_prompt">Cuir tagaichean ris na dealbhan is videothan agad leis na h-ionadan far an deach an togail.\n\nGheibh aplacaidean eile cothrom air an fhiosrachadh seo cuide ris na dealbhan a shàbhail thu.</string>
+    <string name="remember_location_no">Chan eil, mòran taing</string>
+    <string name="menu_search">Lorg</string>
+    <string name="tab_albums">Albaman</string>
+    <string name="camera_menu_more_label">BARRACHD ROGHAINNEAN</string>
+    <string name="camera_menu_settings_label">ROGHAINNEAN</string>
+</resources>
