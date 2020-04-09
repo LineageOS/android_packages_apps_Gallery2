@@ -7,6 +7,7 @@ cc_defaults {
         "-Wextra",
         "-Werror",
     ],
+    header_libs: ["jni_headers"],
     sdk_version: "9",
     shared_libs: ["liblog"],
 }
