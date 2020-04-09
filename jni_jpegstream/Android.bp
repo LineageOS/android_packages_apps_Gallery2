@@ -20,6 +20,7 @@ cc_library_shared {
         "-Wextra",
         "-Werror",
     ],
+    header_libs: ["jni_headers"],
     local_include_dirs: ["src"],
     sdk_version: "17",
 
