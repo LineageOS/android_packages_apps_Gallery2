@@ -67,7 +67,7 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
     private BroadcastReceiver mMountReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (getExternalCacheDir() != null) onStorageReady();
+            if (getCacheDir() != null) onStorageReady();
         }
     };
     private IntentFilter mMountFilter = new IntentFilter(Intent.ACTION_MEDIA_MOUNTED);
@@ -156,7 +156,7 @@ public abstract class AbstractGalleryActivity extends AbstractPermissionActivity
     @Override
     protected void onStart() {
         super.onStart();
-        if (getExternalCacheDir() == null) {
+        if (getCacheDir() == null) {
             OnCancelListener onCancel = new OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {

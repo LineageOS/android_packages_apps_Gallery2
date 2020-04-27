@@ -54,7 +54,7 @@ public class CacheStorageUsageInfo {
     }
 
     public void loadStorageInfo(JobContext jc) {
-        File cacheDir = mContext.getExternalCacheDir();
+        File cacheDir = mContext.getCacheDir();
         if (cacheDir == null) {
             cacheDir = mContext.getCacheDir();
         }
