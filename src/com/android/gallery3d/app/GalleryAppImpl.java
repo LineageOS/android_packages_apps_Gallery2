@@ -96,7 +96,7 @@ public class GalleryAppImpl extends Application implements GalleryApp {
     @Override
     public synchronized DownloadCache getDownloadCache() {
         if (mDownloadCache == null) {
-            File cacheDir = new File(getExternalCacheDir(), DOWNLOAD_FOLDER);
+            File cacheDir = new File(getCacheDir(), DOWNLOAD_FOLDER);
 
             if (!cacheDir.isDirectory()) cacheDir.mkdirs();
 

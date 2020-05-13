@@ -45,7 +45,7 @@ public class CacheManager {
             }
             BlobCache cache = sCacheMap.get(filename);
             if (cache == null) {
-                File cacheDir = context.getExternalCacheDir();
+                File cacheDir = context.getCacheDir();
                 String path = cacheDir.getAbsolutePath() + "/" + filename;
                 try {
                     cache = new BlobCache(path, maxEntries, maxBytes, false,
@@ -72,7 +72,7 @@ public class CacheManager {
         if (n != 0) return;
         pref.edit().putInt(KEY_CACHE_UP_TO_DATE, 1).commit();
 
-        File cacheDir = context.getExternalCacheDir();
+        File cacheDir = context.getCacheDir();
         String prefix = cacheDir.getAbsolutePath() + "/";
 
         BlobCache.deleteFiles(prefix + "imgcache");
