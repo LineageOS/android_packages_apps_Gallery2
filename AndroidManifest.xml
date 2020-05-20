@@ -73,6 +73,7 @@
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name="com.android.gallery3d.app.MovieActivity"
                 android:label="@string/movie_view_label"
+                android:exported="true"
                 android:theme="@style/Theme.MovieActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize|keyboard">
             <intent-filter>
@@ -108,6 +109,7 @@
         </activity>
 
         <activity android:name="com.android.gallery3d.app.GalleryActivity"
+                android:exported="true"
                 android:theme="@style/AppTheme"
                 android:configChanges="keyboardHidden|orientation|screenSize|locale|fontScale|layoutDirection">
             <intent-filter>
@@ -180,6 +182,7 @@
         <!-- This activity acts as a trampoline to the new Gallery activity,
              so that existing shortcuts are preserved. -->
         <activity android:name="com.android.gallery3d.app.Gallery"
+            android:exported="true"
             android:theme="@style/android:Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -192,6 +195,7 @@
         <activity-alias android:name="com.cooliris.media.Gallery"
                 android:targetActivity="com.android.gallery3d.app.GalleryActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
+                android:exported="true"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -208,6 +212,7 @@
             android:theme="@style/android:Theme.NoDisplay" />
         <activity-alias android:name="com.android.camera.CameraLauncher"
             android:label="@string/camera_label"
+            android:exported="true"
             android:targetActivity="com.android.camera.CameraActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -220,6 +225,7 @@
         <activity android:launchMode="singleInstance"
             android:taskAffinity="" android:name="com.android.gallery3d.ingest.IngestActivity"
             android:configChanges="orientation|screenSize"
+            android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
@@ -231,6 +237,7 @@
 
         <activity android:name="com.android.gallery3d.app.Wallpaper"
                 android:configChanges="keyboardHidden|orientation|screenSize"
+                android:exported="true"
                 android:theme="@style/android:Theme.Translucent.NoTitleBar">
             <intent-filter android:label="@string/camera_setas_wallpaper">
                 <action android:name="android.intent.action.ATTACH_DATA" />
@@ -245,6 +252,7 @@
                     android:resource="@xml/wallpaper_picker_preview" />
         </activity>
         <activity android:name="com.android.gallery3d.app.TrimVideo"
+                android:exported="true"
                 android:label="@string/trim_label"
                 android:theme="@style/Theme.MovieActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize">
@@ -271,6 +279,7 @@
         <activity
             android:name="com.android.gallery3d.filtershow.FilterShowActivity"
             android:theme="@style/Theme.FilterShow"
+            android:exported="true"
             android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection">
             <intent-filter>
                 <action android:name="android.intent.action.EDIT" />
@@ -288,6 +297,7 @@
             android:name="com.android.gallery3d.filtershow.crop.CropActivity"
             android:label="@string/crop"
             android:theme="@style/Theme.Crop"
+            android:exported="true"
             android:configChanges="keyboardHidden|orientation|screenSize|fontScale">
            <intent-filter android:label="@string/crop_label">
                 <action android:name="com.android.camera.action.CROP" />
@@ -308,6 +318,7 @@
                 android:configChanges="orientation|keyboardHidden|screenSize" />
 
         <activity android:name="com.android.gallery3d.util.ViewGifImage"
+                android:exported="true"
                 android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                 android:configChanges="orientation|keyboardHidden|screenSize|keyboard|navigation">
             <intent-filter>
@@ -351,6 +362,7 @@
                 android:theme="@style/Theme.Gallery.Dialog"/>
 
         <receiver android:name="com.android.gallery3d.gadget.PhotoAppWidgetProvider"
+                android:exported="true"
                 android:label="@string/appwidget_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -362,6 +374,7 @@
                 android:permission="android.permission.BIND_REMOTEVIEWS"/>
         <activity android:name="com.android.gallery3d.gadget.WidgetConfigure"
                 android:configChanges="keyboardHidden|orientation|screenSize"
+                android:exported="true"
                 android:theme="@style/android:Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -369,7 +382,8 @@
         </activity>
         <service android:name="com.android.gallery3d.app.BatchService" />
 
-        <receiver android:name="com.android.camera.DisableCameraReceiver">
+        <receiver android:name="com.android.camera.DisableCameraReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -378,6 +392,7 @@
         <service android:name="com.android.camera.MediaSaveService" />
 
         <activity android:name="com.android.gallery3d.video.SettingsActivity"
+                android:exported="true"
                 android:theme="@android:style/Theme.Material.Light"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:label="@string/streaming_settings" >
@@ -394,6 +409,7 @@
         </receiver>
 
         <activity android:name="com.android.gallery3d.video.BookmarkActivity"
+                android:exported="true"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:icon="@drawable/ic_menu_display_bookmark"
                 android:label="@string/bookmark_list"
@@ -404,12 +420,14 @@
             </intent-filter>
         </activity>
         <activity android:name="com.android.gallery3d.video.VideoSettingsActivity"
+                android:exported="true"
                 android:label="@string/movie_view_label"
                 android:theme="@android:style/Theme.Material.Light"
                 android:configChanges="orientation|keyboardHidden|screenSize|mnc|mcc">
         </activity>
         <activity android:name="com.android.gallery3d.app.dualcam3d.ThreeDimensionalActivity"
-            android:configChanges="orientation|screenSize|layoutDirection">
+                android:exported="true"
+                android:configChanges="orientation|screenSize|layoutDirection">
         </activity>
     </application>
 </manifest>
