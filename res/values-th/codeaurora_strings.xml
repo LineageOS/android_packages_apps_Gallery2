@@ -72,6 +72,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="more_image">ภาพเพิ่มเติม</string>
     <string name="mute_nosupport">ไม่สามารถปิดเสียงได้ : วิดีโอไม่รองรับ</string>
     <string name="map_activity_not_found_err">ไม่มีแอปแผนที่ติดตั้งอยู่เพื่อใช้แสดงตำแหน่งที่ตั้ง</string>
+    <plurals name="number_of_videos">
+        <item quantity="other">%1$d วิดีโอ</item>
+    </plurals>
     <string name="fail_trim">ขออภัย ไม่สามารถตัดแต่งวิดีโอนี้ได้</string>
     <string name="drm_license_info">ข้อมูลสิทธิ์การใช้ DRM</string>
+    <string name="timeline_title">ไทม์ไลน์</string>
+    <string name="albums_title">อัลบั้ม</string>
+    <string name="videos_title">วิดีโอ</string>
+    <string name="action_viewtype_list">มุมมองรายการ</string>
+    <string name="tvEmptyAlbum">ไม่พบรูปภาพ</string>
+    <string name="tvEmptyVideos">ไม่พบวิดีโอ</string>
 </resources>
