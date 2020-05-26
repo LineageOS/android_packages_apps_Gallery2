@@ -44,24 +44,8 @@ typedef unsigned int Color;
 #define ALPHA (i+3)
 #define CLAMP(c) (MAX(0, MIN(255, c)))
 
-__inline__ unsigned char  clamp(int c)
-{
-    int N = 255;
-    c &= ~(c >> 31);
-    c -= N;
-    c &= (c >> 31);
-    c += N;
-    return  (unsigned char) c;
-}
-
-__inline__ int clampMax(int c,int max)
-{
-    c &= ~(c >> 31);
-    c -= max;
-    c &= (c >> 31);
-    c += max;
-    return  c;
-}
+__inline__ unsigned char  clamp(int c);
+__inline__ int clampMax(int c,int max);
 
 extern void rgb2hsv( unsigned char *rgb,int rgbOff,unsigned short *hsv,int hsvOff);
 extern void hsv2rgb(unsigned short *hsv,int hsvOff,unsigned char  *rgb,int rgbOff);

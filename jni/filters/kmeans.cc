@@ -34,7 +34,6 @@ void JNIFUNCF(ImageFilterKMeans, nativeApplyFilter, jobject bitmap, jint width, 
         jobject large_ds_bitmap, jint lwidth, jint lheight, jobject small_ds_bitmap,
         jint swidth, jint sheight, jint p, jint seed)
 {
-    (void)obj;
     char* destination = 0;
     char* larger_ds_dst = 0;
     char* smaller_ds_dst = 0;

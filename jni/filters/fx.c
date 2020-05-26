@@ -33,9 +33,6 @@ void JNIFUNCF(ImageFilterFx, nativeApplyFilter, jobject bitmap, jint width, jint
         jobject lutbitmap, jint lutwidth, jint lutheight,
         jint start, jint end)
 {
-    (void)obj;
-    (void)width;
-    (void)height;
     char* destination = 0;
     char* lut = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
