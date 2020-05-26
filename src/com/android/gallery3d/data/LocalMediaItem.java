@@ -53,7 +53,7 @@ public abstract class LocalMediaItem extends MediaItem {
 
     @Override
     public long getDateInMs() {
-        return dateTakenInMs;
+        return dateAddedInSec * 1000;
     }
 
     @Override
