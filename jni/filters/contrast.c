@@ -17,9 +17,27 @@
 #include <math.h>
 #include "filters.h"
 
+unsigned char clamp(int c)
+{
+    int N = 255;
+    c &= ~(c >> 31);
+    c -= N;
+    c &= (c >> 31);
+    c += N;
+    return  (unsigned char) c;
+}
+
+int clampMax(int c,int max)
+{
+    c &= ~(c >> 31);
+    c -= max;
+    c &= (c >> 31);
+    c += max;
+    return  c;
+}
+
 void JNIFUNCF(ImageFilterContrast, nativeApplyFilter, jobject bitmap, jint width, jint height, jfloat bright)
 {
-    (void)obj;
     char* destination = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
     unsigned char * rgb = (unsigned char * )destination;

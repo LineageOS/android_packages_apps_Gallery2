@@ -18,7 +18,6 @@
 
 void JNIFUNCF(ImageFilterNegative, nativeApplyFilter, jobject bitmap, jint width, jint height)
 {
-    (void)obj;
     char* destination = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
 

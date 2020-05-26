@@ -21,7 +21,6 @@
 
 void JNIFUNCF(ImageFilterHighlights, nativeApplyFilter, jobject bitmap,
               jint width, jint height, jfloatArray luminanceMap){
-    (void)obj;
     char* destination = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
     unsigned char * rgb = (unsigned char * )destination;

@@ -19,7 +19,6 @@
 
 void JNIFUNCF(ImageFilterBwFilter, nativeApplyFilter, jobject bitmap, jint width, jint height, jint rw, jint gw, jint bw)
 {
-    (void)obj;
     char* destination = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
     unsigned char * rgb = (unsigned char * )destination;

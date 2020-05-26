@@ -101,10 +101,10 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg){
 }
 
 void estmateWhiteBox(unsigned char *src, int iw, int ih, int x,int y, int *wr, int *wb, int *wg){
-    int r = 0;
-    int g = 0;
-    int b = 0;
-    int sum = 0;
+    int r;
+    int g;
+    int b;
+    int sum;
     int xp,yp;
     int bounds = 5;
     if (x<0) x = bounds;
@@ -132,7 +132,6 @@ void estmateWhiteBox(unsigned char *src, int iw, int ih, int x,int y, int *wr, i
 
 void JNIFUNCF(ImageFilterWBalance, nativeApplyFilter, jobject bitmap, jint width, jint height, int locX,int locY)
 {
-    (void)obj;
     char* destination = 0;
     AndroidBitmap_lockPixels(env, bitmap, (void**) &destination);
     int i;

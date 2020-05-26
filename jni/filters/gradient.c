@@ -19,7 +19,6 @@
 void JNIFUNCF(ImageFilter, nativeApplyGradientFilter, jobject bitmap, jint width, jint height,
         jintArray redGradient, jintArray greenGradient, jintArray blueGradient)
 {
-    (void)obj;
     char* destination = 0;
     jint* redGradientArray = 0;
     jint* greenGradientArray = 0;

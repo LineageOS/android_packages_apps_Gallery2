@@ -21,8 +21,6 @@
 
 static __inline__ void flipVertical(char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
     //Vertical
-    (void)dstWidth;
-    (void)dstHeight;
     size_t cpy_bytes = sizeof(char) * 4;
     int width = cpy_bytes * srcWidth;
     int length = srcHeight;
@@ -37,8 +35,6 @@ static __inline__ void flipVertical(char * source, int srcWidth, int srcHeight, 
 
 static __inline__ void flipHorizontal(char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
     //Horizontal
-    (void)dstWidth;
-    (void)dstHeight;
     size_t cpy_bytes = sizeof(char) * 4;
     int width = cpy_bytes * srcWidth;
     int length = srcHeight;
@@ -77,13 +73,12 @@ static __inline__ void flip_fun(int flip, char * source, int srcWidth, int srcHe
 
 //90 CCW (opposite of what's used in UI?)
 static __inline__ void rotate90(char * source, int srcWidth, int srcHeight, char * destination, int dstWidth, int dstHeight){
-    (void)dstWidth;
-    (void)dstHeight;
     size_t cpy_bytes = sizeof(char) * 4;
     int width = cpy_bytes * srcWidth;
     int length = srcHeight;
+    int total = length * width;
     int i = 0;
-    unsigned int j = 0;
+    int j = 0;
     for (j = 0; j < length * cpy_bytes; j+= cpy_bytes){
         for (i = 0; i < width; i+=cpy_bytes){
             int column_disp = (width - cpy_bytes - i) * length;
@@ -127,6 +122,7 @@ static __inline__ void crop(char * source, int srcWidth, int srcHeight, char * d
     if ((srcWidth > dstWidth + offsetWidth) || (srcHeight > dstHeight + offsetHeight)){
         return;
     }
+    int i = 0;
     int j = 0;
     for (j = offsetHeight; j < offsetHeight + dstHeight; j++){
         memcpy(destination + (j - offsetHeight) * new_row_width, source + j * row_width + offsetWidth * cpy_bytes, cpy_bytes * dstWidth );
@@ -134,7 +130,6 @@ static __inline__ void crop(char * source, int srcWidth, int srcHeight, char * d
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterFlip, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jint flip) {
-    (void)obj;
     char* destination = 0;
     char* source = 0;
     if (srcWidth != dstWidth || srcHeight != dstHeight) {
@@ -148,9 +143,9 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterFlip, jobject src, jint srcW
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterRotate, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jint rotate) {
-    (void)obj;
     char* destination = 0;
     char* source = 0;
+    int len = dstWidth * dstHeight * 4;
     AndroidBitmap_lockPixels(env, src, (void**) &source);
     AndroidBitmap_lockPixels(env, dst, (void**) &destination);
     rotate_fun(rotate, source, srcWidth, srcHeight, destination, dstWidth, dstHeight);
@@ -159,9 +154,9 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterRotate, jobject src, jint sr
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterCrop, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jint offsetWidth, jint offsetHeight) {
-    (void)obj;
     char* destination = 0;
     char* source = 0;
+    int len = dstWidth * dstHeight * 4;
     AndroidBitmap_lockPixels(env, src, (void**) &source);
     AndroidBitmap_lockPixels(env, dst, (void**) &destination);
     crop(source, srcWidth, srcHeight, destination, dstWidth, dstHeight, offsetWidth, offsetHeight);
@@ -170,10 +165,6 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterCrop, jobject src, jint srcW
 }
 
 void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterStraighten, jobject src, jint srcWidth, jint srcHeight, jobject dst, jint dstWidth, jint dstHeight, jfloat straightenAngle) {
-    (void)obj;
-    (void)srcWidth;
-    (void)srcHeight;
-    (void)straightenAngle;
     char* destination = 0;
     char* source = 0;
     int len = dstWidth * dstHeight * 4;
@@ -182,7 +173,9 @@ void JNIFUNCF(ImageFilterGeometry, nativeApplyFilterStraighten, jobject src, jin
     // TODO: implement straighten
     int i = 0;
     for (; i < len; i += 4) {
+        int r = source[RED];
         int g = source[GREEN];
+        int b = source[BLUE];
         destination[RED] = 128;
         destination[GREEN] = g;
         destination[BLUE] = 128;
