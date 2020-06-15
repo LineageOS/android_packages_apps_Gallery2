@@ -140,6 +140,8 @@ class ExifParser {
     protected static final int OFFSET_SIZE = 2;
 
     private static final Charset US_ASCII = Charset.forName("US-ASCII");
+    private static final byte APP1_UP = (byte)0xFF;
+    private static final byte APP1_DOWN = (byte)0xE1;
 
     protected static final int DEFAULT_IFD0_OFFSET = 8;
 
@@ -784,26 +786,29 @@ class ExifParser {
                 }
                 marker = dataStream.readShort();
             }
-
-
         } else{
             dataStream.skip(6);
             if (dataStream.readInt() == HEIC_HEADER) {
                 while(true){
                     try{
-                        short marker = dataStream.readShort();
-                        if (marker == JpegHeader.APP1) {
-                            int header = 0;
-                            short headerTail = 0;
-                            int length = dataStream.readUnsignedShort();
-                            header = dataStream.readInt();
-                            headerTail = dataStream.readShort();
-                            if (header == EXIF_HEADER && headerTail == EXIF_HEADER_TAIL) {
-                                mTiffStartPosition = dataStream.getReadByteCount();
-                                mApp1End = length;
-                                mOffsetToApp1EndFromSOF = mTiffStartPosition + mApp1End;
-                                return true;
+                        byte marker = dataStream.readByte();
+                        if(marker == APP1_UP){
+                            dataStream.mark(8);
+                            marker = dataStream.readByte();
+                            if (marker == APP1_DOWN){
+                                int header = 0;
+                                short headerTail = 0;
+                                int length = dataStream.readUnsignedShort();
+                                header = dataStream.readInt();
+                                headerTail = dataStream.readShort();
+                                if (header == EXIF_HEADER && headerTail == EXIF_HEADER_TAIL) {
+                                    mTiffStartPosition = dataStream.getReadByteCount();
+                                    mApp1End = length;
+                                    mOffsetToApp1EndFromSOF = mTiffStartPosition + mApp1End;
+                                    return true;
+                                }
                             }
+                            dataStream.reset();
                         }
                     }catch (Exception e){
                         break;

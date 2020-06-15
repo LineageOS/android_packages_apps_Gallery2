@@ -106,6 +106,12 @@ public class CountedDataInputStream extends FilterInputStream {
         return readShort() & 0xffff;
     }
 
+    public byte readByte() throws IOException {
+        readOrThrow(mByteArray, 0 ,1);
+        mByteBuffer.rewind();
+        return mByteBuffer.get(0);
+    }
+
     public int readInt() throws IOException {
         readOrThrow(mByteArray, 0 , 4);
         mByteBuffer.rewind();
