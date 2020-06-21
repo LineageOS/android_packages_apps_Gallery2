@@ -66,12 +66,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_add_success">"Əlfəcin əlavə edildi"</string>
     <string name="bookmark_list">"Əlfəcinlər"</string>
     <string name="bookmark_title">"Başlıq"</string>
-    <string name="bookmark_location">"Yer"</string>
+    <string name="bookmark_location">"Yerləşmə"</string>
     <string name="delete_all">"Hamısını sil"</string>
     <string name="default_title">"Standart başlıq"</string>
     <string name="more_image">Daha çox təsvir</string>
     <string name="mute_nosupport">Səsi kəsilə bilmir : video dəstəklənmir</string>
-    <string name="map_activity_not_found_err">Yeri göstərmək üçün quraşdırılmış xəritə tətbiqetməsi yoxdur.</string>
+    <string name="map_activity_not_found_err">Yerləşməni göstərmək üçün quraşdırılmış xəritə tətbiqi yoxdur.</string>
     <plurals name="number_of_videos">
         <item quantity="one">%1$d video</item>
         <item quantity="other">%1$d video</item>

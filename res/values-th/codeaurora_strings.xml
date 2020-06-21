@@ -75,6 +75,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <plurals name="number_of_videos">
         <item quantity="other">%1$d วิดีโอ</item>
     </plurals>
+    <string name="share_dialogue_title">แบ่งปันผ่านทาง</string>
+    <string name="no_faces">ไม่พบใบหน้า</string>
     <string name="fail_trim">ขออภัย ไม่สามารถตัดแต่งวิดีโอนี้ได้</string>
     <string name="drm_license_info">ข้อมูลสิทธิ์การใช้ DRM</string>
     <string name="timeline_title">ไทม์ไลน์</string>
@@ -83,4 +85,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="action_viewtype_list">มุมมองรายการ</string>
     <string name="tvEmptyAlbum">ไม่พบรูปภาพ</string>
     <string name="tvEmptyVideos">ไม่พบวิดีโอ</string>
+    <string name="text_makeup_whiten">ทำให้ขาวขึ้น</string>
+    <string name="text_makeup_Soften">ทำให้นุ่มนวล</string>
+    <string name="text_makeup_bigeye">ตาโต</string>
+    <string name="truescanner_normal">ปกติ</string>
+    <string name="truescanner_white">กระดานไวท์บอร์ด</string>
+    <string name="truescanner_remove_glare">ลบแสงจ้า</string>
+    <string name="seestraight_process_fail">ไม่สามารถประมวลผลภาพได้</string>
+    <string name="trim_video_exit_title">ยก​เลิก​การ​เปลี่ยน​แปลงหรือไม่</string>
+    <string name="trim_video_exit_discard">ยกเลิก</string>
 </resources>
