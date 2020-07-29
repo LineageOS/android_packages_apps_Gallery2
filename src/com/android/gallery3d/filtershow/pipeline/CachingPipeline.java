@@ -33,7 +33,7 @@ import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 
 import java.util.Vector;
 
@@ -163,7 +163,7 @@ public class CachingPipeline implements PipelineInterface {
     private void setupEnvironment(ImagePreset preset, boolean highResPreview) {
         mEnvironment.setPipeline(this);
         mEnvironment.setFiltersManager(mFiltersManager);
-        mEnvironment.setBitmapCache(MasterImage.getImage().getBitmapCache());
+        mEnvironment.setBitmapCache(PrimaryImage.getImage().getBitmapCache());
         if (highResPreview) {
             mEnvironment.setScaleFactor(mHighResPreviewScaleFactor);
         } else {
@@ -177,7 +177,7 @@ public class CachingPipeline implements PipelineInterface {
     public void setOriginal(Bitmap bitmap) {
         mOriginalBitmap = bitmap;
         Log.v(LOGTAG,"setOriginal, size " + bitmap.getWidth() + " x " + bitmap.getHeight());
-        ImagePreset preset = MasterImage.getImage().getPreset();
+        ImagePreset preset = PrimaryImage.getImage().getPreset();
         setupEnvironment(preset, false);
         updateOriginalAllocation(preset);
     }
@@ -219,7 +219,7 @@ public class CachingPipeline implements PipelineInterface {
             }
             ImagePreset preset = request.getImagePreset();
             setupEnvironment(preset, false);
-            Bitmap bitmap = MasterImage.getImage().getOriginalBitmapHighres();
+            Bitmap bitmap = PrimaryImage.getImage().getOriginalBitmapHighres();
             if (bitmap == null) {
                 return;
             }
@@ -244,7 +244,7 @@ public class CachingPipeline implements PipelineInterface {
             }
             ImagePreset preset = request.getImagePreset();
             setupEnvironment(preset, false);
-            Bitmap bitmap = MasterImage.getImage().getOriginalBitmapHighres();
+            Bitmap bitmap = PrimaryImage.getImage().getOriginalBitmapHighres();
             if (bitmap == null) {
                 return;
             }
@@ -266,7 +266,7 @@ public class CachingPipeline implements PipelineInterface {
             }
             ImagePreset preset = request.getImagePreset();
             setupEnvironment(preset, false);
-            Bitmap bitmap = MasterImage.getImage().getOriginalBitmapHighres();
+            Bitmap bitmap = PrimaryImage.getImage().getOriginalBitmapHighres();
             if (bitmap == null) {
                 return;
             }
@@ -304,10 +304,10 @@ public class CachingPipeline implements PipelineInterface {
             mFiltersManager.freeFilterResources(preset);
 
             if (request.getType() == RenderingRequest.PARTIAL_RENDERING) {
-                MasterImage master = MasterImage.getImage();
-                bitmap = ImageLoader.getScaleOneImageForPreset(master.getActivity(),
+                PrimaryImage primary = PrimaryImage.getImage();
+                bitmap = ImageLoader.getScaleOneImageForPreset(primary.getActivity(),
                         mEnvironment.getBimapCache(),
-                        master.getUri(), request.getBounds(),
+                        primary.getUri(), request.getBounds(),
                         request.getDestination());
                 if (bitmap == null) {
                     Log.w(LOGTAG, "could not get bitmap for: " + getType(request));
@@ -322,8 +322,9 @@ public class CachingPipeline implements PipelineInterface {
             }
 
             if (DEBUG && bitmap != null) {
-                Log.v(LOGTAG, "after update, req bitmap (" + bitmap.getWidth() + "x" + bitmap.getHeight()
-                        + " ? resizeOriginal (" + mResizedOriginalBitmap.getWidth() + "x"
+                Log.v(LOGTAG, "after update, req bitmap (" + bitmap.getWidth() + "x"
+                        + bitmap.getHeight() + " ? resizeOriginal ("
+                        + mResizedOriginalBitmap.getWidth() + "x"
                         + mResizedOriginalBitmap.getHeight());
             }
 
@@ -348,9 +349,9 @@ public class CachingPipeline implements PipelineInterface {
 
                 if (request.getType() == RenderingRequest.ICON_RENDERING) {
                     Rect iconBounds = request.getIconBounds();
-                    Bitmap source = MasterImage.getImage().getThumbnailBitmap();
+                    Bitmap source = PrimaryImage.getImage().getThumbnailBitmap();
                     if (iconBounds.width() > source.getWidth() * 2) {
-                        source = MasterImage.getImage().getLargeThumbnailBitmap();
+                        source = PrimaryImage.getImage().getLargeThumbnailBitmap();
                     }
                     if (iconBounds != null) {
                         bitmap = mEnvironment.getBitmap(iconBounds.width(),
@@ -425,7 +426,7 @@ public class CachingPipeline implements PipelineInterface {
     }
 
     public boolean needsRepaint() {
-        SharedBuffer buffer = MasterImage.getImage().getPreviewBuffer();
+        SharedBuffer buffer = PrimaryImage.getImage().getPreviewBuffer();
         return buffer.checkRepaintNeeded();
     }
 

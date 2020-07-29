@@ -76,8 +76,8 @@ public class ImageFusion extends ImageShow {
     public void setUnderlay(Uri uri) {
         mRepresentation.setUnderlay(uri);
 
-        mUnderlay = ImageLoader.loadConstrainedBitmap(uri, getContext(), MasterImage.MAX_BITMAP_DIM, new Rect(), false);
-        MasterImage.getImage().setFusionUnderlay(mUnderlay);
+        mUnderlay = ImageLoader.loadConstrainedBitmap(uri, getContext(), PrimaryImage.MAX_BITMAP_DIM, new Rect(), false);
+        PrimaryImage.getImage().setFusionUnderlay(mUnderlay);
         invalidate();
     }
 

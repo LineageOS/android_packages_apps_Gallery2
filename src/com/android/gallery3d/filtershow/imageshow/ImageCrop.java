@@ -230,8 +230,8 @@ public class ImageCrop extends ImageShow {
     }
 
     private void forceStateConsistency() {
-        MasterImage master = MasterImage.getImage();
-        Bitmap image = master.getFiltersOnlyImage();
+        PrimaryImage primary = PrimaryImage.getImage();
+        Bitmap image = primary.getFiltersOnlyImage();
         FilterShowActivity filterShowActivity = (FilterShowActivity) getContext();
         boolean isReload = filterShowActivity.isReloadByConfigurationChanged();
         int width = image.getWidth();
@@ -263,9 +263,9 @@ public class ImageCrop extends ImageShow {
 
     @Override
     public void onDraw(Canvas canvas) {
-        Bitmap bitmap = MasterImage.getImage().getFiltersOnlyImage();
+        Bitmap bitmap = PrimaryImage.getImage().getFiltersOnlyImage();
         if (bitmap == null) {
-            MasterImage.getImage().invalidateFiltersOnly();
+            PrimaryImage.getImage().invalidateFiltersOnly();
         }
         if (!mValidDraw || bitmap == null) {
             return;
@@ -339,9 +339,9 @@ public class ImageCrop extends ImageShow {
     }
 
     private void updateMatrix(int w, int h) {
-        Bitmap bitmap = MasterImage.getImage().getFiltersOnlyImage();
+        Bitmap bitmap = PrimaryImage.getImage().getFiltersOnlyImage();
         if (bitmap == null) {
-            MasterImage.getImage().invalidateFiltersOnly();
+            PrimaryImage.getImage().invalidateFiltersOnly();
         }
         if (!mValidDraw || bitmap == null) {
             return;

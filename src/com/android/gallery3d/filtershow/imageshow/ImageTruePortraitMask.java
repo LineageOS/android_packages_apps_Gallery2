@@ -449,7 +449,7 @@ public class ImageTruePortraitMask extends ImageShow {
             return;
         }
 
-        Rect originalBounds = MasterImage.getImage().getOriginalBounds();
+        Rect originalBounds = PrimaryImage.getImage().getOriginalBounds();
         Matrix originalToScreen = computeImageToScreen(originalBounds.width(), originalBounds.height());
         RectF screenPos = new RectF(originalBounds);
         originalToScreen.mapRect(screenPos);

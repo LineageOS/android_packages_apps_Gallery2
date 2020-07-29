@@ -43,7 +43,7 @@ import com.android.gallery3d.filtershow.filters.FilterStraightenRepresentation;
 import com.android.gallery3d.filtershow.filters.TrueScannerActs;
 import com.android.gallery3d.filtershow.imageshow.ImageShow;
 import com.android.gallery3d.filtershow.imageshow.ImageTrueScanner;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 
 import com.android.gallery3d.R;
 
@@ -60,9 +60,9 @@ public class TrueScannerEditor extends Editor{
     }
 
     public void initCords() {
-        mImageTrueScanner.setDetectedPoints(getPoints(MasterImage.getImage().getHighresImage()),
-                            MasterImage.getImage().getHighresImage().getWidth(),
-                            MasterImage.getImage().getHighresImage().getHeight());
+        mImageTrueScanner.setDetectedPoints(getPoints(PrimaryImage.getImage().getHighresImage()),
+                            PrimaryImage.getImage().getHighresImage().getWidth(),
+                            PrimaryImage.getImage().getHighresImage().getHeight());
         mImageTrueScanner.invalidate();
     }
 

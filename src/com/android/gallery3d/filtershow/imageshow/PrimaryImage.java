@@ -56,13 +56,14 @@ import com.android.gallery3d.filtershow.state.StateAdapter;
 import com.android.gallery3d.filtershow.tools.DualCameraEffect;
 import com.android.gallery3d.util.GDepth;
 
-public class MasterImage implements RenderingRequestCaller {
-    private static final String TAG = "MasterImage";
+public class PrimaryImage implements RenderingRequestCaller {
+
+    private static final String TAG = "PrimaryImage";
     private boolean DEBUG  = false;
     private static final boolean DISABLEZOOM = false;
     public static final int SMALL_BITMAP_DIM = 160;
     public static final int MAX_BITMAP_DIM = 1280;
-    private static MasterImage sMasterImage = null;
+    private static PrimaryImage sPrimaryImage = null;
 
     private boolean mSupportsHighRes = false;
 
@@ -129,25 +130,25 @@ public class MasterImage implements RenderingRequestCaller {
     private List<ExifTag> mEXIF;
     private BitmapCache mBitmapCache = new BitmapCache();
 
-    private MasterImage() {
+    private PrimaryImage() {
     }
 
     // TODO: remove singleton
-    public static void setMaster(MasterImage master) {
-        if((master == null || master != sMasterImage)
-                && sMasterImage != null) {
+    public static void setPrimary(PrimaryImage primary) {
+        if((primary == null || primary != sPrimaryImage)
+                && sPrimaryImage != null) {
             // clearing singleton, clean up resources
             // in old instance
-            sMasterImage.freeResources();
+            sPrimaryImage.freeResources();
         }
-        sMasterImage = master;
+        sPrimaryImage = primary;
     }
 
-    public static MasterImage getImage() {
-        if (sMasterImage == null) {
-            sMasterImage = new MasterImage();
+    public static PrimaryImage getImage() {
+        if (sPrimaryImage == null) {
+            sPrimaryImage = new PrimaryImage();
         }
-        return sMasterImage;
+        return sPrimaryImage;
     }
 
     private void freeResources() {
@@ -323,7 +324,7 @@ public class MasterImage implements RenderingRequestCaller {
         int sh = (int) (sw * (float) mOriginalBitmapLarge.getHeight() / mOriginalBitmapLarge
                 .getWidth());
         mOriginalBitmapSmall = Bitmap.createScaledBitmap(mOriginalBitmapLarge, sw, sh, true);
-        Log.d(TAG, "MasterImage.loadBitmap(): OriginalBitmapLarge.WH is (" + mOriginalBitmapLarge.getWidth() + ", "
+        Log.d(TAG, "PrimaryImage.loadBitmap(): OriginalBitmapLarge.WH is (" + mOriginalBitmapLarge.getWidth() + ", "
                 + mOriginalBitmapLarge.getHeight() + "), OriginalBitmapSmall.WH is (" + sw + ", " + sh + "), originalBounds is "
                 + originalBounds.toString());
         mZoomOrientation = mOrientation;
@@ -750,7 +751,7 @@ public class MasterImage implements RenderingRequestCaller {
                     bitmapToDraw.getHeight());
             scale = mImageShowSize.x / size.width();
             float tmp = mImageShowSize.y / size.height();
-            // Choose the smaller one to avoid master image beyound the screen.
+            // Choose the smaller one to avoid primary image beyound the screen.
             scale = scale < tmp ? scale : tmp;
             translateX = (mImageShowSize.x - (size.width() * scale)) / 2.0f;
             translateY = (mImageShowSize.y - (size.height() * scale)) / 2.0f;
@@ -819,7 +820,7 @@ public class MasterImage implements RenderingRequestCaller {
             invalidatePartialPreview();
             return;
         }
-        Matrix originalToScreen = MasterImage.getImage().originalImageToScreen();
+        Matrix originalToScreen = PrimaryImage.getImage().originalImageToScreen();
         if (originalToScreen == null) {
             return;
         }

@@ -46,7 +46,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 
 import com.android.gallery3d.R;
 
@@ -118,9 +118,9 @@ public class WaterMarkView extends FrameLayout {
         updateScreenSize();
         initView(context, drawable, text);
 
-        MasterImage.getImage().addWaterMark(this);
+        PrimaryImage.getImage().addWaterMark(this);
         mGeometry = new GeometryMathUtils.GeometryHolder();
-        imageBounds = MasterImage.getImage().getImageBounds();
+        imageBounds = PrimaryImage.getImage().getImageBounds();
     }
 
     private void initView(Context context, Drawable drawable, String text) {
@@ -159,8 +159,8 @@ public class WaterMarkView extends FrameLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         if (oldw == 0 || oldh == 0) {
-            Bitmap mBitmap = MasterImage.getImage().getHighresImage();
-            oldImageToScreenMatrix = MasterImage.getImage().computeImageToScreen(mBitmap, 0, false);
+            Bitmap mBitmap = PrimaryImage.getImage().getHighresImage();
+            oldImageToScreenMatrix = PrimaryImage.getImage().computeImageToScreen(mBitmap, 0, false);
             return;
         }
         newWidth = w;
@@ -319,8 +319,8 @@ public class WaterMarkView extends FrameLayout {
 
     protected void initMarkBounds() {
         if (widthScreen > heightScreen) {
-            if (MasterImage.getImage().getFilteredImage().getWidth() >
-                    MasterImage.getImage().getFilteredImage().getHeight()) {
+            if (PrimaryImage.getImage().getFilteredImage().getWidth() >
+                    PrimaryImage.getImage().getFilteredImage().getHeight()) {
                 markLeft = dip2px(getContext(), 50);
             } else {
                 markLeft = dip2px(getContext(), 200);
@@ -330,8 +330,8 @@ public class WaterMarkView extends FrameLayout {
             markRight = markLeft + dip2px(getContext(), 80);
         } else {
             markLeft = dip2px(getContext(), 50);
-            if (MasterImage.getImage().getFilteredImage().getWidth() >
-                    MasterImage.getImage().getFilteredImage().getHeight()) {
+            if (PrimaryImage.getImage().getFilteredImage().getWidth() >
+                    PrimaryImage.getImage().getFilteredImage().getHeight()) {
                 markTop = dip2px(getContext(), 200);
             } else {
                 markTop = dip2px(getContext(), 70);
@@ -377,8 +377,8 @@ public class WaterMarkView extends FrameLayout {
             return null;
         }
 
-        Rect r = MasterImage.getImage().getImageBounds();
-        Bitmap b = MasterImage.getImage().getFilteredImage();
+        Rect r = PrimaryImage.getImage().getImageBounds();
+        Bitmap b = PrimaryImage.getImage().getFilteredImage();
         Bitmap bmpDest = Bitmap.createBitmap(r.width(), r.height(), Bitmap.Config.ARGB_8888);
         if (null != bmpDest) {
             Canvas canvas = new Canvas(bmpDest);
@@ -483,7 +483,7 @@ public class WaterMarkView extends FrameLayout {
     }
 
     public void update() {
-        imageBounds = MasterImage.getImage().getImageBounds();
+        imageBounds = PrimaryImage.getImage().getImageBounds();
         if (!sizeChanged) return;
         sizeChanged = false;
         float mw = markLayoutRect.width();
@@ -493,14 +493,14 @@ public class WaterMarkView extends FrameLayout {
         mx.reset();
         oldImageToScreenMatrix.invert(mx);
         mx.mapRect(markLayoutRect);
-        Bitmap mBitmap = MasterImage.getImage().getHighresImage();
-        oldImageToScreenMatrix = MasterImage.getImage().computeImageToScreen(mBitmap, 0, false);
+        Bitmap mBitmap = PrimaryImage.getImage().getHighresImage();
+        oldImageToScreenMatrix = PrimaryImage.getImage().computeImageToScreen(mBitmap, 0, false);
         oldImageToScreenMatrix.mapRect(markLayoutRect);
         mx.reset();
         mx.setTranslate(markLayoutRect.width()/2,markLayoutRect.height()/2);
         mx.mapRect(markLayoutRect);
 
-//        Bitmap mBitmap = MasterImage.getImage().getFilteredImage();
+//        Bitmap mBitmap = PrimaryImage.getImage().getFilteredImage();
 //        scale = scale * GeometryMathUtils.getWatermarkScale(mGeometry, mBitmap.getWidth(),
 //                mBitmap.getHeight(), w, h, oldw, oldh);
 //        mDisplaySegPointsMatrix = GeometryMathUtils.getWatermarkMatrix(mGeometry, mBitmap.getWidth(),

@@ -42,7 +42,7 @@ import com.android.gallery3d.filtershow.filters.HazeBusterActs;
 import com.android.gallery3d.filtershow.filters.SeeStraightActs;
 import com.android.gallery3d.filtershow.filters.SimpleMakeupImageFilter;
 import com.android.gallery3d.filtershow.filters.TrueScannerActs;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.state.StatePanel;
 import com.android.gallery3d.filtershow.tools.DualCameraEffect;
 import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine;
@@ -233,7 +233,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         waterMarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MasterImage.getImage().getHistory().getItem(1) == null) {
+                if (PrimaryImage.getImage().getHistory().getItem(1) == null) {
                     waterMarkButton.setVisibility(View.VISIBLE);
                     showPanel(WATERMARK);
                 } else {
@@ -431,7 +431,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
         if (mCurrentSelected == GEOMETRY) {
             return;
         }
-        if (MasterImage.getImage().hasTinyPlanet()) {
+        if (PrimaryImage.getImage().hasTinyPlanet()) {
             return;
         }
         boolean fromRight = isRightAnimation(GEOMETRY);
@@ -735,7 +735,8 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
             transaction.replace(R.id.state_panel_container, statePanel, StatePanel.FRAGMENT_TAG);
         } else {
             container.setVisibility(View.GONE);
-            Fragment statePanel = getChildFragmentManager().findFragmentByTag(StatePanel.FRAGMENT_TAG);
+            Fragment statePanel = getChildFragmentManager().findFragmentByTag(
+                    StatePanel.FRAGMENT_TAG);
             if (statePanel != null) {
                 transaction.remove(statePanel);
             }

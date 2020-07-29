@@ -109,7 +109,7 @@ public class ImageTrueScanner extends ImageShow {
     }
 
     private void init() {
-        mBitmap = MasterImage.getImage().getHighresImage();
+        mBitmap = PrimaryImage.getImage().getHighresImage();
 
         mMarginalGapX = mBitmap.getWidth()/4;
         mMarginalGapY = mBitmap.getHeight()/4;

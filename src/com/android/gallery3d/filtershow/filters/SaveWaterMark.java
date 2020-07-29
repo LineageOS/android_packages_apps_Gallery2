@@ -45,7 +45,7 @@ import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.category.WaterMarkView;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.tools.SaveImage;
 
@@ -76,7 +76,7 @@ public class SaveWaterMark {
         new AsyncTask<Bitmap, Void, Uri>() {
             @Override
             protected Uri doInBackground(Bitmap... bitmaps) {
-                ImagePreset ip = MasterImage.getImage().getPreset();
+                ImagePreset ip = PrimaryImage.getImage().getPreset();
                 FilterFusionRepresentation fusionRep = findFusionRepresentation(ip);
                 boolean hasFusion = (fusionRep != null && fusionRep.hasUnderlay());
                 Bitmap destinationBitmap = createBitmap(bitmap, bitmaps[0]);
@@ -148,7 +148,7 @@ public class SaveWaterMark {
         if (src == null) {
             return null;
         }
-        Rect r = MasterImage.getImage().getImageBounds();
+        Rect r = PrimaryImage.getImage().getImageBounds();
         int rw = r.width();
         int rh = r.height();
         Bitmap resizeSrc = Bitmap.createScaledBitmap(src,rw, rh,false);

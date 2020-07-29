@@ -36,7 +36,7 @@ import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.tools.SaveImage;
 
 import java.io.File;
@@ -187,7 +187,7 @@ public class ProcessingService extends Service {
     public void onDestroy() {
         mProcessingTaskController.quit();
         tearDownPipeline();
-        MasterImage.setMaster(null);
+        PrimaryImage.setPrimary(null);
     }
 
     @Override
@@ -216,7 +216,7 @@ public class ProcessingService extends Service {
             ImagePreset preset = new ImagePreset();
             preset.readJsonFromString(presetJson);
             handleSaveRequest(sourceUri, selectedUri, destinationFile, preset,
-                    MasterImage.getImage().getHighresImage(),
+                    PrimaryImage.getImage().getHighresImage(),
                     flatten, quality, sizeFactor, exit, requestId);
         }
         return START_REDELIVER_INTENT;

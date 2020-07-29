@@ -42,7 +42,7 @@ import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.controller.Parameter;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 import com.android.gallery3d.filtershow.imageshow.ImageTrueScanner;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.ui.MenuExecutor;
 import static com.android.gallery3d.filtershow.imageshow.ImageTrueScanner.*;
 

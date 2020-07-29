@@ -36,7 +36,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import com.android.gallery3d.app.Log;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.tools.FilterGeneratorNativeEngine;
 
 public class ImageFilterPreset extends ImageFilter {
@@ -82,12 +82,12 @@ public class ImageFilterPreset extends ImageFilter {
             return bitmap;
         }
 
-        int highresPreviewSize = Math.min(MasterImage.MAX_BITMAP_DIM, MasterImage.getImage().getActivity().getScreenImageSize());
+        int highresPreviewSize = Math.min(PrimaryImage.MAX_BITMAP_DIM, PrimaryImage.getImage().getActivity().getScreenImageSize());
 
         filterImageUri = getParameters().getUri();
         Bitmap filter = ImageLoader.loadOrientedConstrainedBitmap(filterImageUri,
-                MasterImage.getImage().getActivity(), highresPreviewSize,
-                MasterImage.getImage().getOrientation(), new Rect());
+                PrimaryImage.getImage().getActivity(), highresPreviewSize,
+                PrimaryImage.getImage().getOrientation(), new Rect());
 
         FilterGeneratorNativeEngine.getInstance().filterGeneratorProcess(bitmap,filter,bitmap);
         return bitmap;

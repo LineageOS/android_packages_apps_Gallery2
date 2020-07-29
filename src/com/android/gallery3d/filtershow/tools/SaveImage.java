@@ -58,7 +58,7 @@ import com.android.gallery3d.filtershow.filters.FilterFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterTruePortraitFusionRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.CachingPipeline;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.pipeline.ProcessingService;
@@ -628,7 +628,7 @@ public class SaveImage {
     public static void saveImage(ImagePreset preset, final FilterShowActivity filterShowActivity,
             File destination) {
         Uri selectedImageUri = filterShowActivity.getSelectedImageUri();
-        Uri sourceImageUri = MasterImage.getImage().getUri();
+        Uri sourceImageUri = PrimaryImage.getImage().getUri();
         boolean flatten = false;
         if (preset.contains(FilterRepresentation.TYPE_TINYPLANET)){
             flatten = true;
@@ -892,8 +892,8 @@ public class SaveImage {
                 underlay = ImageLoader.orientBitmap(underlay, ori);
             }
             RectF destRect = new RectF();
-            Rect imageBounds = MasterImage.getImage().getImageBounds();
-            Rect underlayBounds = MasterImage.getImage().getFusionBounds();
+            Rect imageBounds = PrimaryImage.getImage().getImageBounds();
+            Rect underlayBounds = PrimaryImage.getImage().getFusionBounds();
             float underlayScaleFactor = (float)underlay.getWidth()
                     / (float)underlayBounds.width();
 

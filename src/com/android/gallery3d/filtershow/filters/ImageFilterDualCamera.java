@@ -46,7 +46,7 @@ import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils.GeometryHolder;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.tools.DualCameraEffect;
@@ -75,7 +75,7 @@ class ImageFilterDualCamera extends ImageFilter {
 
         Point point = new Point(mParameters.getPoint());
         if (!point.equals(-1, -1)) {
-            MasterImage image = MasterImage.getImage();
+            PrimaryImage image = PrimaryImage.getImage();
 
             Size size = getFilteredSize(image, quality);
             DualCameraEffect effect = image.getDualCameraEffect(size.getWidth(), size.getHeight());
@@ -176,7 +176,7 @@ class ImageFilterDualCamera extends ImageFilter {
         }
     }
 
-    private Size getFilteredSize(MasterImage image, int quality) {
+    private Size getFilteredSize(PrimaryImage image, int quality) {
         int width, height;
         if (quality == FilterEnvironment.QUALITY_FINAL) {
             Rect originalBounds = image.getOriginalBounds();
@@ -200,10 +200,10 @@ class ImageFilterDualCamera extends ImageFilter {
             if (width % 2 != 0 || height % 2 != 0) {
                 float aspect = (float) height / (float) width;
                 if (width >= height) {
-                    width = MasterImage.MAX_BITMAP_DIM;
+                    width = PrimaryImage.MAX_BITMAP_DIM;
                     height = (int) (width * aspect);
                 } else {
-                    height = MasterImage.MAX_BITMAP_DIM;
+                    height = PrimaryImage.MAX_BITMAP_DIM;
                     width = (int) (height / aspect);
                 }
             }

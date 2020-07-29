@@ -48,7 +48,7 @@ import android.widget.ToggleButton;
 import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.imageshow.ImageTruePortraitMask;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.ui.AlertMsgDialog;
 
 public class EditorTruePortraitMask extends Editor  {
@@ -187,7 +187,7 @@ public class EditorTruePortraitMask extends Editor  {
     @Override
     public void finalApplyCalled() {
         mTruePortraitImage.applyMaskUpdates();
-        MasterImage.getImage().invalidateFiltersOnly();
+        PrimaryImage.getImage().invalidateFiltersOnly();
     }
 
     private void showToast() {
