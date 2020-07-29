@@ -33,7 +33,7 @@ import com.android.gallery3d.R;
 import com.android.gallery3d.exif.ExifInterface;
 import com.android.gallery3d.exif.ExifTag;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.ui.BaseDialogFragment;
 
 import java.util.List;
@@ -70,7 +70,7 @@ public class InfoPanel extends BaseDialogFragment {
                 R.layout.filtershow_info_panel, null, false);
 
         mImageThumbnail = (ImageView) mMainView.findViewById(R.id.imageThumbnail);
-        Bitmap bitmap = MasterImage.getImage().getFilteredImage();
+        Bitmap bitmap = PrimaryImage.getImage().getFilteredImage();
         mImageThumbnail.setImageBitmap(bitmap);
 
         mImageName = (TextView) mMainView.findViewById(R.id.imageName);
@@ -82,7 +82,7 @@ public class InfoPanel extends BaseDialogFragment {
         histogramView.setBitmap(bitmap);
         histogramView.setBackgroundColor(Color.DKGRAY);
 
-        Uri uri = MasterImage.getImage().getUri();
+        Uri uri = PrimaryImage.getImage().getUri();
         String path = ImageLoader.getLocalPathFromUri(getActivity(), uri);
         Uri localUri = null;
         if (path != null) {
@@ -92,10 +92,10 @@ public class InfoPanel extends BaseDialogFragment {
         if (localUri != null) {
             mImageName.setText(localUri.getLastPathSegment());
         }
-        Rect originalBounds = MasterImage.getImage().getOriginalBounds();
+        Rect originalBounds = PrimaryImage.getImage().getOriginalBounds();
         mImageSize.setText("" + originalBounds.width() + " x " + originalBounds.height());
 
-        List<ExifTag> exif = MasterImage.getImage().getEXIF();
+        List<ExifTag> exif = PrimaryImage.getImage().getEXIF();
         String exifString = "";
         boolean hasExifData = false;
         if (exif != null) {

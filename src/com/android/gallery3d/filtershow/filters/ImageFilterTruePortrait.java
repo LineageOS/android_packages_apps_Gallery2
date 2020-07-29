@@ -46,7 +46,7 @@ import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils.GeometryHolder;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.tools.TruePortraitNativeEngine;
@@ -74,8 +74,8 @@ public class ImageFilterTruePortrait extends ImageFilter {
 
         Bitmap filteredBitmap = null;
         boolean result = false;
-        int orientation = MasterImage.getImage().getOrientation();
-        Rect originalBounds = MasterImage.getImage().getOriginalBounds();
+        int orientation = PrimaryImage.getImage().getOrientation();
+        Rect originalBounds = PrimaryImage.getImage().getOriginalBounds();
         int filteredW;
         int filteredH;
 
@@ -83,7 +83,7 @@ public class ImageFilterTruePortrait extends ImageFilter {
             filteredW = originalBounds.width();
             filteredH = originalBounds.height();
         } else {
-            Bitmap originalBmp = MasterImage.getImage().getOriginalBitmapHighres();
+            Bitmap originalBmp = PrimaryImage.getImage().getOriginalBitmapHighres();
             filteredW = originalBmp.getWidth();
             filteredH = originalBmp.getHeight();
 
@@ -101,16 +101,16 @@ public class ImageFilterTruePortrait extends ImageFilter {
             if(filteredW%2 != 0 || filteredH%2 != 0) {
                 float aspect = (float)filteredH / (float)filteredW;
                 if(filteredW >= filteredH) {
-                    filteredW = MasterImage.MAX_BITMAP_DIM;
+                    filteredW = PrimaryImage.MAX_BITMAP_DIM;
                     filteredH = (int)(filteredW * aspect);
                 } else {
-                    filteredH = MasterImage.MAX_BITMAP_DIM;
+                    filteredH = PrimaryImage.MAX_BITMAP_DIM;
                     filteredW = (int)(filteredH / aspect);
                 }
             }
         }
 
-        filteredBitmap = MasterImage.getImage().getBitmapCache().getBitmap(filteredW, filteredH, BitmapCache.FILTERS);
+        filteredBitmap = PrimaryImage.getImage().getBitmapCache().getBitmap(filteredW, filteredH, BitmapCache.FILTERS);
 
         result = applyEffect(filteredBitmap);
 
@@ -153,7 +153,7 @@ public class ImageFilterTruePortrait extends ImageFilter {
             canvas.drawBitmap(filteredBitmap, m, mPaint);
             canvas.restore();
 
-            MasterImage.getImage().getBitmapCache().cache(filteredBitmap);
+            PrimaryImage.getImage().getBitmapCache().cache(filteredBitmap);
         }
 
         return bitmap;

@@ -48,7 +48,7 @@ import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.filters.FiltersManager;
 import com.android.gallery3d.filtershow.filters.ImageFilter;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.state.State;
 import com.android.gallery3d.filtershow.state.StateAdapter;
 
@@ -346,9 +346,9 @@ public class ImagePreset {
                     // reset fusion underlay image.
                     if(filter instanceof FilterDualCamFusionRepresentation ||
                             filter instanceof FilterTruePortraitFusionRepresentation) {
-                        MasterImage.getImage().setFusionUnderlay(null);
-                        MasterImage.getImage().setScaleFactor(1);
-                        MasterImage.getImage().resetTranslation();
+                        PrimaryImage.getImage().setFusionUnderlay(null);
+                        PrimaryImage.getImage().setScaleFactor(1);
+                        PrimaryImage.getImage().resetTranslation();
                     }
                     break;
                 }
@@ -727,7 +727,7 @@ public class ImagePreset {
     }
 
     public boolean canDoPartialRendering() {
-        if (MasterImage.getImage().getZoomOrientation() != ImageLoader.ORI_NORMAL) {
+        if (PrimaryImage.getImage().getZoomOrientation() != ImageLoader.ORI_NORMAL) {
             return false;
         }
         for (int i = 0; i < mFilters.size(); i++) {

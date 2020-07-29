@@ -75,6 +75,6 @@ public class ImageDualCamera extends ImageShow {
     }
 
     private void calcScreenMapping() {
-        mToOrig = MasterImage.getImage().getScreenToImageMatrix(true);
+        mToOrig = PrimaryImage.getImage().getScreenToImageMatrix(true);
     }
 }

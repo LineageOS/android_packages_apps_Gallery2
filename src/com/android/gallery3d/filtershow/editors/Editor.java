@@ -39,7 +39,7 @@ import com.android.gallery3d.filtershow.controller.Control;
 import com.android.gallery3d.filtershow.filters.FilterBasicRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.imageshow.ImageShow;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 
 /**
@@ -109,14 +109,14 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
         mEditTitle = editTitle;
         mFilterTitle = stateButton;
         mButton = editTitle;
-        MasterImage.getImage().resetGeometryImages(false);
+        PrimaryImage.getImage().resetGeometryImages(false);
         setUtilityPanelUI(actionButton, editControl);
     }*/
 
     public void setUpEditorUI(View editControl, Button stateButton) {
 
         mFilterTitle = stateButton;
-        MasterImage.getImage().resetGeometryImages(false);
+        PrimaryImage.getImage().resetGeometryImages(false);
         mEditControl = editControl;
         setEditPanelUI(editControl);
     }
@@ -225,8 +225,9 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
 
     public FilterRepresentation getLocalRepresentation() {
         if (mLocalRepresentation == null) {
-            ImagePreset preset = MasterImage.getImage().getPreset();
-            FilterRepresentation filterRepresentation = MasterImage.getImage().getCurrentFilterRepresentation();
+            ImagePreset preset = PrimaryImage.getImage().getPreset();
+            FilterRepresentation filterRepresentation =
+                PrimaryImage.getImage().getCurrentFilterRepresentation();
             mLocalRepresentation = preset.getFilterRepresentationCopyFrom(filterRepresentation);
             if (mShowParameter == SHOW_VALUE_UNDEFINED && filterRepresentation != null) {
                 boolean show = filterRepresentation.showParameterValue();
@@ -238,7 +239,7 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
     }
 
     /**
-     * Call this to update the preset in MasterImage with the current representation
+     * Call this to update the preset in PrimaryImage with the current representation
      * returned by getLocalRepresentation.  This causes the preview bitmap to be
      * regenerated.
      */
@@ -247,7 +248,7 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
     }
 
     /**
-     * Call this to update the preset in MasterImage with a given representation.
+     * Call this to update the preset in PrimaryImage with a given representation.
      * This causes the preview bitmap to be regenerated.
      */
     public void commitLocalRepresentation(FilterRepresentation rep) {
@@ -257,22 +258,22 @@ public class Editor implements OnSeekBarChangeListener, SwapButton.SwapButtonLis
     }
 
     /**
-     * Call this to update the preset in MasterImage with a collection of FilterRepresentations.
+     * Call this to update the preset in PrimaryImage with a collection of FilterRepresentations.
      * This causes the preview bitmap to be regenerated.
      */
     public void commitLocalRepresentation(Collection<FilterRepresentation> reps) {
-        ImagePreset preset = MasterImage.getImage().getPreset();
+        ImagePreset preset = PrimaryImage.getImage().getPreset();
         preset.updateFilterRepresentations(reps);
         if (mButton != null) {
             updateText();
         }
         if (mChangesGeometry) {
             // Regenerate both the filtered and the geometry-only bitmaps
-            MasterImage.getImage().resetGeometryImages(true);
+            PrimaryImage.getImage().resetGeometryImages(true);
         }
         // Regenerate the filtered bitmap.
-        MasterImage.getImage().invalidateFiltersOnly();
-        preset.fillImageStateAdapter(MasterImage.getImage().getState());
+        PrimaryImage.getImage().invalidateFiltersOnly();
+        preset.fillImageStateAdapter(PrimaryImage.getImage().getState());
     }
 
     /**

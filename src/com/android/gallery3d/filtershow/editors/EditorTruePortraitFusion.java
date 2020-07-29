@@ -52,7 +52,7 @@ import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.filters.FilterTruePortraitFusionRepresentation;
 import com.android.gallery3d.filtershow.imageshow.ImageTruePortraitFusion;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.ui.DoNotShowAgainDialog;
 import com.android.gallery3d.util.GalleryUtils;
 
@@ -139,7 +139,7 @@ public class EditorTruePortraitFusion extends Editor {
         pickUnderlayBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
+                PrimaryImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
             }
         });
 
@@ -194,7 +194,7 @@ public class EditorTruePortraitFusion extends Editor {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             pickDialogHasShown = true;
-                            MasterImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
+                            PrimaryImage.getImage().getActivity().pickImage(FilterShowActivity.SELECT_FUSION_UNDERLAY);
                         }
                     });
                     dialog.setCancelable(true);

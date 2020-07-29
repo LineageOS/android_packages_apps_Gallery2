@@ -42,7 +42,7 @@ import com.android.gallery3d.filtershow.filters.FilterUserPresetRepresentation;
 import com.android.gallery3d.filtershow.pipeline.RenderingRequest;
 import com.android.gallery3d.filtershow.pipeline.RenderingRequestCaller;
 import com.android.gallery3d.filtershow.filters.FilterRepresentation;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.glrenderer.Texture;
 
@@ -136,16 +136,16 @@ public class Action implements RenderingRequestCaller {
             mImageFrame = imageFrame;
             int w = mImageFrame.width();
             int h = mImageFrame.height();
-            mImage = MasterImage.getImage().getBitmapCache().getBitmap(w, h, BitmapCache.ICON);
+            mImage = PrimaryImage.getImage().getBitmapCache().getBitmap(w, h, BitmapCache.ICON);
             drawOverlay();
             return;
         }
 
-        Bitmap temp = MasterImage.getImage().getTemporaryThumbnailBitmap();
+        Bitmap temp = PrimaryImage.getImage().getTemporaryThumbnailBitmap();
         if (temp != null) {
             mImage = temp;
         }
-        Bitmap bitmap = MasterImage.getImage().getThumbnailBitmap();
+        Bitmap bitmap = PrimaryImage.getImage().getThumbnailBitmap();
         if (bitmap != null) {
             mImageFrame = imageFrame;
             int w = mImageFrame.width();
@@ -225,7 +225,8 @@ public class Action implements RenderingRequestCaller {
         if (mOverlayBitmap != null) {
             if (getRepresentation().getFilterType() == FilterRepresentation.TYPE_BORDER) {
                 Canvas canvas = new Canvas(mImage);
-                canvas.drawBitmap(mOverlayBitmap, new Rect(0, 0, mOverlayBitmap.getWidth(), mOverlayBitmap.getHeight()),
+                canvas.drawBitmap(mOverlayBitmap,
+                        new Rect(0, 0, mOverlayBitmap.getWidth(), mOverlayBitmap.getHeight()),
                         new Rect(0, 0, mImage.getWidth(), mImage.getHeight()), new Paint());
             } else {
                 Canvas canvas = new Canvas(mImage);
@@ -271,8 +272,8 @@ public class Action implements RenderingRequestCaller {
 
     public void clearBitmap() {
         if (mImage != null
-                && mImage != MasterImage.getImage().getTemporaryThumbnailBitmap()) {
-            MasterImage.getImage().getBitmapCache().cache(mImage);
+                && mImage != PrimaryImage.getImage().getTemporaryThumbnailBitmap()) {
+            PrimaryImage.getImage().getBitmapCache().cache(mImage);
         }
         mImage = null;
     }

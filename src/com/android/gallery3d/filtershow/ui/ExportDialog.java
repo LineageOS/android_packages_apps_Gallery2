@@ -35,7 +35,7 @@ import android.widget.TextView;
 
 import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.FilterShowActivity;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.ImagePreset;
 import com.android.gallery3d.filtershow.pipeline.ProcessingService;
 import com.android.gallery3d.filtershow.tools.SaveImage;
@@ -102,19 +102,19 @@ public class ExportDialog extends BaseDialogFragment implements SeekBar.OnSeekBa
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         FilterShowActivity activity = (FilterShowActivity) getActivity();
-                        Uri sourceUri = MasterImage.getImage().getUri();
+                        Uri sourceUri = PrimaryImage.getImage().getUri();
                         File dest = SaveImage.getNewFile(activity, activity.getSelectedImageUri());
                         float scaleFactor = mExportWidth / (mOriginalBounds == null ? 1f :
                                 (float) mOriginalBounds.width());
                         if (!activity.isWaterMarked()) {
                             Intent processIntent = ProcessingService.getSaveIntent(activity,
-                                    MasterImage.getImage().getPreset(), dest,
+                                    PrimaryImage.getImage().getPreset(), dest,
                                     activity.getSelectedImageUri(), sourceUri, true,
                                     mSeekBar.getProgress(), scaleFactor, false, -1);
                             activity.startService(processIntent);
                         } else {
                             activity.getSaveWaterMark().saveImage(activity,
-                                    MasterImage.getImage().getHighresImage(),
+                                    PrimaryImage.getImage().getHighresImage(),
                                     activity.getSelectedImageUri(), null, mSeekBar.getProgress(),
                                     scaleFactor, true);
                         }
@@ -140,8 +140,8 @@ public class ExportDialog extends BaseDialogFragment implements SeekBar.OnSeekBa
         mHeightText = (EditText) view.findViewById(R.id.editableHeight);
         mEstimatedSize = (TextView) view.findViewById(R.id.estimadedSize);
 
-        mOriginalBounds = MasterImage.getImage().getOriginalBounds();
-        ImagePreset preset = MasterImage.getImage().getPreset();
+        mOriginalBounds = PrimaryImage.getImage().getOriginalBounds();
+        ImagePreset preset = PrimaryImage.getImage().getPreset();
         if (mOriginalBounds == null || preset == null) return null;
         mOriginalBounds = preset.finalGeometryRect(mOriginalBounds.width(),
                 mOriginalBounds.height());
@@ -185,7 +185,7 @@ public class ExportDialog extends BaseDialogFragment implements SeekBar.OnSeekBa
     }
 
     public void updateCompressionFactor() {
-        Bitmap bitmap = MasterImage.getImage().getFilteredImage();
+        Bitmap bitmap = PrimaryImage.getImage().getFilteredImage();
         if (bitmap == null) {
             return;
         }

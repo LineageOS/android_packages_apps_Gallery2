@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.android.gallery3d.app.GalleryAppImpl;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
-import com.android.gallery3d.filtershow.imageshow.MasterImage;
+import com.android.gallery3d.filtershow.imageshow.PrimaryImage;
 import com.android.gallery3d.filtershow.pipeline.FilterEnvironment;
 
 public abstract class ImageFilter implements Cloneable {
@@ -111,7 +111,7 @@ public abstract class ImageFilter implements Cloneable {
 
     protected Matrix getOriginalToScreenMatrix(int w, int h) {
         return GeometryMathUtils.getImageToScreenMatrix(getEnvironment().getImagePreset()
-                .getGeometryFilters(), true, MasterImage.getImage().getOriginalBounds(), w, h);
+                .getGeometryFilters(), true, PrimaryImage.getImage().getOriginalBounds(), w, h);
     }
 
     public void setEnvironment(FilterEnvironment environment) {

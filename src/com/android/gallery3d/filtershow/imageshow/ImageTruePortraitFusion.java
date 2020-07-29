@@ -61,15 +61,15 @@ public class ImageTruePortraitFusion extends ImageShow {
         if(mUnderlay != null) {
             mUnderlay.recycle();
             mUnderlay = null;
-            MasterImage.getImage().setFusionUnderlay(null);
+            PrimaryImage.getImage().setFusionUnderlay(null);
         }
 
-        mUnderlay = ImageLoader.loadConstrainedBitmap(uri, getContext(), MasterImage.MAX_BITMAP_DIM, new Rect(), false);
+        mUnderlay = ImageLoader.loadConstrainedBitmap(uri, getContext(), PrimaryImage.MAX_BITMAP_DIM, new Rect(), false);
         int ori = ImageLoader.getMetadataOrientation(getContext(), uri);
         if (ori != ImageLoader.ORI_NORMAL) {
             mUnderlay = ImageLoader.orientBitmap(mUnderlay, ori);
         }
-        MasterImage.getImage().setFusionUnderlay(mUnderlay);
+        PrimaryImage.getImage().setFusionUnderlay(mUnderlay);
         invalidate();
     }
 
