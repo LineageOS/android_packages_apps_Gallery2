@@ -75,9 +75,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <plurals name="number_of_videos">
         <item quantity="other">%1$d วิดีโอ</item>
     </plurals>
+    <string name="cannot_share_items">เลือกรายการแบ่งปันได้สูงสุด 300 ตัวเลือก</string>
     <string name="share_dialogue_title">แบ่งปันผ่านทาง</string>
     <string name="no_faces">ไม่พบใบหน้า</string>
     <string name="fail_trim">ขออภัย ไม่สามารถตัดแต่งวิดีโอนี้ได้</string>
+    <string name="can_not_trim">ตัดได้เฉพาะไฟล์ mp4 และ 3gp</string>
     <string name="drm_license_info">ข้อมูลสิทธิ์การใช้ DRM</string>
     <string name="timeline_title">ไทม์ไลน์</string>
     <string name="albums_title">อัลบั้ม</string>
@@ -91,6 +93,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="truescanner_normal">ปกติ</string>
     <string name="truescanner_white">กระดานไวท์บอร์ด</string>
     <string name="truescanner_remove_glare">ลบแสงจ้า</string>
+    <string name="seestraight_acts">ทำให้ตรง</string>
     <string name="seestraight_process_fail">ไม่สามารถประมวลผลภาพได้</string>
     <string name="trim_video_exit_title">ยก​เลิก​การ​เปลี่ยน​แปลงหรือไม่</string>
     <string name="trim_video_exit_discard">ยกเลิก</string>
