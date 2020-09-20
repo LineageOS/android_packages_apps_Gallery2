@@ -72,10 +72,37 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="more_image">Barrachd dhealbhan</string>
     <string name="mute_nosupport">Cha ghabh a mhùchadh : chan eil taic ri video</string>
     <string name="map_activity_not_found_err">Cha deach aplacaid mhapaichean a stàladh a shealladh an t-ionad.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d video</item>
+        <item quantity="two">%1$d video</item>
+        <item quantity="few">%1$d videothan</item>
+        <item quantity="other">%1$d video</item>
+    </plurals>
+    <string name="cannot_share_items">Gabhaidh 300 nì taghta a cho-roinneadh air a char as motha</string>
     <string name="share_dialogue_title">Co-roinn slighe</string>
+    <string name="no_faces">Gun aodann ann</string>
     <string name="fail_trim">Tha sinn duilich ach cha ghabh am faidhle video seo a bhearradh</string>
+    <string name="can_not_trim">Cha ghabh ach faidhlichean mp4 ’s 3gp a bhearradh</string>
     <string name="drm_license_info">Fiosrachadh mun cheadachas DRM</string>
+    <string name="timeline_title">Loidhne-ama</string>
     <string name="albums_title">Albaman</string>
     <string name="videos_title">Videothan</string>
+    <string name="action_viewtype_list">Sealladh liosta</string>
+    <string name="tvEmptyAlbum">Cha deach dealbh a lorg</string>
+    <string name="tvEmptyVideos">Cha deach video a lorg</string>
+    <string name="text_makeup_whiten">Dèan nas gile</string>
+    <string name="text_makeup_Soften">Bogaich</string>
+    <string name="text_makeup_trimface">Beàrr an t-aodann</string>
+    <string name="text_makeup_bigeye">Sùil mhòr</string>
+    <string name="truescanner_normal">Àbhaisteach</string>
     <string name="truescanner_white">Clàr-geal</string>
+    <string name="truescanner">Fìor-sganair</string>
+    <string name="truescanner_remove_glare">Thoir deàrrsadh air falbh</string>
+    <string name="hazebuster_acts">Casg air sgeò</string>
+    <string name="seestraight_acts">Coimhead gu dìreach</string>
+    <string name="seestraight_input_image_is_small">Tha an dealbh ro bheag gus a phròiseasadh.</string>
+    <string name="seestraight_process_fail">Cha b’ urrainn dhuinn an dealbh a phròiseasadh.</string>
+    <string name="trim_video_exit_title">A bheil thu airson na h-atharraichean a thilgeil air falbh?</string>
+    <string name="trim_video_exit_msg">A bheil thu airson na h-atharraichean air a’ video seo a thilgeil air falbh?</string>
+    <string name="trim_video_exit_discard">TILG AIR FALBH</string>
 </resources>
