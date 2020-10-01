@@ -1438,7 +1438,7 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
 
         if (representation instanceof FilterRotateRepresentation) {
             FilterRotateRepresentation r = (FilterRotateRepresentation) representation;
-            r.rotateCW();
+            r.rotateCCW();
         }
         if (representation instanceof FilterMirrorRepresentation) {
             FilterMirrorRepresentation r = (FilterMirrorRepresentation) representation;
