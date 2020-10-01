@@ -565,7 +565,7 @@ public class MasterImage implements RenderingRequestCaller {
         if (mAnimator != null) {
             mAnimator.cancel();
             if (mCurrentLookAnimation == ROTATE_ANIMATION) {
-                mCurrentAnimRotationStartValue += 90;
+                mCurrentAnimRotationStartValue -= 90;
             }
         } else {
             resetAnimBitmap();
@@ -578,7 +578,7 @@ public class MasterImage implements RenderingRequestCaller {
         }
         if (newRepresentation instanceof FilterRotateRepresentation) {
             mCurrentLookAnimation = ROTATE_ANIMATION;
-            mAnimator = ValueAnimator.ofFloat(0, 90);
+            mAnimator = ValueAnimator.ofFloat(0, -90);
             mAnimator.setDuration(500);
         }
         if (newRepresentation instanceof FilterMirrorRepresentation) {
