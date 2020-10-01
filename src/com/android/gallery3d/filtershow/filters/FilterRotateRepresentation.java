@@ -103,6 +103,23 @@ public class FilterRotateRepresentation extends FilterRepresentation {
         }
     }
 
+    public void rotateCCW() {
+        switch(mRotation) {
+            case ZERO:
+                mRotation = Rotation.TWO_SEVENTY;
+                break;
+            case NINETY:
+                mRotation = Rotation.ZERO;
+                break;
+            case ONE_EIGHTY:
+                mRotation = Rotation.NINETY;
+                break;
+            case TWO_SEVENTY:
+                mRotation = Rotation.ONE_EIGHTY;
+                break;
+        }
+    }
+
     public void set(FilterRotateRepresentation r) {
         mRotation = r.mRotation;
     }

@@ -45,7 +45,7 @@ public class ImageRotate extends ImageShow {
     }
 
     public void rotate() {
-        mLocalRep.rotateCW();
+        mLocalRep.rotateCCW();
         invalidate();
     }
 
