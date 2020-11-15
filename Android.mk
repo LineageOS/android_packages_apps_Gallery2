@@ -1,4 +1,3 @@
-ifeq (0, 1)
 ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
 LOCAL_PATH:= $(call my-dir)
 
@@ -64,6 +63,5 @@ ifeq ($(strip $(LOCAL_PACKAGE_OVERRIDES)),)
 # Use the following include to make gallery test apk
 include $(call all-makefiles-under, $(LOCAL_PATH))
 
-endif
 endif
 endif
