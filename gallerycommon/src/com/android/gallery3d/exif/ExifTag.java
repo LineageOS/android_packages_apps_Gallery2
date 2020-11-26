@@ -1014,4 +1014,23 @@ public class ExifTag {
                 + "\noffset: " + mOffset + "\nvalue: " + forceGetValueAsString() + "\n";
     }
 
+    public double getCoordinateAsDouble(String ref) {
+        Rational[] r = getValueAsRationals();
+        try {
+            double degrees = r[0].toDouble();
+            double minutes = r[1].toDouble();
+            double seconds = r[2].toDouble();
+            double result = degrees + minutes / 60.0 + seconds / 3600.0;
+            if ((ref.contains("S") || ref.contains("W"))) {
+                // TODO Determine cause of the strange characters
+                return -result;
+            }
+            return result;
+        } catch (Exception e) {
+            // TODO narrow it down to possible exceptions
+            e.printStackTrace();
+            return r[0].toDouble();
+        }
+    }
+
 }

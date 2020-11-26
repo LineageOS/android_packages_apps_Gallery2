@@ -174,8 +174,10 @@ public class MediaDetails implements Iterable<Entry<Integer, Object>> {
         ExifTag latitudeTag = exif.getTag(ExifInterface.TAG_GPS_LATITUDE);
         ExifTag longitudeTag = exif.getTag(ExifInterface.TAG_GPS_LONGITUDE);
         if (latitudeTag != null && longitudeTag != null) {
-            double latitude = latitudeTag.getValueAsRational(0).toDouble();
-            double longitude = longitudeTag.getValueAsRational(0).toDouble();
+            double latitude = latitudeTag.getCoordinateAsDouble(
+                    exif.getTag(ExifInterface.TAG_GPS_LATITUDE_REF).getValueAsString());
+            double longitude = longitudeTag.getCoordinateAsDouble(
+                    exif.getTag(ExifInterface.TAG_GPS_LONGITUDE_REF).getValueAsString());
             details.addDetail(MediaDetails.INDEX_LOCATION, new double[] {latitude, longitude});
         }
     }
