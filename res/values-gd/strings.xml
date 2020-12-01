@@ -371,7 +371,7 @@
     <string name="accessibility_mode_picker">Taghadh a’ chamara, a’ video no a’ chuairt-sheallaidh</string>
     <string name="accessibility_second_level_indicators">Barrachd uidheaman-smachd nan roghainnean</string>
     <string name="accessibility_back_to_first_level">Dùin uidheaman-smachd nan roghainnean</string>
-    <string name="accessibility_zoom_control">Stiùirich an t-sùm</string>
+    <string name="accessibility_zoom_control">Stiùir an t-sùm</string>
     <string name="accessibility_decrement">Lùghdaich %1$s</string>
     <string name="accessibility_increment">Meudaich %1$s</string>
     <string name="accessibility_check_box">Bogsa-cromaige %1$s</string>
