@@ -126,7 +126,7 @@
     <string name="filtershow_notification_label">A’ sàbhaladh an deilbh</string>
     <string name="filtershow_notification_message">’Ga phròiseasadh…</string>
     <string name="filtershow_save_preset">Sàbhail an ro-sheata làithreach</string>
-    <string name="filtershow_manage_preset">Stiùirich ro-sheataichean a’ chleachdaiche</string>
+    <string name="filtershow_manage_preset">Stiùir ro-sheataichean a’ chleachdaiche</string>
     <string name="filtershow_new_preset">Ro-sheata ùr</string>
     <string name="filtershow_preset_name">Ainm an ro-sheata</string>
     <string name="filtershow_show_info_panel">Fiosrachadh</string>
