@@ -91,4 +91,8 @@
 
     <color name="navigation_accent_disabled">#747474</color>
     <color name="navigation_accent_enabled">@color/white</color>
+
+    <color name="details_text_color">@color/black_transparent_4</color>
+    <color name="multiselect_action_text_color">@color/black_transparent_4</color>
+    <color name="multiselect_icon_color">@color/black</color>
 </resources>
