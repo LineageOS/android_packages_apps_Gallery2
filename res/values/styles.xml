@@ -317,7 +317,7 @@
         <item name="android:background">@drawable/bg_pressed</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowBackground">@android:color/black</item>
@@ -347,7 +347,7 @@
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
     </style>
 
-    <style name="ToolbarPopUpTheme" parent="android:Theme.Material.Light" />
+    <style name="ToolbarPopUpTheme" parent="@android:style/ThemeOverlay.Material.Light" />
 
     <!-- Styles -->
     <style name="MyOverFlow" parent="@android:style/Widget.Material.ActionButton.Overflow">
