@@ -63,7 +63,6 @@
             android:background="@color/primary"
             android:layout_alignParentBottom="true"
             app:menu="@menu/navigation_items"
-            app:itemBackground="@color/primary"
             app:itemIconTint="@drawable/item_bg"
             app:itemTextColor="@drawable/item_bg" />
 
