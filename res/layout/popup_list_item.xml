@@ -20,7 +20,7 @@
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
     android:textSize="18sp"
-    android:textColor="@color/black_transparent_4"
+    android:textColor="@color/primary_text"
     android:singleLine="true"
     android:gravity="center_vertical"
     android:paddingStart="16dp"
