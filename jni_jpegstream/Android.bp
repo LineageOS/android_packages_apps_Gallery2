@@ -1,4 +1,8 @@
 // Jpeg Streaming native
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
 cc_library_shared {
     name: "libjni_gallery_jpegstream",
     system_ext_specific: true,
