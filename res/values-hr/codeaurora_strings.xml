@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">Korak</string>
+    <string name="step_option_desc">Prilagodite korak ubrzanja/premotavanja</string>
+    <string name="setp_option_three_second">3 sekunde</string>
+    <string name="setp_option_six_second">6 sekundi</string>
+    <string name="loop">"Ponavljanje"</string>
+    <string name="single">"Pojedinačna"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Zvučnik UKLJUČEN</string>
+    <string name="speaker_off">Zvučnik ISKLJUČEN</string>
+    <string name="speaker_need_headset">Priključite slušalice za korištenje ove mogućnosti.</string>
+    <string name="single_track">"Jedna pjesma"</string>
+    <string name="input_url">"Unesite URL"</string>
+    <string name="streaming_settings">"Postavke strujanja"</string>
+    <string name="next">"Sljedeći"</string>
+    <string name="previous">"Prethodni"</string>
+    <string name="buffer_size">Veličina međuspremnika</string>
+    <string name="apn">Preferirani APN</string>
+    <string name="rtp_min_port">Min port</string>
+    <string name="rtp_max_port">Max port</string>
+    <string name="set_rtp_min_port">Postavi min port</string>
+    <string name="set_rtp_max_port">Postaviti max port</string>
+    <string name="set_buffer_size">Postavi veličinu međuspremnika</string>
+    <string name="set_apn">Odaberite željeni APN</string>
+    <string name="setting">Postavke</string>
+    <string name="server_timeout_title">"Isteklo vremensko ograničenje poslužitelja"</string>
+    <string name="server_timeout_message">"Ponovno se povezati sa poslužiteljem za pokretanje videozapisa?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Povezivanje nije uspjelo, ponovno povezivanje sa %1$d\u2026"</string>
+    <string name="media_controller_live">Uživo</string>
+    <string name="media_controller_playing">Reproduciranje</string>
+    <string name="media_controller_connecting">Spajanje\u2026</string>
+    <string name="bookmark_add">"Dodaj oznaku"</string>
+    <string name="bookmark_display">"Pokaži oznake"</string>
+    <string name="bookmark_empty">"Nema oznake"</string>
+    <string name="bookmark_exist">"Oznaka već postoji"</string>
+    <string name="bookmark_add_success">"Oznaka dodana"</string>
+    <string name="bookmark_list">"Oznake"</string>
+    <string name="bookmark_title">"Naslov"</string>
+    <string name="bookmark_location">"Lokacija"</string>
+    <string name="delete_all">"Izbriši sve"</string>
+    <string name="default_title">"Zadani naslov"</string>
+    <string name="more_image">Više slika</string>
+    <string name="mute_nosupport">Nije moguće isključiti zvuk: videozapis nije podržan</string>
+    <string name="map_activity_not_found_err">Nema instaliranih aplikacija karata za prikaz lokacije.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d videozapis</item>
+        <item quantity="few">%1$d videozapisa</item>
+        <item quantity="other">%1$d videozapisa</item>
+    </plurals>
+    <string name="cannot_share_items">Maks. broj odabranih stavki za zajedničko korištenje je 300</string>
+    <string name="share_dialogue_title">Dijeli putem</string>
+    <string name="no_faces">Nema lica</string>
+    <string name="fail_trim">Oprostite, ovaj video ne može biti izrezan</string>
+    <string name="can_not_trim">Samo mp4 i 3gp datoteke mogu biti izrezane</string>
+    <string name="drm_license_info">Informacije DRM licence</string>
+    <string name="timeline_title">Vremenska crta</string>
+    <string name="albums_title">Albumi</string>
+    <string name="videos_title">Videozapisi</string>
+    <string name="action_viewtype_list">Prikaz popisa</string>
+    <string name="tvEmptyAlbum">Nema pronađenih fotografija</string>
+    <string name="tvEmptyVideos">Nema pronađenih videozapisa</string>
+    <string name="text_makeup_whiten">Izbjeljivanje</string>
+    <string name="text_makeup_Soften">Omekšavanje</string>
+    <string name="text_makeup_trimface">Trimface</string>
+    <string name="text_makeup_bigeye">Veliko oko</string>
+    <string name="truescanner_normal">Normalno</string>
+    <string name="truescanner_white">Bijela ploča</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Ukloni odbljesak</string>
+    <string name="hazebuster_acts">Haze Buster</string>
+    <string name="seestraight_acts">See Straight</string>
+    <string name="seestraight_input_image_is_small">Unesena slika je premala za obradu.</string>
+    <string name="seestraight_process_fail">Ne mogu obraditi sliku.</string>
+    <string name="trim_video_exit_title">Želite li odbaciti promjene?</string>
+    <string name="trim_video_exit_msg">Odbaciti promjene za ovaj videozapis?</string>
+    <string name="trim_video_exit_discard">ODBACI</string>
+</resources>

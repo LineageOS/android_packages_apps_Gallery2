@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">Ceum</string>
+    <string name="step_option_desc">Gnàthaich ceumannan an toinneimh air adhart/air ais</string>
+    <string name="setp_option_three_second">3 diogan</string>
+    <string name="setp_option_six_second">6 diogan</string>
+    <string name="loop">"Lùb"</string>
+    <string name="single">"Singilte"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Glaodhaire AIR</string>
+    <string name="speaker_off">Glaodhaire DHETH</string>
+    <string name="speaker_need_headset">Cuir a-steach headphones airson an gleus seo a chleachdadh.</string>
+    <string name="single_track">"Traca singilte"</string>
+    <string name="input_url">"Cuir a-steach URL"</string>
+    <string name="streaming_settings">"Roghainnean an t-sruthaidh"</string>
+    <string name="next">"Air adhart"</string>
+    <string name="previous">"Air ais"</string>
+    <string name="buffer_size">Meud a’ bhufair</string>
+    <string name="apn">APN as fheàrr leat</string>
+    <string name="rtp_min_port">Port as lugha</string>
+    <string name="rtp_max_port">Port as motha</string>
+    <string name="set_rtp_min_port">Suidhich am port as lugha</string>
+    <string name="set_rtp_max_port">Suidhich am port as motha</string>
+    <string name="set_buffer_size">Suidhich meud a’ bhufair</string>
+    <string name="set_apn">Suidhich an APN as fheàrr leat</string>
+    <string name="setting">Roghainnean</string>
+    <string name="server_timeout_title">"Crìoch-ùine an fhrithealaiche"</string>
+    <string name="server_timeout_message">"A bheil thu airson ceangal ris an fhrithealaiche a-rithist gus a’ video a chluich?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Dh’fhàillig an ceangal, a’ feuchainn ris an ceangal ri %1$d a dhèanamh às ùr…"</string>
+    <string name="media_controller_live">Beò</string>
+    <string name="media_controller_playing">’Ga chluich</string>
+    <string name="media_controller_connecting">’Ga chceangal…</string>
+    <string name="bookmark_add">"Cuir comharra-lìn ris"</string>
+    <string name="bookmark_display">"Seall na comharran-lìn"</string>
+    <string name="bookmark_empty">"Gun chomharran-lìn"</string>
+    <string name="bookmark_exist">"Tha an comharra-lìn seo ann mu thràth"</string>
+    <string name="bookmark_add_success">"Chaidh an comharra-lìn a chur ris"</string>
+    <string name="bookmark_list">"Comharran-lìn"</string>
+    <string name="bookmark_title">"Tiotal"</string>
+    <string name="bookmark_location">"Ionad"</string>
+    <string name="delete_all">"Sguab às na h-uile"</string>
+    <string name="default_title">"An tiotal tùsail"</string>
+    <string name="more_image">Barrachd dhealbhan</string>
+    <string name="mute_nosupport">Cha ghabh a mhùchadh : chan eil taic ri video</string>
+    <string name="map_activity_not_found_err">Cha deach aplacaid mhapaichean a stàladh a shealladh an t-ionad.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d video</item>
+        <item quantity="two">%1$d video</item>
+        <item quantity="few">%1$d videothan</item>
+        <item quantity="other">%1$d video</item>
+    </plurals>
+    <string name="cannot_share_items">Gabhaidh 300 nì taghta a cho-roinneadh air a char as motha</string>
+    <string name="share_dialogue_title">Co-roinn slighe</string>
+    <string name="no_faces">Gun aodann ann</string>
+    <string name="fail_trim">Tha sinn duilich ach cha ghabh am faidhle video seo a bhearradh</string>
+    <string name="can_not_trim">Cha ghabh ach faidhlichean mp4 ’s 3gp a bhearradh</string>
+    <string name="drm_license_info">Fiosrachadh mun cheadachas DRM</string>
+    <string name="timeline_title">Loidhne-ama</string>
+    <string name="albums_title">Albaman</string>
+    <string name="videos_title">Videothan</string>
+    <string name="action_viewtype_list">Sealladh liosta</string>
+    <string name="tvEmptyAlbum">Cha deach dealbh a lorg</string>
+    <string name="tvEmptyVideos">Cha deach video a lorg</string>
+    <string name="text_makeup_whiten">Dèan nas gile</string>
+    <string name="text_makeup_Soften">Bogaich</string>
+    <string name="text_makeup_trimface">Beàrr an t-aodann</string>
+    <string name="text_makeup_bigeye">Sùil mhòr</string>
+    <string name="truescanner_normal">Àbhaisteach</string>
+    <string name="truescanner_white">Clàr-geal</string>
+    <string name="truescanner">Fìor-sganair</string>
+    <string name="truescanner_remove_glare">Thoir deàrrsadh air falbh</string>
+    <string name="hazebuster_acts">Casg air sgeò</string>
+    <string name="seestraight_acts">Coimhead gu dìreach</string>
+    <string name="seestraight_input_image_is_small">Tha an dealbh ro bheag gus a phròiseasadh.</string>
+    <string name="seestraight_process_fail">Cha b’ urrainn dhuinn an dealbh a phròiseasadh.</string>
+    <string name="trim_video_exit_title">A bheil thu airson na h-atharraichean a thilgeil air falbh?</string>
+    <string name="trim_video_exit_msg">A bheil thu airson na h-atharraichean air a’ video seo a thilgeil air falbh?</string>
+    <string name="trim_video_exit_discard">TILG AIR FALBH</string>
+</resources>

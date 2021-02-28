@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">Cam</string>
+    <string name="step_option_desc">Addasu cam chwarae cyflym/chwarae nôl</string>
+    <string name="setp_option_three_second">3 eiliad</string>
+    <string name="setp_option_six_second">6 eiliad</string>
+    <string name="loop">"Dolen"</string>
+    <string name="single">"Sengl"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Seinydd YMLAEN</string>
+    <string name="speaker_off">Seinydd I FFWRDD</string>
+    <string name="speaker_need_headset">Cysyllta glustffonau i ddefnyddio\'r nodwedd hon.</string>
+    <string name="single_track">"Trac sengl"</string>
+    <string name="input_url">"Rho URL"</string>
+    <string name="streaming_settings">"Gosodiadau ffrydio"</string>
+    <string name="next">"Nesaf"</string>
+    <string name="previous">"Blaenorol"</string>
+    <string name="buffer_size">Maint byffer</string>
+    <string name="apn">APN a ffafrir</string>
+    <string name="rtp_min_port">Porth isaf</string>
+    <string name="rtp_max_port">Porth uchaf</string>
+    <string name="set_rtp_min_port">Gosod y porth isaf</string>
+    <string name="set_rtp_max_port">Gosod y porth uchaf</string>
+    <string name="set_buffer_size">Gosod maint byffer</string>
+    <string name="set_apn">Dewisa APN a ffafrir</string>
+    <string name="setting">Gosodiadau</string>
+    <string name="server_timeout_title">"Terfyn amser y gweinydd"</string>
+    <string name="server_timeout_message">"Ailgysylltu â'r gweinydd i chwarae'r fideo?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Methodd y cysylltiad; yn ceisio cysylltu â %1$d\u2026"</string>
+    <string name="media_controller_live">Byw</string>
+    <string name="media_controller_playing">Yn chwarae</string>
+    <string name="media_controller_connecting">Yn cysylltu\u2026</string>
+    <string name="bookmark_add">"Ychwanegu nod tudalen"</string>
+    <string name="bookmark_display">"Dangos nodau tudalennau"</string>
+    <string name="bookmark_empty">"Dim nodau tudalennau"</string>
+    <string name="bookmark_exist">"Nod tudalen yn bodoli eisoes"</string>
+    <string name="bookmark_add_success">"Ychwanegwyd nod tudalen"</string>
+    <string name="bookmark_list">"Nodau tudalennau"</string>
+    <string name="bookmark_title">"Teitl"</string>
+    <string name="bookmark_location">"Lleoliad"</string>
+    <string name="delete_all">"Dileu'r cwbl"</string>
+    <string name="default_title">"Teitl rhagosodedig"</string>
+    <string name="more_image">Rhagor o ddelweddau</string>
+    <string name="mute_nosupport">Methu â distewi : ni chefnogir fideo</string>
+    <string name="map_activity_not_found_err">Does dim apiau mapio wedi eu gosod i fedru dangos y lleoliad.</string>
+    <plurals name="number_of_videos">
+        <item quantity="zero">%1$d fideos</item>
+        <item quantity="one">%1$d fideo</item>
+        <item quantity="two">%1$d fideo</item>
+        <item quantity="few">%1$d fideo</item>
+        <item quantity="many">%1$d fideo</item>
+        <item quantity="other">%1$d fideo</item>
+    </plurals>
+    <string name="cannot_share_items">Gellir ond rhannu hyd at 300 o eitemau</string>
+    <string name="share_dialogue_title">Rhannu drwy</string>
+    <string name="no_faces">Dim wynebau</string>
+    <string name="fail_trim">Ymddiheuriadau, ond ni ellir tocio\'r ffeil fideo hon</string>
+    <string name="can_not_trim">Dim ond ffeiliau mp4 a 3gp gellir eu tocio</string>
+    <string name="drm_license_info">Gwybodaeth trwydded DRM</string>
+    <string name="timeline_title">Llinell amser</string>
+    <string name="albums_title">Casgliadau</string>
+    <string name="videos_title">Fideos</string>
+    <string name="action_viewtype_list">Golwg rhestr</string>
+    <string name="tvEmptyAlbum">Ni chanfuwyd unrhyw luniau</string>
+    <string name="tvEmptyVideos">Ni chanfuwyd unrhyw fideos</string>
+    <string name="text_makeup_whiten">Gwynnu</string>
+    <string name="text_makeup_Soften">Lleddfu</string>
+    <string name="text_makeup_trimface">Trimwyneb</string>
+    <string name="text_makeup_bigeye">Llygaid mawrion</string>
+    <string name="truescanner_normal">Arferol</string>
+    <string name="truescanner_white">Bwrdd gwyn</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Tynnu llacharedd</string>
+    <string name="hazebuster_acts">Gwaredwr Tawch</string>
+    <string name="seestraight_acts">Gweld yn syth</string>
+    <string name="seestraight_input_image_is_small">Mae\'r ddelwedd mewnbwn rhy fach i\'w phrosesu.</string>
+    <string name="seestraight_process_fail">Methwyd â phrosesu\'r ddelwedd.</string>
+    <string name="trim_video_exit_title">Gwaredu â\'r newidiadau?</string>
+    <string name="trim_video_exit_msg">Cael gwared â\'r newidiadau i\'r fideo hwn?</string>
+    <string name="trim_video_exit_discard">GWAREDU</string>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="details_ms">%1$02d:%2$02d</string>
+    <string name="details_hms">%1$d:%2$02d:%3$02d</string>
+    <string name="delete">Forigi</string>
+    <string name="cancel">Nuligi</string>
+    <string name="share">Konigi</string>
+    <string name="deleted">Forigita</string>
+    <string name="close">Fermi</string>
+    <string name="edit">Redakti</string>
+    <string name="title">Titolo</string>
+    <string name="description">Priskribo</string>
+    <string name="location">Loko</string>
+    <string name="unknown">Nekonata</string>
+    <string name="Import">Enporti</string>
+    <string name="locations">Lokoj</string>
+    <string name="settings">Agordoj</string>
+    <string name="folder_download">Elŝuti</string>
+    <string name="folder_screenshot">Ekrankopio</string>
+    <string name="save" msgid="8140440041190264400">Konservi</string>
+    <string name="pref_camera_location_label">LOKO</string>
+    <plurals name="pref_camera_timer_entry">
+        <item quantity="one">1 sekundo</item>
+        <item quantity="other">%d sekundoj</item>
+    </plurals>
+    <string name="pref_camera_scenemode_entry_night">Nokto</string>
+    <string name="pref_camera_scenemode_label_night">NOKTO</string>
+    <string name="pref_camera_countdown_label_one">1 SEKUNDO</string>
+    <string name="pref_camera_countdown_label_three">3 SEKUNDOJ</string>
+    <string name="pref_camera_countdown_label_ten">10 SEKUNDOJ</string>
+    <string name="pref_camera_countdown_label_fifteen">15 SEKUNDOJ</string>
+    <string name="pref_video_time_lapse_frame_interval_500">0,5 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_1000">1 sekundo</string>
+    <string name="pref_video_time_lapse_frame_interval_1500">1,5 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_2000">2 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_2500">2,5 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_3000">3 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_4000">4 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_5000">5 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_6000">6 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_10000">10 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_12000">12 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_15000">15 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_24000">24 sekundoj</string>
+    <string name="pref_video_time_lapse_frame_interval_30000">0,5 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_60000">1 minuto</string>
+    <string name="pref_video_time_lapse_frame_interval_90000">1,5 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_120000">2 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_150000">2,5 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_180000">3 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_240000">4 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_300000">5 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_360000">6 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_600000">10 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_720000">12 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_900000">15 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000">24 minutoj</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000">0,5 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000">1 horo</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000">2 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000">2,5 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000">3 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000">4 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000">5 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000">6 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000">10 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000">12 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000">15 horoj</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000">24 horoj</string>
+    <string name="time_lapse_seconds">sekundoj</string>
+    <string name="time_lapse_minutes">minutoj</string>
+    <string name="time_lapse_hours">horoj</string>
+    <string name="remember_location_yes">Jes</string>
+    <string name="menu_search">Serĉi</string>
+    <string name="camera_menu_settings_label">AGORDOJ</string>
+</resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">Stap</string>
+    <string name="step_option_desc">Stapgrutte foarút-/tebekspiele oanpasse</string>
+    <string name="setp_option_three_second">3 sekonden</string>
+    <string name="setp_option_six_second">6 sekonden</string>
+    <string name="loop">"Werhelje"</string>
+    <string name="single">"Inkeld"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Lûdsprekker OAN</string>
+    <string name="speaker_off">Lûdsprekker ÚT</string>
+    <string name="speaker_need_headset">Slút in koptelefoan oan om dizze funksje te brûken.</string>
+    <string name="single_track">"Ien nûmer"</string>
+    <string name="input_url">"URL ynfiere"</string>
+    <string name="streaming_settings">"Ynstellingen foar streaming"</string>
+    <string name="next">"Folgjende"</string>
+    <string name="previous">"Foarige"</string>
+    <string name="buffer_size">Buffergrutte</string>
+    <string name="apn">Foarkars-APN</string>
+    <string name="rtp_min_port">Min. poarte</string>
+    <string name="rtp_max_port">Maks. poarte</string>
+    <string name="set_rtp_min_port">Minimale poarte ynstelle</string>
+    <string name="set_rtp_max_port">Maksimale poarte ynstelle</string>
+    <string name="set_buffer_size">Buffergrutte ynstelle</string>
+    <string name="set_apn">Foarkars-APN selektearje</string>
+    <string name="setting">Ynstellingen</string>
+    <string name="server_timeout_title">"Time-out fan de server"</string>
+    <string name="server_timeout_message">"Opnij ferbining meitsje mei de server om de fideo ôf te spyljen?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Ferbining mislearre, probearret opnij ferbining te meitsjen mei %1$d\u2026"</string>
+    <string name="media_controller_live">Live</string>
+    <string name="media_controller_playing">Spilet</string>
+    <string name="media_controller_connecting">Ferbining meitsje\u2026</string>
+    <string name="bookmark_add">"Blêdwizer tafoegje"</string>
+    <string name="bookmark_display">"Blêdwizers toane"</string>
+    <string name="bookmark_empty">"Gjin blêdwizers"</string>
+    <string name="bookmark_exist">"Blêdwizer bestiet al"</string>
+    <string name="bookmark_add_success">"Blêdwizer tafoege"</string>
+    <string name="bookmark_list">"Blêdwizers"</string>
+    <string name="bookmark_title">"Titel"</string>
+    <string name="bookmark_location">"Lokaasje"</string>
+    <string name="delete_all">"Alles fuortsmite"</string>
+    <string name="default_title">"Standerttitel"</string>
+    <string name="more_image">Mear ôfbyldingen</string>
+    <string name="mute_nosupport">Kin lûd net dôvje: fideo net stipe</string>
+    <string name="map_activity_not_found_err">Der is gjin kaarten-app ynstallearre om de lokaasje te toanen.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d fideo</item>
+        <item quantity="other">%1$d fideo\'s</item>
+    </plurals>
+    <string name="cannot_share_items">Maksimaal oantal items dat dield wurde kin is 300</string>
+    <string name="share_dialogue_title">Diele fia</string>
+    <string name="no_faces">Gjin gedichten</string>
+    <string name="fail_trim">Kin dizze fideo net bysnije</string>
+    <string name="can_not_trim">Allinnich mp4- en 3gp-bestannen kinne bysnijen wurde</string>
+    <string name="drm_license_info">DRM-lisinsjeynformaasje</string>
+    <string name="timeline_title">Tiidline</string>
+    <string name="albums_title">Albums</string>
+    <string name="videos_title">Fideo\'s</string>
+    <string name="action_viewtype_list">Listwerjefte</string>
+    <string name="tvEmptyAlbum">Gjin foto\'s fûn</string>
+    <string name="tvEmptyVideos">Gjin fideo\'s fûn</string>
+    <string name="text_makeup_whiten">Witer</string>
+    <string name="text_makeup_Soften">Sêfter</string>
+    <string name="text_makeup_trimface">Gesicht bywurkje</string>
+    <string name="text_makeup_bigeye">Grutte eagen</string>
+    <string name="truescanner_normal">Normaal</string>
+    <string name="truescanner_white">Whiteboard</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Refleksjes fuortsmite</string>
+    <string name="hazebuster_acts">Waas fuortsmite</string>
+    <string name="seestraight_acts">Rjochtút sjen</string>
+    <string name="seestraight_input_image_is_small">Ofbylding is te lyts om te ferwurkjen.</string>
+    <string name="seestraight_process_fail">Kin ôfbylding net ferwurkje.</string>
+    <string name="trim_video_exit_title">Wizigingen ferwerpe?</string>
+    <string name="trim_video_exit_msg">Wizigingen oan dizze fideo ferwerpe?</string>
+    <string name="trim_video_exit_discard">FERWERPE</string>
+</resources>

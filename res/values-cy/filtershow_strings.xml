@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="title_activity_filter_show">Golygydd Lluniau</string>
+    <string name="cannot_load_image">Methu â llwytho\'r ddelwedd!</string>
+    <string name="cannot_edit_original">Methu â golygu\'r gwreiddiol</string>
+    <string name="original_picture_text">@string/original</string>
+    <string name="setting_wallpaper">Yn gosod fel papur wal</string>
+    <string name="download_failure">Methwyd â lawrlwytho\'r llun. Rhwydwaith ddim ar gael.</string>
+    <string name="original">Gwreiddiol</string>
+    <string name="borders" msgid="4461692156695893616">Borderi</string>
+    <string name="custom_border">Addasedig</string>
+    <string name="filtershow_undo">Dadwneud</string>
+    <string name="filtershow_redo">Ail-wneud</string>
+    <string name="show_imagestate_panel">Dangos yr Effeithiau a Osodwyd</string>
+    <string name="hide_imagestate_panel">Cuddio\'r Effeithiau a Osodwyd</string>
+    <string name="export_image">Allforio</string>
+    <string name="print_image">Argraffu</string>
+    <string name="export_flattened">Allforio Delwedd wedi\'i Fflatio</string>
+    <string name="select_output_settings">Bydd y ddelwedd sy\'n cael ei allforio yn gopi, heb yr hanes.</string>
+    <string name="quality">Ansawdd</string>
+    <string name="size">Maint</string>
+    <string name="x">x</string>
+    <string name="menu_settings">Gosodiadau</string>
+    <string name="unsaved">Mae newidiadau i\'r ddelwedd hon heb eu cadw.</string>
+    <string name="save_before_exit">Wyt ti eisiau cadw cyn gadael?</string>
+    <string name="save_and_exit">Cadw a Gadael</string>
+    <string name="save_and_processing">Yn prosesu delwedd maint llawn...</string>
+    <string name="exit">Gadael</string>
+    <string name="history">Hanes</string>
+    <string name="reset">Ailosod</string>
+    <string name="history_original">@string/original</string>
+    <string name="imageState">Effeithiau a Osodwyd</string>
+    <string name="compare_original">Cymharu</string>
+    <string name="apply_effect">Gosod</string>
+    <string name="reset_effect">Ailosod</string>
+    <string name="aspect">Cymhareb</string>
+    <string name="aspect1to1_effect">1:1</string>
+    <string name="aspect4to3_effect">4:3</string>
+    <string name="aspect3to4_effect">3:4</string>
+    <string name="aspect4to6_effect">4:6</string>
+    <string name="aspect5to7_effect">5:7</string>
+    <string name="aspect7to5_effect">7:5</string>
+    <string name="aspect9to16_effect">16:9</string>
+    <string name="aspectNone_effect">Dim</string>
+    <string name="aspectOriginal_effect">@string/original</string>
+    <string name="Fixed">Sefydlog</string>
+    <string name="tinyplanet">Planed Fychan</string>
+    <string name="exposure" msgid="1229093066434614811">Amlygiad</string>
+    <string name="sharpness">Awch</string>
+    <string name="contrast">Cyferbyniaeth</string>
+    <string name="vibrance">Cryfder Lliwiau</string>
+    <string name="saturation">Dyfnder Lliw</string>
+    <string name="bwfilter">Hidlydd DG</string>
+    <string name="wbalance">Awtoliw</string>
+    <string name="hue">Gwawr</string>
+    <string name="shadow_recovery">Cysgodion</string>
+    <string name="highlight_recovery">Goleubwyntio</string>
+    <string name="curvesRGB">Cromliniau</string>
+    <string name="vignette">Twll clo</string>
+    <string name="vignette_main">Twll clo</string>
+    <string name="vignette_exposure">Amlygiad</string>
+    <string name="vignette_saturation">Dyfnder Lliw</string>
+    <string name="vignette_contrast">Cyferbyniaeth</string>
+    <string name="vignette_falloff">Disgyn i ffwrdd</string>
+    <string name="redeye">Llygaid Cochion</string>
+    <string name="imageDraw">Darlunio</string>
+    <string name="straighten" msgid="5217801513491493491">Sythu</string>
+    <string name="crop" msgid="5584000454518174632">Tocio</string>
+    <string name="rotate" msgid="460017689320955494">Cylchdroi</string>
+    <string name="mirror">Fflipio</string>
+    <string name="negative">Negyddol</string>
+    <string name="none" msgid="3601545724573307541">Dim</string>
+    <string name="edge">Ymylon</string>
+    <string name="kmeans">Postereiddio</string>
+    <string name="downsample">Lawrsamplo</string>
+    <string name="grad">Graddedig</string>
+    <string name="editor_grad_brightness">Disgleirdeb</string>
+    <string name="editor_grad_contrast">Cyferbyniaeth</string>
+    <string name="editor_grad_saturation">Dyfnder Lliw</string>
+    <string name="editor_chan_sat_main">Prif</string>
+    <string name="editor_chan_sat_red">Coch</string>
+    <string name="editor_chan_sat_yellow">Melyn</string>
+    <string name="editor_chan_sat_green">Gwyrdd</string>
+    <string name="editor_chan_sat_cyan">Gwyrddlas</string>
+    <string name="editor_chan_sat_blue">Glas</string>
+    <string name="editor_chan_sat_magenta">Magenta</string>
+    <string name="editor_grad_style">Arddull</string>
+    <string name="editor_grad_new">newydd</string>
+    <string name="curves_channel_rgb">RGB</string>
+    <string name="curves_channel_red">Coch</string>
+    <string name="curves_channel_green">Gwyrdd</string>
+    <string name="curves_channel_blue">Glas</string>
+    <string name="draw_style">Arddull</string>
+    <string name="draw_size">Maint</string>
+    <string name="draw_hue">Gwawr</string>
+    <string name="draw_saturation">Dyfnder Lliw</string>
+    <string name="draw_value">Disgleirdeb</string>
+    <string name="draw_color">Lliw</string>
+    <string name="draw_style_line">Llinellau</string>
+    <string name="draw_style_brush_spatter">Marciwr</string>
+    <string name="draw_style_brush_marker">Ysgeintio</string>
+    <string name="draw_clear">Clirio</string>
+    <string name="color_border_size">Trwch</string>
+    <string name="color_border_corner_size">Maint Cornel</string>
+    <string name="color_border_color">Lliw</string>
+    <string name="color_border_clear">Clirio</string>
+    <string name="color_pick_select">Dewis lliw addasedig</string>
+    <string name="color_pick_title">Dewis Lliw</string>
+    <string name="draw_size_title">Dewis Maint</string>
+    <string name="draw_size_accept">Iawn</string>
+    <string name="state_panel_original">Gwreiddiol</string>
+    <string name="state_panel_result">Canlyniad</string>
+    <string name="filtershow_notification_label">Yn Cadw\'r Ddelwedd</string>
+    <string name="filtershow_notification_message">Yn prosesu...</string>
+    <string name="filtershow_save_preset">Cadw\'r rhagosodiad presennol</string>
+    <string name="filtershow_manage_preset">Rheoli rhagosoiadau defnyddiwr</string>
+    <string name="filtershow_new_preset">Rhagosodiad Newydd</string>
+    <string name="filtershow_preset_name">Enw\'r Rhagosodiad</string>
+    <string name="filtershow_show_info_panel">Gwybodaeth</string>
+    <string name="filtershow_show_info_panel_name">Enw Delwedd</string>
+    <string name="filtershow_show_info_panel_size">Maint Delwedd</string>
+    <string name="filtershow_show_info_panel_histogram">Histogram</string>
+    <string name="filtershow_show_info_panel_exif">Data EXIF</string>
+    <string name="filtershow_add_button_looks">Rhagosodiad</string>
+    <string name="filtershow_add_button_versions">Fersiwn</string>
+    <string name="filtershow_version_original">Gwreiddiol</string>
+    <string name="filtershow_version_current">Cyfredol</string>
+    <string name="filtershow_exif_model">Model</string>
+    <string name="filtershow_exif_aperture">Agorfa</string>
+    <string name="filtershow_exif_focal_length">Hyd Ffocal</string>
+    <string name="filtershow_exif_iso">ISO</string>
+    <string name="filtershow_exif_subject_distance">Pellter y Pwnc</string>
+    <string name="filtershow_exif_date">Dyddiad tynnwyd</string>
+    <string name="filtershow_exif_f_stop">F Stop</string>
+    <string name="filtershow_exif_exposure_time">Amser Amlygiad</string>
+    <string name="filtershow_exif_copyright">Hawlfraint</string>
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">পৰ্যায়</string>
+    <string name="step_option_desc">ফাষ্ট ফৰৱাৰ্ড/ ৰিৱাইণ্ড পদক্ষেপ অনুকূলিত কৰক</string>
+    <string name="setp_option_three_second">3 চেকেণ্ড</string>
+    <string name="setp_option_six_second">6 চেকেণ্ড</string>
+    <string name="loop">""লুপ""</string>
+    <string name="single">""একক""</string>
+    <string name="stereo">""ষ্টেৰীঅ""</string>
+    <string name="speaker_on">স্পিকাৰ অন</string>
+    <string name="speaker_off">স্পিকাৰ অফ</string>
+    <string name="speaker_need_headset">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ হেডফোন প্লাগ ইন কৰক</string>
+    <string name="single_track">""একক ট্ৰেক""</string>
+    <string name="input_url">"“URL প্ৰৱিষ্ট কৰক”"</string>
+    <string name="streaming_settings">""ষ্ট্ৰিমিং ছেটিংছ""</string>
+    <string name="next">""পৰৱৰ্তী""</string>
+    <string name="previous">""পূৰ্বৱৰ্তী""</string>
+    <string name="buffer_size">বাফাৰৰ আকাৰ</string>
+    <string name="apn">অগ্ৰাধিকাৰপ্ৰাপ্ত APN</string>
+    <string name="rtp_min_port">মিন পোৰ্ট</string>
+    <string name="rtp_max_port">মেক্স পোৰ্ট</string>
+    <string name="set_rtp_min_port">মিন পোৰ্ট ছেট কৰক</string>
+    <string name="set_rtp_max_port">মেক্স পোৰ্ট ছেট কৰক</string>
+    <string name="set_buffer_size">বাফাৰৰ আকাৰ ছেট কৰক</string>
+    <string name="set_apn">অগ্ৰাধিকাৰপ্ৰাপ্ত APN ছেট কৰক</string>
+    <string name="setting">ছেটিংছ</string>
+    <string name="server_timeout_title">""ছাৰ্ভাৰ টাইম আউট""</string>
+    <string name="server_timeout_message">"“ভিডিঅ' প্লে কৰিবলৈ ছাৰ্ভাৰলৈ পুনৰ সংযোগ কৰিব”?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"“সংযোগ ব্যৰ্থ হৈছে, %1$d\u2026 লৈ পুনৰ সংযোগ কৰিবলৈ চেষ্টা কৰি আছে""</string>
+    <string name="media_controller_live">লাইভ</string>
+    <string name="media_controller_playing">প্লে কৰি আছে</string>
+    <string name="media_controller_connecting">সংযোগ কৰি আছে\u2026</string>
+    <string name="bookmark_add">""বুকমাৰ্ক যোগ দিয়ক""</string>
+    <string name="bookmark_display">""বুকমাৰ্কসমূহ প্ৰদৰ্শন কৰক""</string>
+    <string name="bookmark_empty">""কোনো বুকমাৰ্কসমূহ নাই""</string>
+    <string name="bookmark_exist">"“বুকমাৰ্ক ইতিমধ্যে বিদ্যমান”"</string>
+    <string name="bookmark_add_success">"“বুকমাৰ্ক যোগ কৰা হৈছে”"</string>
+    <string name="bookmark_list">""বুকমাৰ্কসমূহ""</string>
+    <string name="bookmark_title">""শিৰোনামা""</string>
+    <string name="bookmark_location">""অৱস্থান""</string>
+    <string name="delete_all">""সকলোবোৰ মচি পেলাওঁক""</string>
+    <string name="default_title">""ডিফল্ট শিৰোনামা""</string>
+    <string name="more_image">অধিক প্ৰতিচ্ছবি</string>
+    <string name="mute_nosupport">মিউট কৰিব নোৱাৰি : ভিডিঅ\' সমৰ্থিত নহয়</string>
+    <string name="map_activity_not_found_err">অৱস্থান দেখুৱাবলৈ মেপ এপ্প্ ইনষ্টল কৰা নাই।</string>
+    <string name="fail_trim">দুঃখিত, এই ভিডিঅ\' চুটি কৰিব নোৱাৰি</string>
+    <string name="drm_license_info">DRM অনুজ্ঞাপত্ৰৰ তথ্য</string>
+</resources>
