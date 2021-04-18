@@ -22,6 +22,7 @@
     <color name="albumset_background">@color/default_background</color>
 
     <color name="details_text_color">@color/primary_text</color>
+    <color name="empty_text">@color/primary_text</color>
 
     <color name="multiselect_action_text_color">@color/primary_text</color>
     <color name="multiselect_background">@color/primary</color>
