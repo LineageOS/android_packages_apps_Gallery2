@@ -878,7 +878,7 @@ public class TimeLinePage extends ActivityState implements
         if (tvEmptyAlbum == null) {
             tvEmptyAlbum = new TextView(mActivity);
             tvEmptyAlbum.setText(R.string.tvEmptyAlbum);
-            tvEmptyAlbum.setTextColor(Color.parseColor("#8A000000"));
+            tvEmptyAlbum.setTextColor(mActivity.getResources().getColor(R.color.empty_text));
             tvEmptyAlbum.setGravity(Gravity.CENTER);
             tvEmptyAlbum.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
