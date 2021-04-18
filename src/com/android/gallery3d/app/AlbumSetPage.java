@@ -258,7 +258,7 @@ public class AlbumSetPage extends ActivityState implements
         if (tvEmptyAlbum == null) {
             tvEmptyAlbum = new TextView(mActivity);
             tvEmptyAlbum.setText(R.string.tvEmptyAlbum);
-            tvEmptyAlbum.setTextColor(Color.parseColor("#8A000000"));
+            tvEmptyAlbum.setTextColor(R.color.primary_text);
             tvEmptyAlbum.setGravity(Gravity.CENTER);
             tvEmptyAlbum.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             tvEmptyAlbum.setId(R.id.empty_album);
