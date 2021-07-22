@@ -1663,13 +1663,7 @@ public abstract class PhotoPage extends ActivityState implements
             mMediaSet.setShowAlbumsetTimeTitle(false);
         }
 
-        mActionBar.setDisplayOptions(
-                (false && (mSetPathString != null)), true);
-        mActionBar.addOnMenuVisibilityListener(mMenuVisibilityListener);
-        refreshBottomControlsWhenReady();
-        if (((mSecureAlbum == null) && (mSetPathString != null))) {
-            ((GalleryActivity) mActivity).toggleNavBar(false);
-        }
+        showBackButton(true);
         // if (mShowSpinner && mPhotoView.getFilmMode()) {
         // mActionBar.enableAlbumModeMenu(
         // GalleryActionBar.ALBUM_FILMSTRIP_MODE_SELECTED, this);
@@ -1707,9 +1701,21 @@ public abstract class PhotoPage extends ActivityState implements
         if (m3DButton != null) m3DButton.cleanup();
         mPhotoView.destroy();
         mPhotoView = null;
+        showBackButton(false);
         // Remove all pending messages.
         mHandler.removeCallbacksAndMessages(null);
         super.onDestroy();
+    }
+
+    private void showBackButton(boolean mShowing){
+        mActionBar.setDisplayOptions(
+                (mShowing && (mSetPathString != null)), true);
+        if(mShowing) {
+            refreshBottomControlsWhenReady();
+        }
+        if (((mSecureAlbum == null) && (mSetPathString != null))) {
+            ((GalleryActivity) mActivity).toggleNavBar(!mShowing);
+        }
     }
 
     private class MyDetailsSource implements DetailsSource {
