@@ -35,6 +35,8 @@ android_app {
 
     sdk_version: "current",
 
+    target_sdk_version: "28",
+
     jni_libs: [
         "libjni_eglfence",
         "libjni_filtershow_filters",
