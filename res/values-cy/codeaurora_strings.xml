@@ -29,6 +29,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Strings for step option settins -->
     <string name="setp_option_name">Cam</string>
     <string name="step_option_desc">Addasu cam chwarae cyflym/chwarae nôl</string>
     <string name="setp_option_three_second">3 eiliad</string>
@@ -69,8 +70,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Lleoliad"</string>
     <string name="delete_all">"Dileu'r cwbl"</string>
     <string name="default_title">"Teitl rhagosodedig"</string>
+    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Rhagor o ddelweddau</string>
+    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Methu â distewi : ni chefnogir fideo</string>
+    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Does dim apiau mapio wedi eu gosod i fedru dangos y lleoliad.</string>
     <plurals name="number_of_videos">
         <item quantity="zero">%1$d fideos</item>
@@ -80,14 +84,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="many">%1$d fideo</item>
         <item quantity="other">%1$d fideo</item>
     </plurals>
+    <!-- Toast message for share items -->
     <string name="cannot_share_items">Gellir ond rhannu hyd at 300 o eitemau</string>
     <string name="share_dialogue_title">Rhannu drwy</string>
+    <!-- When grouping photos by peoples, the label used for photos that don't
+         have people information in them [CHAR LIMIT=20]-->
     <string name="no_faces">Dim wynebau</string>
+    <!-- The tips of trimming video -->
     <string name="fail_trim">Ymddiheuriadau, ond ni ellir tocio\'r ffeil fideo hon</string>
     <string name="can_not_trim">Dim ond ffeiliau mp4 a 3gp gellir eu tocio</string>
     <string name="drm_license_info">Gwybodaeth trwydded DRM</string>
+    <!-- Timeline screen title -->
     <string name="timeline_title">Llinell amser</string>
+    <!-- Albums screen title -->
     <string name="albums_title">Casgliadau</string>
+    <!-- Videos screen title -->
     <string name="videos_title">Fideos</string>
     <string name="action_viewtype_list">Golwg rhestr</string>
     <string name="tvEmptyAlbum">Ni chanfuwyd unrhyw luniau</string>

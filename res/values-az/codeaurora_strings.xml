@@ -29,6 +29,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Strings for step option settins -->
     <string name="setp_option_name">Addım</string>
     <string name="step_option_desc">Sürətli irəli/geri çəkmə aralıqlarını özəlləşdir</string>
     <string name="setp_option_three_second">3 saniyə</string>
@@ -69,21 +70,31 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Yerləşmə"</string>
     <string name="delete_all">"Hamısını sil"</string>
     <string name="default_title">"Standart başlıq"</string>
+    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Daha çox təsvir</string>
+    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Səsi kəsilə bilmir : video dəstəklənmir</string>
+    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Yerləşməni göstərmək üçün quraşdırılmış xəritə tətbiqi yoxdur.</string>
     <plurals name="number_of_videos">
         <item quantity="one">%1$d video</item>
         <item quantity="other">%1$d video</item>
     </plurals>
+    <!-- Toast message for share items -->
     <string name="cannot_share_items">Paylaşmaq üçün maksimum 300 element seçilə bilər</string>
     <string name="share_dialogue_title">Paylaş</string>
+    <!-- When grouping photos by peoples, the label used for photos that don't
+         have people information in them [CHAR LIMIT=20]-->
     <string name="no_faces">Üz yoxdur</string>
+    <!-- The tips of trimming video -->
     <string name="fail_trim">Bağışlayın, bu video fayl kəsilə bilməz</string>
     <string name="can_not_trim">Yalnız mp4 və 3gp faylları kəsilə bilər</string>
     <string name="drm_license_info">DRM lisenziya məlumatı</string>
+    <!-- Timeline screen title -->
     <string name="timeline_title">Zaman tuneli</string>
+    <!-- Albums screen title -->
     <string name="albums_title">Albomlar</string>
+    <!-- Videos screen title -->
     <string name="videos_title">Videolar</string>
     <string name="action_viewtype_list">Siyahı görünüşü</string>
     <string name="tvEmptyAlbum">Foto tapılmadı</string>

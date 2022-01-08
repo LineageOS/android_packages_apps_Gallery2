@@ -29,6 +29,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Strings for step option settins -->
     <string name="setp_option_name">Skref</string>
     <string name="step_option_desc">Sérsníða þrepun í Áfram/Til baka</string>
     <string name="single">"Einu sinni"</string>
@@ -44,12 +45,22 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="server_timeout_message">"Tengjast þjóninum aftur til að spila myndskeiðið?"</string>
     <string name="videoview_error_text_cannot_connect_retry">"Tengingin brást, reyni aftur að tengjast við %1$d\u2026"</string>
     <string name="default_title">"Sjálfgefinn titill"</string>
+    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Fleiri myndir</string>
+    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
+    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Ekkert kortaforrit er uppsett sem gæti sýnt staðsetninguna.</string>
+    <!-- Toast message for share items -->
     <string name="cannot_share_items">Hámarksfjöldi valinna atriða fyrir deilingu er 300</string>
+    <!-- When grouping photos by peoples, the label used for photos that don't
+         have people information in them [CHAR LIMIT=20]-->
+    <!-- The tips of trimming video -->
     <string name="fail_trim">Því miður, það er ekki hægt að skera af þessari myndskeiðsskrá</string>
     <string name="drm_license_info">Upplýsingar um DRM-notkunarleyfi</string>
+    <!-- Timeline screen title -->
+    <!-- Albums screen title -->
     <string name="albums_title">Hljómplötur</string>
+    <!-- Videos screen title -->
     <string name="seestraight_input_image_is_small">Inntaksmynd er of lítil til að vinna með hana.</string>
     <string name="seestraight_process_fail">Gat ekki unnið með myndina.</string>
     <string name="trim_video_exit_msg">Henda þeim breytingum sem gerðar hafa verið á þessu myndskeiði?</string>

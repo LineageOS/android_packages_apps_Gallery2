@@ -29,6 +29,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Strings for step option settins -->
     <string name="setp_option_name">Ceum</string>
     <string name="step_option_desc">Gnàthaich ceumannan an toinneimh air adhart/air ais</string>
     <string name="setp_option_three_second">3 diogan</string>
@@ -69,8 +70,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"Ionad"</string>
     <string name="delete_all">"Sguab às na h-uile"</string>
     <string name="default_title">"An tiotal bunaiteach"</string>
+    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">Barrachd dhealbhan</string>
+    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
     <string name="mute_nosupport">Cha ghabh a mhùchadh : chan eil taic ri video</string>
+    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">Cha deach aplacaid mhapaichean a stàladh a shealladh an t-ionad.</string>
     <plurals name="number_of_videos">
         <item quantity="one">%1$d video</item>
@@ -78,14 +82,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="few">%1$d videothan</item>
         <item quantity="other">%1$d video</item>
     </plurals>
+    <!-- Toast message for share items -->
     <string name="cannot_share_items">Gabhaidh 300 nì taghta a cho-roinneadh air a char as motha</string>
     <string name="share_dialogue_title">Co-roinn slighe</string>
+    <!-- When grouping photos by peoples, the label used for photos that don't
+         have people information in them [CHAR LIMIT=20]-->
     <string name="no_faces">Gun aodann ann</string>
+    <!-- The tips of trimming video -->
     <string name="fail_trim">Tha sinn duilich ach cha ghabh am faidhle video seo a bhearradh</string>
     <string name="can_not_trim">Cha ghabh ach faidhlichean mp4 ’s 3gp a bhearradh</string>
     <string name="drm_license_info">Fiosrachadh mun cheadachas DRM</string>
+    <!-- Timeline screen title -->
     <string name="timeline_title">Loidhne-ama</string>
+    <!-- Albums screen title -->
     <string name="albums_title">Albaman</string>
+    <!-- Videos screen title -->
     <string name="videos_title">Videothan</string>
     <string name="action_viewtype_list">Sealladh liosta</string>
     <string name="tvEmptyAlbum">Cha deach dealbh a lorg</string>

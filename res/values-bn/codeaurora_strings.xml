@@ -29,6 +29,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Strings for step option settins -->
     <string name="setp_option_name">ধাপ</string>
     <string name="setp_option_three_second">৩ সেকেন্ড</string>
     <string name="setp_option_six_second">৬ সেকেন্ড</string>
@@ -43,6 +44,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_location">"অবস্থান"</string>
     <string name="delete_all">"সব মুছে ফেলুন"</string>
     <string name="default_title">"পূর্ব-নির্ধারিত শিরনাম"</string>
+    <!-- A label describing to link website [CHAR LIMIT=30] -->
     <string name="more_image">আরো ছবি</string>
+    <!-- Toast if the muted video is not supported. [CHAR LIMIT=80] -->
+    <!-- The message is shown in toast when click showOnMap Menu and there is no map app -->
     <string name="map_activity_not_found_err">অবস্থান দেখানোর জন্য কোনো মানচিত্র অ্যাপ ইনস্টল করা নেই।</string>
+    <!-- Toast message for share items -->
+    <!-- When grouping photos by peoples, the label used for photos that don't
+         have people information in them [CHAR LIMIT=20]-->
+    <!-- The tips of trimming video -->
+    <!-- Timeline screen title -->
+    <!-- Albums screen title -->
+    <!-- Videos screen title -->
 </resources>
