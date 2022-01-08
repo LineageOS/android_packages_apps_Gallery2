@@ -38,7 +38,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="stereo">"Stereo"</string>
     <string name="speaker_on">Glaodhaire AIR</string>
     <string name="speaker_off">Glaodhaire DHETH</string>
-    <string name="speaker_need_headset">Cuir a-steach headphones airson an gleus seo a chleachdadh.</string>
+    <string name="speaker_need_headset">Cuir a-steach cluais-fhònaichean airson an gleus seo a chleachdadh.</string>
     <string name="single_track">"Traca singilte"</string>
     <string name="input_url">"Cuir a-steach URL"</string>
     <string name="streaming_settings">"Roghainnean an t-sruthaidh"</string>
@@ -55,10 +55,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="setting">Roghainnean</string>
     <string name="server_timeout_title">"Crìoch-ùine an fhrithealaiche"</string>
     <string name="server_timeout_message">"A bheil thu airson ceangal ris an fhrithealaiche a-rithist gus a’ video a chluich?"</string>
-    <string name="videoview_error_text_cannot_connect_retry">"Dh’fhàillig an ceangal, a’ feuchainn ris an ceangal ri %1$d a dhèanamh às ùr…"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Dh’fhàillig an ceangal, a’ feuchainn ris an ceangal ri %1$d a dhèanamh às ùr\u2026"</string>
     <string name="media_controller_live">Beò</string>
     <string name="media_controller_playing">’Ga chluich</string>
-    <string name="media_controller_connecting">’Ga chceangal…</string>
+    <string name="media_controller_connecting">’Ga cheangal\u2026</string>
     <string name="bookmark_add">"Cuir comharra-lìn ris"</string>
     <string name="bookmark_display">"Seall na comharran-lìn"</string>
     <string name="bookmark_empty">"Gun chomharran-lìn"</string>
@@ -68,7 +68,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_title">"Tiotal"</string>
     <string name="bookmark_location">"Ionad"</string>
     <string name="delete_all">"Sguab às na h-uile"</string>
-    <string name="default_title">"An tiotal tùsail"</string>
+    <string name="default_title">"An tiotal bunaiteach"</string>
     <string name="more_image">Barrachd dhealbhan</string>
     <string name="mute_nosupport">Cha ghabh a mhùchadh : chan eil taic ri video</string>
     <string name="map_activity_not_found_err">Cha deach aplacaid mhapaichean a stàladh a shealladh an t-ionad.</string>

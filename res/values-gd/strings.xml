@@ -19,9 +19,9 @@
     <string name="details_ms">%1$02d:%2$02d</string>
     <string name="details_hms">%1$d:%2$02d:%3$02d</string>
     <string name="movie_view_label">Cluicheadair video</string>
-    <string name="loading_video">A’ luchdadh a’ video…</string>
+    <string name="loading_video">A’ luchdadh a’ video\u2026</string>
     <string name="loading_image">A’ luchdadh an deilbh\u2026</string>
-    <string name="loading_account">A’ luchdadh a’ chunntais…</string>
+    <string name="loading_account">A’ luchdadh a’ chunntais\u2026</string>
     <string name="resume_playing_title">Lean air a’ video</string>
     <string name="resume_playing_message">An lean thu air a’ chluich o %s ?</string>
     <string name="resume_playing_resume">Lean air a chluich</string>
@@ -33,7 +33,7 @@
     <string name="crop_save_text">Ceart ma-thà</string>
     <string name="ok">Ceart ma-thà</string>
     <string name="multiface_crop_help">Suath ri aodann airson tòiseachadh.</string>
-    <string name="saving_image">A’ sàbhaladh an deilbh…</string>
+    <string name="saving_image">A’ sàbhaladh an deilbh\u2026</string>
     <string name="filtershow_saving_image">A’ sàbhaladh an deilbh gu <xliff:g id="album_name">%1$s</xliff:g> \u2026</string>
     <string name="save_error">Cha b’ urrainn dhuinn an dealbh beàrrte a shàbhaladh.</string>
     <string name="crop_label">Beàrr an dealbh</string>
@@ -43,9 +43,9 @@
     <string name="select_item">Tagh nì</string>
     <string name="select_album">Tagh albam</string>
     <string name="select_group">Tagh buidheann</string>
-    <string name="set_image">Cleachd an dealbh mar</string>
+    <string name="set_image">Suidhich an dealbh mar</string>
     <string name="set_wallpaper">Suidhich pàipear-balla</string>
-    <string name="wallpaper">A’ suidheachadh a’ phàipeir-bhalla…</string>
+    <string name="wallpaper">A’ suidheachadh a’ phàipeir-bhalla\u2026</string>
     <string name="camera_setas_wallpaper">Pàipear-balla</string>
     <string name="delete">Sguab às</string>
     <plurals name="delete_selection">
@@ -145,7 +145,7 @@
     <string name="unit_mm">mm</string>
     <string name="manual">A làimh</string>
     <string name="auto">Fèin-obrachail</string>
-    <string name="flash_on">Bhoillsg solas</string>
+    <string name="flash_on">Solas-boillsgidh air</string>
     <string name="flash_off">Gun solas-boillsgidh</string>
     <string name="unknown">Chan eil fhios</string>
     <string name="ffx_original">Tùsail</string>
@@ -171,7 +171,7 @@
     <string name="set_label_picasa_albums">Albaman Picasa</string>
     <string name="free_space_format"><xliff:g id="bytes">%s</xliff:g> saor</string>
     <string name="size_below"><xliff:g id="size">%1$s</xliff:g> no nas lugha</string>
-    <string name="size_above"><xliff:g id="size">%1$s</xliff:g> nas motha</string>
+    <string name="size_above"><xliff:g id="size">%1$s</xliff:g> no nas motha</string>
     <string name="size_between"><xliff:g id="min_size">%1$s</xliff:g> gu <xliff:g id="max_size">%2$s</xliff:g></string>
     <string name="Import">Ion-phortaich</string>
     <string name="import_complete">Chaidh ion-phortadh</string>
@@ -201,7 +201,7 @@
     <string name="no_external_storage_title">Chan eil stòras ann</string>
     <string name="no_external_storage">Chan eil stòras air an taobh a-muigh</string>
     <string name="switch_photo_filmstrip">Sealladh stiall film</string>
-    <string name="switch_photo_grid">Sealladh a’ ghriod</string>
+    <string name="switch_photo_grid">Sealladh griod</string>
     <string name="switch_photo_fullscreen">Sealladh làn-sgrìn</string>
     <string name="trimming">’Ga bhearradh</string>
     <string name="muting">’Ga mhùchadh</string>
@@ -236,10 +236,10 @@
     <string name="cannot_connect_camera">Cha ghabh ceangal a dhèanamh ris a’ chamara.</string>
     <string name="camera_disabled">Chaidh an camara a chur à comas ri linn poileasaidhean tèarainteachd.</string>
     <string name="camera_label">Camara</string>
-    <string name="wait">Fuirich ort…</string>
+    <string name="wait">Fuirich ort\u2026</string>
     <string name="no_storage" product="nosdcard">Munntaich stòras USB mus cleachd thu an camara.</string>
     <string name="no_storage" product="default">Cuir a-steach cairt SD mus cleachd thu an camara.</string>
-    <string name="preparing_sd" product="nosdcard">Ag ullachadh an stòrais USB…</string>
+    <string name="preparing_sd" product="nosdcard">Ag ullachadh an stòrais USB\u2026</string>
     <string name="preparing_sd" product="default">Ag ullachadh a’ chairt SD…</string>
     <string name="access_sd_fail" product="nosdcard">Cha b’ urrainn dhuinn an stòras USB inntrigeadh.</string>
     <string name="access_sd_fail" product="default">Cha b’ urrainn dhuinn a’ chairt SD inntrigeadh.</string>
@@ -342,7 +342,7 @@
     <string name="pano_dialog_title">Cuairt-shealladh</string>
     <string name="pano_capture_indication">A’ glacadh cuairt-shealladh</string>
     <string name="pano_dialog_waiting_previous">A’ feitheamh ris a’ chuairt-shealladh roimhe</string>
-    <string name="pano_review_saving_indication_str">’Ga shàbhaladh…</string>
+    <string name="pano_review_saving_indication_str">’Ga shàbhaladh\u2026</string>
     <string name="pano_review_rendering">A’ reandaradh a’ chuairt-sheallaidh</string>
     <string name="tap_to_focus">Suath ris airson fòcas.</string>
     <string name="pref_video_effect_title">Èifeachdan</string>
@@ -358,7 +358,7 @@
     <string name="effect_backdropper_gallery">A’ video agad</string>
     <string name="bg_replacement_message">Cuir an t-uidheam agad sìos.\nRach a-mach à sealladh greis.</string>
     <string name="video_snapshot_hint">Suath ris airson dealbh a thogail rè a’ chlàraidh.</string>
-    <string name="video_recording_started">Tòisich clàradh a’ video.</string>
+    <string name="video_recording_started">Thòisich clàradh a’ video.</string>
     <string name="video_recording_stopped">Stad clàradh a’ video.</string>
     <string name="disable_video_snapshot_hint">Tha snapshot video à comas fhad ’s a tha na h-èifeachdan sònraichte air.</string>
     <string name="clear_effects">Falamhaich na h-èifeachdan</string>
@@ -367,7 +367,7 @@
     <string name="accessibility_shutter_button">Putan an t-siutair</string>
     <string name="accessibility_menu_button">Putan a’ chlàir-thaice</string>
     <string name="accessibility_review_thumbnail">An dealbh as ùire</string>
-    <string name="accessibility_camera_picker">Geàrr leum eadar camara a’ bheulaibh ’s a’ chùlaibh</string>
+    <string name="accessibility_camera_picker">Geàrr leum eadar camara beòil ’s cùil</string>
     <string name="accessibility_mode_picker">Taghadh a’ chamara, a’ video no a’ chuairt-sheallaidh</string>
     <string name="accessibility_second_level_indicators">Barrachd uidheaman-smachd nan roghainnean</string>
     <string name="accessibility_back_to_first_level">Dùin uidheaman-smachd nan roghainnean</string>
@@ -382,7 +382,7 @@
     <string name="accessibility_switch_to_refocus">Atharraich gu ath-fhòcas</string>
     <string name="accessibility_review_cancel">Sgrùdadh – Sguir dheth</string>
     <string name="accessibility_review_ok">Sgrùdadh – Deiseil</string>
-    <string name="accessibility_review_retake">Sgrùdadh – tog a-rithist e</string>
+    <string name="accessibility_review_retake">Sgrùdadh – Tog a-rithist e</string>
     <string name="accessibility_play_video">Cluich a’ video</string>
     <string name="accessibility_pause_video">Cuir a’ video ’na stad</string>
     <string name="accessibility_reload_video">Ath-luchdaich a’ video</string>
@@ -438,10 +438,10 @@
     <string name="set_timer_help">Tha an tìmear cunntaidh sìos dheth. Cuir air e airson cunntadh sìos mus dèid dealbh a thogail.</string>
     <string name="set_duration">Suidhich an fhaid ann an diogan</string>
     <string name="count_down_title_text">A’ cunntadh sìos airson dealbh a thogail</string>
-    <string name="remember_location_title">A bheil thu airson ionadan nan dealbhan a chur an cuimhne?</string>
+    <string name="remember_location_title">An cuimhnich sinn ionadan nan dealbh dhut?</string>
     <string name="remember_location_prompt">Cuir tagaichean ris na dealbhan is videothan agad leis na h-ionadan far an deach an togail.\n\nGheibh aplacaidean eile cothrom air an fhiosrachadh seo cuide ris na dealbhan a shàbhail thu.</string>
-    <string name="remember_location_no">Chan eil, mòran taing</string>
-    <string name="remember_location_yes">Tha</string>
+    <string name="remember_location_no">Cha chuimhnich</string>
+    <string name="remember_location_yes">Cuimhnichidh</string>
     <string name="menu_camera">Camara</string>
     <string name="menu_search">Lorg</string>
     <string name="tab_photos">Dealbhan</string>
