@@ -76,7 +76,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="one">%1$d video</item>
         <item quantity="other">%1$d video</item>
     </plurals>
-    <string name="cannot_share_items">Paylaşım için seçilebilecek maksimum öğe sayısı 300\'dür</string>
+    <string name="cannot_share_items">Paylaşım için seçilebilecek maksimum öge sayısı 300\'dür</string>
     <string name="share_dialogue_title">Şununla paylaş</string>
     <string name="no_faces">Yüz yok</string>
     <string name="fail_trim">Üzgünüz, bu video kesilemiyor</string>

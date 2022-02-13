@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="title_activity_filter_show">Editore de fotografias</string>
+    <string name="cannot_load_image">Non faghet a carrigare s\'immàgine!</string>
+    <string name="cannot_edit_original">Non faghet a editare s\'originale</string>
+    <string name="original_picture_text">@string/original</string>
+    <string name="setting_wallpaper">Impostende s\'isfundu</string>
+    <string name="download_failure">No at fatu a carrigare sa fotografia. Sa rete no est a disponimentu.</string>
+    <string name="original">Originale</string>
+    <string name="custom_border">Personaliza</string>
+    <string name="filtershow_undo">Annulla</string>
+    <string name="filtershow_redo">Torra a fàghere</string>
+    <string name="show_imagestate_panel">Mustra efetos aplicados</string>
+    <string name="hide_imagestate_panel">Cua efetos aplicados</string>
+    <string name="export_image">Esporta</string>
+    <string name="print_image">Imprenta</string>
+    <string name="export_flattened">Esporta immàgine apianada</string>
+    <string name="select_output_settings">S\'immàgine esportada at a èssere una còpia, foras dae sa cronologia.</string>
+    <string name="quality">Calidade</string>
+    <string name="size">Mannària</string>
+    <string name="x">x</string>
+    <string name="menu_settings">Impostatziones</string>
+    <string name="unsaved">B\'at càmbios non sarvados in custa immàgine.</string>
+    <string name="save_before_exit">Boles sarvare in antis de nd\'essire?</string>
+    <string name="save_and_exit">Sarva e essi</string>
+    <string name="save_and_processing">Protzessende s\'immàgine cun risolutzione cumpleta...</string>
+    <string name="exit">Essi</string>
+    <string name="history">Cronologia</string>
+    <string name="reset">Torra a impostare</string>
+    <string name="history_original">@string/original</string>
+    <string name="imageState">Efetos aplicados</string>
+    <string name="compare_original">Cunfronta</string>
+    <string name="apply_effect">Àplica</string>
+    <string name="reset_effect">Torra a impostare</string>
+    <string name="aspect">Aspetu</string>
+    <string name="aspect1to1_effect">1:1</string>
+    <string name="aspect4to3_effect">4:3</string>
+    <string name="aspect3to4_effect">3:4</string>
+    <string name="aspect4to6_effect">4:6</string>
+    <string name="aspect5to7_effect">5:7</string>
+    <string name="aspect7to5_effect">7:5</string>
+    <string name="aspect9to16_effect">16:9</string>
+    <string name="aspectNone_effect">Perunu</string>
+    <string name="aspectOriginal_effect">@string/original</string>
+    <string name="Fixed">Fissu</string>
+    <string name="tinyplanet">Praneta piticu</string>
+    <string name="exposure" msgid="1229093066434614811">Espositzione</string>
+    <string name="sharpness">Nitidesa</string>
+    <string name="contrast">Cuntrastu</string>
+    <string name="vibrance">Intensidade</string>
+    <string name="saturation">Saturatzione</string>
+    <string name="bwfilter">Filtru b/n</string>
+    <string name="wbalance">Colore automàticu</string>
+    <string name="hue">Tonalidade</string>
+    <string name="shadow_recovery">Umbras</string>
+    <string name="highlight_recovery">Lughes artas</string>
+    <string name="curvesRGB">Curvas</string>
+    <string name="vignette">Vigneta</string>
+    <string name="vignette_main">Vigneta</string>
+    <string name="vignette_exposure">Espositzione</string>
+    <string name="vignette_saturation">Saturatzione</string>
+    <string name="vignette_contrast">Cuntrastu</string>
+    <string name="vignette_falloff">Minimadura</string>
+    <string name="redeye">Ogru ruju</string>
+    <string name="imageDraw">Disegna</string>
+    <string name="straighten" msgid="5217801513491493491">Dereta</string>
+    <string name="crop" msgid="5584000454518174632">Sega</string>
+    <string name="rotate" msgid="460017689320955494">Gira</string>
+    <string name="mirror">Ispricu</string>
+    <string name="negative">Negativu</string>
+    <string name="none" msgid="3601545724573307541">Perunu</string>
+    <string name="edge">Oros</string>
+    <string name="kmeans">Posteriza</string>
+    <string name="downsample">Mìnima calidade</string>
+    <string name="grad">Graduada</string>
+    <string name="editor_grad_brightness">Lugore</string>
+    <string name="editor_grad_contrast">Cuntrastu</string>
+    <string name="editor_grad_saturation">Saturatzione</string>
+    <string name="editor_chan_sat_main">Printzipale</string>
+    <string name="editor_chan_sat_red">Ruju</string>
+    <string name="editor_chan_sat_yellow">Grogu</string>
+    <string name="editor_chan_sat_green">Birde</string>
+    <string name="editor_chan_sat_cyan">Asulu</string>
+    <string name="editor_chan_sat_blue">Biaitu</string>
+    <string name="editor_chan_sat_magenta">Magenta</string>
+    <string name="editor_grad_style">Istile</string>
+    <string name="editor_grad_new">nou</string>
+    <string name="curves_channel_rgb">RGB</string>
+    <string name="curves_channel_red">Ruju</string>
+    <string name="curves_channel_green">Birde</string>
+    <string name="curves_channel_blue">Biaitu</string>
+    <string name="draw_style">Istile</string>
+    <string name="draw_size">Mannària</string>
+    <string name="draw_hue">Tonalidade</string>
+    <string name="draw_saturation">Saturatzione</string>
+    <string name="draw_value">Lugore</string>
+    <string name="draw_color">Colore</string>
+    <string name="draw_style_line">Lìnias</string>
+    <string name="draw_style_brush_spatter">Marcadore</string>
+    <string name="draw_style_brush_marker">Istrichidda</string>
+    <string name="draw_clear">Lìmpia</string>
+    <string name="color_border_size">Grussària</string>
+    <string name="color_border_corner_size">Mannària de s\'àngulu</string>
+    <string name="color_border_color">Colore</string>
+    <string name="color_border_clear">Lìmpia</string>
+    <string name="color_pick_select">Sèbera colore personalizadu</string>
+    <string name="color_pick_title">Seletziona colore</string>
+    <string name="draw_size_title">Seletziona sa mannària</string>
+    <string name="draw_size_accept">AB</string>
+    <string name="state_panel_original">Originale</string>
+    <string name="state_panel_result">Resurtadu</string>
+    <string name="filtershow_notification_label">Sarvende s\'immàgine</string>
+    <string name="filtershow_notification_message">Protzessende...</string>
+    <string name="filtershow_save_preset">Sarva su valore predefinidu</string>
+    <string name="filtershow_manage_preset">Gesti is predefinitziones de s\'utente</string>
+    <string name="filtershow_new_preset">Predefinitzione noa</string>
+    <string name="filtershow_preset_name">Nùmene de sa predefinitzione</string>
+    <string name="filtershow_show_info_panel">Informatziones</string>
+    <string name="filtershow_show_info_panel_name">Nùmene de s\'immàgine</string>
+    <string name="filtershow_show_info_panel_size">Mannària de s\'immàgine</string>
+    <string name="filtershow_show_info_panel_histogram">Istogramma</string>
+    <string name="filtershow_show_info_panel_exif">Datos de EXIF</string>
+    <string name="filtershow_add_button_looks">Predefinitzione</string>
+    <string name="filtershow_add_button_versions">Versione</string>
+    <string name="filtershow_version_original">Originale</string>
+    <string name="filtershow_version_current">Atuale</string>
+    <string name="filtershow_exif_model">Modellu</string>
+    <string name="filtershow_exif_aperture">Abertura</string>
+    <string name="filtershow_exif_focal_length">Longària focale</string>
+    <string name="filtershow_exif_iso">ISO</string>
+    <string name="filtershow_exif_subject_distance">Distàntzia de su sugetu</string>
+    <string name="filtershow_exif_date">Data de creatzione</string>
+    <string name="filtershow_exif_f_stop">Raportu focale</string>
+    <string name="filtershow_exif_exposure_time">Tempus de espositzione</string>
+    <string name="filtershow_exif_copyright">Deretos de autore</string>
+</resources>
