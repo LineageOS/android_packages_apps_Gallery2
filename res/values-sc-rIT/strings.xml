@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Galleria</string>
+    <string name="gadget_title">Istrutura de s\'immàgine</string>
+    <string name="details_ms">%1$02d:%2$02d</string>
+    <string name="details_hms">%1$d:%2$02d:%3$02d</string>
+    <string name="movie_view_label">Riprodutore de vìdeos</string>
+    <string name="loading_video">Carrighende vìdeu\u2026</string>
+    <string name="loading_image">Carrighende immàgine\u2026</string>
+    <string name="loading_account">Carrighende contu\u2026</string>
+    <string name="resume_playing_title">Sighi cun su vìdeu</string>
+    <string name="resume_playing_message">Sighire cun sa riprodutzione dae %s ?</string>
+    <string name="resume_playing_resume">Sighi sa riprodutzione</string>
+    <string name="loading">Carrighende\u2026</string>
+    <string name="fail_to_load">No at fatu a carrigare</string>
+    <string name="fail_to_load_image">No at fatu a carrigare s\'immàgine</string>
+    <string name="no_thumbnail">Peruna miniatura</string>
+    <string name="resume_playing_restart">Torra a cumintzare</string>
+    <string name="crop_save_text">AB</string>
+    <string name="ok">AB</string>
+    <string name="multiface_crop_help">Toca una fache pro cumintzare.</string>
+    <string name="saving_image">Sarvende s\'immàgine\u2026</string>
+    <string name="filtershow_saving_image">Sarvende s\'immàgine in <xliff:g id="album_name">%1$s</xliff:g> \u2026</string>
+    <string name="save_error">No at fatu a sarvare s\'imàgine segada.</string>
+    <string name="crop_label">Sega s\'imàgine</string>
+    <string name="select_image">Seletziona fotografia</string>
+    <string name="select_video">Seletziona vìdeu</string>
+    <string name="select_item">Seletziona elementu</string>
+    <string name="select_album">Seletziona album</string>
+    <string name="select_group">Seletziona grupu</string>
+    <string name="set_image">Imposta immàgine comente</string>
+    <string name="set_wallpaper">Imposta isfundu</string>
+    <string name="wallpaper">Impostatzione isfundu\u2026</string>
+    <string name="camera_setas_wallpaper">Immàgine de isfundu</string>
+    <string name="delete">Cantzella</string>
+    <plurals name="delete_selection">
+        <item quantity="one">Boles cantzellare s\'elementu seletzionadu?</item>
+        <item quantity="other">Boles cantzellare is elementos seletzionados?</item>
+    </plurals>
+    <string name="confirm">Cunfirma</string>
+    <string name="cancel">Annulla</string>
+    <string name="share">Cumpartzidura</string>
+    <string name="share_panorama">Cumpartzi panoràmica</string>
+    <string name="share_as_photo">Cumpartzi comente fotografia</string>
+    <string name="deleted">Cantzelladu</string>
+    <string name="undo">ISCONTZA</string>
+    <string name="select_all">Seletziona totu</string>
+    <string name="deselect_all">Deseletziona totu</string>
+    <string name="slideshow">Presentatzione</string>
+    <string name="details">Detàllios</string>
+    <string name="details_title">%1$d de %2$d elementos:</string>
+    <string name="close">Serra</string>
+    <string name="switch_to_camera">Passa a sa fotocàmera</string>
+    <plurals name="number_of_items_selected">
+        <item quantity="one">%1$d seletzionadu</item>
+        <item quantity="other">%1$d seletzionados</item>
+    </plurals>
+    <plurals name="number_of_albums_selected">
+        <item quantity="one">%1$d seletzionadu</item>
+        <item quantity="other">%1$d seletzionados</item>
+    </plurals>
+    <plurals name="number_of_groups_selected">
+        <item quantity="one">%1$d seletzionadu</item>
+        <item quantity="other">%1$d seletzionados</item>
+    </plurals>
+    <string name="show_on_map">Mustra in sa mapa</string>
+    <string name="rotate_left">Gira a manca</string>
+    <string name="rotate_right">Gira a dereta</string>
+    <string name="no_such_item">No at fatu a ddos agatare.</string>
+    <string name="edit">Modìfica</string>
+    <string name="simple_edit">Modìfica simpre</string>
+    <string name="process_caching_requests">Protzessende is rechestas de memòria temporànea</string>
+    <string name="caching_label">Imbiende a sa memòria temporànea\u2026</string>
+    <string name="crop_action">Sega</string>
+    <string name="set_as">Imposta comente</string>
+    <string name="video_mute_err">Non faghet a pònnere su vìdeu a sa muda.</string>
+    <string name="video_err">Non faghet a reprodùere su vìdeu.</string>
+    <string name="group_by_location">Pro positzione</string>
+    <string name="group_by_time">Pro tempus</string>
+    <string name="group_by_tags">Pro etichetas</string>
+    <string name="group_by_faces">Pro persones</string>
+    <string name="group_by_album">Pro albums</string>
+    <string name="group_by_size">Pro mannària</string>
+    <string name="untagged">Sena eticheta</string>
+    <string name="no_location">Peruna positzione</string>
+    <string name="no_connectivity">B\'at positziones chi forsis non s\'ant a identificare pro problemas de rete.</string>
+    <string name="sync_album_error">No at fatu a iscarrigare is fotografias in custu album. Torra a proare prus a tardu.</string>
+    <string name="show_images_only">Immàgines isceti</string>
+    <string name="show_videos_only">Vìdeos isceti</string>
+    <string name="show_all">Immàgines e vìdeos</string>
+    <string name="appwidget_title">Galleria de fotografias</string>
+    <string name="appwidget_empty_text">Peruna forografia.</string>
+    <string name="crop_saved">        Immàgine segada sarvada in <xliff:g id="folder_name">%s</xliff:g>.</string>
+    <string name="no_albums_alert">Perunu album a disponimentu.</string>
+    <string name="empty_album">O immàgines/vìdeos a disponimentu.</string>
+    <string name="picasa_posts">Publicatziones</string>
+    <string name="make_available_offline">A disponimentu fora de lìnia</string>
+    <string name="sync_picasa_albums">Agiorna</string>
+    <string name="done">Fatu</string>
+    <string name="sequence_in_set">%1$d de %2$d elementos:</string>
+    <string name="title">Tìtulu</string>
+    <string name="description">Descritzione</string>
+    <string name="time">Ora</string>
+    <string name="location">Positzione</string>
+    <string name="path">Percursu</string>
+    <string name="width">Larghesa</string>
+    <string name="height">Artària</string>
+    <string name="orientation">Orientatzione</string>
+    <string name="duration">Durada</string>
+    <string name="mimetype">Genia MIME</string>
+    <string name="file_size">Mannària archìviu</string>
+    <string name="maker">Fatu dae</string>
+    <string name="model">Modellu</string>
+    <string name="flash">Flash</string>
+    <string name="aperture">Abertura</string>
+    <string name="focal_length">Longària focale</string>
+    <string name="white_balance">Bilantzu de biancu</string>
+    <string name="exposure_time">Tempus de espositzione</string>
+    <string name="iso">ISO</string>
+    <string name="unit_mm">mm</string>
+    <string name="manual">Manuale</string>
+    <string name="auto">Automàticu</string>
+    <string name="flash_on">Flash ativadu</string>
+    <string name="flash_off">Chene flash</string>
+    <string name="unknown">Disconnotu</string>
+    <string name="ffx_original">Originale</string>
+    <string name="ffx_vintage">Vintage</string>
+    <string name="ffx_instant">Istantàneu</string>
+    <string name="ffx_bleach">Iscolorire</string>
+    <string name="ffx_blue_crush">Biaitu</string>
+    <string name="ffx_bw_contrast">B/N</string>
+    <string name="ffx_punch">Punch</string>
+    <string name="ffx_x_process">Protzessu X</string>
+    <string name="ffx_washout">Cafelate</string>
+    <string name="ffx_washout_color">Litho</string>
+    <plurals name="make_albums_available_offline">
+        <item quantity="one">Faghende chi s\'album si potzat bìdere chene lìnia.</item>
+        <item quantity="other">Faghende chi is albums si potzant bìdere chene lìnia.</item>
+    </plurals>
+    <string name="try_to_set_local_album_available_offline">        Custu elementu est allogadu in locale e a disponimentu foras de lìnia.</string>
+    <string name="set_label_all_albums">Totu is albums</string>
+    <string name="set_label_local_albums">Albums locales</string>
+    <string name="set_label_mtp_devices">Dispositivos MTP</string>
+    <string name="set_label_picasa_albums">Albums de Picasa</string>
+    <string name="free_space_format"><xliff:g id="bytes">%s</xliff:g> lìberos</string>
+    <string name="size_below"><xliff:g id="size">%1$s</xliff:g> o prus pagu</string>
+    <string name="size_above"><xliff:g id="size">%1$s</xliff:g> o de prus</string>
+    <string name="size_between">Dae <xliff:g id="min_size">%1$s</xliff:g> a <xliff:g id="max_size">%2$s</xliff:g></string>
+    <string name="Import">Importa</string>
+    <string name="import_complete">Importatzione cumpletada</string>
+    <string name="import_fail">Errore in s\'importatzione</string>
+    <string name="camera_connected">Fotocàmera connètida.</string>
+    <string name="camera_disconnected">Fotocàmera disconnètida.</string>
+    <string name="click_import">Toca inoghe pro importare</string>
+    <string name="widget_type_album">Sèbera un\'album</string>
+    <string name="widget_type_shuffle">Visualiza totu is immàgines</string>
+    <string name="widget_type_photo">Sèbera un\'immàgine</string>
+    <string name="widget_type">Sèbera immàgines</string>
+    <string name="slideshow_dream_name">Presentatzione</string>
+    <string name="albums">Album</string>
+    <string name="times">Data</string>
+    <string name="locations">Positziones</string>
+    <string name="people">Gente</string>
+    <string name="tags">Etichetas</string>
+    <string name="group_by">Agrupadas pro</string>
+    <string name="settings">Impostatziones</string>
+    <string name="add_account">Agiunghe contu</string>
+    <string name="folder_camera">Fotocàmera</string>
+    <string name="folder_download">Iscàrriga</string>
+    <string name="folder_edited_online_photos">Immàgines modificadas in lìnia</string>
+    <string name="folder_imported">Importados</string>
+    <string name="folder_screenshot">Catura de ischermu</string>
+    <string name="help">Agiudu</string>
+    <string name="no_external_storage_title">Peruna archiviatzione</string>
+    <string name="no_external_storage">Peruna archiviatzione esterna a disponimentu</string>
+    <string name="switch_photo_filmstrip">Vista pellìcula de tzìnema</string>
+    <string name="switch_photo_grid">Bista grìllia</string>
+    <string name="switch_photo_fullscreen">A totu ischermu</string>
+    <string name="muting">Ponende a sa muda</string>
+    <string name="please_wait">Iseta</string>
+    <string name="save_into">Sarvende su vìdeu in <xliff:g id="album_name">%1$s</xliff:g> \u2026</string>
+    <string name="pano_progress_text">Furriende panoràmica</string>
+    <string name="save" msgid="8140440041190264400">Sarva</string>
+    <string name="ingest_import">@string/Import</string>
+    <string name="ingest_import_complete">@string/import_complete</string>
+    <string name="ingest_scanning" msgid="2048262851775139720">Iscansionende su cuntenutu...</string>
+    <plurals name="ingest_number_of_items_scanned">
+        <item quantity="one">%1$d elementu iscansionadu</item>
+        <item quantity="other">%1$d elementos iscansionados</item>
+    </plurals>
+    <plurals name="ingest_number_of_items_selected">
+        <item quantity="one">%1$d elementu seletzionadu</item>
+        <item quantity="other">%1$d elementos seletzionados</item>
+    </plurals>
+    <string name="ingest_sorting" msgid="624687230903648118">Assentende...</string>
+    <string name="ingest_scanning_done">Iscansione fata</string>
+    <string name="ingest_importing">Importende...</string>
+    <string name="ingest_empty_device">Non b\'at perunu cuntenutu a disponimentu de importare in custu dispositivu.</string>
+    <string name="ingest_no_device">Perunu dispositivu MTP connètidu</string>
+    <string name="ingest_switch_photo_grid">@string/switch_photo_grid</string>
+    <string name="ingest_switch_photo_fullscreen">@string/switch_photo_fullscreen</string>
+    <string name="camera_error_title">Errore de fotocàmera</string>
+    <string name="cannot_connect_camera">Non faghet a si collegare a sa fotocàmera.</string>
+    <string name="camera_disabled">Sa fotocàmera s\'est disativada pro sa normativa de seguresa.</string>
+    <string name="camera_label">Fotocàmera</string>
+    <string name="wait">Abeta\u2026</string>
+    <string name="no_storage" product="nosdcard">Ativa s\'archiviatzione USB in antis de impreare sa fotocàmera.</string>
+    <string name="no_storage" product="default">Inserta un\'ischeda SD in antis de impreare sa fotocàmera.</string>
+    <string name="preparing_sd" product="nosdcard">Aprontende s\'archiviatzione USB\u2026</string>
+    <string name="preparing_sd" product="default">Aprontende s\'ischeda SD\u2026</string>
+    <string name="access_sd_fail" product="nosdcard">No at fatu a atzèdere a s\'archiviatzione USB.</string>
+    <string name="access_sd_fail" product="default">No at fatu a atzèdere a s\'ischeda SD.</string>
+    <string name="review_cancel">ANNULLA</string>
+    <string name="review_ok">FATU</string>
+    <string name="time_lapse_title">Registratzione de intervallos de tempus</string>
+    <string name="pref_camera_id_title">Sèbera fotocàmera</string>
+    <string name="pref_camera_id_entry_back">In segus</string>
+    <string name="pref_camera_id_entry_front">Fache</string>
+    <string name="pref_camera_recordlocation_title">Sarva positzione</string>
+    <string name="pref_camera_location_label">POSITZIONE</string>
+    <string name="pref_camera_timer_title">Contu a revessu</string>
+    <plurals name="pref_camera_timer_entry">
+        <item quantity="one">1 segundu</item>
+        <item quantity="other">%d segundos</item>
+    </plurals>
+    <string name="pref_camera_timer_sound_default">@string/setting_on_value</string>
+    <string name="pref_camera_timer_sound_title">Bip in su contu a revessu</string>
+    <string name="setting_off">Istudadu</string>
+    <string name="setting_on">Allutu</string>
+    <string name="pref_video_quality_title">Calidade de su vìdeu</string>
+    <string name="pref_video_quality_entry_high">Arta</string>
+    <string name="pref_video_quality_entry_low">Bàscia</string>
+    <string name="pref_video_time_lapse_frame_interval_title">Intervallu de tempus</string>
+    <string name="pref_camera_settings_category">Impostatziones fotocamera</string>
+    <string name="pref_camcorder_settings_category">Impostatziones videocàmera</string>
+    <string name="pref_camera_picturesize_title">Mannària immàgine</string>
+    <string name="pref_camera_picturesize_entry_13mp">13M pixels</string>
+    <string name="pref_camera_picturesize_entry_8mp">8M pixels</string>
+    <string name="pref_camera_picturesize_entry_5mp">5M pixels</string>
+    <string name="pref_camera_picturesize_entry_4mp">4M pixels</string>
+    <string name="pref_camera_picturesize_entry_3mp">3M pixels</string>
+    <string name="pref_camera_picturesize_entry_2mp">2M pixels</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide">2M pixels (16:9)</string>
+    <string name="pref_camera_picturesize_entry_1_3mp">1.3M pixels</string>
+    <string name="pref_camera_picturesize_entry_1mp">1M pixels</string>
+    <string name="pref_camera_picturesize_entry_vga">VGA</string>
+    <string name="pref_camera_picturesize_entry_qvga">QVGA</string>
+    <string name="pref_camera_focusmode_title">Modalidade in craru</string>
+    <string name="pref_camera_focusmode_entry_auto">Automàticu</string>
+    <string name="pref_camera_focusmode_entry_infinity">Infinidu</string>
+    <string name="pref_camera_focusmode_entry_macro">Macro</string>
+    <string name="pref_camera_focusmode_label_auto">AUTOMÀTICU</string>
+    <string name="pref_camera_focusmode_label_infinity">INFINIDU</string>
+    <string name="pref_camera_focusmode_label_macro">MACRO</string>
+    <string name="pref_camera_flashmode_title">Modalidade flash</string>
+    <string name="pref_camera_flashmode_label">MODALIDADE FLASH</string>
+    <string name="pref_camera_flashmode_entry_auto">Automàticu</string>
+    <string name="pref_camera_flashmode_entry_on">Allutu</string>
+    <string name="pref_camera_flashmode_entry_off">Istudadu</string>
+    <string name="pref_camera_flashmode_label_auto">FLASH  AUTOMÀTICU</string>
+    <string name="pref_camera_flashmode_label_on">FLASH ATIVADU</string>
+    <string name="pref_camera_flashmode_label_off">FLASH DISATIVADU</string>
+    <string name="pref_camera_whitebalance_title">Bilantzu de biancu</string>
+    <string name="pref_camera_whitebalance_label">BILANTZU DE BIANCU</string>
+    <string name="pref_camera_whitebalance_entry_auto">Automàticu</string>
+    <string name="pref_camera_whitebalance_entry_incandescent">Inchesu</string>
+    <string name="pref_camera_whitebalance_entry_daylight">Lughe naturale</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent">Fluorescente</string>
+    <string name="pref_camera_whitebalance_entry_cloudy">Nues</string>
+    <string name="pref_camera_whitebalance_label_auto">AUTOMÀTICU</string>
+    <string name="pref_camera_whitebalance_label_incandescent">INCHESU</string>
+    <string name="pref_camera_whitebalance_label_daylight">LUGHE NATURALE</string>
+    <string name="pref_camera_whitebalance_label_fluorescent">FLUORESCENTE</string>
+    <string name="pref_camera_whitebalance_label_cloudy">NUES</string>
+    <string name="pref_camera_scenemode_title">Modalidade iscena</string>
+    <string name="pref_camera_scenemode_entry_auto">Automàticu</string>
+    <string name="pref_camera_scenemode_entry_hdr">HDR</string>
+    <string name="pref_camera_scenemode_entry_action">Atzione</string>
+    <string name="pref_camera_scenemode_entry_night">Note</string>
+    <string name="pref_camera_scenemode_entry_sunset">Iscurigadòrgiu</string>
+    <string name="pref_camera_scenemode_entry_party">Festa</string>
+    <string name="pref_camera_scenemode_label_auto">PERUNU</string>
+    <string name="pref_camera_scenemode_label_action">ATZIONE</string>
+    <string name="pref_camera_scenemode_label_night">NOTE</string>
+    <string name="pref_camera_scenemode_label_sunset">INTRINADA</string>
+    <string name="pref_camera_scenemode_label_party">FESTA</string>
+    <string name="pref_camera_countdown_label">CONTU A REVESSU</string>
+    <string name="pref_camera_countdown_label_off">CONTADORE DE TEMPUS DISATIVADU</string>
+    <string name="pref_camera_countdown_label_one">1 SEGUNDU</string>
+    <string name="pref_camera_countdown_label_three">3 SEGUNDOS</string>
+    <string name="pref_camera_countdown_label_ten">10 SEGUNDOS</string>
+    <string name="pref_camera_countdown_label_fifteen">15 SEGUNDOS</string>
+    <string name="not_selectable_in_scene_mode">Non faghet a seletzionare in modalidade iscena.</string>
+    <string name="pref_exposure_title">Espositzione</string>
+    <string name="pref_exposure_label">ESPOSITZIONE</string>
+    <string name="pref_camera_hdr_default">@string/setting_off_value</string>
+    <string name="pref_camera_hdr_label">HDR</string>
+    <string name="pref_camera_id_label_back">FOTOCÀMERA DE IN ANTIS</string>
+    <string name="pref_camera_id_label_front">FOTOCÀMERA DE PALAS</string>
+    <string name="dialog_ok">AB</string>
+    <string name="spaceIsLow_content" product="nosdcard">S\'archiviatzione USB tua est abarrende chene logu. Càmbia s\'impostatzione de calidade o cantzella immàgines o àteros archìvios.</string>
+    <string name="spaceIsLow_content" product="default">S\'ischeda SD tua est abarrende chene logu. Càmbia s\'impostatzione de calidade o cantzella immàgines o àteros archìvios.</string>
+    <string name="video_reach_size_limit">Lìmite de mannària cròmpidu.</string>
+    <string name="pano_too_fast_prompt">Tropu lestru</string>
+    <string name="pano_dialog_prepare_preview">Preparende panoràmica</string>
+    <string name="pano_dialog_panorama_failed">No at fatu a sarvare sa panoràmica.</string>
+    <string name="pano_dialog_title">Panoràmica</string>
+    <string name="pano_capture_indication">Caturende panoràmica</string>
+    <string name="pano_dialog_waiting_previous">Abetende panoràmica pretzedende</string>
+    <string name="pano_review_saving_indication_str">Sarvende\u2026</string>
+    <string name="tap_to_focus">Toca pro pònnere in craru.</string>
+    <string name="pref_video_effect_title">Efetos</string>
+    <string name="effect_none">Perunu</string>
+    <string name="effect_goofy_face_big_eyes">Ogros mannos</string>
+    <string name="effect_goofy_face_big_mouth">Buca manna</string>
+    <string name="effect_goofy_face_small_mouth">Buca pitica</string>
+    <string name="effect_goofy_face_big_nose">Nasu mannu</string>
+    <string name="effect_goofy_face_small_eyes">Ogros piticos</string>
+    <string name="effect_backdropper_space">In s\'ispàtziu</string>
+    <string name="effect_backdropper_sunset">Iscurigadòrgiu</string>
+    <string name="effect_backdropper_gallery">Su vìdeu tuo</string>
+    <string name="bg_replacement_message">Disativa su dispositivu.\nAbarra unu momentu chena de dd\'impreare.</string>
+    <string name="video_snapshot_hint">Toca pro fàghere una fotografia durante sa registratzione.</string>
+    <string name="video_recording_started">Registratzione vìdeu cumintzada.</string>
+    <string name="video_recording_stopped">Registratzione vìdeu firmada</string>
+    <string name="disable_video_snapshot_hint">S\'istantànea de vìdeu est disativada cando s\'ativant efetos ispetziales.</string>
+    <string name="clear_effects">Lìmpia efetos</string>
+    <string name="effect_silly_faces">FACHES ISCIMPRAS</string>
+    <string name="effect_background">ISFUNDU</string>
+    <string name="accessibility_shutter_button">Butone de oturadore</string>
+    <string name="accessibility_menu_button">Butone de menù</string>
+    <string name="accessibility_review_thumbnail">Fotografia prus reghente</string>
+    <string name="accessibility_camera_picker">Optzione de fotocàmera de in antis e de palas</string>
+    <string name="accessibility_mode_picker">Seletore de fotocàmera, vìdeu o panoràmica</string>
+    <string name="accessibility_second_level_indicators">Àteros cumandos de impostatzione</string>
+    <string name="accessibility_back_to_first_level">Serra cumandos de impostatzione</string>
+    <string name="accessibility_zoom_control">Cumandu de ismanniamentu</string>
+    <string name="accessibility_decrement">Mìnima %1$s</string>
+    <string name="accessibility_increment">Ismànnia %1$s</string>
+    <string name="accessibility_check_box">Casella %1$s</string>
+    <string name="accessibility_switch_to_camera">Passa a fotocàmera</string>
+    <string name="accessibility_switch_to_video">Passa a videocàmera</string>
+    <string name="accessibility_switch_to_panorama">Passa a panoràmica</string>
+    <string name="accessibility_switch_to_new_panorama">Passa a panoràmica noa</string>
+    <string name="accessibility_switch_to_refocus">Passa a Torra a incrarire</string>
+    <string name="accessibility_review_cancel">Esàmina annullamentu</string>
+    <string name="accessibility_review_ok">Esàmina fata</string>
+    <string name="accessibility_review_retake">Esàmina ripetitzione</string>
+    <string name="accessibility_play_video">Riprodui su vìdeu</string>
+    <string name="accessibility_pause_video">Pone in pàusa su vìdeu</string>
+    <string name="accessibility_reload_video">Torra a carrigare su vìdeu</string>
+    <string name="accessibility_time_bar">Istanca de tempus de riprodutzione de su vìdeu</string>
+    <string name="capital_on">ATIVU</string>
+    <string name="capital_off">DISATIVADU</string>
+    <string name="pref_video_time_lapse_frame_interval_off">Istudadu</string>
+    <string name="pref_video_time_lapse_frame_interval_500">0.5 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_1000">1 segundu</string>
+    <string name="pref_video_time_lapse_frame_interval_1500">1.5 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_2000">2 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_2500">2.5 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_3000">3 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_4000">4 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_5000">5 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_6000">6 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_10000">10 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_12000">12 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_15000">15 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_24000">24 segundos</string>
+    <string name="pref_video_time_lapse_frame_interval_30000">0.5 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_60000">1 minutu</string>
+    <string name="pref_video_time_lapse_frame_interval_90000">1.5 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_120000">2 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_150000">2.5 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_180000">3 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_240000">4 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_300000">5 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_360000">6 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_600000">10 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_720000">12 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_900000">15 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000">24 minutos</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000">0.5 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000">1 ora</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000">1.5 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000">2 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000">2.5 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000">3 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000">4 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000">5 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000">6 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000">10 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000">12 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000">15 oras</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000">24 oras</string>
+    <string name="time_lapse_seconds">segundos</string>
+    <string name="time_lapse_minutes">minutos</string>
+    <string name="time_lapse_hours">oras</string>
+    <string name="time_lapse_interval_set">Fatu</string>
+    <string name="set_time_interval">Imposta intervallu de tempus</string>
+    <string name="set_time_interval_help">Funtzione intervallu de tempus disativada. Ativa·dda pro impostare s\'intervallu de tempus.</string>
+    <string name="set_timer_help">Su contu a revessu est disativadu. Ativa·ddu pro bìdere su contu a revessu prima de fàghere una fotografia.</string>
+    <string name="set_duration">Imposta sa durada in segundos</string>
+    <string name="count_down_title_text">Contu a revessu pro fàghere una fotografia</string>
+    <string name="remember_location_title">Boles regordare is positziones de is fotografias?</string>
+    <string name="remember_location_prompt">Eticheta is fotografias e is vìdeos tuos cun is positziones in ue sunt fatos.\n\nÀteras aplicatziones podent atzèdere a custas informatziones, paris a is immàgines sarvadas.</string>
+    <string name="remember_location_no">No, gràtzias</string>
+    <string name="remember_location_yes">Eja</string>
+    <string name="menu_camera">Fotocàmera</string>
+    <string name="menu_search">Chirca</string>
+    <string name="tab_photos">Fotografias</string>
+    <string name="tab_albums">Albums</string>
+    <string name="camera_menu_more_label">ÀTEROS SÈBEROS</string>
+    <string name="camera_menu_settings_label">CUNFIGURATZIONES</string>
+    <plurals name="number_of_photos">
+        <item quantity="one">%1$d fotografia</item>
+        <item quantity="other">%1$d fotografias</item>
+    </plurals>
+</resources>

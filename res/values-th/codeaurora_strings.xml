@@ -94,6 +94,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="truescanner_white">กระดานไวท์บอร์ด</string>
     <string name="truescanner_remove_glare">ลบแสงจ้า</string>
     <string name="seestraight_acts">ทำให้ตรง</string>
+    <string name="seestraight_input_image_is_small">ภาพที่นำเข้ามีขนาดเล็กเกินไปที่จะประมวลผล</string>
     <string name="seestraight_process_fail">ไม่สามารถประมวลผลภาพได้</string>
     <string name="trim_video_exit_title">ยก​เลิก​การ​เปลี่ยน​แปลงหรือไม่</string>
     <string name="trim_video_exit_discard">ยกเลิก</string>

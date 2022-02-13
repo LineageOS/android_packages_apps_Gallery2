@@ -83,7 +83,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="no_faces">Gun aodann ann</string>
     <string name="fail_trim">Tha sinn duilich ach cha ghabh am faidhle video seo a bhearradh</string>
     <string name="can_not_trim">Cha ghabh ach faidhlichean mp4 ’s 3gp a bhearradh</string>
-    <string name="drm_license_info">Fiosrachadh mun cheadachas DRM</string>
+    <string name="drm_license_info">Mun cheadachas DRM</string>
     <string name="timeline_title">Loidhne-ama</string>
     <string name="albums_title">Albaman</string>
     <string name="videos_title">Videothan</string>
