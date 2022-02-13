@@ -38,9 +38,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="stereo">"Stereo"</string>
     <string name="speaker_on">Lautsprecher AN</string>
     <string name="speaker_off">Lautsprecher AUS</string>
-    <string name="speaker_need_headset">Für diese Funktionen müssen Sie Kopfhörer verwenden.</string>
+    <string name="speaker_need_headset">Für diese Funktionen musst du Kopfhörer verwenden.</string>
     <string name="single_track">"Einzelner Titel"</string>
-    <string name="input_url">"Geben Sie eine URL ein."</string>
+    <string name="input_url">"URL eingeben"</string>
     <string name="streaming_settings">"Streaming-Einstellungen"</string>
     <string name="next">"Weiter"</string>
     <string name="previous">"Zurück"</string>

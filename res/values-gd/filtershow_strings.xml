@@ -21,6 +21,7 @@
     <string name="setting_wallpaper">A’ suidheachadh a’ phàipeir-bhalla</string>
     <string name="download_failure">Cha b’ urrainn dhuinn an dealbh a luchdadh a-nuas. Chan eil lìonra ri làimh.</string>
     <string name="original">Tùsail</string>
+    <string name="borders" msgid="4461692156695893616">Iomallan</string>
     <string name="custom_border">Gnàthaichte</string>
     <string name="filtershow_undo">Neo-dhèan</string>
     <string name="filtershow_redo">Ath-dhèan</string>

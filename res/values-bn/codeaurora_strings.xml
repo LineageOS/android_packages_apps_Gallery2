@@ -29,15 +29,20 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="setp_option_three_second">3 segundos</string>
-    <string name="setp_option_six_second">6 segundos</string>
-    <string name="stereo">"Estéreu"</string>
-    <string name="media_controller_connecting">Conectando\u2026</string>
-    <string name="more_image">Más imáxenes</string>
-    <plurals name="number_of_videos">
-        <item quantity="one">%1$d videu</item>
-        <item quantity="other">%1$d vídeos</item>
-    </plurals>
-    <string name="albums_title">Álbumes</string>
-    <string name="seestraight_process_fail">Nun se pudo procesar la imaxe</string>
+    <string name="setp_option_name">ধাপ</string>
+    <string name="setp_option_three_second">৩ সেকেন্ড</string>
+    <string name="setp_option_six_second">৬ সেকেন্ড</string>
+    <string name="single_track">"একটি ট্র্যাক"</string>
+    <string name="next">"পরবর্তী"</string>
+    <string name="previous">"পূর্ববর্তী"</string>
+    <string name="setting">নিয়ন্ত্রণ</string>
+    <string name="media_controller_live">সরাসরি</string>
+    <string name="media_controller_playing">চলছে</string>
+    <string name="media_controller_connecting">সংযুক্ত করা হচ্ছে\u2026</string>
+    <string name="bookmark_title">"শিরোনাম"</string>
+    <string name="bookmark_location">"অবস্থান"</string>
+    <string name="delete_all">"সব মুছে ফেলুন"</string>
+    <string name="default_title">"পূর্ব-নির্ধারিত শিরনাম"</string>
+    <string name="more_image">আরো ছবি</string>
+    <string name="map_activity_not_found_err">অবস্থান দেখানোর জন্য কোনো মানচিত্র অ্যাপ ইনস্টল করা নেই।</string>
 </resources>
