@@ -16,6 +16,24 @@
       "message": "I just built LineageOS with these changes and it didn\u0027t work.  The color of the text did change ever so slightly, but not to something that adapts with dark mode.  Compare my image (https://imgur.com/a/0htgtCj) with the one submitted by wangenau in the Change Log (https://imgur.com/a/UVPKm4f).  I don\u0027t know enough to point out where it\u0027s pulling that color from, but I know it\u0027s not right.  I\u0027d also like to mention that when I grep through the LineageOS code base, basically everywhere there is a setTextColor and an R.color.something on the same line, R.color.something is passed to the getColor function first.  Here\u0027s an example from the messaging app.\n\npackages/apps/Messaging/src/com/android/messaging/ui/contact/AddContactsConfirmationDialog.java\ncancelButton.setTextColor(resources.getColor(R.color.contact_picker_button_text_color));\n\nLooks like this patch isn\u0027t ready quite yet.",
       "revId": "56a3026bf44df1531ced07637081c0914c3fcc78",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a704f609_5ff72c93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22727
+      },
+      "writtenOn": "2022-03-28T10:14:20Z",
+      "side": 1,
+      "message": "Alright, thanks for testing it.\nSadly I don\u0027t have have time to fix it, therefore I will close this even if the issue still persists.",
+      "parentUuid": "e4f84dc8_266ba80b",
+      "revId": "56a3026bf44df1531ced07637081c0914c3fcc78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
