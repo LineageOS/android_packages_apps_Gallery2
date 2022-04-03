@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.filtershow.filters;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;

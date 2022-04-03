@@ -43,7 +43,7 @@ import com.android.gallery3d.app.dualcam3d.threed.Controller;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.util.GDepth;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class ThreeDimensionalActivity extends Activity {
     private static final String TAG = ThreeDimensionalActivity.class.getSimpleName();

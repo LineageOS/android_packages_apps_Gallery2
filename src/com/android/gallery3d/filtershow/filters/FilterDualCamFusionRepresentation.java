@@ -38,7 +38,7 @@ import android.util.JsonWriter;
 
 import com.android.gallery3d.filtershow.editors.EditorDualCamFusion;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 
 public class FilterDualCamFusionRepresentation extends FilterDualCamBasicRepresentation

@@ -35,7 +35,7 @@ import com.android.gallery3d.filtershow.crop.CropObject;
 import com.android.gallery3d.filtershow.editors.EditorCrop;
 import com.android.gallery3d.filtershow.filters.FilterCropRepresentation;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils.GeometryHolder;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class ImageCrop extends ImageShow {
     private static final String TAG = ImageCrop.class.getSimpleName();

@@ -37,7 +37,7 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class WaterMarkTimeView extends WaterMarkView {
     public WaterMarkTimeView(Context context) {

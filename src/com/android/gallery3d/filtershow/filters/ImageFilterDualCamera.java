@@ -41,7 +41,7 @@ import android.util.Log;
 import android.util.Size;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.cache.BitmapCache;
 import com.android.gallery3d.filtershow.cache.ImageLoader;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;

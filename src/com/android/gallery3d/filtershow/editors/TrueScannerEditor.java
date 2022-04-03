@@ -45,7 +45,7 @@ import com.android.gallery3d.filtershow.imageshow.ImageShow;
 import com.android.gallery3d.filtershow.imageshow.ImageTrueScanner;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 /**
  * The editor with no slider for filters without UI

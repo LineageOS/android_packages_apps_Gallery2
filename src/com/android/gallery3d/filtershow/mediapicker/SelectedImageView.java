@@ -35,7 +35,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class SelectedImageView extends ImageView {
 

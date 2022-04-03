@@ -38,7 +38,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toolbar;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.data.DataManager;
 import com.android.gallery3d.data.MediaItem;

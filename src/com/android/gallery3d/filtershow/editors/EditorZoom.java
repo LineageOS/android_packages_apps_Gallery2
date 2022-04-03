@@ -16,7 +16,7 @@
 
 package com.android.gallery3d.filtershow.editors;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class EditorZoom extends BasicEditor {
     public static final int ID = R.id.imageZoom;

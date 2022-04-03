@@ -32,7 +32,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toolbar;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.app.AbstractGalleryActivity;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.Utils;

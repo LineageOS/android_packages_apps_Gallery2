@@ -34,7 +34,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 /**
  * The common playback controller for the Movie Player or Video Trimming.

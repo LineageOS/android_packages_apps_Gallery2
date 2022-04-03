@@ -22,7 +22,7 @@ import android.graphics.Matrix;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.editors.EditorGrad;
 import com.android.gallery3d.filtershow.filters.FilterGradRepresentation;
 

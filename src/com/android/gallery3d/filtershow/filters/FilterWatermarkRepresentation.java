@@ -35,7 +35,7 @@ import android.view.Gravity;
 
 import com.android.gallery3d.filtershow.category.WaterMarkView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class FilterWatermarkRepresentation extends FilterRepresentation {
     public static final String NAME_LOCATION = "LOCATION";

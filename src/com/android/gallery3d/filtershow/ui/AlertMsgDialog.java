@@ -35,7 +35,7 @@ import android.os.Bundle;
 
 import com.android.gallery3d.ui.BaseDialogFragment;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class AlertMsgDialog extends BaseDialogFragment {
     private int mTitleId = -1;

@@ -48,7 +48,7 @@ import android.widget.ImageView;
 import com.android.gallery3d.filtershow.imageshow.GeometryMathUtils;
 import com.android.gallery3d.filtershow.imageshow.MasterImage;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

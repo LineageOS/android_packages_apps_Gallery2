@@ -29,7 +29,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.util.ArrayList;
 

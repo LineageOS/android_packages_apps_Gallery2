@@ -16,7 +16,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.legacy_legacy-support-v13
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    org.codeaurora.gallery.common \
+    com.android.gallery3d.common2 \
     xmp_toolkit \
     mp4parser
 
@@ -38,8 +38,6 @@ LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_PRIVATE_PLATFORM_APIS := true
 
 LOCAL_OVERRIDES_PACKAGES := Gallery Gallery3D GalleryNew3D
-
-LOCAL_AAPT_FLAGS += --rename-manifest-package com.android.gallery3d
 
 LOCAL_JNI_SHARED_LIBRARIES := \
     libjni_gallery_eglfence \

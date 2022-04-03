@@ -36,7 +36,7 @@ import android.widget.LinearLayout;
 import com.android.gallery3d.app.dualcam3d.GLView;
 import com.android.gallery3d.app.dualcam3d.gl.Renderer;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class Controller implements Gyro.Listener {
     private static final String TAG = "Controller";

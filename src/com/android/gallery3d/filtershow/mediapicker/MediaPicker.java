@@ -47,7 +47,7 @@ import android.widget.LinearLayout;
 
 import com.android.photos.views.HeaderGridView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class MediaPicker extends ViewGroup {
 

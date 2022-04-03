@@ -31,7 +31,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import org.json.JSONObject;
 
 import com.android.gallery3d.common.ApiHelper;

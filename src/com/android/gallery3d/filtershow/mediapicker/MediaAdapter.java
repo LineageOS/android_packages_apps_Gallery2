@@ -44,7 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.gallery3d.filtershow.mediapicker.imageloader.ImageLoaderStub;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 /**
  * Adapter for display media item list.

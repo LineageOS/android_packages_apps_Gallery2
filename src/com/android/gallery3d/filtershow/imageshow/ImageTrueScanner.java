@@ -50,7 +50,7 @@ import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 import com.android.gallery3d.filtershow.filters.FilterCropRepresentation;
 import com.android.gallery3d.filtershow.filters.TrueScannerActs;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class ImageTrueScanner extends ImageShow {
     private static final String TAG = ImageTrueScanner.class.getSimpleName();

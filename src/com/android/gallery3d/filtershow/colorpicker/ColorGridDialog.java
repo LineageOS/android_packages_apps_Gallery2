@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.util.ArrayList;
 

@@ -33,7 +33,7 @@ import android.view.View;
 import com.android.gallery3d.util.ThreadPool;
 import com.android.gallery3d.util.ThreadPool.JobContext;
 import com.android.photos.data.GalleryBitmapPool;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.util.Locale;
 
