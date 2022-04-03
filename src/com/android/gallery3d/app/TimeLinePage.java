@@ -72,7 +72,7 @@ import com.android.gallery3d.ui.TimeLineSlotRenderer;
 import com.android.gallery3d.ui.TimeLineSlotView;
 import com.android.gallery3d.util.Future;
 import com.android.gallery3d.util.GalleryUtils;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

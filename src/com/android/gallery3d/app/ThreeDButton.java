@@ -38,7 +38,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class ThreeDButton implements OnClickListener {
     interface Delegate {

@@ -21,7 +21,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.util.GalleryUtils;
 import com.android.gallery3d.util.ReverseGeocoder;
 

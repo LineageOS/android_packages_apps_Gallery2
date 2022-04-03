@@ -43,23 +43,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.BlobCache;
 import com.android.gallery3d.util.CacheManager;
 import com.android.gallery3d.util.GalleryUtils;
 
-import org.codeaurora.gallery3d.ext.IContrllerOverlayExt;
-import org.codeaurora.gallery3d.ext.IMovieItem;
-import org.codeaurora.gallery3d.ext.IMoviePlayer;
-import org.codeaurora.gallery3d.ext.MovieUtils;
-import org.codeaurora.gallery3d.video.BookmarkEnhance;
-import org.codeaurora.gallery3d.video.CodeauroraVideoView;
-import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
-import org.codeaurora.gallery3d.video.IControllerRewindAndForward.IRewindAndForwardListener;
-import org.codeaurora.gallery3d.video.ScreenModeManager;
-import org.codeaurora.gallery3d.video.ScreenModeManager.ScreenModeListener;
-import org.codeaurora.gallery3d.video.VideoSnapshotExt;
+import com.android.gallery3d.ext.IContrllerOverlayExt;
+import com.android.gallery3d.ext.IMovieItem;
+import com.android.gallery3d.ext.IMoviePlayer;
+import com.android.gallery3d.ext.MovieUtils;
+import com.android.gallery3d.video.BookmarkEnhance;
+import com.android.gallery3d.video.CodeauroraVideoView;
+import com.android.gallery3d.video.IControllerRewindAndForward;
+import com.android.gallery3d.video.IControllerRewindAndForward.IRewindAndForwardListener;
+import com.android.gallery3d.video.ScreenModeManager;
+import com.android.gallery3d.video.ScreenModeManager.ScreenModeListener;
+import com.android.gallery3d.video.VideoSnapshotExt;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

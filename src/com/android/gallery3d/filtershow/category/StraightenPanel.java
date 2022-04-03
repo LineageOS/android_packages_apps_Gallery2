@@ -38,7 +38,7 @@ import androidx.annotation.Nullable;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.editors.Editor;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class StraightenPanel extends BasicGeometryPanel {
     public static final String EDITOR_ID = "editor_id";

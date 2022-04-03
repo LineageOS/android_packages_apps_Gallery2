@@ -56,7 +56,7 @@ import com.android.gallery3d.filtershow.filters.FilterRepresentation;
 import com.android.gallery3d.filtershow.mediapicker.imageloader.ImageLoaderStub;
 import com.android.photos.views.HeaderGridView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 /**
  * Display list of videos, photos from {@link MediaStore} and select one or many

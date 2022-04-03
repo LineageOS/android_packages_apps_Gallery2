@@ -50,15 +50,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.common.ApiHelper;
 import com.android.gallery3d.common.Utils;
-import org.codeaurora.gallery3d.ext.IActivityHooker;
-import org.codeaurora.gallery3d.ext.IMovieItem;
-import org.codeaurora.gallery3d.ext.MovieItem;
-import org.codeaurora.gallery3d.ext.MovieUtils;
-import org.codeaurora.gallery3d.video.ExtensionHelper;
-import org.codeaurora.gallery3d.video.MovieTitleHelper;
+import com.android.gallery3d.ext.IActivityHooker;
+import com.android.gallery3d.ext.IMovieItem;
+import com.android.gallery3d.ext.MovieItem;
+import com.android.gallery3d.ext.MovieUtils;
+import com.android.gallery3d.video.ExtensionHelper;
+import com.android.gallery3d.video.MovieTitleHelper;
 
 /**
  * This activity plays a video from a specified URI.

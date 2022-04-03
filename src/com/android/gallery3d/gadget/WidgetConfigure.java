@@ -27,7 +27,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.app.AlbumPicker;
 import com.android.gallery3d.app.DialogPicker;
 import com.android.gallery3d.app.GalleryApp;

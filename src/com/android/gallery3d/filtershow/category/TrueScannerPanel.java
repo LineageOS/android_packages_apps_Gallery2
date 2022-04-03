@@ -38,7 +38,7 @@ import androidx.annotation.Nullable;
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.editors.TrueScannerEditor;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class TrueScannerPanel extends BasicGeometryPanel {
     private TrueScannerEditor mTrueScannerEditor;

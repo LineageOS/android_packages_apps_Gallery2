@@ -33,7 +33,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.util.ArrayList;
 

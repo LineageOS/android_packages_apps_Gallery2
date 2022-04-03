@@ -20,7 +20,7 @@
 <manifest android:versionCode="40030"
         android:versionName="1.1.40030"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        package="org.codeaurora.gallery">
+        package="com.android.gallery3d">
 
     <original-package android:name="com.android.gallery3d" />
 
@@ -29,10 +29,10 @@
     <permission android:name="com.android.gallery3d.permission.GALLERY_PROVIDER"
                 android:protectionLevel="signatureOrSystem" />
 
-    <permission android:name="org.codeaurora.gallery.filtershow.permission.READ"
+    <permission android:name="com.android.gallery3d.filtershow.permission.READ"
                 android:protectionLevel="signature" />
 
-    <permission android:name="org.codeaurora.gallery.filtershow.permission.WRITE"
+    <permission android:name="com.android.gallery3d.filtershow.permission.WRITE"
                 android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -261,8 +261,8 @@
             android:name="com.android.gallery3d.filtershow.provider.SharedImageProvider"
             android:authorities="com.android.gallery3d.filtershow.provider.SharedImageProvider"
             android:grantUriPermissions="true"
-            android:readPermission="org.codeaurora.gallery.filtershow.permission.READ"
-            android:writePermission="org.codeaurora.gallery.filtershow.permission.WRITE" />
+            android:readPermission="com.android.gallery3d.filtershow.permission.READ"
+            android:writePermission="com.android.gallery3d.filtershow.permission.WRITE" />
 
         <service
                 android:name="com.android.gallery3d.filtershow.pipeline.ProcessingService"
@@ -377,33 +377,33 @@
 
         <service android:name="com.android.camera.MediaSaveService" />
 
-        <activity android:name="org.codeaurora.gallery3d.video.SettingsActivity"
+        <activity android:name="com.android.gallery3d.video.SettingsActivity"
                 android:theme="@android:style/Theme.Material.Light"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:label="@string/streaming_settings" >
             <intent-filter>
-                <action android:name="org.codeaurora.settings.streaming" />
+                <action android:name="com.android.settings.streaming" />
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <receiver android:name="org.codeaurora.gallery3d.video.DmReceiver" >
+        <receiver android:name="com.android.gallery3d.video.DmReceiver" >
             <intent-filter>
                 <action android:name="streaming.action.WRITE_SETTINGS" />
             </intent-filter>
         </receiver>
 
-        <activity android:name="org.codeaurora.gallery3d.video.BookmarkActivity"
+        <activity android:name="com.android.gallery3d.video.BookmarkActivity"
                 android:configChanges="keyboardHidden|orientation|screenSize"
                 android:icon="@drawable/ic_menu_display_bookmark"
                 android:label="@string/bookmark_list"
                 android:theme="@android:style/Theme.Holo" >
             <intent-filter>
-                <action android:name="org.codeaurora.bookmark.VIEW" />
+                <action android:name="com.android.bookmark.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="org.codeaurora.gallery3d.video.VideoSettingsActivity"
+        <activity android:name="com.android.gallery3d.video.VideoSettingsActivity"
                 android:label="@string/movie_view_label"
                 android:theme="@android:style/Theme.Material.Light"
                 android:configChanges="orientation|keyboardHidden|screenSize|mnc|mcc">

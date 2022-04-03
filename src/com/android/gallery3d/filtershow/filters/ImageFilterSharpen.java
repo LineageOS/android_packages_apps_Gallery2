@@ -20,7 +20,7 @@ import android.renderscript.Element;
 import android.renderscript.ScriptIntrinsicConvolve3x3;
 
 import com.android.gallery3d.filtershow.editors.BasicEditor;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class ImageFilterSharpen extends ImageFilterRS {
     private static final String SERIALIZATION_NAME = "SHARPEN";

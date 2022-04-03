@@ -26,7 +26,7 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.graphics.drawable.Drawable;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public abstract class CropDrawingUtils {
 

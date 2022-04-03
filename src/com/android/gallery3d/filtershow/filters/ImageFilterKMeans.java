@@ -18,7 +18,7 @@ package com.android.gallery3d.filtershow.filters;
 
 import android.graphics.Bitmap;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class ImageFilterKMeans extends SimpleImageFilter {
     private static final String SERIALIZATION_NAME = "KMEANS";

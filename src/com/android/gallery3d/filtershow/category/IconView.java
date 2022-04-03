@@ -28,7 +28,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 public class IconView extends View {
 

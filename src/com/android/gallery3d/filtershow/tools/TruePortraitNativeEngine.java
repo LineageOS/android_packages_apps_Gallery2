@@ -44,7 +44,7 @@ import android.graphics.Rect;
 import androidx.fragment.app.FragmentManager;
 import android.util.Log;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.filtershow.filters.FilterDrawRepresentation.StrokeData;
 import com.android.gallery3d.filtershow.ui.AlertMsgDialog;
 

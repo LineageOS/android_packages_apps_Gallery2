@@ -50,7 +50,7 @@ import com.android.gallery3d.filtershow.imageshow.MasterImage;
 import com.android.gallery3d.filtershow.ui.DoNotShowAgainDialog;
 import com.android.gallery3d.util.GalleryUtils;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

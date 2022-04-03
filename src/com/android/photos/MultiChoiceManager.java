@@ -29,7 +29,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsListView.MultiChoiceModeListener;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.app.TrimVideo;
 import com.android.gallery3d.data.MediaObject;
 import com.android.gallery3d.filtershow.FilterShowActivity;

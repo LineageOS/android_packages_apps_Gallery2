@@ -18,7 +18,7 @@ package com.android.gallery3d.ui;
 
 import android.content.Context;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 import com.android.gallery3d.app.AbstractGalleryActivity;
 import com.android.gallery3d.data.DataSourceType;
 import com.android.gallery3d.data.MediaSet;

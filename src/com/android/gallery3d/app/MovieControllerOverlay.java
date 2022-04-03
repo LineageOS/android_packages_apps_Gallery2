@@ -37,12 +37,12 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
-import org.codeaurora.gallery3d.ext.IContrllerOverlayExt;
-import org.codeaurora.gallery3d.video.IControllerRewindAndForward;
-import org.codeaurora.gallery3d.video.ScreenModeManager;
-import org.codeaurora.gallery3d.video.ScreenModeManager.ScreenModeListener;
+import com.android.gallery3d.ext.IContrllerOverlayExt;
+import com.android.gallery3d.video.IControllerRewindAndForward;
+import com.android.gallery3d.video.ScreenModeManager;
+import com.android.gallery3d.video.ScreenModeManager.ScreenModeListener;
 
 import java.util.Locale;
 

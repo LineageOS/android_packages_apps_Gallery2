@@ -23,7 +23,7 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import com.android.gallery3d.filtershow.FilterShowActivity;
 import com.android.gallery3d.filtershow.data.FilterPresetDBHelper;

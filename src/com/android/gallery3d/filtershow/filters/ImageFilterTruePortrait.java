@@ -39,7 +39,7 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import com.android.gallery3d.app.GalleryAppImpl;
 import com.android.gallery3d.filtershow.cache.BitmapCache;

@@ -22,7 +22,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 /**
  * The trim time bar view, which includes the current and total time, the progress

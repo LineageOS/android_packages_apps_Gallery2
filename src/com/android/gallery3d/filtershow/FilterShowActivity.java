@@ -83,7 +83,7 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import com.android.gallery3d.app.AbstractPermissionActivity;
 import com.android.gallery3d.app.PhotoPage;

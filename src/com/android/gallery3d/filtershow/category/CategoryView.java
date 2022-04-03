@@ -31,7 +31,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ActionMode;
 import android.widget.PopupMenu;
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import com.android.gallery3d.app.Log;
 import com.android.gallery3d.filtershow.FilterShowActivity;

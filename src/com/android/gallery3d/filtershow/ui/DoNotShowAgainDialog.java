@@ -39,7 +39,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import com.android.gallery3d.ui.BaseDialogFragment;
 import com.android.gallery3d.util.GalleryUtils;

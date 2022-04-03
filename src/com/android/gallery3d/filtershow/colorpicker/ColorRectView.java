@@ -30,7 +30,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
-import org.codeaurora.gallery.R;
+import com.android.gallery3d.R;
 
 import java.util.ArrayList;
 
