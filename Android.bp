@@ -1,0 +1,50 @@
+android_app {
+    name: "Gallery2",
+
+    static_libs: [
+        "com.google.android.material_material",
+        "androidx.annotation_annotation",
+        "androidx.fragment_fragment",
+        "androidx.heifwriter_heifwriter",
+        "androidx.legacy_legacy-support-core-ui",
+        "androidx.core_core",
+        "androidx.legacy_legacy-support-v13",
+        "com.android.gallery3d.common2",
+        "xmp_toolkit",
+        "mp4parser",
+    ],
+
+    srcs: [
+        "src/**/*.java",
+        "src_pd/**/*.java",
+    ],
+
+    resource_dirs: ["res"],
+
+    privileged: true,
+    certificate: "platform",
+
+    system_ext_specific: true,
+
+    platform_apis: true,
+
+    overrides: [
+        "Gallery",
+        "Gallery3D",
+        "GalleryNew3D",
+    ],
+
+    jni_libs: [
+        "libjni_gallery_eglfence",
+        "libjni_gallery_filters",
+        "libjni_gallery_jpegstream",
+    ],
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    libs: ["telephony-common"] + ["org.apache.http.legacy"],
+
+    jarjar_rules: "jarjar-rules.txt",
+}
