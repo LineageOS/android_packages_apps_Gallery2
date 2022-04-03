@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca49d993_14e95491",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2022-04-03T23:59:10Z",
+      "side": 0,
+      "message": "These are no longer linked because they break the build in bp (since they are prebuilt blobs we never had). Removing them doesn\u0027t cause any issues, however we should also remove the related code in future commits to keep it clean.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 73
+      },
+      "revId": "e93b7f9fcb5f95aea5b3babc77763ca9d0d13406",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
