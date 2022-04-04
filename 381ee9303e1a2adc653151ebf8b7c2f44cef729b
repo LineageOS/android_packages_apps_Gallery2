@@ -16,6 +16,24 @@
       "message": "...shouldn\u0027t the previous patch take care of this? I thought equals returns false when the arg is null.",
       "revId": "381ee9303e1a2adc653151ebf8b7c2f44cef729b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf2c49d_aeb301ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2022-04-04T00:10:31Z",
+      "side": 1,
+      "message": "Sorry -- wouldn\u0027t *not* including the previous patch take care of this?",
+      "parentUuid": "654600a8_91b034c1",
+      "revId": "381ee9303e1a2adc653151ebf8b7c2f44cef729b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
