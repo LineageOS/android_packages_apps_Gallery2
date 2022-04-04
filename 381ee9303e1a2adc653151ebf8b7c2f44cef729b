@@ -34,6 +34,24 @@
       "parentUuid": "654600a8_91b034c1",
       "revId": "381ee9303e1a2adc653151ebf8b7c2f44cef729b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a517148d_2157784b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2022-04-04T00:12:29Z",
+      "side": 1,
+      "message": "Yes, however the bigger plan is to align our gallery with AOSP gallery and this is a step towards that.",
+      "parentUuid": "acf2c49d_aeb301ae",
+      "revId": "381ee9303e1a2adc653151ebf8b7c2f44cef729b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
