@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4073a00e_3f312579",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2022-04-04T00:08:59Z",
+      "side": 1,
+      "message": "What is this one for? It\u0027s fine, but it\u0027s basically a no-op.",
+      "revId": "6e1c54a78495e3358305b3a0b733cb441e7f165a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
