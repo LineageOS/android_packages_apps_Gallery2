@@ -16,6 +16,29 @@
       "message": "This just makes it easier to apply AOSP changes and diff with AOSP app. We already changed the app name via aapt flag so this won\u0027t make any visible difference. Note that SnapdragonGallery is no longer maintained.",
       "revId": "9d14d98e335a7076a36020e2d298aea8f01a046e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448457b1_dcce27fd",
+        "filename": "res/layout/movie_view.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-04-04T08:11:22Z",
+      "side": 1,
+      "message": "Seems wrong.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "9d14d98e335a7076a36020e2d298aea8f01a046e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
