@@ -34,6 +34,24 @@
       "parentUuid": "561fefb3_11bcdf7a",
       "revId": "ce67775397fab4332a45d047d29098acabc4ac5d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdeb7f28_c3d86efb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2022-04-05T22:16:24Z",
+      "side": 1,
+      "message": "Oh well I missed this comment, it is indeed wrong, however I manually regenerated all bp files since we have differences compared to AOSP, so maybe this is ok for now?",
+      "parentUuid": "429ca64f_31487efa",
+      "revId": "ce67775397fab4332a45d047d29098acabc4ac5d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
