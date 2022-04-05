@@ -16,6 +16,24 @@
       "message": "Is the author correct on this?",
       "revId": "ce67775397fab4332a45d047d29098acabc4ac5d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "429ca64f_31487efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 21651
+      },
+      "writtenOn": "2022-04-05T21:31:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be https://android-review.googlesource.com/c/platform/packages/apps/Gallery2/+/985569 ?",
+      "parentUuid": "561fefb3_11bcdf7a",
+      "revId": "ce67775397fab4332a45d047d29098acabc4ac5d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
