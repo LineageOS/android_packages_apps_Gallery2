@@ -27,7 +27,6 @@ import android.view.animation.DecelerateInterpolator;
 
 import com.android.gallery3d.anim.Animation;
 import com.android.gallery3d.app.AbstractGalleryActivity;
-import com.android.gallery3d.common.ApiHelper.SystemProperties;
 import com.android.gallery3d.common.Utils;
 import com.android.gallery3d.glrenderer.GLCanvas;
 
@@ -38,7 +37,6 @@ public class TimeLineSlotView extends GLView {
     private static final String TAG = "TimeLineSlotView";
 
     public static final int INDEX_NONE = -1;
-    private static final int mainKey = SystemProperties.getInt("qemu.hw.mainkeys", 1);
 
     public static final int RENDER_MORE_PASS = 1;
     public static final int RENDER_MORE_FRAME = 2;
@@ -118,9 +116,7 @@ public class TimeLineSlotView extends GLView {
             position = visibleBegin;
         } else if (slotBegin < visibleBegin) {
             position = slotBegin;
-        } else if (slotEnd > visibleEnd && mainKey == 1) {
-            position = slotEnd - visibleLength;
-        } else if (slotBegin > visibleEnd && mainKey == 0) {
+        } else if (slotBegin > visibleEnd) {
             position = slotBegin - visibleLength;
         }
 
