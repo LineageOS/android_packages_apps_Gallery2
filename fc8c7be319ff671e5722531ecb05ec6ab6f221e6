@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707076f2_b535e3c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4550
+      },
+      "writtenOn": "2022-04-18T15:23:07Z",
+      "side": 1,
+      "message": "Is there any before/after visual changes? This changes previous default behaviour",
+      "revId": "fc8c7be319ff671e5722531ecb05ec6ab6f221e6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
