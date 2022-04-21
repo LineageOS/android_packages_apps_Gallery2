@@ -171,12 +171,10 @@ public class MediaDetails implements Iterable<Entry<Integer, Object>> {
                     focalTag.getValueAsRational(0).toDouble());
             details.setUnit(MediaDetails.INDEX_FOCAL_LENGTH, R.string.unit_mm);
         }
-        ExifTag latitudeTag = exif.getTag(ExifInterface.TAG_GPS_LATITUDE);
-        ExifTag longitudeTag = exif.getTag(ExifInterface.TAG_GPS_LONGITUDE);
-        if (latitudeTag != null && longitudeTag != null) {
-            double latitude = latitudeTag.getValueAsRational(0).toDouble();
-            double longitude = longitudeTag.getValueAsRational(0).toDouble();
-            details.addDetail(MediaDetails.INDEX_LOCATION, new double[] {latitude, longitude});
+        if (exif.getTag(ExifInterface.TAG_GPS_LATITUDE) != null &&
+            exif.getTag(ExifInterface.TAG_GPS_LONGITUDE) != null) {
+            double latlng[] = exif.getLatLongAsDoubles();
+            details.addDetail(MediaDetails.INDEX_LOCATION, latlng);
         }
     }
 }
