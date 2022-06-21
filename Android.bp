@@ -36,9 +36,9 @@ android_app {
     sdk_version: "current",
 
     jni_libs: [
-        "libjni_gallery_eglfence",
-        "libjni_gallery_filters",
-        "libjni_gallery_jpegstream",
+        "libjni_eglfence",
+        "libjni_filtershow_filters",
+        "libjni_jpegstream",
     ],
 
     optimize: {

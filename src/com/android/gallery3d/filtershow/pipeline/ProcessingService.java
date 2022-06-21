@@ -350,6 +350,6 @@ public class ProcessingService extends Service {
     }
 
     static {
-        System.loadLibrary("jni_gallery_filters");
+        System.loadLibrary("jni_filtershow_filters");
     }
 }

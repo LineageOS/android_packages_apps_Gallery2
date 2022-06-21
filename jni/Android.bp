@@ -17,7 +17,7 @@ cc_defaults {
 }
 
 cc_library_shared {
-    name: "libjni_gallery_eglfence",
+    name: "libjni_eglfence",
     defaults: ["gallery2_jni_defaults"],
 
     cflags: ["-DEGL_EGLEXT_PROTOTYPES"],
@@ -27,7 +27,7 @@ cc_library_shared {
 
 // Filtershow
 cc_library_shared {
-    name: "libjni_gallery_filters",
+    name: "libjni_filtershow_filters",
     defaults: ["gallery2_jni_defaults"],
 
     srcs: [

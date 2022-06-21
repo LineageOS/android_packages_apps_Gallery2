@@ -188,6 +188,6 @@ public class JPEGInputStream extends FilterInputStream {
     native private int skipDecodedBytes(int bytes);
 
     static {
-        System.loadLibrary("jni_gallery_jpegstream");
+        System.loadLibrary("jni_jpegstream");
     }
 }

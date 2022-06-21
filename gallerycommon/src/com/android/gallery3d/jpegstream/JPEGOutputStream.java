@@ -139,6 +139,6 @@ public class JPEGOutputStream extends FilterOutputStream {
     native private int writeInputBytes(byte[] inBuffer, int offset, int inCount);
 
     static {
-        System.loadLibrary("jni_gallery_jpegstream");
+        System.loadLibrary("jni_jpegstream");
     }
 }
