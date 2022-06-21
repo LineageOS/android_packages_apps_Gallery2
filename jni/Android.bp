@@ -4,7 +4,7 @@ package {
 
 cc_defaults {
     name: "gallery2_jni_defaults",
-    system_ext_specific: true,
+    product_specific: true,
 
     cflags: [
         "-Wall",

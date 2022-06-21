@@ -25,7 +25,7 @@ android_app {
 
     resource_dirs: ["res"],
 
-    system_ext_specific: true,
+    product_specific: true,
 
     overrides: [
         "Gallery",
