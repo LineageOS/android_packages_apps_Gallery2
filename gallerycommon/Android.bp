@@ -19,6 +19,6 @@ package {
 java_library {
     name: "com.android.gallery3d.common2",
     srcs: ["src/**/*.java"],
-    platform_apis: true,
+    sdk_version: "current",
     libs: ["org.apache.http.legacy"],
 }
