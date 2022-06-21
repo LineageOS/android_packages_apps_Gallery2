@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3005ed64_87d77252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2022-06-21T14:07:42Z",
+      "side": 1,
+      "message": "TODO: Test SDCard deletion\n\nAlthough given that there was no privileged permission declared it never worked anyways",
+      "revId": "db3eb492f32483a80e563675ae5083e1c9b30752",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
