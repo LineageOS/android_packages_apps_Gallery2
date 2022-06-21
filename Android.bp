@@ -25,9 +25,6 @@ android_app {
 
     resource_dirs: ["res"],
 
-    privileged: true,
-    certificate: "platform",
-
     system_ext_specific: true,
 
     platform_apis: true,
