@@ -683,7 +683,7 @@ public abstract class PhotoPage extends ActivityState implements
                  if (mModel != null && mModel.getMediaItem(0) != null) {
                  Uri uri = mActivity.getDataManager().getContentUri(mModel.getMediaItem(0).getPath());
                  mActivity.isTopMenuShow = true;
-                 mShareIntent.setType(MenuExecutor.getMimeType(mModel
+                 mShareIntent.setDataAndType(uri, MenuExecutor.getMimeType(mModel
                     .getMediaItem(0).getMediaType()));
                  mShareIntent.putExtra(Intent.EXTRA_STREAM, uri);
                  String shareTitle = mActivity.getResources().
