@@ -32,9 +32,8 @@ public class FaceDetect {
             System.loadLibrary("ts_detected_face_jni");
             mLibLoaded = true;
         } catch (UnsatisfiedLinkError e) {
-            e.printStackTrace();
             mLibLoaded = false;
-            Log.e(TAG, "ts_detected_face_jni library not found!");
+            Log.d(TAG, "ts_detected_face_jni library not found!");
         }
     }
 

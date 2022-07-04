@@ -27,9 +27,8 @@ public class MakeupEngine {
             System.loadLibrary("ts_face_beautify_jni");
             mLibLoaded = true;
         } catch (UnsatisfiedLinkError e) {
-            e.printStackTrace();
             mLibLoaded = false;
-            Log.e(MakeupEngine.class.getName(), "ts_face_beautify_jni library not found!");
+            Log.d(MakeupEngine.class.getName(), "ts_face_beautify_jni library not found!");
         }
     }
 
