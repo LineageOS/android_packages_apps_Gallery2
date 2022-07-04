@@ -386,7 +386,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
                 intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
             } else {
                 intent.setAction(Intent.ACTION_SEND);
-                intent.setType(GalleryUtils.MIME_TYPE_PANORAMA360);
+                intent.setDataAndType(uris.get(0), GalleryUtils.MIME_TYPE_PANORAMA360);
                 intent.putExtra(Intent.EXTRA_STREAM, uris.get(0));
             }
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -425,7 +425,7 @@ public class ActionModeHandler implements Callback, PopupList.OnPopupItemClickLi
                 intent.setAction(Intent.ACTION_SEND_MULTIPLE).setType(mimeType);
                 intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
             } else {
-                intent.setAction(Intent.ACTION_SEND).setType(mimeType);
+                intent.setAction(Intent.ACTION_SEND).setDataAndType(uris.get(0), mimeType);
                 intent.putExtra(Intent.EXTRA_STREAM, uris.get(0));
             }
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
