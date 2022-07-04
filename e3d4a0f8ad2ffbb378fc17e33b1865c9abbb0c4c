@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae52f8e3_a4ce4f5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19612
+      },
+      "writtenOn": "2022-07-04T14:08:44Z",
+      "side": 1,
+      "message": "Showing edit button on array of images didn\u0027t made sense. Therefore I pushed an another change which ensures the edit button is not shown on multiple images send intent.\n\nhttps://review.lineageos.org/c/LineageOS/android_frameworks_base/+/333713",
+      "revId": "e3d4a0f8ad2ffbb378fc17e33b1865c9abbb0c4c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
