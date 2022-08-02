@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel.MapMode;
@@ -1919,6 +1920,9 @@ public class ExifInterface {
             double minutes = coordinate[1].toDouble();
             double seconds = coordinate[2].toDouble();
             double result = degrees + minutes / 60.0 + seconds / 3600.0;
+            BigDecimal rounded = new BigDecimal(result);
+            rounded = rounded.setScale(6, BigDecimal.ROUND_HALF_UP);
+            result = rounded.doubleValue();
             if ((reference.equals("S") || reference.equals("W"))) {
                 return -result;
             }
