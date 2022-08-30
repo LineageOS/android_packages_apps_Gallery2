@@ -698,16 +698,9 @@ public abstract class PhotoPage extends ActivityState implements
                  return;
 
             case R.id.photopage_bottom_control_delete:
-                 String confirmMsg = null;
-                 confirmMsg = mActivity.getResources().getQuantityString(
-                    R.plurals.delete_selection, 1);
                  if (mModel != null && mModel.getMediaItem(0) != null) {
-                 Path path = mModel.getMediaItem(0).getPath();
-                 mSelectionManager.deSelectAll();
-                 mSelectionManager.toggle(path);
-                 MenuItem item = null;
-                 mMenuExecutor.onMenuClicked(item, confirmMsg,
-                    mConfirmDialogListener);
+                     Path path = mModel.getMediaItem(0).getPath();
+                     mPhotoView.deleteAfterAnimation(20, path);
                  }
                 return;
         default:
