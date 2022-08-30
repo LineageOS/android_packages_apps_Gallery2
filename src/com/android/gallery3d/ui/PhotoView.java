@@ -472,6 +472,16 @@ public class PhotoView extends GLView {
         invalidate();
     }
 
+    public void deleteAfterAnimation(int duration, Path path) {
+        if (!mHandler.hasMessages(MSG_DELETE_ANIMATION_DONE)) {
+            mListener.onCommitDeleteImage();
+            Message m = mHandler.obtainMessage(MSG_DELETE_ANIMATION_DONE);
+            m.obj = path;
+            m.arg1 = 0;
+            mHandler.sendMessageDelayed(m, duration);
+        }
+    }
+
     private void setPictureSize(int index) {
         Picture p = mPictures.get(index);
         mPositionController.setImageSize(index, p.getSize(),
