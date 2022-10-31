@@ -22,6 +22,30 @@
       },
       "revId": "0d59f90f35abda0fe3c9a149b6d3bfc68f9eeb17",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1aba04_14c96586",
+        "filename": "src/com/android/gallery3d/data/MediaDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2022-10-31T15:49:28Z",
+      "side": 1,
+      "message": "The method itself is `getlatLong` though. And we add it to `INDEX_LOCATION`.\n\nFine either way honestly IMO",
+      "parentUuid": "387aeeb3_696f692f",
+      "range": {
+        "startLine": 174,
+        "startChar": 17,
+        "endLine": 174,
+        "endChar": 24
+      },
+      "revId": "0d59f90f35abda0fe3c9a149b6d3bfc68f9eeb17",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
