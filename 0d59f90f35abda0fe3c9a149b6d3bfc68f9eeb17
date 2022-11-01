@@ -46,6 +46,30 @@
       },
       "revId": "0d59f90f35abda0fe3c9a149b6d3bfc68f9eeb17",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1b9d4e_53ea3003",
+        "filename": "src/com/android/gallery3d/data/MediaDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 13559
+      },
+      "writtenOn": "2022-11-01T05:16:54Z",
+      "side": 1,
+      "message": "Actually as Chirayu said, its fetching latitude and longitude so I personally think \"latLong\" is more suitable",
+      "parentUuid": "bc1aba04_14c96586",
+      "range": {
+        "startLine": 174,
+        "startChar": 17,
+        "endLine": 174,
+        "endChar": 24
+      },
+      "revId": "0d59f90f35abda0fe3c9a149b6d3bfc68f9eeb17",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
