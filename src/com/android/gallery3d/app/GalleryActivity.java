@@ -76,7 +76,6 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     public static final String KEY_TYPE_BITS = "type-bits";
     public static final String KEY_MEDIA_TYPES = "mediaTypes";
     public static final String KEY_DISMISS_KEYGUARD = "dismiss-keyguard";
-    public static final String KEY_FROM_SNAPCAM = "from-snapcam";
     public static final String KEY_TOTAL_NUMBER = "total-number";
     public static final String QSST = "QSST";
 
@@ -455,16 +454,13 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
                 Path albumPath = dm.getDefaultSetOf(itemPath);
 
                 data.putString(PhotoPage.KEY_MEDIA_ITEM_PATH, itemPath.toString());
-                if (!intent.getBooleanExtra(KEY_FROM_SNAPCAM, false)) {
-                    data.putBoolean(PhotoPage.KEY_READONLY, true);
-                } else {
-                    int hintIndex = 0;
-                    if (View.LAYOUT_DIRECTION_RTL == TextUtils
-                        .getLayoutDirectionFromLocale(Locale.getDefault())) {
-                        hintIndex = intent.getIntExtra(KEY_TOTAL_NUMBER, 1) - 1;
-                    }
-                    data.putInt(PhotoPage.KEY_INDEX_HINT, hintIndex);
+
+                int hintIndex = 0;
+                if (View.LAYOUT_DIRECTION_RTL == TextUtils
+                    .getLayoutDirectionFromLocale(Locale.getDefault())) {
+                    hintIndex = intent.getIntExtra(KEY_TOTAL_NUMBER, 1) - 1;
                 }
+                data.putInt(PhotoPage.KEY_INDEX_HINT, hintIndex);
 
                 // TODO: Make the parameter "SingleItemOnly" public so other
                 //       activities can reference it.
