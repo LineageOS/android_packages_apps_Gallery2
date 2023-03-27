@@ -546,7 +546,7 @@ public class CropActivity extends Activity {
                 Utils.closeSilently(mInStream);
                 if (mOutUri != null) {
                     try {
-                        mOutStream = getContentResolver().openOutputStream(mOutUri);
+                        mOutStream = getContentResolver().openOutputStream(mOutUri, "wt");
                     } catch (FileNotFoundException e) {
                         Log.w(LOGTAG, "cannot write file: " + mOutUri.toString(), e);
                     }
