@@ -101,8 +101,6 @@ public class LocalImage extends LocalMediaItem {
 
     private final GalleryApp mApplication;
 
-    public int rotation;
-
     private PanoramaMetadataSupport mPanoramaMetadata = new PanoramaMetadataSupport(this);
 
     public LocalImage(Path path, GalleryApp application, Cursor cursor) {
@@ -141,7 +139,6 @@ public class LocalImage extends LocalMediaItem {
         dateModifiedInSec = cursor.getLong(INDEX_DATE_MODIFIED);
         filePath = cursor.getString(INDEX_DATA);
         caption = getPathTile(filePath);
-        rotation = cursor.getInt(INDEX_ORIENTATION);
         bucketId = cursor.getInt(INDEX_BUCKET_ID);
         fileSize = cursor.getLong(INDEX_SIZE);
         width = cursor.getInt(INDEX_WIDTH);
@@ -163,7 +160,6 @@ public class LocalImage extends LocalMediaItem {
                 dateModifiedInSec, cursor.getLong(INDEX_DATE_MODIFIED));
         filePath = uh.update(filePath, cursor.getString(INDEX_DATA));
         caption = uh.update(caption, getPathTile(filePath));
-        rotation = uh.update(rotation, cursor.getInt(INDEX_ORIENTATION));
         bucketId = uh.update(bucketId, cursor.getInt(INDEX_BUCKET_ID));
         fileSize = uh.update(fileSize, cursor.getLong(INDEX_SIZE));
         width = uh.update(width, cursor.getInt(INDEX_WIDTH));
@@ -309,7 +305,7 @@ public class LocalImage extends LocalMediaItem {
         GalleryUtils.assertNotInRenderThread();
         Uri baseUri = Images.Media.EXTERNAL_CONTENT_URI;
         ContentValues values = new ContentValues();
-        int rotation = (this.rotation + degrees) % 360;
+        int rotation = (getRotation() + degrees) % 360;
         if (rotation < 0) rotation += 360;
 
         if (mimeType.equalsIgnoreCase("image/jpeg")) {
@@ -355,7 +351,6 @@ public class LocalImage extends LocalMediaItem {
     @Override
     public MediaDetails getDetails() {
         MediaDetails details = super.getDetails();
-        details.addDetail(MediaDetails.INDEX_ORIENTATION, Integer.valueOf(rotation));
         if (MIME_TYPE_JPEG.equals(mimeType) || MIME_TYPE_HEIF.equals(mimeType) ||
                 MIME_TYPE_HEIC.equals(mimeType)) {
             // ExifInterface returns incorrect values for photos in other format.
@@ -367,7 +362,13 @@ public class LocalImage extends LocalMediaItem {
 
     @Override
     public int getRotation() {
-        return rotation;
+        ExifInterface exif = new ExifInterface();
+        try {
+            exif.readExif(filePath);
+            return Exif.getOrientation(exif);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     @Override

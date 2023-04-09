@@ -122,6 +122,10 @@ public class MediaDetails implements Iterable<Entry<Integer, Object>> {
                 MediaDetails.FlashState state = new MediaDetails.FlashState(
                         Integer.valueOf(value.toString()));
                 details.addDetail(key, state);
+            } else if (key == MediaDetails.INDEX_ORIENTATION) {
+                int orientation = ExifInterface.getRotationForOrientationValue(
+                        Short.valueOf(value));
+                details.addDetail(key, orientation);
             } else {
                 details.addDetail(key, value);
             }
@@ -145,6 +149,8 @@ public class MediaDetails implements Iterable<Entry<Integer, Object>> {
                 MediaDetails.INDEX_WIDTH);
         setExifData(details, exif.getTag(ExifInterface.TAG_IMAGE_LENGTH),
                 MediaDetails.INDEX_HEIGHT);
+        setExifData(details, exif.getTag(ExifInterface.TAG_ORIENTATION),
+                MediaDetails.INDEX_ORIENTATION);
         ExifTag recordTag = exif.getTag(ExifInterface.TAG_DATE_TIME_ORIGINAL);
         if (recordTag == null) {
             recordTag = exif.getTag(ExifInterface.TAG_DATE_TIME_DIGITIZED);
