@@ -1894,6 +1894,7 @@ public class ExifInterface {
                 return 90;
             case Orientation.BOTTOM_LEFT:
                 return 180;
+            case Orientation.LEFT_BOTTOM:
             case Orientation.RIGHT_BOTTOM:
                 return 270;
             default:
