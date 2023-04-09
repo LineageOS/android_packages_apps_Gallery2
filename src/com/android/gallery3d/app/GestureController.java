@@ -35,7 +35,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 public class GestureController {
-    private static final int GESTURE_THRESHOLD = 20;
+    private static final int GESTURE_THRESHOLD = 40;
     private GestureDetector mGestureDetector;
     private GestureControlListener mGestureControlListener;
 

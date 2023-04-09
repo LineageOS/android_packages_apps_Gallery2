@@ -168,12 +168,12 @@ public class GestureControllerOverlay extends FrameLayout implements
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        if (changed && mGestureController != null) {
-            mGestureController.setRect(left, top, right, bottom);
-        }
-
         int h = bottom - top;
         int w = right - left;
+
+        if (changed && mGestureController != null) {
+            mGestureController.setRect(left, top + h / 4, right, bottom);
+        }
 
         if (mCurrentIndicator != null) {
             layoutCenteredView(mCurrentIndicator, 0, 0, w, h);
