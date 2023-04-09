@@ -190,7 +190,9 @@ public class GestureController {
         float currentX = currentEvent.getX();
         float currentY = currentEvent.getY();
         if (Math.abs(currentX - startX) >= GESTURE_THRESHOLD) {
-            return Type.SEEK;
+            if (mFullRect.contains((int) startX, (int) startY)) {
+                return Type.SEEK;
+            }
         } else if (Math.abs(currentY - startY) >= GESTURE_THRESHOLD) {
             if (mBrightnessRect.contains((int) startX, (int) startY)) {
                 return Type.BRIGHTNESS;
