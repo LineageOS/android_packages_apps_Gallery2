@@ -16,6 +16,24 @@
       "message": "this might lead to an issue where loading many images and videos will take significant amount of time at startup, I tried something similar with `date taken` and it resulted in slowdown https://gitlab.e.foundation/e/os/android_packages_apps_Gallery2/-/commit/80e45bb2a72461cb838bc3d71400de7d721ff3d8 at end had to revert it",
       "revId": "8f6f6ef23f95a2b4975abaf5d0e0050676895e2a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "339bc3af_a7207d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 15346
+      },
+      "writtenOn": "2023-04-10T12:11:56Z",
+      "side": 1,
+      "message": "Could it be slower because you are using \"MediaDetails.extractExifInfo\" and not \"exif.readExif(filePath)\"?",
+      "parentUuid": "0e35f433_81e58be5",
+      "revId": "8f6f6ef23f95a2b4975abaf5d0e0050676895e2a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
