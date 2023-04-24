@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">Asurif</string>
+    <string name="setp_option_three_second">3 n tasinin</string>
+    <string name="setp_option_six_second">6 n tasinin</string>
+    <string name="loop">"Tineddict"</string>
+    <string name="single">"Yiwen"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Amsimγur usiwel iRMED</string>
+    <string name="speaker_off">Amsimγur usiwel INSA</string>
+    <string name="input_url">"Sekcem URL"</string>
+    <string name="streaming_settings">"Iɣewwaren n usuddem"</string>
+    <string name="next">"Ɣer zdat"</string>
+    <string name="previous">"Ar deffir"</string>
+    <string name="buffer_size">Tiddi n tkatut n uḥraz</string>
+    <string name="apn">APN anurif</string>
+    <string name="rtp_min_port">Tawwurt taddayt</string>
+    <string name="rtp_max_port">Tawwurt tafellayt</string>
+    <string name="set_rtp_min_port">Sbadu tawwurt taddayt</string>
+    <string name="set_rtp_max_port">Sbadu tawwurt tafellayt</string>
+    <string name="set_buffer_size">Sbadu tiddi n tallunt n weḥraz</string>
+    <string name="set_apn">Fren APN i tebɣiḍ</string>
+    <string name="setting">Iɣewwaṛen</string>
+    <string name="server_timeout_title">"Akud i tiririt n uqeddac"</string>
+    <string name="media_controller_live">Usrid</string>
+    <string name="media_controller_playing">Taɣuri</string>
+    <string name="media_controller_connecting">Tuqna\u2026</string>
+    <string name="bookmark_add">"Rnu tacreḍt"</string>
+    <string name="bookmark_display">"Sken ticraḍ"</string>
+    <string name="bookmark_empty">"Ulac ticraḍ"</string>
+    <string name="bookmark_exist">"Tella yakan tacreḍt agi"</string>
+    <string name="bookmark_add_success">"Tacreḍt tettwarna"</string>
+    <string name="bookmark_list">"Ticraḍ"</string>
+    <string name="bookmark_title">"Azwel"</string>
+    <string name="bookmark_location">"Adig"</string>
+    <string name="delete_all">"Kkes akk"</string>
+    <string name="default_title">"Azwel amezwer"</string>
+    <string name="more_image">Ugar tugniwin</string>
+    <string name="map_activity_not_found_err">Ulac asnas n tkarḍiwin i yettwasbedden i uskan n wadeg.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d n tvidyut</item>
+        <item quantity="other">%1$d n tvidyutin</item>
+    </plurals>
+    <string name="share_dialogue_title">Bḍu s</string>
+    <string name="fail_trim">Suref-aɣ, tavidyut-a ulamek ad tettwagzem</string>
+    <string name="drm_license_info">Talɣut ɣef turagt DRM</string>
+    <string name="timeline_title">Amazray</string>
+    <string name="albums_title">Iseɣraz</string>
+    <string name="videos_title">Tividyutin</string>
+    <string name="action_viewtype_list">Timeẓri tabdart</string>
+    <string name="tvEmptyAlbum">Ulac tewlafin</string>
+    <string name="tvEmptyVideos">Ulac tividyutin</string>
+    <string name="text_makeup_Soften">Adoucir</string>
+    <string name="truescanner_normal">Amagnu</string>
+    <string name="trim_video_exit_title">Sefsex ibeddilen?</string>
+</resources>

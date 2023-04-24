@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+Copyright (C) 2014-2016 The CyanogenMod Project
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+    * Neither the name of The Linux Foundation nor the names of its
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="setp_option_name">Pas</string>
+    <string name="step_option_desc">Personalize l\'avanzament/involuçâ svelt</string>
+    <string name="setp_option_three_second">3 seconts</string>
+    <string name="setp_option_six_second">6 seconts</string>
+    <string name="loop">"Ciclic"</string>
+    <string name="single">"Singul"</string>
+    <string name="stereo">"Stereo"</string>
+    <string name="speaker_on">Casse ativade</string>
+    <string name="speaker_off">Casse disativade</string>
+    <string name="speaker_need_headset">Tache i auricolârs par doprâ cheste funzionalitât.</string>
+    <string name="single_track">"Linie singule"</string>
+    <string name="input_url">"Inserìs l'URL"</string>
+    <string name="streaming_settings">"Impostsazions de trasmission"</string>
+    <string name="next">"Sucessîf"</string>
+    <string name="previous">"Precedent"</string>
+    <string name="buffer_size">Dimension buffer</string>
+    <string name="apn">APN preferît</string>
+    <string name="rtp_min_port">Puarte min</string>
+    <string name="rtp_max_port">Puarte max</string>
+    <string name="set_rtp_min_port">Stabilìs puarte min</string>
+    <string name="set_rtp_max_port">Stabilìs puarte max</string>
+    <string name="set_buffer_size">Stabilìs dimension buffer</string>
+    <string name="set_apn">Selezione APN preferît</string>
+    <string name="setting">Impostazions</string>
+    <string name="server_timeout_title">"Timp di spiete dal servidôr"</string>
+    <string name="server_timeout_message">"Tornâ a conetisi al servidôr par riprodusi il video?"</string>
+    <string name="videoview_error_text_cannot_connect_retry">"Conession falide cirint di tornâ a conetisi a %1$d\u2026"</string>
+    <string name="media_controller_live">Dal vîf</string>
+    <string name="media_controller_playing">In riproduzion</string>
+    <string name="media_controller_connecting">Conession\u2026</string>
+    <string name="bookmark_add">"Zonte segnelibri"</string>
+    <string name="bookmark_display">"Mostre segnelibris"</string>
+    <string name="bookmark_empty">"Nissun segnelibri"</string>
+    <string name="bookmark_exist">"Il segnelibri al esist za"</string>
+    <string name="bookmark_add_success">"Segnelibri zontât"</string>
+    <string name="bookmark_list">"Segnelibris"</string>
+    <string name="bookmark_title">"Titul"</string>
+    <string name="bookmark_location">"Posizion"</string>
+    <string name="delete_all">"Elimine dut"</string>
+    <string name="default_title">"Titul predefinît"</string>
+    <string name="more_image">Altris imagjins</string>
+    <string name="mute_nosupport">Impussibil cidinâ : video no supuartât</string>
+    <string name="map_activity_not_found_err">No je instalade nissune aplicazion pes mapis, par podê mostrâ la posizion.</string>
+    <plurals name="number_of_videos">
+        <item quantity="one">%1$d video</item>
+        <item quantity="other">%1$d videos</item>
+    </plurals>
+    <string name="cannot_share_items">Il numar massim di elements condivisibii al è 300</string>
+    <string name="share_dialogue_title">Condivît vie</string>
+    <string name="no_faces">Nissune muse</string>
+    <string name="fail_trim">Nol è pussibil taiâ chest file video</string>
+    <string name="can_not_trim">Al è pussibil taiâ dome i files mp4 e 3gp</string>
+    <string name="drm_license_info">Informazions licence DRM</string>
+    <string name="timeline_title">Linie temporâl</string>
+    <string name="albums_title">Albums</string>
+    <string name="videos_title">Videos</string>
+    <string name="action_viewtype_list">Viodude a liste</string>
+    <string name="tvEmptyAlbum">Nissune foto cjatade</string>
+    <string name="tvEmptyVideos">Nissun video cjatât</string>
+    <string name="text_makeup_whiten">Sblancjâ</string>
+    <string name="text_makeup_Soften">Inmorbidî</string>
+    <string name="text_makeup_trimface">Ritocjade di muse</string>
+    <string name="text_makeup_bigeye">Voi grancj</string>
+    <string name="truescanner_normal">Normâl</string>
+    <string name="truescanner_white">Lavagne blancje</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Gjave stralûs</string>
+    <string name="hazebuster_acts">Sfante fumadice</string>
+    <string name="seestraight_acts">Viôt dret</string>
+    <string name="seestraight_input_image_is_small">La imagjin e je masse piçule par podêle elaborâ.</string>
+    <string name="seestraight_process_fail">Impussibil elaborâ la imagjin.</string>
+    <string name="trim_video_exit_title">Scartâ lis modifichis?</string>
+    <string name="trim_video_exit_msg">Scartâ lis modifichis fatis a chets video?</string>
+    <string name="trim_video_exit_discard">SCARTE</string>
+</resources>
