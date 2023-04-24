@@ -45,7 +45,7 @@
     <string name="select_group">Dewisa grŵp</string>
     <string name="set_image">Gosod y llun fel</string>
     <string name="set_wallpaper">Gosod papur wal</string>
-    <string name="wallpaper">Wedi gosod fel papur wal\u2026</string>
+    <string name="wallpaper">Gosodwyd fel papur wal\u2026</string>
     <string name="camera_setas_wallpaper">Papur wal</string>
     <string name="delete">Dileu</string>
     <plurals name="delete_selection">
@@ -349,8 +349,8 @@
     <string name="pref_camera_id_label_back">CAMERA BLAEN</string>
     <string name="pref_camera_id_label_front">CAMERA CEFN</string>
     <string name="dialog_ok">Iawn</string>
-    <string name="spaceIsLow_content" product="nosdcard">Mae dy storfa USB yn rhedeg yn brin o le. Newidia\'r gosodiad ansawdd neu ddileu rhai delweddau neu ffeiliau eraill.</string>
-    <string name="spaceIsLow_content" product="default">Mae dy gerdyn SD yn rhedeg yn brin o le. Newidia\'r gosodiad ansawdd neu ddileu rhai delweddau neu ffeiliau eraill.</string>
+    <string name="spaceIsLow_content" product="nosdcard">Mae dy storfa USB yn rhedeg yn brin o le. Newidia\'r gosodiad ansawdd neu dileu rhai delweddau neu ffeiliau eraill.</string>
+    <string name="spaceIsLow_content" product="default">Mae dy gerdyn SD yn rhedeg yn brin o le. Newidia\'r gosodiad ansawdd neu dileu rhai delweddau neu ffeiliau eraill.</string>
     <string name="video_reach_size_limit">Wedi cyrraedd y terfyn maint.</string>
     <string name="pano_too_fast_prompt">Rhy gyflym</string>
     <string name="pano_dialog_prepare_preview">Yn paratoi panorama</string>

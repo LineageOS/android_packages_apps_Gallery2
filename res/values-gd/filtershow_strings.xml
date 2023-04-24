@@ -111,7 +111,7 @@
     <string name="draw_value">Soilleireachd</string>
     <string name="draw_color">Dath</string>
     <string name="draw_style_line">Loidhnichean</string>
-    <string name="draw_style_brush_spatter">Comharraiche</string>
+    <string name="draw_style_brush_spatter">Comharra</string>
     <string name="draw_style_brush_marker">Gànraich</string>
     <string name="draw_clear">Falamhaich</string>
     <string name="color_border_size">Tiughad</string>

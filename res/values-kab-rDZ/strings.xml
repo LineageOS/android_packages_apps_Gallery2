@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Tamidelt</string>
+    <string name="loading_video">Asali tvidyut\u2026</string>
+    <string name="loading">Asali\u2026</string>
+    <string name="no_thumbnail">Ulac aqmamaḍ</string>
+    <string name="resume_playing_restart">Ales tanekra</string>
+    <string name="crop_save_text">IH</string>
+    <string name="ok">IH</string>
+    <string name="saving_image">Asekles n tugna\u2026</string>
+    <string name="select_image">Fren tawlaft</string>
+    <string name="select_video">Fren tabidyutt</string>
+    <string name="select_item">Fren aferdis</string>
+    <string name="select_album">Fren iseɣrez</string>
+    <string name="select_group">Fren agraw</string>
+    <string name="set_image">Sres tawlaft deg</string>
+    <string name="set_wallpaper">Sbadu agalis</string>
+    <string name="camera_setas_wallpaper">Agalis</string>
+    <string name="delete">Kkes</string>
+    <plurals name="delete_selection">
+        <item quantity="one">Ad tekkseḍ iferdisen yettwafernen?</item>
+        <item quantity="other">Kkes iferdisen ittwafernen?</item>
+    </plurals>
+    <string name="confirm">Sentem</string>
+    <string name="cancel">Sefsex</string>
+    <string name="share">Myebḍu</string>
+    <string name="share_panorama">Myebḍu apanuṛama</string>
+    <string name="share_as_photo">Myebḍu am tewlaft</string>
+    <string name="deleted">Yettwakkes</string>
+    <string name="undo">SEFSEX</string>
+    <string name="select_all">Fren kullec</string>
+    <string name="deselect_all">Kkes kullec</string>
+    <string name="slideshow">Tigri</string>
+    <string name="details">S telqayt</string>
+    <string name="close">Mdel</string>
+    <string name="switch_to_camera">Ɛeddi ar tṣewwaṛt</string>
+    <plurals name="number_of_items_selected">
+        <item quantity="one">%1$d yettwafernen</item>
+        <item quantity="other">%1$d yettwafernen</item>
+    </plurals>
+    <plurals name="number_of_albums_selected">
+        <item quantity="one">%1$d yettwafernen</item>
+        <item quantity="other">%1$d yettwafren</item>
+    </plurals>
+    <plurals name="number_of_groups_selected">
+        <item quantity="one">%1$d yettwafren</item>
+        <item quantity="other">%1$d yettwafren</item>
+    </plurals>
+    <string name="show_on_map">Sken-d ɣef tkerḍa</string>
+    <string name="rotate_left">Bren ar tama tazelmaḍt</string>
+    <string name="edit">Ẓreg</string>
+    <string name="crop_action">Gzem</string>
+    <string name="trim_action">Sezg</string>
+    <string name="mute_action">Sens asawad</string>
+    <string name="group_by_size">S teɣzi</string>
+    <string name="show_images_only">Sken-d kan tiwlafin</string>
+    <string name="show_videos_only">Sken-d kan tibidyutin</string>
+    <string name="show_all">Sken-d tiwlafin akked tbidyutin</string>
+    <string name="appwidget_title">Asɛeddi n tewlafin</string>
+    <string name="appwidget_empty_text">Ulac tiwlafin</string>
+    <string name="crop_saved">Tugna yettwagezmen tettwanɣel ar <xliff:g id="folder_name">%s</xliff:g>.</string>
+    <string name="no_albums_alert">Ulac iseɣrazen iwejden</string>
+    <string name="picasa_posts">Imagraden</string>
+    <string name="sync_picasa_albums">Err-it d amaynut</string>
+    <string name="done">Yemmed</string>
+    <string name="title">Azwel</string>
+    <string name="description">Aglam</string>
+    <string name="time">Akud</string>
+    <string name="location">Adeg-is</string>
+    <string name="path">Abrid</string>
+    <string name="width">Tehri</string>
+    <string name="height">Leɛli</string>
+    <string name="orientation">Awelleh</string>
+    <string name="duration">Tanzagt</string>
+    <string name="mimetype">Anaw MIME</string>
+    <string name="file_size">Tiddi n ufaylu</string>
+    <string name="maker">Asɣal</string>
+    <string name="model">Udem</string>
+    <string name="flash">Abrureq</string>
+    <string name="focal_length">Teɣzi n udikan</string>
+    <string name="white_balance">Tisistelt n imellalen</string>
+    <string name="exposure_time">Akud n timzikent</string>
+    <string name="iso">ISO</string>
+    <string name="manual">S ufus</string>
+    <string name="auto">Awurman</string>
+    <string name="flash_on">Lebṛaq yendeḥ</string>
+    <string name="unknown">Arussin</string>
+    <string name="ffx_original">Aneẓli</string>
+    <string name="ffx_blue_crush">Azegzaw</string>
+    <string name="ffx_bw_contrast">Aberkan d umellal</string>
+    <string name="set_label_mtp_devices">Périphériques MTP</string>
+    <string name="Import">Ssekcem</string>
+    <string name="import_complete">Akter yemmed</string>
+    <string name="widget_type_photo">Fren tugna</string>
+    <string name="slideshow_dream_name">Tigri</string>
+    <string name="albums">Iseɣraz</string>
+    <string name="times">Akud</string>
+    <string name="locations">Idɣaren</string>
+    <string name="people">Imdanen</string>
+    <string name="tags">Tiṛekkizin</string>
+    <string name="settings">Iɣewwaṛen</string>
+    <string name="add_account">Rnu amiḍan</string>
+    <string name="folder_camera">Takamiṛatt</string>
+    <string name="folder_download">Sider</string>
+    <string name="folder_edited_online_photos">Ẓreg tiwlafin s Internet</string>
+    <string name="folder_imported">Agem-d</string>
+    <string name="folder_screenshot">Tuṭṭfa n ugdil</string>
+    <string name="help">Tallelt</string>
+    <string name="no_external_storage_title">Ulac ayen i yettwaskelsen</string>
+    <string name="no_external_storage">Ulac asekles n beṛṛa</string>
+    <string name="switch_photo_grid">Tamuɣli s tracca</string>
+    <string name="please_wait">Rǧu ma ulac aɣilif</string>
+    <string name="save_into">Asekles n tbudyut deg </string>
+    <string name="trim_too_short">Ulamek tuzzya: tabidyutt-nni meẓẓiyet aṭas</string>
+    <string name="save" msgid="8140440041190264400">Sekles</string>
+    <string name="ingest_scanning" msgid="2048262851775139720">Tasleḍt n wegbur</string>
+    <plurals name="ingest_number_of_items_scanned">
+        <item quantity="one">%1$d iferdisen yettwaselḍen</item>
+        <item quantity="other">%1$d iferdisen yettwaselḍen</item>
+    </plurals>
+    <plurals name="ingest_number_of_items_selected">
+        <item quantity="one">%1$d n yiferdisen yettwafernen</item>
+        <item quantity="other">%1$d n yiferdisen yettwafernen</item>
+    </plurals>
+    <string name="ingest_sorting" msgid="624687230903648118">Aṛeqqeɛ...</string>
+    <string name="ingest_scanning_done">Ifukk usamḍen</string>
+    <string name="ingest_importing">Asiweḍ</string>
+    <string name="ingest_empty_device">Ulac ayen yellan ad t-id-issiweḍ ar tmacint-a</string>
+    <string name="ingest_no_device">Ulac kra n tmacint MTP i d-yettwaqqnen</string>
+    <string name="camera_error_title">Tuccḍa i d-yekkan seg tkamiṛat</string>
+    <string name="cannot_connect_camera">Ur yezmir ara ad yeqqen ar tkamiṛat.</string>
+    <string name="camera_label">Takamiṛat</string>
+    <string name="wait">Ṛaju kra</string>
+    <string name="no_storage" product="nosdcard">Ger taḥerrazt USB uqbel ad tesxedmeḍ takamirat</string>
+    <string name="no_storage" product="default">Ger takarḍa SD uqbel ad-tessqedceḍ takamiṛat.</string>
+    <string name="preparing_sd" product="nosdcard">Aheyyi n tkerḍa USB</string>
+    <string name="preparing_sd" product="default">Aheyyi n tkerḍa SD\u2026</string>
+    <string name="access_sd_fail" product="nosdcard">Ur izmir ara ad yekcem ar tkerḍa SD.</string>
+    <string name="access_sd_fail" product="default">Ur izmir ara ad yekcem ar tkerḍa SD.</string>
+    <string name="review_cancel">SEFSEX</string>
+    <string name="review_ok">Ifukk</string>
+    <string name="pref_camera_id_title">Fren takamiṛat</string>
+    <string name="pref_camera_id_entry_back">Tuɣalin</string>
+    <string name="pref_camera_id_entry_front">Ar zdat</string>
+    <string name="pref_camera_recordlocation_title">Amkan u uḥraz</string>
+    <string name="pref_camera_location_label">Amkan n uḥraz</string>
+    <string name="pref_camera_timer_title">Akud yettfakkan</string>
+    <plurals name="pref_camera_timer_entry">
+        <item quantity="one">1 n tasint</item>
+        <item quantity="other">%d n tasinin</item>
+    </plurals>
+    <string name="setting_off">Yensa</string>
+    <string name="setting_on">Yecɛl</string>
+    <string name="pref_video_quality_title">Taɣaṛa n tbidyut</string>
+    <string name="pref_video_quality_entry_high">Telha nezzeh</string>
+    <string name="pref_video_quality_entry_low">Cwiya-tt</string>
+    <string name="pref_camera_settings_category">Iɣewwaṛen n tkamirat</string>
+    <string name="pref_camcorder_settings_category">Iɣewwaṛen n wegdil</string>
+    <string name="pref_camera_picturesize_title">Tiddi n tugna</string>
+    <string name="pref_camera_picturesize_entry_13mp">13M pixel</string>
+    <string name="pref_camera_picturesize_entry_8mp">8M pixel</string>
+    <string name="pref_camera_focusmode_entry_auto">Awurman</string>
+    <string name="pref_camera_focusmode_entry_macro">Amɣer</string>
+    <string name="pref_camera_focusmode_label_auto">AWURMAN</string>
+    <string name="pref_camera_flashmode_title">Askar Flash</string>
+    <string name="pref_camera_flashmode_label">ASKAR FLASH</string>
+    <string name="pref_camera_flashmode_entry_auto">Awurman</string>
+    <string name="pref_camera_flashmode_entry_off">Insa</string>
+    <string name="pref_camera_flashmode_label_auto">FLASH AWURMAN</string>
+    <string name="pref_camera_flashmode_label_on">FLASH YERMED</string>
+    <string name="pref_camera_flashmode_label_off">FLASH YENSA</string>
+    <string name="pref_camera_whitebalance_title">Tisistelt n imellalen</string>
+    <string name="pref_camera_whitebalance_entry_auto">Awurman</string>
+    <string name="pref_camera_whitebalance_entry_daylight">Tafukt n ass</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent">Arafaw afliyuṛi</string>
+    <string name="pref_camera_whitebalance_entry_cloudy">D asigna</string>
+    <string name="pref_camera_whitebalance_label_auto">AWURMAN</string>
+    <string name="pref_camera_whitebalance_label_fluorescent">Tettṛeqṛiq</string>
+    <string name="pref_camera_whitebalance_label_cloudy">S usigna</string>
+    <string name="pref_camera_scenemode_title">Askar n tesɣaṛt</string>
+    <string name="pref_camera_scenemode_entry_auto">Awurman</string>
+    <string name="pref_camera_scenemode_entry_hdr">HDR</string>
+    <string name="pref_camera_scenemode_entry_action">Tigawt</string>
+    <string name="pref_camera_scenemode_entry_night">Deg iḍ</string>
+    <string name="pref_camera_scenemode_entry_sunset">Aɣelluy n yiṭij</string>
+    <string name="pref_camera_scenemode_entry_party">Tameɣṛa</string>
+    <string name="pref_camera_scenemode_label_auto">Ulac walu</string>
+    <string name="pref_camera_scenemode_label_action">Tigawt</string>
+    <string name="pref_camera_scenemode_label_night">Deg iḍ</string>
+    <string name="pref_camera_scenemode_label_sunset">Aɣelluy n yiṭij</string>
+    <string name="pref_camera_scenemode_label_party">Tameɣṛa</string>
+    <string name="pref_camera_countdown_label_one">1 N TASINT</string>
+    <string name="pref_camera_countdown_label_three">3 N TASININ</string>
+    <string name="pref_camera_countdown_label_ten">10 N TASININ</string>
+    <string name="pref_camera_countdown_label_fifteen">15 N TASININ</string>
+    <string name="pref_camera_id_label_back">TAKAMIṚAT N ZDAT</string>
+    <string name="pref_camera_id_label_front">TAKAMIṚAT N DEFFIR</string>
+    <string name="dialog_ok">IH</string>
+    <string name="video_reach_size_limit">Talast n tiddi tewweḍ.</string>
+    <string name="pano_too_fast_prompt">Arurad aṭas</string>
+    <string name="pano_review_saving_indication_str">Asekles\u2026</string>
+    <string name="pref_video_effect_title">Isemda</string>
+    <string name="effect_none">Ulac</string>
+    <string name="effect_goofy_face_big_eyes">Allen timeqqranin</string>
+    <string name="effect_goofy_face_big_mouth">Imi ameqqran</string>
+    <string name="effect_goofy_face_small_mouth">Imi amecṭuḥ</string>
+    <string name="effect_goofy_face_big_nose">Exenfuc amuqran</string>
+    <string name="effect_goofy_face_small_eyes">Allen timecṭaḥ</string>
+    <string name="effect_backdropper_space">G tallunt</string>
+    <string name="effect_backdropper_sunset">Ɣelluy n yiṭij</string>
+    <string name="effect_backdropper_gallery">Tavidyut-ik</string>
+    <string name="clear_effects">Sfeḍ isemda</string>
+    <string name="accessibility_menu_button">Taqeffalt n wumuɣ</string>
+    <string name="capital_off">INSA</string>
+    <string name="pref_video_time_lapse_frame_interval_off">Insa</string>
+    <string name="pref_video_time_lapse_frame_interval_500">0.5 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_1000">1 n tasint</string>
+    <string name="pref_video_time_lapse_frame_interval_1500">1.5 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_2000">2 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_2500">2.5 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_3000">3 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_4000">4 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_5000">5 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_6000">6 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_10000">10 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_12000">12 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_15000">15 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_24000">24 n tasinin</string>
+    <string name="pref_video_time_lapse_frame_interval_30000">0.5 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_60000">1 n tisdat</string>
+    <string name="pref_video_time_lapse_frame_interval_90000">1.5 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_120000">2 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_150000">2.5 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_180000">3 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_240000">4 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_300000">5 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_360000">6 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_600000">10 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_720000">12 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_900000">15 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000">24 n tisdatin</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000">0.5 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000">1 asrag</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000">1.5 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000">2 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000">2.5 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000">3 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000">4 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000">5 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000">6 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000">10 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000">12 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000">15 n isragen</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000">24 n isragen</string>
+    <string name="time_lapse_seconds">tasinin</string>
+    <string name="time_lapse_minutes">tisdatin</string>
+    <string name="time_lapse_hours">isragen</string>
+    <string name="time_lapse_interval_set">Immed</string>
+    <string name="remember_location_no">Uhu tannemmit</string>
+    <string name="remember_location_yes">Ih</string>
+    <string name="menu_camera">Takamiṛat</string>
+    <string name="menu_search">Nadi</string>
+    <string name="tab_photos">Tiwlafin</string>
+    <string name="tab_albums">Iseɣraz</string>
+    <string name="camera_menu_more_label">UGAR N IƔEWWAṚEN</string>
+    <string name="camera_menu_settings_label">IΓEWWAṚEN</string>
+</resources>

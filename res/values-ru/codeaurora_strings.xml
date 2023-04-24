@@ -88,7 +88,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="albums_title">Альбомы</string>
     <string name="videos_title">Видео</string>
     <string name="action_viewtype_list">Список</string>
-    <string name="tvEmptyAlbum">Нет фотографий</string>
+    <string name="tvEmptyAlbum">Нет фото</string>
     <string name="tvEmptyVideos">Нет видео</string>
     <string name="text_makeup_whiten">Осветление</string>
     <string name="text_makeup_Soften">Смягчение</string>
