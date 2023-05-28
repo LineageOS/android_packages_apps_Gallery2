@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.UriMatcher;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.provider.MediaStore;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -70,7 +71,6 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
     public static final String EXTRA_DREAM = "dream";
     public static final String EXTRA_CROP = "crop";
 
-    public static final String ACTION_REVIEW = "com.android.camera.action.REVIEW";
     public static final String KEY_GET_CONTENT = "get-content";
     public static final String KEY_GET_ALBUM = "get-album";
     public static final String KEY_TYPE_BITS = "type-bits";
@@ -265,7 +265,7 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
             startGetContent(intent);
             toggleNavBar(false);
         } else if (Intent.ACTION_VIEW.equalsIgnoreCase(action)
-                || ACTION_REVIEW.equalsIgnoreCase(action)){
+                || MediaStore.ACTION_REVIEW.equalsIgnoreCase(action)){
             mDrawerLayoutSupported = false;
             Uri uri = intent.getData();
             if (uri != null) {
