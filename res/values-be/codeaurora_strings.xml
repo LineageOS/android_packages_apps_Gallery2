@@ -39,7 +39,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="speaker_on">Дынамік УКЛ</string>
     <string name="speaker_off">Дынамік ВЫКЛ</string>
     <string name="input_url">"Увядзіце URL-адрас"</string>
-    <string name="next">"Наступная песня"</string>
     <string name="buffer_size">Памер буфера</string>
     <string name="rtp_min_port">Мінімальны порт</string>
     <string name="rtp_max_port">Максімальны порт</string>
@@ -50,10 +49,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="setting">Налады</string>
     <string name="server_timeout_title">"Час чакання сервера"</string>
     <string name="server_timeout_message">"Перападключыцца да сервера для прайгравання відэафайла?"</string>
-    <string name="videoview_error_text_cannot_connect_retry">"Збой падлучэння. Паўторнае падлучэнне да %1$d\u2026"</string>
     <string name="media_controller_live">Прамы эфір</string>
     <string name="media_controller_playing">Прайграванне</string>
-    <string name="media_controller_connecting">Падлучэнне\u2026</string>
     <string name="bookmark_add">"Дадаць закладку"</string>
     <string name="bookmark_display">"Паказаць закладкі"</string>
     <string name="bookmark_empty">"Няма закладак"</string>
@@ -61,7 +58,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="bookmark_add_success">"Закладка дададзена"</string>
     <string name="bookmark_list">"Закладкі"</string>
     <string name="bookmark_title">"Назва"</string>
-    <string name="bookmark_location">"Месцазнаходжанне"</string>
     <string name="delete_all">"Выдаліць усе"</string>
     <string name="default_title">"Прадвызначаны загаловак"</string>
     <string name="more_image">Іншыя відарысы</string>
@@ -77,7 +73,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="drm_license_info">Інфармацыя пра ліцэнзію DRM</string>
     <string name="albums_title">Альбомы</string>
     <string name="videos_title">Відэа</string>
-    <string name="seestraight_input_image_is_small">Зыходны відарыс занадта малы для апрацоўкі.</string>
+    <string name="tvEmptyAlbum">Фатаграфіі не знойдзены</string>
+    <string name="tvEmptyVideos">Відэа не знойдзены</string>
+    <string name="text_makeup_bigeye">Вялікія вочы</string>
+    <string name="truescanner_normal">Звычайны</string>
+    <string name="hazebuster_acts">Ачысціць кадр ад туману</string>
     <string name="seestraight_process_fail">Не атрымалася апрацаваць відарыс.</string>
     <string name="trim_video_exit_title">Адхіліць змены?</string>
     <string name="trim_video_exit_msg">Адхіліць змены, якія зроблены ў гэтым відэа?</string>
