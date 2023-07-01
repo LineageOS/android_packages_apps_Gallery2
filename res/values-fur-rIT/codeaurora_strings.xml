@@ -38,7 +38,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="stereo">"Stereo"</string>
     <string name="speaker_on">Casse ativade</string>
     <string name="speaker_off">Casse disativade</string>
-    <string name="speaker_need_headset">Tache i auricolârs par doprâ cheste funzionalitât.</string>
+    <string name="speaker_need_headset">Tache lis scufis par doprâ cheste funzionalitât.</string>
     <string name="single_track">"Linie singule"</string>
     <string name="input_url">"Inserìs l'URL"</string>
     <string name="streaming_settings">"Impostsazions de trasmission"</string>
