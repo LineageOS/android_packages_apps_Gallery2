@@ -83,7 +83,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="can_not_trim">Einungis er hægt að skera af mp4 og 3gp-skrám</string>
     <string name="drm_license_info">Upplýsingar um DRM-notkunarleyfi</string>
     <string name="timeline_title">Tímalína</string>
-    <string name="albums_title">Hljómplötur</string>
+    <string name="albums_title">Albúm</string>
     <string name="videos_title">Myndskeið</string>
     <string name="action_viewtype_list">Listasýn</string>
     <string name="tvEmptyAlbum">Engar ljósmyndir fundust</string>
