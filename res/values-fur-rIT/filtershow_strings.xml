@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="title_activity_filter_show">Editôr di fotos</string>
+    <string name="cannot_load_image">Impussibil cjariâ la imagjin!</string>
+    <string name="cannot_edit_original">Impussibil editâ l\'origjinâl</string>
+    <string name="original_picture_text">@string/original</string>
+    <string name="setting_wallpaper">Daûr a stabilî il fonts</string>
+    <string name="download_failure">Nol è stât pussibil discjariâ la foto. La rêt no je disponibile.</string>
+    <string name="original">Origjinâl</string>
+    <string name="borders" msgid="4461692156695893616">Ôrs</string>
+    <string name="custom_border">Personalize</string>
+    <string name="filtershow_undo">Disfe</string>
+    <string name="filtershow_redo">Torne fâs</string>
+    <string name="show_imagestate_panel">Mostre efiets aplicâts</string>
+    <string name="hide_imagestate_panel">Plate efiets aplicâts</string>
+    <string name="export_image">Espuarte</string>
+    <string name="print_image">Stampe</string>
+    <string name="export_flattened">Espuarte imagjin placade</string>
+    <string name="select_output_settings">La imagjin espuartade e sarà une copie, cence la cronologjie.</string>
+    <string name="quality">Cualitât</string>
+    <string name="size">Dimension</string>
+    <string name="x">x</string>
+    <string name="menu_settings">Impostazions</string>
+    <string name="unsaved">Cheste imagjin e à modifichis che no son stadis salvadis.</string>
+    <string name="save_before_exit">Salvâ prime di lâ fûr?</string>
+    <string name="save_and_exit">Salve e jes</string>
+    <string name="save_and_processing">Elaborazion de imagjin a risoluzion complete...</string>
+    <string name="exit">Jes</string>
+    <string name="history">Cronologjie</string>
+    <string name="reset">Ristabilìs</string>
+    <string name="history_original">@string/original</string>
+    <string name="imageState">Efiets aplicâts</string>
+    <string name="compare_original">Confronte</string>
+    <string name="apply_effect">Apliche</string>
+    <string name="reset_effect">Ripristine</string>
+    <string name="aspect">Proporzions</string>
+    <string name="aspect1to1_effect">1:1</string>
+    <string name="aspect4to3_effect">4:3</string>
+    <string name="aspect3to4_effect">3:4</string>
+    <string name="aspect4to6_effect">4:6</string>
+    <string name="aspect5to7_effect">5:7</string>
+    <string name="aspect7to5_effect">7:5</string>
+    <string name="aspect9to16_effect">16:9</string>
+    <string name="aspectNone_effect">Nissun</string>
+    <string name="aspectOriginal_effect">@string/original</string>
+    <string name="Fixed">Fissis</string>
+    <string name="tinyplanet">Planetut</string>
+    <string name="exposure" msgid="1229093066434614811">Esposizion</string>
+    <string name="sharpness">Clarece</string>
+    <string name="contrast">Contrast</string>
+    <string name="vibrance">Vivece</string>
+    <string name="saturation">Saturazion</string>
+    <string name="bwfilter">Filtri BN</string>
+    <string name="wbalance">Auto-colôr</string>
+    <string name="hue">Tonalitât</string>
+    <string name="shadow_recovery">Ombris</string>
+    <string name="highlight_recovery">Altis lûs</string>
+    <string name="curvesRGB">Curvis</string>
+    <string name="vignette">Vignete</string>
+    <string name="vignette_main">Vignete</string>
+    <string name="vignette_exposure">Esposizion</string>
+    <string name="vignette_saturation">Saturazion</string>
+    <string name="vignette_contrast">Contrast</string>
+    <string name="vignette_falloff">Atenuazion lûs</string>
+    <string name="redeye">Voi ros</string>
+    <string name="imageDraw">Dissegne</string>
+    <string name="straighten" msgid="5217801513491493491">Indrece</string>
+    <string name="crop" msgid="5584000454518174632">Ritaie</string>
+    <string name="rotate" msgid="460017689320955494">Volte</string>
+    <string name="mirror">Spiele</string>
+    <string name="negative">Negatîf</string>
+    <string name="none" msgid="3601545724573307541">Nissun</string>
+    <string name="edge">Ôrs</string>
+    <string name="kmeans">Posterize</string>
+    <string name="downsample">Sotcampionament</string>
+    <string name="grad">Graduade</string>
+    <string name="editor_grad_brightness">Luminositât</string>
+    <string name="editor_grad_contrast">Contrast</string>
+    <string name="editor_grad_saturation">Saturazion</string>
+    <string name="editor_chan_sat_main">Principâl</string>
+    <string name="editor_chan_sat_red">Ros</string>
+    <string name="editor_chan_sat_yellow">Zâl</string>
+    <string name="editor_chan_sat_green">Vert</string>
+    <string name="editor_chan_sat_cyan">Ciano</string>
+    <string name="editor_chan_sat_blue">Blu</string>
+    <string name="editor_chan_sat_magenta">Magenta</string>
+    <string name="editor_grad_style">Stîl</string>
+    <string name="editor_grad_new">gnove</string>
+    <string name="curves_channel_rgb">RGB</string>
+    <string name="curves_channel_red">Ros</string>
+    <string name="curves_channel_green">Vert</string>
+    <string name="curves_channel_blue">Blu</string>
+    <string name="draw_style">Stîl</string>
+    <string name="draw_size">Dimension</string>
+    <string name="draw_hue">Tonalitât</string>
+    <string name="draw_saturation">Saturazion</string>
+    <string name="draw_value">Luminositât</string>
+    <string name="draw_color">Colôr</string>
+    <string name="draw_style_line">Liniis</string>
+    <string name="draw_style_brush_spatter">Penarel</string>
+    <string name="draw_style_brush_marker">Pinel a sbruf</string>
+    <string name="draw_clear">Nete</string>
+    <string name="color_border_size">Spessôr</string>
+    <string name="color_border_corner_size">Dimens. angul</string>
+    <string name="color_border_color">Colôr</string>
+    <string name="color_border_clear">Nete</string>
+    <string name="color_pick_select">Sielç un colôr personalizât</string>
+    <string name="color_pick_title">Selezione colôr</string>
+    <string name="draw_size_title">Selezione dimension</string>
+    <string name="draw_size_accept">Va ben</string>
+    <string name="state_panel_original">Origjinâl</string>
+    <string name="state_panel_result">Risultât</string>
+    <string name="filtershow_notification_label">Daûr a salvâ la imagjin</string>
+    <string name="filtershow_notification_message">Elaborazion...</string>
+    <string name="filtershow_save_preset">Salve preconfigurazion corinte</string>
+    <string name="filtershow_manage_preset">Gjestìs preconfigurazions dal utent</string>
+    <string name="filtershow_new_preset">Gnove pre-configurazion</string>
+    <string name="filtershow_preset_name">Non pre-configurazion</string>
+    <string name="filtershow_show_info_panel">Informazions</string>
+    <string name="filtershow_show_info_panel_name">Non de imagjin</string>
+    <string name="filtershow_show_info_panel_size">Dimension de imagjin</string>
+    <string name="filtershow_show_info_panel_histogram">Istogram</string>
+    <string name="filtershow_show_info_panel_exif">Dâts EXIF</string>
+    <string name="filtershow_add_button_looks">Pre-configurazion</string>
+    <string name="filtershow_add_button_versions">Version</string>
+    <string name="filtershow_version_original">Origjinâl</string>
+    <string name="filtershow_version_current">Atuâl</string>
+    <string name="filtershow_exif_model">Model</string>
+    <string name="filtershow_exif_aperture">Viertidure</string>
+    <string name="filtershow_exif_focal_length">Lungjece focâl</string>
+    <string name="filtershow_exif_iso">ISO</string>
+    <string name="filtershow_exif_subject_distance">Distance dal sogjet</string>
+    <string name="filtershow_exif_date">Date di creazion</string>
+    <string name="filtershow_exif_f_stop">Rapuart focâl</string>
+    <string name="filtershow_exif_exposure_time">Timp di esposizion</string>
+    <string name="filtershow_exif_copyright">Dirits di autôr</string>
+</resources>
