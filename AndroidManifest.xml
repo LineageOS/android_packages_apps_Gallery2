@@ -53,6 +53,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <!-- add for guest to set system property -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
@@ -234,7 +235,9 @@
             <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
-        <service android:name="com.android.gallery3d.ingest.IngestService" />
+        <service android:name="com.android.gallery3d.ingest.IngestService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
 
         <activity android:name="com.android.gallery3d.app.Wallpaper"
                 android:configChanges="keyboardHidden|orientation|screenSize"
@@ -270,6 +273,7 @@
 
         <service
                 android:name="com.android.gallery3d.filtershow.pipeline.ProcessingService"
+                android:foregroundServiceType="shortService"
                 android:exported="false" />
 
         <activity
