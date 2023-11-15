@@ -40,9 +40,12 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Process;
+import android.os.UserHandle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Images.ImageColumns;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -690,7 +693,20 @@ public class SaveImage {
      * @return The file object. Return null if srcUri is invalid or not a local
      * file.
      */
-    public static File getLocalFileFromUri(Context context, Uri srcUri) {
+    public static File getLocalFileFromUri(Context context, Uri orgUri) {
+
+        Uri srcUri;
+        if (uriHasUserId(orgUri)) {
+            if (getUserHandleFromUri(orgUri).equals(Process.myUserHandle())) {
+                srcUri = getUriWithoutUserId(orgUri);
+            } else {
+                Log.e(LOGTAG, "Trying to access URI of another user");
+                return null;
+            }
+        } else {
+            srcUri = orgUri;
+        }
+
         if (srcUri == null) {
             Log.e(LOGTAG, "srcUri is null.");
             return null;
@@ -913,5 +929,31 @@ public class SaveImage {
             canvas.drawBitmap(bitmap, null, destRect, paint);
         }
         return underlay;
+    }
+
+    private static UserHandle getUserHandleFromUri(Uri uri) {
+        if (uri == null || uri.getAuthority() == null) return null;
+        int end = uri.getAuthority().lastIndexOf('@');
+        if (end == -1) return null;
+        String userIdString = uri.getAuthority().substring(0, end);
+        try {
+            return UserHandle.getUserHandleForUid(Integer.parseInt(userIdString));
+        } catch (NumberFormatException e) {
+            Log.e(LOGTAG, "Error parsing userId.", e);
+            return null;
+        }
+    }
+
+    private static Uri getUriWithoutUserId(Uri uri) {
+        if (uri == null || uri.getAuthority() == null) return null;
+        int end = uri.getAuthority().lastIndexOf('@');
+        Uri.Builder builder = uri.buildUpon();
+        builder.authority(uri.getAuthority().substring(end+1));
+        return builder.build();
+    }
+
+    private static boolean uriHasUserId(Uri uri) {
+        if (uri == null) return false;
+        return !TextUtils.isEmpty(uri.getUserInfo());
     }
 }
