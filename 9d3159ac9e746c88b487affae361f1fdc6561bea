@@ -46,6 +46,30 @@
       },
       "revId": "9d3159ac9e746c88b487affae361f1fdc6561bea",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c00f02_90fdb93e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2023-11-16T12:02:30Z",
+      "side": 1,
+      "message": "Okay, so maybe worth writting it down that it\u0027s an fwb change or ultimatelly replace with the link to the commit.",
+      "parentUuid": "02ccd455_b5652aa4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "9d3159ac9e746c88b487affae361f1fdc6561bea",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
