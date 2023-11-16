@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9c4fed_0e5a5efd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31604
+      },
+      "writtenOn": "2023-11-16T22:43:17Z",
+      "side": 1,
+      "message": "There are a couple of modifications on the CalyxOS change at the moment for supporting other users: https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Gallery2/+/23144",
+      "revId": "9aa63ced7c03736b58aa1d0d00c636869a7b3664",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
