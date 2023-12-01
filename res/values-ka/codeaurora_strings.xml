@@ -86,8 +86,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="albums_title">ალბომები</string>
     <string name="videos_title">ვიდეოები</string>
     <string name="action_viewtype_list">სიის ხედი</string>
-    <string name="tvEmptyAlbum">ფოტო ვერ მოიძებნა</string>
-    <string name="tvEmptyVideos">ვიდეო ვერ მოიძებნა</string>
+    <string name="tvEmptyAlbum">სურათები არაა.</string>
+    <string name="tvEmptyVideos">ვიდეოები არაა.</string>
     <string name="text_makeup_whiten">გათეთრება</string>
     <string name="text_makeup_Soften">დარბილება</string>
     <string name="text_makeup_trimface">სახის მოჭრა</string>
