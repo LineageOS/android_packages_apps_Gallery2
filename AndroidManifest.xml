@@ -154,6 +154,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.provider.action.REVIEW" />
+                <action android:name="com.android.camera.action.REVIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="" />
@@ -166,6 +167,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.provider.action.REVIEW" />
+                <action android:name="com.android.camera.action.REVIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" />
