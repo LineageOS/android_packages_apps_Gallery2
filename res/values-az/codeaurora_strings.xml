@@ -45,13 +45,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="next">"Sonrakı"</string>
     <string name="previous">"Əvvəlki"</string>
     <string name="buffer_size">Bufer ölçüsü</string>
-    <string name="apn">Üstünlük verilən APN</string>
+    <string name="apn">Tərcih edilən APN</string>
     <string name="rtp_min_port">Min. bağlantı nöqtəsi</string>
     <string name="rtp_max_port">Maks. bağlantı nöqtəsi</string>
     <string name="set_rtp_min_port">Minimum portu ayarla</string>
     <string name="set_rtp_max_port">Maksimum portu ayarla</string>
     <string name="set_buffer_size">Bufer ölçüsünü ayarla</string>
-    <string name="set_apn">Üstünlük verilən APN\'i seçin</string>
+    <string name="set_apn">Tərcih edilən APN-i seç</string>
     <string name="setting">Ayarlar</string>
     <string name="server_timeout_title">"Serverin bitmə vaxtı"</string>
     <string name="server_timeout_message">"Videonu oxutmaq üçün serverə yenidən bağlanılsın?"</string>
