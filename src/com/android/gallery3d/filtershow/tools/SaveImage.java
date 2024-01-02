@@ -947,9 +947,9 @@ public class SaveImage {
 
     private static Uri getUriWithoutUserId(Uri uri) {
         if (uri == null || uri.getAuthority() == null) return null;
-        int end = uri.getAuthority().lastIndexOf('@');
+        int end = uri.getEncodedAuthority().lastIndexOf('@');
         Uri.Builder builder = uri.buildUpon();
-        builder.authority(uri.getAuthority().substring(end+1));
+        builder.encodedAuthority(uri.getEncodedAuthority().substring(end+1));
         return builder.build();
     }
 
