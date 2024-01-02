@@ -935,7 +935,7 @@ public class SaveImage {
     }
 
     private static UserHandle getUserHandleFromUri(Uri uri) {
-        if (uri == null || uri.getAuthority() == null) return null;
+        if (uri == null || uri.getEncodedAuthority() == null) return null;
         final String userIdString = uri.getUserInfo();
         try {
             return UserHandle.getUserHandleForUid(Integer.parseInt(userIdString) * PER_UID_RANGE);
@@ -946,10 +946,10 @@ public class SaveImage {
     }
 
     private static Uri getUriWithoutUserId(Uri uri) {
-        if (uri == null || uri.getAuthority() == null) return null;
-        int end = uri.getAuthority().lastIndexOf('@');
+        if (uri == null || uri.getEncodedAuthority() == null) return null;
+        int end = uri.getEncodedAuthority().lastIndexOf('@');
         Uri.Builder builder = uri.buildUpon();
-        builder.authority(uri.getAuthority().substring(end+1));
+        builder.encodedAuthority(uri.getEncodedAuthority().substring(end+1));
         return builder.build();
     }
 
