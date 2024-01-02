@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84022bea_e973b03f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31604
+      },
+      "writtenOn": "2024-01-02T14:54:20Z",
+      "side": 1,
+      "message": "To match the merged [CalyxOS change](https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Gallery2/+/23144)",
+      "revId": "5e2a5022e879692bf147294129b0adf7b7d426e6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
