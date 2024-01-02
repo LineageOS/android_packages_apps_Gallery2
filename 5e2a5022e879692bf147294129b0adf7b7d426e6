@@ -16,6 +16,23 @@
       "message": "To match the merged [CalyxOS change](https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Gallery2/+/23144)",
       "revId": "5e2a5022e879692bf147294129b0adf7b7d426e6",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656fd117_c43473e7",
+        "filename": "src/com/android/gallery3d/filtershow/tools/SaveImage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2024-01-02T14:56:58Z",
+      "side": 1,
+      "message": "you need to change this line to use getEncodedAuthority() as well, otherwise the null check is not doing what it\u0027s supposed to do now",
+      "revId": "5e2a5022e879692bf147294129b0adf7b7d426e6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
