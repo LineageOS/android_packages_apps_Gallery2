@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="original">Aneẓli</string>
+    <string name="borders" msgid="4461692156695893616">Lerryuf</string>
+    <string name="custom_border">Udmawan</string>
+    <string name="filtershow_undo">Err-d</string>
+    <string name="filtershow_redo">Uɣal</string>
+    <string name="export_image">Sifeḍ</string>
+    <string name="print_image">Siggez</string>
+    <string name="quality">Taɣara</string>
+    <string name="size">Tiddi</string>
+    <string name="menu_settings">Iɣewwaṛen</string>
+    <string name="unsaved">Llan ibeddilen ur yettwaskelsen ara ar tugna-agi.</string>
+    <string name="save_before_exit">Tebɣiḍ ad teskelseḍ send ad teffɣeḍ?</string>
+    <string name="save_and_exit">Sekles sakin ffeɣ</string>
+    <string name="exit">Ffeɣ</string>
+    <string name="history">Amazray</string>
+    <string name="reset">Wennez</string>
+    <string name="compare_original">Qaren</string>
+    <string name="apply_effect">Snes</string>
+    <string name="reset_effect">Wennez</string>
+    <string name="aspectNone_effect">Ulac</string>
+    <string name="Fixed">Usbiḍ</string>
+    <string name="sharpness">Accentuation</string>
+    <string name="contrast">Agatu</string>
+    <string name="saturation">Tawant</string>
+    <string name="hue">Tiɣmi</string>
+    <string name="vignette">Tabzimt</string>
+    <string name="vignette_main">Tabzimt</string>
+    <string name="vignette_saturation">Tawant</string>
+    <string name="vignette_contrast">Agatu</string>
+    <string name="imageDraw">Suneɣ</string>
+    <string name="crop" msgid="5584000454518174632">Gzem</string>
+    <string name="rotate" msgid="460017689320955494">Bren</string>
+    <string name="mirror">Lemri</string>
+    <string name="negative">Uzdir</string>
+    <string name="none" msgid="3601545724573307541">Ulac</string>
+    <string name="kmeans">Postériser</string>
+    <string name="editor_grad_brightness">Abruṛeq</string>
+    <string name="editor_grad_contrast">Agatu</string>
+    <string name="editor_grad_saturation">Tawant</string>
+    <string name="editor_chan_sat_main">MAIN</string>
+    <string name="editor_chan_sat_red">Azeggaɣ</string>
+    <string name="editor_chan_sat_yellow">Awraɣ</string>
+    <string name="editor_chan_sat_green">Adal</string>
+    <string name="editor_chan_sat_blue">Azegzaw</string>
+    <string name="editor_chan_sat_magenta">_Magenta:</string>
+    <string name="editor_grad_style">Aɣanib</string>
+    <string name="curves_channel_red">Azeggaɣ</string>
+    <string name="curves_channel_green">Adal</string>
+    <string name="curves_channel_blue">Azegzaw</string>
+    <string name="draw_style">Aɣanib</string>
+    <string name="draw_size">Tiddi</string>
+    <string name="draw_hue">Tiɣmi</string>
+    <string name="draw_saturation">Tawant</string>
+    <string name="draw_value">Abruṛeq</string>
+    <string name="draw_color">Ini</string>
+    <string name="draw_style_line">Izirigen</string>
+    <string name="draw_style_brush_spatter">Rnu taṛekkizt ɣef tkarḍa</string>
+    <string name="draw_clear">Sfeḍ</string>
+    <string name="color_border_color">Ini</string>
+    <string name="color_border_clear">Sfeḍ</string>
+    <string name="color_pick_title">Fren ini</string>
+    <string name="draw_size_accept">IH</string>
+    <string name="state_panel_original">Aneẓli</string>
+    <string name="state_panel_result">Agmuḍ</string>
+    <string name="filtershow_notification_message">Asesfer n %s</string>
+    <string name="filtershow_save_preset">Sekles afrasn uzwir amiran</string>
+    <string name="filtershow_show_info_panel">Talɣut</string>
+    <string name="filtershow_show_info_panel_size">Teɣzi n tugna</string>
+    <string name="filtershow_show_info_panel_histogram">Amazrudlif</string>
+    <string name="filtershow_add_button_looks">Présélection</string>
+    <string name="filtershow_add_button_versions">Lqem</string>
+    <string name="filtershow_version_original">Aneẓli</string>
+    <string name="filtershow_version_current">Amiran</string>
+    <string name="filtershow_exif_model">ModÃ¨le</string>
+    <string name="filtershow_exif_focal_length">Teɣzi n udikan</string>
+    <string name="filtershow_exif_exposure_time">Akud n timzikkent</string>
+    <string name="filtershow_exif_copyright">Izerfan ttwaḥerzen</string>
+</resources>

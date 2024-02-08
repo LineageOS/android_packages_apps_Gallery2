@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Galarie</string>
+    <string name="gadget_title">Incuadradure</string>
+    <string name="details_ms">%1$02d:%2$02d</string>
+    <string name="details_hms">%1$d:%2$02d:%3$02d</string>
+    <string name="movie_view_label">Riprodutôr video</string>
+    <string name="loading_video">Daûr a cjariâ il video\u2026</string>
+    <string name="loading_image">Daûr a cjariâ la imagjin\u2026</string>
+    <string name="loading_account">Daûr a cjariâ l\'account\u2026</string>
+    <string name="resume_playing_title">Ripie il video</string>
+    <string name="resume_playing_message">Ripiâ la riproduzion di %s ?</string>
+    <string name="resume_playing_resume">Ripie la riproduzion</string>
+    <string name="loading">Daûr a cjariâ\u2026</string>
+    <string name="fail_to_load">Nol è stât pussibil cjariâ</string>
+    <string name="fail_to_load_image">Nol è stât pussibil cjariâ la imagjin</string>
+    <string name="no_thumbnail">Nissune miniature</string>
+    <string name="resume_playing_restart">Torne scomence</string>
+    <string name="crop_save_text">Va ben</string>
+    <string name="ok">Va ben</string>
+    <string name="multiface_crop_help">Tocje une muse par scomençâ.</string>
+    <string name="saving_image">Daûr a salvâ la imagjin\u2026</string>
+    <string name="filtershow_saving_image">Daûr a salvâ la imagjin su <xliff:g id="album_name">%1$s</xliff:g>\u2026</string>
+    <string name="save_error">Impussibil salvâ la imagjin ritaiade.</string>
+    <string name="crop_label">Ritaie imagjin</string>
+    <string name="trim_label">Taie fûr il video</string>
+    <string name="select_image">Selezione foto</string>
+    <string name="select_video">Selezione video</string>
+    <string name="select_item">Selezione elment</string>
+    <string name="select_album">Selezione album</string>
+    <string name="select_group">Selezione grup</string>
+    <string name="set_image">Met imagjin come</string>
+    <string name="set_wallpaper">Met fonts</string>
+    <string name="wallpaper">Daûr a stabilî il fonts\u2026</string>
+    <string name="camera_setas_wallpaper">Fonts</string>
+    <string name="delete">Elimine</string>
+    <plurals name="delete_selection">
+        <item quantity="one">Eliminâ l\'element selezionât?</item>
+        <item quantity="other">Eliminâ i elements selezionâts?</item>
+    </plurals>
+    <string name="confirm">Conferme</string>
+    <string name="cancel">Anule</string>
+    <string name="share">Condivît</string>
+    <string name="share_panorama">Condivît panorame</string>
+    <string name="share_as_photo">Condivît come foto</string>
+    <string name="deleted">Eliminât</string>
+    <string name="undo">ANULE</string>
+    <string name="select_all">Selezione dut</string>
+    <string name="deselect_all">Deselezione dut</string>
+    <string name="slideshow">Presentazion</string>
+    <string name="details">Detais</string>
+    <string name="details_title">%1$d di %2$d elements:</string>
+    <string name="close">Siere</string>
+    <string name="switch_to_camera">Passe ae fotocjamare</string>
+    <plurals name="number_of_items_selected">
+        <item quantity="one">%1$d selezionât</item>
+        <item quantity="other">%1$d selezionâts</item>
+    </plurals>
+    <plurals name="number_of_albums_selected">
+        <item quantity="one">%1$d selezionât</item>
+        <item quantity="other">%1$d selezionâts</item>
+    </plurals>
+    <plurals name="number_of_groups_selected">
+        <item quantity="one">%1$d selezionât</item>
+        <item quantity="other">%1$d selezionâts</item>
+    </plurals>
+    <string name="show_on_map">Mostre te mape</string>
+    <string name="rotate_left">Volte a çampe</string>
+    <string name="rotate_right">Volte a diestre</string>
+    <string name="no_such_item">Nol è stât pussibil cjatâ l\'element.</string>
+    <string name="edit">Modifiche</string>
+    <string name="simple_edit">Modifiche semplice</string>
+    <string name="process_caching_requests">Elaborazion richiestis di memorizazion te cache</string>
+    <string name="caching_label">Metude in cache\u2026</string>
+    <string name="crop_action">Ritaie</string>
+    <string name="trim_action">Taie fûr</string>
+    <string name="mute_action">Cidine</string>
+    <string name="set_as">Met come</string>
+    <string name="video_mute_err">Impussibil cidinâ il video.</string>
+    <string name="video_err">Impussibil riprodusi il video.</string>
+    <string name="group_by_location">Par lûc</string>
+    <string name="group_by_time">Par date</string>
+    <string name="group_by_tags">Par etichetis</string>
+    <string name="group_by_faces">Par personis</string>
+    <string name="group_by_album">Par album</string>
+    <string name="group_by_size">Par dimension</string>
+    <string name="untagged">Cence etichetis</string>
+    <string name="no_location">Nissun lûc</string>
+    <string name="no_connectivity">Nol è stât pussibil identificâ cualchi lûc par vie di problemis di rêt.</string>
+    <string name="sync_album_error">Nol è stât pussibil discjariâ lis fotos in chest album. Torne prove plui tart.</string>
+    <string name="show_images_only">Dome imagjins</string>
+    <string name="show_videos_only">Dome videos</string>
+    <string name="show_all">Imagjins e videos</string>
+    <string name="appwidget_title">Galarie des fotos</string>
+    <string name="appwidget_empty_text">Nissune foto.</string>
+    <string name="crop_saved">        Imagjin ritaiade salvade in <xliff:g id="folder_name">%s</xliff:g>.</string>
+    <string name="no_albums_alert">Nissun album disponibil.</string>
+    <string name="empty_album">O imagjins/videos a disposizion.</string>
+    <string name="picasa_posts">Publicazions</string>
+    <string name="make_available_offline">Rint disponibil fûr rêt</string>
+    <string name="sync_picasa_albums">Inzorne</string>
+    <string name="done">Fat</string>
+    <string name="sequence_in_set">%1$d di %2$d elements:</string>
+    <string name="title">Titul</string>
+    <string name="description">Descrizion</string>
+    <string name="time">Ore</string>
+    <string name="location">Lûc</string>
+    <string name="path">Percors</string>
+    <string name="width">Largjece</string>
+    <string name="height">Altece</string>
+    <string name="orientation">Orientament</string>
+    <string name="duration">Durade</string>
+    <string name="mimetype">Gjenar MIME</string>
+    <string name="file_size">Dimension file</string>
+    <string name="maker">Produtôr</string>
+    <string name="model">Model</string>
+    <string name="flash">Lamp</string>
+    <string name="aperture">Viertidure</string>
+    <string name="focal_length">Lungjece focâl</string>
+    <string name="white_balance">Belanç. blanc</string>
+    <string name="exposure_time">Timp esposiz.</string>
+    <string name="iso">ISO</string>
+    <string name="unit_mm">mm</string>
+    <string name="manual">Manuâl</string>
+    <string name="auto">Auto</string>
+    <string name="flash_on">Lamp partît</string>
+    <string name="flash_off">Cence lamp</string>
+    <string name="unknown">No cognossude</string>
+    <string name="ffx_original">Origjinâl</string>
+    <string name="ffx_vintage">Rétro</string>
+    <string name="ffx_instant">Istantanie</string>
+    <string name="ffx_bleach">Smamît</string>
+    <string name="ffx_blue_crush">Blu</string>
+    <string name="ffx_bw_contrast">Blanc/Neri</string>
+    <string name="ffx_punch">Punch</string>
+    <string name="ffx_x_process">Procès X</string>
+    <string name="ffx_washout">Cafelat</string>
+    <string name="ffx_washout_color">Litho</string>
+    <plurals name="make_albums_available_offline">
+        <item quantity="one">Daûr a rindi disponibil fûr rêt l\'album.</item>
+        <item quantity="other">Daûr a rindi disponibii fûr rêt i albums.</item>
+    </plurals>
+    <string name="set_label_all_albums">Ducj i albums</string>
+    <string name="set_label_local_albums">Albums locâi</string>
+    <string name="set_label_mtp_devices">Dispositîfs MTP</string>
+    <string name="set_label_picasa_albums">Albums di Picasa</string>
+    <string name="free_space_format"><xliff:g id="bytes">%s</xliff:g> libars</string>
+    <string name="size_below"><xliff:g id="size">%1$s</xliff:g> o mancul</string>
+    <string name="size_above"><xliff:g id="size">%1$s</xliff:g> o plui</string>
+    <string name="size_between">Di <xliff:g id="min_size">%1$s</xliff:g> a <xliff:g id="max_size">%2$s</xliff:g></string>
+    <string name="Import">Impuarte</string>
+    <string name="import_complete">Importazion completade</string>
+    <string name="import_fail">Importazion lade strucje</string>
+    <string name="camera_connected">Fotocjamare colegade.</string>
+    <string name="camera_disconnected">Fotocjamare discolegade.</string>
+    <string name="click_import">Tocje achì par impuartâ</string>
+    <string name="widget_type_album">Sielç un album</string>
+    <string name="widget_type_shuffle">Messede dutis lis imagjins</string>
+    <string name="widget_type_photo">Sielç une imagjin</string>
+    <string name="widget_type">Sielç imagjins</string>
+    <string name="slideshow_dream_name">Presentazion</string>
+    <string name="albums">Albums</string>
+    <string name="times">Datis</string>
+    <string name="locations">Lûcs</string>
+    <string name="people">Personis</string>
+    <string name="tags">Etichetis</string>
+    <string name="group_by">Met dongje par</string>
+    <string name="settings">Impostazions</string>
+    <string name="add_account">Zonte account</string>
+    <string name="folder_camera">Fotocjamare</string>
+    <string name="folder_download">Discjariâts</string>
+    <string name="folder_edited_online_photos">Fotos in rêt modificadis</string>
+    <string name="folder_imported">Impuartadis</string>
+    <string name="folder_screenshot">Schermadis</string>
+    <string name="help">Jutori</string>
+    <string name="no_external_storage_title">Nissune memorie est.</string>
+    <string name="no_external_storage">Nissune memorie esterne disponibile</string>
+    <string name="switch_photo_filmstrip">Viodude a pelicule di cine</string>
+    <string name="switch_photo_grid">Viodude a gridele</string>
+    <string name="switch_photo_fullscreen">Viodude plen schermi</string>
+    <string name="trimming">Daûr a taiâ fûr</string>
+    <string name="muting">Daûr a cidinâ</string>
+    <string name="please_wait">Par plasê spiete</string>
+    <string name="save_into">Daûr a salvâ il video su <xliff:g id="album_name">%1$s</xliff:g>\u2026</string>
+    <string name="trim_too_short">Impussibil taiâ fûr: il video di destinazion al è masse curt</string>
+    <string name="pano_progress_text">Creazion panorame in cors</string>
+    <string name="save" msgid="8140440041190264400">Salve</string>
+    <string name="ingest_import">@string/Import</string>
+    <string name="ingest_import_complete">@string/import_complete</string>
+    <string name="ingest_scanning" msgid="2048262851775139720">Analisi dal contignût...</string>
+    <plurals name="ingest_number_of_items_scanned">
+        <item quantity="one">%1$d element analizât</item>
+        <item quantity="other">%1$d elements analizâts</item>
+    </plurals>
+    <plurals name="ingest_number_of_items_selected">
+        <item quantity="one">%1$d element selezionât</item>
+        <item quantity="other">%1$d elements selezionâts</item>
+    </plurals>
+    <string name="ingest_sorting" msgid="624687230903648118">Daûr a ordenâ...</string>
+    <string name="ingest_scanning_done">Scansion fate</string>
+    <string name="ingest_importing">Daûr a impuartâ...</string>
+    <string name="ingest_empty_device">Nissun contignût disponibil pe importazion su chest dispositîf.</string>
+    <string name="ingest_no_device">Nissun dispositîf MTP colegât</string>
+    <string name="ingest_switch_photo_grid">@string/switch_photo_grid</string>
+    <string name="ingest_switch_photo_fullscreen">@string/switch_photo_fullscreen</string>
+    <string name="camera_error_title">Erôr de fotocjamare</string>
+    <string name="cannot_connect_camera">Impussibil colegâsi ae fotocjamare.</string>
+    <string name="camera_disabled">La fotocjamare e je stade disativade par vie des politichis di sigurece.</string>
+    <string name="camera_label">Fotocjamare</string>
+    <string name="wait">Par plasê spiete\u2026</string>
+    <string name="no_storage" product="nosdcard">Monte la memorie USB prime di doprâ la fotocjamare.</string>
+    <string name="no_storage" product="default">Inserìs une schede SD prime di doprâ la fotocjamare.</string>
+    <string name="preparing_sd" product="nosdcard">Daûr a prontâ la memorie USB\u2026</string>
+    <string name="preparing_sd" product="default">Daûr a prontâ la schede SD\u2026</string>
+    <string name="access_sd_fail" product="nosdcard">Impussibil acedi ae memorie USB.</string>
+    <string name="access_sd_fail" product="default">Impussibil acedi ae schede SD.</string>
+    <string name="review_cancel">ANULE</string>
+    <string name="review_ok">FAT</string>
+    <string name="time_lapse_title">Regjistrazion a dade di timp</string>
+    <string name="pref_camera_id_title">Sielç fotocjamare</string>
+    <string name="pref_camera_id_entry_back">Posteriôr</string>
+    <string name="pref_camera_id_entry_front">Frontâl</string>
+    <string name="pref_camera_recordlocation_title">Memorize posizion</string>
+    <string name="pref_camera_location_label">POSIZION</string>
+    <string name="pref_camera_timer_title">Temporizadôr cont par ledrôs</string>
+    <plurals name="pref_camera_timer_entry">
+        <item quantity="one">1 secont</item>
+        <item quantity="other">%d seconts</item>
+    </plurals>
+    <string name="pref_camera_timer_sound_default">@string/setting_on_value</string>
+    <string name="pref_camera_timer_sound_title">Bip tal cont par ledrôs</string>
+    <string name="setting_off">Off</string>
+    <string name="setting_on">On</string>
+    <string name="pref_video_quality_title">Cualitât video</string>
+    <string name="pref_video_quality_entry_high">Alte</string>
+    <string name="pref_video_quality_entry_low">Basse</string>
+    <string name="pref_video_time_lapse_frame_interval_title">Dade di timp</string>
+    <string name="pref_camera_settings_category">Impostazions de fotocjamare</string>
+    <string name="pref_camcorder_settings_category">Impostazions de videocjamare</string>
+    <string name="pref_camera_picturesize_title">Dimensions imagjin</string>
+    <string name="pref_camera_picturesize_entry_13mp">13M pixels</string>
+    <string name="pref_camera_picturesize_entry_8mp">8M pixels</string>
+    <string name="pref_camera_picturesize_entry_5mp">5M pixels</string>
+    <string name="pref_camera_picturesize_entry_4mp">4M pixels</string>
+    <string name="pref_camera_picturesize_entry_3mp">3M pixels</string>
+    <string name="pref_camera_picturesize_entry_2mp">2M pixels</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide">2M pixels (16:9)</string>
+    <string name="pref_camera_picturesize_entry_1_3mp">1.3M pixels</string>
+    <string name="pref_camera_picturesize_entry_1mp">1M pixels</string>
+    <string name="pref_camera_picturesize_entry_vga">VGA</string>
+    <string name="pref_camera_picturesize_entry_qvga">QVGA</string>
+    <string name="pref_camera_focusmode_title">Modalitât metude a fûc</string>
+    <string name="pref_camera_focusmode_entry_auto">Automatiche</string>
+    <string name="pref_camera_focusmode_entry_infinity">Infinide</string>
+    <string name="pref_camera_focusmode_entry_macro">Macro</string>
+    <string name="pref_camera_focusmode_label_auto">AUTOMATICHE</string>
+    <string name="pref_camera_focusmode_label_infinity">INFINIDE</string>
+    <string name="pref_camera_focusmode_label_macro">MACRO</string>
+    <string name="pref_camera_flashmode_title">Modalitât dal lamp</string>
+    <string name="pref_camera_flashmode_label">MODALITÂT LAMP</string>
+    <string name="pref_camera_flashmode_entry_auto">Automatiche</string>
+    <string name="pref_camera_flashmode_entry_on">On</string>
+    <string name="pref_camera_flashmode_entry_off">Off</string>
+    <string name="pref_camera_flashmode_label_auto">LAMP AUTOMATIC</string>
+    <string name="pref_camera_flashmode_label_on">LAMP ATÎF</string>
+    <string name="pref_camera_flashmode_label_off">LAMP DISATIVÂT</string>
+    <string name="pref_camera_whitebalance_title">Belançament blanc</string>
+    <string name="pref_camera_whitebalance_label">BELANÇAMENT DAL BLANC</string>
+    <string name="pref_camera_whitebalance_entry_auto">Automatic</string>
+    <string name="pref_camera_whitebalance_entry_incandescent">Incandessent</string>
+    <string name="pref_camera_whitebalance_entry_daylight">Lûs naturâl</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent">fluoressent</string>
+    <string name="pref_camera_whitebalance_entry_cloudy">Nulât</string>
+    <string name="pref_camera_whitebalance_label_auto">AUTOMATIC</string>
+    <string name="pref_camera_whitebalance_label_incandescent">INCANDESSENT</string>
+    <string name="pref_camera_whitebalance_label_daylight">LÛS NATURÂL</string>
+    <string name="pref_camera_whitebalance_label_fluorescent">FLUORESSENT</string>
+    <string name="pref_camera_whitebalance_label_cloudy">NULÂT</string>
+    <string name="pref_camera_scenemode_title">Modalitât sene</string>
+    <string name="pref_camera_scenemode_entry_auto">Automatiche</string>
+    <string name="pref_camera_scenemode_entry_hdr">HDR</string>
+    <string name="pref_camera_scenemode_entry_action">Azion</string>
+    <string name="pref_camera_scenemode_entry_night">Gnot</string>
+    <string name="pref_camera_scenemode_entry_sunset">Tramont</string>
+    <string name="pref_camera_scenemode_entry_party">Fieste</string>
+    <string name="pref_camera_scenemode_label_auto">NISSUNE</string>
+    <string name="pref_camera_scenemode_label_action">AZION</string>
+    <string name="pref_camera_scenemode_label_night">GNOT</string>
+    <string name="pref_camera_scenemode_label_sunset">TRAMONT</string>
+    <string name="pref_camera_scenemode_label_party">FIESTE</string>
+    <string name="pref_camera_countdown_label">TEMPORIZADÔR CUN CONT PAR LEDRÔS</string>
+    <string name="pref_camera_countdown_label_off">TEMPORIZADÔR DISATIVÂT</string>
+    <string name="pref_camera_countdown_label_one">1 SECONT</string>
+    <string name="pref_camera_countdown_label_three">3 SECONTS</string>
+    <string name="pref_camera_countdown_label_ten">10 SECONTS</string>
+    <string name="pref_camera_countdown_label_fifteen">15 SECONTS</string>
+    <string name="not_selectable_in_scene_mode">No selezionabil in modalitât sene.</string>
+    <string name="pref_exposure_title">Esposizion</string>
+    <string name="pref_exposure_label">ESPOSIZION</string>
+    <string name="pref_camera_hdr_default">@string/setting_off_value</string>
+    <string name="pref_camera_hdr_label">HDR</string>
+    <string name="pref_camera_id_label_back">FOTOCJAMARE FRONTÂL</string>
+    <string name="pref_camera_id_label_front">FOTOCJAMARE POSTERIÔR</string>
+    <string name="dialog_ok">Va ben</string>
+    <string name="spaceIsLow_content" product="nosdcard">Il spazi de memorie USB al sta par finî. Cambie la impostazion de cualitât o elimine cualchi imagjin o cualchi altri file.</string>
+    <string name="spaceIsLow_content" product="default">Il spazi de schede SD al sta par finî. Cambie la impostazion de cualitât o elimine cualchi imagjin o cualchi altri file.</string>
+    <string name="video_reach_size_limit">Rivâts al limit de dimension.</string>
+    <string name="pano_too_fast_prompt">Masse svelt</string>
+    <string name="pano_dialog_prepare_preview">Daûr a prontâ il panorame</string>
+    <string name="pano_dialog_panorama_failed">Impussibil salvâ il panorame.</string>
+    <string name="pano_dialog_title">Panorame</string>
+    <string name="pano_capture_indication">Acuisizion panorame</string>
+    <string name="pano_dialog_waiting_previous">In spiete dal panorame precedent</string>
+    <string name="pano_review_saving_indication_str">Daûr a salvâ\u2026</string>
+    <string name="pano_review_rendering">Creazion panorame in cors</string>
+    <string name="tap_to_focus">Tocje par meti a fûc.</string>
+    <string name="pref_video_effect_title">Efiets</string>
+    <string name="effect_none">Nissun</string>
+    <string name="effect_goofy_face_squeeze">Sfracaie</string>
+    <string name="effect_goofy_face_big_eyes">Voi grancj</string>
+    <string name="effect_goofy_face_big_mouth">Bocje grande</string>
+    <string name="effect_goofy_face_small_mouth">Bocje piçule</string>
+    <string name="effect_goofy_face_big_nose">Nâs grant</string>
+    <string name="effect_goofy_face_small_eyes">Voi piçui</string>
+    <string name="effect_backdropper_space">Tal spazi</string>
+    <string name="effect_backdropper_sunset">Tramont</string>
+    <string name="effect_backdropper_gallery">Il to video</string>
+    <string name="bg_replacement_message">Met jù il dispositîf.\nJes de viodude par un pôc.</string>
+    <string name="video_snapshot_hint">Tocje par fâ une foto intant de regjistrazion.</string>
+    <string name="video_recording_started">La regjistrazion video e je stade inviade.</string>
+    <string name="video_recording_stopped">La regjistrazion video e je stade fermade.</string>
+    <string name="disable_video_snapshot_hint">La istantanie di video e je disativade se a son atîfs efiets speciâi.</string>
+    <string name="clear_effects">Nete i efiets</string>
+    <string name="effect_silly_faces">MUSUTIS STUPIDIS</string>
+    <string name="effect_background">FONTS</string>
+    <string name="accessibility_shutter_button">Boton dal oturadôr</string>
+    <string name="accessibility_menu_button">Boton dal menù</string>
+    <string name="accessibility_review_thumbnail">Foto plui resinte</string>
+    <string name="accessibility_camera_picker">Comutazion fotocjamare tra anteriôr e posteriôr</string>
+    <string name="accessibility_mode_picker">Seletôr fotocjamare, video o panorame</string>
+    <string name="accessibility_second_level_indicators">Altris controi di configurazion</string>
+    <string name="accessibility_back_to_first_level">Siere i controi di configurazion</string>
+    <string name="accessibility_zoom_control">Control dal zoom</string>
+    <string name="accessibility_decrement">Cale %1$s</string>
+    <string name="accessibility_increment">Incrès %1$s</string>
+    <string name="accessibility_check_box">Casele di control %1$s</string>
+    <string name="accessibility_switch_to_camera">Passe a foto</string>
+    <string name="accessibility_switch_to_video">Passe a video</string>
+    <string name="accessibility_switch_to_panorama">Passe a panorame</string>
+    <string name="accessibility_switch_to_new_panorama">Passe a gnûf panorame</string>
+    <string name="accessibility_switch_to_refocus">Passe a torne-met-a-fûc</string>
+    <string name="accessibility_review_cancel">Anulament revision</string>
+    <string name="accessibility_review_ok">Revision terminade</string>
+    <string name="accessibility_review_retake">Torne fâs altri pe revision</string>
+    <string name="accessibility_play_video">Riprodûs video</string>
+    <string name="accessibility_pause_video">Met in pause video</string>
+    <string name="accessibility_reload_video">Torne cjame video</string>
+    <string name="accessibility_time_bar">Sbare dal timp dal riprodutôr video</string>
+    <string name="capital_on">ON</string>
+    <string name="capital_off">OFF</string>
+    <string name="pref_video_time_lapse_frame_interval_off">Off</string>
+    <string name="pref_video_time_lapse_frame_interval_500">0,5 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_1000">1 secont</string>
+    <string name="pref_video_time_lapse_frame_interval_1500">1,5 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_2000">2 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_2500">2,5 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_3000">3 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_4000">4 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_5000">5 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_6000">6 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_10000">10 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_12000">12 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_15000">15 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_24000">24 seconts</string>
+    <string name="pref_video_time_lapse_frame_interval_30000">0,5 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_60000">1 minût</string>
+    <string name="pref_video_time_lapse_frame_interval_90000">1,5 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_120000">2 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_150000">2,5 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_180000">3 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_240000">4 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_300000">5 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_360000">6 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_600000">10 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_720000">12 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_900000">15 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000">24 minûts</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000">0,5 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000">1 ore</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000">1,5 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000">2 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000">2,5 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000">3 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000">4 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000">5 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000">6 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000">10 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000">12 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000">15 oris</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000">24 oris</string>
+    <string name="time_lapse_seconds">seconts</string>
+    <string name="time_lapse_minutes">minûts</string>
+    <string name="time_lapse_hours">oris</string>
+    <string name="time_lapse_interval_set">Fat</string>
+    <string name="set_time_interval">Stabilìs dade di timp</string>
+    <string name="set_time_interval_help">La funzion Dade di timp no je ative. Ativile par stabilî une dade di timp.</string>
+    <string name="set_timer_help">Il temporizadôr cun cont par ledrôs al è disativât. Ativilu par contâ par ledrôs prime di fâ une foto.</string>
+    <string name="set_duration">Stabilìs la durade in seconts</string>
+    <string name="count_down_title_text">Cont par daûr par fâ une foto</string>
+    <string name="remember_location_title">Visâsi des posizions des fotos?</string>
+    <string name="remember_location_prompt">Zonte aes fotos e ai videos une etichete cul lûc di dulà che a son stâts fats.\n\nLis altris aplicazions a puedin lei e doprâ chestis informazions adun cu lis tôs imagjins salvadis.</string>
+    <string name="remember_location_no">No, graciis</string>
+    <string name="remember_location_yes">Sì</string>
+    <string name="menu_camera">Fotocjamare</string>
+    <string name="menu_search">Cîr</string>
+    <string name="tab_photos">Fotos</string>
+    <string name="tab_albums">Albums</string>
+    <string name="camera_menu_more_label">PLUI OPZIONS</string>
+    <string name="camera_menu_settings_label">IMPOSTAZIONS</string>
+    <plurals name="number_of_photos">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d fotos</item>
+    </plurals>
+</resources>

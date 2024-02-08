@@ -76,9 +76,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <item quantity="one">%1$d video</item>
         <item quantity="other">%1$d videor</item>
     </plurals>
+    <string name="cannot_share_items">Du kan enbart dela upp till 300 objekt</string>
     <string name="share_dialogue_title">Dela via</string>
     <string name="no_faces">Inga ansikten</string>
     <string name="fail_trim">Tyvärr, denna videofil kan inte klippas</string>
+    <string name="can_not_trim">Endast MP4- och 3GP-filer kan klippas</string>
     <string name="drm_license_info">Information om DRM-licens</string>
     <string name="timeline_title">Tidslinje</string>
     <string name="albums_title">Album</string>
@@ -86,6 +88,19 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="action_viewtype_list">Listvy</string>
     <string name="tvEmptyAlbum">Inga foton hittades</string>
     <string name="tvEmptyVideos">Inga videor hittades</string>
+    <string name="text_makeup_whiten">Bleka</string>
+    <string name="text_makeup_Soften">Mjuka upp</string>
+    <string name="text_makeup_trimface">Trimface</string>
+    <string name="text_makeup_bigeye">Bigeye</string>
     <string name="truescanner_normal">Normal</string>
+    <string name="truescanner_white">Whiteboard</string>
+    <string name="truescanner">TrueScanner</string>
+    <string name="truescanner_remove_glare">Ta bort bländning</string>
+    <string name="hazebuster_acts">Haze Buster</string>
+    <string name="seestraight_acts">Se rakt</string>
+    <string name="seestraight_input_image_is_small">Bilden är för liten för att bearbetas.</string>
+    <string name="seestraight_process_fail">Kunde inte bearbeta bilden.</string>
+    <string name="trim_video_exit_title">Ignorera ändringar?</string>
+    <string name="trim_video_exit_msg">Ignorera de ändringar som gjorts till den här videon?</string>
     <string name="trim_video_exit_discard">AVBRYT</string>
 </resources>
