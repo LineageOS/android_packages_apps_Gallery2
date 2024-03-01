@@ -28,7 +28,7 @@
     <string name="loading">Yn llwytho\u2026</string>
     <string name="fail_to_load">Methwyd â llwytho</string>
     <string name="fail_to_load_image">Methwyd â llwytho\'r ddelwedd</string>
-    <string name="no_thumbnail">Dim mân-lun</string>
+    <string name="no_thumbnail">Dim cryno-lun</string>
     <string name="resume_playing_restart">Dechrau eto</string>
     <string name="crop_save_text">Iawn</string>
     <string name="ok">Iawn</string>
