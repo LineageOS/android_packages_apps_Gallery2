@@ -2283,9 +2283,9 @@ public class ExifInterface {
         mTagInfo.put(ExifInterface.TAG_GPS_LONGITUDE_REF,
                 gpsFlags | ExifTag.TYPE_ASCII << 16 | 2);
         mTagInfo.put(ExifInterface.TAG_GPS_LATITUDE,
-                gpsFlags | ExifTag.TYPE_RATIONAL << 16 | 3);
+                gpsFlags | ExifTag.TYPE_UNSIGNED_RATIONAL << 16 | 3);
         mTagInfo.put(ExifInterface.TAG_GPS_LONGITUDE,
-                gpsFlags | ExifTag.TYPE_RATIONAL << 16 | 3);
+                gpsFlags | ExifTag.TYPE_UNSIGNED_RATIONAL << 16 | 3);
         mTagInfo.put(ExifInterface.TAG_GPS_ALTITUDE_REF,
                 gpsFlags | ExifTag.TYPE_UNSIGNED_BYTE << 16 | 1);
         mTagInfo.put(ExifInterface.TAG_GPS_ALTITUDE,
