@@ -1942,12 +1942,13 @@ public class ExifInterface {
         Rational[] longitude = getTagRationalValues(TAG_GPS_LONGITUDE);
         String longitudeRef = getTagStringValue(TAG_GPS_LONGITUDE_REF);
         if (latitude == null || longitude == null || latitudeRef == null || longitudeRef == null
-                || latitude.length < 3 || longitude.length < 3) {
+                || latitude.length < 3 || longitude.length < 3
+                || latitudeRef.length() != 2 || longitudeRef.length() != 2) {
             return null;
         }
         double[] latLon = new double[2];
-        latLon[0] = convertLatOrLongToDouble(latitude, latitudeRef);
-        latLon[1] = convertLatOrLongToDouble(longitude, longitudeRef);
+        latLon[0] = convertLatOrLongToDouble(latitude, latitudeRef.substring(0, 1));
+        latLon[1] = convertLatOrLongToDouble(longitude, longitudeRef.substring(0, 1));
         return latLon;
     }
 
