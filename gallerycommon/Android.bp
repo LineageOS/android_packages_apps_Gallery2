@@ -20,5 +20,5 @@ java_library {
     name: "com.android.gallery3d.common2",
     srcs: ["src/**/*.java"],
     sdk_version: "current",
-    libs: ["org.apache.http.legacy"],
+    libs: ["org.apache.http.legacy.stubs"],
 }

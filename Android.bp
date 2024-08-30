@@ -46,7 +46,7 @@ android_app {
         shrink_resources: true,
     },
 
-    libs: ["org.apache.http.legacy"],
+    libs: ["org.apache.http.legacy.stubs"],
 
     optional_uses_libs: [
         "com.google.android.media.effects",
