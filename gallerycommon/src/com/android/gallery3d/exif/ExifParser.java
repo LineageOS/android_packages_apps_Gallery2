@@ -623,11 +623,7 @@ class ExifParser {
             if (isThumbnailRequested()) {
                 if (tag.hasValue()) {
                     for (int i = 0; i < tag.getComponentCount(); i++) {
-                        if (tag.getDataType() == ExifTag.TYPE_UNSIGNED_SHORT) {
-                            registerUncompressedStrip(i, tag.getValueAt(i));
-                        } else {
-                            registerUncompressedStrip(i, tag.getValueAt(i));
-                        }
+                        registerUncompressedStrip(i, tag.getValueAt(i));
                     }
                 } else {
                     mCorrespondingEvent.put(tag.getOffset(), new ExifTagEvent(tag, false));
