@@ -18,7 +18,7 @@
 #include <stdlib.h> /* For abs */
 #include "filters.h"
 
-double fastevalPoly(double *poly,int n, double x){
+double fastevalPoly(const double *poly,int n, double x){
 
     double f =x;
     double sum = poly[0]+poly[1]*f;

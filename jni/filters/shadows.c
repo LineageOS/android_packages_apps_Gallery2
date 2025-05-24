@@ -20,7 +20,7 @@
 #include "filters.h"
 
 void JNIFUNCF(ImageFilterShadows, nativeApplyFilter, jobject bitmap, jint width, jint height, float scale){
-    double shadowFilterMap[] = {
+    static const double shadowFilterMap[] = {
             -0.00591,  0.0001,
              1.16488,  0.01668,
             -0.18027, -0.06791,
