@@ -35,13 +35,12 @@ void JNIFUNCF(ImageFilterShadows, nativeApplyFilter, jobject bitmap, jint width,
     double s = (scale>=0)?scale:scale/5;
     int len = width * height * 4;
 
-    double *poly = (double *) malloc(5*sizeof(double));
+    double poly[5];
     for (i = 0; i < 5; i++) {
         poly[i] = fastevalPoly(shadowFilterMap+i*2,2 , s);
     }
 
-    unsigned short * hsv = (unsigned short *)malloc(3*sizeof(unsigned short));
-
+    unsigned short hsv[3];
     for (i = 0; i < len; i+=4)
     {
         rgb2hsv(rgb,i,hsv,0);
@@ -53,7 +52,5 @@ void JNIFUNCF(ImageFilterShadows, nativeApplyFilter, jobject bitmap, jint width,
         hsv2rgb(hsv,0, rgb,i);
     }
 
-    free(poly);
-    free(hsv);
     AndroidBitmap_unlockPixels(env, bitmap);
 }

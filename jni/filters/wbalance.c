@@ -22,14 +22,10 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg) {
 
     int STEP = 4;
     int RANGE = 256;
-    int *histR = (int *) malloc(256*sizeof(int));
-    int *histG = (int *) malloc(256*sizeof(int));
-    int *histB = (int *) malloc(256*sizeof(int));
+    int histR[256] = { 0 };
+    int histG[256] = { 0 };
+    int histB[256] = { 0 };
     int i;
-    for (i = 0; i < 255; i++) {
-        histR[i] = histG[i] = histB[i] = 0;
-    }
-
     for (i = 0; i < len; i+=STEP) {
         histR[(src[RED])]++;
         histG[(src[GREEN])]++;
@@ -83,9 +79,6 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg) {
         }
 
     }
-    free(histR);
-    free(histG);
-    free(histB);
 
     if ((count15r > 0) && (count15g > 0) && (count15b > 0)) {
         *wr = sum15r/count15r;

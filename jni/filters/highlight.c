@@ -27,7 +27,7 @@ void JNIFUNCF(ImageFilterHighlights, nativeApplyFilter, jobject bitmap,
     int i;
     int len = width * height * 4;
     jfloat* lum = (*env)->GetFloatArrayElements(env, luminanceMap,0);
-    unsigned short * hsv = (unsigned short *)malloc(3*sizeof(unsigned short));
+    unsigned short hsv[3];
 
     for (i = 0; i < len; i+=4)
     {
@@ -37,6 +37,5 @@ void JNIFUNCF(ImageFilterHighlights, nativeApplyFilter, jobject bitmap,
         hsv2rgb(hsv,0, rgb,i);
     }
 
-    free(hsv);
     AndroidBitmap_unlockPixels(env, bitmap);
 }
