@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e57d52_cbfe1cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34887
+      },
+      "writtenOn": "2025-05-24T21:06:41Z",
+      "side": 1,
+      "message": "hi sorry if this is wrong; https://wiki.lineageos.org/how-to/submitting-patches/ says \"For all other repos, add the Trusted Reviewers or Committers\" and it doesn\u0027t say how to pick out of the list",
+      "revId": "ff6410d796e32d53af56d8fe00e9d897cd7fbd45",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
