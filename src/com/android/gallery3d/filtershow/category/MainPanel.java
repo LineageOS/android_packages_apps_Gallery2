@@ -237,7 +237,7 @@ public class MainPanel extends Fragment implements BottomPanel.BottomPanelDelega
                     waterMarkButton.setVisibility(View.VISIBLE);
                     showPanel(WATERMARK);
                 } else {
-                    Toast.makeText(getActivity(), "Watermark only support single edit",
+                    Toast.makeText(getActivity(), "Watermark must be the only edit",
                             Toast.LENGTH_SHORT).show();
                     waterMarkButton.setVisibility(View.GONE);
                 }
