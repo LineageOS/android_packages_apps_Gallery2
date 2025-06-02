@@ -140,4 +140,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="trim_video_exit_title">Discard changes?</string>
     <string name="trim_video_exit_msg">Discard the changes made to this video?</string>
     <string name="trim_video_exit_discard">DISCARD</string>
+
+    <!-- Used in a toast message when selecting the Watermark tool -->
+    <string name="watermark_must_be_only">Watermark must be the only edit gaming</string>
 </resources>
