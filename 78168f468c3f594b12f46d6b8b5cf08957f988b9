@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9ed87b_caecee5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19282
+      },
+      "writtenOn": "2025-06-03T14:14:10Z",
+      "side": 1,
+      "message": "Actually that should be extracted into a string resource, so it can be translated.",
+      "revId": "78168f468c3f594b12f46d6b8b5cf08957f988b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
