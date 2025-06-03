@@ -16,6 +16,24 @@
       "message": "Gaming? Is that the right word?",
       "revId": "3ea6eb4336fcd8b006c90e2b7c9d31b8bb32a454",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80b6b86_e8571642",
+        "filename": "res/values/codeaurora_strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 34887
+      },
+      "writtenOn": "2025-06-03T17:31:25Z",
+      "side": 1,
+      "message": "Nope, test diff slipped through, my b; removed.",
+      "parentUuid": "1eff1191_353c2cf5",
+      "revId": "3ea6eb4336fcd8b006c90e2b7c9d31b8bb32a454",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
