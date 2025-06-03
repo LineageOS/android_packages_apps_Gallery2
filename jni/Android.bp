@@ -41,7 +41,6 @@ cc_library_shared {
         "filters/highlight.c",
         "filters/hsv.c",
         "filters/vibrance.c",
-        "filters/geometry.c",
         "filters/negative.c",
         "filters/redEyeMath.c",
         "filters/fx.c",
