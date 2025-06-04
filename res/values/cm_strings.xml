@@ -17,4 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Text indicating the time a media item was recorded in details window [CHAR LIMIT=14] -->
     <string name="record_time">Record time</string>
+
+    <!-- Used in toast message when more than one picture is selected [CHAR LIMIT=50] -->
+    <string name="select_one_picture">Please select one picture</string>
 </resources>

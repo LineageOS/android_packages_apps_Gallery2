@@ -150,7 +150,7 @@ public class WidgetConfigure extends Activity {
         int widgetHeight = Math.round(height * scale);
 
         if (data.getData() != null && data.getData().toString().contains("/video/media")) {
-            Toast.makeText(this, "Please select one picture", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.select_one_picture, Toast.LENGTH_LONG).show();
             Intent request = new Intent(this, DialogPicker.class)
                     .setAction(Intent.ACTION_GET_CONTENT)
                     .setType("image/*");
