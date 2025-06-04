@@ -52,6 +52,10 @@
          [CHAR LIMIT=50]-->
     <string name="fail_to_load_image">Couldn\'t load the image</string>
 
+    <!-- Used in toast message when more than one picture is selected
+         [CHAR LIMIT=50]-->
+    <string name="select_one_picture">Please select one picture</string>
+
     <!-- Displayed in place of the picture when we fail to get the thumbnail of it.
          [CHAR LIMIT=50]-->
     <string name="no_thumbnail">No thumbnail</string>
