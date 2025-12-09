@@ -160,19 +160,31 @@ class ImageFilterDualCamera extends ImageFilter {
     }
 
     private int getEffectType() {
-        switch (mParameters.getTextId()) {
-            case R.string.focus: return DualCameraEffect.REFOCUS_CIRCLE;
-            case R.string.halo: return DualCameraEffect.HALO;
-            case R.string.motion: return DualCameraEffect.MOTION_BLUR;
-            case R.string.posterize: return DualCameraEffect.POSTERIZE;
-            case R.string.sketch: return DualCameraEffect.SKETCH;
-            case R.string.zoom: return DualCameraEffect.ZOOM_BLUR;
-            case R.string.bw: return DualCameraEffect.BLACK_WHITE;
-            case R.string.blackboard: return DualCameraEffect.BLACKBOARD;
-            case R.string.whiteboard: return DualCameraEffect.WHITEBOARD;
-            case R.string.fusion: return DualCameraEffect.FUSION_FOREGROUND;
-            case R.string.dc_negative: return DualCameraEffect.NEGATIVE;
-            default: throw new IllegalArgumentException();
+        final int textId = mParameters.getTextId();
+        if (textId == R.string.focus) {
+            return DualCameraEffect.REFOCUS_CIRCLE;
+        } else if (textId == R.string.halo) {
+            return DualCameraEffect.HALO;
+        } else if (textId == R.string.motion) {
+            return DualCameraEffect.MOTION_BLUR;
+        } else if (textId == R.string.posterize) {
+            return DualCameraEffect.POSTERIZE;
+        } else if (textId == R.string.sketch) {
+            return DualCameraEffect.SKETCH;
+        } else if (textId == R.string.zoom) {
+            return DualCameraEffect.ZOOM_BLUR;
+        } else if (textId == R.string.bw) {
+            return DualCameraEffect.BLACK_WHITE;
+        } else if (textId == R.string.blackboard) {
+            return DualCameraEffect.BLACKBOARD;
+        } else if (textId == R.string.whiteboard) {
+            return DualCameraEffect.WHITEBOARD;
+        } else if (textId == R.string.fusion) {
+            return DualCameraEffect.FUSION_FOREGROUND;
+        } else if (textId == R.string.dc_negative) {
+            return DualCameraEffect.NEGATIVE;
+        } else {
+            throw new IllegalArgumentException();
         }
     }
 

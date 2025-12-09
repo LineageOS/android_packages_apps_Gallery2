@@ -899,71 +899,67 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
         mHandledSwipeView = view;
         final Action ac = action;
         mFilterPresetSource = new FilterPresetSource(this);
-        switch (i) {
-            case R.id.renameButton:
-                final View layout = View.inflate(this,R.layout.filtershow_default_edittext,null);
-                AlertDialog.Builder renameAlertDialogBuilder = new AlertDialog.Builder(this);
-                renameAlertDialogBuilder.setTitle(R.string.rename_before_exit);
-                renameAlertDialogBuilder.setView(layout);
-                renameAlertDialogBuilder.setPositiveButton(R.string.ok,
-                        new DialogInterface.OnClickListener(){
-                            @Override
-                            public void onClick(DialogInterface dialog, int id){
-                                EditText mEditText = (EditText) layout.findViewById(
-                                        R.id.filtershow_default_edit);
-                                String name = String.valueOf(mEditText.getText());
-                                if ( (name.trim().length() == 0)|| name.isEmpty()) {
-                                    Toast.makeText(getApplicationContext(),
-                                            getString(R.string.filter_name_notification),
-                                            Toast.LENGTH_SHORT).show();
-                                } else if (isDuplicateName(name)) {
-                                    Toast.makeText(getApplicationContext(),
-                                            getString(R.string.filter_name_duplicate),
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    renamePreset(ac, name);
-                                }
-                                dialog.dismiss();
+        if (i == R.id.renameButton) {
+            final View layout = View.inflate(this,R.layout.filtershow_default_edittext,null);
+            AlertDialog.Builder renameAlertDialogBuilder = new AlertDialog.Builder(this);
+            renameAlertDialogBuilder.setTitle(R.string.rename_before_exit);
+            renameAlertDialogBuilder.setView(layout);
+            renameAlertDialogBuilder.setPositiveButton(R.string.ok,
+                    new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id){
+                            EditText mEditText = (EditText) layout.findViewById(
+                                    R.id.filtershow_default_edit);
+                            String name = String.valueOf(mEditText.getText());
+                            if ( (name.trim().length() == 0)|| name.isEmpty()) {
+                                Toast.makeText(getApplicationContext(),
+                                        getString(R.string.filter_name_notification),
+                                        Toast.LENGTH_SHORT).show();
+                            } else if (isDuplicateName(name)) {
+                                Toast.makeText(getApplicationContext(),
+                                        getString(R.string.filter_name_duplicate),
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                renamePreset(ac, name);
                             }
+                            dialog.dismiss();
                         }
-                );
-                renameAlertDialogBuilder.setNegativeButton(mCancel,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick (DialogInterface dialog, int id){
+                    }
+            );
+            renameAlertDialogBuilder.setNegativeButton(mCancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick (DialogInterface dialog, int id){
 
-                            }
                         }
-                );
-                renameAlertDialogBuilder.create().show();
-                break;
+                    }
+            );
+            renameAlertDialogBuilder.create().show();
+        } else if (i == R.id.deleteButton) {
+            String name = action.getName();
+            AlertDialog.Builder deleteAlertDialogBuilder = new AlertDialog.Builder(this);
+            String textview ="Do you want to delete "+name+"?";
+            deleteAlertDialogBuilder.setMessage(textview)
+                    .setTitle(R.string.delete_before_exit);
+            deleteAlertDialogBuilder.setPositiveButton(R.string.ok,
+                    new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id){
+                            ((SwipableView) mHandledSwipeView).delete();
+                            dialog.dismiss();
+                        }
+                    }
+            );
+            deleteAlertDialogBuilder.setNegativeButton(mCancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick (DialogInterface dialog, int id){
+                            dialog.dismiss();
 
-            case R.id.deleteButton:
-                String name = action.getName();
-                AlertDialog.Builder deleteAlertDialogBuilder = new AlertDialog.Builder(this);
-                String textview ="Do you want to delete "+name+"?";
-                deleteAlertDialogBuilder.setMessage(textview)
-                        .setTitle(R.string.delete_before_exit);
-                deleteAlertDialogBuilder.setPositiveButton(R.string.ok,
-                        new DialogInterface.OnClickListener(){
-                            @Override
-                            public void onClick(DialogInterface dialog, int id){
-                                ((SwipableView) mHandledSwipeView).delete();
-                                dialog.dismiss();
-                            }
                         }
-                );
-                deleteAlertDialogBuilder.setNegativeButton(mCancel,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick (DialogInterface dialog, int id){
-                                dialog.dismiss();
-
-                            }
-                        }
-                );
-                deleteAlertDialogBuilder.create().show();
-                break;
+                    }
+            );
+            deleteAlertDialogBuilder.create().show();
         }
     }
 
@@ -2115,45 +2111,20 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        /*case R.id.undoButton: {
-                HistoryManager adapter = mPrimaryImage.getHistory();
-                int position = adapter.undo();
-                mPrimaryImage.onHistoryItemClick(position);
-                backToMain();
-                invalidateViews();
-                return true;
-            }
-            case R.id.redoButton: {
-                HistoryManager adapter = mPrimaryImage.getHistory();
-                int position = adapter.redo();
-                mPrimaryImage.onHistoryItemClick(position);
-                invalidateViews();
-                return true;
-            }*/
-        case R.id.resetHistoryButton: {
+        final int itemId = item.getItemId();
+        if (itemId == R.id.resetHistoryButton) {
             clearWaterMark();
             resetHistory();
-            return true;
-        }
-        /*case R.id.showImageStateButton: {
-                toggleImageStatePanel();
-                return true;
-            }*/
-        case R.id.exportFlattenButton: {
+        } else if (itemId == R.id.exportFlattenButton) {
             showExportOptionsDialog();
-            return true;
-        }
-        case android.R.id.home: {
+        } else if (itemId == android.R.id.home) {
             saveImage();
-            return true;
-        }
-        case R.id.manageUserPresets: {
+        } else if (itemId == R.id.manageUserPresets) {
             manageUserPresets();
-            return true;
+        } else {
+            return false;
         }
-        }
-        return false;
+        return true;
     }
 
     public void print() {

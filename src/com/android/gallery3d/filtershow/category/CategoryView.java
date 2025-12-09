@@ -236,17 +236,16 @@ public class CategoryView extends IconView
     @Override
     public boolean onMenuItemClick (MenuItem item) {
         FilterShowActivity activity = (FilterShowActivity) getContext();
-        switch (item.getItemId()) {
-            case R.id.deleteButton:
-                activity.handlePreset(mAction,this,R.id.deleteButton);
-                return true;
-            case R.id.renameButton:
-                activity.handlePreset(mAction,this,R.id.renameButton);
-                return true;
+        final int itemId = item.getItemId();
+        if (itemId == R.id.deleteButton) {
+            activity.handlePreset(mAction, this, R.id.deleteButton);
+        } else if (itemId == R.id.renameButton) {
+            activity.handlePreset(mAction, this, R.id.renameButton);
+        } else {
+            return false;
         }
-        return false;
+        return true;
     }
-
 
     @Override
     public void delete() {

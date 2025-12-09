@@ -246,70 +246,38 @@ public class MenuExecutor {
 
     public void onMenuClicked(int action, ProgressListener listener,
             boolean waitOnStop, boolean showDialog) {
-        int title;
-        switch (action) {
-            case R.id.action_select_all:
-                if (mSelectionManager.inSelectAllMode()) {
-                    isLeaving = true;
-                    mSelectionManager.deSelectAll();
-                } else {
-                    mSelectionManager.selectAll();
-                }
-                return;
-            /*case R.id.action_crop: {
-                Intent intent = getIntentBySingleSelectedPath(CropActivity.CROP_ACTION);
-                ((Activity) mActivity).startActivity(intent);
-                return;
-            }*/
-            case R.id.action_edit: {
-                Intent intent = getIntentBySingleSelectedPath(Intent.ACTION_EDIT);
-                if (intent != null) {
-                    intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        int title = -1;
+        if (action == R.id.action_select_all) {
+            if (mSelectionManager.inSelectAllMode()) {
+                isLeaving = true;
+                mSelectionManager.deSelectAll();
+            } else {
+                mSelectionManager.selectAll();
+            }
+        } else if (action == R.id.action_edit) {
+            Intent intent = getIntentBySingleSelectedPath(Intent.ACTION_EDIT);
+            if (intent != null) {
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-                    List<ResolveInfo> resolveInfoList = mActivity.getPackageManager()
-                            .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-                    if (resolveInfoList != null && resolveInfoList.size() > 0) {
-                        if (resolveInfoList.size() == 1) {
-                            // only one app can resolve intent, don't use createChooser.
-                            mActivity.startActivity(intent);
-                        } else {
-                            mActivity.startActivity(Intent.createChooser(intent, null));
-                        }
+                List<ResolveInfo> resolveInfoList = mActivity.getPackageManager()
+                        .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                if (resolveInfoList != null && resolveInfoList.size() > 0) {
+                    if (resolveInfoList.size() == 1) {
+                        // only one app can resolve intent, don't use createChooser.
+                        mActivity.startActivity(intent);
+                    } else {
+                        mActivity.startActivity(Intent.createChooser(intent, null));
                     }
                 }
-                return;
             }
-            case R.id.action_delete:
-                title = R.string.delete;
-                break;
-            case R.id.photopage_bottom_control_delete:
-                title = R.string.delete;
-                break;
-            /*case R.id.action_rotate_cw:
-                title = R.string.rotate_right;
-                break;
-            case R.id.action_rotate_ccw:
-                title = R.string.rotate_left;
-                break;*/
-            case R.id.action_show_on_map:
-                title = R.string.show_on_map;
-                break;
-//            case R.id.action_drm_info:
-//                DataManager manager = mActivity.getDataManager();
-//                Path path = getSingleSelectedPath();
-//                Uri uri = manager.getContentUri(path);
-//                String filepath = null;
-//                String scheme = uri.getScheme();
-//                if ("file".equals(scheme)) {
-//                    filepath = uri.getPath();
-//                } else {
-//                    filepath = DrmHelper.getFilePath(mActivity, uri);
-//                }
-//                DrmHelper.showDrmInfo(mActivity, filepath);
-//                title = R.string.drm_license_info;
-//                break;
-            default:
-                return;
+        } else if (action == R.id.action_edit) {
+            title = R.string.delete;
+        } else if (action == R.id.action_edit) {
+            title = R.string.delete;
+        } else if (action == R.id.action_edit) {
+            title = R.string.show_on_map;
+        } else {
+            return;
         }
         startAction(action, title, listener, waitOnStop, showDialog);
     }
@@ -416,41 +384,28 @@ public class MenuExecutor {
         Log.v(TAG, "Execute cmd: " + cmd + " for " + path);
         long startTime = System.currentTimeMillis();
 
-        switch (cmd) {
-            case R.id.action_delete:
-                manager.delete(path);
-                break;
-            case R.id.photopage_bottom_control_delete:
-                manager.delete(path);
-                break;
-            /*case R.id.action_rotate_cw:
-                manager.rotate(path, 90);
-                break;
-            case R.id.action_rotate_ccw:
-                manager.rotate(path, -90);
-                break;*/
-            case R.id.action_toggle_full_caching: {
-                MediaObject obj = manager.getMediaObject(path);
-                int cacheFlag = obj.getCacheFlag();
-                if (cacheFlag == MediaObject.CACHE_FLAG_FULL) {
-                    cacheFlag = MediaObject.CACHE_FLAG_SCREENNAIL;
-                } else {
-                    cacheFlag = MediaObject.CACHE_FLAG_FULL;
-                }
-                obj.cache(cacheFlag);
-                break;
+        if (cmd == R.id.action_delete) {
+            manager.delete(path);
+        } else if (cmd == R.id.photopage_bottom_control_delete) {
+            manager.delete(path);
+        } else if (cmd == R.id.action_toggle_full_caching) {
+            MediaObject obj = manager.getMediaObject(path);
+            int cacheFlag = obj.getCacheFlag();
+            if (cacheFlag == MediaObject.CACHE_FLAG_FULL) {
+                cacheFlag = MediaObject.CACHE_FLAG_SCREENNAIL;
+            } else {
+                cacheFlag = MediaObject.CACHE_FLAG_FULL;
             }
-            case R.id.action_show_on_map: {
-                MediaItem item = (MediaItem) manager.getMediaObject(path);
-                double latlng[] = new double[2];
-                item.getLatLong(latlng);
-                if (GalleryUtils.isValidLocation(latlng[0], latlng[1])) {
-                    GalleryUtils.showOnMap(mActivity, latlng[0], latlng[1]);
-                }
-                break;
+            obj.cache(cacheFlag);
+        } else if (cmd == R.id.action_show_on_map) {
+            MediaItem item = (MediaItem) manager.getMediaObject(path);
+            double latlng[] = new double[2];
+            item.getLatLong(latlng);
+            if (GalleryUtils.isValidLocation(latlng[0], latlng[1])) {
+                GalleryUtils.showOnMap(mActivity, latlng[0], latlng[1]);
             }
-            default:
-                throw new AssertionError();
+        } else {
+            throw new AssertionError();
         }
         Log.v(TAG, "It takes " + (System.currentTimeMillis() - startTime) +
                 " ms to execute cmd for " + path);

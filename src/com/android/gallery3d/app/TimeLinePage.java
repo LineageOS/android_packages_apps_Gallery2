@@ -629,42 +629,33 @@ public class TimeLinePage extends ActivityState implements
 
     @Override
     protected boolean onItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home: {
-                onUpPressed();
-                return true;
+        final int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            onUpPressed();
+        } else if (itemId == R.id.action_cancel) {
+            mActivity.getStateManager().finishState(this);
+        } else if (itemId == R.id.action_select) {
+            mSelectionManager.setAutoLeaveSelectionMode(true);
+            mSelectionManager.enterSelectionMode();
+        } else if (itemId == R.id.action_slideshow) {
+            Bundle data = new Bundle();
+            data.putString(SlideshowPage.KEY_SET_PATH,
+                    mMediaSetPath.toString());
+            data.putBoolean(SlideshowPage.KEY_REPEAT, true);
+            mActivity.getStateManager().startStateForResult(
+                    SlideshowPage.class, REQUEST_SLIDESHOW, data);
+        } else if (itemId == R.id.action_details) {
+            if (mShowDetails) {
+                hideDetails();
+            } else {
+                showDetails();
             }
-            case R.id.action_cancel:
-                mActivity.getStateManager().finishState(this);
-                return true;
-            case R.id.action_select:
-                mSelectionManager.setAutoLeaveSelectionMode(true);
-                mSelectionManager.enterSelectionMode();
-                return true;
-            case R.id.action_slideshow: {
-                Bundle data = new Bundle();
-                data.putString(SlideshowPage.KEY_SET_PATH,
-                        mMediaSetPath.toString());
-                data.putBoolean(SlideshowPage.KEY_REPEAT, true);
-                mActivity.getStateManager().startStateForResult(
-                        SlideshowPage.class, REQUEST_SLIDESHOW, data);
-                return true;
-            }
-            case R.id.action_details: {
-                if (mShowDetails) {
-                    hideDetails();
-                } else {
-                    showDetails();
-                }
-                return true;
-            }
-            case R.id.action_camera: {
-                GalleryUtils.startCameraActivity(mActivity);
-                return true;
-            }
-            default:
-                return false;
+        } else if (itemId == R.id.action_camera) {
+            GalleryUtils.startCameraActivity(mActivity);
+        } else {
+            return false;
         }
+        return true;
     }
 
     @Override

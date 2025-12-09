@@ -136,14 +136,12 @@ public class UserPresetsAdapter extends ArrayAdapter<Action>
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.editView:
-                v.requestFocus();
-                break;
-            case R.id.deleteUserPreset:
-                Action action = (Action) v.getTag();
-                deletePreset(action);
-                break;
+        final int id = v.getId();
+        if (id == R.id.editView) {
+            v.requestFocus();
+        } else if (id == R.id.deleteUserPreset) {
+            Action action = (Action) v.getTag();
+            deletePreset(action);
         }
     }
 

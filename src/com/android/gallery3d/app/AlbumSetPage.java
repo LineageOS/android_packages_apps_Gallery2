@@ -630,53 +630,42 @@ public class AlbumSetPage extends ActivityState implements
 
     @Override
     protected boolean onItemSelected(MenuItem item) {
+        final int itemId = item.getItemId();
         Activity activity = mActivity;
-        switch (item.getItemId()) {
-            case R.id.action_more_image:
-                Uri moreUri = Uri.parse(mActivity.getString(R.string.website_for_more_image));
-                Intent moreIntent = new Intent(Intent.ACTION_VIEW, moreUri);
-                mActivity.startActivity(moreIntent);
-                return true;
-            case R.id.action_cancel:
-                activity.setResult(Activity.RESULT_CANCELED);
-                activity.finish();
-                return true;
-            case R.id.action_select:
-                mSelectionManager.setAutoLeaveSelectionMode(false);
-                mSelectionManager.enterSelectionMode();
-                return true;
-            case R.id.action_details:
-                if (mAlbumSetDataAdapter.size() != 0) {
-                    if (mShowDetails) {
-                        hideDetails();
-                    } else {
-                        showDetails();
-                    }
+        if (itemId == R.id.action_more_image) {
+            Uri moreUri = Uri.parse(mActivity.getString(R.string.website_for_more_image));
+            Intent moreIntent = new Intent(Intent.ACTION_VIEW, moreUri);
+            mActivity.startActivity(moreIntent);
+        } else if (itemId == R.id.action_cancel) {
+            activity.setResult(Activity.RESULT_CANCELED);
+            activity.finish();
+        } else if (itemId == R.id.action_select) {
+            mSelectionManager.setAutoLeaveSelectionMode(false);
+            mSelectionManager.enterSelectionMode();
+        } else if (itemId == R.id.action_details) {
+            if (mAlbumSetDataAdapter.size() != 0) {
+                if (mShowDetails) {
+                    hideDetails();
                 } else {
-                    Toast.makeText(activity,
-                            activity.getText(R.string.no_albums_alert),
-                            Toast.LENGTH_SHORT).show();
+                    showDetails();
                 }
-                return true;
-            case R.id.action_camera: {
-                GalleryUtils.startCameraActivity(activity);
-                return true;
+            } else {
+                Toast.makeText(activity,
+                        activity.getText(R.string.no_albums_alert),
+                        Toast.LENGTH_SHORT).show();
             }
-            case R.id.action_manage_offline: {
-                Bundle data = new Bundle();
-                String mediaPath = mActivity.getDataManager().getTopSetPath(
+        } else if (itemId == R.id.action_camera) {
+            GalleryUtils.startCameraActivity(activity);
+        } else if (itemId == R.id.action_manage_offline) {
+            Bundle data = new Bundle();
+            String mediaPath = mActivity.getDataManager().getTopSetPath(
                     DataManager.INCLUDE_ALL);
-                data.putString(AlbumSetPage.KEY_MEDIA_PATH, mediaPath);
-                mActivity.getStateManager().startState(ManageCachePage.class, data);
-                return true;
-            }
-            /*case R.id.action_settings: {
-                activity.startActivity(new Intent(activity, GallerySettings.class));
-                return true;
-            }*/
-            default:
-                return false;
+            data.putString(AlbumSetPage.KEY_MEDIA_PATH, mediaPath);
+            mActivity.getStateManager().startState(ManageCachePage.class, data);
+        } else {
+            return false;
         }
+        return true;
     }
 
     @Override

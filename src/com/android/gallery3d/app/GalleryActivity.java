@@ -184,16 +184,13 @@ public final class GalleryActivity extends AbstractGalleryActivity implements On
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 getGLRoot().lockRenderThread();
-                switch (item.getItemId()) {
-                    case R.id.action_timeline:
-                        showScreen(0);
-                        break;
-                    case R.id.action_album:
-                        showScreen(1);
-                        break;
-                    case R.id.action_videos:
-                        showScreen(2);
-                        break;
+                final int itemId = item.getItemId();
+                if (itemId == R.id.action_timeline) {
+                    showScreen(0);
+                } else if (itemId == R.id.action_album) {
+                    showScreen(1);
+                } else if (itemId == R.id.action_videos) {
+                    showScreen(2);
                 }
                 getGLRoot().unlockRenderThread();
                 return true;

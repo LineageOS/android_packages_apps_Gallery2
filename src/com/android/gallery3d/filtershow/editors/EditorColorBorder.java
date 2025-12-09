@@ -139,19 +139,15 @@ public class EditorColorBorder extends ParametricEditor  {
         if (rep == null) {
             return;
         }
-        switch (item.getItemId()) {
-            case R.id.color_border_menu_clear:
-                clearFrame();
-                break;
-            case R.id.color_border_menu_size:
-                rep.setPramMode(FilterColorBorderRepresentation.PARAM_SIZE);
-                break;
-            case R.id.color_border_menu_corner_size:
-                rep.setPramMode(FilterColorBorderRepresentation.PARAM_RADIUS);
-                break;
-            case R.id.color_border_menu_color:
-                rep.setPramMode(FilterColorBorderRepresentation.PARAM_COLOR);
-                break;
+        final int itemId = item.getItemId();
+        if (itemId == R.id.color_border_menu_clear) {
+            clearFrame();
+        } else if (itemId == R.id.color_border_menu_size) {
+            rep.setPramMode(FilterColorBorderRepresentation.PARAM_SIZE);
+        } else if (itemId == R.id.color_border_menu_corner_size) {
+            rep.setPramMode(FilterColorBorderRepresentation.PARAM_RADIUS);
+        } else if (itemId == R.id.color_border_menu_color) {
+            rep.setPramMode(FilterColorBorderRepresentation.PARAM_COLOR);
         }
         if (item.getItemId() != R.id.color_border_menu_clear) {
             mParameterString = item.getTitle().toString();
