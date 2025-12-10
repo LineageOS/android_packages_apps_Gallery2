@@ -75,16 +75,14 @@ public class PresetManagementDialog extends BaseDialogFragment implements View.O
     @Override
     public void onClick(View v) {
         FilterShowActivity activity = (FilterShowActivity) getActivity();
-        switch (v.getId()) {
-            case R.id.cancel:
-                dismiss();
-                break;
-            case R.id.ok:
-                checked = mCheckBox.isChecked();
-                GalleryUtils.setBooleanPref(activity,activity.getString(R.string.pref_filtergenerator_intro_show_key),checked);
-                activity.onMediaPickerStarted ();
-                dismiss();
-                break;
+        if (v.getId() == R.id.cancel) {
+            dismiss();
+        } else if (v.getId() == R.id.ok) {
+            checked = mCheckBox.isChecked();
+            GalleryUtils.setBooleanPref(activity, activity.getString(R.string.pref_filtergenerator_intro_show_key), checked);
+            activity.onMediaPickerStarted();
+            dismiss();
         }
+
     }
 }

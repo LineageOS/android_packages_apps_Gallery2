@@ -414,23 +414,14 @@ public class ImageCurves extends ImageShow {
     }
 
     public void setChannel(int itemId) {
-        switch (itemId) {
-            case R.id.curve_menu_rgb: {
-                mCurrentCurveIndex = Spline.RGB;
-                break;
-            }
-            case R.id.curve_menu_red: {
-                mCurrentCurveIndex = Spline.RED;
-                break;
-            }
-            case R.id.curve_menu_green: {
-                mCurrentCurveIndex = Spline.GREEN;
-                break;
-            }
-            case R.id.curve_menu_blue: {
-                mCurrentCurveIndex = Spline.BLUE;
-                break;
-            }
+        if (itemId == R.id.curve_menu_rgb) {
+            mCurrentCurveIndex = Spline.RGB;
+        } else if (itemId == R.id.curve_menu_red) {
+            mCurrentCurveIndex = Spline.RED;
+        } else if (itemId == R.id.curve_menu_green) {
+            mCurrentCurveIndex = Spline.GREEN;
+        } else if (itemId == R.id.curve_menu_blue) {
+            mCurrentCurveIndex = Spline.BLUE;
         }
         mEditorCurves.commitLocalRepresentation();
         invalidate();

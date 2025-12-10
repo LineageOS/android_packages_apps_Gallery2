@@ -207,22 +207,20 @@ public class MultiChoiceManager implements MultiChoiceModeListener,
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         int actionItemId = item.getItemId();
-        switch (actionItemId) {
-            case R.id.menu_delete:
-                BulkDeleteTask deleteTask = new BulkDeleteTask(mDelegate,
-                        getPathsForSelectedItems());
-                deleteTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                mode.finish();
-                return true;
-            case R.id.menu_edit:
-            case R.id.menu_crop:
-            case R.id.menu_trim:
-            case R.id.menu_mute:
-                singleItemAction(getSelectedItem(), actionItemId);
-                mode.finish();
-                return true;
-            default:
-                return false;
+        if (actionItemId == R.id.menu_delete) {
+            BulkDeleteTask deleteTask = new BulkDeleteTask(mDelegate, getPathsForSelectedItems());
+            deleteTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            mode.finish();
+            return true;
+        } else if (actionItemId == R.id.menu_edit || 
+                actionItemId == R.id.menu_crop || 
+                actionItemId == R.id.menu_trim || 
+                actionItemId == R.id.menu_mute) {
+            singleItemAction(getSelectedItem(), actionItemId);
+            mode.finish();
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -230,34 +228,30 @@ public class MultiChoiceManager implements MultiChoiceModeListener,
         Intent intent = new Intent();
         String mime = getItemMimetype(item);
         Uri uri = mDelegate.getItemUri(item);
-        switch (actionItemId) {
-            case R.id.menu_edit:
-                intent.setDataAndType(uri, mime)
-                      .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                      .setAction(Intent.ACTION_EDIT);
-                mContext.startActivity(Intent.createChooser(intent, null));
-                return;
-            case R.id.menu_crop:
-                intent.setDataAndType(uri, mime)
-                      .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                      .setAction(CropActivity.CROP_ACTION)
-                      .setClass(mContext, FilterShowActivity.class);
-                mContext.startActivity(intent);
-                return;
-            case R.id.menu_trim:
-                intent.setData(uri)
-                      .setClass(mContext, TrimVideo.class);
-                mContext.startActivity(intent);
-                return;
-            case R.id.menu_mute:
-                /* TODO need a way to get the file path of an item
-                MuteVideo muteVideo = new MuteVideo(filePath,
-                        uri, (Activity) mContext);
-                muteVideo.muteInBackground();
-                */
-                return;
-            default:
-                return;
+        if (actionItemId == R.id.menu_edit) {
+            intent.setDataAndType(uri, mime)
+                .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                .setAction(Intent.ACTION_EDIT);
+            mContext.startActivity(Intent.createChooser(intent, null));
+        } else if (actionItemId == R.id.menu_crop) {
+            intent.setDataAndType(uri, mime)
+                .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                .setAction(CropActivity.CROP_ACTION)
+                .setClass(mContext, FilterShowActivity.class);
+            mContext.startActivity(intent);
+        } else if (actionItemId == R.id.menu_trim) {
+            intent.setData(uri)
+                .setClass(mContext, TrimVideo.class);
+            mContext.startActivity(intent);
+        } else if (actionItemId == R.id.menu_mute) {
+            /* TODO need a way to get the file path of an item
+            MuteVideo muteVideo = new MuteVideo(filePath,
+                    uri, (Activity) mContext);
+            muteVideo.muteInBackground();
+            */
+           return;
+        } else {
+            return;
         }
     }
 
