@@ -164,21 +164,15 @@ public class ImageFilterTruePortrait extends ImageFilter {
         int value = basicRep.getValue();
 
         boolean result = false;
-        switch(mParameters.getTextId()) {
-        case R.string.blur:
+        if (mParameters.getTextId() == R.string.blur) {
             result = TruePortraitNativeEngine.getInstance().applyEffect(EffectType.BLUR, value, filteredBitmap);
-            break;
-        case R.string.motion_blur:
+        } else if (mParameters.getTextId() == R.string.motion_blur) {
             result = TruePortraitNativeEngine.getInstance().applyEffect(EffectType.MOTION_BLUR, value, filteredBitmap);
-            break;
-        case R.string.halo:
+        } else if (mParameters.getTextId() == R.string.halo) {
             result = TruePortraitNativeEngine.getInstance().applyEffect(EffectType.HALO, value, filteredBitmap);
-            break;
-        case R.string.sketch:
+        } else if (mParameters.getTextId() == R.string.sketch) {
             result = TruePortraitNativeEngine.getInstance().applyEffect(EffectType.SKETCH, value, filteredBitmap);
-            break;
         }
-
         return result;
     }
 

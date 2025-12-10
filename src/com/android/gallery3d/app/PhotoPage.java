@@ -643,63 +643,60 @@ public abstract class PhotoPage extends ActivityState implements
         if (mCurrentPhoto == null) {
             return false;
         }
-        switch (control) {
-        case R.id.photopage_bottom_controls:
+        if (control == R.id.photopage_bottom_controls) {
             return mShowBars;
-        case R.id.photopage_bottom_control_edit:
+        } else if (control == R.id.photopage_bottom_control_edit) {
             return mHaveImageEditor
                     && mShowBars
                     && !mPhotoView.getFilmMode()
                     && (mCurrentPhoto.getSupportedOperations() & MediaItem.SUPPORT_EDIT) != 0
                     && mCurrentPhoto.getMediaType() == MediaObject.MEDIA_TYPE_IMAGE;
-        case R.id.photopage_bottom_control_share:
+        } else if (control == R.id.photopage_bottom_control_share) {
             mShareIntent = new Intent(Intent.ACTION_SEND);
             return mShowBars;
-        case R.id.photopage_bottom_control_delete:
+        } else if (control == R.id.photopage_bottom_control_delete) {
             return mShowBars;
-        default:
+        } else {
             return false;
         }
     }
 
     @Override
     public void onBottomControlClicked(int control) {
-        switch(control) {
-            case R.id.photopage_bottom_control_edit:
-                launchPhotoEditor();
-                return;
-            case R.id.photopage_bottom_control_share:
-                 if (mModel != null && mModel.getMediaItem(0) != null) {
-                 Uri uri = mActivity.getDataManager().getContentUri(mModel.getMediaItem(0).getPath());
-                 mActivity.isTopMenuShow = true;
-                 mShareIntent.setDataAndType(uri, MenuExecutor.getMimeType(mModel
+        if (control == R.id.photopage_bottom_control_edit) {
+            launchPhotoEditor();
+            return;
+        } else if (control == R.id.photopage_bottom_control_share) {
+            if (mModel != null && mModel.getMediaItem(0) != null) {
+                Uri uri = mActivity.getDataManager().getContentUri(mModel.getMediaItem(0).getPath());
+                mActivity.isTopMenuShow = true;
+                mShareIntent.setDataAndType(uri, MenuExecutor.getMimeType(mModel
                     .getMediaItem(0).getMediaType()));
-                 mShareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-                 String shareTitle = mActivity.getResources().
-                         getString(R.string.share_dialogue_title);
-                 if (uri.toString().contains("file:")) {
-                     Log.d(TAG, "can't share uri started with file://");
-                     return;
-                 }
-                 mActivity.startActivity(Intent.createChooser(mShareIntent,
-                    shareTitle));
-                 }
-                 return;
+                mShareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                String shareTitle = mActivity.getResources().
+                    getString(R.string.share_dialogue_title);
 
-            case R.id.photopage_bottom_control_delete:
-                 String confirmMsg = null;
-                 confirmMsg = mActivity.getResources().getQuantityString(
-                    R.plurals.delete_selection, 1);
-                 if (mModel != null && mModel.getMediaItem(0) != null) {
-                 Path path = mModel.getMediaItem(0).getPath();
-                 mSelectionManager.deSelectAll();
-                 mSelectionManager.toggle(path);
-                 MenuItem item = null;
-                 mMenuExecutor.onMenuClicked(item, confirmMsg,
-                    mConfirmDialogListener);
-                 }
-                return;
-        default:
+                if (uri.toString().contains("file:")) {
+                    Log.d(TAG, "can't share uri started with file://");
+                    return;
+                }
+
+                mActivity.startActivity(Intent.createChooser(mShareIntent, shareTitle));
+            }
+            return;
+        } else if (control == R.id.photopage_bottom_control_delete) {
+            String confirmMsg = null;
+            confirmMsg = mActivity.getResources().getQuantityString(R.plurals.delete_selection, 1);
+
+            if (mModel != null && mModel.getMediaItem(0) != null) {
+                Path path = mModel.getMediaItem(0).getPath();
+                mSelectionManager.deSelectAll();
+                mSelectionManager.toggle(path);
+                MenuItem item = null;
+                mMenuExecutor.onMenuClicked(item, confirmMsg, mConfirmDialogListener);
+            }
+            return;
+        } else {
             return;
         }
     }
@@ -1167,12 +1164,10 @@ public abstract class PhotoPage extends ActivityState implements
         DataManager manager = mActivity.getDataManager();
         int action = item.getItemId();
         String confirmMsg = null;
-        switch (action) {
-            case android.R.id.home: {
+            if (action == android.R.id.home) {
                 onUpPressed();
                 return true;
-            }
-            case R.id.action_slideshow: {
+            } else if (action == R.id.action_slideshow) {
                 Bundle data = new Bundle();
                 data.putString(SlideshowPage.KEY_SET_PATH, mMediaSet.getPath().toString());
                 data.putString(SlideshowPage.KEY_ITEM_PATH, path.toString());
@@ -1181,19 +1176,7 @@ public abstract class PhotoPage extends ActivityState implements
                 mActivity.getStateManager().startStateForResult(
                         SlideshowPage.class, REQUEST_SLIDESHOW, data);
                 return true;
-            }
-            /*case R.id.action_crop: {
-                Activity activity = mActivity;
-                Intent intent = new Intent(CropActivity.CROP_ACTION);
-                intent.setClass(activity, CropActivity.class);
-                intent.setDataAndType(manager.getContentUri(path), current.getMimeType())
-                    .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                activity.startActivityForResult(intent, PicasaSource.isPicasaImage(current)
-                        ? REQUEST_CROP_PICASA
-                        : REQUEST_CROP);
-                return true;
-            }*/
-            case R.id.action_trim: {
+            } else if (action == R.id.action_trim) {
                 Intent intent = new Intent(mActivity, TrimVideo.class);
                 intent.setData(manager.getContentUri(path));
                 // We need the file path to wrap this into a RandomAccessFile.
@@ -1207,30 +1190,22 @@ public abstract class PhotoPage extends ActivityState implements
                             Toast.LENGTH_SHORT).show();
                 }
                 return true;
-            }
-            case R.id.action_mute: {
+            } else if (action == R.id.action_mute) {
                 MuteVideo muteVideo = new MuteVideo(current.getFilePath(),
                         manager.getContentUri(path), mActivity);
                 muteVideo.muteInBackground();
                 return true;
-            }
-            case R.id.action_edit: {
+            } else if (action == R.id.action_edit) {
                 launchPhotoEditor();
                 return true;
-            }
-            /*case R.id.action_simple_edit: {
-                launchSimpleEditor();
-                return true;
-            }*/
-            case R.id.action_details: {
+            } else if (action == R.id.action_details) {
                 if (mShowDetails) {
                     hideDetails();
                 } else {
                     showDetails();
                 }
                 return true;
-            }
-            case R.id.print: {
+            } else if (action == R.id.print) {
                 try {
                     mActivity.printSelectedImage(manager.getContentUri(path));
                 } catch (SecurityException e) {
@@ -1238,25 +1213,38 @@ public abstract class PhotoPage extends ActivityState implements
                     mActivity.finish();
                 }
                 return true;
-            }
-            case R.id.action_delete:
+            } else if (action == R.id.action_delete) {
                 confirmMsg = mActivity.getResources().getQuantityString(
                         R.plurals.delete_selection, 1);
-            //case R.id.action_rotate_ccw:
-            //case R.id.action_rotate_cw:
-            case R.id.action_show_on_map:
+            } else if (action == R.id.action_show_on_map /* || action == R.id.action_rotate_ccw || R.id.action_rotate_cw */) {
                 mSelectionManager.deSelectAll();
                 mSelectionManager.toggle(path);
                 mMenuExecutor.onMenuClicked(item, confirmMsg, mConfirmDialogListener);
                 return true;
-//            case R.id.action_drm_info:
-//                String filepath = current.getFilePath();
-//                if (DrmHelper.isDrmFile(filepath)) {
-//                    DrmHelper.showDrmInfo(mActivity.getAndroidContext(), filepath);
-//                }
-//                return true;
-            default :
+             } else {
                 return false;
+            }
+            /* else if (R.id.action_drm_info) {
+                String filepath = current.getFilePath();
+                    if (DrmHelper.isDrmFile(filepath)) {
+                        DrmHelper.showDrmInfo(mActivity.getAndroidContext(), filepath);
+                    }
+                    return true;
+                } else if (action == R.id.action_crop){
+                Activity activity = mActivity;
+                Intent intent = new Intent(CropActivity.CROP_ACTION);
+                intent.setClass(activity, CropActivity.class);
+                intent.setDataAndType(manager.getContentUri(path), current.getMimeType())
+                    .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                activity.startActivityForResult(intent, PicasaSource.isPicasaImage(current)
+                        ? REQUEST_CROP_PICASA
+                        : REQUEST_CROP);
+                return true;
+                } else if (R.id.action_simple_edit) {
+                    launchSimpleEditor();
+                    return true;
+                }
+            */
         }
     }
 

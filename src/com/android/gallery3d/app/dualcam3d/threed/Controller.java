@@ -52,19 +52,14 @@ public class Controller implements Gyro.Listener {
         mModeView = modeView;
         View.OnClickListener listener = v -> {
             int id = v.getId();
-            switch (id) {
-                case R.id.mode_gyro:
-                    startGyro();
-                    break;
-                case R.id.mode_auto:
-                    startAuto();
-                    break;
-                case R.id.mode_touch:
-                    stop();
-                    break;
-                case R.id.three_dimensional:
-                    start();
-                    break;
+            if (id == R.id.mode_gyro) {
+                startGyro();
+            } else if (id == R.id.mode_auto) {
+                startAuto();
+            } else if (id == R.id.mode_touch) {
+                stop();
+            } else if (id == R.id.three_dimensional) {
+                start();
             }
         };
         for (int i = modeView.getChildCount() - 1; i >= 0; --i) {

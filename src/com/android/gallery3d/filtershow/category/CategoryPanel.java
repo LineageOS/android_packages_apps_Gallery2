@@ -186,11 +186,9 @@ public class CategoryPanel extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.addButton:
-                FilterShowActivity activity = (FilterShowActivity) getActivity();
-                activity.addCurrentVersion();
-                break;
+        if (v.getId() == R.id.addButton) {
+            FilterShowActivity activity = (FilterShowActivity) getActivity();
+            activity.addCurrentVersion();
         }
     }
 
