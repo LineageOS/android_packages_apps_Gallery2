@@ -59,23 +59,14 @@ public class FramedTextButton extends ImageButton {
     }
 
     public void setTextFrom(int itemId) {
-        switch (itemId) {
-            case R.id.curve_menu_rgb: {
-                setText(getContext().getString(R.string.curves_channel_rgb));
-                break;
-            }
-            case R.id.curve_menu_red: {
-                setText(getContext().getString(R.string.curves_channel_red));
-                break;
-            }
-            case R.id.curve_menu_green: {
-                setText(getContext().getString(R.string.curves_channel_green));
-                break;
-            }
-            case R.id.curve_menu_blue: {
-                setText(getContext().getString(R.string.curves_channel_blue));
-                break;
-            }
+        if (itemId == R.id.curve_menu_rgb) {
+            setText(getContext().getString(R.string.curves_channel_rgb));
+        } else if (itemId == R.id.curve_menu_red) {
+            setText(getContext().getString(R.string.curves_channel_red));
+        } else if (itemId == R.id.curve_menu_green) {
+            setText(getContext().getString(R.string.curves_channel_green));
+        } else if (itemId == R.id.curve_menu_blue) {
+            setText(getContext().getString(R.string.curves_channel_blue));
         }
         invalidate();
     }

@@ -707,46 +707,39 @@ public class AlbumPage extends ActivityState implements GalleryActionBar.Cluster
 
     @Override
     protected boolean onItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home: {
-                onUpPressed();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            onUpPressed();
+            return true;
+        } else if (item.getItemId() == R.id.action_cancel) {
+            mActivity.getStateManager().finishState(this);
+            return true;
+        } else if (item.getItemId() == R.id.action_select) {
+            mSelectionManager.setAutoLeaveSelectionMode(false);
+            mSelectionManager.enterSelectionMode();
+            return true;
+        } else if (item.getItemId() == R.id.action_slideshow) {
+            mInCameraAndWantQuitOnPause = false;
+            Bundle data = new Bundle();
+            data.putString(SlideshowPage.KEY_SET_PATH, mMediaSetPath.toString());
+            data.putBoolean(SlideshowPage.KEY_REPEAT, true);
+            mActivity.getStateManager().startStateForResult(
+                    SlideshowPage.class, REQUEST_SLIDESHOW, data);
+            return true;
+        } else if (item.getItemId() == R.id.action_details) {
+            if (mShowDetails) {
+                hideDetails();
+            } else {
+                showDetails();
             }
-            case R.id.action_cancel:
-                mActivity.getStateManager().finishState(this);
-                return true;
-            case R.id.action_select:
-                mSelectionManager.setAutoLeaveSelectionMode(false);
-                mSelectionManager.enterSelectionMode();
-                return true;
-            case R.id.action_slideshow: {
-                mInCameraAndWantQuitOnPause = false;
-                Bundle data = new Bundle();
-                data.putString(SlideshowPage.KEY_SET_PATH,
-                        mMediaSetPath.toString());
-                data.putBoolean(SlideshowPage.KEY_REPEAT, true);
-                mActivity.getStateManager().startStateForResult(
-                        SlideshowPage.class, REQUEST_SLIDESHOW, data);
-                return true;
-            }
-            case R.id.action_details: {
-                if (mShowDetails) {
-                    hideDetails();
-                } else {
-                    showDetails();
-                }
-                return true;
-            }
-            case R.id.action_camera: {
-                GalleryUtils.startCameraActivity(mActivity);
-                return true;
-            }
-            case R.id.action_view_type: {
+            return true;
+        } else if (item.getItemId() == R.id.action_camera) {
+            GalleryUtils.startCameraActivity(mActivity);
+            return true;
+        } else if (item.getItemId() == R.id.action_view_type) {
             switchView();
             return true;
-            }
-            default:
-                return false;
+        } else {
+            return false;
         }
     }
 

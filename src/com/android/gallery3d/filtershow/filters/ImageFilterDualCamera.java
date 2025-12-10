@@ -160,20 +160,30 @@ class ImageFilterDualCamera extends ImageFilter {
     }
 
     private int getEffectType() {
-        switch (mParameters.getTextId()) {
-            case R.string.focus: return DualCameraEffect.REFOCUS_CIRCLE;
-            case R.string.halo: return DualCameraEffect.HALO;
-            case R.string.motion: return DualCameraEffect.MOTION_BLUR;
-            case R.string.posterize: return DualCameraEffect.POSTERIZE;
-            case R.string.sketch: return DualCameraEffect.SKETCH;
-            case R.string.zoom: return DualCameraEffect.ZOOM_BLUR;
-            case R.string.bw: return DualCameraEffect.BLACK_WHITE;
-            case R.string.blackboard: return DualCameraEffect.BLACKBOARD;
-            case R.string.whiteboard: return DualCameraEffect.WHITEBOARD;
-            case R.string.fusion: return DualCameraEffect.FUSION_FOREGROUND;
-            case R.string.dc_negative: return DualCameraEffect.NEGATIVE;
-            default: throw new IllegalArgumentException();
-        }
+        if (mParameters.getTextId() == R.string.focus)
+            return DualCameraEffect.REFOCUS_CIRCLE;
+        else if (mParameters.getTextId() == R.string.halo)
+            return DualCameraEffect.HALO;
+        else if (mParameters.getTextId() == R.string.motion)
+            return DualCameraEffect.MOTION_BLUR;
+        else if (mParameters.getTextId() == R.string.posterize)
+            return DualCameraEffect.POSTERIZE;
+        else if (mParameters.getTextId() == R.string.sketch)
+            return DualCameraEffect.SKETCH;
+        else if (mParameters.getTextId() == R.string.zoom)
+            return DualCameraEffect.ZOOM_BLUR;
+        else if (mParameters.getTextId() == R.string.bw)
+            return DualCameraEffect.BLACK_WHITE;
+        else if (mParameters.getTextId() == R.string.blackboard)
+            return DualCameraEffect.BLACKBOARD;
+        else if (mParameters.getTextId() == R.string.whiteboard)
+            return DualCameraEffect.WHITEBOARD;
+        else if (mParameters.getTextId() == R.string.fusion)
+            return DualCameraEffect.FUSION_FOREGROUND;
+        else if (mParameters.getTextId() == R.string.dc_negative)
+            return DualCameraEffect.NEGATIVE;
+        else 
+            throw new IllegalArgumentException();
     }
 
     private Size getFilteredSize(PrimaryImage image, int quality) {

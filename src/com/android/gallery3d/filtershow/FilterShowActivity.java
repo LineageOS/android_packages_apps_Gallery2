@@ -899,9 +899,8 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
         mHandledSwipeView = view;
         final Action ac = action;
         mFilterPresetSource = new FilterPresetSource(this);
-        switch (i) {
-            case R.id.renameButton:
-                final View layout = View.inflate(this,R.layout.filtershow_default_edittext,null);
+        if (i == R.id.renameButton) {
+            final View layout = View.inflate(this,R.layout.filtershow_default_edittext,null);
                 AlertDialog.Builder renameAlertDialogBuilder = new AlertDialog.Builder(this);
                 renameAlertDialogBuilder.setTitle(R.string.rename_before_exit);
                 renameAlertDialogBuilder.setView(layout);
@@ -936,34 +935,31 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
                         }
                 );
                 renameAlertDialogBuilder.create().show();
-                break;
-
-            case R.id.deleteButton:
-                String name = action.getName();
-                AlertDialog.Builder deleteAlertDialogBuilder = new AlertDialog.Builder(this);
-                String textview ="Do you want to delete "+name+"?";
-                deleteAlertDialogBuilder.setMessage(textview)
-                        .setTitle(R.string.delete_before_exit);
-                deleteAlertDialogBuilder.setPositiveButton(R.string.ok,
-                        new DialogInterface.OnClickListener(){
-                            @Override
-                            public void onClick(DialogInterface dialog, int id){
-                                ((SwipableView) mHandledSwipeView).delete();
-                                dialog.dismiss();
-                            }
+        } else if (i == R.id.deleteButton) {
+            String name = action.getName();
+            AlertDialog.Builder deleteAlertDialogBuilder = new AlertDialog.Builder(this);
+            String textview ="Do you want to delete "+name+"?";
+            deleteAlertDialogBuilder.setMessage(textview)
+                    .setTitle(R.string.delete_before_exit);
+            deleteAlertDialogBuilder.setPositiveButton(R.string.ok,
+                    new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int id){
+                            ((SwipableView) mHandledSwipeView).delete();
+                            dialog.dismiss();
                         }
-                );
-                deleteAlertDialogBuilder.setNegativeButton(mCancel,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick (DialogInterface dialog, int id){
-                                dialog.dismiss();
+                    }
+            );
+            deleteAlertDialogBuilder.setNegativeButton(mCancel,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick (DialogInterface dialog, int id){
+                            dialog.dismiss();
 
-                            }
                         }
-                );
-                deleteAlertDialogBuilder.create().show();
-                break;
+                    }
+            );
+            deleteAlertDialogBuilder.create().show();
         }
     }
 
@@ -2115,44 +2111,39 @@ public class FilterShowActivity extends AbstractPermissionActivity implements On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        /*case R.id.undoButton: {
-                HistoryManager adapter = mPrimaryImage.getHistory();
-                int position = adapter.undo();
-                mPrimaryImage.onHistoryItemClick(position);
-                backToMain();
-                invalidateViews();
-                return true;
-            }
-            case R.id.redoButton: {
-                HistoryManager adapter = mPrimaryImage.getHistory();
-                int position = adapter.redo();
-                mPrimaryImage.onHistoryItemClick(position);
-                invalidateViews();
-                return true;
-            }*/
-        case R.id.resetHistoryButton: {
+        if (item.getItemId() == R.id.resetHistoryButton) {
             clearWaterMark();
             resetHistory();
             return true;
-        }
-        /*case R.id.showImageStateButton: {
-                toggleImageStatePanel();
-                return true;
-            }*/
-        case R.id.exportFlattenButton: {
+        } else if (item.getItemId() == R.id.exportFlattenButton) {
             showExportOptionsDialog();
             return true;
-        }
-        case android.R.id.home: {
+        } else if (item.getItemId() == android.R.id.home) {
             saveImage();
             return true;
-        }
-        case R.id.manageUserPresets: {
+        } else if (item.getItemId() == R.id.manageUserPresets) {
             manageUserPresets();
             return true;
         }
+        /*
+        else if (item.getItemId() == R.id.undoButton) {
+            HistoryManager adapter = mPrimaryImage.getHistory();
+            int position = adapter.undo();
+            mPrimaryImage.onHistoryItemClick(position);
+            backToMain();
+            invalidateViews();
+            return true;
+        } else if (item.getItemId() == R.id.redoButton) {
+            HistoryManager adapter = mPrimaryImage.getHistory();
+            int position = adapter.redo();
+            mPrimaryImage.onHistoryItemClick(position);
+            invalidateViews();
+            return true;
+        } else if (item.getItemId() == R.id.showImageStateButton) {
+            toggleImageStatePanel();
+            return true;
         }
+        */
         return false;
     }
 
